@@ -1,0 +1,41 @@
+/* Tigers' Den admin accents — Payload CSS variables */
+:root {
+  --theme-bg: #0f1419;
+  --theme-input-bg: #1a2229;
+  --theme-elevation-0: #0f1419;
+  --theme-elevation-50: #151c24;
+  --theme-elevation-100: #1a2229;
+  --theme-elevation-150: #212b35;
+  --theme-elevation-200: #283340;
+  --theme-elevation-250: #2f3c4a;
+  --theme-elevation-300: #364555;
+  --theme-elevation-350: #3d4e60;
+  --theme-elevation-400: #44566b;
+  --theme-elevation-450: #4b5e76;
+  --theme-elevation-500: #526681;
+  --theme-elevation-550: #596e8c;
+  --theme-elevation-600: #607697;
+  --theme-elevation-650: #677ea2;
+  --theme-elevation-700: #6e86ad;
+  --theme-elevation-750: #758eb8;
+  --theme-elevation-800: #7c96c3;
+  --theme-elevation-850: #839ece;
+  --theme-elevation-900: #8aa6d9;
+  --theme-elevation-950: #91aedf;
+  --theme-elevation-1000: #ffffff;
+  --theme-text: #ffffff;
+  --theme-border-color: #2a3540;
+  --theme-success-500: #00b368;
+  --theme-warning-500: #ffb800;
+  --theme-error-500: #f42a41;
+}
+
+/* Brand accent on primary actions */
+.btn--style-primary {
+  background-color: #006a4e !important;
+  border-color: #00b368 !important;
+}
+
+.btn--style-primary:hover {
+  background-color: #00b368 !important;
+}

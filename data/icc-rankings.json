@@ -1,0 +1,2531 @@
+{
+  "fetchedAt": "2026-05-22T16:51:54.433Z",
+  "source": "icc-sportz.io",
+  "sourceUrl": "https://www.icc-cricket.com/rankings",
+  "men": {
+    "gender": "men",
+    "teams": {
+      "test": [
+        {
+          "rank": 1,
+          "name": "Australia",
+          "abbreviation": "AUS",
+          "rating": 131,
+          "points": 3138,
+          "matches": 24
+        },
+        {
+          "rank": 2,
+          "name": "South Africa",
+          "abbreviation": "SA",
+          "rating": 119,
+          "points": 2256,
+          "matches": 19
+        },
+        {
+          "rank": 3,
+          "name": "India",
+          "abbreviation": "IND",
+          "rating": 104,
+          "points": 2600,
+          "matches": 25
+        },
+        {
+          "rank": 4,
+          "name": "England",
+          "abbreviation": "ENG",
+          "rating": 102,
+          "points": 2850,
+          "matches": 28
+        },
+        {
+          "rank": 5,
+          "name": "New Zealand",
+          "abbreviation": "NZ",
+          "rating": 101,
+          "points": 1717,
+          "matches": 17
+        },
+        {
+          "rank": 6,
+          "name": "Sri Lanka",
+          "abbreviation": "SL",
+          "rating": 86,
+          "points": 1118,
+          "matches": 13
+        },
+        {
+          "rank": 7,
+          "name": "Bangladesh",
+          "abbreviation": "BAN",
+          "rating": 78,
+          "points": 1551,
+          "matches": 20
+        },
+        {
+          "rank": 8,
+          "name": "Pakistan",
+          "abbreviation": "PAK",
+          "rating": 75,
+          "points": 1205,
+          "matches": 16
+        },
+        {
+          "rank": 9,
+          "name": "West Indies",
+          "abbreviation": "WI",
+          "rating": 68,
+          "points": 1425,
+          "matches": 21
+        },
+        {
+          "rank": 10,
+          "name": "Zimbabwe",
+          "abbreviation": "ZIM",
+          "rating": 10,
+          "points": 117,
+          "matches": 12
+        }
+      ],
+      "odi": [
+        {
+          "rank": 1,
+          "name": "India",
+          "abbreviation": "IND",
+          "rating": 118,
+          "points": 3197,
+          "matches": 27
+        },
+        {
+          "rank": 2,
+          "name": "New Zealand",
+          "abbreviation": "NZ",
+          "rating": 113,
+          "points": 3384,
+          "matches": 30
+        },
+        {
+          "rank": 3,
+          "name": "Australia",
+          "abbreviation": "AUS",
+          "rating": 109,
+          "points": 2510,
+          "matches": 23
+        },
+        {
+          "rank": 4,
+          "name": "South Africa",
+          "abbreviation": "SA",
+          "rating": 102,
+          "points": 2855,
+          "matches": 28
+        },
+        {
+          "rank": 5,
+          "name": "Pakistan",
+          "abbreviation": "PAK",
+          "rating": 98,
+          "points": 2841,
+          "matches": 29
+        },
+        {
+          "rank": 6,
+          "name": "Sri Lanka",
+          "abbreviation": "SL",
+          "rating": 96,
+          "points": 3346,
+          "matches": 35
+        },
+        {
+          "rank": 7,
+          "name": "Afghanistan",
+          "abbreviation": "AFG",
+          "rating": 93,
+          "points": 1947,
+          "matches": 21
+        },
+        {
+          "rank": 8,
+          "name": "England",
+          "abbreviation": "ENG",
+          "rating": 89,
+          "points": 2487,
+          "matches": 28
+        },
+        {
+          "rank": 9,
+          "name": "Bangladesh",
+          "abbreviation": "BAN",
+          "rating": 84,
+          "points": 2763,
+          "matches": 33
+        },
+        {
+          "rank": 10,
+          "name": "West Indies",
+          "abbreviation": "WI",
+          "rating": 74,
+          "points": 2073,
+          "matches": 28
+        },
+        {
+          "rank": 11,
+          "name": "Ireland",
+          "abbreviation": "IRE",
+          "rating": 54,
+          "points": 653,
+          "matches": 12
+        },
+        {
+          "rank": 12,
+          "name": "Zimbabwe",
+          "abbreviation": "ZIM",
+          "rating": 53,
+          "points": 637,
+          "matches": 12
+        },
+        {
+          "rank": 13,
+          "name": "Netherlands",
+          "abbreviation": "NED",
+          "rating": 44,
+          "points": 1047,
+          "matches": 24
+        },
+        {
+          "rank": 14,
+          "name": "Scotland",
+          "abbreviation": "SCO",
+          "rating": 43,
+          "points": 1071,
+          "matches": 25
+        },
+        {
+          "rank": 15,
+          "name": "USA",
+          "abbreviation": "USA",
+          "rating": 40,
+          "points": 917,
+          "matches": 23
+        },
+        {
+          "rank": 16,
+          "name": "Oman",
+          "abbreviation": "OMN",
+          "rating": 33,
+          "points": 716,
+          "matches": 22
+        },
+        {
+          "rank": 17,
+          "name": "Nepal",
+          "abbreviation": "NEP",
+          "rating": 32,
+          "points": 855,
+          "matches": 27
+        },
+        {
+          "rank": 18,
+          "name": "Namibia",
+          "abbreviation": "NAM",
+          "rating": 23,
+          "points": 373,
+          "matches": 16
+        },
+        {
+          "rank": 19,
+          "name": "United Arab Emirates",
+          "abbreviation": "UAE",
+          "rating": 16,
+          "points": 357,
+          "matches": 23
+        },
+        {
+          "rank": 20,
+          "name": "Canada",
+          "abbreviation": "CAN",
+          "rating": 10,
+          "points": 167,
+          "matches": 16
+        }
+      ],
+      "t20": [
+        {
+          "rank": 1,
+          "name": "India",
+          "abbreviation": "IND",
+          "rating": 275,
+          "points": 14306,
+          "matches": 52
+        },
+        {
+          "rank": 2,
+          "name": "England",
+          "abbreviation": "ENG",
+          "rating": 262,
+          "points": 8904,
+          "matches": 34
+        },
+        {
+          "rank": 3,
+          "name": "Australia",
+          "abbreviation": "AUS",
+          "rating": 258,
+          "points": 9044,
+          "matches": 35
+        },
+        {
+          "rank": 4,
+          "name": "New Zealand",
+          "abbreviation": "NZ",
+          "rating": 247,
+          "points": 12348,
+          "matches": 50
+        },
+        {
+          "rank": 5,
+          "name": "South Africa",
+          "abbreviation": "SA",
+          "rating": 244,
+          "points": 11717,
+          "matches": 48
+        },
+        {
+          "rank": 6,
+          "name": "Pakistan",
+          "abbreviation": "PAK",
+          "rating": 240,
+          "points": 13679,
+          "matches": 57
+        },
+        {
+          "rank": 7,
+          "name": "West Indies",
+          "abbreviation": "WI",
+          "rating": 233,
+          "points": 12367,
+          "matches": 53
+        },
+        {
+          "rank": 8,
+          "name": "Bangladesh",
+          "abbreviation": "BAN",
+          "rating": 225,
+          "points": 10576,
+          "matches": 47
+        },
+        {
+          "rank": 9,
+          "name": "Sri Lanka",
+          "abbreviation": "SL",
+          "rating": 221,
+          "points": 9053,
+          "matches": 41
+        },
+        {
+          "rank": 10,
+          "name": "Afghanistan",
+          "abbreviation": "AFG",
+          "rating": 220,
+          "points": 7935,
+          "matches": 36
+        },
+        {
+          "rank": 11,
+          "name": "Zimbabwe",
+          "abbreviation": "ZIM",
+          "rating": 202,
+          "points": 9679,
+          "matches": 48
+        },
+        {
+          "rank": 12,
+          "name": "Ireland",
+          "abbreviation": "IRE",
+          "rating": 199,
+          "points": 5361,
+          "matches": 27
+        },
+        {
+          "rank": 13,
+          "name": "USA",
+          "abbreviation": "USA",
+          "rating": 183,
+          "points": 3650,
+          "matches": 20
+        },
+        {
+          "rank": 14,
+          "name": "Netherlands",
+          "abbreviation": "NED",
+          "rating": 180,
+          "points": 4311,
+          "matches": 24
+        },
+        {
+          "rank": 15,
+          "name": "Scotland",
+          "abbreviation": "SCO",
+          "rating": 179,
+          "points": 4116,
+          "matches": 23
+        },
+        {
+          "rank": 16,
+          "name": "Namibia",
+          "abbreviation": "NAM",
+          "rating": 178,
+          "points": 5863,
+          "matches": 33
+        },
+        {
+          "rank": 17,
+          "name": "Nepal",
+          "abbreviation": "NEP",
+          "rating": 178,
+          "points": 6928,
+          "matches": 39
+        },
+        {
+          "rank": 18,
+          "name": "United Arab Emirates",
+          "abbreviation": "UAE",
+          "rating": 174,
+          "points": 9408,
+          "matches": 54
+        },
+        {
+          "rank": 19,
+          "name": "Oman",
+          "abbreviation": "OMN",
+          "rating": 158,
+          "points": 6003,
+          "matches": 38
+        },
+        {
+          "rank": 20,
+          "name": "Canada",
+          "abbreviation": "CAN",
+          "rating": 149,
+          "points": 3864,
+          "matches": 26
+        },
+        {
+          "rank": 21,
+          "name": "Uganda",
+          "abbreviation": "UGN",
+          "rating": 144,
+          "points": 5478,
+          "matches": 38
+        },
+        {
+          "rank": 22,
+          "name": "Papua New Guinea",
+          "abbreviation": "PNG",
+          "rating": 137,
+          "points": 2743,
+          "matches": 20
+        },
+        {
+          "rank": 23,
+          "name": "Italy",
+          "abbreviation": "ITA",
+          "rating": 133,
+          "points": 1988,
+          "matches": 15
+        },
+        {
+          "rank": 24,
+          "name": "Malaysia",
+          "abbreviation": "MAS",
+          "rating": 126,
+          "points": 5798,
+          "matches": 46
+        },
+        {
+          "rank": 25,
+          "name": "Hong Kong",
+          "abbreviation": "HK",
+          "rating": 125,
+          "points": 4888,
+          "matches": 39
+        },
+        {
+          "rank": 26,
+          "name": "Spain",
+          "abbreviation": "ESP",
+          "rating": 125,
+          "points": 1377,
+          "matches": 11
+        },
+        {
+          "rank": 27,
+          "name": "Kuwait",
+          "abbreviation": "KUW",
+          "rating": 124,
+          "points": 3585,
+          "matches": 29
+        },
+        {
+          "rank": 28,
+          "name": "Qatar",
+          "abbreviation": "QAT",
+          "rating": 119,
+          "points": 4297,
+          "matches": 36
+        },
+        {
+          "rank": 29,
+          "name": "Bahrain",
+          "abbreviation": "BRN",
+          "rating": 119,
+          "points": 7120,
+          "matches": 60
+        },
+        {
+          "rank": 30,
+          "name": "Jersey",
+          "abbreviation": "JSY",
+          "rating": 117,
+          "points": 2349,
+          "matches": 20
+        },
+        {
+          "rank": 31,
+          "name": "Bermuda",
+          "abbreviation": "BDA",
+          "rating": 113,
+          "points": 1924,
+          "matches": 17
+        },
+        {
+          "rank": 32,
+          "name": "Saudi Arabia",
+          "abbreviation": "SDA",
+          "rating": 109,
+          "points": 2825,
+          "matches": 26
+        },
+        {
+          "rank": 33,
+          "name": "Kenya",
+          "abbreviation": "KEN",
+          "rating": 104,
+          "points": 3443,
+          "matches": 33
+        },
+        {
+          "rank": 34,
+          "name": "Tanzania",
+          "abbreviation": "TAN",
+          "rating": 99,
+          "points": 2967,
+          "matches": 30
+        },
+        {
+          "rank": 35,
+          "name": "Germany",
+          "abbreviation": "GER",
+          "rating": 89,
+          "points": 1781,
+          "matches": 20
+        },
+        {
+          "rank": 36,
+          "name": "Guernsey",
+          "abbreviation": "GSY",
+          "rating": 85,
+          "points": 1961,
+          "matches": 23
+        },
+        {
+          "rank": 37,
+          "name": "Cayman Islands",
+          "abbreviation": "CAY",
+          "rating": 80,
+          "points": 1915,
+          "matches": 24
+        },
+        {
+          "rank": 38,
+          "name": "Nigeria",
+          "abbreviation": "NGR",
+          "rating": 78,
+          "points": 3128,
+          "matches": 40
+        },
+        {
+          "rank": 39,
+          "name": "Portugal",
+          "abbreviation": "POR",
+          "rating": 76,
+          "points": 1374,
+          "matches": 18
+        },
+        {
+          "rank": 40,
+          "name": "Japan",
+          "abbreviation": "JPN",
+          "rating": 74,
+          "points": 2739,
+          "matches": 37
+        },
+        {
+          "rank": 41,
+          "name": "Singapore",
+          "abbreviation": "SIN",
+          "rating": 70,
+          "points": 1686,
+          "matches": 24
+        },
+        {
+          "rank": 42,
+          "name": "Denmark",
+          "abbreviation": "DEN",
+          "rating": 69,
+          "points": 754,
+          "matches": 11
+        },
+        {
+          "rank": 43,
+          "name": "Austria",
+          "abbreviation": "AUT",
+          "rating": 68,
+          "points": 3610,
+          "matches": 53
+        },
+        {
+          "rank": 44,
+          "name": "Norway",
+          "abbreviation": "NOR",
+          "rating": 61,
+          "points": 1641,
+          "matches": 27
+        },
+        {
+          "rank": 45,
+          "name": "Sweden",
+          "abbreviation": "SWE",
+          "rating": 58,
+          "points": 1622,
+          "matches": 28
+        },
+        {
+          "rank": 46,
+          "name": "Argentina",
+          "abbreviation": "ARG",
+          "rating": 54,
+          "points": 758,
+          "matches": 14
+        },
+        {
+          "rank": 47,
+          "name": "Finland",
+          "abbreviation": "FIN",
+          "rating": 53,
+          "points": 962,
+          "matches": 18
+        },
+        {
+          "rank": 48,
+          "name": "Belgium",
+          "abbreviation": "BEL",
+          "rating": 52,
+          "points": 1257,
+          "matches": 24
+        },
+        {
+          "rank": 49,
+          "name": "France",
+          "abbreviation": "FRA",
+          "rating": 49,
+          "points": 1358,
+          "matches": 28
+        },
+        {
+          "rank": 50,
+          "name": "Botswana",
+          "abbreviation": "BOT",
+          "rating": 48,
+          "points": 1249,
+          "matches": 26
+        },
+        {
+          "rank": 51,
+          "name": "Switzerland",
+          "abbreviation": "CHE",
+          "rating": 48,
+          "points": 1000,
+          "matches": 21
+        },
+        {
+          "rank": 52,
+          "name": "Romania",
+          "abbreviation": "ROM",
+          "rating": 47,
+          "points": 1314,
+          "matches": 28
+        },
+        {
+          "rank": 53,
+          "name": "Cook Islands",
+          "abbreviation": "COK",
+          "rating": 46,
+          "points": 649,
+          "matches": 14
+        },
+        {
+          "rank": 54,
+          "name": "Malawi",
+          "abbreviation": "MAW",
+          "rating": 46,
+          "points": 1667,
+          "matches": 36
+        },
+        {
+          "rank": 55,
+          "name": "Samoa",
+          "abbreviation": "SAM",
+          "rating": 44,
+          "points": 933,
+          "matches": 21
+        },
+        {
+          "rank": 56,
+          "name": "Philippines",
+          "abbreviation": "PHI",
+          "rating": 41,
+          "points": 1191,
+          "matches": 29
+        },
+        {
+          "rank": 57,
+          "name": "Ghana",
+          "abbreviation": "GHA",
+          "rating": 40,
+          "points": 605,
+          "matches": 15
+        },
+        {
+          "rank": 58,
+          "name": "Thailand",
+          "abbreviation": "THA",
+          "rating": 40,
+          "points": 1287,
+          "matches": 32
+        },
+        {
+          "rank": 59,
+          "name": "Rwanda",
+          "abbreviation": "RWA",
+          "rating": 40,
+          "points": 2045,
+          "matches": 51
+        },
+        {
+          "rank": 60,
+          "name": "Bahamas",
+          "abbreviation": "BAH",
+          "rating": 40,
+          "points": 599,
+          "matches": 15
+        },
+        {
+          "rank": 61,
+          "name": "Cambodia",
+          "abbreviation": "KHM",
+          "rating": 38,
+          "points": 1109,
+          "matches": 29
+        },
+        {
+          "rank": 62,
+          "name": "Cyprus",
+          "abbreviation": "CYP",
+          "rating": 38,
+          "points": 938,
+          "matches": 25
+        },
+        {
+          "rank": 63,
+          "name": "Indonesia",
+          "abbreviation": "INA",
+          "rating": 37,
+          "points": 2932,
+          "matches": 80
+        },
+        {
+          "rank": 64,
+          "name": "Czechia",
+          "abbreviation": "CZE",
+          "rating": 37,
+          "points": 438,
+          "matches": 12
+        },
+        {
+          "rank": 65,
+          "name": "Isle of Man",
+          "abbreviation": "IOM",
+          "rating": 36,
+          "points": 285,
+          "matches": 8
+        },
+        {
+          "rank": 66,
+          "name": "Malta",
+          "abbreviation": "MLT",
+          "rating": 35,
+          "points": 1328,
+          "matches": 38
+        },
+        {
+          "rank": 67,
+          "name": "Eswatini",
+          "abbreviation": "ESW",
+          "rating": 34,
+          "points": 514,
+          "matches": 15
+        },
+        {
+          "rank": 68,
+          "name": "Vanuatu",
+          "abbreviation": "VUT",
+          "rating": 33,
+          "points": 491,
+          "matches": 15
+        },
+        {
+          "rank": 69,
+          "name": "Hungary",
+          "abbreviation": "HUN",
+          "rating": 30,
+          "points": 700,
+          "matches": 23
+        },
+        {
+          "rank": 70,
+          "name": "Zambia",
+          "abbreviation": "ZMB",
+          "rating": 29,
+          "points": 290,
+          "matches": 10
+        },
+        {
+          "rank": 71,
+          "name": "Estonia",
+          "abbreviation": "EST",
+          "rating": 26,
+          "points": 409,
+          "matches": 16
+        },
+        {
+          "rank": 72,
+          "name": "Mexico",
+          "abbreviation": "MEX",
+          "rating": 21,
+          "points": 454,
+          "matches": 22
+        },
+        {
+          "rank": 73,
+          "name": "Belize",
+          "abbreviation": "BIZ",
+          "rating": 21,
+          "points": 82,
+          "matches": 4
+        },
+        {
+          "rank": 74,
+          "name": "Bhutan",
+          "abbreviation": "BHU",
+          "rating": 20,
+          "points": 519,
+          "matches": 26
+        },
+        {
+          "rank": 75,
+          "name": "Panama",
+          "abbreviation": "PAN",
+          "rating": 20,
+          "points": 156,
+          "matches": 8
+        },
+        {
+          "rank": 76,
+          "name": "Korea",
+          "abbreviation": "KOR",
+          "rating": 17,
+          "points": 294,
+          "matches": 17
+        },
+        {
+          "rank": 77,
+          "name": "Gibraltar",
+          "abbreviation": "GIB",
+          "rating": 17,
+          "points": 347,
+          "matches": 21
+        },
+        {
+          "rank": 78,
+          "name": "Luxembourg",
+          "abbreviation": "LUX",
+          "rating": 16,
+          "points": 255,
+          "matches": 16
+        },
+        {
+          "rank": 79,
+          "name": "Serbia",
+          "abbreviation": "SER",
+          "rating": 14,
+          "points": 275,
+          "matches": 19
+        },
+        {
+          "rank": 80,
+          "name": "Cameroon",
+          "abbreviation": "CMR",
+          "rating": 12,
+          "points": 49,
+          "matches": 4
+        },
+        {
+          "rank": 81,
+          "name": "Sierra Leone",
+          "abbreviation": "SRL",
+          "rating": 12,
+          "points": 246,
+          "matches": 21
+        },
+        {
+          "rank": 82,
+          "name": "Brazil",
+          "abbreviation": "BRA",
+          "rating": 12,
+          "points": 152,
+          "matches": 13
+        },
+        {
+          "rank": 83,
+          "name": "Maldives",
+          "abbreviation": "MDV",
+          "rating": 9,
+          "points": 112,
+          "matches": 13
+        },
+        {
+          "rank": 84,
+          "name": "Bulgaria",
+          "abbreviation": "BUL",
+          "rating": 8,
+          "points": 165,
+          "matches": 20
+        },
+        {
+          "rank": 85,
+          "name": "Suriname",
+          "abbreviation": "SUR",
+          "rating": 8,
+          "points": 82,
+          "matches": 10
+        },
+        {
+          "rank": 86,
+          "name": "Seychelles",
+          "abbreviation": "SEY",
+          "rating": 7,
+          "points": 46,
+          "matches": 7
+        },
+        {
+          "rank": 87,
+          "name": "Mozambique",
+          "abbreviation": "MOZ",
+          "rating": 7,
+          "points": 65,
+          "matches": 10
+        },
+        {
+          "rank": 88,
+          "name": "China",
+          "abbreviation": "CHN",
+          "rating": 5,
+          "points": 29,
+          "matches": 6
+        },
+        {
+          "rank": 89,
+          "name": "Croatia",
+          "abbreviation": "CRO",
+          "rating": 4,
+          "points": 84,
+          "matches": 22
+        },
+        {
+          "rank": 90,
+          "name": "Turkiye",
+          "abbreviation": "TUR",
+          "rating": 4,
+          "points": 28,
+          "matches": 8
+        },
+        {
+          "rank": 91,
+          "name": "FIJ",
+          "abbreviation": "FIJ",
+          "rating": 2,
+          "points": 19,
+          "matches": 9
+        },
+        {
+          "rank": 92,
+          "name": "Timor-Leste",
+          "abbreviation": "TL",
+          "rating": 0,
+          "points": 0,
+          "matches": 8
+        },
+        {
+          "rank": 92,
+          "name": "Mongolia",
+          "abbreviation": "MNG",
+          "rating": 0,
+          "points": 0,
+          "matches": 7
+        },
+        {
+          "rank": 92,
+          "name": "St.Helena",
+          "abbreviation": "SHN",
+          "rating": 0,
+          "points": 0,
+          "matches": 7
+        },
+        {
+          "rank": 92,
+          "name": "Slovenia",
+          "abbreviation": "SVN",
+          "rating": 0,
+          "points": 0,
+          "matches": 17
+        },
+        {
+          "rank": 92,
+          "name": "Myanmar",
+          "abbreviation": "MMR",
+          "rating": 0,
+          "points": 0,
+          "matches": 23
+        },
+        {
+          "rank": 92,
+          "name": "Mali",
+          "abbreviation": "MLI",
+          "rating": 0,
+          "points": 0,
+          "matches": 4
+        },
+        {
+          "rank": 92,
+          "name": "Lesotho",
+          "abbreviation": "LES",
+          "rating": 0,
+          "points": 0,
+          "matches": 10
+        },
+        {
+          "rank": 92,
+          "name": "Costa Rica",
+          "abbreviation": "CRI",
+          "rating": 0,
+          "points": 0,
+          "matches": 12
+        }
+      ]
+    },
+    "bangladesh": {
+      "test": {
+        "rank": 7,
+        "name": "Bangladesh",
+        "abbreviation": "BAN",
+        "rating": 78,
+        "points": 1551,
+        "matches": 20
+      },
+      "odi": {
+        "rank": 9,
+        "name": "Bangladesh",
+        "abbreviation": "BAN",
+        "rating": 84,
+        "points": 2763,
+        "matches": 33
+      },
+      "t20": {
+        "rank": 8,
+        "name": "Bangladesh",
+        "abbreviation": "BAN",
+        "rating": 225,
+        "points": 10576,
+        "matches": 47
+      }
+    },
+    "players": {
+      "test": {
+        "format": "test",
+        "topBatsmen": [
+          {
+            "rank": 1,
+            "name": "Joe Root",
+            "team": "England",
+            "rating": 880,
+            "points": 880
+          },
+          {
+            "rank": 2,
+            "name": "Harry Brook",
+            "team": "England",
+            "rating": 857,
+            "points": 857
+          },
+          {
+            "rank": 3,
+            "name": "Travis Head",
+            "team": "Australia",
+            "rating": 853,
+            "points": 853
+          },
+          {
+            "rank": 4,
+            "name": "Steve Smith",
+            "team": "Australia",
+            "rating": 831,
+            "points": 831
+          },
+          {
+            "rank": 5,
+            "name": "Kane Williamson",
+            "team": "New Zealand",
+            "rating": 822,
+            "points": 822
+          }
+        ],
+        "topBowlers": [
+          {
+            "rank": 1,
+            "name": "Jasprit Bumrah",
+            "team": "India",
+            "rating": 879,
+            "points": 879
+          },
+          {
+            "rank": 2,
+            "name": "Mitchell Starc",
+            "team": "Australia",
+            "rating": 838,
+            "points": 838
+          },
+          {
+            "rank": 3,
+            "name": "Matt Henry",
+            "team": "New Zealand",
+            "rating": 836,
+            "points": 836
+          },
+          {
+            "rank": 4,
+            "name": "Pat Cummins",
+            "team": "Australia",
+            "rating": 832,
+            "points": 832
+          },
+          {
+            "rank": 5,
+            "name": "Noman Ali",
+            "team": "Pakistan",
+            "rating": 825,
+            "points": 825
+          }
+        ],
+        "topAllRounders": [
+          {
+            "rank": 1,
+            "name": "Ravindra Jadeja",
+            "team": "India",
+            "rating": 455,
+            "points": 455
+          },
+          {
+            "rank": 2,
+            "name": "Marco Jansen",
+            "team": "South Africa",
+            "rating": 344,
+            "points": 344
+          },
+          {
+            "rank": 3,
+            "name": "Ben Stokes",
+            "team": "England",
+            "rating": 299,
+            "points": 299
+          },
+          {
+            "rank": 4,
+            "name": "Mehidy Hasan Miraz",
+            "team": "Bangladesh",
+            "rating": 298,
+            "points": 298
+          },
+          {
+            "rank": 5,
+            "name": "Mitchell Starc",
+            "team": "Australia",
+            "rating": 284,
+            "points": 284
+          }
+        ],
+        "topBangladeshBatsman": {
+          "rank": 23,
+          "rankTied": true,
+          "name": "Najmul Hossain Shanto",
+          "team": "Bangladesh",
+          "rating": 649,
+          "points": 649
+        },
+        "topBangladeshBowler": {
+          "rank": 13,
+          "name": "Taijul Islam",
+          "team": "Bangladesh",
+          "rating": 704,
+          "points": 704
+        },
+        "topBangladeshAllRounder": {
+          "rank": 4,
+          "name": "Mehidy Hasan Miraz",
+          "team": "Bangladesh",
+          "rating": 298,
+          "points": 298
+        }
+      },
+      "odi": {
+        "format": "odi",
+        "topBatsmen": [
+          {
+            "rank": 1,
+            "name": "Daryl Mitchell",
+            "team": "New Zealand",
+            "rating": 815,
+            "points": 815
+          },
+          {
+            "rank": 2,
+            "name": "Virat Kohli",
+            "team": "India",
+            "rating": 791,
+            "points": 791
+          },
+          {
+            "rank": 3,
+            "name": "Ibrahim Zadran",
+            "team": "Afghanistan",
+            "rating": 756,
+            "points": 756
+          },
+          {
+            "rank": 4,
+            "name": "Rohit Sharma",
+            "team": "India",
+            "rating": 748,
+            "points": 748
+          },
+          {
+            "rank": 5,
+            "name": "Shubman Gill",
+            "team": "India",
+            "rating": 716,
+            "points": 716
+          }
+        ],
+        "topBowlers": [
+          {
+            "rank": 1,
+            "name": "Rashid Khan",
+            "team": "Afghanistan",
+            "rating": 705,
+            "points": 705
+          },
+          {
+            "rank": 2,
+            "name": "Jofra Archer",
+            "team": "England",
+            "rating": 649,
+            "points": 649
+          },
+          {
+            "rank": 3,
+            "name": "Keshav Maharaj",
+            "team": "South Africa",
+            "rating": 645,
+            "points": 645
+          },
+          {
+            "rank": 4,
+            "name": "Adil Rashid",
+            "team": "England",
+            "rating": 629,
+            "points": 629
+          },
+          {
+            "rank": 5,
+            "name": "Josh Hazlewood",
+            "team": "Australia",
+            "rating": 626,
+            "points": 626
+          }
+        ],
+        "topAllRounders": [
+          {
+            "rank": 1,
+            "name": "Azmatullah Omarzai",
+            "team": "Afghanistan",
+            "rating": 329,
+            "points": 329
+          },
+          {
+            "rank": 2,
+            "name": "Sikandar Raza",
+            "team": "Zimbabwe",
+            "rating": 276,
+            "points": 276
+          },
+          {
+            "rank": 3,
+            "name": "Mohammad Nabi",
+            "team": "Afghanistan",
+            "rating": 275,
+            "points": 275
+          },
+          {
+            "rank": 3,
+            "rankTied": true,
+            "name": "Mehidy Hasan Miraz",
+            "team": "Bangladesh",
+            "rating": 275,
+            "points": 275
+          },
+          {
+            "rank": 5,
+            "name": "Rashid Khan",
+            "team": "Afghanistan",
+            "rating": 237,
+            "points": 237
+          }
+        ],
+        "topBangladeshBatsman": {
+          "rank": 26,
+          "name": "Tawhid Hridoy",
+          "team": "Bangladesh",
+          "rating": 583,
+          "points": 583
+        },
+        "topBangladeshBowler": {
+          "rank": 8,
+          "name": "Mehidy Hasan Miraz",
+          "team": "Bangladesh",
+          "rating": 621,
+          "points": 621
+        },
+        "topBangladeshAllRounder": {
+          "rank": 3,
+          "rankTied": true,
+          "name": "Mehidy Hasan Miraz",
+          "team": "Bangladesh",
+          "rating": 275,
+          "points": 275
+        }
+      },
+      "t20": {
+        "format": "t20",
+        "topBatsmen": [
+          {
+            "rank": 1,
+            "name": "Abhishek Sharma",
+            "team": "India",
+            "rating": 875,
+            "points": 875
+          },
+          {
+            "rank": 2,
+            "name": "Ishan Kishan",
+            "team": "India",
+            "rating": 871,
+            "points": 871
+          },
+          {
+            "rank": 3,
+            "name": "Sahibzada Farhan",
+            "team": "Pakistan",
+            "rating": 848,
+            "points": 848
+          },
+          {
+            "rank": 4,
+            "name": "Phil Salt",
+            "team": "England",
+            "rating": 792,
+            "points": 792
+          },
+          {
+            "rank": 5,
+            "name": "Pathum Nissanka",
+            "team": "Sri Lanka",
+            "rating": 766,
+            "points": 766
+          }
+        ],
+        "topBowlers": [
+          {
+            "rank": 1,
+            "name": "Rashid Khan",
+            "team": "Afghanistan",
+            "rating": 753,
+            "points": 753
+          },
+          {
+            "rank": 2,
+            "name": "Varun Chakaravarthy",
+            "team": "India",
+            "rating": 740,
+            "points": 740
+          },
+          {
+            "rank": 3,
+            "name": "Abrar Ahmed",
+            "team": "Pakistan",
+            "rating": 736,
+            "points": 736
+          },
+          {
+            "rank": 4,
+            "name": "Adil Rashid",
+            "team": "England",
+            "rating": 721,
+            "points": 721
+          },
+          {
+            "rank": 5,
+            "name": "Jasprit Bumrah",
+            "team": "India",
+            "rating": 702,
+            "points": 702
+          }
+        ],
+        "topAllRounders": [
+          {
+            "rank": 1,
+            "name": "Sikandar Raza",
+            "team": "Zimbabwe",
+            "rating": 328,
+            "points": 328
+          },
+          {
+            "rank": 2,
+            "name": "Hardik Pandya",
+            "team": "India",
+            "rating": 299,
+            "points": 299
+          },
+          {
+            "rank": 3,
+            "name": "Saim Ayub",
+            "team": "Pakistan",
+            "rating": 275,
+            "points": 275
+          },
+          {
+            "rank": 4,
+            "name": "Dipendra Singh Airee",
+            "team": "Nepal",
+            "rating": 245,
+            "points": 245
+          },
+          {
+            "rank": 5,
+            "name": "Azmatullah Omarzai",
+            "team": "Afghanistan",
+            "rating": 241,
+            "points": 241
+          }
+        ],
+        "topBangladeshBatsman": {
+          "rank": 26,
+          "name": "Tanzid Hasan",
+          "team": "Bangladesh",
+          "rating": 610,
+          "points": 610
+        },
+        "topBangladeshBowler": {
+          "rank": 12,
+          "name": "Mustafizur Rahman",
+          "team": "Bangladesh",
+          "rating": 652,
+          "points": 652
+        },
+        "topBangladeshAllRounder": {
+          "rank": 44,
+          "name": "Mahedi Hasan",
+          "team": "Bangladesh",
+          "rating": 89,
+          "points": 89
+        }
+      }
+    }
+  },
+  "women": {
+    "gender": "women",
+    "teams": {
+      "test": [],
+      "odi": [
+        {
+          "rank": 1,
+          "name": "Australia",
+          "abbreviation": "AUS",
+          "rating": 163,
+          "points": 4565,
+          "matches": 28
+        },
+        {
+          "rank": 2,
+          "name": "England",
+          "abbreviation": "ENG",
+          "rating": 125,
+          "points": 3247,
+          "matches": 26
+        },
+        {
+          "rank": 3,
+          "name": "India",
+          "abbreviation": "IND",
+          "rating": 124,
+          "points": 3712,
+          "matches": 30
+        },
+        {
+          "rank": 4,
+          "name": "South Africa",
+          "abbreviation": "SA",
+          "rating": 100,
+          "points": 3614,
+          "matches": 36
+        },
+        {
+          "rank": 5,
+          "name": "New Zealand",
+          "abbreviation": "NZ",
+          "rating": 96,
+          "points": 2312,
+          "matches": 24
+        },
+        {
+          "rank": 6,
+          "name": "Sri Lanka",
+          "abbreviation": "SL",
+          "rating": 89,
+          "points": 1859,
+          "matches": 21
+        },
+        {
+          "rank": 7,
+          "name": "Pakistan",
+          "abbreviation": "PAK",
+          "rating": 73,
+          "points": 1690,
+          "matches": 23
+        },
+        {
+          "rank": 8,
+          "name": "Bangladesh",
+          "abbreviation": "BAN",
+          "rating": 73,
+          "points": 1537,
+          "matches": 21
+        },
+        {
+          "rank": 9,
+          "name": "West Indies",
+          "abbreviation": "WI",
+          "rating": 71,
+          "points": 1639,
+          "matches": 23
+        },
+        {
+          "rank": 10,
+          "name": "Ireland",
+          "abbreviation": "IRE",
+          "rating": 50,
+          "points": 947,
+          "matches": 19
+        },
+        {
+          "rank": 11,
+          "name": "Scotland",
+          "abbreviation": "SCO",
+          "rating": 42,
+          "points": 294,
+          "matches": 7
+        },
+        {
+          "rank": 12,
+          "name": "Papua New Guinea",
+          "abbreviation": "PNG",
+          "rating": 12,
+          "points": 110,
+          "matches": 9
+        },
+        {
+          "rank": 13,
+          "name": "Zimbabwe",
+          "abbreviation": "ZIM",
+          "rating": 12,
+          "points": 226,
+          "matches": 19
+        },
+        {
+          "rank": 14,
+          "name": "United Arab Emirates",
+          "abbreviation": "UAE",
+          "rating": 10,
+          "points": 81,
+          "matches": 8
+        }
+      ],
+      "t20": [
+        {
+          "rank": 1,
+          "name": "Australia",
+          "abbreviation": "AUS",
+          "rating": 287,
+          "points": 6022,
+          "matches": 21
+        },
+        {
+          "rank": 2,
+          "name": "England",
+          "abbreviation": "ENG",
+          "rating": 276,
+          "points": 7168,
+          "matches": 26
+        },
+        {
+          "rank": 3,
+          "name": "India",
+          "abbreviation": "IND",
+          "rating": 264,
+          "points": 8722,
+          "matches": 33
+        },
+        {
+          "rank": 4,
+          "name": "New Zealand",
+          "abbreviation": "NZ",
+          "rating": 252,
+          "points": 6300,
+          "matches": 25
+        },
+        {
+          "rank": 5,
+          "name": "South Africa",
+          "abbreviation": "SA",
+          "rating": 243,
+          "points": 7762,
+          "matches": 32
+        },
+        {
+          "rank": 6,
+          "name": "West Indies",
+          "abbreviation": "WI",
+          "rating": 238,
+          "points": 5712,
+          "matches": 24
+        },
+        {
+          "rank": 7,
+          "name": "Sri Lanka",
+          "abbreviation": "SL",
+          "rating": 237,
+          "points": 6871,
+          "matches": 29
+        },
+        {
+          "rank": 8,
+          "name": "Pakistan",
+          "abbreviation": "PAK",
+          "rating": 218,
+          "points": 5226,
+          "matches": 24
+        },
+        {
+          "rank": 9,
+          "name": "Ireland",
+          "abbreviation": "IRE",
+          "rating": 200,
+          "points": 6799,
+          "matches": 34
+        },
+        {
+          "rank": 10,
+          "name": "Bangladesh",
+          "abbreviation": "BAN",
+          "rating": 199,
+          "points": 5577,
+          "matches": 28
+        },
+        {
+          "rank": 11,
+          "name": "Scotland",
+          "abbreviation": "SCO",
+          "rating": 162,
+          "points": 4711,
+          "matches": 29
+        },
+        {
+          "rank": 12,
+          "name": "Thailand",
+          "abbreviation": "THA",
+          "rating": 151,
+          "points": 7271,
+          "matches": 48
+        },
+        {
+          "rank": 13,
+          "name": "Papua New Guinea",
+          "abbreviation": "PNG",
+          "rating": 141,
+          "points": 4235,
+          "matches": 30
+        },
+        {
+          "rank": 14,
+          "name": "Netherlands",
+          "abbreviation": "NED",
+          "rating": 140,
+          "points": 5614,
+          "matches": 40
+        },
+        {
+          "rank": 15,
+          "name": "United Arab Emirates",
+          "abbreviation": "UAE",
+          "rating": 136,
+          "points": 5318,
+          "matches": 39
+        },
+        {
+          "rank": 16,
+          "name": "Zimbabwe",
+          "abbreviation": "ZIM",
+          "rating": 122,
+          "points": 4285,
+          "matches": 35
+        },
+        {
+          "rank": 17,
+          "name": "Uganda",
+          "abbreviation": "UGN",
+          "rating": 111,
+          "points": 5205,
+          "matches": 47
+        },
+        {
+          "rank": 18,
+          "name": "Namibia",
+          "abbreviation": "NAM",
+          "rating": 105,
+          "points": 4078,
+          "matches": 39
+        },
+        {
+          "rank": 19,
+          "name": "Tanzania",
+          "abbreviation": "TAN",
+          "rating": 102,
+          "points": 3152,
+          "matches": 31
+        },
+        {
+          "rank": 20,
+          "name": "USA",
+          "abbreviation": "USA",
+          "rating": 98,
+          "points": 2741,
+          "matches": 28
+        },
+        {
+          "rank": 21,
+          "name": "Indonesia",
+          "abbreviation": "INA",
+          "rating": 95,
+          "points": 2669,
+          "matches": 28
+        },
+        {
+          "rank": 22,
+          "name": "Nepal",
+          "abbreviation": "NEP",
+          "rating": 95,
+          "points": 4077,
+          "matches": 43
+        },
+        {
+          "rank": 23,
+          "name": "Hong Kong",
+          "abbreviation": "HK",
+          "rating": 92,
+          "points": 4148,
+          "matches": 45
+        },
+        {
+          "rank": 24,
+          "name": "Rwanda",
+          "abbreviation": "RWA",
+          "rating": 85,
+          "points": 4406,
+          "matches": 52
+        },
+        {
+          "rank": 25,
+          "name": "Italy",
+          "abbreviation": "ITA",
+          "rating": 84,
+          "points": 2603,
+          "matches": 31
+        },
+        {
+          "rank": 26,
+          "name": "Nigeria",
+          "abbreviation": "NGR",
+          "rating": 79,
+          "points": 2299,
+          "matches": 29
+        },
+        {
+          "rank": 27,
+          "name": "Switzerland",
+          "abbreviation": "CHE",
+          "rating": 72,
+          "points": 863,
+          "matches": 12
+        },
+        {
+          "rank": 28,
+          "name": "Germany",
+          "abbreviation": "GER",
+          "rating": 66,
+          "points": 1641,
+          "matches": 25
+        },
+        {
+          "rank": 29,
+          "name": "Vanuatu",
+          "abbreviation": "VUT",
+          "rating": 65,
+          "points": 1762,
+          "matches": 27
+        },
+        {
+          "rank": 30,
+          "name": "Malaysia",
+          "abbreviation": "MAS",
+          "rating": 65,
+          "points": 2799,
+          "matches": 43
+        },
+        {
+          "rank": 31,
+          "name": "Kenya",
+          "abbreviation": "KEN",
+          "rating": 64,
+          "points": 1534,
+          "matches": 24
+        },
+        {
+          "rank": 32,
+          "name": "Canada",
+          "abbreviation": "CAN",
+          "rating": 63,
+          "points": 879,
+          "matches": 14
+        },
+        {
+          "rank": 33,
+          "name": "Brazil",
+          "abbreviation": "BRA",
+          "rating": 63,
+          "points": 1883,
+          "matches": 30
+        },
+        {
+          "rank": 34,
+          "name": "Spain",
+          "abbreviation": "ESP",
+          "rating": 59,
+          "points": 531,
+          "matches": 9
+        },
+        {
+          "rank": 35,
+          "name": "Jersey",
+          "abbreviation": "JSY",
+          "rating": 55,
+          "points": 1156,
+          "matches": 21
+        },
+        {
+          "rank": 36,
+          "name": "Oman",
+          "abbreviation": "OMN",
+          "rating": 52,
+          "points": 1205,
+          "matches": 23
+        },
+        {
+          "rank": 37,
+          "name": "Isle of Man",
+          "abbreviation": "IOM",
+          "rating": 47,
+          "points": 930,
+          "matches": 20
+        },
+        {
+          "rank": 38,
+          "name": "Sweden",
+          "abbreviation": "SWE",
+          "rating": 46,
+          "points": 777,
+          "matches": 17
+        },
+        {
+          "rank": 39,
+          "name": "Cyprus",
+          "abbreviation": "CYP",
+          "rating": 45,
+          "points": 769,
+          "matches": 17
+        },
+        {
+          "rank": 40,
+          "name": "Myanmar",
+          "abbreviation": "MMR",
+          "rating": 44,
+          "points": 1151,
+          "matches": 26
+        },
+        {
+          "rank": 41,
+          "name": "Japan",
+          "abbreviation": "JPN",
+          "rating": 42,
+          "points": 1090,
+          "matches": 26
+        },
+        {
+          "rank": 42,
+          "name": "Sierra Leone",
+          "abbreviation": "SRL",
+          "rating": 38,
+          "points": 989,
+          "matches": 26
+        },
+        {
+          "rank": 43,
+          "name": "China",
+          "abbreviation": "CHN",
+          "rating": 37,
+          "points": 922,
+          "matches": 25
+        },
+        {
+          "rank": 44,
+          "name": "Bhutan",
+          "abbreviation": "BHU",
+          "rating": 36,
+          "points": 655,
+          "matches": 18
+        },
+        {
+          "rank": 45,
+          "name": "France",
+          "abbreviation": "FRA",
+          "rating": 35,
+          "points": 349,
+          "matches": 10
+        },
+        {
+          "rank": 46,
+          "name": "Denmark",
+          "abbreviation": "DEN",
+          "rating": 32,
+          "points": 699,
+          "matches": 22
+        },
+        {
+          "rank": 47,
+          "name": "Botswana",
+          "abbreviation": "BOT",
+          "rating": 32,
+          "points": 1010,
+          "matches": 32
+        },
+        {
+          "rank": 48,
+          "name": "Gibraltar",
+          "abbreviation": "GIB",
+          "rating": 32,
+          "points": 378,
+          "matches": 12
+        },
+        {
+          "rank": 49,
+          "name": "Turkiye",
+          "abbreviation": "TUR",
+          "rating": 31,
+          "points": 337,
+          "matches": 11
+        },
+        {
+          "rank": 50,
+          "name": "Kuwait",
+          "abbreviation": "KUW",
+          "rating": 30,
+          "points": 666,
+          "matches": 22
+        },
+        {
+          "rank": 51,
+          "name": "Guernsey",
+          "abbreviation": "GSY",
+          "rating": 30,
+          "points": 240,
+          "matches": 8
+        },
+        {
+          "rank": 52,
+          "name": "Samoa",
+          "abbreviation": "SAM",
+          "rating": 30,
+          "points": 472,
+          "matches": 16
+        },
+        {
+          "rank": 53,
+          "name": "Romania",
+          "abbreviation": "ROM",
+          "rating": 28,
+          "points": 251,
+          "matches": 9
+        },
+        {
+          "rank": 54,
+          "name": "Austria",
+          "abbreviation": "AUT",
+          "rating": 23,
+          "points": 501,
+          "matches": 22
+        },
+        {
+          "rank": 55,
+          "name": "Malawi",
+          "abbreviation": "MAW",
+          "rating": 20,
+          "points": 501,
+          "matches": 25
+        },
+        {
+          "rank": 56,
+          "name": "Estonia",
+          "abbreviation": "EST",
+          "rating": 20,
+          "points": 376,
+          "matches": 19
+        },
+        {
+          "rank": 57,
+          "name": "Norway",
+          "abbreviation": "NOR",
+          "rating": 19,
+          "points": 289,
+          "matches": 15
+        },
+        {
+          "rank": 58,
+          "name": "Greece",
+          "abbreviation": "GRE",
+          "rating": 18,
+          "points": 501,
+          "matches": 28
+        },
+        {
+          "rank": 59,
+          "name": "Fiji",
+          "abbreviation": "FIJ",
+          "rating": 18,
+          "points": 263,
+          "matches": 15
+        },
+        {
+          "rank": 60,
+          "name": "Malta",
+          "abbreviation": "MLT",
+          "rating": 15,
+          "points": 151,
+          "matches": 10
+        },
+        {
+          "rank": 61,
+          "name": "Qatar",
+          "abbreviation": "QAT",
+          "rating": 15,
+          "points": 305,
+          "matches": 21
+        },
+        {
+          "rank": 62,
+          "name": "Serbia",
+          "abbreviation": "SER",
+          "rating": 13,
+          "points": 146,
+          "matches": 11
+        },
+        {
+          "rank": 63,
+          "name": "Argentina",
+          "abbreviation": "ARG",
+          "rating": 13,
+          "points": 156,
+          "matches": 12
+        },
+        {
+          "rank": 64,
+          "name": "Croatia",
+          "abbreviation": "CRO",
+          "rating": 12,
+          "points": 73,
+          "matches": 6
+        },
+        {
+          "rank": 65,
+          "name": "Luxembourg",
+          "abbreviation": "LUX",
+          "rating": 12,
+          "points": 131,
+          "matches": 11
+        },
+        {
+          "rank": 66,
+          "name": "Mozambique",
+          "abbreviation": "MOZ",
+          "rating": 10,
+          "points": 221,
+          "matches": 22
+        },
+        {
+          "rank": 67,
+          "name": "Cameroon",
+          "abbreviation": "CMR",
+          "rating": 9,
+          "points": 158,
+          "matches": 18
+        },
+        {
+          "rank": 68,
+          "name": "Lesotho",
+          "abbreviation": "LES",
+          "rating": 3,
+          "points": 50,
+          "matches": 17
+        },
+        {
+          "rank": 69,
+          "name": "Singapore",
+          "abbreviation": "SIN",
+          "rating": 2,
+          "points": 48,
+          "matches": 26
+        },
+        {
+          "rank": 70,
+          "name": "Philippines",
+          "abbreviation": "PHI",
+          "rating": 1,
+          "points": 14,
+          "matches": 18
+        },
+        {
+          "rank": 71,
+          "name": "Mongolia",
+          "abbreviation": "MNG",
+          "rating": 0,
+          "points": 0,
+          "matches": 16
+        },
+        {
+          "rank": 71,
+          "name": "Eswatini",
+          "abbreviation": "ESW",
+          "rating": 0,
+          "points": 0,
+          "matches": 10
+        },
+        {
+          "rank": 71,
+          "name": "Finland",
+          "abbreviation": "FIN",
+          "rating": 0,
+          "points": 0,
+          "matches": 9
+        },
+        {
+          "rank": 71,
+          "name": "Czechia",
+          "abbreviation": "CZE",
+          "rating": 0,
+          "points": 0,
+          "matches": 16
+        },
+        {
+          "rank": 71,
+          "name": "Cook Islands",
+          "abbreviation": "COK",
+          "rating": 0,
+          "points": 0,
+          "matches": 12
+        },
+        {
+          "rank": 71,
+          "name": "Bulgaria",
+          "abbreviation": "BUL",
+          "rating": 0,
+          "points": 0,
+          "matches": 15
+        },
+        {
+          "rank": 71,
+          "name": "Belgium",
+          "abbreviation": "BEL",
+          "rating": 0,
+          "points": 0,
+          "matches": 6
+        },
+        {
+          "rank": 71,
+          "name": "Bahrain",
+          "abbreviation": "BRN",
+          "rating": 0,
+          "points": 0,
+          "matches": 18
+        }
+      ]
+    },
+    "bangladesh": {
+      "test": null,
+      "odi": {
+        "rank": 8,
+        "name": "Bangladesh",
+        "abbreviation": "BAN",
+        "rating": 73,
+        "points": 1537,
+        "matches": 21
+      },
+      "t20": {
+        "rank": 10,
+        "name": "Bangladesh",
+        "abbreviation": "BAN",
+        "rating": 199,
+        "points": 5577,
+        "matches": 28
+      }
+    },
+    "players": {
+      "test": {
+        "format": "test",
+        "topBatsmen": [],
+        "topBowlers": [],
+        "topAllRounders": [],
+        "topBangladeshBatsman": null,
+        "topBangladeshBowler": null,
+        "topBangladeshAllRounder": null
+      },
+      "odi": {
+        "format": "odi",
+        "topBatsmen": [
+          {
+            "rank": 1,
+            "name": "Smriti Mandhana",
+            "team": "India",
+            "rating": 790,
+            "points": 790
+          },
+          {
+            "rank": 2,
+            "name": "Laura Wolvaardt",
+            "team": "South Africa",
+            "rating": 782,
+            "points": 782
+          },
+          {
+            "rank": 3,
+            "name": "Beth Mooney",
+            "team": "Australia",
+            "rating": 744,
+            "points": 744
+          },
+          {
+            "rank": 4,
+            "name": "Phoebe Litchfield",
+            "team": "Australia",
+            "rating": 709,
+            "points": 709
+          },
+          {
+            "rank": 5,
+            "name": "Ashleigh Gardner",
+            "team": "Australia",
+            "rating": 696,
+            "points": 696
+          }
+        ],
+        "topBowlers": [
+          {
+            "rank": 1,
+            "name": "Alana King",
+            "team": "Australia",
+            "rating": 753,
+            "points": 753
+          },
+          {
+            "rank": 2,
+            "name": "Sophie Ecclestone",
+            "team": "England",
+            "rating": 717,
+            "points": 717
+          },
+          {
+            "rank": 3,
+            "name": "Ashleigh Gardner",
+            "team": "Australia",
+            "rating": 715,
+            "points": 715
+          },
+          {
+            "rank": 4,
+            "name": "Hayley Matthews",
+            "team": "West Indies",
+            "rating": 658,
+            "points": 658
+          },
+          {
+            "rank": 5,
+            "name": "Marizanne Kapp",
+            "team": "South Africa",
+            "rating": 650,
+            "points": 650
+          }
+        ],
+        "topAllRounders": [
+          {
+            "rank": 1,
+            "name": "Ashleigh Gardner",
+            "team": "Australia",
+            "rating": 497,
+            "points": 497
+          },
+          {
+            "rank": 2,
+            "name": "Hayley Matthews",
+            "team": "West Indies",
+            "rating": 428,
+            "points": 428
+          },
+          {
+            "rank": 3,
+            "name": "Annabel Sutherland",
+            "team": "Australia",
+            "rating": 385,
+            "points": 385
+          },
+          {
+            "rank": 4,
+            "name": "Marizanne Kapp",
+            "team": "South Africa",
+            "rating": 367,
+            "points": 367
+          },
+          {
+            "rank": 5,
+            "name": "Amelia Kerr",
+            "team": "New Zealand",
+            "rating": 358,
+            "points": 358
+          }
+        ],
+        "topBangladeshBatsman": {
+          "rank": 27,
+          "name": "Sharmin Akhter",
+          "team": "Bangladesh",
+          "rating": 560,
+          "points": 560
+        },
+        "topBangladeshBowler": {
+          "rank": 10,
+          "name": "Nahida Akter",
+          "team": "Bangladesh",
+          "rating": 599,
+          "points": 599
+        },
+        "topBangladeshAllRounder": {
+          "rank": 31,
+          "name": "Marufa Akter",
+          "team": "Bangladesh",
+          "rating": 123,
+          "points": 123
+        }
+      },
+      "t20": {
+        "format": "t20",
+        "topBatsmen": [
+          {
+            "rank": 1,
+            "name": "Georgia Voll",
+            "team": "Australia",
+            "rating": 815,
+            "points": 815
+          },
+          {
+            "rank": 2,
+            "name": "Beth Mooney",
+            "team": "Australia",
+            "rating": 788,
+            "points": 788
+          },
+          {
+            "rank": 3,
+            "name": "Laura Wolvaardt",
+            "team": "South Africa",
+            "rating": 786,
+            "points": 786
+          },
+          {
+            "rank": 4,
+            "name": "Hayley Matthews",
+            "team": "West Indies",
+            "rating": 767,
+            "points": 767
+          },
+          {
+            "rank": 5,
+            "name": "Smriti Mandhana",
+            "team": "India",
+            "rating": 747,
+            "points": 747
+          }
+        ],
+        "topBowlers": [
+          {
+            "rank": 1,
+            "name": "Sadia Iqbal",
+            "team": "Pakistan",
+            "rating": 746,
+            "points": 746
+          },
+          {
+            "rank": 2,
+            "name": "Sophie Ecclestone",
+            "team": "England",
+            "rating": 727,
+            "points": 727
+          },
+          {
+            "rank": 3,
+            "name": "Lauren Bell",
+            "team": "England",
+            "rating": 714,
+            "points": 714
+          },
+          {
+            "rank": 4,
+            "name": "Deepti Sharma",
+            "team": "India",
+            "rating": 713,
+            "points": 713
+          },
+          {
+            "rank": 4,
+            "rankTied": true,
+            "name": "Nonkululeko Mlaba",
+            "team": "South Africa",
+            "rating": 713,
+            "points": 713
+          }
+        ],
+        "topAllRounders": [
+          {
+            "rank": 1,
+            "name": "Amelia Kerr",
+            "team": "New Zealand",
+            "rating": 508,
+            "points": 508
+          },
+          {
+            "rank": 2,
+            "name": "Hayley Matthews",
+            "team": "West Indies",
+            "rating": 483,
+            "points": 483
+          },
+          {
+            "rank": 3,
+            "name": "Chamari Athapaththu",
+            "team": "Sri Lanka",
+            "rating": 368,
+            "points": 368
+          },
+          {
+            "rank": 4,
+            "name": "Deepti Sharma",
+            "team": "India",
+            "rating": 357,
+            "points": 357
+          },
+          {
+            "rank": 5,
+            "name": "Ashleigh Gardner",
+            "team": "Australia",
+            "rating": 347,
+            "points": 347
+          }
+        ],
+        "topBangladeshBatsman": {
+          "rank": 24,
+          "name": "Nigar Sultana Joty",
+          "team": "Bangladesh",
+          "rating": 582,
+          "points": 582
+        },
+        "topBangladeshBowler": {
+          "rank": 18,
+          "name": "Rabeya Khan",
+          "team": "Bangladesh",
+          "rating": 641,
+          "points": 641
+        },
+        "topBangladeshAllRounder": {
+          "rank": 23,
+          "name": "Shorna Akter",
+          "team": "Bangladesh",
+          "rating": 146,
+          "points": 146
+        }
+      }
+    }
+  }
+}

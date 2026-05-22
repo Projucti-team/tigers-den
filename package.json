@@ -1,0 +1,44 @@
+{
+  "name": "tigersden",
+  "version": "0.1.0",
+  "private": true,
+  "scripts": {
+    "dev": "next dev --turbopack",
+    "build": "next build",
+    "build:prod": "payload generate:importmap && next build",
+    "start": "next start",
+    "lint": "next lint",
+    "payload": "payload",
+    "generate:types": "payload generate:types",
+    "generate:importmap": "payload generate:importmap",
+    "scrape:icc-rankings": "tsx scripts/scrape-icc-rankings.ts",
+    "scrape:bangladesh-match": "tsx scripts/scrape-bangladesh-match.ts",
+    "scrape:bangladesh-news": "tsx scripts/scrape-bangladesh-news.ts"
+  },
+  "dependencies": {
+    "@payloadcms/db-sqlite": "3.84.1",
+    "@payloadcms/db-vercel-postgres": "^3.84.1",
+    "@payloadcms/next": "3.84.1",
+    "@payloadcms/richtext-lexical": "3.84.1",
+    "@payloadcms/storage-vercel-blob": "^3.84.1",
+    "@payloadcms/ui": "3.84.1",
+    "graphql": "^16.10.0",
+    "next": "16.2.2",
+    "payload": "3.84.1",
+    "react": "^19.1.0",
+    "react-dom": "^19.1.0",
+    "sharp": "^0.34.2"
+  },
+  "devDependencies": {
+    "@eslint/eslintrc": "^3.3.1",
+    "@tailwindcss/postcss": "^4.1.8",
+    "@types/node": "^22.15.21",
+    "@types/react": "^19.1.6",
+    "@types/react-dom": "^19.1.5",
+    "eslint": "^9.28.0",
+    "eslint-config-next": "16.2.2",
+    "tailwindcss": "^4.1.8",
+    "tsx": "^4.19.4",
+    "typescript": "^5.8.3"
+  }
+}

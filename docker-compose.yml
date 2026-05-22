@@ -1,0 +1,46 @@
+services:
+  app:
+    build: .
+    restart: unless-stopped
+    ports:
+      - "3000:3000"
+    env_file:
+      - .env.production
+    environment:
+      NODE_ENV: production
+      DATABASE_URI: file:/app/data/tigersden.db
+    volumes:
+      # Persist CMS DB, uploads, and cricket caches (seeded from image on first run)
+      - tigersden-data:/app/data
+      - tigersden-media:/app/media
+    # Or bind-mount from the repo for easy `git pull` updates:
+    # volumes:
+    #   - ./data:/app/data
+    #   - ./media:/app/media
+    healthcheck:
+      test: ["CMD", "wget", "-qO-", "http://127.0.0.1:3000/"]
+      interval: 30s
+      timeout: 5s
+      retries: 3
+      start_period: 60s
+
+  # Optional HTTPS reverse proxy — uncomment after setting DOMAIN in .env.production
+  # caddy:
+  #   image: caddy:2-alpine
+  #   restart: unless-stopped
+  #   ports:
+  #     - "80:80"
+  #     - "443:443"
+  #   volumes:
+  #     - ./deploy/Caddyfile:/etc/caddy/Caddyfile:ro
+  #     - caddy-data:/data
+  #     - caddy-config:/config
+  #   depends_on:
+  #     app:
+  #       condition: service_healthy
+
+volumes:
+  tigersden-data:
+  tigersden-media:
+  # caddy-data:
+  # caddy-config:

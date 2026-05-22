@@ -1,0 +1,17 @@
+{
+  "fetchedAt": "2026-05-20T12:00:00.000Z",
+  "source": "espncricinfo",
+  "highlight": {
+    "mode": "completed",
+    "matchId": "seed-ban-pak-2nd-test-2026",
+    "title": "Bangladesh vs Pakistan, 2nd Test, Sylhet",
+    "scoreLine": "BAN 278 & 390 · PAK 232 & 358",
+    "detailLine": "Bangladesh won by 78 runs",
+    "scores": [
+      { "label": "Bangladesh 1st", "value": "278/10 (77 ov)" },
+      { "label": "Pakistan 1st", "value": "232/10 (57.4 ov)" },
+      { "label": "Bangladesh 2nd", "value": "390/10 (102.2 ov)" },
+      { "label": "Pakistan 2nd", "value": "358/10 (97.2 ov)" }
+    ]
+  }
+}

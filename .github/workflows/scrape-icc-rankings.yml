@@ -1,0 +1,38 @@
+name: Scrape ICC rankings
+
+on:
+  schedule:
+    # 02:00 UTC daily (≈ 08:00 Bangladesh)
+    - cron: "0 2 * * *"
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  scrape:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: "22"
+          cache: npm
+
+      - run: npm ci
+
+      - name: Fetch ICC rankings
+        run: npm run scrape:icc-rankings
+
+      - name: Commit updated rankings
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add data/icc-rankings.json
+          if git diff --staged --quiet; then
+            echo "No ranking changes."
+          else
+            git commit -m "chore: update ICC rankings from nightly scrape"
+            git push
+          fi
