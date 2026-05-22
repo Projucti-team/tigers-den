@@ -8,7 +8,7 @@ import { NewsFeed } from "@/components/home/NewsFeed";
 // import { MembershipSection } from "@/components/home/MembershipSection";
 import { MerchSection } from "@/components/home/MerchSection";
 import { NewsletterSignup } from "@/components/home/NewsletterSignup";
-import { WhyJoinSection } from "@/components/home/WhyJoinSection";
+// import { WhyJoinSection } from "@/components/home/WhyJoinSection";
 import { FORMATS_BY_GENDER } from "@/lib/cricket/constants";
 import { getMatchHighlight, getRankingsShowcase, getTourCards } from "@/lib/cricket";
 import { getBangladeshCricketNews } from "@/lib/news/services/bangladesh-news";
@@ -134,7 +134,7 @@ export default async function HomePage() {
       </section>
       <HomeToursSection tours={toursResult.cards} />
       {/* <MembershipSection /> */}
-      <WhyJoinSection />
+      {/* <WhyJoinSection /> */}
       <HomeCommunitySection threads={threads.length > 0 ? threads : undefined} />
       <MerchSection />
       <NewsletterSignup />
