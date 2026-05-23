@@ -1,6 +1,7 @@
 import { FORMATS_BY_GENDER, topBangladeshPlayer } from "@/lib/cricket/constants";
 import { enrichPlayerImage } from "@/lib/cricket/player-images";
 import { getRankings } from "@/lib/cricket/services/rankings";
+import { getWtcStandings, type WtcShowcase } from "@/lib/cricket/services/wtc";
 import type {
   CricketFormat,
   FormatRankings,
@@ -14,7 +15,6 @@ export type FormatShowcase = {
   label: string;
   bangladeshRank: number | null;
   bangladeshRating: number | null;
-  bangladeshPoints: number | null;
   topBatsman: RankedPlayer | null;
   topBowler: RankedPlayer | null;
   topAllRounder: RankedPlayer | null;
@@ -54,7 +54,12 @@ function resolveTopBangladesh(
 
 function hasRealPhoto(player: RankedPlayer | null): boolean {
   const url = player?.imageUrl ?? "";
-  return Boolean(url && !url.includes("ui-avatars.com") && !url.includes("/icon512."));
+  return Boolean(
+    url &&
+      !url.includes("ui-avatars.com") &&
+      !url.includes("/icon512.") &&
+      !url.includes("default-player-logo"),
+  );
 }
 
 async function enrichFormatPlayers(formatData: FormatRankings) {
@@ -90,7 +95,6 @@ async function buildShowcase(gender: Gender, data: GenderRankings): Promise<Rank
       label: FORMAT_LABELS[format],
       bangladeshRank: bd?.rank ?? null,
       bangladeshRating: bd?.rating ?? null,
-      bangladeshPoints: bd?.points ?? null,
       topBatsman: players.topBatsman,
       topBowler: players.topBowler,
       topAllRounder: players.topAllRounder,
@@ -100,12 +104,16 @@ async function buildShowcase(gender: Gender, data: GenderRankings): Promise<Rank
   return { gender, formats, warnings: [] };
 }
 
+export type { WtcShowcase };
+
 export async function getRankingsShowcase(): Promise<{
   men: RankingsShowcase;
   women: RankingsShowcase;
+  wtc: WtcShowcase | null;
   warnings: string[];
 }> {
-  const { men, women, warnings } = await getRankings();
+  const [{ men, women, warnings: rankWarnings }, { wtc, warnings: wtcWarnings }] =
+    await Promise.all([getRankings(), getWtcStandings()]);
 
   const [menShowcase, womenShowcase] = await Promise.all([
     buildShowcase("men", men),
@@ -115,6 +123,7 @@ export async function getRankingsShowcase(): Promise<{
   return {
     men: menShowcase,
     women: womenShowcase,
-    warnings,
+    wtc,
+    warnings: [...rankWarnings, ...wtcWarnings],
   };
 }

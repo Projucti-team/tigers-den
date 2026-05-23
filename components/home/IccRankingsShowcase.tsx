@@ -1,8 +1,10 @@
 import type { FormatShowcase, RankingsShowcase } from "@/lib/cricket/services/rankings-display";
+import type { WtcShowcase } from "@/lib/cricket/services/wtc";
 
 type Props = {
   men: RankingsShowcase;
   women: RankingsShowcase;
+  wtc?: WtcShowcase | null;
   warnings?: string[];
 };
 
@@ -16,18 +18,15 @@ function BangladeshRankCard({ format }: { format: FormatShowcase }) {
       </p>
       {hasRank ? (
         <>
-          <p className="mt-3 font-display text-5xl font-extrabold text-emerald md:text-6xl">
+          <p className="mt-3 font-display text-6xl font-extrabold leading-none text-emerald md:text-7xl">
             #{format.bangladeshRank}
           </p>
-          <p className="mt-1 font-mono text-xs font-bold uppercase text-charcoal/60">
+          <p className="mt-2 font-mono text-xs font-bold uppercase text-charcoal/60">
             ICC Team Ranking
           </p>
           {format.bangladeshRating != null && (
             <p className="mt-3 rounded-full bg-emerald/10 px-4 py-1 font-mono text-sm font-bold text-emerald">
               Rating {format.bangladeshRating}
-              {format.bangladeshPoints != null && (
-                <span className="text-charcoal/50"> · {format.bangladeshPoints} pts</span>
-              )}
             </p>
           )}
         </>
@@ -37,6 +36,43 @@ function BangladeshRankCard({ format }: { format: FormatShowcase }) {
         </p>
       )}
       <div className="mt-4 h-1 w-full rounded-full bg-gradient-to-r from-emerald to-crimson" />
+    </div>
+  );
+}
+
+function WtcBangladeshCard({ wtc }: { wtc: WtcShowcase }) {
+  const bd = wtc.bangladesh;
+  if (!bd) {
+    return (
+      <div className="flex flex-1 flex-col items-center rounded-xl border-4 border-crimson/40 bg-white p-5 shadow-lg">
+        <p className="font-display text-sm font-extrabold uppercase tracking-widest text-crimson">
+          WTC {wtc.cycleLabel}
+        </p>
+        <p className="mt-6 text-center text-sm font-semibold text-charcoal/50">
+          Standings unavailable
+        </p>
+      </div>
+    );
+  }
+
+  return (
+    <div className="flex flex-1 flex-col items-center rounded-xl border-4 border-crimson bg-white p-5 shadow-lg transition-transform hover:-translate-y-1">
+      <p className="font-display text-sm font-extrabold uppercase tracking-widest text-crimson">
+        WTC {wtc.cycleLabel}
+      </p>
+      <p className="mt-3 font-display text-6xl font-extrabold leading-none text-emerald md:text-7xl">
+        #{bd.rank}
+      </p>
+      <p className="mt-2 font-mono text-xs font-bold uppercase text-charcoal/60">
+        World Test Championship
+      </p>
+      <p className="mt-3 rounded-full bg-crimson/10 px-4 py-1 font-mono text-sm font-bold text-crimson">
+        {bd.pct}% PCT
+      </p>
+      <p className="mt-2 font-mono text-xs font-bold text-charcoal/50">
+        {bd.won}W · {bd.lost}L{bd.drawn > 0 ? ` · ${bd.drawn}D` : ""} · {bd.played} played
+      </p>
+      <div className="mt-4 h-1 w-full rounded-full bg-gradient-to-r from-crimson to-emerald" />
     </div>
   );
 }
@@ -68,7 +104,8 @@ function TigerPlayerCard({
   const photo =
     player.imageUrl &&
     !player.imageUrl.includes("ui-avatars.com") &&
-    !player.imageUrl.includes("/icon512.")
+    !player.imageUrl.includes("/icon512.") &&
+    !player.imageUrl.includes("default-player-logo")
       ? player.imageUrl
       : null;
   const imgSrc =
@@ -79,28 +116,31 @@ function TigerPlayerCard({
     <article
       className={`flex flex-col items-center rounded-xl border-2 ${border} bg-white p-3 text-center shadow-sm`}
     >
-      <div className="relative h-12 w-12 overflow-hidden rounded-full border-2 border-charcoal/10 bg-charcoal/5">
+      <div className="relative h-14 w-14 overflow-hidden rounded-full border-2 border-charcoal/10 bg-charcoal/5">
         {/* eslint-disable-next-line @next/next/no-img-element */}
         <img
           src={imgSrc}
           alt={player.name}
-          width={48}
-          height={48}
+          width={56}
+          height={56}
           className="h-full w-full object-cover object-top"
           loading="lazy"
           referrerPolicy="no-referrer"
         />
       </div>
+      <p className="mt-2 font-display text-2xl font-extrabold leading-none text-emerald">
+        #{player.rank}
+      </p>
       <span
-        className={`mt-2 rounded px-2 py-0.5 font-display text-[9px] font-extrabold uppercase ${badge}`}
+        className={`mt-1 rounded px-2 py-0.5 font-display text-[10px] font-extrabold uppercase ${badge}`}
       >
-        #{player.rank} {role}
+        {role}
       </span>
-      <p className="mt-2 w-full font-display text-[11px] font-bold leading-snug text-charcoal">
+      <p className="mt-2 w-full font-display text-sm font-bold leading-snug text-charcoal">
         {player.name}
       </p>
-      <p className="mt-1 font-mono text-[10px] font-bold text-charcoal/50">
-        {player.rating} pts
+      <p className="mt-1 font-mono text-xs font-bold text-charcoal/50">
+        Rating {player.rating}
       </p>
     </article>
   );
@@ -124,9 +164,11 @@ function FormatColumn({ format }: { format: FormatShowcase }) {
 function GenderBlock({
   showcase,
   title,
+  wtc,
 }: {
   showcase: RankingsShowcase;
   title: string;
+  wtc?: WtcShowcase | null;
 }) {
   return (
     <div className="space-y-8">
@@ -140,11 +182,18 @@ function GenderBlock({
       </div>
 
       <div
-        className={`grid gap-4 ${showcase.formats.length === 2 ? "md:grid-cols-2" : "md:grid-cols-3"}`}
+        className={`grid gap-4 ${
+          wtc && showcase.formats.length === 3
+            ? "sm:grid-cols-2 lg:grid-cols-4"
+            : showcase.formats.length === 2
+              ? "md:grid-cols-2"
+              : "md:grid-cols-3"
+        }`}
       >
         {showcase.formats.map((f) => (
           <BangladeshRankCard key={f.format} format={f} />
         ))}
+        {wtc && <WtcBangladeshCard wtc={wtc} />}
       </div>
 
       <div className="rounded-2xl border-4 border-amber/40 bg-gradient-to-br from-emerald/5 via-white to-crimson/5 p-5 md:p-8">
@@ -163,7 +212,7 @@ function GenderBlock({
   );
 }
 
-export function IccRankingsShowcase({ men, women, warnings = [] }: Props) {
+export function IccRankingsShowcase({ men, women, wtc = null, warnings = [] }: Props) {
   return (
     <section
       id="rankings"
@@ -180,7 +229,7 @@ export function IccRankingsShowcase({ men, women, warnings = [] }: Props) {
         </div>
 
         <div className="mt-12 space-y-16">
-          <GenderBlock showcase={men} title="Men's Team" />
+          <GenderBlock showcase={men} title="Men's Team" wtc={wtc} />
           <GenderBlock showcase={women} title="Women's Team" />
         </div>
 

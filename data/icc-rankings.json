@@ -1,5 +1,5 @@
 {
-  "fetchedAt": "2026-05-23T06:56:59.945Z",
+  "fetchedAt": "2026-05-23T07:25:36.284Z",
   "source": "icc-sportz.io",
   "sourceUrl": "https://www.icc-cricket.com/rankings",
   "men": {
@@ -1191,7 +1191,7 @@
           "team": "Bangladesh",
           "rating": 649,
           "points": 649,
-          "imageUrl": "https://h.cricapi.com/img/icon512.png"
+          "imageUrl": "https://a.espncdn.com/i/headshots/cricket/players/full/629058.png"
         },
         "topBangladeshBowler": {
           "rank": 13,
@@ -1199,7 +1199,7 @@
           "team": "Bangladesh",
           "rating": 704,
           "points": 704,
-          "imageUrl": "https://h.cricapi.com/img/players/608e195a-b9d5-445a-8c54-42c3181702e0.jpg"
+          "imageUrl": "https://a.espncdn.com/i/headshots/cricket/players/full/401057.png"
         },
         "topBangladeshAllRounder": {
           "rank": 4,
@@ -1207,7 +1207,7 @@
           "team": "Bangladesh",
           "rating": 298,
           "points": 298,
-          "imageUrl": "https://h.cricapi.com/img/players/218cc9f0-91f3-4927-af4a-a4601336d545.jpg"
+          "imageUrl": "https://a.espncdn.com/i/headshots/cricket/players/full/629063.png"
         }
       },
       "odi": {
@@ -1338,7 +1338,7 @@
           "team": "Bangladesh",
           "rating": 621,
           "points": 621,
-          "imageUrl": "https://h.cricapi.com/img/players/218cc9f0-91f3-4927-af4a-a4601336d545.jpg"
+          "imageUrl": "https://a.espncdn.com/i/headshots/cricket/players/full/629063.png"
         },
         "topBangladeshAllRounder": {
           "rank": 3,
@@ -1347,7 +1347,7 @@
           "team": "Bangladesh",
           "rating": 275,
           "points": 275,
-          "imageUrl": "https://h.cricapi.com/img/players/218cc9f0-91f3-4927-af4a-a4601336d545.jpg"
+          "imageUrl": "https://a.espncdn.com/i/headshots/cricket/players/full/629063.png"
         }
       },
       "t20": {
@@ -1469,7 +1469,7 @@
           "team": "Bangladesh",
           "rating": 610,
           "points": 610,
-          "imageUrl": "https://h.cricapi.com/img/icon512.png"
+          "imageUrl": "https://ui-avatars.com/api/?name=Tanzid%2BHasan&background=006a4e&color=fff&size=320&bold=true"
         },
         "topBangladeshBowler": {
           "rank": 12,
@@ -1477,7 +1477,7 @@
           "team": "Bangladesh",
           "rating": 652,
           "points": 652,
-          "imageUrl": "https://h.cricapi.com/img/players/4a0a483d-de7f-4313-b2ed-8eceb3d8bb45.jpg"
+          "imageUrl": "https://a.espncdn.com/i/headshots/cricket/players/full/330902.png"
         },
         "topBangladeshAllRounder": {
           "rank": 44,
@@ -1485,7 +1485,7 @@
           "team": "Bangladesh",
           "rating": 89,
           "points": 89,
-          "imageUrl": "https://h.cricapi.com/img/icon512.png"
+          "imageUrl": "https://a.espncdn.com/i/headshots/cricket/players/full/833087.png"
         }
       }
     }
@@ -2383,7 +2383,7 @@
           "team": "Bangladesh",
           "rating": 560,
           "points": 560,
-          "imageUrl": "https://h.cricapi.com/img/players/bf86ec7c-57b6-4c50-8426-7ed1a1b3b093.jpg"
+          "imageUrl": "https://a.espncdn.com/i/headshots/cricket/players/full/535868.png"
         },
         "topBangladeshBowler": {
           "rank": 10,
@@ -2391,7 +2391,7 @@
           "team": "Bangladesh",
           "rating": 599,
           "points": 599,
-          "imageUrl": "https://h.cricapi.com/img/players/1702b722-ded8-4e66-a238-e1aad0813489.jpg"
+          "imageUrl": "https://a.espncdn.com/i/headshots/cricket/players/full/924183.png"
         },
         "topBangladeshAllRounder": {
           "rank": 31,
@@ -2399,7 +2399,7 @@
           "team": "Bangladesh",
           "rating": 123,
           "points": 123,
-          "imageUrl": "https://h.cricapi.com/img/icon512.png"
+          "imageUrl": "https://a.espncdn.com/i/headshots/cricket/players/full/1332561.png"
         }
       },
       "t20": {
@@ -2522,7 +2522,7 @@
           "team": "Bangladesh",
           "rating": 582,
           "points": 582,
-          "imageUrl": "https://ui-avatars.com/api/?name=Nigar%2BSultana%2BJoty&background=006a4e&color=fff&size=320&bold=true"
+          "imageUrl": "https://a.espncdn.com/i/headshots/cricket/players/full/924177.png"
         },
         "topBangladeshBowler": {
           "rank": 18,
@@ -2530,7 +2530,7 @@
           "team": "Bangladesh",
           "rating": 641,
           "points": 641,
-          "imageUrl": "https://h.cricapi.com/img/icon512.png"
+          "imageUrl": "https://a.espncdn.com/i/headshots/cricket/players/full/1204964.png"
         },
         "topBangladeshAllRounder": {
           "rank": 23,
@@ -2538,7 +2538,7 @@
           "team": "Bangladesh",
           "rating": 146,
           "points": 146,
-          "imageUrl": "https://h.cricapi.com/img/icon512.png"
+          "imageUrl": "https://a.espncdn.com/i/headshots/cricket/players/full/1352206.png"
         }
       }
     }

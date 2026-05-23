@@ -103,6 +103,27 @@ export type GenderRankings = {
   players: Record<CricketFormat, FormatRankings>;
 };
 
+export type WtcTeamStanding = {
+  rank: number;
+  team: string;
+  abbreviation: string;
+  played: number;
+  won: number;
+  lost: number;
+  drawn: number;
+  tied: number;
+  noResult: number;
+  points: number;
+  pct: number;
+};
+
+export type WtcStandingsSnapshot = {
+  fetchedAt: string;
+  source: string;
+  cycleLabel: string;
+  standings: WtcTeamStanding[];
+};
+
 export type CricketDashboard = {
   meta: ApiMeta;
   tours: Tour[];

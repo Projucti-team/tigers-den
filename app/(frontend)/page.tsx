@@ -65,7 +65,6 @@ const emptyShowcase = (gender: "men" | "women"): RankingsShowcase => ({
     label: FORMAT_LABELS[format],
     bangladeshRank: null,
     bangladeshRating: null,
-    bangladeshPoints: null,
     topBatsman: null,
     topBowler: null,
     topAllRounder: null,
@@ -79,6 +78,7 @@ export default async function HomePage() {
     getRankingsShowcase().catch(() => ({
       men: emptyShowcase("men"),
       women: emptyShowcase("women"),
+      wtc: null,
       warnings: ["ICC rankings unavailable. Run npm run scrape:icc-rankings to refresh data/icc-rankings.json."],
     })),
     getTourCards(3).catch(() => ({
@@ -101,6 +101,7 @@ export default async function HomePage() {
       <IccRankingsShowcase
         men={rankings.men}
         women={rankings.women}
+        wtc={rankings.wtc}
         warnings={rankings.warnings}
       />
       <ExperienceCards
