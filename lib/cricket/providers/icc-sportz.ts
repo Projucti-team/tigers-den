@@ -110,6 +110,9 @@ function mapPlayers(rows: SportzRankRow[]): RankedPlayer[] {
       else if (rank > 0 && tied && prevRank === 0) prevRank = rank;
 
       const rating = Number.parseFloat(row.Points ?? row.Rating ?? "0");
+      const iccPlayerId = row.Player_id?.trim() || undefined;
+      const profileUrl = row.Player_url?.trim() || undefined;
+
       return {
         rank,
         rankTied: tied || undefined,
@@ -117,6 +120,11 @@ function mapPlayers(rows: SportzRankRow[]): RankedPlayer[] {
         team: row.team_name ?? row.Country_name ?? row.Country ?? "",
         rating: Number.isFinite(rating) ? rating : 0,
         points: Number.isFinite(rating) ? rating : undefined,
+        iccPlayerId,
+        profileUrl,
+        imageUrl: iccPlayerId
+          ? `https://images.icc-cricket.com/image/upload/t_player-headshot-portrait-lg-webp/prd/assets/players/generic/colored/${iccPlayerId}.png`
+          : undefined,
       };
     })
     .filter((p) => p.rank > 0 && p.name)

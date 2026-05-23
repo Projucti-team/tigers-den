@@ -36,6 +36,10 @@ const nextConfig: NextConfig = {
         hostname: "a.espncdn.com",
       },
       {
+        protocol: "https",
+        hostname: "images.icc-cricket.com",
+      },
+      {
         protocol: "http",
         hostname: "cricapi.com",
       },

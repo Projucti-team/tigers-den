@@ -73,6 +73,10 @@ export type RankedPlayer = {
   team: string;
   rating: number;
   points?: number;
+  /** Sportz.io / icc-cricket.com player id */
+  iccPlayerId?: string;
+  /** e.g. https://www.icc-cricket.com/rankings/63872/najmul-hossain-shanto */
+  profileUrl?: string;
   imageUrl?: string;
 };
 

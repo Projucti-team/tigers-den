@@ -54,12 +54,10 @@ function resolveTopBangladesh(
 
 function hasRealPhoto(player: RankedPlayer | null): boolean {
   const url = player?.imageUrl ?? "";
-  return Boolean(
-    url &&
-      !url.includes("ui-avatars.com") &&
-      !url.includes("/icon512.") &&
-      !url.includes("default-player-logo"),
-  );
+  if (!url || url.includes("ui-avatars.com")) return false;
+  if (url.includes("/icon512.") || url.includes("default-player-logo")) return false;
+  if (player?.iccPlayerId && url.includes("a.espncdn.com")) return false;
+  return true;
 }
 
 async function enrichFormatPlayers(formatData: FormatRankings) {

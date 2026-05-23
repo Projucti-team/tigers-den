@@ -1,5 +1,7 @@
+import { PlayerRankAvatar } from "@/components/home/PlayerRankAvatar";
 import type { FormatShowcase, RankingsShowcase } from "@/lib/cricket/services/rankings-display";
 import type { WtcShowcase } from "@/lib/cricket/services/wtc";
+import type { RankedPlayer } from "@/lib/cricket/types";
 
 type Props = {
   men: RankingsShowcase;
@@ -83,6 +85,14 @@ const ACCENT_STYLES = {
   amber: { border: "border-amber", badge: "bg-charcoal text-amber" },
 } as const;
 
+function playerPhotoSrc(player: RankedPlayer): string | null {
+  const url = player.imageUrl ?? "";
+  if (!url || url.includes("ui-avatars.com")) return null;
+  if (url.includes("/icon512.") || url.includes("default-player-logo")) return null;
+  if (player.iccPlayerId && url.includes("a.espncdn.com")) return null;
+  return url;
+}
+
 function TigerPlayerCard({
   player,
   role,
@@ -101,31 +111,18 @@ function TigerPlayerCard({
   }
 
   const { border, badge } = ACCENT_STYLES[accent];
-  const photo =
-    player.imageUrl &&
-    !player.imageUrl.includes("ui-avatars.com") &&
-    !player.imageUrl.includes("/icon512.") &&
-    !player.imageUrl.includes("default-player-logo")
-      ? player.imageUrl
-      : null;
-  const imgSrc =
-    photo ||
-    `https://ui-avatars.com/api/?name=${encodeURIComponent(player.name)}&background=006a4e&color=fff&size=128`;
+  const fallbackSrc = `https://ui-avatars.com/api/?name=${encodeURIComponent(player.name)}&background=006a4e&color=fff&size=128`;
+  const photo = playerPhotoSrc(player) ?? fallbackSrc;
+  const profileUrl = player.profileUrl;
 
-  return (
-    <article
-      className={`flex flex-col items-center rounded-xl border-2 ${border} bg-white p-3 text-center shadow-sm`}
-    >
+  const card = (
+    <>
       <div className="relative h-14 w-14 overflow-hidden rounded-full border-2 border-charcoal/10 bg-charcoal/5">
-        {/* eslint-disable-next-line @next/next/no-img-element */}
-        <img
-          src={imgSrc}
+        <PlayerRankAvatar
+          src={photo}
+          fallbackSrc={fallbackSrc}
           alt={player.name}
-          width={56}
-          height={56}
           className="h-full w-full object-cover object-top"
-          loading="lazy"
-          referrerPolicy="no-referrer"
         />
       </div>
       <p className="mt-2 font-display text-2xl font-extrabold leading-none text-emerald">
@@ -142,8 +139,26 @@ function TigerPlayerCard({
       <p className="mt-1 font-mono text-xs font-bold text-charcoal/50">
         Rating {player.rating}
       </p>
-    </article>
+    </>
   );
+
+  const className = `flex flex-col items-center rounded-xl border-2 ${border} bg-white p-3 text-center shadow-sm transition-colors`;
+
+  if (profileUrl) {
+    return (
+      <a
+        href={profileUrl}
+        target="_blank"
+        rel="noopener noreferrer"
+        className={`${className} hover:border-emerald hover:bg-emerald/5 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-emerald`}
+        title={`View ${player.name} on ICC`}
+      >
+        {card}
+      </a>
+    );
+  }
+
+  return <article className={className}>{card}</article>;
 }
 
 function FormatColumn({ format }: { format: FormatShowcase }) {

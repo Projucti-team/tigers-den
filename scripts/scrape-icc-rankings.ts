@@ -12,7 +12,7 @@ async function main() {
   console.log("Fetching ICC rankings from Sportz.io (icc-cricket.com feed)…");
   let snapshot = await fetchAllIccRankingsFromSportz();
 
-  console.log("Resolving Bangladesh player photos from ESPN Cricinfo…");
+  console.log("Resolving Bangladesh player photos from ICC (icc-cricket.com)…");
   snapshot = await enrichIccSnapshotPlayerImages(snapshot);
 
   await writeIccRankingsSnapshot(snapshot);

@@ -1,6 +1,11 @@
 import { withCache } from "@/lib/cricket/cache";
 import { FORMATS_BY_GENDER } from "@/lib/cricket/constants";
 import {
+  iccPlayerImageUrl,
+  isIccPlayerImageUrl,
+  resolveIccPlayerImageUrl,
+} from "@/lib/cricket/providers/icc-player";
+import {
   isCricinfoPlaceholderPhoto,
   resolveCricinfoPlayerImageUrl,
 } from "@/lib/cricket/providers/cricinfo-player";
@@ -20,26 +25,42 @@ function avatarFallback(name: string): string {
   return `https://ui-avatars.com/api/?name=${encoded}&background=006a4e&color=fff&size=320&bold=true`;
 }
 
-/** Resolve player name → ESPN Cricinfo headshot (free), then initials fallback. */
-export async function resolvePlayerImageUrl(playerName: string): Promise<string> {
-  return withCache(`player-img:${playerName}`, 24 * 60 * 60 * 1000, async () => {
+function hasUsableImage(player: RankedPlayer): boolean {
+  const url = player.imageUrl ?? "";
+  if (!url || isPlaceholderPhoto(url)) return false;
+  if (player.iccPlayerId && url.includes("a.espncdn.com")) return false;
+  if (isIccPlayerImageUrl(url)) return true;
+  return !url.includes("ui-avatars.com");
+}
+
+/** ICC headshot first, then Cricinfo, then initials. */
+export async function resolvePlayerImageUrl(player: RankedPlayer | string): Promise<string> {
+  const ranked = typeof player === "string" ? ({ name: player } as RankedPlayer) : player;
+  const cacheKey = ranked.iccPlayerId
+    ? `player-img:icc:${ranked.iccPlayerId}`
+    : `player-img:${ranked.name}`;
+
+  return withCache(cacheKey, 24 * 60 * 60 * 1000, async () => {
+    if (ranked.iccPlayerId) {
+      const iccUrl = await resolveIccPlayerImageUrl(ranked.iccPlayerId);
+      if (iccUrl) return iccUrl;
+    }
+
     try {
-      const cricinfoUrl = await resolveCricinfoPlayerImageUrl(playerName);
+      const cricinfoUrl = await resolveCricinfoPlayerImageUrl(ranked.name);
       if (cricinfoUrl) return cricinfoUrl;
     } catch {
       /* fall through */
     }
 
-    return avatarFallback(playerName);
+    return avatarFallback(ranked.name);
   });
 }
 
-export async function enrichPlayerImage<T extends { name: string; imageUrl?: string }>(
-  player: T | null,
-): Promise<T | null> {
+export async function enrichPlayerImage(player: RankedPlayer | null): Promise<RankedPlayer | null> {
   if (!player) return null;
-  if (player.imageUrl && !isPlaceholderPhoto(player.imageUrl)) return player;
-  const imageUrl = await resolvePlayerImageUrl(player.name);
+  if (hasUsableImage(player)) return player;
+  const imageUrl = await resolvePlayerImageUrl(player);
   return { ...player, imageUrl };
 }
 
@@ -49,20 +70,21 @@ const BD_PLAYER_KEYS = [
   "topBangladeshAllRounder",
 ] as const;
 
-/** Bake photo URLs into data/icc-rankings.json (run via scrape — works on Vercel without API keys). */
+/** Bake ICC photo URLs into data/icc-rankings.json (run via scrape). */
 export async function enrichIccSnapshotPlayerImages(
   snapshot: IccRankingsSnapshot,
 ): Promise<IccRankingsSnapshot> {
-  const urlByName = new Map<string, string>();
+  const urlByKey = new Map<string, string>();
 
   async function imageFor(player: RankedPlayer): Promise<RankedPlayer> {
-    if (player.imageUrl && !isPlaceholderPhoto(player.imageUrl)) return player;
+    if (hasUsableImage(player)) return player;
 
-    let url = urlByName.get(player.name);
+    const cacheKey = player.iccPlayerId ?? player.name;
+    let url = urlByKey.get(cacheKey);
     if (!url) {
-      url = await resolvePlayerImageUrl(player.name);
-      urlByName.set(player.name, url);
-      await sleep(300);
+      url = await resolvePlayerImageUrl(player);
+      urlByKey.set(cacheKey, url);
+      if (!player.iccPlayerId) await sleep(250);
     }
 
     return { ...player, imageUrl: url };
