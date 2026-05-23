@@ -1,5 +1,5 @@
 {
-  "fetchedAt": "2026-05-22T16:51:54.433Z",
+  "fetchedAt": "2026-05-23T05:36:14.670Z",
   "source": "icc-sportz.io",
   "sourceUrl": "https://www.icc-cricket.com/rankings",
   "men": {
@@ -740,14 +740,6 @@
         },
         {
           "rank": 62,
-          "name": "Cyprus",
-          "abbreviation": "CYP",
-          "rating": 38,
-          "points": 938,
-          "matches": 25
-        },
-        {
-          "rank": 63,
           "name": "Indonesia",
           "abbreviation": "INA",
           "rating": 37,
@@ -755,7 +747,7 @@
           "matches": 80
         },
         {
-          "rank": 64,
+          "rank": 63,
           "name": "Czechia",
           "abbreviation": "CZE",
           "rating": 37,
@@ -763,7 +755,7 @@
           "matches": 12
         },
         {
-          "rank": 65,
+          "rank": 64,
           "name": "Isle of Man",
           "abbreviation": "IOM",
           "rating": 36,
@@ -771,12 +763,20 @@
           "matches": 8
         },
         {
-          "rank": 66,
+          "rank": 65,
           "name": "Malta",
           "abbreviation": "MLT",
           "rating": 35,
           "points": 1328,
           "matches": 38
+        },
+        {
+          "rank": 66,
+          "name": "Cyprus",
+          "abbreviation": "CYP",
+          "rating": 34,
+          "points": 892,
+          "matches": 26
         },
         {
           "rank": 67,
@@ -932,6 +932,14 @@
         },
         {
           "rank": 86,
+          "name": "Croatia",
+          "abbreviation": "CRO",
+          "rating": 7,
+          "points": 172,
+          "matches": 23
+        },
+        {
+          "rank": 87,
           "name": "Seychelles",
           "abbreviation": "SEY",
           "rating": 7,
@@ -939,7 +947,7 @@
           "matches": 7
         },
         {
-          "rank": 87,
+          "rank": 88,
           "name": "Mozambique",
           "abbreviation": "MOZ",
           "rating": 7,
@@ -947,20 +955,12 @@
           "matches": 10
         },
         {
-          "rank": 88,
+          "rank": 89,
           "name": "China",
           "abbreviation": "CHN",
           "rating": 5,
           "points": 29,
           "matches": 6
-        },
-        {
-          "rank": 89,
-          "name": "Croatia",
-          "abbreviation": "CRO",
-          "rating": 4,
-          "points": 84,
-          "matches": 22
         },
         {
           "rank": 90,
