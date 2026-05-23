@@ -1,15 +1,6 @@
 {
-  "fetchedAt": "2026-05-22T18:27:17.111Z",
+  "fetchedAt": "2026-05-23T06:17:15.921Z",
   "items": [
-    {
-      "id": "cricbuzz-138885",
-      "title": "Zimbabwe to host Bangladesh for a full series",
-      "summary": "The two teams will play a Test match, three ODIs and three T20Is in Harare and Bulawayo",
-      "url": "https://www.cricbuzz.com/cricket-news/138885/zimbabwe-to-host-bangladesh-for-a-full-series",
-      "imageUrl": "https://static.cricbuzz.com/a/img/v1/540x303/i1/c986928/the-last-test-series-between-the-two-teams-was-drawn-1-1.jpg",
-      "source": "cricbuzz",
-      "publishedAt": "2026-05-22T18:27:15.925Z"
-    },
     {
       "id": "cricbuzz-138891",
       "title": "This team can go much further: Shanto aspires for more after Pakistan success",
@@ -17,7 +8,7 @@
       "url": "https://www.cricbuzz.com/cricket-news/138891/this-team-can-go-much-further-shanto-aspires-for-more-after-pakistan-success",
       "imageUrl": "https://static.cricbuzz.com/a/img/v1/540x303/i1/c988386/najmul-hossain-shanto-has-become-bangladeshs-most-successful-test-captain-surpassing-mushfiqur-rahim-on-wins.jpg",
       "source": "cricbuzz",
-      "publishedAt": "2026-05-22T18:27:12.774Z"
+      "publishedAt": "2026-05-23T06:17:13.160Z"
     },
     {
       "id": "espn-https://www.espncricinfo.com/ci/content/story/1537794.html",
@@ -99,24 +90,6 @@
       "imageUrl": "https://p.imgci.com/db/PICTURES/CMS/417100/417176.5.jpg",
       "source": "espncricinfo",
       "publishedAt": "2026-05-18T13:44:44.000Z"
-    },
-    {
-      "id": "espn-https://www.espncricinfo.com/ci/content/story/1537207.html",
-      "title": "BCB elections to elect new president to be held on June 7",
-      "summary": "Former Bangladesh captain Tamim Iqbal is the current BCB president",
-      "url": "https://www.espncricinfo.com/story/bangladesh-cricket-board-elections-to-elect-new-board-president-to-be-held-on-june-7-1537207",
-      "imageUrl": "https://p.imgci.com/db/PICTURES/CMS/416700/416756.5.jpg",
-      "source": "espncricinfo",
-      "publishedAt": "2026-05-17T16:31:50.000Z"
-    },
-    {
-      "id": "espn-https://www.espncricinfo.com/ci/content/story/1537115.html",
-      "title": "Taskin, Mehidy, Taijul, Mahmudul put Bangladesh well in front",
-      "summary": "Taijul Islam and Nahid Ranatook three wickets each after Taskin and Mehidy shared the first four to restrict Pakistan to 232",
-      "url": "https://www.espncricinfo.com/story/ban-vs-pak-2nd-test-taskin-ahmed-mehidy-hasan-miraz-taijul-islam-mahmudul-put-bangladesh-well-in-front-1537115",
-      "imageUrl": "https://p.imgci.com/db/PICTURES/CMS/417100/417116.5.jpg",
-      "source": "espncricinfo",
-      "publishedAt": "2026-05-17T12:52:57.000Z"
     }
   ]
 }
