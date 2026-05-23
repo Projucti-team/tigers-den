@@ -6,11 +6,11 @@ type Props = {
 
 export function HomeToursSection({ tours }: Props) {
   return (
-    <section id="tours" className="bg-white py-14 md:py-20">
+    <section id="tours" className="scroll-mt-24 bg-white py-14 md:scroll-mt-28 md:py-20">
       <div className="mx-auto max-w-[1440px] px-4 md:px-8">
-        <h2 className="text-center font-display text-2xl font-extrabold uppercase md:text-3xl">
-          <span className="text-emerald">Be part</span> of the biggest moments —{" "}
-          <span className="text-crimson">on tour</span>
+        <h2 className="mx-auto max-w-xl text-balance text-center font-display text-xl font-extrabold uppercase leading-snug sm:text-2xl md:max-w-2xl md:text-3xl">
+          <span className="text-emerald">Be part</span> of the biggest moments
+          <span className="text-crimson"> — on tour</span>
         </h2>
         <p className="mx-auto mt-4 max-w-2xl text-center text-charcoal/75">
           Our team organises everything — flights, hotels, transfers, match tickets and more.

@@ -109,6 +109,7 @@ export default async function HomePage() {
         hasLiveMatch={matchHighlight?.mode === "live"}
         hasRecentMatch={matchHighlight?.mode === "completed"}
       />
+      <HomeToursSection tours={toursResult.cards} />
       <LiveMatchStrip highlight={matchHighlight} />
       <NewsFeed
         items={news.items}
@@ -116,7 +117,7 @@ export default async function HomePage() {
         stale={news.stale}
         live={news.live}
       />
-      <section id="tickets" className="bg-emerald py-12 text-center text-white md:py-16">
+      <section id="tickets" className="scroll-mt-24 bg-emerald py-12 text-center text-white md:scroll-mt-28 md:py-16">
         <div className="mx-auto max-w-[1440px] px-4 md:px-8">
           <h2 className="font-display text-2xl font-extrabold uppercase md:text-4xl">
             Be part of the biggest moments this summer!
@@ -133,7 +134,6 @@ export default async function HomePage() {
           </a>
         </div>
       </section>
-      <HomeToursSection tours={toursResult.cards} />
       {/* <MembershipSection /> */}
       {/* <WhyJoinSection /> */}
       <HomeCommunitySection threads={threads.length > 0 ? threads : undefined} />
