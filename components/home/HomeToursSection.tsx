@@ -41,7 +41,7 @@ function TourCardArticle({ tour }: { tour: TourCard }) {
   const buttonBg = isHome ? "bg-emerald hover:bg-emerald-bright" : "bg-crimson hover:bg-crimson-bright";
 
   return (
-    <article className={`relative overflow-hidden rounded-lg border-2 ${border} bg-surface shadow-sm`}>
+    <article className={`fan-vibrant-card relative overflow-hidden border-2 ${border}`}>
       <span
         className={`absolute right-3 top-3 z-10 flex h-9 w-9 items-center justify-center rounded-full border-2 border-white/40 bg-white/95 shadow-md ${
           isHome ? "text-emerald" : "text-crimson"
@@ -77,11 +77,13 @@ function TourCardArticle({ tour }: { tour: TourCard }) {
 
 export function HomeToursSection({ tours }: Props) {
   return (
-    <section id="tours" className="scroll-mt-24 bg-white py-14 md:scroll-mt-28 md:py-20">
+    <section
+      id="tours"
+      className="scroll-mt-24 border-y-4 border-crimson/25 bg-white py-14 md:scroll-mt-28 md:py-20"
+    >
       <div className="mx-auto max-w-[1440px] px-4 md:px-8">
         <h2 className="mx-auto max-w-xl text-balance text-center font-display text-xl font-extrabold uppercase leading-snug sm:text-2xl md:max-w-2xl md:text-3xl">
-          <span className="text-emerald">Be part</span> of the biggest moments
-          <span className="text-crimson"> — on tour</span>
+          <span className="fan-gradient-text">Be part of the biggest moments — on tour</span>
         </h2>
         <p className="mx-auto mt-4 max-w-2xl text-center text-charcoal/75">
           Our team organises everything — flights, hotels, transfers, match tickets and more.

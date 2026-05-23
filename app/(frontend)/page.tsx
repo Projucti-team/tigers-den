@@ -117,19 +117,20 @@ export default async function HomePage() {
         stale={news.stale}
         live={news.live}
       />
-      <section id="tickets" className="scroll-mt-24 bg-emerald py-12 text-center text-white md:scroll-mt-28 md:py-16">
+      <section
+        id="tickets"
+        className="fan-section-cta scroll-mt-24 border-y-4 border-amber py-14 text-center md:scroll-mt-28 md:py-20"
+      >
         <div className="mx-auto max-w-[1440px] px-4 md:px-8">
-          <h2 className="font-display text-2xl font-extrabold uppercase md:text-4xl">
+          <p className="fan-section-label mx-auto text-amber">Match day</p>
+          <h2 className="mt-4 font-display text-3xl font-extrabold uppercase drop-shadow-lg md:text-5xl">
             Be part of the biggest moments this summer!
           </h2>
-          <p className="mx-auto mt-4 max-w-2xl text-white/90">
+          <p className="mx-auto mt-4 max-w-2xl text-base text-white/90 md:text-lg">
             Secure cricket tickets for Bangladesh&apos;s 2026 internationals — Mirpur, Chattogram,
             Sylhet and overseas tours with The Tigers&apos; Den.
           </p>
-          <a
-            href="#tours"
-            className="mt-6 inline-block rounded bg-crimson px-8 py-4 font-display text-sm font-extrabold uppercase tracking-wide hover:bg-crimson-bright"
-          >
+          <a href="#tours" className="fan-btn-amber mt-8 inline-block rounded px-10 py-4 text-sm">
             Bangladesh Cricket Tickets
           </a>
         </div>

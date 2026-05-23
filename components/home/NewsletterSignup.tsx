@@ -1,9 +1,10 @@
 export function NewsletterSignup() {
   return (
-    <section className="bg-charcoal py-14 md:py-16">
+    <section className="fan-section-dark border-t-4 border-amber py-14 md:py-16">
       <div className="mx-auto max-w-[1440px] px-4 md:px-8">
         <div className="mx-auto max-w-2xl text-center">
-          <h2 className="font-display text-2xl font-extrabold uppercase text-white md:text-3xl">
+          <p className="fan-section-label text-emerald-glow">Stay in the roar</p>
+          <h2 className="mt-4 font-display text-2xl font-extrabold uppercase text-white md:text-3xl">
             Become a supporter…
           </h2>
           <p className="mt-3 text-sm text-white/75">
@@ -48,10 +49,7 @@ export function NewsletterSignup() {
             <input type="checkbox" required className="mt-0.5 accent-crimson" />
             I agree to be contacted by The Tigers&apos; Den with the latest news and updates.
           </label>
-          <button
-            type="submit"
-            className="w-full rounded bg-crimson py-4 font-display text-sm font-extrabold uppercase tracking-wide text-white hover:bg-crimson-bright"
-          >
+          <button type="submit" className="fan-btn-red w-full rounded py-4 text-sm">
             Submit
           </button>
         </form>

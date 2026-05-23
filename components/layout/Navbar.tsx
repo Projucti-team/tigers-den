@@ -9,10 +9,10 @@ export function Navbar() {
   const [mobileOpen, setMobileOpen] = useState(false);
 
   return (
-    <header className="sticky top-0 z-50 border-b-4 border-crimson bg-white shadow-md">
+    <header className="sticky top-0 z-50 border-b-4 border-crimson bg-white/95 shadow-lg backdrop-blur-md">
       <div className="mx-auto flex max-w-[1440px] items-center justify-between gap-4 px-4 py-4 md:px-8">
         <Link href="/" className="flex items-center gap-3">
-          <span className="flex h-12 w-12 items-center justify-center rounded-full bg-gradient-to-br from-emerald to-crimson text-2xl text-white shadow-md">
+          <span className="flex h-12 w-12 items-center justify-center rounded-full bg-gradient-to-br from-emerald via-emerald-bright to-crimson text-2xl text-white shadow-[0_4px_14px_rgba(0,106,78,0.45)] ring-2 ring-amber/60">
             🐅
           </span>
           <div className="hidden sm:block">
@@ -62,7 +62,7 @@ export function Navbar() {
         <div className="flex items-center gap-2">
           <Link
             href="#membership"
-            className="hidden rounded bg-crimson px-4 py-2.5 text-xs font-extrabold uppercase tracking-wide text-white transition-opacity hover:opacity-90 sm:inline-block"
+            className="fan-btn-red hidden rounded px-4 py-2.5 text-xs sm:inline-block"
           >
             Join Us
           </Link>

@@ -17,7 +17,7 @@ export function HeroPromo({ slides = [] }: Props) {
       : slide?.title ?? "Hero banner";
 
   return (
-    <section className="relative min-h-[420px] overflow-hidden bg-charcoal md:min-h-[520px]">
+    <section className="relative min-h-[460px] overflow-hidden md:min-h-[560px]">
       {imageUrl ? (
         <>
           <Image
@@ -29,38 +29,42 @@ export function HeroPromo({ slides = [] }: Props) {
             sizes="100vw"
             unoptimized
           />
-          <div
-            className="absolute inset-0 bg-gradient-to-r from-emerald/85 via-emerald/70 to-crimson/80"
-            aria-hidden
-          />
+          <div className="fan-hero-mesh absolute inset-0" aria-hidden />
         </>
       ) : (
         <div
-          className="absolute inset-0 bg-gradient-to-br from-emerald via-emerald/80 to-crimson"
+          className="absolute inset-0 bg-gradient-to-br from-emerald via-emerald/90 to-crimson"
           aria-hidden
         />
       )}
 
-      <div className="relative z-10 mx-auto flex min-h-[420px] max-w-[1440px] flex-col items-center justify-center px-4 py-16 text-center md:min-h-[520px] md:px-8 md:py-24">
-        <p className="font-display text-3xl font-extrabold uppercase tracking-[0.15em] text-amber drop-shadow-lg md:text-5xl lg:text-6xl">
-          Join The Tigers&apos; Den
-        </p>
+      <div className="fan-hero-stripes pointer-events-none absolute inset-0" aria-hidden />
+      <div
+        className="pointer-events-none absolute inset-x-0 bottom-0 h-24 bg-gradient-to-t from-pitch to-transparent"
+        aria-hidden
+      />
+
+      <div className="relative z-10 mx-auto flex min-h-[460px] max-w-[1440px] flex-col items-center justify-center px-4 py-16 text-center md:min-h-[560px] md:px-8 md:py-24">
+        <p className="fan-section-label mb-6 text-amber">🇧🇩 Bangladesh Fan Army</p>
+        <h1 className="font-display text-4xl font-extrabold uppercase leading-[0.95] tracking-tight text-white drop-shadow-[0_4px_24px_rgba(0,0,0,0.5)] md:text-6xl lg:text-7xl">
+          <span className="text-emerald-glow">Join</span> The Tigers&apos; Den
+        </h1>
         {slide?.subtitle ? (
-          <p className="mx-auto mt-5 max-w-2xl text-base text-white/95 drop-shadow md:text-lg">
+          <p className="mx-auto mt-6 max-w-2xl text-base font-medium text-white/95 drop-shadow md:text-xl">
             {slide.subtitle}
           </p>
         ) : (
-          <p className="mx-auto mt-5 max-w-2xl text-base text-white/90 md:text-lg">
+          <p className="mx-auto mt-6 max-w-2xl text-base text-white/90 md:text-lg">
             The home of passionate Bangladesh cricket fans — live scores, community, and match day
             spirit.
           </p>
         )}
-        <div className="mt-8 flex justify-center">
-          <Link
-            href="#membership"
-            className="inline-block rounded border-2 border-white px-8 py-4 font-display text-sm font-extrabold uppercase tracking-wide text-white transition-colors hover:bg-white hover:text-emerald"
-          >
+        <div className="mt-10 flex flex-wrap items-center justify-center gap-4">
+          <Link href="#membership" className="fan-btn-green rounded px-8 py-4 text-sm">
             Become a Member
+          </Link>
+          <Link href="#rankings" className="fan-btn-red rounded px-8 py-4 text-sm">
+            ICC Rankings
           </Link>
         </div>
       </div>

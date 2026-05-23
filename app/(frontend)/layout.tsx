@@ -3,6 +3,7 @@ import type { ReactNode } from "react";
 
 import "@/app/globals.css";
 
+import { FanMarquee } from "@/components/layout/FanMarquee";
 import { Navbar } from "@/components/layout/Navbar";
 import { SiteFooter } from "@/components/layout/SiteFooter";
 import { TopBar } from "@/components/layout/TopBar";
@@ -27,10 +28,11 @@ const robotoMono = Roboto_Mono({
 export default function FrontendLayout({ children }: { children: ReactNode }) {
   return (
     <div
-      className={`${montserrat.variable} ${inter.variable} ${robotoMono.variable} min-h-screen bg-white`}
+      className={`${montserrat.variable} ${inter.variable} ${robotoMono.variable} fan-page-bg min-h-screen`}
     >
       <TopBar />
       <Navbar />
+      <FanMarquee />
       <main>{children}</main>
       <SiteFooter />
     </div>

@@ -50,28 +50,27 @@ export function ExperienceCards({
   const cards = [tourCard, experiences[1], matchCard];
 
   return (
-    <section className="bg-white py-14 md:py-20">
+    <section className="fan-section-vibrant border-y-4 border-emerald/30 py-14 md:py-20">
       <div className="mx-auto max-w-[1440px] px-4 md:px-8">
-        <h2 className="text-center font-display text-2xl font-extrabold uppercase text-charcoal md:text-3xl">
-          Choose your next <span className="text-emerald">Tigers&apos; Den</span>{" "}
-          <span className="text-crimson">experience</span>…
+        <h2 className="text-center font-display text-2xl font-extrabold uppercase md:text-3xl">
+          <span className="fan-gradient-text">Choose your next Tigers&apos; Den experience</span>
         </h2>
 
         <div className="mt-10 grid gap-6 md:grid-cols-3">
           {cards.map((exp) => (
             <article
               key={exp.id}
-              className={`group flex flex-col overflow-hidden rounded-lg border-4 shadow-lg transition-transform hover:-translate-y-1 ${
+              className={`fan-vibrant-card group flex flex-col overflow-hidden border-4 transition-transform hover:-translate-y-2 ${
                 exp.accent === "green"
-                  ? "border-emerald hover:shadow-emerald/30"
-                  : "border-crimson hover:shadow-crimson/30"
+                  ? "border-emerald hover:shadow-[0_16px_48px_rgba(0,106,78,0.25)]"
+                  : "border-crimson hover:shadow-[0_16px_48px_rgba(244,42,65,0.25)]"
               }`}
             >
               <div
                 className={`flex h-36 items-center justify-center text-6xl ${
                   exp.accent === "green"
-                    ? "bg-gradient-to-br from-emerald to-emerald-bright"
-                    : "bg-gradient-to-br from-crimson to-crimson-bright"
+                    ? "fan-card-header-green"
+                    : "fan-card-header-red"
                 }`}
               >
                 <span aria-hidden>{exp.emoji}</span>
@@ -85,9 +84,9 @@ export function ExperienceCards({
                 </p>
                 <Link
                   href={exp.href}
-                  className={`mt-6 inline-block w-fit rounded px-5 py-2.5 text-xs font-extrabold uppercase tracking-wide text-white transition-opacity hover:opacity-90 ${
-                    exp.accent === "green" ? "bg-emerald" : "bg-crimson"
-                  } ${exp.id === "match" && hasLiveMatch ? "animate-pulse" : ""}`}
+                  className={`mt-6 inline-block w-fit rounded px-5 py-2.5 text-xs ${
+                    exp.accent === "green" ? "fan-btn-green" : "fan-btn-red"
+                  } ${exp.id === "match" && hasLiveMatch ? "animate-live-pulse" : ""}`}
                 >
                   {exp.cta}
                 </Link>

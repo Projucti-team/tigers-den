@@ -12,12 +12,11 @@ export function NewsFeed({ items, fetchedAt, stale, live }: Props) {
   if (items.length === 0) return null;
 
   return (
-    <section id="news" className="bg-surface py-14 md:py-20">
+    <section id="news" className="fan-section-vibrant border-y-4 border-emerald/20 py-14 md:py-20">
       <div className="mx-auto max-w-[1440px] px-4 md:px-8">
         <div className="text-center">
           <h2 className="font-display text-2xl font-extrabold uppercase md:text-3xl">
-            <span className="text-emerald">Tigers</span>{" "}
-            <span className="text-crimson">in the headlines</span>
+            <span className="fan-gradient-text">Tigers in the headlines</span>
           </h2>
           <p className="mx-auto mt-4 max-w-2xl text-charcoal/75">
             Bangladesh cricket news from ESPN Cricinfo and Cricbuzz

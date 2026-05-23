@@ -17,10 +17,10 @@ type Props = {
 
 export function HomeCommunitySection({ threads }: Props) {
   return (
-    <section className="bg-surface py-14 md:py-20">
+    <section className="border-y-4 border-emerald/20 bg-white py-14 md:py-20">
       <div className="mx-auto max-w-[1440px] px-4 md:px-8">
         <h2 className="text-center font-display text-2xl font-extrabold uppercase md:text-3xl">
-          Join the Tigers&apos; Den in the stands…
+          <span className="fan-gradient-text">Join the Tigers&apos; Den in the stands</span>
         </h2>
         <p className="mx-auto mt-3 max-w-xl text-center text-sm text-charcoal/75">
           Forum discussions, chants, and match-day meetups — the heart of our fan army.

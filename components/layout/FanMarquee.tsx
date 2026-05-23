@@ -13,7 +13,7 @@ const items = [
 
 export function FanMarquee() {
   return (
-    <div className="fan-gradient-bar overflow-hidden border-y-4 border-amber py-2">
+    <div className="fan-gradient-bar animate-shimmer-bar overflow-hidden border-y-2 border-amber py-2.5">
       <div className="animate-marquee flex w-max whitespace-nowrap">
         {[...items, ...items].map((text, i) => (
           <span

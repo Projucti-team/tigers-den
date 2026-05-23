@@ -127,6 +127,11 @@
   border: 2px solid var(--color-emerald-glow);
   box-shadow: 0 4px 0 var(--color-emerald), 0 6px 16px rgba(0, 179, 104, 0.4);
   transition: transform 0.15s ease, box-shadow 0.15s ease;
+
+  &:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 0 var(--color-emerald), 0 10px 24px rgba(0, 179, 104, 0.5);
+  }
 }
 
 @utility fan-btn-red {
@@ -137,6 +142,11 @@
   border: 2px solid var(--color-crimson-glow);
   box-shadow: 0 4px 0 #c62828, 0 6px 16px rgba(255, 23, 68, 0.4);
   transition: transform 0.15s ease, box-shadow 0.15s ease;
+
+  &:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 0 #c62828, 0 10px 24px rgba(255, 23, 68, 0.5);
+  }
 }
 
 @utility fan-btn-amber {
@@ -146,6 +156,79 @@
   text-transform: uppercase;
   border: 2px solid #ffe082;
   box-shadow: 0 4px 0 #f9a825, 0 6px 16px rgba(255, 184, 0, 0.5);
+}
+
+/* ICC-style vibrant section backgrounds */
+@utility fan-section-dark {
+  background-color: var(--color-pitch);
+  background-image:
+    radial-gradient(ellipse 90% 60% at 10% -10%, rgba(0, 179, 104, 0.35) 0%, transparent 55%),
+    radial-gradient(ellipse 70% 50% at 100% 100%, rgba(244, 42, 65, 0.35) 0%, transparent 50%),
+    linear-gradient(165deg, #061410 0%, var(--color-pitch) 45%, #1a080c 100%);
+  color: white;
+}
+
+@utility fan-section-vibrant {
+  background-color: #e5fff0;
+  background-image:
+    radial-gradient(circle at 100% 0%, rgba(244, 42, 65, 0.14) 0%, transparent 42%),
+    radial-gradient(circle at 0% 100%, rgba(0, 106, 78, 0.22) 0%, transparent 48%),
+    linear-gradient(180deg, #f0fff8 0%, #fff8f8 50%, #f0fff4 100%);
+}
+
+@utility fan-section-cta {
+  background-image:
+    radial-gradient(ellipse 80% 120% at 50% 120%, rgba(255, 184, 0, 0.25) 0%, transparent 55%),
+    linear-gradient(
+      135deg,
+      var(--color-emerald) 0%,
+      var(--color-emerald-bright) 35%,
+      var(--color-crimson-bright) 65%,
+      var(--color-crimson) 100%
+    );
+  color: white;
+}
+
+@utility fan-hero-mesh {
+  background-color: var(--color-pitch);
+  background-image:
+    radial-gradient(ellipse 100% 80% at 0% 50%, rgba(0, 106, 78, 0.55) 0%, transparent 50%),
+    radial-gradient(ellipse 80% 70% at 100% 30%, rgba(244, 42, 65, 0.5) 0%, transparent 45%),
+    radial-gradient(ellipse 50% 40% at 50% 100%, rgba(255, 184, 0, 0.15) 0%, transparent 50%),
+    linear-gradient(180deg, rgba(10, 10, 10, 0.2) 0%, rgba(10, 10, 10, 0.75) 100%);
+}
+
+@utility fan-hero-stripes {
+  background-image: repeating-linear-gradient(
+    -12deg,
+    transparent,
+    transparent 40px,
+    rgba(255, 255, 255, 0.03) 40px,
+    rgba(255, 255, 255, 0.03) 42px
+  );
+}
+
+@utility fan-vibrant-card {
+  border-radius: var(--radius-card);
+  border: 2px solid rgba(255, 255, 255, 0.12);
+  background: white;
+  box-shadow:
+    0 4px 0 rgba(0, 0, 0, 0.08),
+    0 12px 40px rgba(0, 106, 78, 0.12),
+    0 8px 24px rgba(244, 42, 65, 0.08);
+}
+
+@utility fan-section-label {
+  display: inline-block;
+  border-radius: 9999px;
+  border: 2px solid rgba(255, 255, 255, 0.25);
+  background: rgba(255, 255, 255, 0.1);
+  padding: 0.35rem 1rem;
+  font-size: 0.65rem;
+  font-weight: 800;
+  letter-spacing: 0.25em;
+  text-transform: uppercase;
+  backdrop-filter: blur(8px);
 }
 
 @layer base {
