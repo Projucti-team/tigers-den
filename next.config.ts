@@ -24,6 +24,10 @@ const nextConfig: NextConfig = {
         hostname: "www.cricapi.com",
       },
       {
+        protocol: "https",
+        hostname: "cdn.cricapi.com",
+      },
+      {
         protocol: "http",
         hostname: "cricapi.com",
       },

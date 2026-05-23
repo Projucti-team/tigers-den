@@ -4,12 +4,22 @@
  * Usage: npm run scrape:icc-rankings
  */
 import { FORMATS_BY_GENDER } from "../lib/cricket/constants";
+import { enrichIccSnapshotPlayerImages } from "../lib/cricket/player-images";
 import { fetchAllIccRankingsFromSportz } from "../lib/cricket/providers/icc-sportz";
+import { isCricApiConfigured } from "../lib/cricket/providers/cricapi";
 import { writeIccRankingsSnapshot, ICC_RANKINGS_DATA_PATH } from "../lib/cricket/icc-rankings-store";
 
 async function main() {
   console.log("Fetching ICC rankings from Sportz.io (icc-cricket.com feed)…");
-  const snapshot = await fetchAllIccRankingsFromSportz();
+  let snapshot = await fetchAllIccRankingsFromSportz();
+
+  if (isCricApiConfigured()) {
+    console.log("Resolving Bangladesh player photos via CricAPI…");
+    snapshot = await enrichIccSnapshotPlayerImages(snapshot);
+  } else {
+    console.log("CRICKET_DATA_API_KEY not set — player photos will use initials until key is added.");
+  }
+
   await writeIccRankingsSnapshot(snapshot);
   console.log(`Saved to ${ICC_RANKINGS_DATA_PATH}`);
   console.log(`Fetched at: ${snapshot.fetchedAt}`);

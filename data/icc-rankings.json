@@ -1,5 +1,5 @@
 {
-  "fetchedAt": "2026-05-23T05:36:14.670Z",
+  "fetchedAt": "2026-05-23T06:56:59.945Z",
   "source": "icc-sportz.io",
   "sourceUrl": "https://www.icc-cricket.com/rankings",
   "men": {
@@ -1190,21 +1190,24 @@
           "name": "Najmul Hossain Shanto",
           "team": "Bangladesh",
           "rating": 649,
-          "points": 649
+          "points": 649,
+          "imageUrl": "https://h.cricapi.com/img/icon512.png"
         },
         "topBangladeshBowler": {
           "rank": 13,
           "name": "Taijul Islam",
           "team": "Bangladesh",
           "rating": 704,
-          "points": 704
+          "points": 704,
+          "imageUrl": "https://h.cricapi.com/img/players/608e195a-b9d5-445a-8c54-42c3181702e0.jpg"
         },
         "topBangladeshAllRounder": {
           "rank": 4,
           "name": "Mehidy Hasan Miraz",
           "team": "Bangladesh",
           "rating": 298,
-          "points": 298
+          "points": 298,
+          "imageUrl": "https://h.cricapi.com/img/players/218cc9f0-91f3-4927-af4a-a4601336d545.jpg"
         }
       },
       "odi": {
@@ -1326,14 +1329,16 @@
           "name": "Tawhid Hridoy",
           "team": "Bangladesh",
           "rating": 583,
-          "points": 583
+          "points": 583,
+          "imageUrl": "https://ui-avatars.com/api/?name=Tawhid%2BHridoy&background=006a4e&color=fff&size=320&bold=true"
         },
         "topBangladeshBowler": {
           "rank": 8,
           "name": "Mehidy Hasan Miraz",
           "team": "Bangladesh",
           "rating": 621,
-          "points": 621
+          "points": 621,
+          "imageUrl": "https://h.cricapi.com/img/players/218cc9f0-91f3-4927-af4a-a4601336d545.jpg"
         },
         "topBangladeshAllRounder": {
           "rank": 3,
@@ -1341,7 +1346,8 @@
           "name": "Mehidy Hasan Miraz",
           "team": "Bangladesh",
           "rating": 275,
-          "points": 275
+          "points": 275,
+          "imageUrl": "https://h.cricapi.com/img/players/218cc9f0-91f3-4927-af4a-a4601336d545.jpg"
         }
       },
       "t20": {
@@ -1462,21 +1468,24 @@
           "name": "Tanzid Hasan",
           "team": "Bangladesh",
           "rating": 610,
-          "points": 610
+          "points": 610,
+          "imageUrl": "https://h.cricapi.com/img/icon512.png"
         },
         "topBangladeshBowler": {
           "rank": 12,
           "name": "Mustafizur Rahman",
           "team": "Bangladesh",
           "rating": 652,
-          "points": 652
+          "points": 652,
+          "imageUrl": "https://h.cricapi.com/img/players/4a0a483d-de7f-4313-b2ed-8eceb3d8bb45.jpg"
         },
         "topBangladeshAllRounder": {
           "rank": 44,
           "name": "Mahedi Hasan",
           "team": "Bangladesh",
           "rating": 89,
-          "points": 89
+          "points": 89,
+          "imageUrl": "https://h.cricapi.com/img/icon512.png"
         }
       }
     }
@@ -2373,21 +2382,24 @@
           "name": "Sharmin Akhter",
           "team": "Bangladesh",
           "rating": 560,
-          "points": 560
+          "points": 560,
+          "imageUrl": "https://h.cricapi.com/img/players/bf86ec7c-57b6-4c50-8426-7ed1a1b3b093.jpg"
         },
         "topBangladeshBowler": {
           "rank": 10,
           "name": "Nahida Akter",
           "team": "Bangladesh",
           "rating": 599,
-          "points": 599
+          "points": 599,
+          "imageUrl": "https://h.cricapi.com/img/players/1702b722-ded8-4e66-a238-e1aad0813489.jpg"
         },
         "topBangladeshAllRounder": {
           "rank": 31,
           "name": "Marufa Akter",
           "team": "Bangladesh",
           "rating": 123,
-          "points": 123
+          "points": 123,
+          "imageUrl": "https://h.cricapi.com/img/icon512.png"
         }
       },
       "t20": {
@@ -2509,21 +2521,24 @@
           "name": "Nigar Sultana Joty",
           "team": "Bangladesh",
           "rating": 582,
-          "points": 582
+          "points": 582,
+          "imageUrl": "https://ui-avatars.com/api/?name=Nigar%2BSultana%2BJoty&background=006a4e&color=fff&size=320&bold=true"
         },
         "topBangladeshBowler": {
           "rank": 18,
           "name": "Rabeya Khan",
           "team": "Bangladesh",
           "rating": 641,
-          "points": 641
+          "points": 641,
+          "imageUrl": "https://h.cricapi.com/img/icon512.png"
         },
         "topBangladeshAllRounder": {
           "rank": 23,
           "name": "Shorna Akter",
           "team": "Bangladesh",
           "rating": 146,
-          "points": 146
+          "points": 146,
+          "imageUrl": "https://h.cricapi.com/img/icon512.png"
         }
       }
     }

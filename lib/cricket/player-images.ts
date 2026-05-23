@@ -1,6 +1,12 @@
 import { withCache } from "@/lib/cricket/cache";
-import { CRICAPI_BASE } from "@/lib/cricket/constants";
+import { CRICAPI_BASE, FORMATS_BY_GENDER } from "@/lib/cricket/constants";
 import { isCricApiConfigured } from "@/lib/cricket/providers/cricapi";
+import type { IccRankingsSnapshot } from "@/lib/cricket/providers/icc-sportz";
+import type { RankedPlayer } from "@/lib/cricket/types";
+
+function sleep(ms: number): Promise<void> {
+  return new Promise((resolve) => setTimeout(resolve, ms));
+}
 
 function getApiKey(): string | null {
   return process.env.CRICKET_DATA_API_KEY || null;
@@ -67,7 +73,45 @@ export async function enrichPlayerImage<T extends { name: string; imageUrl?: str
   player: T | null,
 ): Promise<T | null> {
   if (!player) return null;
-  if (player.imageUrl) return player;
+  if (player.imageUrl && !player.imageUrl.includes("ui-avatars.com")) return player;
   const imageUrl = await resolvePlayerImageUrl(player.name);
   return { ...player, imageUrl };
+}
+
+const BD_PLAYER_KEYS = [
+  "topBangladeshBatsman",
+  "topBangladeshBowler",
+  "topBangladeshAllRounder",
+] as const;
+
+/** Bake photo URLs into data/icc-rankings.json (run via scrape — works on Vercel without live API). */
+export async function enrichIccSnapshotPlayerImages(
+  snapshot: IccRankingsSnapshot,
+): Promise<IccRankingsSnapshot> {
+  const urlByName = new Map<string, string>();
+
+  async function imageFor(player: RankedPlayer): Promise<RankedPlayer> {
+    if (player.imageUrl && !player.imageUrl.includes("ui-avatars.com")) return player;
+
+    let url = urlByName.get(player.name);
+    if (!url) {
+      url = await resolvePlayerImageUrl(player.name);
+      urlByName.set(player.name, url);
+      await sleep(250);
+    }
+
+    return { ...player, imageUrl: url };
+  }
+
+  for (const gender of ["men", "women"] as const) {
+    for (const format of FORMATS_BY_GENDER[gender]) {
+      const block = snapshot[gender].players[format];
+      for (const key of BD_PLAYER_KEYS) {
+        const player = block[key];
+        if (player) block[key] = await imageFor(player);
+      }
+    }
+  }
+
+  return snapshot;
 }

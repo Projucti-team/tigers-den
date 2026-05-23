@@ -52,10 +52,19 @@ function resolveTopBangladesh(
   return topBangladeshPlayer(list);
 }
 
+function hasRealPhoto(player: RankedPlayer | null): boolean {
+  return Boolean(player?.imageUrl && !player.imageUrl.includes("ui-avatars.com"));
+}
+
 async function enrichFormatPlayers(formatData: FormatRankings) {
   const topBatsman = resolveTopBangladesh(formatData, "bat");
   const topBowler = resolveTopBangladesh(formatData, "bowl");
   const topAllRounder = resolveTopBangladesh(formatData, "allrounder");
+
+  if (hasRealPhoto(topBatsman) && hasRealPhoto(topBowler) && hasRealPhoto(topAllRounder)) {
+    return { topBatsman, topBowler, topAllRounder };
+  }
+
   const [topBatsmanImg, topBowlerImg, topAllRounderImg] = await Promise.all([
     enrichPlayerImage(topBatsman),
     enrichPlayerImage(topBowler),

@@ -1,5 +1,3 @@
-import Image from "next/image";
-
 import type { FormatShowcase, RankingsShowcase } from "@/lib/cricket/services/rankings-display";
 
 type Props = {
@@ -68,21 +66,24 @@ function TigerPlayerCard({
 
   const { border, badge } = ACCENT_STYLES[accent];
   const imgSrc =
-    player.imageUrl ||
-    `https://ui-avatars.com/api/?name=${encodeURIComponent(player.name)}&background=006a4e&color=fff&size=128`;
+    player.imageUrl && !player.imageUrl.includes("ui-avatars.com")
+      ? player.imageUrl
+      : `https://ui-avatars.com/api/?name=${encodeURIComponent(player.name)}&background=006a4e&color=fff&size=128`;
 
   return (
     <article
       className={`flex flex-col items-center rounded-xl border-2 ${border} bg-white p-3 text-center shadow-sm`}
     >
       <div className="relative h-12 w-12 overflow-hidden rounded-full border-2 border-charcoal/10 bg-charcoal/5">
-        <Image
+        {/* eslint-disable-next-line @next/next/no-img-element */}
+        <img
           src={imgSrc}
           alt={player.name}
           width={48}
           height={48}
           className="h-full w-full object-cover object-top"
-          unoptimized
+          loading="lazy"
+          referrerPolicy="no-referrer"
         />
       </div>
       <span
