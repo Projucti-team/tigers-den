@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from "react";
+import { useEffect, useState } from "react";
 
 type Props = {
   src: string;
@@ -12,13 +12,15 @@ type Props = {
 export function PlayerRankAvatar({ src, fallbackSrc, alt, className }: Props) {
   const [imgSrc, setImgSrc] = useState(src);
 
+  useEffect(() => {
+    setImgSrc(src);
+  }, [src]);
+
   return (
     // eslint-disable-next-line @next/next/no-img-element
     <img
       src={imgSrc}
       alt={alt}
-      width={56}
-      height={56}
       className={className}
       loading="lazy"
       referrerPolicy="no-referrer"

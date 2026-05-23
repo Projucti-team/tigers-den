@@ -80,9 +80,24 @@ function WtcBangladeshCard({ wtc }: { wtc: WtcShowcase }) {
 }
 
 const ACCENT_STYLES = {
-  green: { border: "border-emerald", badge: "bg-emerald text-white" },
-  red: { border: "border-crimson", badge: "bg-crimson text-white" },
-  amber: { border: "border-amber", badge: "bg-charcoal text-amber" },
+  green: {
+    border: "border-emerald/40",
+    accent: "border-l-emerald",
+    badge: "bg-emerald text-white",
+    rank: "text-emerald",
+  },
+  red: {
+    border: "border-crimson/40",
+    accent: "border-l-crimson",
+    badge: "bg-crimson text-white",
+    rank: "text-crimson",
+  },
+  amber: {
+    border: "border-amber/50",
+    accent: "border-l-amber",
+    badge: "bg-charcoal text-amber",
+    rank: "text-charcoal",
+  },
 } as const;
 
 function playerPhotoSrc(player: RankedPlayer): string | null {
@@ -104,20 +119,40 @@ function TigerPlayerCard({
 }) {
   if (!player) {
     return (
-      <div className="flex min-h-[5.5rem] flex-1 items-center justify-center rounded-lg border-2 border-dashed border-charcoal/20 bg-charcoal/5 p-3 text-center text-xs text-charcoal/40">
+      <div className="flex min-h-[7rem] items-center justify-center rounded-xl border-2 border-dashed border-charcoal/20 bg-charcoal/5 px-4 text-center text-xs text-charcoal/40">
         No ranked Tiger {role.toLowerCase()}
       </div>
     );
   }
 
-  const { border, badge } = ACCENT_STYLES[accent];
-  const fallbackSrc = `https://ui-avatars.com/api/?name=${encodeURIComponent(player.name)}&background=006a4e&color=fff&size=128`;
+  const { border, accent: accentBorder, badge, rank: rankColor } = ACCENT_STYLES[accent];
+  const fallbackSrc = `https://ui-avatars.com/api/?name=${encodeURIComponent(player.name)}&background=006a4e&color=fff&size=256&bold=true`;
   const photo = playerPhotoSrc(player) ?? fallbackSrc;
   const profileUrl = player.profileUrl;
 
   const card = (
-    <>
-      <div className="relative h-14 w-14 overflow-hidden rounded-full border-2 border-charcoal/10 bg-charcoal/5">
+    <article
+      className={`group relative flex min-h-[7rem] overflow-hidden rounded-xl border ${border} border-l-4 ${accentBorder} bg-white shadow-sm transition-shadow hover:shadow-md`}
+    >
+      <div className="flex min-w-0 flex-1 flex-col justify-center gap-1 py-4 pl-4 pr-[7.5rem] md:pr-36">
+        <span
+          className={`w-fit rounded px-2 py-0.5 font-display text-[10px] font-extrabold uppercase tracking-wide ${badge}`}
+        >
+          {role}
+        </span>
+        <p className={`font-display text-4xl font-extrabold leading-none md:text-5xl ${rankColor}`}>
+          #{player.rank}
+        </p>
+        <p className="font-display text-sm font-bold leading-snug text-charcoal md:text-base">
+          {player.name}
+        </p>
+      </div>
+
+      <div
+        className="pointer-events-none absolute inset-y-0 right-0 w-[7.5rem] bg-gradient-to-l from-charcoal/5 to-transparent md:w-36"
+        aria-hidden
+      />
+      <div className="absolute inset-y-0 right-0 w-[7.5rem] overflow-hidden md:w-36">
         <PlayerRankAvatar
           src={photo}
           fallbackSrc={fallbackSrc}
@@ -125,24 +160,8 @@ function TigerPlayerCard({
           className="h-full w-full object-cover object-top"
         />
       </div>
-      <p className="mt-2 font-display text-2xl font-extrabold leading-none text-emerald">
-        #{player.rank}
-      </p>
-      <span
-        className={`mt-1 rounded px-2 py-0.5 font-display text-[10px] font-extrabold uppercase ${badge}`}
-      >
-        {role}
-      </span>
-      <p className="mt-2 w-full font-display text-sm font-bold leading-snug text-charcoal">
-        {player.name}
-      </p>
-      <p className="mt-1 font-mono text-xs font-bold text-charcoal/50">
-        Rating {player.rating}
-      </p>
-    </>
+    </article>
   );
-
-  const className = `flex flex-col items-center rounded-xl border-2 ${border} bg-white p-3 text-center shadow-sm transition-colors`;
 
   if (profileUrl) {
     return (
@@ -150,7 +169,7 @@ function TigerPlayerCard({
         href={profileUrl}
         target="_blank"
         rel="noopener noreferrer"
-        className={`${className} hover:border-emerald hover:bg-emerald/5 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-emerald`}
+        className="block rounded-xl focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-emerald"
         title={`View ${player.name} on ICC`}
       >
         {card}
@@ -158,7 +177,7 @@ function TigerPlayerCard({
     );
   }
 
-  return <article className={className}>{card}</article>;
+  return card;
 }
 
 function FormatColumn({ format }: { format: FormatShowcase }) {
@@ -167,7 +186,7 @@ function FormatColumn({ format }: { format: FormatShowcase }) {
       <h3 className="text-center font-display text-lg font-extrabold uppercase tracking-wide fan-gradient-text">
         {format.label}
       </h3>
-      <div className="flex flex-col gap-2">
+      <div className="flex flex-col gap-3">
         <TigerPlayerCard player={format.topBatsman} role="Batter" accent="green" />
         <TigerPlayerCard player={format.topBowler} role="Bowler" accent="red" />
         <TigerPlayerCard player={format.topAllRounder} role="All-Rounder" accent="amber" />
