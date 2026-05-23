@@ -12,6 +12,10 @@ function getApiKey(): string | null {
   return process.env.CRICKET_DATA_API_KEY || null;
 }
 
+function isPlaceholderPhoto(url: string): boolean {
+  return url.includes("ui-avatars.com") || url.includes("/icon512.");
+}
+
 function avatarFallback(name: string): string {
   const encoded = encodeURIComponent(name.replace(/\s+/g, "+"));
   return `https://ui-avatars.com/api/?name=${encoded}&background=006a4e&color=fff&size=320&bold=true`;
@@ -73,7 +77,7 @@ export async function enrichPlayerImage<T extends { name: string; imageUrl?: str
   player: T | null,
 ): Promise<T | null> {
   if (!player) return null;
-  if (player.imageUrl && !player.imageUrl.includes("ui-avatars.com")) return player;
+  if (player.imageUrl && !isPlaceholderPhoto(player.imageUrl)) return player;
   const imageUrl = await resolvePlayerImageUrl(player.name);
   return { ...player, imageUrl };
 }
@@ -91,7 +95,7 @@ export async function enrichIccSnapshotPlayerImages(
   const urlByName = new Map<string, string>();
 
   async function imageFor(player: RankedPlayer): Promise<RankedPlayer> {
-    if (player.imageUrl && !player.imageUrl.includes("ui-avatars.com")) return player;
+    if (player.imageUrl && !isPlaceholderPhoto(player.imageUrl)) return player;
 
     let url = urlByName.get(player.name);
     if (!url) {

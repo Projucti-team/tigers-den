@@ -53,7 +53,8 @@ function resolveTopBangladesh(
 }
 
 function hasRealPhoto(player: RankedPlayer | null): boolean {
-  return Boolean(player?.imageUrl && !player.imageUrl.includes("ui-avatars.com"));
+  const url = player?.imageUrl ?? "";
+  return Boolean(url && !url.includes("ui-avatars.com") && !url.includes("/icon512."));
 }
 
 async function enrichFormatPlayers(formatData: FormatRankings) {

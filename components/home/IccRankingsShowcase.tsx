@@ -65,10 +65,15 @@ function TigerPlayerCard({
   }
 
   const { border, badge } = ACCENT_STYLES[accent];
-  const imgSrc =
-    player.imageUrl && !player.imageUrl.includes("ui-avatars.com")
+  const photo =
+    player.imageUrl &&
+    !player.imageUrl.includes("ui-avatars.com") &&
+    !player.imageUrl.includes("/icon512.")
       ? player.imageUrl
-      : `https://ui-avatars.com/api/?name=${encodeURIComponent(player.name)}&background=006a4e&color=fff&size=128`;
+      : null;
+  const imgSrc =
+    photo ||
+    `https://ui-avatars.com/api/?name=${encodeURIComponent(player.name)}&background=006a4e&color=fff&size=128`;
 
   return (
     <article
