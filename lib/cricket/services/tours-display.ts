@@ -80,7 +80,7 @@ function shortenTitle(name: string): string {
     .trim();
 }
 
-export function tourToCard(tour: Tour, index: number): TourCard {
+export function tourToCard(tour: Tour, _index: number): TourCard {
   const home = isHomeSeries(tour.name);
   return {
     id: tour.id,
@@ -88,7 +88,7 @@ export function tourToCard(tour: Tour, index: number): TourCard {
     description: formatMatchTypes(tour),
     dateRange: formatDateRange(tour),
     emoji: pickEmoji(tour.name, home),
-    accent: index % 2 === 0 ? "green" : "red",
+    accent: home ? "green" : "red",
     isHomeSeries: home,
   };
 }
