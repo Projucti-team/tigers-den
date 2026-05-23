@@ -1,3 +1,4 @@
+import { tourFlagIsos } from "@/lib/cricket/tour-flags";
 import { getFutureTours } from "@/lib/cricket/services/tours";
 import type { Tour } from "@/lib/cricket/types";
 
@@ -6,7 +7,8 @@ export type TourCard = {
   title: string;
   description: string;
   dateRange: string;
-  emoji: string;
+  /** Opponent nation Bangladesh is playing (ISO 3166-1 alpha-2) */
+  headerFlagIso: string;
   accent: "green" | "red";
   isHomeSeries: boolean;
 };
@@ -49,20 +51,6 @@ function formatMatchTypes(tour: Tour): string {
   return "International series";
 }
 
-function pickEmoji(name: string, isHome: boolean): string {
-  const n = name.toLowerCase();
-  if (n.includes("west indies") || n.includes("caribbean")) return "🌴";
-  if (n.includes("england") || n.includes("lord")) return "👑";
-  if (n.includes("australia")) return "🦘";
-  if (n.includes("india")) return "🇮🇳";
-  if (n.includes("south africa")) return "🦁";
-  if (n.includes("pakistan")) return "🇵🇰";
-  if (n.includes("sri lanka")) return "🇱🇰";
-  if (n.includes("zimbabwe") || n.includes("ireland")) return "✈️";
-  if (isHome) return "🏏";
-  return "🐅";
-}
-
 export function isHomeSeries(name: string): boolean {
   return /\btour of bangladesh\b|\bin bangladesh\b/i.test(name);
 }
@@ -82,12 +70,13 @@ function shortenTitle(name: string): string {
 
 export function tourToCard(tour: Tour, _index: number): TourCard {
   const home = isHomeSeries(tour.name);
+  const { headerIso } = tourFlagIsos(tour.name, home);
   return {
     id: tour.id,
     title: shortenTitle(tour.name),
     description: formatMatchTypes(tour),
     dateRange: formatDateRange(tour),
-    emoji: pickEmoji(tour.name, home),
+    headerFlagIso: headerIso,
     accent: home ? "green" : "red",
     isHomeSeries: home,
   };

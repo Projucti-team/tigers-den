@@ -1,4 +1,6 @@
+import { CountryFlag } from "@/components/CountryFlag";
 import type { TourCard } from "@/lib/cricket/services/tours-display";
+import { flagLabel } from "@/lib/cricket/tour-flags";
 
 type Props = {
   tours: TourCard[];
@@ -52,15 +54,15 @@ function TourCardArticle({ tour }: { tour: TourCard }) {
         {isHome ? <HomeIcon /> : <PlaneIcon />}
       </span>
 
-      <div className={`relative flex h-28 items-center justify-center text-5xl ${headerBg}`}>
-        <span aria-hidden>{tour.emoji}</span>
+      <div className={`relative flex h-28 items-center justify-center ${headerBg}`}>
+        <CountryFlag iso={tour.headerFlagIso} size="lg" label={flagLabel(tour.headerFlagIso)} />
       </div>
 
       <div className="p-5">
         <p className="font-mono text-[10px] font-bold uppercase tracking-wide text-charcoal/45">
           {tour.dateRange}
         </p>
-        <h3 className="mt-1 pr-10 font-display text-sm font-extrabold uppercase leading-snug text-charcoal">
+        <h3 className="mt-1 pr-12 font-display text-sm font-extrabold uppercase leading-snug text-charcoal">
           {tour.title}
         </h3>
         <p className="mt-2 text-sm text-charcoal/75">{tour.description}</p>

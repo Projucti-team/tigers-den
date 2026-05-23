@@ -1,6 +1,8 @@
 import Link from "next/link";
 
+import { CountryFlag } from "@/components/CountryFlag";
 import type { TourCard } from "@/lib/cricket/services/tours-display";
+import { BANGLADESH_FLAG_ISO } from "@/lib/cricket/tour-flags";
 import { experiences } from "@/lib/site-content";
 
 type Props = {
@@ -24,7 +26,7 @@ export function ExperienceCards({
         cta: "View Series",
         href: "#tours",
         accent: "green" as const,
-        emoji: featuredAwayTour.emoji,
+        flagIso: featuredAwayTour.headerFlagIso,
       }
     : {
         id: "tours",
@@ -34,7 +36,7 @@ export function ExperienceCards({
         cta: "View Tours",
         href: "#tours",
         accent: "green" as const,
-        emoji: "✈️",
+        flagIso: BANGLADESH_FLAG_ISO,
       };
 
   const matchCard = {
@@ -67,13 +69,19 @@ export function ExperienceCards({
               }`}
             >
               <div
-                className={`flex h-36 items-center justify-center text-6xl ${
+                className={`flex h-36 items-center justify-center ${
                   exp.accent === "green"
                     ? "fan-card-header-green"
                     : "fan-card-header-red"
                 }`}
               >
-                <span aria-hidden>{exp.emoji}</span>
+                {"flagIso" in exp ? (
+                  <CountryFlag iso={exp.flagIso} size="lg" />
+                ) : (
+                  <span className="text-6xl" aria-hidden>
+                    {"emoji" in exp ? exp.emoji : "🏏"}
+                  </span>
+                )}
               </div>
               <div className="flex flex-1 flex-col p-6">
                 <h3 className="font-display text-lg font-extrabold uppercase text-charcoal">
