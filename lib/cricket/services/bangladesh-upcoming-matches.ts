@@ -8,6 +8,9 @@ import {
   writeBangladeshUpcomingMatches,
   type BangladeshUpcomingMatchesSnapshot,
 } from "@/lib/cricket/upcoming-matches-store";
+import { CRICKET_SNAPSHOT_KEYS } from "@/lib/cricket/snapshot-keys";
+import { readCricketSnapshot } from "@/lib/cricket/snapshot-db";
+import { isPayloadConfigured } from "@/lib/payload";
 import { isUpcomingBangladeshMatch } from "@/lib/cricket/services/marquee-format";
 import { matchTime } from "@/lib/cricket/services/match-highlight";
 import type { LiveMatchSummary } from "@/lib/cricket/types";
@@ -60,6 +63,13 @@ export async function scrapeBangladeshUpcomingMatches(): Promise<BangladeshUpcom
 }
 
 export async function getCachedUpcomingBangladeshMatches(): Promise<LiveMatchSummary[]> {
-  const cached = await readBangladeshUpcomingMatches();
-  return cached?.matches ?? [];
+  if (isPayloadConfigured()) {
+    const cached = await readCricketSnapshot<BangladeshUpcomingMatchesSnapshot>(
+      CRICKET_SNAPSHOT_KEYS.upcomingMatches,
+    );
+    if (cached?.matches?.length) return cached.matches;
+  }
+
+  const file = await readBangladeshUpcomingMatches();
+  return file?.matches ?? [];
 }

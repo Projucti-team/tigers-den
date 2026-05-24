@@ -5,6 +5,7 @@ import {
   writeIccRankingsSnapshot,
 } from "@/lib/cricket/icc-rankings-store";
 import { fetchAllIccRankingsFromSportz } from "@/lib/cricket/providers/icc-sportz";
+import type { IccRankingsSnapshot } from "@/lib/cricket/providers/icc-sportz";
 import type { GenderRankings } from "@/lib/cricket/types";
 
 const MAX_CACHE_AGE_HOURS = 36;
@@ -22,12 +23,22 @@ function findBangladesh(teams: GenderRankings["teams"]["test"]) {
 }
 
 /** Recompute bangladesh slots from team lists (in case snapshot was partial). */
-function normalizeGenderRankings(data: GenderRankings): GenderRankings {
+export function normalizeGenderRankings(data: GenderRankings): GenderRankings {
   const bangladesh = {} as GenderRankings["bangladesh"];
   for (const format of FORMATS) {
     bangladesh[format] = findBangladesh(data.teams[format]);
   }
   return { ...data, bangladesh };
+}
+
+export function rankingsFromIccSnapshot(snapshot: IccRankingsSnapshot): {
+  men: GenderRankings;
+  women: GenderRankings;
+} {
+  return {
+    men: normalizeGenderRankings(snapshot.men),
+    women: normalizeGenderRankings(snapshot.women),
+  };
 }
 
 export async function getRankings(): Promise<{

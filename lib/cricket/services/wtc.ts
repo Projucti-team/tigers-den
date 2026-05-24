@@ -26,7 +26,7 @@ function findBangladesh(standings: WtcTeamStanding[]): WtcTeamStanding | null {
   );
 }
 
-function toShowcase(snapshot: WtcStandingsSnapshot): WtcShowcase {
+export function wtcShowcaseFromSnapshot(snapshot: WtcStandingsSnapshot): WtcShowcase {
   return {
     cycleLabel: snapshot.cycleLabel,
     standings: snapshot.standings,
@@ -48,7 +48,7 @@ export async function getWtcStandings(): Promise<{
         `WTC standings cache is ${Math.round(ageH)}h old. Run \`npm run scrape:wtc-standings\` or wait for the nightly job.`,
       );
     }
-    return { wtc: toShowcase(snapshot), warnings };
+    return { wtc: wtcShowcaseFromSnapshot(snapshot), warnings };
   }
 
   warnings.push("No local WTC file (data/wtc-standings.json). Fetching live…");
@@ -58,7 +58,7 @@ export async function getWtcStandings(): Promise<{
     await writeWtcStandingsSnapshot(live).catch(() => {
       warnings.push("Could not write WTC cache (read-only filesystem?).");
     });
-    return { wtc: toShowcase(live), warnings };
+    return { wtc: wtcShowcaseFromSnapshot(live), warnings };
   } catch {
     warnings.push(
       "WTC standings unavailable. Run `npm run scrape:wtc-standings` to populate data/wtc-standings.json.",

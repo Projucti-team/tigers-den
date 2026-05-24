@@ -1,5 +1,7 @@
 import { readFile, writeFile, mkdir } from "node:fs/promises";
 import path from "node:path";
+
+import { canWriteProjectDataFiles } from "@/lib/cricket/can-write-data";
 import type { IccRankingsSnapshot } from "@/lib/cricket/providers/icc-sportz";
 
 export const ICC_RANKINGS_DATA_PATH = path.join(process.cwd(), "data", "icc-rankings.json");
@@ -16,6 +18,8 @@ export async function readIccRankingsSnapshot(): Promise<IccRankingsSnapshot | n
 }
 
 export async function writeIccRankingsSnapshot(snapshot: IccRankingsSnapshot): Promise<void> {
+  if (!canWriteProjectDataFiles()) return;
+
   await mkdir(path.dirname(ICC_RANKINGS_DATA_PATH), { recursive: true });
   await writeFile(ICC_RANKINGS_DATA_PATH, `${JSON.stringify(snapshot, null, 2)}\n`, "utf8");
 }

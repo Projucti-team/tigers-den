@@ -1,7 +1,9 @@
 import { FORMATS_BY_GENDER, topBangladeshPlayer } from "@/lib/cricket/constants";
 import { enrichPlayerImage } from "@/lib/cricket/player-images";
-import { getRankings } from "@/lib/cricket/services/rankings";
-import { getWtcStandings, type WtcShowcase } from "@/lib/cricket/services/wtc";
+import type { IccRankingsSnapshot } from "@/lib/cricket/providers/icc-sportz";
+import { getRankings, rankingsFromIccSnapshot } from "@/lib/cricket/services/rankings";
+import { getWtcStandings, wtcShowcaseFromSnapshot, type WtcShowcase } from "@/lib/cricket/services/wtc";
+import type { WtcStandingsSnapshot } from "@/lib/cricket/types";
 import type { RankingsShowcaseSnapshot } from "@/lib/cricket/snapshot-types";
 import type {
   CricketFormat,
@@ -103,10 +105,27 @@ async function buildShowcase(gender: Gender, data: GenderRankings): Promise<Rank
   return { gender, formats, warnings: [] };
 }
 
+type RankingsSourceSnapshots = {
+  icc?: IccRankingsSnapshot | null;
+  wtc?: WtcStandingsSnapshot | null;
+};
+
 /** Live build — only used by the nightly sync job. */
-export async function buildRankingsShowcaseLive(): Promise<RankingsShowcaseSnapshot> {
+export async function buildRankingsShowcaseLive(
+  sources?: RankingsSourceSnapshots,
+): Promise<RankingsShowcaseSnapshot> {
   const [{ men, women, warnings: rankWarnings }, { wtc, warnings: wtcWarnings }] =
-    await Promise.all([getRankings(), getWtcStandings()]);
+    await Promise.all([
+      sources?.icc
+        ? Promise.resolve({ ...rankingsFromIccSnapshot(sources.icc), warnings: [] as string[] })
+        : getRankings(),
+      sources?.wtc
+        ? Promise.resolve({
+            wtc: wtcShowcaseFromSnapshot(sources.wtc),
+            warnings: [] as string[],
+          })
+        : getWtcStandings(),
+    ]);
 
   const [menShowcase, womenShowcase] = await Promise.all([
     buildShowcase("men", men),

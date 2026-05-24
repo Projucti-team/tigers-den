@@ -8,6 +8,9 @@ import {
   writeBangladeshLastMatch,
   type BangladeshLastMatchSnapshot,
 } from "@/lib/cricket/bangladesh-match-store";
+import { CRICKET_SNAPSHOT_KEYS } from "@/lib/cricket/snapshot-keys";
+import { readCricketSnapshot } from "@/lib/cricket/snapshot-db";
+import { isPayloadConfigured } from "@/lib/payload";
 import type { LiveMatchSummary } from "@/lib/cricket/types";
 import {
   findLastBangladeshMatch,
@@ -55,8 +58,15 @@ export async function scrapeBangladeshLastMatch(): Promise<BangladeshLastMatchSn
 }
 
 export async function getCachedBangladeshLastMatch(): Promise<MatchHighlight | null> {
-  const cached = await readBangladeshLastMatch();
-  return cached?.highlight ?? null;
+  if (isPayloadConfigured()) {
+    const cached = await readCricketSnapshot<BangladeshLastMatchSnapshot>(
+      CRICKET_SNAPSHOT_KEYS.lastMatch,
+    );
+    if (cached?.highlight) return cached.highlight;
+  }
+
+  const file = await readBangladeshLastMatch();
+  return file?.highlight ?? null;
 }
 
 /** One lightweight API call for live; last result always from cache. */

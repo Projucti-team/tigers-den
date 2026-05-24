@@ -1,5 +1,6 @@
 import { enrichIccSnapshotPlayerImages } from "@/lib/cricket/player-images";
 import { fetchAllIccRankingsFromSportz } from "@/lib/cricket/providers/icc-sportz";
+import type { IccRankingsSnapshot } from "@/lib/cricket/providers/icc-sportz";
 import { fetchWtcStandingsFromEspn } from "@/lib/cricket/providers/wtc-espn";
 import { writeIccRankingsSnapshot } from "@/lib/cricket/icc-rankings-store";
 import { writeWtcStandingsSnapshot } from "@/lib/cricket/wtc-store";
@@ -14,7 +15,7 @@ import {
   upsertCricketSnapshot,
 } from "@/lib/cricket/snapshot-db";
 import { tourSlug } from "@/lib/cricket/tour-slug";
-
+import type { WtcStandingsSnapshot } from "@/lib/cricket/types";
 export type SyncCricketResult = {
   ok: boolean;
   fetchedAt: string;
@@ -24,19 +25,22 @@ export type SyncCricketResult = {
   errors: string[];
 };
 
-async function refreshIccRankingsSource(): Promise<void> {
+async function refreshIccRankingsSource(): Promise<IccRankingsSnapshot> {
   let snapshot = await fetchAllIccRankingsFromSportz();
   snapshot = await enrichIccSnapshotPlayerImages(snapshot);
   await writeIccRankingsSnapshot(snapshot);
+  return snapshot;
 }
 
-async function refreshWtcSource(): Promise<void> {
+async function refreshWtcSource(): Promise<WtcStandingsSnapshot> {
   const snapshot = await fetchWtcStandingsFromEspn();
   await writeWtcStandingsSnapshot(snapshot);
+  return snapshot;
 }
 
 /**
  * Nightly job (~3:00 AM BDT via Vercel cron): refresh sources, build page snapshots, save to DB.
+ * On Vercel, `data/*.json` is read-only — snapshots are stored in Postgres instead.
  */
 export async function syncCricketSnapshots(): Promise<SyncCricketResult> {
   const warnings: string[] = [];
@@ -44,34 +48,56 @@ export async function syncCricketSnapshots(): Promise<SyncCricketResult> {
   const keysToKeep = new Set<string>([
     CRICKET_SNAPSHOT_KEYS.rankingsShowcase,
     CRICKET_SNAPSHOT_KEYS.toursIndex,
+    CRICKET_SNAPSHOT_KEYS.lastMatch,
+    CRICKET_SNAPSHOT_KEYS.upcomingMatches,
   ]);
 
+  let iccSnapshot: IccRankingsSnapshot | null = null;
+  let wtcSnapshot: WtcStandingsSnapshot | null = null;
+
   try {
-    await refreshIccRankingsSource();
+    iccSnapshot = await refreshIccRankingsSource();
   } catch (e) {
     errors.push(`ICC rankings: ${e instanceof Error ? e.message : "failed"}`);
   }
 
   try {
-    await refreshWtcSource();
+    wtcSnapshot = await refreshWtcSource();
   } catch (e) {
     errors.push(`WTC standings: ${e instanceof Error ? e.message : "failed"}`);
   }
 
   try {
-    await scrapeBangladeshLastMatch();
+    const lastMatch = await scrapeBangladeshLastMatch();
+    if (lastMatch) {
+      await upsertCricketSnapshot(
+        CRICKET_SNAPSHOT_KEYS.lastMatch,
+        "Bangladesh last completed match",
+        lastMatch,
+      );
+    }
   } catch (e) {
     errors.push(`Last match: ${e instanceof Error ? e.message : "failed"}`);
   }
 
   try {
-    await scrapeBangladeshUpcomingMatches();
+    const upcoming = await scrapeBangladeshUpcomingMatches();
+    if (upcoming) {
+      await upsertCricketSnapshot(
+        CRICKET_SNAPSHOT_KEYS.upcomingMatches,
+        "Bangladesh upcoming matches",
+        upcoming,
+      );
+    }
   } catch (e) {
     errors.push(`Upcoming matches: ${e instanceof Error ? e.message : "failed"}`);
   }
 
   try {
-    const rankings = await buildRankingsShowcaseLive();
+    const rankings = await buildRankingsShowcaseLive({
+      icc: iccSnapshot,
+      wtc: wtcSnapshot,
+    });
     await upsertCricketSnapshot(
       CRICKET_SNAPSHOT_KEYS.rankingsShowcase,
       "ICC rankings showcase",

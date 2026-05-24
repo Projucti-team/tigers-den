@@ -1,5 +1,7 @@
 import { readFile, writeFile, mkdir } from "node:fs/promises";
 import path from "node:path";
+
+import { canWriteProjectDataFiles } from "@/lib/cricket/can-write-data";
 import type { MatchHighlight } from "@/lib/cricket/services/match-highlight";
 import type { LiveMatchSummary } from "@/lib/cricket/types";
 
@@ -30,6 +32,8 @@ export async function readBangladeshLastMatch(): Promise<BangladeshLastMatchSnap
 export async function writeBangladeshLastMatch(
   snapshot: BangladeshLastMatchSnapshot,
 ): Promise<void> {
+  if (!canWriteProjectDataFiles()) return;
+
   await mkdir(path.dirname(BANGLADESH_LAST_MATCH_PATH), { recursive: true });
   await writeFile(
     BANGLADESH_LAST_MATCH_PATH,
