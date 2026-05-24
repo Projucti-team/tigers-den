@@ -19,8 +19,17 @@ const filename = fileURLToPath(import.meta.url);
 const dirname = path.dirname(filename);
 
 function getServerURL(): string {
-  if (process.env.NEXT_PUBLIC_SITE_URL) return process.env.NEXT_PUBLIC_SITE_URL;
+  const fromEnv =
+    process.env.NEXT_PUBLIC_SERVER_URL ||
+    process.env.NEXT_PUBLIC_SITE_URL ||
+    (process.env.VERCEL_PROJECT_PRODUCTION_URL
+      ? `https://${process.env.VERCEL_PROJECT_PRODUCTION_URL}`
+      : undefined);
+
+  if (fromEnv) return fromEnv.replace(/\/$/, "");
+
   if (process.env.VERCEL_URL) return `https://${process.env.VERCEL_URL}`;
+
   return "http://localhost:3000";
 }
 

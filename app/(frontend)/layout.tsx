@@ -1,7 +1,18 @@
 import { Inter, Montserrat, Roboto_Mono } from "next/font/google";
+import type { Metadata } from "next";
 import type { ReactNode } from "react";
 
 import "@/app/globals.css";
+
+export const metadata: Metadata = {
+  title: "The Tigers' Den — Bangladesh Cricket Fan Army",
+  description:
+    "The definitive community hub for passionate Bangladesh cricket fans. Live scores, forum, chants, and tour travel.",
+  icons: {
+    icon: [{ url: "/tigers-den-logo-nav.png", type: "image/png" }],
+    apple: [{ url: "/tigers-den-logo.png", type: "image/png" }],
+  },
+};
 
 import { FanMarquee } from "@/components/layout/FanMarquee";
 import { Navbar } from "@/components/layout/Navbar";
@@ -44,16 +55,20 @@ export default async function FrontendLayout({ children }: { children: ReactNode
   const tourLinks = toursSnapshot?.navLinks ?? [];
 
   return (
-    <AuthSessionProvider>
-      <div
-        className={`${montserrat.variable} ${inter.variable} ${robotoMono.variable} fan-page-bg min-h-screen`}
-      >
-        <TopBar />
-        <Navbar tourLinks={tourLinks} />
-        <FanMarquee items={marqueeItems} />
-        <main>{children}</main>
-        <SiteFooter />
-      </div>
-    </AuthSessionProvider>
+    <html lang="en">
+      <body>
+        <AuthSessionProvider>
+          <div
+            className={`${montserrat.variable} ${inter.variable} ${robotoMono.variable} fan-page-bg min-h-screen`}
+          >
+            <TopBar />
+            <Navbar tourLinks={tourLinks} />
+            <FanMarquee items={marqueeItems} />
+            <main>{children}</main>
+            <SiteFooter />
+          </div>
+        </AuthSessionProvider>
+      </body>
+    </html>
   );
 }
