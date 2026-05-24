@@ -20,8 +20,9 @@ export function ensurePayloadSchema(payload: Payload): Promise<void> {
 }
 
 async function runMigrations(payload: Payload): Promise<void> {
-  const db = payload.db as {
+  const adapter = payload.db as {
     migrate: (args: { migrations: typeof migrations }) => Promise<void>;
   };
-  await db.migrate({ migrations });
+  // prodMigrations on connect usually runs first; this covers manual bootstrap calls.
+  await adapter.migrate({ migrations });
 }

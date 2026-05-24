@@ -2,6 +2,8 @@ import { sqliteAdapter } from "@payloadcms/db-sqlite";
 import { vercelPostgresAdapter } from "@payloadcms/db-vercel-postgres";
 import type { DatabaseAdapterObj } from "payload";
 
+import { migrations } from "../migrations";
+
 /** Neon / Vercel Postgres in production; SQLite file locally. */
 export function getPayloadDatabase(): DatabaseAdapterObj {
   const postgresUrl = process.env.POSTGRES_URL || process.env.DATABASE_URL;
@@ -11,6 +13,7 @@ export function getPayloadDatabase(): DatabaseAdapterObj {
       pool: {
         connectionString: postgresUrl,
       },
+      prodMigrations: migrations,
     });
   }
 
