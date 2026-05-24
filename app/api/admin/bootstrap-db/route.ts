@@ -1,13 +1,12 @@
 import { NextResponse } from "next/server";
-import { getPayload } from "payload";
 
-import config from "@payload-config";
-import { ensurePayloadSchema } from "@/lib/payload-ensure-schema";
+import { runDeployBootstrap } from "@/lib/deploy/bootstrap";
 import { isPayloadConfigured } from "@/lib/payload";
 
-export const maxDuration = 60;
+export const maxDuration = 300;
+export const runtime = "nodejs";
 
-/** Run committed Payload SQL migrations (protected by CRON_SECRET). Full schema sync runs at Vercel build. */
+/** Migrations + cricket snapshot seed (protected by CRON_SECRET). Also runs automatically before Vercel builds. */
 export async function POST(request: Request) {
   const secret = process.env.CRON_SECRET?.trim();
   const auth = request.headers.get("authorization");
@@ -22,12 +21,15 @@ export async function POST(request: Request) {
     );
   }
 
+  const url = new URL(request.url);
+  const forceCricketSync = url.searchParams.get("forceCricketSync") === "1";
+
   try {
-    const payload = await getPayload({ config });
-    await ensurePayloadSchema(payload);
-    return NextResponse.json({ ok: true });
+    const result = await runDeployBootstrap({ forceCricketSync });
+    const ok = result.migrations === "ok" && result.cricketSync !== "failed";
+    return NextResponse.json({ ok, ...result }, { status: ok ? 200 : 207 });
   } catch (err) {
-    const message = err instanceof Error ? err.message : "Migration failed";
+    const message = err instanceof Error ? err.message : "Bootstrap failed";
     return NextResponse.json({ ok: false, error: message }, { status: 500 });
   }
 }

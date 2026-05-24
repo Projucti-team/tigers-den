@@ -55,13 +55,14 @@ In **Project → Settings → Environment Variables**, add:
 | `PAYLOAD_SECRET` | Run `openssl rand -base64 32` and paste |
 | `NEXT_PUBLIC_SITE_URL` | Leave empty on first deploy; set to `https://your-app.vercel.app` after deploy |
 | `NEXT_PUBLIC_SERVER_URL` | Same as `NEXT_PUBLIC_SITE_URL` |
-| `CRICKET_DATA_API_KEY` | Optional — from [cricketdata.org](https://cricketdata.org/signup.aspx) |
+| `CRICKET_DATA_API_KEY` | Required for tours/rankings snapshots — from [cricketdata.org](https://cricketdata.org/signup.aspx) |
+| `CRON_SECRET` | Run `openssl rand -base64 32` — protects bootstrap + cron routes |
 
 `POSTGRES_URL` and `BLOB_READ_WRITE_TOKEN` are set by the storage integrations.
 
 4. Click **Deploy**.
 
-First build takes ~3–5 minutes.
+Each Vercel build runs **`deploy:migrate` then `next build`**: creates Postgres tables if missing, then (during the build) seeds cricket snapshots before static pages are generated. First deploy with an empty DB may take ~5–8 minutes when cricket sync runs.
 
 ---
 
@@ -96,7 +97,16 @@ After each Action run:
 
 - It commits to `main` → Vercel **auto-redeploys** with fresh JSON (no extra cost).
 
-Optional: add `CRICKET_DATA_API_KEY` in Vercel for live scores (stay within free ~100 req/day).
+`CRICKET_DATA_API_KEY` powers tours, squads, and rankings snapshots (nightly cron + first deploy seed).
+
+**Manual re-seed** (after deploy, if data is still empty):
+
+```bash
+curl -X POST "https://YOUR-PROJECT.vercel.app/api/admin/bootstrap-db?forceCricketSync=1" \
+  -H "Authorization: Bearer YOUR_CRON_SECRET"
+```
+
+Then redeploy or wait for the next build so static pages pick up the new DB snapshots.
 
 ---
 

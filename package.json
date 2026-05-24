@@ -8,6 +8,8 @@
   "scripts": {
     "dev": "next dev --turbopack",
     "build": "next build",
+    "deploy:migrate": "tsx scripts/run-sql-migrations.ts",
+    "build:vercel": "npm run deploy:migrate && npm run build",
     "build:prod": "payload generate:importmap && next build",
     "start": "next start",
     "lint": "next lint",

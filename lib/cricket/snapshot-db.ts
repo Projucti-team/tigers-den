@@ -71,10 +71,15 @@ export async function upsertCricketSnapshot(
   return fetchedAt;
 }
 
+function canReadSnapshotsDuringBuild(): boolean {
+  if (!isNextProductionBuild()) return true;
+  return Boolean(process.env.POSTGRES_URL?.trim() || process.env.DATABASE_URL?.trim());
+}
+
 export async function readCricketSnapshot<T extends { fetchedAt: string }>(
   key: string,
 ): Promise<T | null> {
-  if (!isPayloadConfigured() || isNextProductionBuild()) return null;
+  if (!isPayloadConfigured() || !canReadSnapshotsDuringBuild()) return null;
 
   try {
     const payload = await getPayloadClient();
