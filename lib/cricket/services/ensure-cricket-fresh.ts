@@ -8,6 +8,7 @@ import {
   snapshotAgeHours,
   upsertCricketSnapshot,
 } from "@/lib/cricket/snapshot-db";
+import { isPayloadConfigured } from "@/lib/payload";
 
 const SYNC_LOCK_MAX_AGE_MINUTES = 15;
 
@@ -72,6 +73,8 @@ async function runCricketSyncIfNeeded(): Promise<void> {
 
 /** Run sync when snapshots are missing or older than 24 hours. */
 export async function ensureCricketSnapshotsFresh(): Promise<void> {
+  if (!isPayloadConfigured()) return;
+
   const lastFetchedAt = await getLastCricketSyncFetchedAt();
   if (lastFetchedAt && snapshotAgeHours(lastFetchedAt) < AUTO_SYNC_MAX_AGE_HOURS) {
     return;

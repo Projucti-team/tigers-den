@@ -1,5 +1,5 @@
 import { CRICKET_SNAPSHOT_KEYS } from "@/lib/cricket/snapshot-keys";
-import { getPayloadClient } from "@/lib/payload";
+import { getPayloadClient, isPayloadConfigured } from "@/lib/payload";
 
 const MAX_SNAPSHOT_AGE_HOURS = 36;
 
@@ -18,6 +18,8 @@ export function staleSnapshotWarning(fetchedAt: string, label: string): string |
 
 /** Latest `fetchedAt` from primary page snapshots (rankings, then tours index). */
 export async function getLastCricketSyncFetchedAt(): Promise<string | null> {
+  if (!isPayloadConfigured()) return null;
+
   for (const key of [CRICKET_SNAPSHOT_KEYS.rankingsShowcase, CRICKET_SNAPSHOT_KEYS.toursIndex] as const) {
     const snapshot = await readCricketSnapshot<{ fetchedAt: string }>(key);
     if (snapshot?.fetchedAt) return snapshot.fetchedAt;
@@ -30,6 +32,10 @@ export async function upsertCricketSnapshot(
   label: string,
   data: unknown,
 ): Promise<string> {
+  if (!isPayloadConfigured()) {
+    return new Date().toISOString();
+  }
+
   const payload = await getPayloadClient();
   const fetchedAt = new Date().toISOString();
 
@@ -62,6 +68,8 @@ export async function upsertCricketSnapshot(
 export async function readCricketSnapshot<T extends { fetchedAt: string }>(
   key: string,
 ): Promise<T | null> {
+  if (!isPayloadConfigured()) return null;
+
   const payload = await getPayloadClient();
   const result = await payload.find({
     collection: "cricket-snapshots",
@@ -81,6 +89,8 @@ export async function readCricketSnapshot<T extends { fetchedAt: string }>(
 }
 
 export async function deleteCricketSnapshotsExcept(keysToKeep: Set<string>): Promise<number> {
+  if (!isPayloadConfigured()) return 0;
+
   const payload = await getPayloadClient();
   const result = await payload.find({
     collection: "cricket-snapshots",
