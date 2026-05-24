@@ -1,5 +1,11 @@
 import { CRICKET_SNAPSHOT_KEYS } from "@/lib/cricket/snapshot-keys";
+import { isNextProductionBuild } from "@/lib/next-build";
 import { getPayloadClient, isPayloadConfigured } from "@/lib/payload";
+
+function isMissingRelationError(err: unknown): boolean {
+  const message = err instanceof Error ? err.message : String(err);
+  return /relation .* does not exist/i.test(message);
+}
 
 const MAX_SNAPSHOT_AGE_HOURS = 36;
 
@@ -68,24 +74,29 @@ export async function upsertCricketSnapshot(
 export async function readCricketSnapshot<T extends { fetchedAt: string }>(
   key: string,
 ): Promise<T | null> {
-  if (!isPayloadConfigured()) return null;
+  if (!isPayloadConfigured() || isNextProductionBuild()) return null;
 
-  const payload = await getPayloadClient();
-  const result = await payload.find({
-    collection: "cricket-snapshots",
-    where: { key: { equals: key } },
-    limit: 1,
-    overrideAccess: true,
-  });
+  try {
+    const payload = await getPayloadClient();
+    const result = await payload.find({
+      collection: "cricket-snapshots",
+      where: { key: { equals: key } },
+      limit: 1,
+      overrideAccess: true,
+    });
 
-  const doc = result.docs[0] as { data?: T; fetchedAt?: string } | undefined;
-  if (!doc?.data || typeof doc.data !== "object") return null;
+    const doc = result.docs[0] as { data?: T; fetchedAt?: string } | undefined;
+    if (!doc?.data || typeof doc.data !== "object") return null;
 
-  const data = doc.data as T;
-  if (!data.fetchedAt && doc.fetchedAt) {
-    data.fetchedAt = String(doc.fetchedAt);
+    const data = doc.data as T;
+    if (!data.fetchedAt && doc.fetchedAt) {
+      data.fetchedAt = String(doc.fetchedAt);
+    }
+    return data;
+  } catch (err) {
+    if (isMissingRelationError(err)) return null;
+    throw err;
   }
-  return data;
 }
 
 export async function deleteCricketSnapshotsExcept(keysToKeep: Set<string>): Promise<number> {
