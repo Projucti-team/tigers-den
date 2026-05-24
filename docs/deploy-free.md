@@ -62,7 +62,7 @@ In **Project → Settings → Environment Variables**, add:
 
 4. Click **Deploy**.
 
-Each Vercel build runs **`deploy:migrate` then `next build`**: creates Postgres tables if missing, then (during the build) seeds cricket snapshots before static pages are generated. First deploy with an empty DB may take ~5–8 minutes when cricket sync runs.
+Each Vercel build runs **`deploy:migrate` → `deploy:seed` → `next build --webpack`**: creates Postgres tables if missing, seeds cricket snapshots on the **live** deployment URL (when set), then rebuilds static pages. Uses webpack instead of Turbopack because Payload + Turbopack currently break on `file-type`.
 
 ---
 

@@ -58,7 +58,7 @@ async function main() {
     }
 
     console.log("[deploy:migrate] Applying initial schema…");
-    await up({ db } as Parameters<typeof up>[0]);
+    await up({ db } as unknown as Parameters<typeof up>[0]);
     console.log("[deploy:migrate] Done.");
   } finally {
     await pool.end();

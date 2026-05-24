@@ -21,7 +21,7 @@ function hasProductionDatabase(): boolean {
 
 /**
  * Idempotent production setup: SQL migrations, then cricket snapshots if missing.
- * Called from instrumentation during Vercel builds and from /api/admin/bootstrap-db.
+ * Called from /api/admin/bootstrap-db and during Vercel builds (via deploy:seed).
  */
 export async function runDeployBootstrap(options?: {
   forceCricketSync?: boolean;

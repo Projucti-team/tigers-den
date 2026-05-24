@@ -7,9 +7,10 @@
   },
   "scripts": {
     "dev": "next dev --turbopack",
-    "build": "next build",
+    "build": "next build --webpack",
     "deploy:migrate": "tsx scripts/run-sql-migrations.ts",
-    "build:vercel": "npm run deploy:migrate && npm run build",
+    "deploy:seed": "tsx scripts/trigger-deploy-seed.ts",
+    "build:vercel": "npm run deploy:migrate && npm run deploy:seed && npm run build",
     "build:prod": "payload generate:importmap && next build",
     "start": "next start",
     "lint": "next lint",
