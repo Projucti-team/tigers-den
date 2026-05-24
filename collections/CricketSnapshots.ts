@@ -7,7 +7,10 @@ export const CricketSnapshots: CollectionConfig = {
     useAsTitle: "key",
     defaultColumns: ["key", "label", "fetchedAt", "updatedAt"],
     description:
-      "Pre-built cricket pages data. Refreshed nightly ~3:00 AM Bangladesh time via /api/cron/cricket.",
+      "Pre-built cricket pages data. Refreshed nightly ~3:00 AM Bangladesh time, or use Run cricket sync on the dashboard.",
+    components: {
+      beforeList: ["@/components/admin/CricketSyncPanel"],
+    },
   },
   access: {
     read: () => true,
