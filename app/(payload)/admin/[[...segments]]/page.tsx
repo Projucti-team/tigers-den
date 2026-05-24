@@ -4,6 +4,8 @@ import type { Metadata } from "next";
 
 import { importMap } from "../importMap.js";
 
+export const dynamic = "force-dynamic";
+
 type Args = {
   params: Promise<{
     segments: string[];

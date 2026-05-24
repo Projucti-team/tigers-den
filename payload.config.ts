@@ -43,9 +43,6 @@ export default buildConfig({
     meta: {
       titleSuffix: "— The Tigers' Den",
     },
-    components: {
-      beforeDashboard: ["@/components/admin/CricketSyncPanel"],
-    },
   },
   collections: [
     Users,

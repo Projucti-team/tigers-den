@@ -8,6 +8,8 @@ import "./custom.scss";
 
 import { importMap } from "./admin/importMap.js";
 
+export const dynamic = "force-dynamic";
+
 type Args = {
   children: ReactNode;
 };
