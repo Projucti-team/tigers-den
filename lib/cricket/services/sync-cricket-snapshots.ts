@@ -16,6 +16,7 @@ import {
 } from "@/lib/cricket/snapshot-db";
 import { tourSlug } from "@/lib/cricket/tour-slug";
 import type { WtcStandingsSnapshot } from "@/lib/cricket/types";
+import { isPayloadConfigured } from "@/lib/payload";
 export type SyncCricketResult = {
   ok: boolean;
   fetchedAt: string;
@@ -45,6 +46,33 @@ async function refreshWtcSource(): Promise<WtcStandingsSnapshot> {
 export async function syncCricketSnapshots(): Promise<SyncCricketResult> {
   const warnings: string[] = [];
   const errors: string[] = [];
+
+  if (!isPayloadConfigured()) {
+    return {
+      ok: false,
+      fetchedAt: new Date().toISOString(),
+      toursCount: 0,
+      tourDetailsCount: 0,
+      warnings: [],
+      errors: [
+        "PAYLOAD_SECRET is not set — add it in Vercel Environment Variables (Production) and redeploy.",
+      ],
+    };
+  }
+
+  if (!process.env.POSTGRES_URL && !process.env.DATABASE_URL) {
+    return {
+      ok: false,
+      fetchedAt: new Date().toISOString(),
+      toursCount: 0,
+      tourDetailsCount: 0,
+      warnings: [],
+      errors: [
+        "POSTGRES_URL is not set — connect Neon Postgres in Vercel Storage and redeploy.",
+      ],
+    };
+  }
+
   const keysToKeep = new Set<string>([
     CRICKET_SNAPSHOT_KEYS.rankingsShowcase,
     CRICKET_SNAPSHOT_KEYS.toursIndex,
