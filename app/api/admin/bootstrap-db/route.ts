@@ -7,7 +7,7 @@ import { isPayloadConfigured } from "@/lib/payload";
 
 export const maxDuration = 60;
 
-/** One-off Postgres schema sync when admin views fail (protected by CRON_SECRET). */
+/** Run committed Payload SQL migrations (protected by CRON_SECRET). Full schema sync runs at Vercel build. */
 export async function POST(request: Request) {
   const secret = process.env.CRON_SECRET?.trim();
   const auth = request.headers.get("authorization");
@@ -27,7 +27,7 @@ export async function POST(request: Request) {
     await ensurePayloadSchema(payload);
     return NextResponse.json({ ok: true });
   } catch (err) {
-    const message = err instanceof Error ? err.message : "Schema sync failed";
+    const message = err instanceof Error ? err.message : "Migration failed";
     return NextResponse.json({ ok: false, error: message }, { status: 500 });
   }
 }
