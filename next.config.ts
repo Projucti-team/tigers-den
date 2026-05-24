@@ -1,8 +1,9 @@
 import { withPayload } from "@payloadcms/next/withPayload";
 import type { NextConfig } from "next";
 
+// Standalone is for Docker/VPS only — Vercel uses native Next.js output and breaks admin when this is set.
 const nextConfig: NextConfig = {
-  output: "standalone",
+  ...(process.env.DOCKER_BUILD === "1" ? { output: "standalone" as const } : {}),
   images: {
     remotePatterns: [
       {

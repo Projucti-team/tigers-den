@@ -37,6 +37,7 @@ export default buildConfig({
   serverURL: getServerURL(),
   admin: {
     user: Users.slug,
+    suppressHydrationWarning: true,
     importMap: {
       baseDir: path.resolve(dirname),
     },

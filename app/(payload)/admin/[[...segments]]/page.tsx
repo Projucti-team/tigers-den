@@ -5,6 +5,8 @@ import type { Metadata } from "next";
 import { importMap } from "../importMap.js";
 
 export const dynamic = "force-dynamic";
+export const runtime = "nodejs";
+export const maxDuration = 60;
 
 type Args = {
   params: Promise<{
