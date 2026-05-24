@@ -1,6 +1,7 @@
 import Image from "next/image";
 import Link from "next/link";
 
+import { HeroMemberCta } from "@/components/home/HeroMemberCta";
 import { getAbsoluteMediaUrl } from "@/lib/media";
 import type { HeroSlide } from "@/payload-types";
 
@@ -60,10 +61,8 @@ export function HeroPromo({ slides = [] }: Props) {
           </p>
         )}
         <div className="mt-10 flex flex-wrap items-center justify-center gap-4">
-          <Link href="#membership" className="fan-btn-green rounded px-8 py-4 text-sm">
-            Become a Member
-          </Link>
-          <Link href="#rankings" className="fan-btn-red rounded px-8 py-4 text-sm">
+          <HeroMemberCta />
+          <Link href="/rankings" className="fan-btn-red rounded px-8 py-4 text-sm">
             ICC Rankings
           </Link>
         </div>

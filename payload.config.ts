@@ -4,8 +4,12 @@ import { buildConfig } from "payload";
 import sharp from "sharp";
 import { fileURLToPath } from "url";
 
+import { CricketSnapshots } from "./collections/CricketSnapshots";
 import { HeroSlides } from "./collections/HeroSlides";
 import { Media } from "./collections/Media";
+import { MemberFollows } from "./collections/MemberFollows";
+import { MemberPosts } from "./collections/MemberPosts";
+import { Members } from "./collections/Members";
 import { Posts } from "./collections/Posts";
 import { Users } from "./collections/Users";
 import { getPayloadDatabase } from "./lib/payload-db";
@@ -31,7 +35,16 @@ export default buildConfig({
       titleSuffix: "— The Tigers' Den",
     },
   },
-  collections: [Users, Media, Posts, HeroSlides],
+  collections: [
+    Users,
+    Members,
+    MemberPosts,
+    MemberFollows,
+    Media,
+    Posts,
+    HeroSlides,
+    CricketSnapshots,
+  ],
   editor: lexicalEditor(),
   secret: process.env.PAYLOAD_SECRET || "",
   typescript: {

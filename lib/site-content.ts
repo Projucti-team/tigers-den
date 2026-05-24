@@ -1,3 +1,13 @@
+/** Dedicated membership / sign-in page */
+export const JOIN_PAGE_PATH = "/join";
+
+/** Member profile & social hub */
+export const PROFILE_PAGE_PATH = "/profile";
+
+export function profilePath(username: string): string {
+  return `${PROFILE_PAGE_PATH}/${encodeURIComponent(username)}`;
+}
+
 export const experiences = [
   {
     id: "tours",
@@ -95,42 +105,57 @@ export const whyJoin = [
 ];
 
 export const merchCategories = [
-  { name: "Clothing", emoji: "👕", href: "#shop" },
-  { name: "Accessories", emoji: "🧢", href: "#shop" },
-  { name: "Headwear", emoji: "🎩", href: "#shop" },
-  { name: "On Tour Range", emoji: "✈️", href: "#shop" },
+  { name: "Clothing", emoji: "👕", href: "/shop" },
+  { name: "Accessories", emoji: "🧢", href: "/shop" },
+  { name: "Headwear", emoji: "🎩", href: "/shop" },
+  { name: "On Tour Range", emoji: "✈️", href: "/shop" },
 ];
 
-export const navItems = [
-  {
-    label: "Membership",
-    href: "#membership",
-    children: [
-      { label: "Become a Member", href: "#membership" },
-      { label: "Member Rewards", href: "#membership" },
-    ],
-  },
-  {
-    label: "Tours",
-    href: "#tours",
-    children: [
-      { label: "West Indies 2026", href: "#tours" },
-      { label: "UK Summer 2026", href: "#tours" },
-      { label: "Home — Mirpur", href: "#tours" },
-    ],
-  },
-  {
-    label: "Tickets",
-    href: "#tickets",
-    children: [
-      { label: "2026 Fixtures", href: "#tickets" },
-      { label: "Mirpur", href: "#tickets" },
-    ],
-  },
-  { label: "Rankings", href: "#rankings" },
+export type NavLink = { label: string; href: string };
+
+export type NavItem =
+  | NavLink
+  | {
+    label: string;
+    href: string;
+    children: NavLink[];
+  };
+
+/** Nav links after Tours (Tours row is built with live series in the layout). */
+export const navItemsAfterTours: NavLink[] = [
+  { label: "Tickets", href: "/tickets" },
+  { label: "Rankings", href: "/rankings" },
   { label: "Match Centre", href: "/match-centre" },
-  { label: "Chants", href: "#chants" },
-  { label: "The Stand", href: "#the-stand" },
-  { label: "Shop", href: "#shop" },
-  { label: "About", href: "#about" },
+  { label: "News", href: "/chants" },
+  { label: "The Stand", href: "/the-stand" },
+  { label: "Shop", href: "/shop" },
+  { label: "About", href: "/about" },
 ];
+
+export function buildMainNav(tourChildren: NavLink[]): NavItem[] {
+  return [
+    {
+      label: "Tours",
+      href: "/tours",
+      children: tourChildren.length
+        ? tourChildren
+        : [{ label: "All upcoming series", href: "/tours" }],
+    },
+    ...navItemsAfterTours,
+  ];
+}
+
+export const socialLinks = [
+  { label: "Facebook", href: "https://facebook.com" },
+  { label: "X (Twitter)", href: "https://x.com" },
+  { label: "Instagram", href: "https://instagram.com" },
+  { label: "YouTube", href: "https://youtube.com" },
+] as const;
+
+export const aboutCopy = {
+  headline: "Built by fans. Powered by code. Roaring for Bangladesh.",
+  intro:
+    "We are a small team of developers who are absolutely crazy about Bangladesh cricket — the green and red, the Mirpur roar, the away-day chants, and every nail-biting finish in between.",
+  body: "The Tigers' Den is our love letter to the fan army: live scores, rankings, tour guides, and a community hub where supporters connect. We build in public, ship often, and listen to what real fans need on match day.",
+  signoff: "TIGERS ROAR! 🐯 — see you in the stands (or in the chat).",
+};

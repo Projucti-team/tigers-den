@@ -1,4 +1,6 @@
 import { CRICAPI_BASE } from "@/lib/cricket/constants";
+import type { SeriesSquad, SquadPlayer } from "@/lib/cricket/curated-squads";
+import { normalizeSquadPlayers } from "@/lib/cricket/curated-squads";
 import type { LiveMatchSummary, Scorecard, ScorecardInnings, Tour } from "@/lib/cricket/types";
 
 type CricApiResponse<T> = {
@@ -100,7 +102,79 @@ function mapLiveMatch(m: any): LiveMatchSummary {
   };
 }
 
-/** Upcoming ICC FTP / bilateral series from CricketData.org */
+function parseSquadPlayers(raw: unknown[]): SquadPlayer[] {
+  const parsed: (string | SquadPlayer)[] = [];
+
+  for (const p of raw) {
+    if (typeof p === "string") {
+      if (p) parsed.push(p);
+      continue;
+    }
+    if (p && typeof p === "object") {
+      const row = p as Record<string, unknown>;
+      const name = String(row.name ?? row.player ?? "");
+      if (!name) continue;
+      const profileUrl =
+        (row.profileUrl as string | undefined) ?? (row.url as string | undefined) ?? null;
+      parsed.push(profileUrl ? { name, profileUrl } : { name });
+    }
+  }
+
+  return normalizeSquadPlayers(parsed);
+}
+
+export async function fetchSeriesInfo(seriesId: string): Promise<{
+  matches: LiveMatchSummary[];
+  squads: SeriesSquad[];
+}> {
+  const data = await cricFetch<Record<string, unknown>>("series_info", { id: seriesId }).catch(
+    () => null,
+  );
+
+  if (!data) return { matches: [], squads: [] };
+
+  const matchList = (data.matchList ?? data.matches ?? []) as Record<string, unknown>[];
+  const matches = matchList.map(mapLiveMatch);
+
+  const squads: SeriesSquad[] = [];
+  const squadBlock = (data.squad ?? data.squads ?? data.teamSquad) as
+    | Record<string, unknown>[]
+    | undefined;
+
+  if (Array.isArray(squadBlock)) {
+    for (const row of squadBlock) {
+      const team = String(row.team ?? row.name ?? "Squad");
+      const playersRaw = (row.players ?? row.playerList ?? []) as unknown[];
+      const players = parseSquadPlayers(playersRaw);
+      if (players.length) squads.push({ team, players });
+    }
+  }
+
+  return { matches, squads };
+}
+
+export async function fetchSeriesSquads(seriesId: string): Promise<SeriesSquad[]> {
+  const data = await cricFetch<Record<string, unknown>>("series_squads", { id: seriesId }).catch(
+    () => null,
+  );
+
+  if (!data) return [];
+
+  const squads: SeriesSquad[] = [];
+  const list = (data.squads ?? data.squad ?? data.teams ?? data.data) as unknown;
+
+  if (Array.isArray(list)) {
+    for (const row of list as Record<string, unknown>[]) {
+      const team = String(row.team ?? row.name ?? row.shortname ?? "Squad");
+      const playersRaw = (row.players ?? row.playerList ?? row.squad ?? []) as unknown[];
+      const players = parseSquadPlayers(playersRaw);
+      if (players.length) squads.push({ team, players });
+    }
+  }
+
+  return squads;
+}
+
 export async function fetchUpcomingTours(): Promise<Tour[]> {
   const tours: Tour[] = [];
   const seen = new Set<string>();

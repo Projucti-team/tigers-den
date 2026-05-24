@@ -24,7 +24,7 @@ export function ExperienceCards({
         title: featuredAwayTour.title,
         subtitle: `${featuredAwayTour.dateRange} · ${featuredAwayTour.description}. Travel with The Tigers' Den.`,
         cta: "View Series",
-        href: "#tours",
+        href: "/tours",
         accent: "green" as const,
         flagIso: featuredAwayTour.headerFlagIso,
       }
@@ -34,7 +34,7 @@ export function ExperienceCards({
         subtitle:
           "Check the latest Bangladesh FTP series — dates, formats, and tour packages with The Tigers' Den.",
         cta: "View Tours",
-        href: "#tours",
+        href: "/tours",
         accent: "green" as const,
         flagIso: BANGLADESH_FLAG_ISO,
       };

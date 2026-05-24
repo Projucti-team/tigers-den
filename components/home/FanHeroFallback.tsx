@@ -15,9 +15,15 @@ export function FanHeroFallback() {
       />
 
       <div className="relative z-10 flex min-h-[200px] flex-col items-center justify-center p-8 text-center md:min-h-[260px]">
-        <p className="font-display text-5xl md:text-7xl" aria-hidden>
-          🐅
-        </p>
+        {/* eslint-disable-next-line @next/next/no-img-element */}
+        <img
+          src="/tigers-den-logo.png"
+          alt=""
+          width={112}
+          height={120}
+          className="h-24 w-auto object-contain md:h-28"
+          aria-hidden
+        />
         <h1 className="mt-2 font-display text-3xl font-extrabold uppercase tracking-wider text-white drop-shadow-lg md:text-5xl">
           The Tigers&apos; <span className="text-amber">Den</span>
         </h1>

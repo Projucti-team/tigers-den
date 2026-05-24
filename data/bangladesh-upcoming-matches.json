@@ -1,0 +1,61 @@
+{
+  "fetchedAt": "2026-05-20T12:00:00.000Z",
+  "source": "seed",
+  "matches": [
+    {
+      "id": "seed-ban-aus-odi-1",
+      "name": "Bangladesh vs Australia, 1st ODI",
+      "matchType": "odi",
+      "status": "Match not started",
+      "venue": "Shere Bangla National Stadium, Dhaka",
+      "date": "2026-06-09",
+      "dateTimeGMT": "2026-06-09T08:00:00.000Z",
+      "teams": ["Bangladesh", "Australia"],
+      "isLive": false
+    },
+    {
+      "id": "seed-ban-aus-odi-2",
+      "name": "Bangladesh vs Australia, 2nd ODI",
+      "matchType": "odi",
+      "status": "Match not started",
+      "venue": "Shere Bangla National Stadium, Dhaka",
+      "date": "2026-06-11",
+      "dateTimeGMT": "2026-06-11T08:00:00.000Z",
+      "teams": ["Bangladesh", "Australia"],
+      "isLive": false
+    },
+    {
+      "id": "seed-ban-aus-odi-3",
+      "name": "Bangladesh vs Australia, 3rd ODI",
+      "matchType": "odi",
+      "status": "Match not started",
+      "venue": "Zahur Ahmed Chowdhury Stadium, Chattogram",
+      "date": "2026-06-14",
+      "dateTimeGMT": "2026-06-14T08:00:00.000Z",
+      "teams": ["Bangladesh", "Australia"],
+      "isLive": false
+    },
+    {
+      "id": "seed-ban-aus-t20-1",
+      "name": "Bangladesh vs Australia, 1st T20I",
+      "matchType": "t20",
+      "status": "Match not started",
+      "venue": "Sylhet International Cricket Stadium, Sylhet",
+      "date": "2026-06-17",
+      "dateTimeGMT": "2026-06-17T12:00:00.000Z",
+      "teams": ["Bangladesh", "Australia"],
+      "isLive": false
+    },
+    {
+      "id": "seed-ban-aus-t20-2",
+      "name": "Bangladesh vs Australia, 2nd T20I",
+      "matchType": "t20",
+      "status": "Match not started",
+      "venue": "Sylhet International Cricket Stadium, Sylhet",
+      "date": "2026-06-19",
+      "dateTimeGMT": "2026-06-19T12:00:00.000Z",
+      "teams": ["Bangladesh", "Australia"],
+      "isLive": false
+    }
+  ]
+}

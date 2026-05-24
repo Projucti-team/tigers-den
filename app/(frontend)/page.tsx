@@ -5,7 +5,6 @@ import { HomeToursSection } from "@/components/home/HomeToursSection";
 import { IccRankingsShowcase } from "@/components/home/IccRankingsShowcase";
 import { LiveMatchStrip } from "@/components/home/LiveMatchStrip";
 import { NewsFeed } from "@/components/home/NewsFeed";
-// import { MembershipSection } from "@/components/home/MembershipSection";
 import { MerchSection } from "@/components/home/MerchSection";
 import { NewsletterSignup } from "@/components/home/NewsletterSignup";
 // import { WhyJoinSection } from "@/components/home/WhyJoinSection";
@@ -130,13 +129,11 @@ export default async function HomePage() {
             Secure cricket tickets for Bangladesh&apos;s 2026 internationals — Mirpur, Chattogram,
             Sylhet and overseas tours with The Tigers&apos; Den.
           </p>
-          <a href="#tours" className="fan-btn-amber mt-8 inline-block rounded px-10 py-4 text-sm">
+          <a href="/tours" className="fan-btn-amber mt-8 inline-block rounded px-10 py-4 text-sm">
             Bangladesh Cricket Tickets
           </a>
         </div>
       </section>
-      {/* <MembershipSection /> */}
-      {/* <WhyJoinSection /> */}
       <HomeCommunitySection threads={threads.length > 0 ? threads : undefined} />
       <MerchSection />
       <NewsletterSignup />

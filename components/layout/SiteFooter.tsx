@@ -1,12 +1,14 @@
 import Link from "next/link";
 
+import { socialLinks } from "@/lib/site-content";
+
 const quickLinks = [
-  { label: "About Us", href: "#about" },
-  { label: "FAQs", href: "#about" },
-  { label: "Our Chants", href: "#chants" },
-  { label: "Code of Conduct", href: "#about" },
-  { label: "Tours", href: "#tours" },
-  { label: "Shop", href: "#shop" },
+  { label: "About", href: "/about" },
+  { label: "Tours", href: "/tours" },
+  { label: "Rankings", href: "/rankings" },
+  { label: "Match Centre", href: "/match-centre" },
+  { label: "News", href: "/chants" },
+  { label: "Shop", href: "/shop" },
 ];
 
 export function SiteFooter() {
@@ -23,19 +25,18 @@ export function SiteFooter() {
             We are not just another supporters club — we are Bangladesh&apos;s fan army, bringing
             passionate, fun-loving fans together at home and abroad for over a generation of roars.
           </p>
-          <div className="mt-4 flex gap-3 text-sm font-bold">
-            <a href="#" className="hover:text-amber">
-              Facebook
-            </a>
-            <a href="#" className="hover:text-amber">
-              X
-            </a>
-            <a href="#" className="hover:text-amber">
-              Instagram
-            </a>
-            <a href="#" className="hover:text-amber">
-              YouTube
-            </a>
+          <div className="mt-4 flex flex-wrap gap-3 text-sm font-bold">
+            {socialLinks.map((link) => (
+              <a
+                key={link.label}
+                href={link.href}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="hover:text-amber"
+              >
+                {link.label}
+              </a>
+            ))}
           </div>
         </div>
 
@@ -49,8 +50,8 @@ export function SiteFooter() {
             Weekends: Closed
           </p>
           <p className="mt-2 text-sm">
-            <a href="mailto:hello@tigersden.bd" className="font-semibold text-amber hover:underline">
-              hello@tigersden.bd
+            <a href="mailto:contacttigersden@gmail.com" className="font-semibold text-amber hover:underline">
+              contacttigersden@gmail.com
             </a>
           </p>
         </div>

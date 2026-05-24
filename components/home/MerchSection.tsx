@@ -20,7 +20,7 @@ export function MerchSection() {
             </p>
           </div>
           <Link
-            href="#shop"
+            href="/shop"
             className="fan-btn-green rounded px-6 py-3 text-xs"
           >
             View Shop →

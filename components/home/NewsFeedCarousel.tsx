@@ -2,26 +2,8 @@
 
 import { useCallback, useEffect, useRef, useState } from "react";
 
+import { NEWS_SOURCE_LABELS, formatNewsRelativeTime } from "@/lib/news/format";
 import type { CricketNewsItem } from "@/lib/news/types";
-
-const SOURCE_LABELS = {
-  espncricinfo: "ESPN Cricinfo",
-  cricbuzz: "Cricbuzz",
-} as const;
-
-function formatRelativeTime(iso: string): string {
-  const diff = Date.now() - new Date(iso).getTime();
-  const hours = Math.floor(diff / (1000 * 60 * 60));
-  if (hours < 1) return "Just now";
-  if (hours < 24) return `${hours}h ago`;
-  const days = Math.floor(hours / 24);
-  if (days < 7) return `${days}d ago`;
-  return new Date(iso).toLocaleDateString("en-GB", {
-    day: "numeric",
-    month: "short",
-    year: "numeric",
-  });
-}
 
 function ChevronIcon({ direction }: { direction: "left" | "right" }) {
   return (
@@ -147,13 +129,13 @@ export function NewsFeedCarousel({ items }: Props) {
             <div className="flex flex-1 flex-col p-4">
               <div className="flex items-center justify-between gap-2">
                 <span className="rounded bg-emerald/10 px-2 py-0.5 font-mono text-[10px] font-bold uppercase tracking-wide text-emerald">
-                  {SOURCE_LABELS[item.source]}
+                  {NEWS_SOURCE_LABELS[item.source]}
                 </span>
                 <time
                   dateTime={item.publishedAt}
                   className="font-mono text-[10px] text-charcoal/45"
                 >
-                  {formatRelativeTime(item.publishedAt)}
+                  {formatNewsRelativeTime(item.publishedAt)}
                 </time>
               </div>
               <h3 className="mt-2 flex-1 font-display text-sm font-extrabold uppercase leading-snug text-charcoal">
@@ -175,7 +157,7 @@ export function NewsFeedCarousel({ items }: Props) {
                 rel="noopener noreferrer"
                 className="mt-3 text-xs font-extrabold uppercase text-crimson hover:underline"
               >
-                Read on {SOURCE_LABELS[item.source]} →
+                Read on {NEWS_SOURCE_LABELS[item.source]} →
               </a>
             </div>
           </article>

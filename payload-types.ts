@@ -9,6 +9,40 @@ export type User = {
   createdAt: string;
 };
 
+export type Member = {
+  id: number;
+  email: string;
+  username: string;
+  name: string;
+  bio?: string | null;
+  avatar?: number | Media | null;
+  provider: "google" | "facebook";
+  providerAccountId?: string | null;
+  imageUrl?: string | null;
+  country?: string | null;
+  favoritePlayer?: string | null;
+  joinedAt: string;
+  updatedAt: string;
+  createdAt: string;
+};
+
+export type MemberPost = {
+  id: number;
+  author: number | Member;
+  body: string;
+  images?: (number | Media)[] | null;
+  createdAt: string;
+  updatedAt: string;
+};
+
+export type MemberFollow = {
+  id: number;
+  follower: number | Member;
+  following: number | Member;
+  createdAt: string;
+  updatedAt: string;
+};
+
 export type Media = {
   id: number;
   alt: string;
@@ -49,6 +83,21 @@ export type HeroSlide = {
   isActive?: boolean | null;
   visibleFrom?: string | null;
   visibleUntil?: string | null;
+  updatedAt: string;
+  createdAt: string;
+};
+
+/** Nightly cricket snapshots (rankings, tours, squads, venues) — see sync:cricket */
+export type CricketSnapshot = {
+  id: number;
+  key: string;
+  label: string;
+  fetchedAt: string;
+  data:
+    | Record<string, unknown>
+    | {
+        [k: string]: unknown;
+      };
   updatedAt: string;
   createdAt: string;
 };

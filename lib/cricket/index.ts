@@ -53,3 +53,5 @@ export { scrapeBangladeshLastMatch } from "@/lib/cricket/services/bangladesh-las
 export { getLiveCricketData } from "@/lib/cricket/services/live";
 export { getRankings } from "@/lib/cricket/services/rankings";
 export { getRankingsShowcase } from "@/lib/cricket/services/rankings-display";
+export { syncCricketSnapshots } from "@/lib/cricket/services/sync-cricket-snapshots";
+export { getToursIndexSnapshot } from "@/lib/cricket/services/tours";

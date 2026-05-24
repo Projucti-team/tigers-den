@@ -1,3 +1,5 @@
+import Link from "next/link";
+
 import { CountryFlag } from "@/components/CountryFlag";
 import type { TourCard } from "@/lib/cricket/services/tours-display";
 import { flagLabel } from "@/lib/cricket/tour-flags";
@@ -66,12 +68,12 @@ function TourCardArticle({ tour }: { tour: TourCard }) {
           {tour.title}
         </h3>
         <p className="mt-2 text-sm text-charcoal/75">{tour.description}</p>
-        <button
-          type="button"
-          className={`mt-4 w-full rounded py-2.5 text-xs font-extrabold uppercase text-white transition-colors ${buttonBg}`}
+        <Link
+          href={tour.href}
+          className={`mt-4 block w-full rounded py-2.5 text-center text-xs font-extrabold uppercase text-white transition-colors ${buttonBg}`}
         >
-          View Itinerary &amp; Pricing
-        </button>
+          Series details
+        </Link>
       </div>
     </article>
   );

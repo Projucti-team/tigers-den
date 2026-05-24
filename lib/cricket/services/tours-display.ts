@@ -1,19 +1,22 @@
+import { getFutureTours, getToursIndexSnapshot } from "@/lib/cricket/services/tours";
 import { tourFlagIsos } from "@/lib/cricket/tour-flags";
-import { getFutureTours } from "@/lib/cricket/services/tours";
+import { tourPath } from "@/lib/cricket/tour-slug";
+import { staleSnapshotWarning } from "@/lib/cricket/snapshot-db";
 import type { Tour } from "@/lib/cricket/types";
 
 export type TourCard = {
   id: string;
+  slug: string;
+  href: string;
   title: string;
   description: string;
   dateRange: string;
-  /** Opponent nation Bangladesh is playing (ISO 3166-1 alpha-2) */
   headerFlagIso: string;
   accent: "green" | "red";
   isHomeSeries: boolean;
 };
 
-function formatDateRange(tour: Tour): string {
+export function formatDateRange(tour: Tour): string {
   const opts: Intl.DateTimeFormatOptions = { day: "numeric", month: "short", year: "numeric" };
   const start = tour.startDate
     ? new Date(tour.startDate).toLocaleDateString("en-GB", opts)
@@ -55,13 +58,12 @@ export function isHomeSeries(name: string): boolean {
   return /\btour of bangladesh\b|\bin bangladesh\b/i.test(name);
 }
 
-/** Men's Bangladesh touring overseas (e.g. "Bangladesh tour of Australia"). */
 export function isAwaySeries(name: string): boolean {
   if (/women/i.test(name)) return false;
   return /bangladesh tour of/i.test(name);
 }
 
-function shortenTitle(name: string): string {
+export function shortenTitle(name: string): string {
   return name
     .replace(/,?\s*\d{4}(-\d{2})?$/i, "")
     .replace(/\s+tour\s+/i, " Tour ")
@@ -73,6 +75,8 @@ export function tourToCard(tour: Tour, _index: number): TourCard {
   const { headerIso } = tourFlagIsos(tour.name, home);
   return {
     id: tour.id,
+    slug: tourPath(tour).replace(/^\/tours\//, ""),
+    href: tourPath(tour),
     title: shortenTitle(tour.name),
     description: formatMatchTypes(tour),
     dateRange: formatDateRange(tour),
@@ -82,11 +86,30 @@ export function tourToCard(tour: Tour, _index: number): TourCard {
   };
 }
 
+/** Homepage cards — from nightly DB snapshot. */
 export async function getTourCards(limit = 3): Promise<{
   cards: TourCard[];
   featuredAway: TourCard | null;
   warnings: string[];
 }> {
+  const snapshot = await getToursIndexSnapshot();
+  if (snapshot) {
+    const warnings = [...snapshot.warnings];
+    const stale = staleSnapshotWarning(snapshot.fetchedAt, "Tours");
+    if (stale) warnings.push(stale);
+
+    const awayTour = snapshot.tours.find((t) => isAwaySeries(t.name));
+    const featuredAway = awayTour
+      ? snapshot.cards[snapshot.tours.findIndex((t) => t.id === awayTour.id)] ?? null
+      : null;
+
+    return {
+      cards: snapshot.cards.slice(0, limit),
+      featuredAway,
+      warnings,
+    };
+  }
+
   const { tours, warnings } = await getFutureTours({ bangladeshOnly: true });
   const awayTour = tours.find((t) => isAwaySeries(t.name));
   const cards = tours.slice(0, limit).map((t, i) => tourToCard(t, i));
