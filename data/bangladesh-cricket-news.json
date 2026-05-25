@@ -1,6 +1,24 @@
 {
-  "fetchedAt": "2026-05-24T06:42:22.628Z",
+  "fetchedAt": "2026-05-25T07:21:20.484Z",
   "items": [
+    {
+      "id": "cricbuzz-138913",
+      "title": "Mahmudullah set to join Bangladesh U-19 setup as mentor",
+      "summary": "The former Bangladesh captain is poised to begin his transition into coaching, with the BCB planning to involve him in its game development programme",
+      "url": "https://www.cricbuzz.com/cricket-news/138913/mahmudullah-set-to-join-bangladesh-u-19-setup-as-mentor",
+      "imageUrl": "https://static.cricbuzz.com/a/img/v1/540x303/i1/c992736/the-bcb-is-planning-to-appoint-mahmudullah-as-a-mentor-for-the-bangladesh-under-19-squad.jpg",
+      "source": "cricbuzz",
+      "publishedAt": "2026-05-25T07:21:20.365Z"
+    },
+    {
+      "id": "espn-https://www.espncricinfo.com/ci/content/story/1538200.html",
+      "title": "'Options' for Green's 2027 ODI World Cup role, David unavailable but selectors hopeful",
+      "summary": "Australia coach Andrew McDonald keen to trial Green in some different roles in Pakistan and Bangladesh in a bid to find finishing power after Maxwell's ODI retirement",
+      "url": "https://www.espncricinfo.com/story/options-for-greens-2027-odi-world-cup-role-david-unavailable-but-selectors-hopeful-1538200",
+      "imageUrl": "https://p.imgci.com/db/PICTURES/CMS/405300/405382.5.jpg",
+      "source": "espncricinfo",
+      "publishedAt": "2026-05-25T02:25:00.000Z"
+    },
     {
       "id": "espn-https://www.espncricinfo.com/ci/content/story/1537794.html",
       "title": "Bangladesh to tour Zimbabwe for all-format series in June-July",
@@ -36,42 +54,6 @@
       "imageUrl": "https://p.imgci.com/db/PICTURES/CMS/417200/417253.5.jpg",
       "source": "espncricinfo",
       "publishedAt": "2026-05-20T08:26:37.000Z"
-    },
-    {
-      "id": "espn-https://www.espncricinfo.com/ci/content/story/1537525.html",
-      "title": "'We'll bowl Pakistan out,' says Bangladesh bowling coach Shaun Tait",
-      "summary": "Bangladesh's bowling coach also praises Litton Das' wicketkeeping for helping break Pakistan's strong partnership",
-      "url": "https://www.espncricinfo.com/story/well-bowl-pakistan-out-says-bangladesh-bowling-coach-shaun-tait-1537525",
-      "imageUrl": "https://p.imgci.com/db/PICTURES/CMS/417200/417227.5.jpg",
-      "source": "espncricinfo",
-      "publishedAt": "2026-05-19T17:16:20.000Z"
-    },
-    {
-      "id": "espn-https://www.espncricinfo.com/ci/content/story/1537529.html",
-      "title": "Tempers flare between Litton and Rizwan in Sylhet",
-      "summary": "Bangladesh's fielders got stuck into the Pakistan batter during the chase on the fourth day in Sylhet",
-      "url": "https://www.espncricinfo.com/story/tempers-flare-between-litton-das-and-mohammad-rizwan-in-sylhet-test-1537529",
-      "imageUrl": "https://p.imgci.com/db/PICTURES/CMS/417200/417232.5.jpg",
-      "source": "espncricinfo",
-      "publishedAt": "2026-05-19T16:30:43.000Z"
-    },
-    {
-      "id": "espn-https://www.espncricinfo.com/ci/content/story/1537509.html",
-      "title": "Batting coach Asad Shafiq hopeful of improbable Pakistan victory",
-      "summary": "Chasing 437 to level the series in Sylhet, Pakistan need 121 runs to win with only three wickets in hand",
-      "url": "https://www.espncricinfo.com/story/batting-coach-asad-shafiq-hopeful-of-improbable-pakistan-victory-in-sylhet-1537509",
-      "imageUrl": "https://p.imgci.com/db/PICTURES/CMS/417200/417233.5.jpg",
-      "source": "espncricinfo",
-      "publishedAt": "2026-05-19T14:34:35.000Z"
-    },
-    {
-      "id": "espn-https://www.espncricinfo.com/ci/content/story/1537462.html",
-      "title": "Rizwan and Agha resist but Bangladesh on course for 2-0 sweep",
-      "summary": "Going into the fifth day in Sylhet, the hosts need three wickets to wrap up victory",
-      "url": "https://www.espncricinfo.com/story/ban-vs-pak-2nd-wtc-test-mohammad-rizwan-and-salman-ali-agha-resist-but-bangladesh-on-course-for-2-0-sweep-1537462",
-      "imageUrl": "https://p.imgci.com/db/PICTURES/CMS/417200/417228.5.jpg",
-      "source": "espncricinfo",
-      "publishedAt": "2026-05-19T12:21:19.000Z"
     }
   ]
 }
