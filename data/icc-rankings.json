@@ -1,5 +1,5 @@
 {
-  "fetchedAt": "2026-05-25T06:22:39.255Z",
+  "fetchedAt": "2026-05-26T06:02:02.973Z",
   "source": "icc-sportz.io",
   "sourceUrl": "https://www.icc-cricket.com/rankings",
   "men": {
@@ -510,9 +510,9 @@
           "rank": 33,
           "name": "Kenya",
           "abbreviation": "KEN",
-          "rating": 105,
-          "points": 3557,
-          "matches": 34
+          "rating": 102,
+          "points": 3572,
+          "matches": 35
         },
         {
           "rank": 34,
@@ -636,19 +636,19 @@
         },
         {
           "rank": 49,
+          "name": "Botswana",
+          "abbreviation": "BOT",
+          "rating": 50,
+          "points": 1437,
+          "matches": 29
+        },
+        {
+          "rank": 50,
           "name": "Switzerland",
           "abbreviation": "CHE",
           "rating": 49,
           "points": 1085,
           "matches": 22
-        },
-        {
-          "rank": 50,
-          "name": "Botswana",
-          "abbreviation": "BOT",
-          "rating": 49,
-          "points": 1311,
-          "matches": 27
         },
         {
           "rank": 51,
@@ -692,19 +692,19 @@
         },
         {
           "rank": 56,
+          "name": "Rwanda",
+          "abbreviation": "RWA",
+          "rating": 42,
+          "points": 2289,
+          "matches": 54
+        },
+        {
+          "rank": 57,
           "name": "Philippines",
           "abbreviation": "PHI",
           "rating": 41,
           "points": 1191,
           "matches": 29
-        },
-        {
-          "rank": 57,
-          "name": "Rwanda",
-          "abbreviation": "RWA",
-          "rating": 41,
-          "points": 2107,
-          "matches": 52
         },
         {
           "rank": 58,
@@ -884,6 +884,14 @@
         },
         {
           "rank": 80,
+          "name": "Cameroon",
+          "abbreviation": "CMR",
+          "rating": 14,
+          "points": 99,
+          "matches": 7
+        },
+        {
+          "rank": 81,
           "name": "Brazil",
           "abbreviation": "BRA",
           "rating": 12,
@@ -891,15 +899,15 @@
           "matches": 13
         },
         {
-          "rank": 81,
+          "rank": 82,
           "name": "Sierra Leone",
           "abbreviation": "SRL",
-          "rating": 11,
-          "points": 244,
-          "matches": 22
+          "rating": 9,
+          "points": 202,
+          "matches": 23
         },
         {
-          "rank": 82,
+          "rank": 83,
           "name": "Maldives",
           "abbreviation": "MDV",
           "rating": 9,
@@ -907,7 +915,7 @@
           "matches": 13
         },
         {
-          "rank": 83,
+          "rank": 84,
           "name": "Bulgaria",
           "abbreviation": "BUL",
           "rating": 8,
@@ -915,7 +923,7 @@
           "matches": 20
         },
         {
-          "rank": 84,
+          "rank": 85,
           "name": "Suriname",
           "abbreviation": "SUR",
           "rating": 8,
@@ -923,15 +931,15 @@
           "matches": 10
         },
         {
-          "rank": 85,
-          "name": "Cameroon",
-          "abbreviation": "CMR",
-          "rating": 8,
-          "points": 39,
-          "matches": 5
+          "rank": 86,
+          "name": "Mali",
+          "abbreviation": "MLI",
+          "rating": 7,
+          "points": 50,
+          "matches": 7
         },
         {
-          "rank": 86,
+          "rank": 87,
           "name": "Croatia",
           "abbreviation": "CRO",
           "rating": 7,
@@ -939,7 +947,7 @@
           "matches": 24
         },
         {
-          "rank": 87,
+          "rank": 88,
           "name": "Seychelles",
           "abbreviation": "SEY",
           "rating": 7,
@@ -947,7 +955,7 @@
           "matches": 7
         },
         {
-          "rank": 88,
+          "rank": 89,
           "name": "Mozambique",
           "abbreviation": "MOZ",
           "rating": 7,
@@ -955,7 +963,7 @@
           "matches": 10
         },
         {
-          "rank": 89,
+          "rank": 90,
           "name": "China",
           "abbreviation": "CHN",
           "rating": 5,
@@ -963,7 +971,7 @@
           "matches": 6
         },
         {
-          "rank": 90,
+          "rank": 91,
           "name": "Turkiye",
           "abbreviation": "TUR",
           "rating": 4,
@@ -971,7 +979,7 @@
           "matches": 8
         },
         {
-          "rank": 91,
+          "rank": 92,
           "name": "FIJ",
           "abbreviation": "FIJ",
           "rating": 2,
@@ -979,7 +987,7 @@
           "matches": 9
         },
         {
-          "rank": 92,
+          "rank": 93,
           "name": "Timor-Leste",
           "abbreviation": "TL",
           "rating": 0,
@@ -987,7 +995,7 @@
           "matches": 8
         },
         {
-          "rank": 92,
+          "rank": 93,
           "name": "Mongolia",
           "abbreviation": "MNG",
           "rating": 0,
@@ -995,7 +1003,7 @@
           "matches": 7
         },
         {
-          "rank": 92,
+          "rank": 93,
           "name": "St.Helena",
           "abbreviation": "SHN",
           "rating": 0,
@@ -1003,7 +1011,7 @@
           "matches": 7
         },
         {
-          "rank": 92,
+          "rank": 93,
           "name": "Slovenia",
           "abbreviation": "SVN",
           "rating": 0,
@@ -1011,7 +1019,7 @@
           "matches": 17
         },
         {
-          "rank": 92,
+          "rank": 93,
           "name": "Myanmar",
           "abbreviation": "MMR",
           "rating": 0,
@@ -1019,15 +1027,7 @@
           "matches": 23
         },
         {
-          "rank": 92,
-          "name": "Mali",
-          "abbreviation": "MLI",
-          "rating": 0,
-          "points": 0,
-          "matches": 5
-        },
-        {
-          "rank": 92,
+          "rank": 93,
           "name": "Lesotho",
           "abbreviation": "LES",
           "rating": 0,
@@ -1035,7 +1035,7 @@
           "matches": 10
         },
         {
-          "rank": 92,
+          "rank": 93,
           "name": "Costa Rica",
           "abbreviation": "CRI",
           "rating": 0,
@@ -1774,9 +1774,9 @@
           "rank": 2,
           "name": "England",
           "abbreviation": "ENG",
-          "rating": 273,
-          "points": 7370,
-          "matches": 27
+          "rating": 274,
+          "points": 7675,
+          "matches": 28
         },
         {
           "rank": 3,
@@ -1790,9 +1790,9 @@
           "rank": 4,
           "name": "New Zealand",
           "abbreviation": "NZ",
-          "rating": 255,
-          "points": 6626,
-          "matches": 26
+          "rating": 254,
+          "points": 6849,
+          "matches": 27
         },
         {
           "rank": 5,
