@@ -1,14 +1,14 @@
 {
-  "fetchedAt": "2026-05-25T07:21:20.484Z",
+  "fetchedAt": "2026-05-26T06:53:20.441Z",
   "items": [
     {
-      "id": "cricbuzz-138913",
-      "title": "Mahmudullah set to join Bangladesh U-19 setup as mentor",
-      "summary": "The former Bangladesh captain is poised to begin his transition into coaching, with the BCB planning to involve him in its game development programme",
-      "url": "https://www.cricbuzz.com/cricket-news/138913/mahmudullah-set-to-join-bangladesh-u-19-setup-as-mentor",
-      "imageUrl": "https://static.cricbuzz.com/a/img/v1/540x303/i1/c992736/the-bcb-is-planning-to-appoint-mahmudullah-as-a-mentor-for-the-bangladesh-under-19-squad.jpg",
+      "id": "cricbuzz-138924",
+      "title": "Minhajul set to become BCB director unopposed from Chattogram",
+      "summary": "A long-time BCB official and former chief selector, Minhajul Abedin is set for a new role as board director",
+      "url": "https://www.cricbuzz.com/cricket-news/138924/minhajul-set-to-become-bcb-director-unopposed-from-chattogram",
+      "imageUrl": "https://static.cricbuzz.com/a/img/v1/540x303/i1/c993781/a-long-time-bcb-official-and-former-chief-selector-minhajul-is-set-for-a-new-role-as-board-director.jpg",
       "source": "cricbuzz",
-      "publishedAt": "2026-05-25T07:21:20.365Z"
+      "publishedAt": "2026-05-26T06:53:19.781Z"
     },
     {
       "id": "espn-https://www.espncricinfo.com/ci/content/story/1538200.html",
@@ -27,33 +27,6 @@
       "imageUrl": "https://p.imgci.com/db/PICTURES/CMS/399600/399668.6.jpg",
       "source": "espncricinfo",
       "publishedAt": "2026-05-22T10:01:16.000Z"
-    },
-    {
-      "id": "espn-https://www.espncricinfo.com/ci/content/story/1537593.html",
-      "title": "Shanto praises 'healthy competition' within bowling unit after series win",
-      "summary": "Bangladesh captain highlighted the bowlers' consistency and competitiveness as central to the series victory against Pakistan",
-      "url": "https://www.espncricinfo.com/story/ban-vs-pak-shanto-praises-healthy-competition-within-bowling-unit-after-series-win-1537593",
-      "imageUrl": "https://p.imgci.com/db/PICTURES/CMS/417200/417254.5.jpg",
-      "source": "espncricinfo",
-      "publishedAt": "2026-05-20T11:00:59.000Z"
-    },
-    {
-      "id": "espn-https://www.espncricinfo.com/ci/content/story/1537589.html",
-      "title": "Masood leaves captaincy future to PCB but calls for 'structural' changes",
-      "summary": "After a series loss to Bangladesh, Pakistan captain urged his side to reflect on recurring failures and address the \"root causes\" behind their slide in Tests",
-      "url": "https://www.espncricinfo.com/story/ban-vs-pak-shan-masood-leaves-captaincy-future-to-pcb-but-calls-for-structural-changes-1537589",
-      "imageUrl": "https://p.imgci.com/db/PICTURES/CMS/417200/417222.5.jpg",
-      "source": "espncricinfo",
-      "publishedAt": "2026-05-20T09:59:29.000Z"
-    },
-    {
-      "id": "espn-https://www.espncricinfo.com/ci/content/story/1537575.html",
-      "title": "Taijul takes six as Bangladesh complete 2-0 sweep",
-      "summary": "Rizwan's 94 went in vain as Pakistan fell 78 short of their target of 437",
-      "url": "https://www.espncricinfo.com/story/taijul-islam-takes-six-as-bangladesh-complete-2-0-sweep-1537575",
-      "imageUrl": "https://p.imgci.com/db/PICTURES/CMS/417200/417253.5.jpg",
-      "source": "espncricinfo",
-      "publishedAt": "2026-05-20T08:26:37.000Z"
     }
   ]
 }
