@@ -1,5 +1,5 @@
 {
-  "fetchedAt": "2026-05-26T06:02:02.973Z",
+  "fetchedAt": "2026-05-27T06:15:20.076Z",
   "source": "icc-sportz.io",
   "sourceUrl": "https://www.icc-cricket.com/rankings",
   "men": {
@@ -511,8 +511,8 @@
           "name": "Kenya",
           "abbreviation": "KEN",
           "rating": 102,
-          "points": 3572,
-          "matches": 35
+          "points": 3684,
+          "matches": 36
         },
         {
           "rank": 34,
@@ -694,9 +694,9 @@
           "rank": 56,
           "name": "Rwanda",
           "abbreviation": "RWA",
-          "rating": 42,
-          "points": 2289,
-          "matches": 54
+          "rating": 43,
+          "points": 2346,
+          "matches": 55
         },
         {
           "rank": 57,
@@ -852,6 +852,14 @@
         },
         {
           "rank": 76,
+          "name": "Cameroon",
+          "abbreviation": "CMR",
+          "rating": 19,
+          "points": 149,
+          "matches": 8
+        },
+        {
+          "rank": 77,
           "name": "Korea",
           "abbreviation": "KOR",
           "rating": 17,
@@ -859,7 +867,7 @@
           "matches": 17
         },
         {
-          "rank": 77,
+          "rank": 78,
           "name": "Gibraltar",
           "abbreviation": "GIB",
           "rating": 17,
@@ -867,7 +875,7 @@
           "matches": 21
         },
         {
-          "rank": 78,
+          "rank": 79,
           "name": "Luxembourg",
           "abbreviation": "LUX",
           "rating": 16,
@@ -875,20 +883,12 @@
           "matches": 16
         },
         {
-          "rank": 79,
+          "rank": 80,
           "name": "Serbia",
           "abbreviation": "SER",
           "rating": 14,
           "points": 275,
           "matches": 19
-        },
-        {
-          "rank": 80,
-          "name": "Cameroon",
-          "abbreviation": "CMR",
-          "rating": 14,
-          "points": 99,
-          "matches": 7
         },
         {
           "rank": 81,
@@ -900,19 +900,19 @@
         },
         {
           "rank": 82,
-          "name": "Sierra Leone",
-          "abbreviation": "SRL",
-          "rating": 9,
-          "points": 202,
-          "matches": 23
-        },
-        {
-          "rank": 83,
           "name": "Maldives",
           "abbreviation": "MDV",
           "rating": 9,
           "points": 112,
           "matches": 13
+        },
+        {
+          "rank": 83,
+          "name": "Sierra Leone",
+          "abbreviation": "SRL",
+          "rating": 8,
+          "points": 201,
+          "matches": 24
         },
         {
           "rank": 84,
@@ -932,14 +932,6 @@
         },
         {
           "rank": 86,
-          "name": "Mali",
-          "abbreviation": "MLI",
-          "rating": 7,
-          "points": 50,
-          "matches": 7
-        },
-        {
-          "rank": 87,
           "name": "Croatia",
           "abbreviation": "CRO",
           "rating": 7,
@@ -947,7 +939,7 @@
           "matches": 24
         },
         {
-          "rank": 88,
+          "rank": 87,
           "name": "Seychelles",
           "abbreviation": "SEY",
           "rating": 7,
@@ -955,12 +947,20 @@
           "matches": 7
         },
         {
-          "rank": 89,
+          "rank": 88,
           "name": "Mozambique",
           "abbreviation": "MOZ",
           "rating": 7,
           "points": 65,
           "matches": 10
+        },
+        {
+          "rank": 89,
+          "name": "Mali",
+          "abbreviation": "MLI",
+          "rating": 5,
+          "points": 42,
+          "matches": 8
         },
         {
           "rank": 90,
@@ -993,6 +993,14 @@
           "rating": 0,
           "points": 0,
           "matches": 8
+        },
+        {
+          "rank": 93,
+          "name": "CIV",
+          "abbreviation": "CIV",
+          "rating": 0,
+          "points": 0,
+          "matches": 6
         },
         {
           "rank": 93,
@@ -1854,9 +1862,9 @@
           "rank": 12,
           "name": "Thailand",
           "abbreviation": "THA",
-          "rating": 151,
-          "points": 7271,
-          "matches": 48
+          "rating": 152,
+          "points": 7432,
+          "matches": 49
         },
         {
           "rank": 13,
@@ -1924,14 +1932,6 @@
         },
         {
           "rank": 21,
-          "name": "Indonesia",
-          "abbreviation": "INA",
-          "rating": 95,
-          "points": 2669,
-          "matches": 28
-        },
-        {
-          "rank": 22,
           "name": "Nepal",
           "abbreviation": "NEP",
           "rating": 95,
@@ -1939,12 +1939,20 @@
           "matches": 43
         },
         {
+          "rank": 22,
+          "name": "Indonesia",
+          "abbreviation": "INA",
+          "rating": 92,
+          "points": 2674,
+          "matches": 29
+        },
+        {
           "rank": 23,
           "name": "Hong Kong",
           "abbreviation": "HK",
           "rating": 92,
-          "points": 4148,
-          "matches": 45
+          "points": 4230,
+          "matches": 46
         },
         {
           "rank": 24,
@@ -2092,19 +2100,19 @@
         },
         {
           "rank": 42,
+          "name": "China",
+          "abbreviation": "CHN",
+          "rating": 40,
+          "points": 1049,
+          "matches": 26
+        },
+        {
+          "rank": 43,
           "name": "Sierra Leone",
           "abbreviation": "SRL",
           "rating": 38,
           "points": 989,
           "matches": 26
-        },
-        {
-          "rank": 43,
-          "name": "China",
-          "abbreviation": "CHN",
-          "rating": 37,
-          "points": 922,
-          "matches": 25
         },
         {
           "rank": 44,
@@ -2673,26 +2681,36 @@
           },
           {
             "rank": 2,
+            "name": "Linsey Smith",
+            "team": "England",
+            "rating": 730,
+            "points": 730,
+            "iccPlayerId": "69760",
+            "profileUrl": "https://www.icc-cricket.com/rankings/69760/linsey-smith",
+            "imageUrl": "https://images.icc-cricket.com/image/upload/t_player-headshot-portrait-lg-webp/prd/assets/players/generic/colored/69760.png"
+          },
+          {
+            "rank": 3,
             "name": "Sophie Ecclestone",
             "team": "England",
-            "rating": 727,
-            "points": 727,
+            "rating": 723,
+            "points": 723,
             "iccPlayerId": "66391",
             "profileUrl": "https://www.icc-cricket.com/rankings/66391/sophie-ecclestone",
             "imageUrl": "https://images.icc-cricket.com/image/upload/t_player-headshot-portrait-lg-webp/prd/assets/players/generic/colored/66391.png"
           },
           {
-            "rank": 3,
+            "rank": 4,
             "name": "Lauren Bell",
             "team": "England",
-            "rating": 714,
-            "points": 714,
+            "rating": 722,
+            "points": 722,
             "iccPlayerId": "69906",
             "profileUrl": "https://www.icc-cricket.com/rankings/69906/lauren-bell",
             "imageUrl": "https://images.icc-cricket.com/image/upload/t_player-headshot-portrait-lg-webp/prd/assets/players/generic/colored/69906.png"
           },
           {
-            "rank": 4,
+            "rank": 5,
             "name": "Deepti Sharma",
             "team": "India",
             "rating": 713,
@@ -2700,32 +2718,11 @@
             "iccPlayerId": "65146",
             "profileUrl": "https://www.icc-cricket.com/rankings/65146/deepti-sharma",
             "imageUrl": "https://images.icc-cricket.com/image/upload/t_player-headshot-portrait-lg-webp/prd/assets/players/generic/colored/65146.png"
-          },
-          {
-            "rank": 4,
-            "rankTied": true,
-            "name": "Nonkululeko Mlaba",
-            "team": "South Africa",
-            "rating": 713,
-            "points": 713,
-            "iccPlayerId": "73258",
-            "profileUrl": "https://www.icc-cricket.com/rankings/73258/nonkululeko-mlaba",
-            "imageUrl": "https://images.icc-cricket.com/image/upload/t_player-headshot-portrait-lg-webp/prd/assets/players/generic/colored/73258.png"
           }
         ],
         "topAllRounders": [
           {
             "rank": 1,
-            "name": "Amelia Kerr",
-            "team": "New Zealand",
-            "rating": 508,
-            "points": 508,
-            "iccPlayerId": "66632",
-            "profileUrl": "https://www.icc-cricket.com/rankings/66632/amelia-kerr",
-            "imageUrl": "https://images.icc-cricket.com/image/upload/t_player-headshot-portrait-lg-webp/prd/assets/players/generic/colored/66632.png"
-          },
-          {
-            "rank": 2,
             "name": "Hayley Matthews",
             "team": "West Indies",
             "rating": 483,
@@ -2733,6 +2730,16 @@
             "iccPlayerId": "64970",
             "profileUrl": "https://www.icc-cricket.com/rankings/64970/hayley-matthews",
             "imageUrl": "https://images.icc-cricket.com/image/upload/t_player-headshot-portrait-lg-webp/prd/assets/players/generic/colored/64970.png"
+          },
+          {
+            "rank": 2,
+            "name": "Amelia Kerr",
+            "team": "New Zealand",
+            "rating": 478,
+            "points": 478,
+            "iccPlayerId": "66632",
+            "profileUrl": "https://www.icc-cricket.com/rankings/66632/amelia-kerr",
+            "imageUrl": "https://images.icc-cricket.com/image/upload/t_player-headshot-portrait-lg-webp/prd/assets/players/generic/colored/66632.png"
           },
           {
             "rank": 3,
@@ -2767,16 +2774,17 @@
         ],
         "topBangladeshBatsman": {
           "rank": 24,
-          "name": "Nigar Sultana Joty",
+          "name": "Nigar Sultana",
           "team": "Bangladesh",
           "rating": 582,
           "points": 582,
           "iccPlayerId": "65720",
-          "profileUrl": "https://www.icc-cricket.com/rankings/65720/nigar-sultana-joty",
+          "profileUrl": "https://www.icc-cricket.com/rankings/65720/nigar-sultana",
           "imageUrl": "https://images.icc-cricket.com/image/upload/t_player-headshot-portrait-lg-webp/prd/assets/players/generic/colored/65720.png"
         },
         "topBangladeshBowler": {
-          "rank": 18,
+          "rank": 17,
+          "rankTied": true,
           "name": "Rabeya Khan",
           "team": "Bangladesh",
           "rating": 641,
