@@ -1,15 +1,6 @@
 {
-  "fetchedAt": "2026-05-27T07:10:51.294Z",
+  "fetchedAt": "2026-05-28T07:00:33.165Z",
   "items": [
-    {
-      "id": "cricbuzz-138935",
-      "title": "Ankle injury rules Mitchell Marsh out of Pakistan series",
-      "summary": "Josh Inglis to lead Australia, with Marsh's availability for the Bangladesh tour to be determined in due course of time",
-      "url": "https://www.cricbuzz.com/cricket-news/138935/ankle-injury-rules-mitchell-marsh-out-of-pakistan-series",
-      "imageUrl": "https://static.cricbuzz.com/a/img/v1/540x303/i1/c994013/mitchell-marsh-will-miss-the-white-ball-series-vs-pakistan.jpg",
-      "source": "cricbuzz",
-      "publishedAt": "2026-05-27T07:10:50.776Z"
-    },
     {
       "id": "espn-https://www.espncricinfo.com/ci/content/story/1538325.html",
       "title": "Marsh out of Pakistan series with ankle injury, Inglis to captain",
@@ -27,15 +18,6 @@
       "imageUrl": "https://p.imgci.com/db/PICTURES/CMS/405300/405382.5.jpg",
       "source": "espncricinfo",
       "publishedAt": "2026-05-25T02:25:00.000Z"
-    },
-    {
-      "id": "espn-https://www.espncricinfo.com/ci/content/story/1537794.html",
-      "title": "Bangladesh to tour Zimbabwe for all-format series in June-July",
-      "summary": "Upcoming series will mark Zimbabwe's first home assignment this year, and their first international action since the T20 World Cup",
-      "url": "https://www.espncricinfo.com/story/bangladesh-to-tour-zimbabwe-for-all-format-series-in-june-july-1537794",
-      "imageUrl": "https://p.imgci.com/db/PICTURES/CMS/399600/399668.6.jpg",
-      "source": "espncricinfo",
-      "publishedAt": "2026-05-22T10:01:16.000Z"
     }
   ]
 }
