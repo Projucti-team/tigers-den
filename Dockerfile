@@ -31,6 +31,8 @@ RUN apk add --no-cache wget \
 COPY --from=builder /app/public ./public
 COPY --from=builder --chown=nextjs:nodejs /app/.next/standalone ./
 COPY --from=builder --chown=nextjs:nodejs /app/.next/static ./.next/static
+# Ensure libsql native bindings are present for sqlite adapter on alpine.
+COPY --from=deps /app/node_modules/@libsql ./node_modules/@libsql
 COPY --from=builder /app/data ./data-seed
 COPY --from=builder /app/media ./media-seed
 COPY --chown=nextjs:nodejs deploy/docker-entrypoint.sh /app/docker-entrypoint.sh
