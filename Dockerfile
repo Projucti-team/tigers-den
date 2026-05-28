@@ -10,8 +10,12 @@ RUN npm ci
 FROM base AS builder
 COPY --from=deps /app/node_modules ./node_modules
 COPY . .
+# Ensure seed directories always exist even if absent in git.
+RUN mkdir -p /app/data /app/media
 ENV NEXT_TELEMETRY_DISABLED=1
 ENV DOCKER_BUILD=1
+# Keep Node heap bounded on 4 GB VPS hosts during image build
+ENV NODE_OPTIONS=--max-old-space-size=3072
 RUN npm run build
 
 FROM base AS runner
