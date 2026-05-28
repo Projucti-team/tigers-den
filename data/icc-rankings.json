@@ -1,5 +1,5 @@
 {
-  "fetchedAt": "2026-05-27T06:15:20.076Z",
+  "fetchedAt": "2026-05-28T06:07:06.614Z",
   "source": "icc-sportz.io",
   "sourceUrl": "https://www.icc-cricket.com/rankings",
   "men": {
@@ -1176,13 +1176,13 @@
           },
           {
             "rank": 5,
-            "name": "Noman Ali",
-            "team": "Pakistan",
+            "name": "Marco Jansen",
+            "team": "South Africa",
             "rating": 825,
             "points": 825,
-            "iccPlayerId": "14291",
-            "profileUrl": "https://www.icc-cricket.com/rankings/14291/noman-ali",
-            "imageUrl": "https://images.icc-cricket.com/image/upload/t_player-headshot-portrait-lg-webp/prd/assets/players/generic/colored/14291.png"
+            "iccPlayerId": "69409",
+            "profileUrl": "https://www.icc-cricket.com/rankings/69409/marco-jansen",
+            "imageUrl": "https://images.icc-cricket.com/image/upload/t_player-headshot-portrait-lg-webp/prd/assets/players/generic/colored/69409.png"
           }
         ],
         "topAllRounders": [
@@ -1220,8 +1220,8 @@
             "rank": 4,
             "name": "Mehidy Hasan Miraz",
             "team": "Bangladesh",
-            "rating": 298,
-            "points": 298,
+            "rating": 290,
+            "points": 290,
             "iccPlayerId": "63875",
             "profileUrl": "https://www.icc-cricket.com/rankings/63875/mehidy-hasan-miraz",
             "imageUrl": "https://images.icc-cricket.com/image/upload/t_player-headshot-portrait-lg-webp/prd/assets/players/generic/colored/63875.png"
@@ -1238,22 +1238,21 @@
           }
         ],
         "topBangladeshBatsman": {
-          "rank": 23,
-          "rankTied": true,
-          "name": "Najmul Hossain Shanto",
+          "rank": 16,
+          "name": "Mushfiqur Rahim",
           "team": "Bangladesh",
-          "rating": 649,
-          "points": 649,
-          "iccPlayerId": "63872",
-          "profileUrl": "https://www.icc-cricket.com/rankings/63872/najmul-hossain-shanto",
-          "imageUrl": "https://images.icc-cricket.com/image/upload/t_player-headshot-portrait-lg-webp/prd/assets/players/generic/colored/63872.png"
+          "rating": 681,
+          "points": 681,
+          "iccPlayerId": "3693",
+          "profileUrl": "https://www.icc-cricket.com/rankings/3693/mushfiqur-rahim",
+          "imageUrl": "https://images.icc-cricket.com/image/upload/t_player-headshot-portrait-lg-webp/prd/assets/players/generic/colored/3693.png"
         },
         "topBangladeshBowler": {
-          "rank": 13,
+          "rank": 11,
           "name": "Taijul Islam",
           "team": "Bangladesh",
-          "rating": 704,
-          "points": 704,
+          "rating": 732,
+          "points": 732,
           "iccPlayerId": "35665",
           "profileUrl": "https://www.icc-cricket.com/rankings/35665/taijul-islam",
           "imageUrl": "https://images.icc-cricket.com/image/upload/t_player-headshot-portrait-lg-webp/prd/assets/players/generic/colored/35665.png"
@@ -1262,8 +1261,8 @@
           "rank": 4,
           "name": "Mehidy Hasan Miraz",
           "team": "Bangladesh",
-          "rating": 298,
-          "points": 298,
+          "rating": 290,
+          "points": 290,
           "iccPlayerId": "63875",
           "profileUrl": "https://www.icc-cricket.com/rankings/63875/mehidy-hasan-miraz",
           "imageUrl": "https://images.icc-cricket.com/image/upload/t_player-headshot-portrait-lg-webp/prd/assets/players/generic/colored/63875.png"
@@ -1863,8 +1862,8 @@
           "name": "Thailand",
           "abbreviation": "THA",
           "rating": 152,
-          "points": 7432,
-          "matches": 49
+          "points": 7594,
+          "matches": 50
         },
         {
           "rank": 13,
@@ -1935,8 +1934,8 @@
           "name": "Nepal",
           "abbreviation": "NEP",
           "rating": 95,
-          "points": 4077,
-          "matches": 43
+          "points": 4182,
+          "matches": 44
         },
         {
           "rank": 22,
@@ -1950,9 +1949,9 @@
           "rank": 23,
           "name": "Hong Kong",
           "abbreviation": "HK",
-          "rating": 92,
-          "points": 4230,
-          "matches": 46
+          "rating": 90,
+          "points": 4245,
+          "matches": 47
         },
         {
           "rank": 24,
@@ -1988,6 +1987,14 @@
         },
         {
           "rank": 28,
+          "name": "Malaysia",
+          "abbreviation": "MAS",
+          "rating": 67,
+          "points": 2996,
+          "matches": 45
+        },
+        {
+          "rank": 29,
           "name": "Germany",
           "abbreviation": "GER",
           "rating": 66,
@@ -1995,20 +2002,12 @@
           "matches": 25
         },
         {
-          "rank": 29,
+          "rank": 30,
           "name": "Vanuatu",
           "abbreviation": "VUT",
           "rating": 65,
           "points": 1762,
           "matches": 27
-        },
-        {
-          "rank": 30,
-          "name": "Malaysia",
-          "abbreviation": "MAS",
-          "rating": 65,
-          "points": 2799,
-          "matches": 43
         },
         {
           "rank": 31,
@@ -2103,8 +2102,8 @@
           "name": "China",
           "abbreviation": "CHN",
           "rating": 40,
-          "points": 1049,
-          "matches": 26
+          "points": 1079,
+          "matches": 27
         },
         {
           "rank": 43,
