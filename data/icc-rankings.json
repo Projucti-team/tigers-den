@@ -1,5 +1,5 @@
 {
-  "fetchedAt": "2026-05-28T06:07:06.614Z",
+  "fetchedAt": "2026-05-29T06:08:44.966Z",
   "source": "icc-sportz.io",
   "sourceUrl": "https://www.icc-cricket.com/rankings",
   "men": {
@@ -510,9 +510,9 @@
           "rank": 33,
           "name": "Kenya",
           "abbreviation": "KEN",
-          "rating": 102,
-          "points": 3684,
-          "matches": 36
+          "rating": 103,
+          "points": 3796,
+          "matches": 37
         },
         {
           "rank": 34,
@@ -639,8 +639,8 @@
           "name": "Botswana",
           "abbreviation": "BOT",
           "rating": 50,
-          "points": 1437,
-          "matches": 29
+          "points": 1497,
+          "matches": 30
         },
         {
           "rank": 50,
@@ -695,8 +695,8 @@
           "name": "Rwanda",
           "abbreviation": "RWA",
           "rating": 43,
-          "points": 2346,
-          "matches": 55
+          "points": 2404,
+          "matches": 56
         },
         {
           "rank": 57,
@@ -854,9 +854,9 @@
           "rank": 76,
           "name": "Cameroon",
           "abbreviation": "CMR",
-          "rating": 19,
-          "points": 149,
-          "matches": 8
+          "rating": 18,
+          "points": 158,
+          "matches": 9
         },
         {
           "rank": 77,
@@ -908,14 +908,6 @@
         },
         {
           "rank": 83,
-          "name": "Sierra Leone",
-          "abbreviation": "SRL",
-          "rating": 8,
-          "points": 201,
-          "matches": 24
-        },
-        {
-          "rank": 84,
           "name": "Bulgaria",
           "abbreviation": "BUL",
           "rating": 8,
@@ -923,12 +915,20 @@
           "matches": 20
         },
         {
-          "rank": 85,
+          "rank": 84,
           "name": "Suriname",
           "abbreviation": "SUR",
           "rating": 8,
           "points": 82,
           "matches": 10
+        },
+        {
+          "rank": 85,
+          "name": "Sierra Leone",
+          "abbreviation": "SRL",
+          "rating": 8,
+          "points": 194,
+          "matches": 25
         },
         {
           "rank": 86,
@@ -1000,7 +1000,7 @@
           "abbreviation": "CIV",
           "rating": 0,
           "points": 0,
-          "matches": 6
+          "matches": 7
         },
         {
           "rank": 93,
@@ -1781,17 +1781,17 @@
           "rank": 2,
           "name": "England",
           "abbreviation": "ENG",
-          "rating": 274,
-          "points": 7675,
-          "matches": 28
+          "rating": 272,
+          "points": 7889,
+          "matches": 29
         },
         {
           "rank": 3,
           "name": "India",
           "abbreviation": "IND",
-          "rating": 264,
-          "points": 8722,
-          "matches": 33
+          "rating": 266,
+          "points": 9046,
+          "matches": 34
         },
         {
           "rank": 4,
@@ -1814,8 +1814,8 @@
           "name": "West Indies",
           "abbreviation": "WI",
           "rating": 238,
-          "points": 5712,
-          "matches": 24
+          "points": 5962,
+          "matches": 25
         },
         {
           "rank": 7,
@@ -1838,8 +1838,8 @@
           "name": "Ireland",
           "abbreviation": "IRE",
           "rating": 200,
-          "points": 6799,
-          "matches": 34
+          "points": 6987,
+          "matches": 35
         },
         {
           "rank": 10,
@@ -1853,9 +1853,9 @@
           "rank": 11,
           "name": "Scotland",
           "abbreviation": "SCO",
-          "rating": 162,
-          "points": 4711,
-          "matches": 29
+          "rating": 163,
+          "points": 4901,
+          "matches": 30
         },
         {
           "rank": 12,
@@ -1878,8 +1878,8 @@
           "name": "Netherlands",
           "abbreviation": "NED",
           "rating": 140,
-          "points": 5614,
-          "matches": 40
+          "points": 5726,
+          "matches": 41
         },
         {
           "rank": 15,
@@ -1933,17 +1933,17 @@
           "rank": 21,
           "name": "Nepal",
           "abbreviation": "NEP",
-          "rating": 95,
-          "points": 4182,
-          "matches": 44
+          "rating": 96,
+          "points": 4324,
+          "matches": 45
         },
         {
           "rank": 22,
           "name": "Indonesia",
           "abbreviation": "INA",
-          "rating": 92,
-          "points": 2674,
-          "matches": 29
+          "rating": 91,
+          "points": 2719,
+          "matches": 30
         },
         {
           "rank": 23,
