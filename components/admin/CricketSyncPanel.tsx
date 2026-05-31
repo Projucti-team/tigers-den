@@ -19,19 +19,30 @@ export default function CricketSyncPanel() {
   async function runSync() {
     setState({ status: "running" });
 
+    const controller = new AbortController();
+    const timeout = window.setTimeout(() => controller.abort(), 5 * 60 * 1000);
+
     try {
-      const res = await fetch("/api/admin/cricket-sync", {
+      // Payload collection endpoint — auth cookies are applied by the CMS API layer.
+      const res = await fetch("/api/cricket-snapshots/sync", {
         method: "POST",
         credentials: "include",
+        headers: { Accept: "application/json" },
+        signal: controller.signal,
       });
       const body = (await res.json().catch(() => ({}))) as SyncCricketResult & {
         error?: string;
       };
 
       if (!res.ok) {
+        const detail =
+          body.error ??
+          (Array.isArray(body.errors) && body.errors.length > 0
+            ? body.errors.join("; ")
+            : null);
         setState({
           status: "error",
-          message: body.error ?? `Sync failed (${res.status})`,
+          message: detail ?? `Sync failed (HTTP ${res.status})`,
         });
         return;
       }
@@ -39,10 +50,15 @@ export default function CricketSyncPanel() {
       setState({ status: "done", result: body });
       router.refresh();
     } catch (err) {
-      setState({
-        status: "error",
-        message: err instanceof Error ? err.message : "Sync failed",
-      });
+      const message =
+        err instanceof Error && err.name === "AbortError"
+          ? "Sync timed out after 5 minutes — try again or use ./scripts/prod-cricket-sync.sh on the server."
+          : err instanceof Error
+            ? err.message
+            : "Sync failed";
+      setState({ status: "error", message });
+    } finally {
+      window.clearTimeout(timeout);
     }
   }
 

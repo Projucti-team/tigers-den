@@ -17,6 +17,7 @@ import {
 import { tourSlug } from "@/lib/cricket/tour-slug";
 import type { WtcStandingsSnapshot } from "@/lib/cricket/types";
 import { hasPersistedDatabase } from "@/lib/payload-db";
+import { ensureSqliteCricketSnapshotsTable } from "@/lib/payload-ensure-sqlite-schema";
 import { isPayloadConfigured } from "@/lib/payload";
 export type SyncCricketResult = {
   ok: boolean;
@@ -70,6 +71,21 @@ export async function syncCricketSnapshots(): Promise<SyncCricketResult> {
       warnings: [],
       errors: [
         "No database configured — set DATABASE_URI (VPS/Docker) or POSTGRES_URL (Vercel).",
+      ],
+    };
+  }
+
+  try {
+    await ensureSqliteCricketSnapshotsTable();
+  } catch (e) {
+    return {
+      ok: false,
+      fetchedAt: new Date().toISOString(),
+      toursCount: 0,
+      tourDetailsCount: 0,
+      warnings: [],
+      errors: [
+        `Database schema: ${e instanceof Error ? e.message : "could not ensure cricket_snapshots table"}`,
       ],
     };
   }

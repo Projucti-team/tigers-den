@@ -21,6 +21,8 @@ export function getPayloadDatabase(): DatabaseAdapterObj {
     client: {
       url: process.env.DATABASE_URI || "file:./tigersden.db",
     },
+    // One-time on Hetzner if cricket_snapshots table is missing: PAYLOAD_SQLITE_PUSH_SCHEMA=1 then redeploy
+    push: process.env.PAYLOAD_SQLITE_PUSH_SCHEMA === "1",
   });
 }
 

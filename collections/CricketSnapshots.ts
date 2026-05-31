@@ -1,8 +1,45 @@
 import type { CollectionConfig } from "payload";
+import { headersWithCors } from "payload";
+
+import { syncCricketSnapshots } from "@/lib/cricket/services/sync-cricket-snapshots";
 
 /** Nightly cricket data (rankings, tours, squads, venues) — written by cron, read on page load. */
 export const CricketSnapshots: CollectionConfig = {
   slug: "cricket-snapshots",
+  endpoints: [
+    {
+      path: "/sync",
+      method: "post",
+      handler: async (req) => {
+        if (!req.user) {
+          return Response.json(
+            { error: "Unauthorized — sign in to Payload admin first." },
+            {
+              status: 401,
+              headers: headersWithCors({ headers: new Headers(), req }),
+            },
+          );
+        }
+
+        try {
+          const result = await syncCricketSnapshots();
+          return Response.json(result, {
+            status: result.ok ? 200 : 207,
+            headers: headersWithCors({ headers: new Headers(), req }),
+          });
+        } catch (err) {
+          const message = err instanceof Error ? err.message : "Sync failed";
+          return Response.json(
+            { error: message },
+            {
+              status: 500,
+              headers: headersWithCors({ headers: new Headers(), req }),
+            },
+          );
+        }
+      },
+    },
+  ],
   admin: {
     useAsTitle: "key",
     defaultColumns: ["key", "label", "fetchedAt", "updatedAt"],

@@ -125,7 +125,9 @@ Or set `CRICKET_SYNC_ON_START=1` in `.env.production` and restart (`docker compo
 0 21 * * * cd /var/www/tigersden && ./scripts/prod-cricket-sync.sh >> /var/log/tigers-cricket-sync.log 2>&1
 ```
 
-You can also use **Payload admin** → Cricket Snapshots → **Run cricket sync now**.
+You can also use **Payload admin** → Cricket Snapshots → **Run cricket sync now** (calls `POST /api/cricket-snapshots/sync`).
+
+If the button returns **Unauthorized**, sign out and back into `/admin`. If sync errors mention a missing table, set `PAYLOAD_SQLITE_PUSH_SCHEMA=1` in `.env.production`, run `docker compose up -d` once, then remove that variable and redeploy.
 
 ## 7. Nightly JSON scrapers (GitHub Actions)
 
