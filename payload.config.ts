@@ -19,6 +19,11 @@ const filename = fileURLToPath(import.meta.url);
 const dirname = path.dirname(filename);
 
 function getServerURL(): string {
+  // Preview deployments must use their own URL so admin server functions hit the same host.
+  if (process.env.VERCEL_URL && process.env.VERCEL_ENV !== "production") {
+    return `https://${process.env.VERCEL_URL}`;
+  }
+
   const fromEnv =
     process.env.NEXT_PUBLIC_SERVER_URL ||
     process.env.NEXT_PUBLIC_SITE_URL ||

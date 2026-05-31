@@ -36,6 +36,7 @@ yarn-error.log*
 *.tsbuildinfo
 
 # payload
-/media
+/media/*
+!/media/.gitkeep
 *.db
 *.db-journal

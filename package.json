@@ -10,7 +10,7 @@
     "build": "next build --webpack",
     "deploy:migrate": "tsx scripts/run-sql-migrations.ts",
     "deploy:seed": "tsx scripts/trigger-deploy-seed.ts",
-    "build:vercel": "npm run deploy:migrate && npm run deploy:seed && npm run build",
+    "build:vercel": "npm run deploy:migrate && npm run deploy:seed && npm run generate:importmap && npm run build",
     "build:prod": "payload generate:importmap && next build",
     "start": "next start",
     "lint": "next lint",

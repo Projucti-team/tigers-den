@@ -5,18 +5,19 @@ import type { Plugin } from "payload";
 export function getPayloadPlugins(): Plugin[] {
   const token = process.env.BLOB_READ_WRITE_TOKEN;
 
-  if (!token) return [];
-
+  // Always register so `payload generate:importmap` includes the client upload handler.
   return [
     vercelBlobStorage({
-      enabled: true,
+      enabled: Boolean(token),
       collections: {
         media: {
           prefix: "media",
         },
       },
-      token,
-      clientUploads: true,
+      token: token ?? "",
+      // Hero images are well under Vercel's 4.5MB body limit; server uploads are more reliable
+      // in the admin drawer than client-side blob uploads.
+      clientUploads: false,
     }),
   ];
 }
