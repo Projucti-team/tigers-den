@@ -2,6 +2,8 @@
 
 Single-server deployment with **Docker** (recommended). No paid hosting required beyond a small VPS (~$5–12/mo).
 
+**Using Coolify on Hetzner with a Git deploy pipeline?** → [deploy-coolify.md](./deploy-coolify.md)
+
 ## What you need
 
 | Item | Notes |

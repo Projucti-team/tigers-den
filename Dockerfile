@@ -16,7 +16,7 @@ ENV NEXT_TELEMETRY_DISABLED=1
 ENV DOCKER_BUILD=1
 # Keep Node heap bounded on 4 GB VPS hosts during image build
 ENV NODE_OPTIONS=--max-old-space-size=3072
-RUN npm run build
+RUN npm run build:docker
 
 FROM base AS runner
 ENV NODE_ENV=production

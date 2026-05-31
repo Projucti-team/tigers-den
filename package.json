@@ -8,6 +8,7 @@
   "scripts": {
     "dev": "next dev --turbopack",
     "build": "next build --webpack",
+    "build:docker": "npm run generate:importmap && npm run build",
     "deploy:migrate": "tsx scripts/run-sql-migrations.ts",
     "deploy:seed": "tsx scripts/trigger-deploy-seed.ts",
     "deploy:cricket-sync": "tsx scripts/run-deploy-cricket-sync.ts",

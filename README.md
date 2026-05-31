@@ -62,7 +62,8 @@ No server to buy. Use **Vercel + Neon Postgres + Vercel Blob** (all have free ti
 
 Local dev still uses SQLite; production uses Postgres + Blob automatically when Vercel env vars are set.
 
-Paid VPS option (optional): [docs/deploy-production.md](docs/deploy-production.md)
+Production VPS / **Coolify** on Hetzner: [docs/deploy-coolify.md](docs/deploy-coolify.md)  
+Manual Docker on a VPS: [docs/deploy-production.md](docs/deploy-production.md)
 
 ## Next steps
 
