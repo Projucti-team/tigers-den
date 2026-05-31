@@ -145,6 +145,15 @@ export async function syncCricketSnapshots(): Promise<SyncCricketResult> {
     warnings.push(...toursIndex.warnings);
     toursCount = toursIndex.tours.length;
 
+    if (process.env.CRICKET_DATA_API_KEY?.trim() && toursCount === 0) {
+      const fetchFailure = toursIndex.warnings.find((w) =>
+        /failed|HTTP|CricAPI|quota|unavailable/i.test(w),
+      );
+      if (fetchFailure) {
+        errors.push(`Tours index: ${fetchFailure}`);
+      }
+    }
+
     for (const tour of toursIndex.tours) {
       const slug = tourSlug(tour);
       const key = CRICKET_SNAPSHOT_KEYS.tourDetail(slug);
@@ -158,6 +167,8 @@ export async function syncCricketSnapshots(): Promise<SyncCricketResult> {
           toTourDetailSnapshot(detail, slug),
         );
         tourDetailsCount += 1;
+        // Avoid CricAPI free-tier rate limits when building many tour pages.
+        await new Promise((resolve) => setTimeout(resolve, 250));
       } catch (e) {
         errors.push(`Tour ${slug}: ${e instanceof Error ? e.message : "failed"}`);
       }

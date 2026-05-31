@@ -1,4 +1,6 @@
-import { getLastCricketSyncFetchedAt } from "@/lib/cricket/snapshot-db";
+import { CRICKET_SNAPSHOT_KEYS } from "@/lib/cricket/snapshot-keys";
+import { getLastCricketSyncFetchedAt, readCricketSnapshot } from "@/lib/cricket/snapshot-db";
+import type { ToursIndexSnapshot } from "@/lib/cricket/snapshot-types";
 import {
   syncCricketSnapshots,
   type SyncCricketResult,
@@ -56,7 +58,12 @@ export async function runDeployBootstrap(options?: {
 
   const forceSync = options?.forceCricketSync === true;
   const lastSync = await getLastCricketSyncFetchedAt();
-  if (!forceSync && lastSync) {
+  const toursSnapshot = await readCricketSnapshot<ToursIndexSnapshot>(
+    CRICKET_SNAPSHOT_KEYS.toursIndex,
+  );
+  const hasTours = (toursSnapshot?.tours?.length ?? 0) > 0;
+
+  if (!forceSync && lastSync && hasTours) {
     return { migrations: "ok", cricketSync: "skipped", errors: [] };
   }
 

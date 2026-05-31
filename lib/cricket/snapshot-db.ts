@@ -22,11 +22,11 @@ export function staleSnapshotWarning(fetchedAt: string, label: string): string |
   return null;
 }
 
-/** Latest `fetchedAt` from primary page snapshots (rankings, then tours index). */
+/** Latest `fetchedAt` from tours index (preferred) or rankings showcase. */
 export async function getLastCricketSyncFetchedAt(): Promise<string | null> {
   if (!isPayloadConfigured()) return null;
 
-  for (const key of [CRICKET_SNAPSHOT_KEYS.rankingsShowcase, CRICKET_SNAPSHOT_KEYS.toursIndex] as const) {
+  for (const key of [CRICKET_SNAPSHOT_KEYS.toursIndex, CRICKET_SNAPSHOT_KEYS.rankingsShowcase] as const) {
     const snapshot = await readCricketSnapshot<{ fetchedAt: string }>(key);
     if (snapshot?.fetchedAt) return snapshot.fetchedAt;
   }

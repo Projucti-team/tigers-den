@@ -62,7 +62,7 @@ In **Project → Settings → Environment Variables**, add:
 
 4. Click **Deploy**.
 
-Each Vercel build runs **`deploy:migrate` → `deploy:seed` → `next build --webpack`**: creates Postgres tables if missing, seeds cricket snapshots on the **live** deployment URL (when set), then rebuilds static pages. Uses webpack instead of Turbopack because Payload + Turbopack currently break on `file-type`.
+Each Vercel build runs **`deploy:migrate` → `deploy:cricket-sync` → `generate:importmap` → `next build --webpack`**: creates Postgres tables if missing, syncs tours/rankings snapshots directly into Neon (no HTTP round-trip), then rebuilds static pages. Uses webpack instead of Turbopack because Payload + Turbopack currently break on `file-type`.
 
 ---
 

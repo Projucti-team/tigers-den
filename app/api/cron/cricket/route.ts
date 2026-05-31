@@ -6,16 +6,16 @@ export const runtime = "nodejs";
 export const maxDuration = 300;
 
 function authorizeCron(request: Request): boolean {
-  const secret = process.env.CRON_SECRET;
+  const secret = process.env.CRON_SECRET?.trim();
+  if (!secret) {
+    return process.env.NODE_ENV === "development";
+  }
 
-  const auth = request.headers.get("authorization");
-  if (secret && auth === `Bearer ${secret}`) return true;
+  const auth = request.headers.get("authorization")?.trim();
+  if (auth === `Bearer ${secret}` || auth === secret) return true;
 
   const url = new URL(request.url);
-  if (secret && url.searchParams.get("secret") === secret) return true;
-
-  // Local dev without CRON_SECRET configured
-  if (!secret && process.env.NODE_ENV === "development") return true;
+  if (url.searchParams.get("secret") === secret) return true;
 
   return false;
 }
