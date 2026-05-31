@@ -16,6 +16,7 @@ import {
 } from "@/lib/cricket/snapshot-db";
 import { tourSlug } from "@/lib/cricket/tour-slug";
 import type { WtcStandingsSnapshot } from "@/lib/cricket/types";
+import { hasPersistedDatabase } from "@/lib/payload-db";
 import { isPayloadConfigured } from "@/lib/payload";
 export type SyncCricketResult = {
   ok: boolean;
@@ -60,7 +61,7 @@ export async function syncCricketSnapshots(): Promise<SyncCricketResult> {
     };
   }
 
-  if (!process.env.POSTGRES_URL && !process.env.DATABASE_URL) {
+  if (!hasPersistedDatabase()) {
     return {
       ok: false,
       fetchedAt: new Date().toISOString(),
@@ -68,7 +69,7 @@ export async function syncCricketSnapshots(): Promise<SyncCricketResult> {
       tourDetailsCount: 0,
       warnings: [],
       errors: [
-        "POSTGRES_URL is not set — connect Neon Postgres in Vercel Storage and redeploy.",
+        "No database configured — set DATABASE_URI (VPS/Docker) or POSTGRES_URL (Vercel).",
       ],
     };
   }

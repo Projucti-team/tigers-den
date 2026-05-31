@@ -1,5 +1,6 @@
 import { CRICKET_SNAPSHOT_KEYS } from "@/lib/cricket/snapshot-keys";
 import { isNextProductionBuild } from "@/lib/next-build";
+import { hasPersistedDatabase } from "@/lib/payload-db";
 import { getPayloadClient, isPayloadConfigured } from "@/lib/payload";
 
 function isMissingRelationError(err: unknown): boolean {
@@ -73,7 +74,7 @@ export async function upsertCricketSnapshot(
 
 function canReadSnapshotsDuringBuild(): boolean {
   if (!isNextProductionBuild()) return true;
-  return Boolean(process.env.POSTGRES_URL?.trim() || process.env.DATABASE_URL?.trim());
+  return hasPersistedDatabase();
 }
 
 export async function readCricketSnapshot<T extends { fetchedAt: string }>(

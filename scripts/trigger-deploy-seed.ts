@@ -16,8 +16,12 @@ function resolveBootstrapUrl(): string | null {
 }
 
 async function main() {
-  if (!process.env.POSTGRES_URL?.trim() && !process.env.DATABASE_URL?.trim()) {
-    console.log("[deploy:seed] No POSTGRES_URL — skipping.");
+  if (
+    !process.env.POSTGRES_URL?.trim() &&
+    !process.env.DATABASE_URL?.trim() &&
+    !process.env.DATABASE_URI?.trim()
+  ) {
+    console.log("[deploy:seed] No database env — skipping.");
     return;
   }
 

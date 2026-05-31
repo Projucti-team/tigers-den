@@ -1,6 +1,7 @@
 import { NextResponse } from "next/server";
 
 import { runDeployBootstrap } from "@/lib/deploy/bootstrap";
+import { hasPersistedDatabase } from "@/lib/payload-db";
 import { isPayloadConfigured } from "@/lib/payload";
 
 export const maxDuration = 300;
@@ -14,9 +15,9 @@ export async function POST(request: Request) {
     return NextResponse.json({ error: "Unauthorized" }, { status: 401 });
   }
 
-  if (!isPayloadConfigured() || !process.env.POSTGRES_URL) {
+  if (!isPayloadConfigured() || !hasPersistedDatabase()) {
     return NextResponse.json(
-      { error: "PAYLOAD_SECRET and POSTGRES_URL are required" },
+      { error: "PAYLOAD_SECRET and a database (DATABASE_URI or POSTGRES_URL) are required" },
       { status: 503 },
     );
   }

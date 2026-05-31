@@ -6,6 +6,7 @@ import {
   type SyncCricketResult,
 } from "@/lib/cricket/services/sync-cricket-snapshots";
 import { ensurePayloadSchema } from "@/lib/payload-ensure-schema";
+import { hasPersistedDatabase, isProductionDatabase } from "@/lib/payload-db";
 import { isPayloadConfigured } from "@/lib/payload";
 import config from "@payload-config";
 import { getPayload } from "payload";
@@ -16,10 +17,6 @@ export type DeployBootstrapResult = {
   cricketSyncResult?: SyncCricketResult;
   errors: string[];
 };
-
-function hasProductionDatabase(): boolean {
-  return Boolean(process.env.POSTGRES_URL?.trim() || process.env.DATABASE_URL?.trim());
-}
 
 /**
  * Idempotent production setup: SQL migrations, then cricket snapshots if missing.
@@ -38,11 +35,13 @@ export async function runDeployBootstrap(options?: {
     };
   }
 
-  if (!hasProductionDatabase()) {
+  if (!hasPersistedDatabase()) {
     return {
       migrations: "skipped",
       cricketSync: "skipped",
-      errors: ["POSTGRES_URL is not set — skipping deploy bootstrap (local SQLite builds)."],
+      errors: [
+        "No database configured — set DATABASE_URI (VPS/Docker) or POSTGRES_URL (Vercel).",
+      ],
     };
   }
 

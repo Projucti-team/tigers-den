@@ -55,7 +55,11 @@ NEXT_PUBLIC_SITE_URL=https://tigersden.yourdomain.com
 NEXT_PUBLIC_SERVER_URL=https://tigersden.yourdomain.com
 DATABASE_URI=file:/app/data/tigersden.db
 CRICKET_DATA_API_KEY=your_cricapi_key_if_you_have_one
+CRON_SECRET=<run: openssl rand -base64 32>
+CRICKET_SYNC_ON_START=1
 ```
+
+`CRICKET_DATA_API_KEY` is **required** for upcoming tours on `/tours` (stored in the CMS SQLite DB). `CRON_SECRET` secures the nightly sync endpoint.
 
 ## 4. Start with Docker
 
@@ -100,29 +104,38 @@ docker compose up -d
 
 Caddy obtains and renews Let's Encrypt certificates automatically.
 
-## 6. Nightly cricket data (GitHub Actions)
+## 6. Tours and cricket snapshots (required for `/tours`)
 
-Already configured in `.github/workflows/` — they commit JSON to `data/`. After deploy, either:
+Tours are **not** read from `data/*.json` — they are synced from CricAPI into the Payload `cricket-snapshots` table in SQLite.
 
-- Pull updates on the server periodically, or  
-- Run scrapers on the server with cron:
+**After first deploy**, run once:
 
 ```bash
-# crontab -e on the VPS
-0 3 * * * cd /var/www/tigersden && docker compose exec -T app npm run scrape:icc-rankings
-30 3 * * * cd /var/www/tigersden && docker compose exec -T app npm run scrape:bangladesh-match
-0 4 * * * cd /var/www/tigersden && docker compose exec -T app npm run scrape:bangladesh-news
+cd /var/www/tigersden
+chmod +x scripts/prod-cricket-sync.sh
+./scripts/prod-cricket-sync.sh
 ```
 
-Note: scraper scripts need `tsx` in the container — for cron, prefer GitHub Actions pushing to `main` and `git pull && docker compose up -d --build` on the server, or add a small cron that only `git pull`s `data/*.json`.
+Or set `CRICKET_SYNC_ON_START=1` in `.env.production` and restart (`docker compose up -d`) so the container triggers sync on boot.
 
-Simpler cron on server:
+**Nightly refresh** (~3:00 AM Bangladesh = 21:00 UTC):
+
+```bash
+# crontab -e on the Hetzner VPS
+0 21 * * * cd /var/www/tigersden && ./scripts/prod-cricket-sync.sh >> /var/log/tigers-cricket-sync.log 2>&1
+```
+
+You can also use **Payload admin** → Cricket Snapshots → **Run cricket sync now**.
+
+## 7. Nightly JSON scrapers (GitHub Actions)
+
+Workflows in `.github/workflows/` commit `data/icc-rankings.json`, match, and news files. On the server, pull updates periodically:
 
 ```bash
 5 4 * * * cd /var/www/tigersden && git pull origin main && docker compose restart app
 ```
 
-## 7. Updates
+## 8. Updates
 
 ```bash
 cd /var/www/tigersden
@@ -148,7 +161,9 @@ sudo ufw enable
 |-------|-----|
 | Admin blank / broken styles | Rebuild image (`docker compose build --no-cache`) |
 | Images 404 | Check `NEXT_PUBLIC_SERVER_URL` matches public URL |
-| Empty cricket data | Ensure `data/*.json` is in the image or volume; run scrapers |
+| Empty tours / `/tours` blank | Set `CRICKET_DATA_API_KEY`, run `./scripts/prod-cricket-sync.sh` |
+| Empty rankings on home | Run `npm run scrape:icc-rankings` or wait for GitHub Action + `git pull` |
+| Empty cricket news | Ensure `data/*.json` is in the image or volume; run scrapers |
 | Out of memory on build | Use swap or build on CI and pull image |
 
 ## Alternative: PM2 without Docker

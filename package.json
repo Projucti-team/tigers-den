@@ -23,6 +23,7 @@
     "scrape:bangladesh-match": "tsx scripts/scrape-bangladesh-match.ts",
     "scrape:bangladesh-news": "tsx scripts/scrape-bangladesh-news.ts",
     "sync:cricket": "tsx scripts/sync-cricket-nightly.ts",
+    "sync:cricket:prod": "bash scripts/prod-cricket-sync.sh",
     "generate:logo": "python3 scripts/process-tigers-den-logo.py"
   },
   "dependencies": {

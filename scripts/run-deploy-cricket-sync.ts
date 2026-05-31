@@ -1,6 +1,6 @@
 /**
- * Run cricket snapshots (including tours) directly during Vercel builds.
- * Uses POSTGRES_URL + CRICKET_DATA_API_KEY from the build environment — no HTTP round-trip.
+ * Run cricket snapshots (including tours) directly (Vercel build or VPS with tsx).
+ * Requires DATABASE_URI or POSTGRES_URL + CRICKET_DATA_API_KEY.
  */
 import { readFileSync, existsSync } from "node:fs";
 import { resolve } from "node:path";
@@ -35,8 +35,12 @@ function loadEnvFiles() {
 async function main() {
   loadEnvFiles();
 
-  if (!process.env.POSTGRES_URL?.trim() && !process.env.DATABASE_URL?.trim()) {
-    console.log("[deploy:cricket-sync] No POSTGRES_URL — skipping (local SQLite build).");
+  if (
+    !process.env.POSTGRES_URL?.trim() &&
+    !process.env.DATABASE_URL?.trim() &&
+    !process.env.DATABASE_URI?.trim()
+  ) {
+    console.log("[deploy:cricket-sync] No database env — skipping.");
     return;
   }
 
@@ -47,7 +51,7 @@ async function main() {
 
   if (!process.env.CRICKET_DATA_API_KEY?.trim()) {
     console.warn(
-      "[deploy:cricket-sync] CRICKET_DATA_API_KEY not set — tours will not sync. Add it in Vercel env vars.",
+      "[deploy:cricket-sync] CRICKET_DATA_API_KEY not set — tours will not sync. Add it to .env.production.",
     );
     return;
   }

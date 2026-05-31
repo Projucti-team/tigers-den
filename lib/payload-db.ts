@@ -24,6 +24,16 @@ export function getPayloadDatabase(): DatabaseAdapterObj {
   });
 }
 
+/** Postgres (Vercel/Neon) — uses committed SQL migrations. */
 export function isProductionDatabase(): boolean {
   return Boolean(process.env.POSTGRES_URL || process.env.DATABASE_URL);
+}
+
+/** Any persisted Payload DB (Postgres or SQLite file on VPS/Docker). */
+export function hasPersistedDatabase(): boolean {
+  return Boolean(
+    process.env.POSTGRES_URL?.trim() ||
+      process.env.DATABASE_URL?.trim() ||
+      process.env.DATABASE_URI?.trim(),
+  );
 }
