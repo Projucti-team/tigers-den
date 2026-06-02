@@ -1,5 +1,5 @@
 {
-  "fetchedAt": "2026-06-01T06:49:59.561Z",
+  "fetchedAt": "2026-06-02T06:38:10.139Z",
   "source": "icc-sportz.io",
   "sourceUrl": "https://www.icc-cricket.com/rankings",
   "men": {
@@ -436,19 +436,19 @@
         },
         {
           "rank": 24,
+          "name": "Hong Kong",
+          "abbreviation": "HK",
+          "rating": 126,
+          "points": 5057,
+          "matches": 40
+        },
+        {
+          "rank": 25,
           "name": "Malaysia",
           "abbreviation": "MAS",
           "rating": 126,
           "points": 5798,
           "matches": 46
-        },
-        {
-          "rank": 25,
-          "name": "Hong Kong",
-          "abbreviation": "HK",
-          "rating": 125,
-          "points": 4888,
-          "matches": 39
         },
         {
           "rank": 26,
@@ -476,19 +476,19 @@
         },
         {
           "rank": 29,
-          "name": "Bahrain",
-          "abbreviation": "BRN",
-          "rating": 119,
-          "points": 7120,
-          "matches": 60
-        },
-        {
-          "rank": 30,
           "name": "Jersey",
           "abbreviation": "JSY",
           "rating": 118,
           "points": 2484,
           "matches": 21
+        },
+        {
+          "rank": 30,
+          "name": "Bahrain",
+          "abbreviation": "BRN",
+          "rating": 118,
+          "points": 7195,
+          "matches": 61
         },
         {
           "rank": 31,
