@@ -1,5 +1,5 @@
 {
-  "fetchedAt": "2026-06-02T06:38:10.139Z",
+  "fetchedAt": "2026-06-03T06:47:53.511Z",
   "source": "icc-sportz.io",
   "sourceUrl": "https://www.icc-cricket.com/rankings",
   "men": {
@@ -108,9 +108,9 @@
           "rank": 3,
           "name": "Australia",
           "abbreviation": "AUS",
-          "rating": 107,
-          "points": 2558,
-          "matches": 24
+          "rating": 108,
+          "points": 2708,
+          "matches": 25
         },
         {
           "rank": 4,
@@ -124,9 +124,9 @@
           "rank": 5,
           "name": "Pakistan",
           "abbreviation": "PAK",
-          "rating": 100,
-          "points": 3000,
-          "matches": 30
+          "rating": 99,
+          "points": 3057,
+          "matches": 31
         },
         {
           "rank": 6,
@@ -399,8 +399,8 @@
           "name": "Oman",
           "abbreviation": "OMN",
           "rating": 158,
-          "points": 6171,
-          "matches": 39
+          "points": 6339,
+          "matches": 40
         },
         {
           "rank": 20,
@@ -447,8 +447,8 @@
           "name": "Malaysia",
           "abbreviation": "MAS",
           "rating": 126,
-          "points": 5798,
-          "matches": 46
+          "points": 5934,
+          "matches": 47
         },
         {
           "rank": 26,
@@ -487,8 +487,8 @@
           "name": "Bahrain",
           "abbreviation": "BRN",
           "rating": 118,
-          "points": 7195,
-          "matches": 61
+          "points": 7303,
+          "matches": 62
         },
         {
           "rank": 31,
@@ -756,6 +756,14 @@
         },
         {
           "rank": 64,
+          "name": "Eswatini",
+          "abbreviation": "ESW",
+          "rating": 36,
+          "points": 571,
+          "matches": 16
+        },
+        {
+          "rank": 65,
           "name": "Isle of Man",
           "abbreviation": "IOM",
           "rating": 36,
@@ -763,20 +771,12 @@
           "matches": 8
         },
         {
-          "rank": 65,
+          "rank": 66,
           "name": "Cyprus",
           "abbreviation": "CYP",
           "rating": 34,
           "points": 892,
           "matches": 26
-        },
-        {
-          "rank": 66,
-          "name": "Eswatini",
-          "abbreviation": "ESW",
-          "rating": 34,
-          "points": 514,
-          "matches": 15
         },
         {
           "rank": 67,
@@ -916,6 +916,14 @@
         },
         {
           "rank": 84,
+          "name": "Mozambique",
+          "abbreviation": "MOZ",
+          "rating": 8,
+          "points": 99,
+          "matches": 12
+        },
+        {
+          "rank": 85,
           "name": "Bulgaria",
           "abbreviation": "BUL",
           "rating": 8,
@@ -923,7 +931,7 @@
           "matches": 20
         },
         {
-          "rank": 85,
+          "rank": 86,
           "name": "Suriname",
           "abbreviation": "SUR",
           "rating": 8,
@@ -931,7 +939,7 @@
           "matches": 10
         },
         {
-          "rank": 86,
+          "rank": 87,
           "name": "Croatia",
           "abbreviation": "CRO",
           "rating": 7,
@@ -939,20 +947,12 @@
           "matches": 24
         },
         {
-          "rank": 87,
+          "rank": 88,
           "name": "Seychelles",
           "abbreviation": "SEY",
           "rating": 7,
           "points": 46,
           "matches": 7
-        },
-        {
-          "rank": 88,
-          "name": "Mozambique",
-          "abbreviation": "MOZ",
-          "rating": 7,
-          "points": 65,
-          "matches": 10
         },
         {
           "rank": 89,
@@ -966,9 +966,9 @@
           "rank": 90,
           "name": "China",
           "abbreviation": "CHN",
-          "rating": 3,
-          "points": 24,
-          "matches": 7
+          "rating": 2,
+          "points": 17,
+          "matches": 8
         },
         {
           "rank": 91,
@@ -1040,7 +1040,7 @@
           "abbreviation": "LES",
           "rating": 0,
           "points": 0,
-          "matches": 10
+          "matches": 11
         },
         {
           "rank": 92,
@@ -1781,17 +1781,17 @@
           "rank": 2,
           "name": "England",
           "abbreviation": "ENG",
-          "rating": 274,
-          "points": 8205,
-          "matches": 30
+          "rating": 275,
+          "points": 8520,
+          "matches": 31
         },
         {
           "rank": 3,
           "name": "India",
           "abbreviation": "IND",
-          "rating": 265,
-          "points": 9268,
-          "matches": 35
+          "rating": 264,
+          "points": 9492,
+          "matches": 36
         },
         {
           "rank": 4,
@@ -1845,25 +1845,25 @@
           "rank": 10,
           "name": "Bangladesh",
           "abbreviation": "BAN",
-          "rating": 193,
-          "points": 5796,
-          "matches": 30
+          "rating": 194,
+          "points": 6012,
+          "matches": 31
         },
         {
           "rank": 11,
           "name": "Scotland",
           "abbreviation": "SCO",
-          "rating": 166,
-          "points": 5150,
-          "matches": 31
+          "rating": 165,
+          "points": 5293,
+          "matches": 32
         },
         {
           "rank": 12,
           "name": "Thailand",
           "abbreviation": "THA",
           "rating": 152,
-          "points": 7918,
-          "matches": 52
+          "points": 8080,
+          "matches": 53
         },
         {
           "rank": 13,
@@ -1885,9 +1885,9 @@
           "rank": 15,
           "name": "United Arab Emirates",
           "abbreviation": "UAE",
-          "rating": 136,
-          "points": 5318,
-          "matches": 39
+          "rating": 137,
+          "points": 5464,
+          "matches": 40
         },
         {
           "rank": 16,
@@ -1933,9 +1933,9 @@
           "rank": 21,
           "name": "Nepal",
           "abbreviation": "NEP",
-          "rating": 92,
-          "points": 4345,
-          "matches": 47
+          "rating": 93,
+          "points": 4447,
+          "matches": 48
         },
         {
           "rank": 22,
@@ -1990,8 +1990,8 @@
           "name": "Malaysia",
           "abbreviation": "MAS",
           "rating": 68,
-          "points": 3200,
-          "matches": 47
+          "points": 3281,
+          "matches": 48
         },
         {
           "rank": 29,
@@ -2158,8 +2158,8 @@
           "name": "Kuwait",
           "abbreviation": "KUW",
           "rating": 31,
-          "points": 752,
-          "matches": 24
+          "points": 770,
+          "matches": 25
         },
         {
           "rank": 50,
@@ -2253,9 +2253,9 @@
           "rank": 61,
           "name": "Qatar",
           "abbreviation": "QAT",
-          "rating": 15,
-          "points": 305,
-          "matches": 21
+          "rating": 14,
+          "points": 310,
+          "matches": 22
         },
         {
           "rank": 62,
@@ -2335,7 +2335,7 @@
           "abbreviation": "MNG",
           "rating": 0,
           "points": 0,
-          "matches": 16
+          "matches": 17
         },
         {
           "rank": 71,
@@ -2409,9 +2409,9 @@
         "rank": 10,
         "name": "Bangladesh",
         "abbreviation": "BAN",
-        "rating": 193,
-        "points": 5796,
-        "matches": 30
+        "rating": 194,
+        "points": 6012,
+        "matches": 31
       }
     },
     "players": {
@@ -2650,8 +2650,8 @@
             "rank": 4,
             "name": "Hayley Matthews",
             "team": "West Indies",
-            "rating": 767,
-            "points": 767,
+            "rating": 772,
+            "points": 772,
             "iccPlayerId": "64970",
             "profileUrl": "https://www.icc-cricket.com/rankings/64970/hayley-matthews",
             "imageUrl": "https://images.icc-cricket.com/image/upload/t_player-headshot-portrait-lg-webp/prd/assets/players/generic/colored/64970.png"
@@ -2660,8 +2660,8 @@
             "rank": 5,
             "name": "Smriti Mandhana",
             "team": "India",
-            "rating": 747,
-            "points": 747,
+            "rating": 744,
+            "points": 744,
             "iccPlayerId": "63992",
             "profileUrl": "https://www.icc-cricket.com/rankings/63992/smriti-mandhana",
             "imageUrl": "https://images.icc-cricket.com/image/upload/t_player-headshot-portrait-lg-webp/prd/assets/players/generic/colored/63992.png"
@@ -2670,53 +2670,53 @@
         "topBowlers": [
           {
             "rank": 1,
-            "name": "Sadia Iqbal",
-            "team": "Pakistan",
-            "rating": 746,
-            "points": 746,
-            "iccPlayerId": "73820",
-            "profileUrl": "https://www.icc-cricket.com/rankings/73820/sadia-iqbal",
-            "imageUrl": "https://images.icc-cricket.com/image/upload/t_player-headshot-portrait-lg-webp/prd/assets/players/generic/colored/73820.png"
-          },
-          {
-            "rank": 2,
             "name": "Linsey Smith",
             "team": "England",
-            "rating": 730,
-            "points": 730,
+            "rating": 735,
+            "points": 735,
             "iccPlayerId": "69760",
             "profileUrl": "https://www.icc-cricket.com/rankings/69760/linsey-smith",
             "imageUrl": "https://images.icc-cricket.com/image/upload/t_player-headshot-portrait-lg-webp/prd/assets/players/generic/colored/69760.png"
           },
           {
-            "rank": 3,
-            "name": "Sophie Ecclestone",
-            "team": "England",
-            "rating": 723,
-            "points": 723,
-            "iccPlayerId": "66391",
-            "profileUrl": "https://www.icc-cricket.com/rankings/66391/sophie-ecclestone",
-            "imageUrl": "https://images.icc-cricket.com/image/upload/t_player-headshot-portrait-lg-webp/prd/assets/players/generic/colored/66391.png"
+            "rank": 2,
+            "name": "Sadia Iqbal",
+            "team": "Pakistan",
+            "rating": 729,
+            "points": 729,
+            "iccPlayerId": "73820",
+            "profileUrl": "https://www.icc-cricket.com/rankings/73820/sadia-iqbal",
+            "imageUrl": "https://images.icc-cricket.com/image/upload/t_player-headshot-portrait-lg-webp/prd/assets/players/generic/colored/73820.png"
           },
           {
-            "rank": 4,
+            "rank": 3,
             "name": "Lauren Bell",
             "team": "England",
-            "rating": 722,
-            "points": 722,
+            "rating": 726,
+            "points": 726,
             "iccPlayerId": "69906",
             "profileUrl": "https://www.icc-cricket.com/rankings/69906/lauren-bell",
             "imageUrl": "https://images.icc-cricket.com/image/upload/t_player-headshot-portrait-lg-webp/prd/assets/players/generic/colored/69906.png"
           },
           {
-            "rank": 5,
-            "name": "Deepti Sharma",
+            "rank": 4,
+            "name": "Sree Charani",
             "team": "India",
-            "rating": 713,
-            "points": 713,
-            "iccPlayerId": "65146",
-            "profileUrl": "https://www.icc-cricket.com/rankings/65146/deepti-sharma",
-            "imageUrl": "https://images.icc-cricket.com/image/upload/t_player-headshot-portrait-lg-webp/prd/assets/players/generic/colored/65146.png"
+            "rating": 723,
+            "points": 723,
+            "iccPlayerId": "89194",
+            "profileUrl": "https://www.icc-cricket.com/rankings/89194/sree-charani",
+            "imageUrl": "https://images.icc-cricket.com/image/upload/t_player-headshot-portrait-lg-webp/prd/assets/players/generic/colored/89194.png"
+          },
+          {
+            "rank": 5,
+            "name": "Charlie Dean",
+            "team": "England",
+            "rating": 719,
+            "points": 719,
+            "iccPlayerId": "69779",
+            "profileUrl": "https://www.icc-cricket.com/rankings/69779/charlie-dean",
+            "imageUrl": "https://images.icc-cricket.com/image/upload/t_player-headshot-portrait-lg-webp/prd/assets/players/generic/colored/69779.png"
           }
         ],
         "topAllRounders": [
@@ -2752,16 +2752,6 @@
           },
           {
             "rank": 4,
-            "name": "Deepti Sharma",
-            "team": "India",
-            "rating": 357,
-            "points": 357,
-            "iccPlayerId": "65146",
-            "profileUrl": "https://www.icc-cricket.com/rankings/65146/deepti-sharma",
-            "imageUrl": "https://images.icc-cricket.com/image/upload/t_player-headshot-portrait-lg-webp/prd/assets/players/generic/colored/65146.png"
-          },
-          {
-            "rank": 5,
             "name": "Ashleigh Gardner",
             "team": "Australia",
             "rating": 347,
@@ -2769,35 +2759,44 @@
             "iccPlayerId": "67023",
             "profileUrl": "https://www.icc-cricket.com/rankings/67023/ashleigh-gardner",
             "imageUrl": "https://images.icc-cricket.com/image/upload/t_player-headshot-portrait-lg-webp/prd/assets/players/generic/colored/67023.png"
+          },
+          {
+            "rank": 5,
+            "name": "Deepti Sharma",
+            "team": "India",
+            "rating": 345,
+            "points": 345,
+            "iccPlayerId": "65146",
+            "profileUrl": "https://www.icc-cricket.com/rankings/65146/deepti-sharma",
+            "imageUrl": "https://images.icc-cricket.com/image/upload/t_player-headshot-portrait-lg-webp/prd/assets/players/generic/colored/65146.png"
           }
         ],
         "topBangladeshBatsman": {
-          "rank": 24,
+          "rank": 20,
           "name": "Nigar Sultana",
           "team": "Bangladesh",
-          "rating": 582,
-          "points": 582,
+          "rating": 597,
+          "points": 597,
           "iccPlayerId": "65720",
           "profileUrl": "https://www.icc-cricket.com/rankings/65720/nigar-sultana",
           "imageUrl": "https://images.icc-cricket.com/image/upload/t_player-headshot-portrait-lg-webp/prd/assets/players/generic/colored/65720.png"
         },
         "topBangladeshBowler": {
           "rank": 17,
-          "rankTied": true,
           "name": "Rabeya Khan",
           "team": "Bangladesh",
-          "rating": 641,
-          "points": 641,
+          "rating": 637,
+          "points": 637,
           "iccPlayerId": "100120",
           "profileUrl": "https://www.icc-cricket.com/rankings/100120/rabeya-khan",
           "imageUrl": "https://images.icc-cricket.com/image/upload/t_player-headshot-portrait-lg-webp/prd/assets/players/generic/colored/100120.png"
         },
         "topBangladeshAllRounder": {
-          "rank": 23,
+          "rank": 22,
           "name": "Shorna Akter",
           "team": "Bangladesh",
-          "rating": 146,
-          "points": 146,
+          "rating": 154,
+          "points": 154,
           "iccPlayerId": "100861",
           "profileUrl": "https://www.icc-cricket.com/rankings/100861/shorna-akter",
           "imageUrl": "https://images.icc-cricket.com/image/upload/t_player-headshot-portrait-lg-webp/prd/assets/players/generic/colored/100861.png"
