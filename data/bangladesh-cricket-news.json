@@ -1,23 +1,41 @@
 {
-  "fetchedAt": "2026-06-02T08:02:31.272Z",
+  "fetchedAt": "2026-06-03T08:25:13.972Z",
   "items": [
     {
-      "id": "cricbuzz-139004",
-      "title": "ICC delegation arrives in Bangladesh ahead of crucial BCB elections",
-      "summary": "The BCB is currently run by an 11-member ad hoc committee led by Tamim Iqbal after the National Sports Council dissolved the previous board over alleged election irregularities",
-      "url": "https://www.cricbuzz.com/cricket-news/139004/icc-delegation-arrives-in-bangladesh-ahead-of-crucial-bcb-elections",
-      "imageUrl": "https://static.cricbuzz.com/a/img/v1/540x303/i1/c1002788/the-bcb-is-currently-run-by-an-11-member-ad-hoc-committee-led-by-tamim-iqbal-after-the-nsc-dissolved-the-previous-board-over-alleged-election-irregularities.jpg",
+      "id": "cricbuzz-139021",
+      "title": "Hasan Mahmud to join Kent for County season",
+      "summary": "Bangladesh Cricket Board officials said they would be happy to see Hasan feature in county cricket, provided it does not clash with national commitments",
+      "url": "https://www.cricbuzz.com/cricket-news/139021/hasan-mahmud-to-join-kent-for-county-season",
+      "imageUrl": "https://static.cricbuzz.com/a/img/v1/540x303/i1/c1002937/the-bangladesh-pacer-recently-travelled-to-england-and-trained-with-kent-under-the-supervision-of-head-coach-adam-hollioake.jpg",
       "source": "cricbuzz",
-      "publishedAt": "2026-06-02T08:02:30.359Z"
+      "publishedAt": "2026-06-03T08:25:12.398Z"
     },
     {
-      "id": "cricbuzz-139010",
-      "title": "Nahida cites Scotland's windy conditions as Bangladesh seek tri-series turnaround",
-      "summary": "Bangladesh must win their remaining league games to reach the final, but Nahida Akter remains confident the side will adapt quickly and bounce back",
-      "url": "https://www.cricbuzz.com/cricket-news/139010/nahida-cites-scotlands-windy-conditions-as-bangladesh-seek-tri-series-turnaround",
-      "imageUrl": "https://static.cricbuzz.com/a/img/v1/540x303/i1/c1002801/this-is-definitely-a-massive-learning-curve-for-us.jpg",
+      "id": "cricbuzz-139022",
+      "title": "Sultana, Moni help Bangladesh break duck in tri-series",
+      "summary": "After the captain's half-century led Bangladesh to 152/6, Ritu Moni returned 4-12 to down Scotland",
+      "url": "https://www.cricbuzz.com/cricket-news/139022/sultana-moni-help-bangladesh-break-duck-in-tri-series",
+      "imageUrl": "https://static.cricbuzz.com/a/img/v1/540x303/i1/c1002938/nigar-sultana-hit-58-to-set-up-bangladeshs-winning-score-of-1526.jpg",
       "source": "cricbuzz",
-      "publishedAt": "2026-06-02T08:02:26.498Z"
+      "publishedAt": "2026-06-03T08:25:12.045Z"
+    },
+    {
+      "id": "espn-https://www.espncricinfo.com/ci/content/story/1539389.html",
+      "title": "New Zealand home summer to start with blockbuster all-format India tour",
+      "summary": "The New Zealand men's side will also host Sri Lanka for an all-format tour, while the women will host Bangladesh for three T20Is and as many ODIs",
+      "url": "https://www.espncricinfo.com/story/nz-home-summer-to-start-with-blockbuster-all-format-india-tour-1539389",
+      "imageUrl": "https://p.imgci.com/db/PICTURES/CMS/417500/417589.5.jpg",
+      "source": "espncricinfo",
+      "publishedAt": "2026-06-03T05:14:01.000Z"
+    },
+    {
+      "id": "espn-https://www.espncricinfo.com/ci/content/story/1539337.html",
+      "title": "Sultana, Moni help Bangladesh bounce back against Scotland",
+      "summary": "Fast bowler Moni starred with a career-best four-for to trigger Scotland's collapse, in their chase of 153",
+      "url": "https://www.espncricinfo.com/story/nigar-sultana-fifty-ritu-moni-four-for-help-bangladesh-bounce-back-against-scotland-1539337",
+      "imageUrl": "https://p.imgci.com/db/PICTURES/CMS/415900/415940.5.jpg",
+      "source": "espncricinfo",
+      "publishedAt": "2026-06-02T17:14:48.000Z"
     },
     {
       "id": "espn-https://www.espncricinfo.com/ci/content/story/1539094.html",
