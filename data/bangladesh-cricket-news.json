@@ -1,23 +1,32 @@
 {
-  "fetchedAt": "2026-06-03T08:25:13.972Z",
+  "fetchedAt": "2026-06-04T07:57:44.532Z",
   "items": [
     {
-      "id": "cricbuzz-139021",
-      "title": "Hasan Mahmud to join Kent for County season",
-      "summary": "Bangladesh Cricket Board officials said they would be happy to see Hasan feature in county cricket, provided it does not clash with national commitments",
-      "url": "https://www.cricbuzz.com/cricket-news/139021/hasan-mahmud-to-join-kent-for-county-season",
-      "imageUrl": "https://static.cricbuzz.com/a/img/v1/540x303/i1/c1002937/the-bangladesh-pacer-recently-travelled-to-england-and-trained-with-kent-under-the-supervision-of-head-coach-adam-hollioake.jpg",
+      "id": "cricbuzz-139029",
+      "title": "Mosaddek Hossain, Nurul Hasan recalled for first two Australia ODIs",
+      "summary": "Afif Hossain and Mahidul Islam Ankon have been dropped from the Bangladesh squad",
+      "url": "https://www.cricbuzz.com/cricket-news/139029/mosaddek-hossain-nurul-hasan-recalled-for-first-two-australia-odis",
+      "imageUrl": "https://static.cricbuzz.com/a/img/v1/540x303/i1/c1003126/mosaddek-hossain-is-in-line-for-his-first-odi-in-nearly-four-years.jpg",
       "source": "cricbuzz",
-      "publishedAt": "2026-06-03T08:25:12.398Z"
+      "publishedAt": "2026-06-04T07:57:43.947Z"
     },
     {
-      "id": "cricbuzz-139022",
-      "title": "Sultana, Moni help Bangladesh break duck in tri-series",
-      "summary": "After the captain's half-century led Bangladesh to 152/6, Ritu Moni returned 4-12 to down Scotland",
-      "url": "https://www.cricbuzz.com/cricket-news/139022/sultana-moni-help-bangladesh-break-duck-in-tri-series",
-      "imageUrl": "https://static.cricbuzz.com/a/img/v1/540x303/i1/c1002938/nigar-sultana-hit-58-to-set-up-bangladeshs-winning-score-of-1526.jpg",
-      "source": "cricbuzz",
-      "publishedAt": "2026-06-03T08:25:12.045Z"
+      "id": "espn-https://www.espncricinfo.com/ci/content/story/1539563.html",
+      "title": "Kathryn Bryce's all-round effort takes Scotland to tri-series win",
+      "summary": "Scotland finished as the table-toppers after beating Netherlands, with three wins in four matches and one match between Bangladesh and Netherlands to go",
+      "url": "https://www.espncricinfo.com/story/ned-vs-sco-women-kathryn-bryce-all-round-effort-takes-scotland-to-tri-series-win-1539563",
+      "imageUrl": "https://p.imgci.com/db/PICTURES/CMS/380500/380561.5.jpg",
+      "source": "espncricinfo",
+      "publishedAt": "2026-06-03T17:28:22.000Z"
+    },
+    {
+      "id": "espn-https://www.espncricinfo.com/ci/content/story/1539528.html",
+      "title": "Bangladesh recall Mosaddek after four years for ODIs against Australia",
+      "summary": "Nurul Hasan also returns to the ODI squad for the first two games. Mahidul Islam and Afif Hossain have been left out",
+      "url": "https://www.espncricinfo.com/story/bangladesh-recall-mosaddek-after-four-years-for-odis-against-australia-1539528",
+      "imageUrl": "https://p.imgci.com/db/PICTURES/CMS/290300/290301.5.jpg",
+      "source": "espncricinfo",
+      "publishedAt": "2026-06-03T14:11:35.000Z"
     },
     {
       "id": "espn-https://www.espncricinfo.com/ci/content/story/1539389.html",
