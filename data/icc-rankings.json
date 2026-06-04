@@ -1,5 +1,5 @@
 {
-  "fetchedAt": "2026-06-03T06:47:53.511Z",
+  "fetchedAt": "2026-06-04T06:38:50.308Z",
   "source": "icc-sportz.io",
   "sourceUrl": "https://www.icc-cricket.com/rankings",
   "men": {
@@ -133,8 +133,8 @@
           "name": "Sri Lanka",
           "abbreviation": "SL",
           "rating": 96,
-          "points": 3346,
-          "matches": 35
+          "points": 3470,
+          "matches": 36
         },
         {
           "rank": 7,
@@ -164,9 +164,9 @@
           "rank": 10,
           "name": "West Indies",
           "abbreviation": "WI",
-          "rating": 74,
-          "points": 2073,
-          "matches": 28
+          "rating": 73,
+          "points": 2119,
+          "matches": 29
         },
         {
           "rank": 11,
@@ -438,9 +438,9 @@
           "rank": 24,
           "name": "Hong Kong",
           "abbreviation": "HK",
-          "rating": 126,
-          "points": 5057,
-          "matches": 40
+          "rating": 127,
+          "points": 5193,
+          "matches": 41
         },
         {
           "rank": 25,
@@ -574,9 +574,9 @@
           "rank": 41,
           "name": "Singapore",
           "abbreviation": "SIN",
-          "rating": 70,
-          "points": 1746,
-          "matches": 25
+          "rating": 69,
+          "points": 1806,
+          "matches": 26
         },
         {
           "rank": 42,
@@ -756,14 +756,6 @@
         },
         {
           "rank": 64,
-          "name": "Eswatini",
-          "abbreviation": "ESW",
-          "rating": 36,
-          "points": 571,
-          "matches": 16
-        },
-        {
-          "rank": 65,
           "name": "Isle of Man",
           "abbreviation": "IOM",
           "rating": 36,
@@ -771,7 +763,7 @@
           "matches": 8
         },
         {
-          "rank": 66,
+          "rank": 65,
           "name": "Cyprus",
           "abbreviation": "CYP",
           "rating": 34,
@@ -779,7 +771,7 @@
           "matches": 26
         },
         {
-          "rank": 67,
+          "rank": 66,
           "name": "Malta",
           "abbreviation": "MLT",
           "rating": 34,
@@ -787,12 +779,20 @@
           "matches": 39
         },
         {
-          "rank": 68,
+          "rank": 67,
           "name": "Vanuatu",
           "abbreviation": "VUT",
           "rating": 33,
           "points": 491,
           "matches": 15
+        },
+        {
+          "rank": 68,
+          "name": "Eswatini",
+          "abbreviation": "ESW",
+          "rating": 32,
+          "points": 579,
+          "matches": 18
         },
         {
           "rank": 69,
@@ -892,6 +892,14 @@
         },
         {
           "rank": 81,
+          "name": "Mozambique",
+          "abbreviation": "MOZ",
+          "rating": 14,
+          "points": 186,
+          "matches": 13
+        },
+        {
+          "rank": 82,
           "name": "Brazil",
           "abbreviation": "BRA",
           "rating": 12,
@@ -899,7 +907,7 @@
           "matches": 13
         },
         {
-          "rank": 82,
+          "rank": 83,
           "name": "Sierra Leone",
           "abbreviation": "SRL",
           "rating": 11,
@@ -907,20 +915,12 @@
           "matches": 27
         },
         {
-          "rank": 83,
+          "rank": 84,
           "name": "Maldives",
           "abbreviation": "MDV",
           "rating": 9,
           "points": 112,
           "matches": 13
-        },
-        {
-          "rank": 84,
-          "name": "Mozambique",
-          "abbreviation": "MOZ",
-          "rating": 8,
-          "points": 99,
-          "matches": 12
         },
         {
           "rank": 85,
@@ -1040,7 +1040,7 @@
           "abbreviation": "LES",
           "rating": 0,
           "points": 0,
-          "matches": 11
+          "matches": 12
         },
         {
           "rank": 92,
@@ -1126,8 +1126,8 @@
             "rank": 5,
             "name": "Kane Williamson",
             "team": "New Zealand",
-            "rating": 822,
-            "points": 822,
+            "rating": 807,
+            "points": 807,
             "iccPlayerId": "4330",
             "profileUrl": "https://www.icc-cricket.com/rankings/4330/kane-williamson",
             "imageUrl": "https://images.icc-cricket.com/image/upload/t_player-headshot-portrait-lg-webp/prd/assets/players/generic/colored/4330.png"
@@ -1156,16 +1156,6 @@
           },
           {
             "rank": 3,
-            "name": "Matt Henry",
-            "team": "New Zealand",
-            "rating": 836,
-            "points": 836,
-            "iccPlayerId": "60544",
-            "profileUrl": "https://www.icc-cricket.com/rankings/60544/matt-henry",
-            "imageUrl": "https://images.icc-cricket.com/image/upload/t_player-headshot-portrait-lg-webp/prd/assets/players/generic/colored/60544.png"
-          },
-          {
-            "rank": 4,
             "name": "Pat Cummins",
             "team": "Australia",
             "rating": 832,
@@ -1173,6 +1163,16 @@
             "iccPlayerId": "56964",
             "profileUrl": "https://www.icc-cricket.com/rankings/56964/pat-cummins",
             "imageUrl": "https://images.icc-cricket.com/image/upload/t_player-headshot-portrait-lg-webp/prd/assets/players/generic/colored/56964.png"
+          },
+          {
+            "rank": 4,
+            "name": "Matt Henry",
+            "team": "New Zealand",
+            "rating": 828,
+            "points": 828,
+            "iccPlayerId": "60544",
+            "profileUrl": "https://www.icc-cricket.com/rankings/60544/matt-henry",
+            "imageUrl": "https://images.icc-cricket.com/image/upload/t_player-headshot-portrait-lg-webp/prd/assets/players/generic/colored/60544.png"
           },
           {
             "rank": 5,
@@ -1355,6 +1355,16 @@
           },
           {
             "rank": 4,
+            "name": "Abrar Ahmed",
+            "team": "Pakistan",
+            "rating": 633,
+            "points": 633,
+            "iccPlayerId": "66884",
+            "profileUrl": "https://www.icc-cricket.com/rankings/66884/abrar-ahmed",
+            "imageUrl": "https://images.icc-cricket.com/image/upload/t_player-headshot-portrait-lg-webp/prd/assets/players/generic/colored/66884.png"
+          },
+          {
+            "rank": 5,
             "name": "Adil Rashid",
             "team": "England",
             "rating": 629,
@@ -1362,16 +1372,6 @@
             "iccPlayerId": "4661",
             "profileUrl": "https://www.icc-cricket.com/rankings/4661/adil-rashid",
             "imageUrl": "https://images.icc-cricket.com/image/upload/t_player-headshot-portrait-lg-webp/prd/assets/players/generic/colored/4661.png"
-          },
-          {
-            "rank": 5,
-            "name": "Josh Hazlewood",
-            "team": "Australia",
-            "rating": 626,
-            "points": 626,
-            "iccPlayerId": "4255",
-            "profileUrl": "https://www.icc-cricket.com/rankings/4255/josh-hazlewood",
-            "imageUrl": "https://images.icc-cricket.com/image/upload/t_player-headshot-portrait-lg-webp/prd/assets/players/generic/colored/4255.png"
           }
         ],
         "topAllRounders": [
@@ -1598,16 +1598,6 @@
           },
           {
             "rank": 4,
-            "name": "Dipendra Singh Airee",
-            "team": "Nepal",
-            "rating": 245,
-            "points": 245,
-            "iccPlayerId": "66061",
-            "profileUrl": "https://www.icc-cricket.com/rankings/66061/dipendra-singh-airee",
-            "imageUrl": "https://images.icc-cricket.com/image/upload/t_player-headshot-portrait-lg-webp/prd/assets/players/generic/colored/66061.png"
-          },
-          {
-            "rank": 5,
             "name": "Azmatullah Omarzai",
             "team": "Afghanistan",
             "rating": 241,
@@ -1615,6 +1605,16 @@
             "iccPlayerId": "67516",
             "profileUrl": "https://www.icc-cricket.com/rankings/67516/azmatullah-omarzai",
             "imageUrl": "https://images.icc-cricket.com/image/upload/t_player-headshot-portrait-lg-webp/prd/assets/players/generic/colored/67516.png"
+          },
+          {
+            "rank": 5,
+            "name": "Roston Chase",
+            "team": "West Indies",
+            "rating": 239,
+            "points": 239,
+            "iccPlayerId": "58071",
+            "profileUrl": "https://www.icc-cricket.com/rankings/58071/roston-chase",
+            "imageUrl": "https://images.icc-cricket.com/image/upload/t_player-headshot-portrait-lg-webp/prd/assets/players/generic/colored/58071.png"
           }
         ],
         "topBangladeshBatsman": {
@@ -1638,7 +1638,7 @@
           "imageUrl": "https://images.icc-cricket.com/image/upload/t_player-headshot-portrait-lg-webp/prd/assets/players/generic/colored/63881.png"
         },
         "topBangladeshAllRounder": {
-          "rank": 44,
+          "rank": 43,
           "name": "Mahedi Hasan",
           "team": "Bangladesh",
           "rating": 89,
@@ -1811,19 +1811,19 @@
         },
         {
           "rank": 6,
-          "name": "West Indies",
-          "abbreviation": "WI",
-          "rating": 240,
-          "points": 6230,
-          "matches": 26
-        },
-        {
-          "rank": 7,
           "name": "Sri Lanka",
           "abbreviation": "SL",
           "rating": 237,
           "points": 6871,
           "matches": 29
+        },
+        {
+          "rank": 7,
+          "name": "West Indies",
+          "abbreviation": "WI",
+          "rating": 236,
+          "points": 6382,
+          "matches": 27
         },
         {
           "rank": 8,
@@ -1837,9 +1837,9 @@
           "rank": 9,
           "name": "Ireland",
           "abbreviation": "IRE",
-          "rating": 202,
-          "points": 7254,
-          "matches": 36
+          "rating": 204,
+          "points": 7544,
+          "matches": 37
         },
         {
           "rank": 10,
@@ -1853,25 +1853,25 @@
           "rank": 11,
           "name": "Scotland",
           "abbreviation": "SCO",
-          "rating": 165,
-          "points": 5293,
-          "matches": 32
+          "rating": 166,
+          "points": 5485,
+          "matches": 33
         },
         {
           "rank": 12,
           "name": "Thailand",
           "abbreviation": "THA",
-          "rating": 152,
-          "points": 8080,
-          "matches": 53
+          "rating": 153,
+          "points": 8242,
+          "matches": 54
         },
         {
           "rank": 13,
           "name": "Netherlands",
           "abbreviation": "NED",
-          "rating": 142,
-          "points": 5956,
-          "matches": 42
+          "rating": 141,
+          "points": 6071,
+          "matches": 43
         },
         {
           "rank": 14,
@@ -1886,8 +1886,8 @@
           "name": "United Arab Emirates",
           "abbreviation": "UAE",
           "rating": 137,
-          "points": 5464,
-          "matches": 40
+          "points": 5611,
+          "matches": 41
         },
         {
           "rank": 16,
@@ -1934,24 +1934,24 @@
           "name": "Nepal",
           "abbreviation": "NEP",
           "rating": 93,
-          "points": 4447,
-          "matches": 48
+          "points": 4550,
+          "matches": 49
         },
         {
           "rank": 22,
           "name": "Indonesia",
           "abbreviation": "INA",
           "rating": 91,
-          "points": 2719,
-          "matches": 30
+          "points": 2820,
+          "matches": 31
         },
         {
           "rank": 23,
           "name": "Hong Kong",
           "abbreviation": "HK",
-          "rating": 90,
-          "points": 4245,
-          "matches": 47
+          "rating": 91,
+          "points": 4345,
+          "matches": 48
         },
         {
           "rank": 24,
@@ -1989,9 +1989,9 @@
           "rank": 28,
           "name": "Malaysia",
           "abbreviation": "MAS",
-          "rating": 68,
-          "points": 3281,
-          "matches": 48
+          "rating": 69,
+          "points": 3359,
+          "matches": 49
         },
         {
           "rank": 29,
@@ -2053,9 +2053,9 @@
           "rank": 36,
           "name": "Oman",
           "abbreviation": "OMN",
-          "rating": 53,
-          "points": 1330,
-          "matches": 25
+          "rating": 54,
+          "points": 1468,
+          "matches": 27
         },
         {
           "rank": 37,
@@ -2085,25 +2085,25 @@
           "rank": 40,
           "name": "Myanmar",
           "abbreviation": "MMR",
-          "rating": 43,
-          "points": 1214,
-          "matches": 28
-        },
-        {
-          "rank": 41,
-          "name": "China",
-          "abbreviation": "CHN",
-          "rating": 43,
-          "points": 1239,
+          "rating": 44,
+          "points": 1267,
           "matches": 29
         },
         {
-          "rank": 42,
+          "rank": 41,
           "name": "Japan",
           "abbreviation": "JPN",
           "rating": 42,
           "points": 1090,
           "matches": 26
+        },
+        {
+          "rank": 42,
+          "name": "China",
+          "abbreviation": "CHN",
+          "rating": 41,
+          "points": 1242,
+          "matches": 30
         },
         {
           "rank": 43,
@@ -2117,9 +2117,9 @@
           "rank": 44,
           "name": "Bhutan",
           "abbreviation": "BHU",
-          "rating": 36,
-          "points": 655,
-          "matches": 18
+          "rating": 35,
+          "points": 707,
+          "matches": 20
         },
         {
           "rank": 45,
@@ -2317,9 +2317,9 @@
           "rank": 69,
           "name": "Singapore",
           "abbreviation": "SIN",
-          "rating": 2,
-          "points": 48,
-          "matches": 26
+          "rating": 1,
+          "points": 31,
+          "matches": 28
         },
         {
           "rank": 70,
@@ -2391,7 +2391,7 @@
           "abbreviation": "BRN",
           "rating": 0,
           "points": 0,
-          "matches": 20
+          "matches": 22
         }
       ]
     },
