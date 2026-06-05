@@ -1,5 +1,5 @@
 {
-  "fetchedAt": "2026-06-04T06:38:50.308Z",
+  "fetchedAt": "2026-06-05T06:17:48.910Z",
   "source": "icc-sportz.io",
   "sourceUrl": "https://www.icc-cricket.com/rankings",
   "men": {
@@ -108,9 +108,9 @@
           "rank": 3,
           "name": "Australia",
           "abbreviation": "AUS",
-          "rating": 108,
-          "points": 2708,
-          "matches": 25
+          "rating": 106,
+          "points": 2757,
+          "matches": 26
         },
         {
           "rank": 4,
@@ -124,9 +124,9 @@
           "rank": 5,
           "name": "Pakistan",
           "abbreviation": "PAK",
-          "rating": 99,
-          "points": 3057,
-          "matches": 31
+          "rating": 100,
+          "points": 3215,
+          "matches": 32
         },
         {
           "rank": 6,
@@ -375,8 +375,8 @@
           "name": "Nepal",
           "abbreviation": "NEP",
           "rating": 178,
-          "points": 7116,
-          "matches": 40
+          "points": 7304,
+          "matches": 41
         },
         {
           "rank": 17,
@@ -447,8 +447,8 @@
           "name": "Malaysia",
           "abbreviation": "MAS",
           "rating": 126,
-          "points": 5934,
-          "matches": 47
+          "points": 6050,
+          "matches": 48
         },
         {
           "rank": 26,
@@ -780,19 +780,19 @@
         },
         {
           "rank": 67,
+          "name": "Eswatini",
+          "abbreviation": "ESW",
+          "rating": 33,
+          "points": 629,
+          "matches": 19
+        },
+        {
+          "rank": 68,
           "name": "Vanuatu",
           "abbreviation": "VUT",
           "rating": 33,
           "points": 491,
           "matches": 15
-        },
-        {
-          "rank": 68,
-          "name": "Eswatini",
-          "abbreviation": "ESW",
-          "rating": 32,
-          "points": 579,
-          "matches": 18
         },
         {
           "rank": 69,
@@ -868,6 +868,14 @@
         },
         {
           "rank": 78,
+          "name": "Mozambique",
+          "abbreviation": "MOZ",
+          "rating": 17,
+          "points": 236,
+          "matches": 14
+        },
+        {
+          "rank": 79,
           "name": "Gibraltar",
           "abbreviation": "GIB",
           "rating": 17,
@@ -875,7 +883,7 @@
           "matches": 21
         },
         {
-          "rank": 79,
+          "rank": 80,
           "name": "Luxembourg",
           "abbreviation": "LUX",
           "rating": 16,
@@ -883,20 +891,12 @@
           "matches": 16
         },
         {
-          "rank": 80,
+          "rank": 81,
           "name": "Serbia",
           "abbreviation": "SER",
           "rating": 14,
           "points": 275,
           "matches": 19
-        },
-        {
-          "rank": 81,
-          "name": "Mozambique",
-          "abbreviation": "MOZ",
-          "rating": 14,
-          "points": 186,
-          "matches": 13
         },
         {
           "rank": 82,
@@ -1040,7 +1040,7 @@
           "abbreviation": "LES",
           "rating": 0,
           "points": 0,
-          "matches": 12
+          "matches": 14
         },
         {
           "rank": 92,
@@ -1846,8 +1846,8 @@
           "name": "Bangladesh",
           "abbreviation": "BAN",
           "rating": 194,
-          "points": 6012,
-          "matches": 31
+          "points": 6216,
+          "matches": 32
         },
         {
           "rank": 11,
@@ -1867,19 +1867,19 @@
         },
         {
           "rank": 13,
-          "name": "Netherlands",
-          "abbreviation": "NED",
-          "rating": 141,
-          "points": 6071,
-          "matches": 43
-        },
-        {
-          "rank": 14,
           "name": "Papua New Guinea",
           "abbreviation": "PNG",
           "rating": 141,
           "points": 4235,
           "matches": 30
+        },
+        {
+          "rank": 14,
+          "name": "Netherlands",
+          "abbreviation": "NED",
+          "rating": 141,
+          "points": 6202,
+          "matches": 44
         },
         {
           "rank": 15,
@@ -1942,16 +1942,16 @@
           "name": "Indonesia",
           "abbreviation": "INA",
           "rating": 91,
-          "points": 2820,
-          "matches": 31
+          "points": 2921,
+          "matches": 32
         },
         {
           "rank": 23,
           "name": "Hong Kong",
           "abbreviation": "HK",
           "rating": 91,
-          "points": 4345,
-          "matches": 48
+          "points": 4446,
+          "matches": 49
         },
         {
           "rank": 24,
@@ -2094,8 +2094,8 @@
           "name": "Japan",
           "abbreviation": "JPN",
           "rating": 42,
-          "points": 1090,
-          "matches": 26
+          "points": 1142,
+          "matches": 27
         },
         {
           "rank": 42,
@@ -2155,19 +2155,19 @@
         },
         {
           "rank": 49,
-          "name": "Kuwait",
-          "abbreviation": "KUW",
-          "rating": 31,
-          "points": 770,
-          "matches": 25
-        },
-        {
-          "rank": 50,
           "name": "Turkiye",
           "abbreviation": "TUR",
           "rating": 31,
           "points": 337,
           "matches": 11
+        },
+        {
+          "rank": 50,
+          "name": "Kuwait",
+          "abbreviation": "KUW",
+          "rating": 30,
+          "points": 791,
+          "matches": 26
         },
         {
           "rank": 51,
@@ -2254,8 +2254,8 @@
           "name": "Qatar",
           "abbreviation": "QAT",
           "rating": 14,
-          "points": 310,
-          "matches": 22
+          "points": 314,
+          "matches": 23
         },
         {
           "rank": 62,
@@ -2307,6 +2307,14 @@
         },
         {
           "rank": 68,
+          "name": "Philippines",
+          "abbreviation": "PHI",
+          "rating": 3,
+          "points": 64,
+          "matches": 19
+        },
+        {
+          "rank": 69,
           "name": "Lesotho",
           "abbreviation": "LES",
           "rating": 3,
@@ -2314,7 +2322,7 @@
           "matches": 17
         },
         {
-          "rank": 69,
+          "rank": 70,
           "name": "Singapore",
           "abbreviation": "SIN",
           "rating": 1,
@@ -2322,20 +2330,12 @@
           "matches": 28
         },
         {
-          "rank": 70,
-          "name": "Philippines",
-          "abbreviation": "PHI",
-          "rating": 1,
-          "points": 14,
-          "matches": 18
-        },
-        {
           "rank": 71,
           "name": "Mongolia",
           "abbreviation": "MNG",
           "rating": 0,
           "points": 0,
-          "matches": 17
+          "matches": 18
         },
         {
           "rank": 71,
@@ -2410,8 +2410,8 @@
         "name": "Bangladesh",
         "abbreviation": "BAN",
         "rating": 194,
-        "points": 6012,
-        "matches": 31
+        "points": 6216,
+        "matches": 32
       }
     },
     "players": {
