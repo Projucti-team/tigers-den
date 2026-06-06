@@ -1,5 +1,5 @@
 {
-  "fetchedAt": "2026-06-05T06:17:48.910Z",
+  "fetchedAt": "2026-06-06T05:50:43.637Z",
   "source": "icc-sportz.io",
   "sourceUrl": "https://www.icc-cricket.com/rankings",
   "men": {
@@ -398,9 +398,9 @@
           "rank": 19,
           "name": "Oman",
           "abbreviation": "OMN",
-          "rating": 158,
-          "points": 6339,
-          "matches": 40
+          "rating": 156,
+          "points": 6416,
+          "matches": 41
         },
         {
           "rank": 20,
@@ -438,9 +438,9 @@
           "rank": 24,
           "name": "Hong Kong",
           "abbreviation": "HK",
-          "rating": 127,
-          "points": 5193,
-          "matches": 41
+          "rating": 129,
+          "points": 5401,
+          "matches": 42
         },
         {
           "rank": 25,
@@ -487,8 +487,8 @@
           "name": "Bahrain",
           "abbreviation": "BRN",
           "rating": 118,
-          "points": 7303,
-          "matches": 62
+          "points": 7431,
+          "matches": 63
         },
         {
           "rank": 31,
@@ -575,8 +575,8 @@
           "name": "Singapore",
           "abbreviation": "SIN",
           "rating": 69,
-          "points": 1806,
-          "matches": 26
+          "points": 1865,
+          "matches": 27
         },
         {
           "rank": 42,
@@ -1941,9 +1941,9 @@
           "rank": 22,
           "name": "Indonesia",
           "abbreviation": "INA",
-          "rating": 91,
-          "points": 2921,
-          "matches": 32
+          "rating": 92,
+          "points": 3040,
+          "matches": 33
         },
         {
           "rank": 23,
@@ -1989,9 +1989,9 @@
           "rank": 28,
           "name": "Malaysia",
           "abbreviation": "MAS",
-          "rating": 69,
-          "points": 3359,
-          "matches": 49
+          "rating": 68,
+          "points": 3400,
+          "matches": 50
         },
         {
           "rank": 29,
@@ -2083,27 +2083,27 @@
         },
         {
           "rank": 40,
-          "name": "Myanmar",
-          "abbreviation": "MMR",
+          "name": "Japan",
+          "abbreviation": "JPN",
           "rating": 44,
-          "points": 1267,
-          "matches": 29
+          "points": 1236,
+          "matches": 28
         },
         {
           "rank": 41,
-          "name": "Japan",
-          "abbreviation": "JPN",
+          "name": "Myanmar",
+          "abbreviation": "MMR",
           "rating": 42,
-          "points": 1142,
-          "matches": 27
+          "points": 1259,
+          "matches": 30
         },
         {
           "rank": 42,
           "name": "China",
           "abbreviation": "CHN",
-          "rating": 41,
-          "points": 1242,
-          "matches": 30
+          "rating": 42,
+          "points": 1295,
+          "matches": 31
         },
         {
           "rank": 43,
@@ -2117,9 +2117,9 @@
           "rank": 44,
           "name": "Bhutan",
           "abbreviation": "BHU",
-          "rating": 35,
-          "points": 707,
-          "matches": 20
+          "rating": 37,
+          "points": 771,
+          "matches": 21
         },
         {
           "rank": 45,
@@ -2251,14 +2251,6 @@
         },
         {
           "rank": 61,
-          "name": "Qatar",
-          "abbreviation": "QAT",
-          "rating": 14,
-          "points": 314,
-          "matches": 23
-        },
-        {
-          "rank": 62,
           "name": "Serbia",
           "abbreviation": "SER",
           "rating": 13,
@@ -2266,12 +2258,20 @@
           "matches": 11
         },
         {
-          "rank": 63,
+          "rank": 62,
           "name": "Argentina",
           "abbreviation": "ARG",
           "rating": 13,
           "points": 156,
           "matches": 12
+        },
+        {
+          "rank": 63,
+          "name": "Qatar",
+          "abbreviation": "QAT",
+          "rating": 12,
+          "points": 299,
+          "matches": 24
         },
         {
           "rank": 64,
@@ -2307,19 +2307,19 @@
         },
         {
           "rank": 68,
-          "name": "Philippines",
-          "abbreviation": "PHI",
-          "rating": 3,
-          "points": 64,
-          "matches": 19
-        },
-        {
-          "rank": 69,
           "name": "Lesotho",
           "abbreviation": "LES",
           "rating": 3,
           "points": 50,
           "matches": 17
+        },
+        {
+          "rank": 69,
+          "name": "Philippines",
+          "abbreviation": "PHI",
+          "rating": 3,
+          "points": 55,
+          "matches": 20
         },
         {
           "rank": 70,
