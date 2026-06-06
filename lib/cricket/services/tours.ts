@@ -3,7 +3,7 @@ import { fetchUpcomingTours, isCricApiConfigured } from "@/lib/cricket/providers
 import { CRICKET_SNAPSHOT_KEYS } from "@/lib/cricket/snapshot-keys";
 import { readCricketSnapshot, staleSnapshotWarning } from "@/lib/cricket/snapshot-db";
 import type { ToursIndexSnapshot } from "@/lib/cricket/snapshot-types";
-import type { Tour } from "@/lib/cricket/types";
+import type { LiveMatchSummary, Tour } from "@/lib/cricket/types";
 
 export function filterBangladeshTours(tours: Tour[]): Tour[] {
   return tours.filter((t) => {
@@ -15,7 +15,10 @@ export function filterBangladeshTours(tours: Tour[]): Tour[] {
 }
 
 /** Live CricAPI fetch — nightly sync only. */
-export async function buildFutureToursLive(options?: { bangladeshOnly?: boolean }): Promise<{
+export async function buildFutureToursLive(options?: {
+  bangladeshOnly?: boolean;
+  prefetchedMatches?: LiveMatchSummary[];
+}): Promise<{
   tours: Tour[];
   warnings: string[];
 }> {
@@ -27,7 +30,9 @@ export async function buildFutureToursLive(options?: { bangladeshOnly?: boolean 
   }
 
   try {
-    const { tours: fetched, warnings: fetchWarnings } = await fetchUpcomingTours();
+    const { tours: fetched, warnings: fetchWarnings } = await fetchUpcomingTours({
+      prefetchedMatches: options?.prefetchedMatches,
+    });
     warnings.push(...fetchWarnings);
 
     let tours = fetched;

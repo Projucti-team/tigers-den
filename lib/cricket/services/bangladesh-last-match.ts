@@ -19,26 +19,26 @@ import {
   type MatchHighlight,
 } from "@/lib/cricket/services/match-highlight";
 
-async function fetchAllMatchesForScrape(): Promise<LiveMatchSummary[]> {
-  const [current, listed] = await Promise.all([
-    fetchCurrentMatches().catch(() => []),
-    fetchMatchesList(12).catch(() => []),
-  ]);
-
-  const byId = new Map<string, LiveMatchSummary>();
-  for (const m of [...current, ...listed]) {
-    if (m.id) byId.set(m.id, m);
-  }
-  return [...byId.values()];
-}
-
 /** Refresh cache from CricAPI — run via npm script (not on every page view). */
-export async function scrapeBangladeshLastMatch(): Promise<BangladeshLastMatchSnapshot | null> {
+export async function scrapeBangladeshLastMatch(
+  prefetchedMatches?: LiveMatchSummary[],
+): Promise<BangladeshLastMatchSnapshot | null> {
   if (!isCricApiConfigured()) {
     throw new Error("CRICKET_DATA_API_KEY is not set.");
   }
 
-  const matches = await fetchAllMatchesForScrape();
+  let matches = prefetchedMatches;
+  if (!matches?.length) {
+    const [current, listed] = await Promise.all([
+      fetchCurrentMatches().catch(() => []),
+      fetchMatchesList(3).catch(() => []),
+    ]);
+    const byId = new Map<string, LiveMatchSummary>();
+    for (const m of [...current, ...listed]) {
+      if (m.id) byId.set(m.id, m);
+    }
+    matches = [...byId.values()];
+  }
   const last = findLastBangladeshMatch(matches);
 
   if (!last) {

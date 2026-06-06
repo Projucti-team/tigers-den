@@ -17,18 +17,6 @@ import type { LiveMatchSummary } from "@/lib/cricket/types";
 
 const UPCOMING_LIMIT = 5;
 
-async function fetchAllMatchesForScrape(): Promise<LiveMatchSummary[]> {
-  const [current, listed] = await Promise.all([
-    fetchCurrentMatches().catch(() => []),
-    fetchMatchesList(16).catch(() => []),
-  ]);
-
-  const byId = new Map<string, LiveMatchSummary>();
-  for (const m of [...current, ...listed]) {
-    if (m.id) byId.set(m.id, m);
-  }
-  return [...byId.values()];
-}
 
 export function findUpcomingBangladeshMatches(
   matches: LiveMatchSummary[],
@@ -40,12 +28,25 @@ export function findUpcomingBangladeshMatches(
     .slice(0, limit);
 }
 
-export async function scrapeBangladeshUpcomingMatches(): Promise<BangladeshUpcomingMatchesSnapshot | null> {
+export async function scrapeBangladeshUpcomingMatches(
+  prefetchedMatches?: LiveMatchSummary[],
+): Promise<BangladeshUpcomingMatchesSnapshot | null> {
   if (!isCricApiConfigured()) {
     throw new Error("CRICKET_DATA_API_KEY is not set.");
   }
 
-  const matches = await fetchAllMatchesForScrape();
+  let matches = prefetchedMatches;
+  if (!matches?.length) {
+    const [current, listed] = await Promise.all([
+      fetchCurrentMatches().catch(() => []),
+      fetchMatchesList(3).catch(() => []),
+    ]);
+    const byId = new Map<string, LiveMatchSummary>();
+    for (const m of [...current, ...listed]) {
+      if (m.id) byId.set(m.id, m);
+    }
+    matches = [...byId.values()];
+  }
   const upcoming = findUpcomingBangladeshMatches(matches);
 
   if (!upcoming.length) {

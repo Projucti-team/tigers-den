@@ -6,14 +6,23 @@ import { writeIccRankingsSnapshot } from "@/lib/cricket/icc-rankings-store";
 import { writeWtcStandingsSnapshot } from "@/lib/cricket/wtc-store";
 import { buildRankingsShowcaseLive } from "@/lib/cricket/services/build-rankings-showcase";
 import { buildTourDetailLive, toTourDetailSnapshot } from "@/lib/cricket/services/build-tour-detail";
+import {
+  beginCricApiSyncSession,
+  isCricApiBlocked,
+  isCricApiConfigured,
+  prefetchMatchesForSync,
+} from "@/lib/cricket/providers/cricapi";
 import { buildToursIndexLive } from "@/lib/cricket/services/build-tours-index";
 import { scrapeBangladeshLastMatch } from "@/lib/cricket/services/bangladesh-last-match";
 import { scrapeBangladeshUpcomingMatches } from "@/lib/cricket/services/bangladesh-upcoming-matches";
+import type { ToursIndexSnapshot } from "@/lib/cricket/snapshot-types";
 import { CRICKET_SNAPSHOT_KEYS } from "@/lib/cricket/snapshot-keys";
 import {
   deleteCricketSnapshotsExcept,
+  readCricketSnapshot,
   upsertCricketSnapshot,
 } from "@/lib/cricket/snapshot-db";
+import type { LiveMatchSummary } from "@/lib/cricket/types";
 import { tourSlug } from "@/lib/cricket/tour-slug";
 import type { WtcStandingsSnapshot } from "@/lib/cricket/types";
 import { hasPersistedDatabase } from "@/lib/payload-db";
@@ -112,8 +121,20 @@ export async function syncCricketSnapshots(): Promise<SyncCricketResult> {
     errors.push(`WTC standings: ${e instanceof Error ? e.message : "failed"}`);
   }
 
+  beginCricApiSyncSession();
+  let prefetchedMatches: LiveMatchSummary[] = [];
+
+  if (isCricApiConfigured()) {
+    try {
+      prefetchedMatches = await prefetchMatchesForSync();
+    } catch (e) {
+      const message = e instanceof Error ? e.message : "CricAPI prefetch failed";
+      warnings.push(message);
+    }
+  }
+
   try {
-    const lastMatch = await scrapeBangladeshLastMatch();
+    const lastMatch = await scrapeBangladeshLastMatch(prefetchedMatches);
     if (lastMatch) {
       await upsertCricketSnapshot(
         CRICKET_SNAPSHOT_KEYS.lastMatch,
@@ -126,7 +147,7 @@ export async function syncCricketSnapshots(): Promise<SyncCricketResult> {
   }
 
   try {
-    const upcoming = await scrapeBangladeshUpcomingMatches();
+    const upcoming = await scrapeBangladeshUpcomingMatches(prefetchedMatches);
     if (upcoming) {
       await upsertCricketSnapshot(
         CRICKET_SNAPSHOT_KEYS.upcomingMatches,
@@ -157,39 +178,64 @@ export async function syncCricketSnapshots(): Promise<SyncCricketResult> {
   let tourDetailsCount = 0;
 
   try {
-    const toursIndex = await buildToursIndexLive();
-    await upsertCricketSnapshot(CRICKET_SNAPSHOT_KEYS.toursIndex, "Upcoming tours index", toursIndex);
+    const toursIndex = await buildToursIndexLive({ prefetchedMatches });
     warnings.push(...toursIndex.warnings);
-    toursCount = toursIndex.tours.length;
+    const rateLimited = isCricApiBlocked() || toursIndex.warnings.some((w) => /blocked/i.test(w));
+    let toursToProcess = toursIndex;
 
-    if (process.env.CRICKET_DATA_API_KEY?.trim() && toursCount === 0) {
-      const fetchFailure = toursIndex.warnings.find((w) =>
-        /failed|HTTP|CricAPI|quota|unavailable|blocked|invalid api|rate/i.test(w),
-      );
-      if (fetchFailure) {
-        errors.push(`Tours index: ${fetchFailure}`);
-      } else if (!toursIndex.warnings.length) {
+    if (rateLimited && toursIndex.tours.length === 0) {
+      const previous = await readCricketSnapshot<ToursIndexSnapshot>(CRICKET_SNAPSHOT_KEYS.toursIndex);
+      if (previous?.tours?.length) {
+        toursToProcess = previous;
+        toursCount = previous.tours.length;
         warnings.push(
-          "No upcoming Bangladesh series returned from CricAPI — key may be invalid or tours not listed yet.",
+          "CricAPI rate-limited — kept the previous tours snapshot. Wait ~15 minutes, then sync again.",
         );
+      } else {
+        errors.push(
+          "Tours index: CricAPI rate-limited (Blocked for 15 minutes). Wait and run sync again.",
+        );
+      }
+    } else {
+      await upsertCricketSnapshot(
+        CRICKET_SNAPSHOT_KEYS.toursIndex,
+        "Upcoming tours index",
+        toursIndex,
+      );
+      toursCount = toursIndex.tours.length;
+
+      if (process.env.CRICKET_DATA_API_KEY?.trim() && toursCount === 0) {
+        const fetchFailure = toursIndex.warnings.find((w) =>
+          /failed|HTTP|CricAPI|quota|unavailable|blocked|invalid api|rate/i.test(w),
+        );
+        if (fetchFailure) {
+          errors.push(`Tours index: ${fetchFailure}`);
+        } else if (!toursIndex.warnings.length) {
+          warnings.push(
+            "No upcoming Bangladesh series returned from CricAPI — key may be invalid or tours not listed yet.",
+          );
+        }
       }
     }
 
-    for (const tour of toursIndex.tours) {
+    for (const tour of toursToProcess.tours) {
       const slug = tourSlug(tour);
       const key = CRICKET_SNAPSHOT_KEYS.tourDetail(slug);
       keysToKeep.add(key);
 
+      if (rateLimited) {
+        tourDetailsCount += 1;
+        continue;
+      }
+
       try {
-        const detail = await buildTourDetailLive(tour, toursIndex.warnings);
+        const detail = await buildTourDetailLive(tour, toursToProcess.warnings);
         await upsertCricketSnapshot(
           key,
           `Tour: ${tour.name}`,
           toTourDetailSnapshot(detail, slug),
         );
         tourDetailsCount += 1;
-        // Avoid CricAPI free-tier rate limits when building many tour pages.
-        await new Promise((resolve) => setTimeout(resolve, 250));
       } catch (e) {
         errors.push(`Tour ${slug}: ${e instanceof Error ? e.message : "failed"}`);
       }

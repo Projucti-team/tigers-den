@@ -11,6 +11,37 @@ type CricApiResponse<T> = {
   info?: { totalRows?: number };
 };
 
+/** Free-tier CricAPI blocks bursts — space calls out during sync. */
+const CRICAPI_MIN_INTERVAL_MS = 2_000;
+let lastCricApiCallAt = 0;
+let cricApiBlocked = false;
+
+export function beginCricApiSyncSession(): void {
+  lastCricApiCallAt = 0;
+  cricApiBlocked = false;
+}
+
+export function isCricApiBlocked(): boolean {
+  return cricApiBlocked;
+}
+
+function markCricApiBlocked(reason: string): void {
+  if (/blocked|rate|quota/i.test(reason)) {
+    cricApiBlocked = true;
+  }
+}
+
+async function waitForCricApiSlot(): Promise<void> {
+  if (cricApiBlocked) {
+    throw new Error("Blocked for 15 minutes");
+  }
+  const waitMs = CRICAPI_MIN_INTERVAL_MS - (Date.now() - lastCricApiCallAt);
+  if (waitMs > 0) {
+    await new Promise((resolve) => setTimeout(resolve, waitMs));
+  }
+  lastCricApiCallAt = Date.now();
+}
+
 function getApiKey(): string {
   const key = process.env.CRICKET_DATA_API_KEY;
   if (!key) {
@@ -22,6 +53,8 @@ function getApiKey(): string {
 }
 
 async function cricFetch<T>(path: string, params: Record<string, string> = {}): Promise<T> {
+  await waitForCricApiSlot();
+
   const url = new URL(`${CRICAPI_BASE}/${path}`);
   url.searchParams.set("apikey", getApiKey());
   for (const [k, v] of Object.entries(params)) {
@@ -30,15 +63,34 @@ async function cricFetch<T>(path: string, params: Record<string, string> = {}): 
 
   const res = await fetch(url.toString(), { cache: "no-store" });
   if (!res.ok) {
-    throw new Error(`CricAPI HTTP ${res.status} for ${path}`);
+    const message = `CricAPI HTTP ${res.status} for ${path}`;
+    markCricApiBlocked(message);
+    throw new Error(message);
   }
 
   const json = (await res.json()) as CricApiResponse<T>;
   if (json.status !== "success" || !json.data) {
-    throw new Error(json.reason || `CricAPI failed for ${path}`);
+    const reason = json.reason || `CricAPI failed for ${path}`;
+    markCricApiBlocked(reason);
+    throw new Error(reason);
   }
 
   return json.data;
+}
+
+/** One shared match fetch for sync — avoids duplicate parallel CricAPI bursts. */
+export async function prefetchMatchesForSync(): Promise<LiveMatchSummary[]> {
+  if (!isCricApiConfigured() || cricApiBlocked) return [];
+
+  const current = await fetchCurrentMatches().catch(() => []);
+  const listed = await fetchMatchesList(2).catch(() => []);
+  const byId = new Map<string, LiveMatchSummary>();
+
+  for (const match of [...current, ...listed]) {
+    if (match.id) byId.set(match.id, match);
+  }
+
+  return [...byId.values()];
 }
 
 /** CricAPI sometimes returns "Aug 26" without a year — infer from ISO startDate. */
@@ -221,28 +273,36 @@ function addFutureTour(tours: Tour[], seen: Set<string>, raw: Record<string, unk
   tours.push(tour);
 }
 
-async function deriveToursFromUpcomingMatches(): Promise<{
+async function deriveToursFromUpcomingMatches(
+  prefetchedMatches?: LiveMatchSummary[],
+): Promise<{
   tours: Tour[];
   warnings: string[];
 }> {
   const warnings: string[] = [];
-  const [current, listed] = await Promise.all([
-    fetchCurrentMatches().catch((e) => {
+  let matches = prefetchedMatches;
+
+  if (!matches?.length) {
+    if (cricApiBlocked) {
+      return { tours: [], warnings: ["Blocked for 15 minutes"] };
+    }
+
+    const current = await fetchCurrentMatches().catch((e) => {
       warnings.push(e instanceof Error ? e.message : "CricAPI currentMatches failed");
       return [];
-    }),
-    fetchMatchesList(16).catch((e) => {
+    });
+    const listed = await fetchMatchesList(2).catch((e) => {
       warnings.push(e instanceof Error ? e.message : "CricAPI matches failed");
       return [];
-    }),
-  ]);
-
-  const byId = new Map<string, LiveMatchSummary>();
-  for (const match of [...current, ...listed]) {
-    if (match.id) byId.set(match.id, match);
+    });
+    const byId = new Map<string, LiveMatchSummary>();
+    for (const match of [...current, ...listed]) {
+      if (match.id) byId.set(match.id, match);
+    }
+    matches = [...byId.values()];
   }
 
-  const upcoming = [...byId.values()].filter((m) => isUpcomingBangladeshMatch(m));
+  const upcoming = matches.filter((m) => isUpcomingBangladeshMatch(m));
   const groups = new Map<string, LiveMatchSummary[]>();
 
   for (const match of upcoming) {
@@ -304,31 +364,26 @@ async function deriveToursFromUpcomingMatches(): Promise<{
   return { tours: sortToursByStart(tours), warnings };
 }
 
-export async function fetchUpcomingTours(): Promise<{ tours: Tour[]; warnings: string[] }> {
+export async function fetchUpcomingTours(options?: {
+  prefetchedMatches?: LiveMatchSummary[];
+}): Promise<{ tours: Tour[]; warnings: string[] }> {
   const tours: Tour[] = [];
   const warnings: string[] = [];
   const seen = new Set<string>();
 
-  for (const search of ["bangladesh", "Bangladesh Women"]) {
-    const { rows, warning } = await fetchSeriesBatch({ offset: "0", search });
-    if (warning) warnings.push(warning);
+  if (cricApiBlocked) {
+    return { tours: [], warnings: ["Blocked for 15 minutes"] };
+  }
+
+  const { rows, warning } = await fetchSeriesBatch({ offset: "0", search: "bangladesh" });
+  if (warning) {
+    warnings.push(warning);
+  } else {
     for (const raw of rows) addFutureTour(tours, seen, raw);
   }
 
-  for (let offset = 0; offset < 200; offset += 25) {
-    const { rows, warning } = await fetchSeriesBatch({ offset: String(offset) });
-    if (warning) {
-      warnings.push(warning);
-      break;
-    }
-    if (!rows.length) break;
-
-    for (const raw of rows) addFutureTour(tours, seen, raw);
-    if (rows.length < 25) break;
-  }
-
-  if (!tours.length) {
-    const derived = await deriveToursFromUpcomingMatches();
+  if (!tours.length && !cricApiBlocked) {
+    const derived = await deriveToursFromUpcomingMatches(options?.prefetchedMatches);
     warnings.push(...derived.warnings);
     for (const tour of derived.tours) {
       if (seen.has(tour.id)) continue;

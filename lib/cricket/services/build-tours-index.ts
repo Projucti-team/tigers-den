@@ -3,10 +3,16 @@ import { shortenTitle, tourToCard } from "@/lib/cricket/services/tours-display";
 import type { ToursIndexSnapshot } from "@/lib/cricket/snapshot-types";
 import { tourPath } from "@/lib/cricket/tour-slug";
 import { isAwaySeries } from "@/lib/cricket/services/tours-display";
+import type { LiveMatchSummary } from "@/lib/cricket/types";
 
 /** Live build — only used by the nightly sync job. */
-export async function buildToursIndexLive(): Promise<ToursIndexSnapshot> {
-  const { tours, warnings } = await buildFutureToursLive({ bangladeshOnly: true });
+export async function buildToursIndexLive(options?: {
+  prefetchedMatches?: LiveMatchSummary[];
+}): Promise<ToursIndexSnapshot> {
+  const { tours, warnings } = await buildFutureToursLive({
+    bangladeshOnly: true,
+    prefetchedMatches: options?.prefetchedMatches,
+  });
   const cards = tours.map((t, i) => tourToCard(t, i));
   const navLinks = tours.map((tour) => ({
     label: shortenTitle(tour.name),
