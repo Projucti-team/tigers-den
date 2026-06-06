@@ -14,8 +14,10 @@ COPY . .
 RUN mkdir -p /app/data /app/media
 ENV NEXT_TELEMETRY_DISABLED=1
 ENV DOCKER_BUILD=1
-# Keep Node heap bounded on 4 GB VPS hosts during image build
-ENV NODE_OPTIONS=--max-old-space-size=3072
+# Keep memory low on 4 GB CPX22 hosts (add swap on the server if builds OOM)
+ENV NODE_OPTIONS=--max-old-space-size=2048
+ENV NEXT_BUILD_WORKERS=1
+ENV UV_THREADPOOL_SIZE=2
 RUN npm run build:docker
 
 FROM base AS runner
@@ -31,7 +33,7 @@ RUN apk add --no-cache wget \
 COPY --from=builder /app/public ./public
 COPY --from=builder --chown=nextjs:nodejs /app/.next/standalone ./
 COPY --from=builder --chown=nextjs:nodejs /app/.next/static ./.next/static
-# Ensure libsql native bindings are present for sqlite adapter on alpine.
+# libsql native bindings for sqlite adapter (also copied when using Neon — harmless)
 COPY --from=deps /app/node_modules/@libsql ./node_modules/@libsql
 COPY --from=builder /app/data ./data-seed
 COPY --from=builder /app/media ./media-seed
@@ -44,7 +46,7 @@ RUN mkdir -p /app/data /app/media \
 USER nextjs
 EXPOSE 3000
 
-HEALTHCHECK --interval=30s --timeout=5s --start-period=40s --retries=3 \
+HEALTHCHECK --interval=30s --timeout=10s --start-period=90s --retries=5 \
   CMD wget -qO- http://127.0.0.1:3000/ || exit 1
 
 ENTRYPOINT ["/app/docker-entrypoint.sh"]
