@@ -18,7 +18,8 @@ ENV DOCKER_BUILD=1
 ENV NODE_OPTIONS=--max-old-space-size=2048
 ENV NEXT_BUILD_WORKERS=1
 ENV UV_THREADPOOL_SIZE=2
-RUN npm run build:docker
+# importMap.js is committed — skip generate:importmap (fails in Docker/CI with undici CacheStorage)
+RUN npm run build
 
 FROM base AS runner
 ENV NODE_ENV=production

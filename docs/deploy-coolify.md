@@ -53,7 +53,7 @@ Redeploy once, then remove the variable and redeploy again.
 
 ## What runs automatically on each deploy
 
-1. **Coolify pipeline** builds the Docker image (`npm run build:docker` = import map + Next build).
+1. **Coolify pipeline** builds the Docker image (`npm run build` — uses committed `app/(payload)/admin/importMap.js`).
 2. **Container starts** → `deploy/docker-entrypoint.sh`:
    - Seeds `data/*.json` into the volume if missing.
    - Calls `POST /api/admin/bootstrap-db` when `CRICKET_DATA_API_KEY` + `CRON_SECRET` are set (skips if tours already synced).
