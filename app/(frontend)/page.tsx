@@ -17,6 +17,9 @@ import { getPayloadClient } from "@/lib/payload";
 import type { HeroSlide, Post } from "@/payload-types";
 import type { RankingsShowcase } from "@/lib/cricket/services/rankings-display";
 
+/** CMS hero + forum threads must not be frozen at build time. */
+export const dynamic = "force-dynamic";
+
 async function getHomeContent() {
   try {
     const payload = await getPayloadClient();
@@ -40,7 +43,10 @@ async function getHomeContent() {
 
     const slides = (slidesResult.docs as HeroSlide[])
       .filter((s) => isSlideVisible(s))
-      .sort((a, b) => (a.sortOrder ?? 0) - (b.sortOrder ?? 0));
+      .sort(
+        (a, b) =>
+          (a.sortOrder ?? 0) - (b.sortOrder ?? 0) || (a.id ?? 0) - (b.id ?? 0),
+      );
     const threads = (postsResult.docs as Post[])
       .filter((p) => p.pinned)
       .map(formatThreadFromPost);

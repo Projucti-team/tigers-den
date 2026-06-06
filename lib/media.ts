@@ -1,3 +1,4 @@
+import { getPayloadServerURL } from "@/lib/payload-url";
 import type { Media } from "@/payload-types";
 
 /** Turn Payload media into an absolute URL the browser can load */
@@ -13,10 +14,6 @@ export function getAbsoluteMediaUrl(
     return raw;
   }
 
-  const base =
-    process.env.NEXT_PUBLIC_SERVER_URL ||
-    process.env.NEXT_PUBLIC_SITE_URL ||
-    "http://localhost:3000";
-
+  const base = getPayloadServerURL();
   return `${base.replace(/\/$/, "")}${raw.startsWith("/") ? raw : `/${raw}`}`;
 }

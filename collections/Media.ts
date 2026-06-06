@@ -1,7 +1,12 @@
+import { revalidatePath } from "next/cache";
 import type { CollectionConfig } from "payload";
 
 export const Media: CollectionConfig = {
   slug: "media",
+  hooks: {
+    afterChange: [() => revalidatePath("/")],
+    afterDelete: [() => revalidatePath("/")],
+  },
   access: {
     read: () => true,
     create: ({ req: { user } }) => Boolean(user),

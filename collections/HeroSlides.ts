@@ -1,10 +1,19 @@
+import { revalidatePath } from "next/cache";
 import type { CollectionConfig } from "payload";
+
+function revalidateHomeHero() {
+  revalidatePath("/");
+}
 
 export const HeroSlides: CollectionConfig = {
   slug: "hero-slides",
   admin: {
     useAsTitle: "title",
     defaultColumns: ["title", "sortOrder", "isActive", "updatedAt"],
+  },
+  hooks: {
+    afterChange: [revalidateHomeHero],
+    afterDelete: [revalidateHomeHero],
   },
   access: {
     read: () => true,

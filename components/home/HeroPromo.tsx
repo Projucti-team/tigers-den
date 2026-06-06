@@ -16,6 +16,7 @@ export function HeroPromo({ slides = [] }: Props) {
     slide && typeof slide.image === "object" && slide.image?.alt
       ? slide.image.alt
       : slide?.title ?? "Hero banner";
+  const hasCmsSlide = Boolean(slide);
 
   return (
     <section className="relative min-h-[460px] overflow-hidden md:min-h-[560px]">
@@ -48,20 +49,32 @@ export function HeroPromo({ slides = [] }: Props) {
       <div className="relative z-10 mx-auto flex min-h-[460px] max-w-[1440px] flex-col items-center justify-center px-4 py-16 text-center md:min-h-[560px] md:px-8 md:py-24">
         <p className="fan-section-label mb-6 text-amber">🇧🇩 Bangladesh Fan Army</p>
         <h1 className="font-display text-4xl font-extrabold uppercase leading-[0.95] tracking-tight text-white drop-shadow-[0_4px_24px_rgba(0,0,0,0.5)] md:text-6xl lg:text-7xl">
-          <span className="text-emerald-glow">Join</span> The Tigers&apos; Den
+          {hasCmsSlide && slide?.title ? (
+            slide.title
+          ) : (
+            <>
+              <span className="text-emerald-glow">Join</span> The Tigers&apos; Den
+            </>
+          )}
         </h1>
         {slide?.subtitle ? (
           <p className="mx-auto mt-6 max-w-2xl text-base font-medium text-white/95 drop-shadow md:text-xl">
             {slide.subtitle}
           </p>
-        ) : (
+        ) : !hasCmsSlide ? (
           <p className="mx-auto mt-6 max-w-2xl text-base text-white/90 md:text-lg">
             The home of passionate Bangladesh cricket fans — live scores, community, and match day
             spirit.
           </p>
-        )}
+        ) : null}
         <div className="mt-10 flex flex-wrap items-center justify-center gap-4">
-          <HeroMemberCta />
+          {slide?.ctaLabel && slide.ctaUrl ? (
+            <Link href={slide.ctaUrl} className="fan-btn-amber rounded px-8 py-4 text-sm">
+              {slide.ctaLabel}
+            </Link>
+          ) : (
+            <HeroMemberCta />
+          )}
           <Link href="/rankings" className="fan-btn-red rounded px-8 py-4 text-sm">
             ICC Rankings
           </Link>
