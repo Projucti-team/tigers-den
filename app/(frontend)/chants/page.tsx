@@ -4,7 +4,8 @@ import { getBangladeshCricketNews } from "@/lib/news/services/bangladesh-news";
 
 export const metadata = {
   title: "Latest news — The Tigers' Den",
-  description: "Latest Bangladesh cricket headlines from ESPN Cricinfo and Cricbuzz.",
+  description:
+    "Latest Bangladesh cricket headlines from ESPN Cricinfo, Cricbuzz, bdnews24, and The Daily Star.",
 };
 
 export default async function ChantsPage() {
@@ -15,7 +16,7 @@ export default async function ChantsPage() {
       <PageHero
         label="Bangladesh cricket"
         title="Latest news"
-        subtitle="Headlines about the Tigers — refreshed throughout the day from ESPN Cricinfo and Cricbuzz."
+        subtitle="Headlines about the Tigers — refreshed throughout the day from ESPN Cricinfo, Cricbuzz, bdnews24, and The Daily Star."
       />
       <div className="mx-auto max-w-[1440px] px-4 py-10 md:px-8 md:py-14">
         {news.live ? (

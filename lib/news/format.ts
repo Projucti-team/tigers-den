@@ -3,6 +3,8 @@ import type { CricketNewsItem } from "@/lib/news/types";
 export const NEWS_SOURCE_LABELS: Record<CricketNewsItem["source"], string> = {
   espncricinfo: "ESPN Cricinfo",
   cricbuzz: "Cricbuzz",
+  bdnews24: "bdnews24",
+  dailystar: "The Daily Star",
 };
 
 export function formatNewsRelativeTime(iso: string): string {

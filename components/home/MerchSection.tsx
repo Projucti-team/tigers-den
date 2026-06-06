@@ -6,7 +6,7 @@ export function MerchSection() {
   return (
     <section
       id="shop"
-      className="fan-section-vibrant border-t-4 border-crimson/30 py-14 md:py-20"
+      className="border-t-4 border-amber/80 py-14 md:py-20"
     >
       <div className="mx-auto max-w-[1440px] px-4 md:px-8">
         <div className="flex flex-col items-start justify-between gap-4 md:flex-row md:items-end">
@@ -14,7 +14,7 @@ export function MerchSection() {
             <h2 className="font-display text-2xl font-extrabold uppercase md:text-3xl">
               <span className="fan-gradient-text">Shop Merchandise</span>
             </h2>
-            <p className="mt-2 max-w-xl text-charcoal/75">
+            <p className="mt-2 max-w-xl text-white/75">
               Polo shirts, bucket hats, scarves and bespoke memorabilia — something for every
               Bangladesh cricket fan.
             </p>

@@ -123,11 +123,11 @@ export type NavItem =
 
 /** Nav links after Tours (Tours row is built with live series in the layout). */
 export const navItemsAfterTours: NavLink[] = [
-  { label: "Tickets", href: "/tickets" },
   { label: "Rankings", href: "/rankings" },
   { label: "Match Centre", href: "/match-centre" },
   { label: "News", href: "/chants" },
   { label: "The Stand", href: "/the-stand" },
+  { label: "Tickets", href: "/tickets" },
   { label: "Shop", href: "/shop" },
   { label: "About", href: "/about" },
 ];

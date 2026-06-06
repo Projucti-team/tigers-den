@@ -5,6 +5,10 @@ import {
   NEWS_LIVE_REVALIDATE_SEC,
 } from "@/lib/news/constants";
 import { decodeHtmlEntities, fetchText } from "@/lib/news/http";
+import {
+  extractPublishDateFromHtml,
+  resolvePublishDate,
+} from "@/lib/news/publish-date";
 import type { CricketNewsItem } from "@/lib/news/types";
 
 const CRICBUZZ_BASE = "https://www.cricbuzz.com";
@@ -33,6 +37,24 @@ function slugToTitle(path: string): string {
     .join(" ");
 }
 
+function slugFromPath(path: string): string {
+  return path.match(/\/cricket-news\/\d+\/(.+)$/)?.[1] ?? path;
+}
+
+function extractListingPublishDates(html: string): Map<string, string> {
+  const dates = new Map<string, string>();
+
+  for (const chunk of html.split('{"@type":"NewsArticle"').slice(1)) {
+    const slug = chunk.match(/"caption":"([^"]+)"/)?.[1];
+    const datePublished = chunk.match(/"datePublished":"([^"]+)"/)?.[1];
+    if (!slug || !datePublished) continue;
+
+    dates.set(slug, resolvePublishDate([datePublished]));
+  }
+
+  return dates;
+}
+
 function parseOgMeta(html: string): {
   title?: string;
   description?: string;
@@ -48,7 +70,10 @@ function parseOgMeta(html: string): {
   };
 }
 
-async function fetchArticleMeta(path: string): Promise<CricketNewsItem | null> {
+async function fetchArticleMeta(
+  path: string,
+  listingDates: Map<string, string>,
+): Promise<CricketNewsItem | null> {
   const url = `${CRICBUZZ_BASE}${path}`;
   const html = await fetchText(url, { revalidate: NEWS_LIVE_REVALIDATE_SEC });
   const og = parseOgMeta(html);
@@ -58,6 +83,10 @@ async function fetchArticleMeta(path: string): Promise<CricketNewsItem | null> {
   if (!isBangladeshCricketNews(title, summary ?? "")) return null;
 
   const id = path.match(/\/cricket-news\/(\d+)\//)?.[1] ?? path;
+  const publishedAt = resolvePublishDate([
+    extractPublishDateFromHtml(html) ?? undefined,
+    listingDates.get(slugFromPath(path)),
+  ]);
 
   return {
     id: `cricbuzz-${id}`,
@@ -66,11 +95,11 @@ async function fetchArticleMeta(path: string): Promise<CricketNewsItem | null> {
     url,
     imageUrl: og.image,
     source: "cricbuzz",
-    publishedAt: new Date().toISOString(),
+    publishedAt,
   };
 }
 
-function itemFromSlug(path: string): CricketNewsItem | null {
+function itemFromSlug(path: string, listingDates: Map<string, string>): CricketNewsItem | null {
   if (!SLUG_BD_HINT.test(path)) return null;
 
   const title = slugToTitle(path);
@@ -83,7 +112,7 @@ function itemFromSlug(path: string): CricketNewsItem | null {
     title,
     url: `${CRICBUZZ_BASE}${path}`,
     source: "cricbuzz",
-    publishedAt: new Date().toISOString(),
+    publishedAt: resolvePublishDate([listingDates.get(slugFromPath(path))]),
   };
 }
 
@@ -91,10 +120,15 @@ function itemFromSlug(path: string): CricketNewsItem | null {
 export async function fetchCricbuzzBangladeshNewsLite(): Promise<CricketNewsItem[]> {
   const paths = new Set<string>();
 
+  const listingDates = new Map<string, string>();
+
   for (const suffix of NEWS_CRICBUZZ_LISTING_PAGES) {
     const html = await fetchText(`${CRICBUZZ_BASE}/cricket-news${suffix}`, {
       revalidate: NEWS_LIVE_REVALIDATE_SEC,
     });
+    for (const [slug, publishedAt] of extractListingPublishDates(html)) {
+      listingDates.set(slug, publishedAt);
+    }
     for (const p of extractArticlePaths(html)) paths.add(p);
   }
 
@@ -108,7 +142,7 @@ export async function fetchCricbuzzBangladeshNewsLite(): Promise<CricketNewsItem
     if (seen.has(path)) continue;
     seen.add(path);
 
-    const slugItem = itemFromSlug(path);
+    const slugItem = itemFromSlug(path, listingDates);
     if (slugItem) {
       items.push(slugItem);
       continue;
@@ -117,7 +151,7 @@ export async function fetchCricbuzzBangladeshNewsLite(): Promise<CricketNewsItem
     if (articleFetches >= NEWS_CRICBUZZ_LIVE_ARTICLE_FETCHES) continue;
 
     try {
-      const article = await fetchArticleMeta(path);
+      const article = await fetchArticleMeta(path, listingDates);
       articleFetches += 1;
       if (article) items.push(article);
     } catch {

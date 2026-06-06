@@ -30,25 +30,16 @@
   font-family: var(--font-mono);
 }
 
-/* Fan-site utilities */
+/* Fan-site utilities — dark forest green gradient (ICC rankings style) site-wide */
 @utility fan-page-bg {
-  background-color: #e8fff0;
+  background-color: #001a0d;
   background-image:
-    repeating-linear-gradient(
-      -45deg,
-      transparent,
-      transparent 12px,
-      rgba(0, 106, 78, 0.06) 12px,
-      rgba(0, 106, 78, 0.06) 24px
-    ),
-    repeating-linear-gradient(
-      45deg,
-      transparent,
-      transparent 12px,
-      rgba(244, 42, 65, 0.05) 12px,
-      rgba(244, 42, 65, 0.05) 24px
-    ),
-    linear-gradient(180deg, #f0fff4 0%, #fff5f5 50%, #f0fff4 100%);
+    radial-gradient(ellipse 75% 70% at 50% 0%, rgba(0, 64, 32, 0.95) 0%, transparent 65%),
+    radial-gradient(ellipse 90% 60% at 10% -10%, rgba(0, 179, 104, 0.3) 0%, transparent 55%),
+    radial-gradient(ellipse 60% 45% at 100% 100%, rgba(0, 106, 78, 0.18) 0%, transparent 50%),
+    linear-gradient(180deg, #001a0d 0%, #00301a 35%, #061410 65%, #001a0d 100%);
+  background-attachment: fixed;
+  color: white;
 }
 
 @utility fan-gradient-bar {
@@ -160,20 +151,14 @@
 
 /* ICC-style vibrant section backgrounds */
 @utility fan-section-dark {
-  background-color: var(--color-pitch);
-  background-image:
-    radial-gradient(ellipse 90% 60% at 10% -10%, rgba(0, 179, 104, 0.35) 0%, transparent 55%),
-    radial-gradient(ellipse 70% 50% at 100% 100%, rgba(244, 42, 65, 0.35) 0%, transparent 50%),
-    linear-gradient(165deg, #061410 0%, var(--color-pitch) 45%, #1a080c 100%);
+  /* Transparent — page wrapper supplies the continuous dark gradient. */
+  background: transparent;
   color: white;
 }
 
 @utility fan-section-vibrant {
-  background-color: #e5fff0;
-  background-image:
-    radial-gradient(circle at 100% 0%, rgba(244, 42, 65, 0.14) 0%, transparent 42%),
-    radial-gradient(circle at 0% 100%, rgba(0, 106, 78, 0.22) 0%, transparent 48%),
-    linear-gradient(180deg, #f0fff8 0%, #fff8f8 50%, #f0fff4 100%);
+  /* Transparent — page wrapper supplies the continuous gradient. */
+  background: transparent;
 }
 
 @utility fan-section-cta {
@@ -230,13 +215,26 @@
   backdrop-filter: blur(8px);
 }
 
+@utility fan-section-label-light {
+  display: inline-block;
+  border-radius: 9999px;
+  border: 2px solid rgba(0, 106, 78, 0.35);
+  background: rgba(0, 106, 78, 0.08);
+  padding: 0.35rem 1rem;
+  font-size: 0.65rem;
+  font-weight: 800;
+  letter-spacing: 0.25em;
+  text-transform: uppercase;
+  color: var(--color-emerald);
+}
+
 @layer base {
   html {
     scroll-padding-top: 5.5rem;
   }
 
   body {
-    @apply bg-white text-charcoal font-body antialiased;
+    @apply bg-transparent text-charcoal font-body antialiased;
   }
 
   h1,

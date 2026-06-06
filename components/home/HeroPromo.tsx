@@ -72,9 +72,6 @@ export function HeroPromo({ slides = [] }: Props) {
           ) : (
             <HeroMemberCta />
           )}
-          <Link href="/rankings" className="fan-btn-red rounded px-8 py-4 text-sm">
-            ICC Rankings
-          </Link>
         </div>
       </div>
     </section>

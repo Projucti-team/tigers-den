@@ -1,14 +1,26 @@
 import { unstable_cache } from "next/cache";
 
 import { NEWS_DISPLAY_LIMIT, NEWS_LIVE_REVALIDATE_SEC } from "@/lib/news/constants";
+import {
+  fetchBdnews24BangladeshNews,
+  fetchBdnews24BangladeshNewsLite,
+} from "@/lib/news/providers/bdnews24-cricket";
 import { fetchCricbuzzBangladeshNewsLite } from "@/lib/news/providers/cricbuzz-lite";
 import { fetchCricbuzzBangladeshNews } from "@/lib/news/providers/cricbuzz-scrape";
+import { fetchDailyStarBangladeshNews } from "@/lib/news/providers/dailystar-rss";
 import { fetchEspnCricinfoBangladeshNews } from "@/lib/news/providers/espncricinfo-rss";
 import {
   readBangladeshCricketNews,
   writeBangladeshCricketNews,
 } from "@/lib/news/news-store";
+import { UNKNOWN_PUBLISH_DATE } from "@/lib/news/publish-date";
 import type { BangladeshCricketNewsSnapshot, CricketNewsItem } from "@/lib/news/types";
+
+function publishSortKey(iso: string): number {
+  const time = new Date(iso).getTime();
+  if (time <= new Date(UNKNOWN_PUBLISH_DATE).getTime()) return 0;
+  return time;
+}
 
 function normalizeUrl(url: string): string {
   try {
@@ -34,13 +46,22 @@ function mergeNewsItems(items: CricketNewsItem[]): CricketNewsItem[] {
     const preferNew =
       Boolean(item.imageUrl && !existing.imageUrl) ||
       Boolean(item.summary && !existing.summary) ||
-      new Date(item.publishedAt) > new Date(existing.publishedAt);
+      publishSortKey(item.publishedAt) > publishSortKey(existing.publishedAt);
 
-    if (preferNew) byUrl.set(key, { ...existing, ...item });
+    if (preferNew) {
+      byUrl.set(key, {
+        ...existing,
+        ...item,
+        publishedAt:
+          publishSortKey(item.publishedAt) >= publishSortKey(existing.publishedAt)
+            ? item.publishedAt
+            : existing.publishedAt,
+      });
+    }
   }
 
   return [...byUrl.values()].sort(
-    (a, b) => new Date(b.publishedAt).getTime() - new Date(a.publishedAt).getTime(),
+    (a, b) => publishSortKey(b.publishedAt) - publishSortKey(a.publishedAt),
   );
 }
 
@@ -50,14 +71,22 @@ async function fetchLiveBangladeshNews(): Promise<{
   live: boolean;
   stale: boolean;
 }> {
-  const [espn, cricbuzzLite, fileCache] = await Promise.all([
+  const [espn, cricbuzzLite, bdnews24, dailyStar, fileCache] = await Promise.all([
     fetchEspnCricinfoBangladeshNews(),
     fetchCricbuzzBangladeshNewsLite().catch(() => [] as CricketNewsItem[]),
+    fetchBdnews24BangladeshNewsLite().catch(() => [] as CricketNewsItem[]),
+    fetchDailyStarBangladeshNews().catch(() => [] as CricketNewsItem[]),
     readBangladeshCricketNews(),
   ]);
 
   const fileItems = fileCache?.items ?? [];
-  const items = mergeNewsItems([...espn, ...cricbuzzLite, ...fileItems]).slice(
+  const items = mergeNewsItems([
+    ...espn,
+    ...cricbuzzLite,
+    ...bdnews24,
+    ...dailyStar,
+    ...fileItems,
+  ]).slice(
     0,
     NEWS_DISPLAY_LIMIT,
   );
@@ -78,12 +107,14 @@ const getCachedLiveNews = unstable_cache(
 
 /** Nightly / manual — full Cricbuzz scrape; not used on page load. */
 export async function scrapeBangladeshCricketNews(): Promise<BangladeshCricketNewsSnapshot> {
-  const [espn, cricbuzz] = await Promise.all([
+  const [espn, cricbuzz, bdnews24, dailyStar] = await Promise.all([
     fetchEspnCricinfoBangladeshNews({ revalidate: 0 }).catch(() => [] as CricketNewsItem[]),
     fetchCricbuzzBangladeshNews().catch(() => [] as CricketNewsItem[]),
+    fetchBdnews24BangladeshNews({ revalidate: 0 }).catch(() => [] as CricketNewsItem[]),
+    fetchDailyStarBangladeshNews({ revalidate: 0 }).catch(() => [] as CricketNewsItem[]),
   ]);
 
-  const items = mergeNewsItems([...espn, ...cricbuzz]);
+  const items = mergeNewsItems([...espn, ...cricbuzz, ...bdnews24, ...dailyStar]);
 
   const snapshot: BangladeshCricketNewsSnapshot = {
     fetchedAt: new Date().toISOString(),

@@ -1,6 +1,10 @@
 import { isBangladeshCricketNews } from "@/lib/news/bangladesh-filter";
 import { NEWS_CRICBUZZ_SCRAPE_LISTING_PAGES } from "@/lib/news/constants";
 import { decodeHtmlEntities, fetchText, sleep } from "@/lib/news/http";
+import {
+  extractPublishDateFromHtml,
+  resolvePublishDate,
+} from "@/lib/news/publish-date";
 import type { CricketNewsItem } from "@/lib/news/types";
 
 const CRICBUZZ_BASE = "https://www.cricbuzz.com";
@@ -22,6 +26,24 @@ function newsIdFromPath(path: string): number {
   return id ? Number(id) : 0;
 }
 
+function slugFromPath(path: string): string {
+  return path.match(/\/cricket-news\/\d+\/(.+)$/)?.[1] ?? path;
+}
+
+function extractListingPublishDates(html: string): Map<string, string> {
+  const dates = new Map<string, string>();
+
+  for (const chunk of html.split('{"@type":"NewsArticle"').slice(1)) {
+    const slug = chunk.match(/"caption":"([^"]+)"/)?.[1];
+    const datePublished = chunk.match(/"datePublished":"([^"]+)"/)?.[1];
+    if (!slug || !datePublished) continue;
+
+    dates.set(slug, resolvePublishDate([datePublished]));
+  }
+
+  return dates;
+}
+
 function parseOgMeta(html: string): {
   title?: string;
   description?: string;
@@ -37,7 +59,10 @@ function parseOgMeta(html: string): {
   };
 }
 
-async function fetchCricbuzzArticle(path: string): Promise<CricketNewsItem | null> {
+async function fetchCricbuzzArticle(
+  path: string,
+  listingDates: Map<string, string>,
+): Promise<CricketNewsItem | null> {
   const url = `${CRICBUZZ_BASE}${path}`;
   const html = await fetchText(url, { cache: "no-store" });
   const og = parseOgMeta(html);
@@ -50,6 +75,10 @@ async function fetchCricbuzzArticle(path: string): Promise<CricketNewsItem | nul
   if (!isBangladeshCricketNews(title, summary ?? "")) return null;
 
   const id = path.match(/\/cricket-news\/(\d+)\//)?.[1] ?? path;
+  const publishedAt = resolvePublishDate([
+    extractPublishDateFromHtml(html) ?? undefined,
+    listingDates.get(slugFromPath(path)),
+  ]);
 
   return {
     id: `cricbuzz-${id}`,
@@ -58,17 +87,21 @@ async function fetchCricbuzzArticle(path: string): Promise<CricketNewsItem | nul
     url,
     imageUrl: og.image,
     source: "cricbuzz",
-    publishedAt: new Date().toISOString(),
+    publishedAt,
   };
 }
 
 export async function fetchCricbuzzBangladeshNews(): Promise<CricketNewsItem[]> {
   const paths = new Set<string>();
+  const listingDates = new Map<string, string>();
 
   for (const suffix of LISTING_PAGES) {
     const html = await fetchText(`${CRICBUZZ_BASE}/cricket-news${suffix}`, {
       cache: "no-store",
     });
+    for (const [slug, publishedAt] of extractListingPublishDates(html)) {
+      listingDates.set(slug, publishedAt);
+    }
     for (const p of extractArticlePaths(html)) paths.add(p);
   }
 
@@ -82,7 +115,7 @@ export async function fetchCricbuzzBangladeshNews(): Promise<CricketNewsItem[]> 
     seen.add(path);
 
     try {
-      const article = await fetchCricbuzzArticle(path);
+      const article = await fetchCricbuzzArticle(path, listingDates);
       if (article) items.push(article);
     } catch {
       // skip failed article fetches

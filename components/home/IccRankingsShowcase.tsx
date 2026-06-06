@@ -250,7 +250,7 @@ export function IccRankingsShowcase({ men, women, wtc = null, warnings = [] }: P
   return (
     <section
       id="rankings"
-      className="fan-section-dark scroll-mt-24 border-y-4 border-amber/80 py-14 md:scroll-mt-28 md:py-20"
+      className="scroll-mt-24 border-y-4 border-amber/80 py-14 md:scroll-mt-28 md:py-20"
     >
       <div className="mx-auto max-w-[1440px] px-4 md:px-8">
         <div className="text-center">

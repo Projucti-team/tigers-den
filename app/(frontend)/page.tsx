@@ -1,12 +1,11 @@
 import { ExperienceCards } from "@/components/home/ExperienceCards";
 import { HeroPromo } from "@/components/home/HeroPromo";
 import { HomeCommunitySection } from "@/components/home/HomeCommunitySection";
-import { HomeToursSection } from "@/components/home/HomeToursSection";
+// import { HomeToursSection } from "@/components/home/HomeToursSection";
 import { IccRankingsShowcase } from "@/components/home/IccRankingsShowcase";
 import { LiveMatchStrip } from "@/components/home/LiveMatchStrip";
 import { NewsFeed } from "@/components/home/NewsFeed";
 import { MerchSection } from "@/components/home/MerchSection";
-import { NewsletterSignup } from "@/components/home/NewsletterSignup";
 // import { WhyJoinSection } from "@/components/home/WhyJoinSection";
 import { FORMATS_BY_GENDER } from "@/lib/cricket/constants";
 import { getMatchHighlight, getRankingsShowcase, getTourCards } from "@/lib/cricket";
@@ -126,7 +125,7 @@ export default async function HomePage() {
         hasLiveMatch={matchHighlight?.mode === "live"}
         hasRecentMatch={matchHighlight?.mode === "completed"}
       />
-      <HomeToursSection tours={toursResult.cards} />
+      {/* <HomeToursSection tours={toursResult.cards} /> */}
       <LiveMatchStrip highlight={matchHighlight} />
       <NewsFeed
         items={news.items}
@@ -136,14 +135,15 @@ export default async function HomePage() {
       />
       <section
         id="tickets"
-        className="fan-section-cta scroll-mt-24 border-y-4 border-amber py-14 text-center md:scroll-mt-28 md:py-20"
+        className="scroll-mt-24 border-y-4 border-amber/80 py-14 text-center md:scroll-mt-28 md:py-20"
       >
         <div className="mx-auto max-w-[1440px] px-4 md:px-8">
           <p className="fan-section-label mx-auto text-amber">Match day</p>
-          <h2 className="mt-4 font-display text-3xl font-extrabold uppercase drop-shadow-lg md:text-5xl">
-            Be part of the biggest moments this summer!
+          <h2 className="mt-4 font-display text-3xl font-extrabold uppercase text-white md:text-5xl">
+            Be part of the biggest moments{" "}
+            <span className="text-emerald-glow">this summer!</span>
           </h2>
-          <p className="mx-auto mt-4 max-w-2xl text-base text-white/90 md:text-lg">
+          <p className="mx-auto mt-4 max-w-2xl text-base text-white/80 md:text-lg">
             Secure cricket tickets for Bangladesh&apos;s 2026 internationals — Mirpur, Chattogram,
             Sylhet and overseas tours with The Tigers&apos; Den.
           </p>
@@ -154,7 +154,6 @@ export default async function HomePage() {
       </section>
       <HomeCommunitySection threads={threads.length > 0 ? threads : undefined} />
       <MerchSection />
-      <NewsletterSignup />
     </>
   );
 }

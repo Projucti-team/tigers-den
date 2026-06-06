@@ -1,41 +1,37 @@
 import { isBangladeshCricketNews } from "@/lib/news/bangladesh-filter";
 import { NEWS_LIVE_REVALIDATE_SEC } from "@/lib/news/constants";
-import { decodeHtmlEntities, fetchText } from "@/lib/news/http";
+import { fetchText } from "@/lib/news/http";
 import { parseRssItems } from "@/lib/news/providers/rss-parse";
 import { resolvePublishDate } from "@/lib/news/publish-date";
 import type { CricketNewsItem } from "@/lib/news/types";
 
-const ESPN_RSS_URL = "https://www.espncricinfo.com/rss/content/story/feeds/0.xml";
+const DAILY_STAR_CRICKET_RSS_URL =
+  "https://www.thedailystar.net/sports/cricket/rss.xml";
 
-function stripTags(html: string): string {
-  return decodeHtmlEntities(html.replace(/<[^>]+>/g, " ").replace(/\s+/g, " ").trim());
-}
-
-export async function fetchEspnCricinfoBangladeshNews(options?: {
+export async function fetchDailyStarBangladeshNews(options?: {
   revalidate?: number;
 }): Promise<CricketNewsItem[]> {
   const revalidate = options?.revalidate ?? NEWS_LIVE_REVALIDATE_SEC;
   const xml = await fetchText(
-    ESPN_RSS_URL,
+    DAILY_STAR_CRICKET_RSS_URL,
     revalidate === 0 ? { cache: "no-store" } : { revalidate },
   );
   const parsed = parseRssItems(xml);
 
   return parsed
-    .filter((item) =>
-      isBangladeshCricketNews(item.title, stripTags(item.description)),
-    )
+    .filter((item) => isBangladeshCricketNews(item.title, item.description))
     .map((item) => {
       const publishedAt = resolvePublishDate([item.pubDate]);
       const cleanLink = item.link.split("?")[0] ?? item.link;
+      const slug = cleanLink.match(/\/([^/]+)$/)?.[1] ?? cleanLink;
 
       return {
-        id: `espn-${item.guid || cleanLink}`,
-        title: decodeHtmlEntities(item.title),
-        summary: stripTags(item.description) || undefined,
+        id: `dailystar-${item.guid || slug}`,
+        title: item.title,
+        summary: item.description || undefined,
         url: cleanLink,
         imageUrl: item.imageUrl?.replace(/^http:/, "https:"),
-        source: "espncricinfo" as const,
+        source: "dailystar" as const,
         publishedAt,
       };
     });

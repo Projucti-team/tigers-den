@@ -59,7 +59,7 @@ export default async function FrontendLayout({ children }: { children: ReactNode
       <body>
         <AuthSessionProvider>
           <div
-            className={`${montserrat.variable} ${inter.variable} ${robotoMono.variable} fan-page-bg min-h-screen`}
+            className={`${montserrat.variable} ${inter.variable} ${robotoMono.variable} fan-page-bg min-h-screen text-white`}
           >
             <TopBar />
             <Navbar tourLinks={tourLinks} />

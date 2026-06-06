@@ -1,4 +1,4 @@
-export type NewsSource = "espncricinfo" | "cricbuzz";
+export type NewsSource = "espncricinfo" | "cricbuzz" | "bdnews24" | "dailystar";
 
 export type CricketNewsItem = {
   id: string;

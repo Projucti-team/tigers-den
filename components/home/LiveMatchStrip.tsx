@@ -15,15 +15,15 @@ export function LiveMatchStrip({ highlight }: Props) {
     <section
       className={`border-y-4 py-6 ${
         isLive
-          ? "border-amber bg-gradient-to-r from-emerald via-emerald-bright/90 to-crimson"
-          : "border-charcoal/20 bg-gradient-to-r from-charcoal via-charcoal/95 to-emerald/90"
+          ? "border-amber bg-gradient-to-r from-emerald via-emerald-bright/90 to-emerald"
+          : "border-emerald/40 bg-emerald/15"
       }`}
     >
       <div className="mx-auto flex max-w-[1440px] flex-col items-center justify-between gap-4 px-4 md:flex-row md:px-8">
         <div className="text-center md:text-left">
           <p
             className={`font-display text-xs font-extrabold uppercase tracking-widest ${
-              isLive ? "text-amber" : "text-white/70"
+              isLive ? "text-amber" : "text-emerald-glow"
             }`}
           >
             {isLive ? "Live Now" : "Last Result"}
@@ -32,7 +32,9 @@ export function LiveMatchStrip({ highlight }: Props) {
             {highlight.title}
           </p>
           <p className="mt-1 font-mono text-2xl font-bold text-white">{highlight.scoreLine}</p>
-          <p className="mt-1 text-sm text-white/80">{highlight.detailLine}</p>
+          <p className="mt-1 text-sm text-white/80">
+            {highlight.detailLine}
+          </p>
         </div>
 
         {isLive ? (

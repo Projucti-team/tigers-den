@@ -1,5 +1,5 @@
 /**
- * Updates data/bangladesh-cricket-news.json from ESPN Cricinfo RSS + Cricbuzz.
+ * Updates data/bangladesh-cricket-news.json from ESPN, Cricbuzz, bdnews24, and Daily Star.
  * Run nightly — not on every page load.
  *
  * Usage: npm run scrape:bangladesh-news
@@ -8,7 +8,9 @@ import { scrapeBangladeshCricketNews } from "../lib/news/services/bangladesh-new
 import { BANGLADESH_CRICKET_NEWS_PATH } from "../lib/news/news-store";
 
 async function main() {
-  console.log("Fetching Bangladesh cricket news from ESPN Cricinfo + Cricbuzz…");
+  console.log(
+    "Fetching Bangladesh cricket news from ESPN Cricinfo, Cricbuzz, bdnews24, and The Daily Star…",
+  );
   const snapshot = await scrapeBangladeshCricketNews();
 
   if (!snapshot.items.length) {
