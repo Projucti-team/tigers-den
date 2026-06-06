@@ -14,7 +14,7 @@ import { getBangladeshCricketNews } from "@/lib/news/services/bangladesh-news";
 import type { CricketFormat } from "@/lib/cricket/types";
 import { formatThreadFromPost, isSlideVisible } from "@/lib/data";
 import { getPayloadClient } from "@/lib/payload";
-import type { HeroSlide, Post } from "@/payload-types";
+import type { HeroSlide, Media, Post } from "@/payload-types";
 import type { RankingsShowcase } from "@/lib/cricket/services/rankings-display";
 
 /** CMS hero + forum threads must not be frozen at build time. */
@@ -41,12 +41,24 @@ async function getHomeContent() {
       }),
     ]);
 
-    const slides = (slidesResult.docs as HeroSlide[])
+    const sorted = (slidesResult.docs as HeroSlide[])
       .filter((s) => isSlideVisible(s))
       .sort(
         (a, b) =>
           (a.sortOrder ?? 0) - (b.sortOrder ?? 0) || (a.id ?? 0) - (b.id ?? 0),
       );
+
+    const slides: HeroSlide[] = await Promise.all(
+      sorted.map(async (slide) => {
+        if (typeof slide.image !== "number") return slide;
+        const image = (await payload.findByID({
+          collection: "media",
+          id: slide.image,
+          depth: 0,
+        })) as Media;
+        return { ...slide, image };
+      }),
+    );
     const threads = (postsResult.docs as Post[])
       .filter((p) => p.pinned)
       .map(formatThreadFromPost);

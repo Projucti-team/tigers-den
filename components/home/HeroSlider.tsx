@@ -1,7 +1,7 @@
 import Image from "next/image";
 import Link from "next/link";
 
-import { getMediaUrl } from "@/lib/data";
+import { getRelativeMediaUrl } from "@/lib/media";
 import type { HeroSlide } from "@/payload-types";
 
 type Props = {
@@ -12,9 +12,7 @@ export function HeroSlider({ slides }: Props) {
   if (slides.length === 0) return null;
 
   const slide = slides[0];
-  const imageUrl = getMediaUrl(
-    typeof slide.image === "object" ? slide.image : null,
-  );
+  const imageUrl = getRelativeMediaUrl(slide.image);
 
   return (
     <section className="fan-card relative overflow-hidden">

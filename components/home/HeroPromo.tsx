@@ -2,7 +2,7 @@ import Image from "next/image";
 import Link from "next/link";
 
 import { HeroMemberCta } from "@/components/home/HeroMemberCta";
-import { getAbsoluteMediaUrl } from "@/lib/media";
+import { getRelativeMediaUrl } from "@/lib/media";
 import type { HeroSlide } from "@/payload-types";
 
 type Props = {
@@ -11,7 +11,7 @@ type Props = {
 
 export function HeroPromo({ slides = [] }: Props) {
   const slide = slides[0];
-  const imageUrl = slide ? getAbsoluteMediaUrl(slide.image) : null;
+  const imageUrl = slide ? getRelativeMediaUrl(slide.image) : null;
   const imageAlt =
     slide && typeof slide.image === "object" && slide.image?.alt
       ? slide.image.alt
@@ -21,7 +21,7 @@ export function HeroPromo({ slides = [] }: Props) {
   return (
     <section className="relative min-h-[460px] overflow-hidden md:min-h-[560px]">
       {imageUrl ? (
-        <>
+        <div className="absolute inset-0 z-0">
           <Image
             src={imageUrl}
             alt={imageAlt}
@@ -31,8 +31,7 @@ export function HeroPromo({ slides = [] }: Props) {
             sizes="100vw"
             unoptimized
           />
-          <div className="fan-hero-mesh absolute inset-0" aria-hidden />
-        </>
+        </div>
       ) : (
         <div
           className="absolute inset-0 bg-gradient-to-br from-emerald via-emerald/90 to-crimson"
@@ -40,7 +39,10 @@ export function HeroPromo({ slides = [] }: Props) {
         />
       )}
 
-      <div className="fan-hero-stripes pointer-events-none absolute inset-0" aria-hidden />
+      {imageUrl ? (
+        <div className="fan-hero-mesh pointer-events-none absolute inset-0 z-[1]" aria-hidden />
+      ) : null}
+      <div className="fan-hero-stripes pointer-events-none absolute inset-0 z-[1]" aria-hidden />
       <div
         className="pointer-events-none absolute inset-x-0 bottom-0 h-24 bg-gradient-to-t from-pitch to-transparent"
         aria-hidden

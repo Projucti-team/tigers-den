@@ -16,7 +16,8 @@ type RouteContext = { params: Promise<{ filename: string }> };
 export async function GET(_request: Request, context: RouteContext) {
   const { filename } = await context.params;
   const safeName = path.basename(filename);
-  const fullPath = path.join(process.cwd(), "media", safeName);
+  const mediaRoot = process.env.MEDIA_DIR?.trim() || path.join(process.cwd(), "media");
+  const fullPath = path.join(mediaRoot, safeName);
 
   try {
     const buffer = await readFile(fullPath);
