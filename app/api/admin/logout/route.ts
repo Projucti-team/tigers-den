@@ -2,6 +2,7 @@ import { logout } from "@payloadcms/next/auth";
 import { NextResponse } from "next/server";
 
 import { clearPayloadAuthCookie } from "@/lib/payload-logout";
+import { getPublicRequestOrigin } from "@/lib/payload-url";
 import config from "@payload-config";
 
 export const dynamic = "force-dynamic";
@@ -14,7 +15,9 @@ export async function GET(request: Request) {
     // Still clear the browser cookie even if session lookup fails (CSRF / proxy quirks).
   }
 
-  const response = NextResponse.redirect(new URL("/admin/login", request.url));
+  const response = NextResponse.redirect(
+    new URL("/admin/login", getPublicRequestOrigin(request)),
+  );
   clearPayloadAuthCookie(response);
   return response;
 }

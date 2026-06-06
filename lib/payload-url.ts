@@ -5,6 +5,8 @@ export function getPayloadServerURL(): string {
   }
 
   const fromEnv =
+    process.env.SERVER_URL ||
+    process.env.SITE_URL ||
     process.env.NEXT_PUBLIC_SERVER_URL ||
     process.env.NEXT_PUBLIC_SITE_URL ||
     (process.env.VERCEL_PROJECT_PRODUCTION_URL
@@ -18,9 +20,42 @@ export function getPayloadServerURL(): string {
   return "http://localhost:3000";
 }
 
+function isInternalHost(host: string): boolean {
+  return (
+    host.includes("localhost") ||
+    host.startsWith("127.") ||
+    host.startsWith("[::]") ||
+    host.endsWith(":3000")
+  );
+}
+
+/** Browser-facing origin for redirects behind Coolify/nginx (request.url is often internal). */
+export function getPublicRequestOrigin(request: Request): string {
+  const forwardedHost = request.headers.get("x-forwarded-host");
+  const forwardedProto = request.headers.get("x-forwarded-proto");
+
+  if (forwardedHost) {
+    const host = forwardedHost.split(",")[0]?.trim();
+    const proto = forwardedProto?.split(",")[0]?.trim() || "https";
+    if (host) return `${proto}://${host}`;
+  }
+
+  const host = request.headers.get("host");
+  if (host && !isInternalHost(host)) {
+    const proto =
+      forwardedProto?.split(",")[0]?.trim() ||
+      (host.includes("localhost") || host.startsWith("127.") ? "http" : "https");
+    return `${proto}://${host}`;
+  }
+
+  return getPayloadServerURL();
+}
+
 /** HTTP + HTTPS variants so cookie auth works when env URL scheme differs from the browser. */
 export function getPayloadTrustedOrigins(): string[] {
   const candidates = [
+    process.env.SERVER_URL,
+    process.env.SITE_URL,
     process.env.NEXT_PUBLIC_SERVER_URL,
     process.env.NEXT_PUBLIC_SITE_URL,
     process.env.NEXTAUTH_URL,
