@@ -32,6 +32,8 @@ export type LiveMatchSummary = {
   teamInfo?: { name: string; shortname?: string; img?: string }[];
   score?: { r: number; w: number; o: number; inning?: string }[];
   isLive: boolean;
+  seriesId?: string;
+  seriesName?: string;
 };
 
 export type ScorecardPlayer = {

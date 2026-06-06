@@ -27,11 +27,21 @@ export async function buildFutureToursLive(options?: { bangladeshOnly?: boolean 
   }
 
   try {
-    let tours = await fetchUpcomingTours();
+    const { tours: fetched, warnings: fetchWarnings } = await fetchUpcomingTours();
+    warnings.push(...fetchWarnings);
+
+    let tours = fetched;
     if (options?.bangladeshOnly) {
+      const before = tours.length;
       tours = filterBangladeshTours(tours);
+      if (before > 0 && tours.length === 0) {
+        warnings.push(
+          `CricAPI returned ${before} future series, but none involve Bangladesh after filtering.`,
+        );
+      }
     }
-    return { tours, warnings };
+
+    return { tours, warnings: [...new Set(warnings)] };
   } catch (e) {
     warnings.push(e instanceof Error ? e.message : "Failed to fetch tours.");
     return { tours: [], warnings };

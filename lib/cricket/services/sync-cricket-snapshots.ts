@@ -164,10 +164,14 @@ export async function syncCricketSnapshots(): Promise<SyncCricketResult> {
 
     if (process.env.CRICKET_DATA_API_KEY?.trim() && toursCount === 0) {
       const fetchFailure = toursIndex.warnings.find((w) =>
-        /failed|HTTP|CricAPI|quota|unavailable/i.test(w),
+        /failed|HTTP|CricAPI|quota|unavailable|blocked|invalid api|rate/i.test(w),
       );
       if (fetchFailure) {
         errors.push(`Tours index: ${fetchFailure}`);
+      } else if (!toursIndex.warnings.length) {
+        warnings.push(
+          "No upcoming Bangladesh series returned from CricAPI — key may be invalid or tours not listed yet.",
+        );
       }
     }
 

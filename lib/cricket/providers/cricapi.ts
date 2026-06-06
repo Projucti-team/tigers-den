@@ -1,6 +1,7 @@
 import { CRICAPI_BASE } from "@/lib/cricket/constants";
 import type { SeriesSquad, SquadPlayer } from "@/lib/cricket/curated-squads";
 import { normalizeSquadPlayers } from "@/lib/cricket/curated-squads";
+import { isUpcomingBangladeshMatch } from "@/lib/cricket/services/marquee-format";
 import type { LiveMatchSummary, Scorecard, ScorecardInnings, Tour } from "@/lib/cricket/types";
 
 type CricApiResponse<T> = {
@@ -61,7 +62,15 @@ function isFutureSeries(startDate?: string, endDate?: string): boolean {
   const start = startDate ? new Date(startDate) : null;
   const end = parseSeriesEndDate(endDate, startDate);
 
-  if (start && !Number.isNaN(start.getTime()) && start >= now) return true;
+  if (start && !Number.isNaN(start.getTime())) {
+    if (start >= now) return true;
+    // Include in-progress series (CricAPI often omits endDate until the tour finishes).
+    const daysSinceStart = (now.getTime() - start.getTime()) / 86_400_000;
+    if (daysSinceStart >= 0 && daysSinceStart <= 180 && (!end || end >= now)) {
+      return true;
+    }
+  }
+
   if (end && end >= now) return true;
   return false;
 }
@@ -72,6 +81,10 @@ function mapSeriesToTour(s: Record<string, unknown>): Tour {
   const odi = Number(s.odi) || 0;
   const t20 = Number(s.t20) || 0;
   const matches = Number(s.matches) || test + odi + t20 || 0;
+  const teamsRaw = s.teams ?? s.team;
+  const teams = Array.isArray(teamsRaw)
+    ? teamsRaw.map((t) => String(t)).filter(Boolean)
+    : undefined;
 
   return {
     id: String(s.id || name),
@@ -82,6 +95,7 @@ function mapSeriesToTour(s: Record<string, unknown>): Tour {
     t20,
     test,
     matches,
+    teams,
   };
 }
 
@@ -99,6 +113,8 @@ function mapLiveMatch(m: any): LiveMatchSummary {
     teamInfo: m.teamInfo,
     score: m.score,
     isLive: /live|in progress|stumps|innings/i.test(m.status || ""),
+    seriesId: m.series_id ?? m.seriesId ?? m.series?.id,
+    seriesName: m.seriesName ?? m.series_name ?? m.series?.name,
   };
 }
 
@@ -175,32 +191,159 @@ export async function fetchSeriesSquads(seriesId: string): Promise<SeriesSquad[]
   return squads;
 }
 
-export async function fetchUpcomingTours(): Promise<Tour[]> {
-  const tours: Tour[] = [];
-  const seen = new Set<string>();
-
-  for (let offset = 0; offset < 100; offset += 25) {
-    const batch = await cricFetch<unknown[]>("series", { offset: String(offset) }).catch(
-      () => [],
-    );
-    if (!batch.length) break;
-
-    for (const raw of batch as Record<string, unknown>[]) {
-      const tour = mapSeriesToTour(raw);
-      if (!isFutureSeries(tour.startDate, tour.endDate)) continue;
-      if (seen.has(tour.id)) continue;
-      seen.add(tour.id);
-      tours.push(tour);
-    }
-
-    if (batch.length < 25) break;
+async function fetchSeriesBatch(
+  params: Record<string, string>,
+): Promise<{ rows: Record<string, unknown>[]; warning?: string }> {
+  try {
+    const batch = await cricFetch<unknown[]>("series", params);
+    return { rows: batch as Record<string, unknown>[] };
+  } catch (e) {
+    return {
+      rows: [],
+      warning: e instanceof Error ? e.message : "CricAPI series request failed",
+    };
   }
+}
 
+function sortToursByStart(tours: Tour[]): Tour[] {
   return tours.sort((a, b) => {
     const da = a.startDate ? new Date(a.startDate).getTime() : 0;
     const db = b.startDate ? new Date(b.startDate).getTime() : 0;
     return da - db;
   });
+}
+
+function addFutureTour(tours: Tour[], seen: Set<string>, raw: Record<string, unknown>): void {
+  const tour = mapSeriesToTour(raw);
+  if (!isFutureSeries(tour.startDate, tour.endDate)) return;
+  if (seen.has(tour.id)) return;
+  seen.add(tour.id);
+  tours.push(tour);
+}
+
+async function deriveToursFromUpcomingMatches(): Promise<{
+  tours: Tour[];
+  warnings: string[];
+}> {
+  const warnings: string[] = [];
+  const [current, listed] = await Promise.all([
+    fetchCurrentMatches().catch((e) => {
+      warnings.push(e instanceof Error ? e.message : "CricAPI currentMatches failed");
+      return [];
+    }),
+    fetchMatchesList(16).catch((e) => {
+      warnings.push(e instanceof Error ? e.message : "CricAPI matches failed");
+      return [];
+    }),
+  ]);
+
+  const byId = new Map<string, LiveMatchSummary>();
+  for (const match of [...current, ...listed]) {
+    if (match.id) byId.set(match.id, match);
+  }
+
+  const upcoming = [...byId.values()].filter((m) => isUpcomingBangladeshMatch(m));
+  const groups = new Map<string, LiveMatchSummary[]>();
+
+  for (const match of upcoming) {
+    const key = match.seriesId || match.seriesName || match.name.split(",")[0]?.trim() || match.id;
+    const list = groups.get(key) ?? [];
+    list.push(match);
+    groups.set(key, list);
+  }
+
+  const tours: Tour[] = [];
+  for (const [key, matches] of groups) {
+    const sorted = matches
+      .filter((m) => m.date || m.dateTimeGMT)
+      .sort((a, b) => {
+        const da = new Date(a.dateTimeGMT || a.date || 0).getTime();
+        const db = new Date(b.dateTimeGMT || b.date || 0).getTime();
+        return da - db;
+      });
+
+    const first = sorted[0] ?? matches[0];
+    const last = sorted[sorted.length - 1] ?? first;
+    const seriesId = first.seriesId;
+    const name =
+      first.seriesName ||
+      first.name.replace(/,\s*\d+(?:st|nd|rd|th)?\s+\w+.*$/i, "").trim() ||
+      "Bangladesh series";
+
+    const odi = matches.filter((m) => /odi/i.test(m.matchType || m.name)).length;
+    const t20 = matches.filter((m) => /t20/i.test(m.matchType || m.name)).length;
+    const test = matches.filter((m) => /test/i.test(m.matchType || m.name)).length;
+
+    const teams = [
+      ...new Set(
+        matches.flatMap((m) => m.teams ?? m.teamInfo?.map((t) => t.name) ?? []).filter(Boolean),
+      ),
+    ];
+
+    const tour: Tour = {
+      id: seriesId || key,
+      name,
+      startDate: first.date || first.dateTimeGMT,
+      endDate: last.date || last.dateTimeGMT,
+      odi: odi || undefined,
+      t20: t20 || undefined,
+      test: test || undefined,
+      matches: matches.length,
+      teams: teams.length ? teams : undefined,
+    };
+
+    tours.push(tour);
+  }
+
+  if (tours.length) {
+    warnings.push(
+      `Built ${tours.length} tour(s) from upcoming Bangladesh fixtures (series list was empty).`,
+    );
+  }
+
+  return { tours: sortToursByStart(tours), warnings };
+}
+
+export async function fetchUpcomingTours(): Promise<{ tours: Tour[]; warnings: string[] }> {
+  const tours: Tour[] = [];
+  const warnings: string[] = [];
+  const seen = new Set<string>();
+
+  for (const search of ["bangladesh", "Bangladesh Women"]) {
+    const { rows, warning } = await fetchSeriesBatch({ offset: "0", search });
+    if (warning) warnings.push(warning);
+    for (const raw of rows) addFutureTour(tours, seen, raw);
+  }
+
+  for (let offset = 0; offset < 200; offset += 25) {
+    const { rows, warning } = await fetchSeriesBatch({ offset: String(offset) });
+    if (warning) {
+      warnings.push(warning);
+      break;
+    }
+    if (!rows.length) break;
+
+    for (const raw of rows) addFutureTour(tours, seen, raw);
+    if (rows.length < 25) break;
+  }
+
+  if (!tours.length) {
+    const derived = await deriveToursFromUpcomingMatches();
+    warnings.push(...derived.warnings);
+    for (const tour of derived.tours) {
+      if (seen.has(tour.id)) continue;
+      seen.add(tour.id);
+      tours.push(tour);
+    }
+  }
+
+  if (!tours.length && warnings.length === 0) {
+    warnings.push(
+      "No future series returned from CricAPI — verify CRICKET_DATA_API_KEY at cricketdata.org or wait if rate-limited.",
+    );
+  }
+
+  return { tours: sortToursByStart(tours), warnings: [...new Set(warnings)] };
 }
 
 export async function fetchCurrentMatches(): Promise<LiveMatchSummary[]> {

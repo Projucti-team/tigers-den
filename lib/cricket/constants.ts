@@ -27,7 +27,11 @@ export const CACHE_TTL_MS = 5 * 60 * 1000;
 
 export function isBangladeshTeam(name: string): boolean {
   const n = name.toLowerCase();
-  return BANGLADESH_NAMES.some((b) => n.includes(b));
+  if (n.includes("bangladesh")) return true;
+  if (/\bban\b/.test(n)) return true;
+  if (/\bbd\b/.test(n)) return true;
+  if (n.includes("bangladesh women") || n.includes("ban women")) return true;
+  return false;
 }
 
 /** Best ICC-ranked player from Bangladesh in a discipline (lowest rank number). */
