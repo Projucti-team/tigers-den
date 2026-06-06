@@ -14,32 +14,14 @@ import { Posts } from "./collections/Posts";
 import { Users } from "./collections/Users";
 import { getPayloadDatabase } from "./lib/payload-db";
 import { getPayloadPlugins } from "./lib/payload-plugins";
+import { getPayloadServerURL, getPayloadTrustedOrigins } from "./lib/payload-url";
 
 const filename = fileURLToPath(import.meta.url);
 const dirname = path.dirname(filename);
 
-function getServerURL(): string {
-  // Preview deployments must use their own URL so admin server functions hit the same host.
-  if (process.env.VERCEL_URL && process.env.VERCEL_ENV !== "production") {
-    return `https://${process.env.VERCEL_URL}`;
-  }
-
-  const fromEnv =
-    process.env.NEXT_PUBLIC_SERVER_URL ||
-    process.env.NEXT_PUBLIC_SITE_URL ||
-    (process.env.VERCEL_PROJECT_PRODUCTION_URL
-      ? `https://${process.env.VERCEL_PROJECT_PRODUCTION_URL}`
-      : undefined);
-
-  if (fromEnv) return fromEnv.replace(/\/$/, "");
-
-  if (process.env.VERCEL_URL) return `https://${process.env.VERCEL_URL}`;
-
-  return "http://localhost:3000";
-}
-
 export default buildConfig({
-  serverURL: getServerURL(),
+  serverURL: getPayloadServerURL(),
+  csrf: getPayloadTrustedOrigins(),
   admin: {
     user: Users.slug,
     suppressHydrationWarning: true,

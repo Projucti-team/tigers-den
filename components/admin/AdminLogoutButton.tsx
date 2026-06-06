@@ -2,22 +2,15 @@
 
 import { Button } from "@payloadcms/ui";
 
-async function logoutAdmin() {
-  await fetch("/api/users/logout?allSessions=true", {
-    method: "POST",
-    credentials: "include",
-    headers: { "Content-Type": "application/json" },
-  });
-  window.location.href = "/admin/login";
-}
-
-/** Sidebar + header logout for Payload admin. */
+/** Full navigation so logout runs on the server (/logout), not a client fetch. */
 export default function AdminLogoutButton() {
   return (
     <Button
       buttonStyle="secondary"
       className="admin-logout-button"
-      onClick={() => void logoutAdmin()}
+      onClick={() => {
+        window.location.href = "/api/admin/logout";
+      }}
     >
       Log out
     </Button>
