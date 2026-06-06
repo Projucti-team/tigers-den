@@ -1,4 +1,3 @@
-import Image from "next/image";
 import Link from "next/link";
 
 import { HeroMemberCta } from "@/components/home/HeroMemberCta";
@@ -21,20 +20,16 @@ export function HeroPromo({ slides = [] }: Props) {
   return (
     <section className="relative min-h-[460px] overflow-hidden md:min-h-[560px]">
       {imageUrl ? (
-        <div className="absolute inset-0 z-0">
-          <Image
-            src={imageUrl}
-            alt={imageAlt}
-            fill
-            className="object-cover"
-            priority
-            sizes="100vw"
-            unoptimized
-          />
-        </div>
+        // eslint-disable-next-line @next/next/no-img-element
+        <img
+          src={imageUrl}
+          alt={imageAlt}
+          className="absolute inset-0 z-0 h-full w-full object-cover"
+          fetchPriority="high"
+        />
       ) : (
         <div
-          className="absolute inset-0 bg-gradient-to-br from-emerald via-emerald/90 to-crimson"
+          className="absolute inset-0 z-0 bg-gradient-to-br from-emerald via-emerald/90 to-crimson"
           aria-hidden
         />
       )}
@@ -44,7 +39,7 @@ export function HeroPromo({ slides = [] }: Props) {
       ) : null}
       <div className="fan-hero-stripes pointer-events-none absolute inset-0 z-[1]" aria-hidden />
       <div
-        className="pointer-events-none absolute inset-x-0 bottom-0 h-24 bg-gradient-to-t from-pitch to-transparent"
+        className="pointer-events-none absolute inset-x-0 bottom-0 z-[1] h-24 bg-gradient-to-t from-pitch/80 to-transparent"
         aria-hidden
       />
 

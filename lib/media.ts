@@ -8,23 +8,27 @@ type MediaWithSizes = Media & {
   };
 };
 
-function pickMediaPath(media: MediaWithSizes): string | null {
-  const raw =
-    media.sizes?.hero?.url ?? media.url ?? media.thumbnailURL ?? null;
-
-  if (raw) {
-    if (raw.startsWith("http://") || raw.startsWith("https://")) {
-      try {
-        return new URL(raw).pathname;
-      } catch {
-        return raw;
-      }
+function toMediaPath(raw: string): string {
+  if (raw.startsWith("http://") || raw.startsWith("https://")) {
+    try {
+      return new URL(raw).pathname;
+    } catch {
+      return raw;
     }
-    return raw.startsWith("/") ? raw : `/${raw}`;
   }
+  return raw.startsWith("/") ? raw : `/${raw}`;
+}
 
-  if (media.filename) {
-    return `/api/media/file/${media.filename}`;
+function pickMediaPath(media: MediaWithSizes): string | null {
+  const candidates = [
+    media.sizes?.hero?.url,
+    media.url,
+    media.thumbnailURL,
+    media.filename ? `/api/media/file/${media.filename}` : null,
+  ];
+
+  for (const raw of candidates) {
+    if (raw) return toMediaPath(raw);
   }
 
   return null;

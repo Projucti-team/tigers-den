@@ -190,12 +190,11 @@
 }
 
 @utility fan-hero-mesh {
-  background-color: var(--color-pitch);
+  /* Transparent only — a solid background here hides the hero photo underneath. */
   background-image:
-    radial-gradient(ellipse 100% 80% at 0% 50%, rgba(0, 106, 78, 0.55) 0%, transparent 50%),
-    radial-gradient(ellipse 80% 70% at 100% 30%, rgba(244, 42, 65, 0.5) 0%, transparent 45%),
-    radial-gradient(ellipse 50% 40% at 50% 100%, rgba(255, 184, 0, 0.15) 0%, transparent 50%),
-    linear-gradient(180deg, rgba(10, 10, 10, 0.2) 0%, rgba(10, 10, 10, 0.75) 100%);
+    radial-gradient(ellipse 100% 80% at 0% 50%, rgba(0, 106, 78, 0.35) 0%, transparent 55%),
+    radial-gradient(ellipse 80% 70% at 100% 30%, rgba(244, 42, 65, 0.3) 0%, transparent 50%),
+    linear-gradient(180deg, rgba(10, 10, 10, 0.1) 0%, rgba(10, 10, 10, 0.55) 100%);
 }
 
 @utility fan-hero-stripes {
