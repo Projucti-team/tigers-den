@@ -46,6 +46,12 @@ export default buildConfig({
     importMap: {
       baseDir: path.resolve(dirname),
     },
+    components: {
+      logout: {
+        Button: "@/components/admin/AdminLogoutButton",
+      },
+      actions: ["@/components/admin/AdminLogoutButton"],
+    },
     meta: {
       titleSuffix: "— The Tigers' Den",
     },

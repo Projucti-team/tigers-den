@@ -39,3 +39,9 @@
 .btn--style-primary:hover {
   background-color: #00b368 !important;
 }
+
+/* Make sidebar logout easy to spot */
+.admin-logout-button {
+  width: 100%;
+  margin-top: 0.5rem;
+}
