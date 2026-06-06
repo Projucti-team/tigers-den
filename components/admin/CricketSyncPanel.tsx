@@ -23,8 +23,7 @@ export default function CricketSyncPanel() {
     const timeout = window.setTimeout(() => controller.abort(), 5 * 60 * 1000);
 
     try {
-      // Payload collection endpoint — auth cookies are applied by the CMS API layer.
-      const res = await fetch("/api/cricket-snapshots/sync", {
+      const res = await fetch("/api/admin/cricket-sync", {
         method: "POST",
         credentials: "include",
         headers: { Accept: "application/json" },

@@ -1,4 +1,3 @@
-import { headers } from "next/headers";
 import { revalidatePath } from "next/cache";
 import { NextResponse } from "next/server";
 
@@ -8,16 +7,15 @@ import { getPayloadClient } from "@/lib/payload";
 export const runtime = "nodejs";
 export const maxDuration = 300;
 
-/** Legacy alias — prefer POST /api/cricket-snapshots/sync from the admin panel. */
-export async function POST() {
+/** Admin-only cricket sync — used by the Payload dashboard button. */
+export async function POST(request: Request) {
   try {
     const payload = await getPayloadClient();
-    const headerList = await headers();
-    const { user } = await payload.auth({ headers: headerList });
+    const { user } = await payload.auth({ headers: request.headers });
 
     if (!user) {
       return NextResponse.json(
-        { error: "Unauthorized — use /api/cricket-snapshots/sync while logged into admin." },
+        { error: "Unauthorized — sign in to Payload admin first." },
         { status: 401 },
       );
     }

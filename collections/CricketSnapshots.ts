@@ -11,7 +11,12 @@ export const CricketSnapshots: CollectionConfig = {
       path: "/sync",
       method: "post",
       handler: async (req) => {
-        if (!req.user) {
+        // req.user is often unset on custom endpoints behind reverse proxies — resolve from cookies explicitly.
+        const { user } = req.user
+          ? { user: req.user }
+          : await req.payload.auth({ headers: req.headers });
+
+        if (!user) {
           return Response.json(
             { error: "Unauthorized — sign in to Payload admin first." },
             {
