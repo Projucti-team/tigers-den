@@ -27,13 +27,15 @@ export function isDefaultMemberAvatar(src: string): boolean {
 type MemberAvatarProps = {
   avatarUrl?: string | null;
   name: string;
-  size?: "sm" | "lg";
+  size?: "sm" | "md" | "lg" | "xl";
   className?: string;
 };
 
 const sizeClasses = {
-  sm: "h-10 w-10 shrink-0 ring-2",
-  lg: "h-20 w-20 shrink-0 ring-4",
+  sm: "h-10 w-10 shrink-0",
+  md: "h-11 w-11 shrink-0",
+  lg: "h-20 w-20 shrink-0",
+  xl: "h-28 w-28 shrink-0 md:h-32 md:w-32",
 } as const;
 
 export function MemberAvatar({ avatarUrl, name, size = "sm", className = "" }: MemberAvatarProps) {
@@ -57,7 +59,7 @@ export function MemberAvatar({ avatarUrl, name, size = "sm", className = "" }: M
           setSrc(DEFAULT_MEMBER_AVATAR);
         }
       }}
-      className={`rounded-full ring-emerald/30 ${sizeClasses[size]} ${
+      className={`rounded-full ${sizeClasses[size]} ${
         isDefault ? "bg-white object-contain p-1.5" : "object-cover"
       } ${className}`}
     />

@@ -1,13 +1,14 @@
 import { Suspense } from "react";
 
 import { MemberJoinPanel } from "@/components/home/MemberJoinPanel";
-import { isMemberAuthConfigured } from "@/lib/members/config";
+import { getEnabledAuthProviders, isMemberAuthConfigured } from "@/lib/members/config";
 import { MEMBER_COUNT_BASE } from "@/lib/members/constants";
 import { getDisplayedMemberCount } from "@/lib/members/service";
 
 export async function BecomeAMemberSection() {
   const memberCount = await getDisplayedMemberCount().catch(() => MEMBER_COUNT_BASE);
   const formattedCount = memberCount.toLocaleString("en-GB");
+  const enabledProviders = getEnabledAuthProviders();
   const authConfigured = isMemberAuthConfigured();
 
   return (
@@ -19,7 +20,7 @@ export async function BecomeAMemberSection() {
             Become a Member
           </h2>
           <p className="mx-auto mt-4 max-w-2xl text-charcoal/80">
-            Join The Tigers&apos; Den with Google or Facebook. Priority tickets, member rewards,
+            Join The Tigers&apos; Den with Google. Priority tickets, member rewards,
             tour windows and the loudest fan community in Bangladesh cricket.
           </p>
           <p className="mt-6 font-display text-3xl font-extrabold tabular-nums text-crimson md:text-4xl">
@@ -36,7 +37,10 @@ export async function BecomeAMemberSection() {
               <p className="py-8 text-center text-sm text-charcoal/70">Loading sign-in…</p>
             }
           >
-            <MemberJoinPanel authConfigured={authConfigured} />
+            <MemberJoinPanel
+              authConfigured={authConfigured}
+              enabledProviders={enabledProviders}
+            />
           </Suspense>
         </div>
 

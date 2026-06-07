@@ -32,7 +32,7 @@ export default async function MemberProfilePage({ params }: PageProps) {
   }
 
   return (
-    <div className="bg-surface py-10 md:py-14">
+    <div className="py-8 md:py-12">
       <div className="mx-auto max-w-[1440px] px-4 md:px-8">
         <ProfileApp username={username} isOwnProfile={isOwnProfile} />
       </div>

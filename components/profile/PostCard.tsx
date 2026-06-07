@@ -1,45 +1,61 @@
 import Link from "next/link";
 
+import { formatPostTime } from "@/components/profile/format-time";
 import { MemberAvatar } from "@/components/profile/MemberAvatar";
 import { profilePath } from "@/lib/site-content";
 import type { SocialPost } from "@/lib/social/types";
 
 export function PostCard({ post }: { post: SocialPost }) {
-  const when = new Date(post.createdAt).toLocaleString("en-GB", {
-    day: "numeric",
-    month: "short",
-    hour: "2-digit",
-    minute: "2-digit",
-  });
+  const when = formatPostTime(post.createdAt);
 
   return (
-    <article className="rounded-lg border-2 border-emerald/25 bg-white p-4 shadow-sm">
-      <div className="flex items-center gap-3">
-        <MemberAvatar avatarUrl={post.author.avatarUrl} name={post.author.name} />
-        <div>
+    <article className="overflow-hidden rounded-2xl border border-white/10 bg-white/[0.04] backdrop-blur-md">
+      <div className="flex items-center gap-3 px-4 py-3">
+        <Link href={profilePath(post.author.username)} className="shrink-0">
+          <MemberAvatar avatarUrl={post.author.avatarUrl} name={post.author.name} size="md" />
+        </Link>
+        <div className="min-w-0 flex-1">
           <Link
             href={profilePath(post.author.username)}
-            className="font-display text-sm font-extrabold uppercase text-emerald hover:text-crimson"
+            className="block truncate font-display text-sm font-extrabold uppercase text-white hover:text-emerald-glow"
           >
             {post.author.name}
           </Link>
-          <p className="text-xs text-charcoal/55">@{post.author.username} · {when}</p>
+          <p className="truncate text-xs text-white/50">
+            @{post.author.username} · {when}
+          </p>
         </div>
       </div>
 
-      <p className="mt-3 whitespace-pre-wrap text-sm leading-relaxed text-charcoal">{post.body}</p>
+      {post.body.trim() ? (
+        <p className="px-4 pb-3 whitespace-pre-wrap text-sm leading-relaxed text-white/90">
+          {post.body}
+        </p>
+      ) : null}
 
       {post.imageUrls.length > 0 ? (
         <div
-          className={`mt-3 grid gap-2 ${post.imageUrls.length > 1 ? "grid-cols-2" : "grid-cols-1"}`}
+          className={`grid gap-0.5 ${
+            post.imageUrls.length === 1
+              ? "grid-cols-1"
+              : post.imageUrls.length === 2
+                ? "grid-cols-2"
+                : "grid-cols-2"
+          }`}
         >
-          {post.imageUrls.map((url) => (
+          {post.imageUrls.map((url, i) => (
             // eslint-disable-next-line @next/next/no-img-element
             <img
               key={url}
               src={url}
               alt=""
-              className="max-h-80 w-full rounded-lg object-cover"
+              className={`w-full object-cover ${
+                post.imageUrls.length === 1
+                  ? "max-h-[28rem]"
+                  : post.imageUrls.length > 2 && i === 0
+                    ? "col-span-2 max-h-64"
+                    : "aspect-square max-h-48"
+              }`}
             />
           ))}
         </div>

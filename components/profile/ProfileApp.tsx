@@ -4,23 +4,35 @@ import Link from "next/link";
 import { useSession } from "next-auth/react";
 import { useCallback, useEffect, useState } from "react";
 
-import { MemberAvatar } from "@/components/profile/MemberAvatar";
 import { PostCard } from "@/components/profile/PostCard";
+import { PostComposer } from "@/components/profile/PostComposer";
+import { PostGrid } from "@/components/profile/PostGrid";
+import { PostModal } from "@/components/profile/PostModal";
+import { ProfileHeader } from "@/components/profile/ProfileHeader";
+import { MemberAvatar } from "@/components/profile/MemberAvatar";
 import { JOIN_PAGE_PATH } from "@/lib/site-content";
 import type { MemberSearchResult, SocialPost } from "@/lib/social/types";
 
-type Tab = "feed" | "timeline" | "write" | "discover";
+type Tab = "posts" | "feed" | "timeline" | "discover";
 
 type ProfileAppProps = {
   username: string;
   isOwnProfile: boolean;
 };
 
+const OWN_TABS: { id: Tab; label: string }[] = [
+  { id: "posts", label: "Posts" },
+  { id: "feed", label: "Feed" },
+  { id: "timeline", label: "Timeline" },
+  { id: "discover", label: "Discover" },
+];
+
 export function ProfileApp({ username, isOwnProfile }: ProfileAppProps) {
   const { status } = useSession();
-  const [tab, setTab] = useState<Tab>(isOwnProfile ? "feed" : "feed");
+  const [tab, setTab] = useState<Tab>("posts");
   const [profile, setProfile] = useState<MemberSearchResult | null>(null);
-  const [posts, setPosts] = useState<SocialPost[]>([]);
+  const [profilePosts, setProfilePosts] = useState<SocialPost[]>([]);
+  const [feedPosts, setFeedPosts] = useState<SocialPost[]>([]);
   const [loading, setLoading] = useState(true);
   const [postBody, setPostBody] = useState("");
   const [uploading, setUploading] = useState(false);
@@ -33,6 +45,7 @@ export function ProfileApp({ username, isOwnProfile }: ProfileAppProps) {
   const [timelineLoading, setTimelineLoading] = useState(false);
   const [avatarUploading, setAvatarUploading] = useState(false);
   const [avatarError, setAvatarError] = useState<string | null>(null);
+  const [selectedPost, setSelectedPost] = useState<SocialPost | null>(null);
 
   const loadProfile = useCallback(async () => {
     setLoading(true);
@@ -44,17 +57,16 @@ export function ProfileApp({ username, isOwnProfile }: ProfileAppProps) {
         posts: SocialPost[];
       };
       setProfile(data.profile);
+      setProfilePosts(data.posts);
 
       if (isOwnProfile) {
         const feedRes = await fetch("/api/social/feed");
         if (feedRes.ok) {
           const feedData = (await feedRes.json()) as { posts: SocialPost[] };
-          setPosts(feedData.posts);
+          setFeedPosts(feedData.posts);
         } else {
-          setPosts(data.posts);
+          setFeedPosts([]);
         }
-      } else {
-        setPosts(data.posts);
       }
     } finally {
       setLoading(false);
@@ -157,7 +169,7 @@ export function ProfileApp({ username, isOwnProfile }: ProfileAppProps) {
       if (!res.ok) throw new Error("post failed");
       setPostBody("");
       setPendingImages([]);
-      setTab("feed");
+      setTab("posts");
       await loadProfile();
     } finally {
       setPosting(false);
@@ -193,189 +205,149 @@ export function ProfileApp({ username, isOwnProfile }: ProfileAppProps) {
 
   if (status === "unauthenticated" && isOwnProfile) {
     return (
-      <p className="text-center text-charcoal/75">
-        <Link href={JOIN_PAGE_PATH} className="font-semibold text-emerald hover:underline">
-          Sign in
-        </Link>{" "}
-        to view your profile.
-      </p>
+      <div className="rounded-2xl border border-white/10 bg-white/[0.04] py-16 text-center backdrop-blur-md">
+        <p className="text-white/75">
+          <Link href={JOIN_PAGE_PATH} className="font-semibold text-emerald-glow hover:underline">
+            Sign in
+          </Link>{" "}
+          to view your profile.
+        </p>
+      </div>
     );
   }
 
   if (loading && !profile) {
-    return <p className="py-16 text-center text-sm text-charcoal/60">Loading profile…</p>;
+    return <p className="py-16 text-center text-sm text-white/50">Loading profile…</p>;
   }
 
   if (!profile) {
-    return <p className="text-center text-crimson">Profile not found.</p>;
+    return <p className="text-center text-crimson-glow">Profile not found.</p>;
   }
 
+  const activeTab = isOwnProfile ? tab : "posts";
+
   return (
-    <div className="mx-auto max-w-2xl">
-      <header className="rounded-lg border-2 border-emerald/30 bg-white p-6 shadow-md">
-        <div className="flex flex-wrap items-start gap-4">
-          <div className="flex flex-col items-center gap-2">
-            <MemberAvatar
-              key={profile.avatarUrl ?? "default"}
-              avatarUrl={profile.avatarUrl}
-              name={profile.name}
-              size="lg"
-            />
-            {isOwnProfile ? (
-              <>
-                <label className="cursor-pointer rounded border-2 border-emerald/40 px-2 py-1 text-[10px] font-bold uppercase text-emerald hover:bg-emerald/5">
-                  {avatarUploading ? "Uploading…" : "Change photo"}
-                  <input
-                    type="file"
-                    accept="image/jpeg,image/png,image/webp,image/gif"
-                    className="sr-only"
-                    onChange={handleAvatarPick}
-                    disabled={avatarUploading}
-                  />
-                </label>
-                {avatarError ? (
-                  <p className="max-w-[140px] text-center text-[10px] leading-snug text-crimson">
-                    {avatarError}
-                  </p>
-                ) : null}
-              </>
-            ) : null}
-          </div>
-          <div className="min-w-0 flex-1">
-            <h1 className="font-display text-2xl font-extrabold uppercase text-charcoal">
-              {profile.name}
-            </h1>
-            <p className="text-sm font-semibold text-emerald">@{profile.username}</p>
-            {profile.bio ? (
-              <p className="mt-2 text-sm text-charcoal/75">{profile.bio}</p>
-            ) : null}
-            <p className="mt-2 text-xs text-charcoal/55">
-              {profile.followerCount} followers · {profile.followingCount} following
-            </p>
-          </div>
-          {!isOwnProfile && status === "authenticated" ? (
-            <button
-              type="button"
-              disabled={followBusy === profile.username}
-              onClick={() => void toggleFollow(profile.username, profile.isFollowing)}
-              className={`rounded px-4 py-2 text-xs font-extrabold uppercase ${
-                profile.isFollowing
-                  ? "border-2 border-charcoal/20 text-charcoal/60"
-                  : "fan-btn-green"
-              }`}
-            >
-              {profile.isFollowing ? "Following" : "Follow"}
-            </button>
-          ) : null}
-        </div>
-      </header>
+    <div className="mx-auto max-w-3xl">
+      <ProfileHeader
+        profile={profile}
+        postCount={profilePosts.length}
+        isOwnProfile={isOwnProfile}
+        isAuthenticated={status === "authenticated"}
+        avatarUploading={avatarUploading}
+        avatarError={avatarError}
+        followBusy={followBusy === profile.username}
+        onAvatarPick={handleAvatarPick}
+        onToggleFollow={() => void toggleFollow(profile.username, profile.isFollowing)}
+      />
 
       {isOwnProfile ? (
-        <div className="mt-6 flex gap-2 border-b-2 border-emerald/20">
-          {(["feed", "timeline", "write", "discover"] as Tab[]).map((t) => (
+        <nav
+          className="sticky top-[4.5rem] z-10 mt-6 flex border-b border-white/10 bg-[#061410]/90 backdrop-blur-md"
+          aria-label="Profile sections"
+        >
+          {OWN_TABS.map((t) => (
             <button
-              key={t}
+              key={t.id}
               type="button"
-              onClick={() => setTab(t)}
-              className={`px-4 py-2 text-xs font-extrabold uppercase tracking-wide ${
-                tab === t
-                  ? "border-b-4 border-crimson text-crimson"
-                  : "text-charcoal/50 hover:text-emerald"
+              onClick={() => setTab(t.id)}
+              className={`flex-1 py-3 text-center text-xs font-extrabold uppercase tracking-wide transition ${
+                activeTab === t.id
+                  ? "border-b-2 border-emerald-glow text-white"
+                  : "text-white/45 hover:text-white/70"
               }`}
             >
-              {t === "feed"
-                ? "My feed"
-                : t === "timeline"
-                  ? "Timeline"
-                  : t === "write"
-                    ? "Write post"
-                    : "Find fans"}
+              {t.label}
             </button>
           ))}
+        </nav>
+      ) : (
+        <div className="mt-6 flex border-b border-white/10">
+          <span className="flex-1 border-b-2 border-emerald-glow py-3 text-center text-xs font-extrabold uppercase tracking-wide text-white">
+            Posts
+          </span>
         </div>
-      ) : null}
+      )}
 
       <div className="mt-6 space-y-4">
-        {isOwnProfile && tab === "write" ? (
-          <form
+        {isOwnProfile && activeTab === "feed" ? (
+          <PostComposer
+            avatarUrl={profile.avatarUrl}
+            name={profile.name}
+            postBody={postBody}
+            pendingImages={pendingImages}
+            uploading={uploading}
+            posting={posting}
+            onBodyChange={setPostBody}
+            onImagePick={handleImagePick}
             onSubmit={submitPost}
-            className="rounded-lg border-2 border-emerald/30 bg-white p-4 shadow-sm"
-          >
-            <label htmlFor="post-body" className="sr-only">
-              Write a post
-            </label>
-            <textarea
-              id="post-body"
-              value={postBody}
-              onChange={(e) => setPostBody(e.target.value)}
-              placeholder="Share your match-day roar…"
-              rows={4}
-              className="w-full resize-y rounded border-2 border-emerald/30 px-3 py-2 text-sm outline-none focus:border-emerald"
-            />
-            {pendingImages.length > 0 ? (
-              <div className="mt-3 flex flex-wrap gap-2">
-                {pendingImages.map((img) => (
-                  // eslint-disable-next-line @next/next/no-img-element
-                  <img
-                    key={img.id}
-                    src={img.url}
-                    alt=""
-                    className="h-20 w-20 rounded object-cover"
-                  />
-                ))}
-              </div>
-            ) : null}
-            <div className="mt-3 flex flex-wrap items-center gap-3">
-              <label className="cursor-pointer rounded border-2 border-emerald/40 px-3 py-2 text-xs font-bold uppercase text-emerald hover:bg-emerald/5">
-                {uploading ? "Uploading…" : "Add photo"}
-                <input
-                  type="file"
-                  accept="image/*"
-                  className="sr-only"
-                  onChange={handleImagePick}
-                  disabled={uploading}
-                />
-              </label>
-              <button
-                type="submit"
-                disabled={posting || (!postBody.trim() && pendingImages.length === 0)}
-                className="fan-btn-green rounded px-5 py-2 text-xs disabled:opacity-50"
-              >
-                {posting ? "Posting…" : "Post"}
-              </button>
-            </div>
-          </form>
+            onRemoveImage={(id) =>
+              setPendingImages((prev) => prev.filter((img) => img.id !== id))
+            }
+          />
         ) : null}
 
-        {isOwnProfile && tab === "discover" ? (
-          <div className="rounded-lg border-2 border-emerald/30 bg-white p-4 shadow-sm">
-            <label htmlFor="member-search" className="mb-2 block text-sm font-semibold text-charcoal">
-              Find other Tigers&apos; Den members
-            </label>
-            <input
-              id="member-search"
-              type="search"
-              value={searchQ}
-              onChange={(e) => setSearchQ(e.target.value)}
-              placeholder="Search by name or @username"
-              className="w-full rounded border-2 border-emerald/30 px-3 py-2 text-sm outline-none focus:border-emerald"
-            />
-            <ul className="mt-4 space-y-3">
+        {activeTab === "posts" ? (
+          <PostGrid posts={profilePosts} onSelect={setSelectedPost} />
+        ) : null}
+
+        {isOwnProfile && activeTab === "feed" ? (
+          feedPosts.length === 0 ? (
+            <div className="rounded-2xl border border-dashed border-white/15 py-12 text-center">
+              <p className="text-sm text-white/60">Your feed is empty.</p>
+              <p className="mt-1 text-xs text-white/40">
+                Follow other fans in Discover to see their posts here.
+              </p>
+            </div>
+          ) : (
+            feedPosts.map((post) => <PostCard key={post.id} post={post} />)
+          )
+        ) : null}
+
+        {isOwnProfile && activeTab === "timeline" ? (
+          timelineLoading ? (
+            <p className="py-12 text-center text-sm text-white/50">Loading timeline…</p>
+          ) : timelinePosts.length === 0 ? (
+            <div className="rounded-2xl border border-dashed border-white/15 py-12 text-center">
+              <p className="text-sm text-white/60">No posts on the timeline yet.</p>
+            </div>
+          ) : (
+            timelinePosts.map((post) => <PostCard key={post.id} post={post} />)
+          )
+        ) : null}
+
+        {isOwnProfile && activeTab === "discover" ? (
+          <div className="overflow-hidden rounded-2xl border border-white/10 bg-white/[0.04] backdrop-blur-md">
+            <div className="border-b border-white/10 p-4">
+              <label htmlFor="member-search" className="sr-only">
+                Search members
+              </label>
+              <input
+                id="member-search"
+                type="search"
+                value={searchQ}
+                onChange={(e) => setSearchQ(e.target.value)}
+                placeholder="Search fans by name or @username"
+                className="w-full rounded-xl border border-white/15 bg-white/5 px-4 py-3 text-sm text-white placeholder:text-white/40 outline-none focus:border-emerald-glow/50"
+              />
+            </div>
+            <ul className="divide-y divide-white/10">
+              {searchResults.length === 0 && searchQ.trim() ? (
+                <li className="px-4 py-8 text-center text-sm text-white/50">No members found.</li>
+              ) : null}
               {searchResults.map((m) => (
-                <li
-                  key={m.id}
-                  className="flex items-center justify-between gap-3 border-b border-emerald/10 pb-3 last:border-0"
-                >
+                <li key={m.id} className="flex items-center justify-between gap-3 px-4 py-3">
                   <div className="flex min-w-0 items-center gap-3">
-                    <MemberAvatar avatarUrl={m.avatarUrl} name={m.name} />
+                    <Link href={`/profile/${m.username}`}>
+                      <MemberAvatar avatarUrl={m.avatarUrl} name={m.name} size="md" />
+                    </Link>
                     <div className="min-w-0">
                       <Link
                         href={`/profile/${m.username}`}
-                        className="font-semibold text-emerald hover:text-crimson"
+                        className="block truncate font-semibold text-white hover:text-emerald-glow"
                       >
                         {m.name}
                       </Link>
-                      <p className="text-xs text-charcoal/55">@{m.username}</p>
+                      <p className="truncate text-xs text-white/50">@{m.username}</p>
                     </div>
                   </div>
                   {m.username !== profile.username ? (
@@ -383,8 +355,10 @@ export function ProfileApp({ username, isOwnProfile }: ProfileAppProps) {
                       type="button"
                       disabled={followBusy === m.username}
                       onClick={() => void toggleFollow(m.username, m.isFollowing)}
-                      className={`shrink-0 rounded px-3 py-1.5 text-xs font-bold uppercase ${
-                        m.isFollowing ? "bg-charcoal/10 text-charcoal/60" : "fan-btn-green"
+                      className={`shrink-0 rounded-lg px-4 py-1.5 text-xs font-bold uppercase ${
+                        m.isFollowing
+                          ? "border border-white/25 bg-white/10 text-white/70"
+                          : "fan-btn-green"
                       }`}
                     >
                       {m.isFollowing ? "Following" : "Follow"}
@@ -395,43 +369,9 @@ export function ProfileApp({ username, isOwnProfile }: ProfileAppProps) {
             </ul>
           </div>
         ) : null}
-
-        {isOwnProfile && tab === "timeline" ? (
-          <>
-            <h2 className="font-display text-sm font-extrabold uppercase text-charcoal/70">
-              Timeline
-            </h2>
-            <p className="text-xs text-charcoal/55">
-              Public posts from every Tigers&apos; Den member, newest first.
-            </p>
-            {timelineLoading ? (
-              <p className="py-8 text-center text-sm text-charcoal/60">Loading timeline…</p>
-            ) : timelinePosts.length === 0 ? (
-              <p className="rounded-lg border border-dashed border-emerald/30 bg-white/80 p-8 text-center text-sm text-charcoal/60">
-                No posts on the timeline yet.
-              </p>
-            ) : (
-              timelinePosts.map((post) => <PostCard key={post.id} post={post} />)
-            )}
-          </>
-        ) : null}
-
-        {(tab === "feed" || !isOwnProfile) && (
-          <>
-            <h2 className="font-display text-sm font-extrabold uppercase text-charcoal/70">
-              {isOwnProfile ? "Feed" : "Posts"}
-            </h2>
-            {posts.length === 0 ? (
-              <p className="rounded-lg border border-dashed border-emerald/30 bg-white/80 p-8 text-center text-sm text-charcoal/60">
-                No posts yet.
-                {isOwnProfile ? " Write your first post in the Write post tab." : null}
-              </p>
-            ) : (
-              posts.map((post) => <PostCard key={post.id} post={post} />)
-            )}
-          </>
-        )}
       </div>
+
+      <PostModal post={selectedPost} onClose={() => setSelectedPost(null)} />
     </div>
   );
 }
