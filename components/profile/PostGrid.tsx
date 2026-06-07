@@ -1,3 +1,4 @@
+import { resolveMediaSrc } from "@/lib/media";
 import type { SocialPost } from "@/lib/social/types";
 
 type PostGridProps = {
@@ -21,8 +22,8 @@ export function PostGrid({ posts, onSelect }: PostGridProps) {
   return (
     <div className="grid grid-cols-3 gap-1 md:gap-1.5">
       {posts.map((post) => {
-        const thumb = post.imageUrls[0];
-        const hasText = Boolean(post.body.trim());
+        const thumb = resolveMediaSrc(post.imageUrls[0]);
+        const hasText = Boolean(post.body.trim() && post.body !== "📷");
 
         return (
           <button

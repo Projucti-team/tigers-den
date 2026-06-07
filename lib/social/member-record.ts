@@ -1,6 +1,6 @@
-import { slugifyUsername } from "@/lib/members/username";
+import { isValidUsername, slugifyUsername } from "@/lib/members/username";
 import { getPayloadClient } from "@/lib/payload";
-import { getAbsoluteMediaUrl } from "@/lib/media";
+import { getRelativeMediaUrl } from "@/lib/media";
 import type { PublicMember } from "@/lib/social/types";
 import type { Media, Member } from "@/payload-types";
 
@@ -11,7 +11,7 @@ export function resolveMemberId(value: number | Member): number {
 export function memberAvatarUrl(doc: Member): string | null {
   const media = doc.avatar;
   if (!media || typeof media === "number") return null;
-  return getAbsoluteMediaUrl(media as Media);
+  return getRelativeMediaUrl(media as Media);
 }
 
 export function toPublicMember(
@@ -103,6 +103,28 @@ export async function getMemberByUsername(
   return (result.docs[0] as Member | undefined) ?? null;
 }
 
+export async function updateMemberUsername(
+  memberId: number,
+  raw: string,
+): Promise<Member> {
+  const username = slugifyUsername(raw);
+  if (!isValidUsername(username)) {
+    throw new Error("INVALID_USERNAME");
+  }
+  if (await usernameTaken(username, memberId)) {
+    throw new Error("USERNAME_TAKEN");
+  }
+
+  const payload = await getPayloadClient();
+  return payload.update({
+    collection: "members",
+    id: memberId,
+    depth: 1,
+    overrideAccess: true,
+    data: { username },
+  }) as Promise<Member>;
+}
+
 export async function setMemberAvatar(
   memberId: number,
   mediaId: number,
@@ -120,6 +142,6 @@ export async function setMemberAvatar(
 export function mediaUrlsFromPost(images: (number | Media)[] | null | undefined): string[] {
   if (!images?.length) return [];
   return images
-    .map((img) => getAbsoluteMediaUrl(typeof img === "number" ? null : img))
+    .map((img) => getRelativeMediaUrl(typeof img === "number" ? null : img))
     .filter((url): url is string => Boolean(url));
 }

@@ -55,3 +55,20 @@ export function getAbsoluteMediaUrl(
   const base = getPayloadServerURL().replace(/\/$/, "");
   return `${base}${relative.startsWith("/") ? relative : `/${relative}`}`;
 }
+
+/** Same-origin path for <img src> — rewrites stale localhost absolute URLs from older API responses. */
+export function resolveMediaSrc(url: string | null | undefined): string | null {
+  if (!url?.trim()) return null;
+  const trimmed = url.trim();
+  if (trimmed.startsWith("/")) return trimmed;
+  if (trimmed.startsWith("http://") || trimmed.startsWith("https://")) {
+    try {
+      const { pathname } = new URL(trimmed);
+      if (pathname.startsWith("/api/media/")) return pathname;
+      return trimmed;
+    } catch {
+      return trimmed;
+    }
+  }
+  return `/${trimmed}`;
+}

@@ -1,6 +1,8 @@
 import Link from "next/link";
 
 import { formatPostTime } from "@/components/profile/format-time";
+import { formatMemberDisplayName } from "@/lib/members/display";
+import { resolveMediaSrc } from "@/lib/media";
 import { MemberAvatar } from "@/components/profile/MemberAvatar";
 import { profilePath } from "@/lib/site-content";
 import type { SocialPost } from "@/lib/social/types";
@@ -17,11 +19,11 @@ export function PostCard({ post }: { post: SocialPost }) {
         <div className="min-w-0 flex-1">
           <Link
             href={profilePath(post.author.username)}
-            className="block truncate font-display text-sm font-extrabold uppercase text-white hover:text-emerald-glow"
+            className="block truncate text-sm font-semibold text-white hover:text-emerald-glow"
           >
-            {post.author.name}
+            {formatMemberDisplayName(post.author.name)}
           </Link>
-          <p className="truncate text-xs text-white/50">
+          <p className="truncate font-mono text-xs text-white/45">
             @{post.author.username} · {when}
           </p>
         </div>
@@ -47,7 +49,7 @@ export function PostCard({ post }: { post: SocialPost }) {
             // eslint-disable-next-line @next/next/no-img-element
             <img
               key={url}
-              src={url}
+              src={resolveMediaSrc(url) ?? url}
               alt=""
               className={`w-full object-cover ${
                 post.imageUrls.length === 1

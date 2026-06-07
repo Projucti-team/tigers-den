@@ -1,6 +1,7 @@
 "use client";
 
 import Link from "next/link";
+import { useRouter } from "next/navigation";
 import { useSession } from "next-auth/react";
 import { useCallback, useEffect, useState } from "react";
 
@@ -10,7 +11,8 @@ import { PostGrid } from "@/components/profile/PostGrid";
 import { PostModal } from "@/components/profile/PostModal";
 import { ProfileHeader } from "@/components/profile/ProfileHeader";
 import { MemberAvatar } from "@/components/profile/MemberAvatar";
-import { JOIN_PAGE_PATH } from "@/lib/site-content";
+import { formatMemberDisplayName } from "@/lib/members/display";
+import { JOIN_PAGE_PATH, profilePath } from "@/lib/site-content";
 import type { MemberSearchResult, SocialPost } from "@/lib/social/types";
 
 type Tab = "posts" | "feed" | "timeline" | "discover";
@@ -28,6 +30,7 @@ const OWN_TABS: { id: Tab; label: string }[] = [
 ];
 
 export function ProfileApp({ username, isOwnProfile }: ProfileAppProps) {
+  const router = useRouter();
   const { status } = useSession();
   const [tab, setTab] = useState<Tab>("posts");
   const [profile, setProfile] = useState<MemberSearchResult | null>(null);
@@ -238,6 +241,7 @@ export function ProfileApp({ username, isOwnProfile }: ProfileAppProps) {
         followBusy={followBusy === profile.username}
         onAvatarPick={handleAvatarPick}
         onToggleFollow={() => void toggleFollow(profile.username, profile.isFollowing)}
+        onUsernameUpdated={(next) => router.replace(profilePath(next))}
       />
 
       {isOwnProfile ? (
@@ -337,17 +341,17 @@ export function ProfileApp({ username, isOwnProfile }: ProfileAppProps) {
               {searchResults.map((m) => (
                 <li key={m.id} className="flex items-center justify-between gap-3 px-4 py-3">
                   <div className="flex min-w-0 items-center gap-3">
-                    <Link href={`/profile/${m.username}`}>
+                    <Link href={profilePath(m.username)}>
                       <MemberAvatar avatarUrl={m.avatarUrl} name={m.name} size="md" />
                     </Link>
                     <div className="min-w-0">
                       <Link
-                        href={`/profile/${m.username}`}
+                        href={profilePath(m.username)}
                         className="block truncate font-semibold text-white hover:text-emerald-glow"
                       >
-                        {m.name}
+                        {formatMemberDisplayName(m.name)}
                       </Link>
-                      <p className="truncate text-xs text-white/50">@{m.username}</p>
+                      <p className="truncate font-mono text-xs text-white/45">@{m.username}</p>
                     </div>
                   </div>
                   {m.username !== profile.username ? (

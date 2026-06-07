@@ -2,6 +2,8 @@
 
 import { useEffect, useState } from "react";
 
+import { resolveMediaSrc } from "@/lib/media";
+
 export const DEFAULT_MEMBER_AVATAR = "/tigers-den-logo-nav.png";
 
 /** OAuth profile photos are not used — site logo or uploaded media only. */
@@ -17,7 +19,7 @@ export function getMemberAvatarSrc(avatarUrl?: string | null): string {
   if (isOAuthProviderPhoto(trimmed)) {
     return DEFAULT_MEMBER_AVATAR;
   }
-  return trimmed;
+  return resolveMediaSrc(trimmed) ?? DEFAULT_MEMBER_AVATAR;
 }
 
 export function isDefaultMemberAvatar(src: string): boolean {

@@ -1,7 +1,7 @@
 import { NextResponse } from "next/server";
 
 import { socialApiError } from "@/lib/social/api-error";
-import { getAbsoluteMediaUrl } from "@/lib/media";
+import { getRelativeMediaUrl } from "@/lib/media";
 import {
   prepareUploadImage,
   uploadImageErrorMessage,
@@ -48,7 +48,7 @@ export async function POST(request: Request) {
       },
     })) as Media;
 
-    const url = getAbsoluteMediaUrl(media);
+    const url = getRelativeMediaUrl(media);
 
     return NextResponse.json({
       id: media.id,

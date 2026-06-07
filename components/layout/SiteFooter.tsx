@@ -73,7 +73,13 @@ export function SiteFooter() {
       </div>
 
       <div className="border-t border-white/10 bg-pitch px-4 py-4 text-center text-xs text-white/50 md:px-8">
-        <p>© 2026 The Tigers&apos; Den · Privacy · Terms · Code of Conduct · Cookie Policy</p>
+        <p>
+          © 2026 The Tigers&apos; Den ·{" "}
+          <Link href="/privacy" className="hover:text-white/80 hover:underline">
+            Privacy
+          </Link>{" "}
+          · Terms · Code of Conduct · Cookie Policy
+        </p>
         <p className="mt-1">
           <Link href="/admin" className="hover:text-white/80">
             Admin

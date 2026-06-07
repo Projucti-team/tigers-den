@@ -1,6 +1,7 @@
 import type { ChangeEvent, FormEvent } from "react";
 
 import { MemberAvatar } from "@/components/profile/MemberAvatar";
+import { resolveMediaSrc } from "@/lib/media";
 
 type PostComposerProps = {
   avatarUrl?: string | null;
@@ -54,7 +55,11 @@ export function PostComposer({
           {pendingImages.map((img) => (
             <div key={img.id} className="relative">
               {/* eslint-disable-next-line @next/next/no-img-element */}
-              <img src={img.url} alt="" className="h-20 w-20 rounded-lg object-cover" />
+              <img
+                src={resolveMediaSrc(img.url) ?? img.url}
+                alt=""
+                className="h-20 w-20 rounded-lg object-cover"
+              />
               {onRemoveImage ? (
                 <button
                   type="button"

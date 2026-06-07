@@ -1,6 +1,10 @@
-import type { ChangeEvent } from "react";
+"use client";
+
+import type { ChangeEvent, FormEvent } from "react";
+import { useState } from "react";
 
 import { MemberAvatar } from "@/components/profile/MemberAvatar";
+import { formatMemberDisplayName } from "@/lib/members/display";
 import type { MemberSearchResult } from "@/lib/social/types";
 
 type ProfileHeaderProps = {
@@ -13,6 +17,7 @@ type ProfileHeaderProps = {
   followBusy: boolean;
   onAvatarPick: (e: ChangeEvent<HTMLInputElement>) => void;
   onToggleFollow: () => void;
+  onUsernameUpdated?: (username: string) => void;
 };
 
 function Stat({ value, label }: { value: number; label: string }) {
@@ -34,7 +39,35 @@ export function ProfileHeader({
   followBusy,
   onAvatarPick,
   onToggleFollow,
+  onUsernameUpdated,
 }: ProfileHeaderProps) {
+  const [editingHandle, setEditingHandle] = useState(false);
+  const [handleDraft, setHandleDraft] = useState(profile.username);
+  const [handleError, setHandleError] = useState<string | null>(null);
+  const [savingHandle, setSavingHandle] = useState(false);
+
+  async function saveHandle(e: FormEvent) {
+    e.preventDefault();
+    setSavingHandle(true);
+    setHandleError(null);
+    try {
+      const res = await fetch("/api/social/profile/username", {
+        method: "PATCH",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ username: handleDraft }),
+      });
+      const data = (await res.json()) as { username?: string; error?: string };
+      if (!res.ok || !data.username) {
+        setHandleError(data.error ?? "Could not update username.");
+        return;
+      }
+      setEditingHandle(false);
+      onUsernameUpdated?.(data.username);
+    } finally {
+      setSavingHandle(false);
+    }
+  }
+
   return (
     <header className="overflow-hidden rounded-2xl border border-white/10 bg-white/[0.04] backdrop-blur-md">
       <div
@@ -76,11 +109,64 @@ export function ProfileHeader({
 
           <div className="min-w-0 flex-1 text-center md:text-left">
             <div className="flex flex-col items-center gap-3 md:flex-row md:flex-wrap md:items-center md:justify-between">
-              <div>
-                <h1 className="font-display text-xl font-extrabold uppercase tracking-wide text-white md:text-2xl">
-                  {profile.name}
+              <div className="min-w-0">
+                <h1 className="truncate font-display text-2xl font-bold tracking-tight text-white md:text-[1.75rem]">
+                  {formatMemberDisplayName(profile.name)}
                 </h1>
-                <p className="mt-0.5 text-sm font-semibold text-emerald-glow">@{profile.username}</p>
+
+                {editingHandle && isOwnProfile ? (
+                  <form onSubmit={saveHandle} className="mt-2 flex max-w-xs flex-col gap-2 md:max-w-sm">
+                    <div className="flex items-center gap-1">
+                      <span className="text-sm text-white/40">@</span>
+                      <input
+                        value={handleDraft}
+                        onChange={(e) => setHandleDraft(e.target.value)}
+                        className="min-w-0 flex-1 rounded-lg border border-white/15 bg-white/5 px-2 py-1.5 text-sm text-white outline-none focus:border-emerald-glow/50"
+                        autoFocus
+                        aria-label="Username"
+                      />
+                    </div>
+                    <div className="flex gap-2">
+                      <button
+                        type="submit"
+                        disabled={savingHandle}
+                        className="rounded-lg bg-emerald px-3 py-1 text-xs font-bold text-white disabled:opacity-50"
+                      >
+                        {savingHandle ? "Saving…" : "Save"}
+                      </button>
+                      <button
+                        type="button"
+                        onClick={() => {
+                          setEditingHandle(false);
+                          setHandleDraft(profile.username);
+                          setHandleError(null);
+                        }}
+                        className="rounded-lg px-3 py-1 text-xs font-semibold text-white/60 hover:text-white"
+                      >
+                        Cancel
+                      </button>
+                    </div>
+                    {handleError ? (
+                      <p className="text-left text-[11px] text-crimson-glow">{handleError}</p>
+                    ) : null}
+                  </form>
+                ) : (
+                  <p className="mt-1 flex items-center justify-center gap-2 md:justify-start">
+                    <span className="font-mono text-sm text-white/45">@{profile.username}</span>
+                    {isOwnProfile ? (
+                      <button
+                        type="button"
+                        onClick={() => {
+                          setHandleDraft(profile.username);
+                          setEditingHandle(true);
+                        }}
+                        className="text-[11px] font-semibold text-white/35 underline-offset-2 hover:text-white/60 hover:underline"
+                      >
+                        Edit
+                      </button>
+                    ) : null}
+                  </p>
+                )}
               </div>
 
               <div className="flex shrink-0 gap-2">

@@ -1,7 +1,7 @@
 import { NextResponse } from "next/server";
 
 import { socialApiError } from "@/lib/social/api-error";
-import { getAbsoluteMediaUrl } from "@/lib/media";
+import { getRelativeMediaUrl } from "@/lib/media";
 import { memberAvatarUrl, setMemberAvatar } from "@/lib/social/member-record";
 import {
   prepareUploadImage,
@@ -50,7 +50,7 @@ export async function POST(request: Request) {
     })) as Media;
 
     const updated = await setMemberAvatar(member.id, media.id);
-    const avatarUrl = memberAvatarUrl(updated) ?? getAbsoluteMediaUrl(media);
+    const avatarUrl = memberAvatarUrl(updated) ?? getRelativeMediaUrl(media);
 
     return NextResponse.json({ avatarUrl });
   } catch (err) {
