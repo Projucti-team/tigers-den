@@ -1,6 +1,101 @@
 {
-  "fetchedAt": "2026-06-07T07:11:13.097Z",
+  "fetchedAt": "2026-06-08T08:18:52.985Z",
   "items": [
+    {
+      "id": "espn-https://www.espncricinfo.com/ci/content/story/1540123.html",
+      "title": "Confident Bangladesh pose Australia a fresh challenge after 15-year wait for an ODI series",
+      "summary": "While spin dominated in Pakistan, Australia could find pace playing more of a role this series",
+      "url": "https://www.espncricinfo.com/story/confident-bangladesh-pose-a-fresh-challenge-after-15-year-wait-for-an-odi-series-1540123",
+      "imageUrl": "https://p.imgci.com/db/PICTURES/CMS/414700/414705.5.jpg",
+      "source": "espncricinfo",
+      "publishedAt": "2026-06-08T07:31:53.000Z"
+    },
+    {
+      "id": "dailystar-https://www.thedailystar.net/sports/cricket/news/pace-or-spin-onus-batters-meet-the-challenge-4192951",
+      "title": "Pace or spin, onus on batters to meet the challenge",
+      "summary": "Bangladesh's training session proceeded as usual at the Sher-e-Bangla National Cricket Stadium yesterday, with players first undergoing fielding drills on the centre wicket before moving to the academy ground for net practice.",
+      "url": "https://www.thedailystar.net/sports/cricket/news/pace-or-spin-onus-batters-meet-the-challenge-4192951",
+      "source": "dailystar",
+      "publishedAt": "2026-06-08T03:00:00.000Z"
+    },
+    {
+      "id": "dailystar-https://www.thedailystar.net/sports/cricket/news/marsh-and-head-out-bangladesh-odi-series-4193351",
+      "title": "Marsh and Head out of Bangladesh ODI series",
+      "summary": "Marsh will, however, fly over to be with the team as he prepares for a comeback in the subsequent Twenty20 series in Bangladesh.",
+      "url": "https://www.thedailystar.net/sports/cricket/news/marsh-and-head-out-bangladesh-odi-series-4193351",
+      "source": "dailystar",
+      "publishedAt": "2026-06-08T02:59:38.000Z"
+    },
+    {
+      "id": "cricbuzz-139078",
+      "title": "Travis Head, Mitchell Marsh to miss Bangladesh ODIs",
+      "summary": "While Head has been granted personal leave, Marsh is yet to recover from his ankle injury",
+      "url": "https://www.cricbuzz.com/cricket-news/139078/travis-head-mitchell-marsh-to-miss-bangladesh-odis",
+      "imageUrl": "https://static.cricbuzz.com/a/img/v1/540x303/i1/c1004658/australia-will-not-have-their-first-choice-openers-in-bangladesh.jpg",
+      "source": "cricbuzz",
+      "publishedAt": "2026-06-08T02:49:25.000Z"
+    },
+    {
+      "id": "espn-https://www.espncricinfo.com/ci/content/story/1539607.html",
+      "title": "Head out of Bangladesh tour, Marsh to miss ODIs; Murphy called up",
+      "summary": "Head rested from the entire Bangladesh tour while Australia hope Marsh can recover from his ankle injury in time for the T20 series",
+      "url": "https://www.espncricinfo.com/story/travis-head-out-of-bangladesh-tour-mitchell-marsh-to-miss-odis-todd-murphy-called-up-1539607",
+      "imageUrl": "https://p.imgci.com/db/PICTURES/CMS/405300/405373.5.jpg",
+      "source": "espncricinfo",
+      "publishedAt": "2026-06-08T02:46:31.000Z"
+    },
+    {
+      "id": "cricbuzz-139076",
+      "title": "Spin-heavy Bangladesh bank on experienced core to survive stiff group",
+      "summary": "This is Bangladesh's most experienced group yet, but Group 1 poses an immense challenge",
+      "url": "https://www.cricbuzz.com/cricket-news/139076/spin-heavy-bangladesh-bank-on-experienced-core-to-survive-stiff-group",
+      "imageUrl": "https://static.cricbuzz.com/a/img/v1/540x303/i1/c1004656/nigar-sultana-with-the-team-during-a-world-cup-warm-up-fixture.jpg",
+      "source": "cricbuzz",
+      "publishedAt": "2026-06-08T01:20:12.000Z"
+    },
+    {
+      "id": "espn-https://www.espncricinfo.com/ci/content/story/1540057.html",
+      "title": "Tamim: Building a world-class High Performance Centre 'my biggest dream'",
+      "summary": "The newly elected BCB president also hopes to restore the reputation of Bangladesh cricket",
+      "url": "https://www.espncricinfo.com/story/bcb-president-tamim-iqbal-building-a-world-class-high-performance-centre-my-biggest-dream-1540057",
+      "imageUrl": "https://p.imgci.com/db/PICTURES/CMS/415300/415363.5.jpg",
+      "source": "espncricinfo",
+      "publishedAt": "2026-06-07T16:15:51.000Z"
+    },
+    {
+      "id": "dailystar-https://www.thedailystar.net/sports/cricket/news/tamim-vows-transparency-after-being-elected-bcb-president-4192956",
+      "title": "Tamim vows transparency after being elected BCB president",
+      "summary": "A new Bangladesh Cricket Board (BCB) elections were held just eight months after the previous one and, as widely expected, Tamim Iqbal was elected unopposed as board president by the newly formed panel of directors on Sunday.",
+      "url": "https://www.thedailystar.net/sports/cricket/news/tamim-vows-transparency-after-being-elected-bcb-president-4192956",
+      "source": "dailystar",
+      "publishedAt": "2026-06-07T15:49:49.000Z"
+    },
+    {
+      "id": "espn-https://www.espncricinfo.com/ci/content/story/1540031.html",
+      "title": "Tamim Iqbal elected new BCB president",
+      "summary": "The former Bangladesh captain will serve a four-year term, having already completed two months as the president of an ad-hoc committee",
+      "url": "https://www.espncricinfo.com/story/tamim-iqbal-elected-new-bcb-president-1540031",
+      "imageUrl": "https://p.imgci.com/db/PICTURES/CMS/417900/417992.5.jpg",
+      "source": "espncricinfo",
+      "publishedAt": "2026-06-07T14:50:22.000Z"
+    },
+    {
+      "id": "dailystar-https://www.thedailystar.net/sports/cricket/news/tamim-becomes-bcb-president-uncontested-after-election-sweep-4192871",
+      "title": "Tamim becomes BCB president uncontested after election sweep",
+      "summary": "Former Bangladesh captain Tamim Iqbal was elected uncontested as president of the Bangladesh Cricket Board (BCB) after no other candidate challenged his nomination following Sunday's board elections, the BCB Election Commission announced in Mirpur.",
+      "url": "https://www.thedailystar.net/sports/cricket/news/tamim-becomes-bcb-president-uncontested-after-election-sweep-4192871",
+      "source": "dailystar",
+      "publishedAt": "2026-06-07T14:01:50.000Z"
+    },
+    {
+      "id": "cricbuzz-139072",
+      "title": "Tamim Iqbal appointed BCB president",
+      "summary": "The former left-handed batter was serving as the interim head of the board after the Bangladesh government dissolved the BCB board of directors in April this year",
+      "url": "https://www.cricbuzz.com/cricket-news/139072/tamim-iqbal-appointed-bcb-president",
+      "imageUrl": "https://static.cricbuzz.com/a/img/v1/540x303/i1/c1004630/tamim-was-serving-as-the-interim-head-after-the-bangladesh-government-dissolved-the-bcb-board-of-directors-in-april-this-year.jpg",
+      "source": "cricbuzz",
+      "publishedAt": "2026-06-07T13:45:50.000Z"
+    },
     {
       "id": "dailystar-https://www.thedailystar.net/sports/cricket/news/fresh-election-familiar-pattern-4192256",
       "title": "Fresh election, familiar pattern",
@@ -25,47 +120,6 @@
       "imageUrl": "https://p.imgci.com/db/PICTURES/CMS/417900/417958.5.jpg",
       "source": "espncricinfo",
       "publishedAt": "2026-06-06T18:20:18.000Z"
-    },
-    {
-      "id": "cricbuzz-139065",
-      "title": "Need to rebuild relationship at the ICC with other nations - Tamim Iqbal",
-      "summary": "A day before the Bangladesh Cricket Board elections, the former national captain who is the front-runner to get elected as BCB president, opened up about issues of nepotism, the need for strengthening ties with India and more in an exclusive chat",
-      "url": "https://www.cricbuzz.com/cricket-news/139065/need-to-rebuild-relationship-at-the-icc-with-other-nations-tamim-iqbal",
-      "imageUrl": "https://static.cricbuzz.com/a/img/v1/540x303/i1/c957761/tamim-iqbal-is-currently-serving-as-bcbs-interim-head.jpg",
-      "source": "cricbuzz",
-      "publishedAt": "2026-06-06T18:11:05.105Z"
-    },
-    {
-      "id": "dailystar-https://www.thedailystar.net/sports/cricket/news/tamim-hints-bypassing-dpl-bylaws-resolve-brothers-union-relegation-4191456",
-      "title": "Tamim hints at bypassing DPL bylaws to resolve Brothers Union crisis",
-      "summary": "Brothers Union's Dhaka Premier League (DPL) status could yet be up for discussion despite tournament bylaws dictating relegation following their boycott of Friday's match against Agrani Bank Cricket Club at BKSP.",
-      "url": "https://www.thedailystar.net/sports/cricket/news/tamim-hints-bypassing-dpl-bylaws-resolve-brothers-union-relegation-4191456",
-      "source": "dailystar",
-      "publishedAt": "2026-06-05T18:57:07.000Z"
-    },
-    {
-      "id": "dailystar-https://www.thedailystar.net/sports/cricket/news/aussies-touch-down-dhaka-odi-t20i-series-4191381",
-      "title": "Aussies touch down in Dhaka for ODI, T20I series",
-      "summary": "A majority of Australia's squad arrived in Dhaka on Friday afternoon ahead of their three-match ODI and T20I series against Bangladesh, with the remaining members of the touring party scheduled to reach the capital later in the night.",
-      "url": "https://www.thedailystar.net/sports/cricket/news/aussies-touch-down-dhaka-odi-t20i-series-4191381",
-      "source": "dailystar",
-      "publishedAt": "2026-06-05T14:37:25.000Z"
-    },
-    {
-      "id": "dailystar-https://www.thedailystar.net/sports/cricket/news/mushfiqur-reaches-12000-list-runs-rain-pushes-five-dpl-matches-reserve-day-4191316",
-      "title": "Brothers set for relegation; Mushfiqur reaches 12,000 List A runs",
-      "summary": "Brothers Union, who have only two points and are already at the bottom of the 12-team standings, will now be relegated because of the walkover, according to CCDM officials.",
-      "url": "https://www.thedailystar.net/sports/cricket/news/mushfiqur-reaches-12000-list-runs-rain-pushes-five-dpl-matches-reserve-day-4191316",
-      "source": "dailystar",
-      "publishedAt": "2026-06-05T12:22:17.000Z"
-    },
-    {
-      "id": "dailystar-https://www.thedailystar.net/sports/cricket/news/nepal-apologises-following-first-ever-timed-out-dismissal-womens-t20-4191196",
-      "title": "Nepal apologises following first-ever 'timed out' dismissal in women's T20",
-      "summary": "Sri Lanka's Angelo Mathews was the first batter to be 'timed out' in international cricket at the 50-over World Cup in 2023 when his helmet strap broke as he was coming on to bat against Bangladesh and asked for a replacement, which delayed him",
-      "url": "https://www.thedailystar.net/sports/cricket/news/nepal-apologises-following-first-ever-timed-out-dismissal-womens-t20-4191196",
-      "source": "dailystar",
-      "publishedAt": "2026-06-05T07:11:11.000Z"
     },
     {
       "id": "espn-https://www.espncricinfo.com/ci/content/story/1539761.html",
@@ -138,15 +192,6 @@
       "imageUrl": "https://p.imgci.com/db/PICTURES/CMS/415900/415940.5.jpg",
       "source": "espncricinfo",
       "publishedAt": "2026-06-02T17:14:48.000Z"
-    },
-    {
-      "id": "espn-https://www.espncricinfo.com/ci/content/story/1539094.html",
-      "title": "Siegers fifty and three-for help Netherlands make history",
-      "summary": "They won their first ever women's T20I against Bangladesh by eight runs",
-      "url": "https://www.espncricinfo.com/story/neth-vs-ban-3rd-t20i-heather-siegers-fifty-and-three-for-helps-netherlands-make-history-1539094",
-      "imageUrl": "https://p.imgci.com/db/PICTURES/CMS/417500/417543.5.jpg",
-      "source": "espncricinfo",
-      "publishedAt": "2026-06-01T03:20:08.000Z"
     }
   ]
 }
