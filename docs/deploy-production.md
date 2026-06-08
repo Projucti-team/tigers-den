@@ -120,7 +120,7 @@ chmod +x scripts/prod-cricket-sync.sh
 
 Or set `CRICKET_SYNC_ON_START=1` in `.env.production` and restart (`docker compose up -d`) so the container triggers sync on boot.
 
-**Nightly refresh** (~3:00 AM Bangladesh = 21:00 UTC):
+**Nightly refresh** (3:00 AM Bangladesh = 21:00 UTC; all jobs run between 3:00–4:00 AM BDT — see `docs/cricket-api.md`):
 
 ```bash
 # crontab -e on the Hetzner VPS

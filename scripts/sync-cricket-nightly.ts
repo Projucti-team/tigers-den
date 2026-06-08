@@ -1,6 +1,6 @@
 /**
  * Triggers /api/cron/cricket (runs inside Next.js where Payload DB access works).
- * On Vercel, cron hits that route directly at 21:00 UTC (= 3:00 AM BDT).
+ * On Vercel, cron hits that route at 21:00 UTC (= 3:00 AM BDT). Other nightly jobs run 3:15–3:45 AM BDT.
  *
  * Local: start `npm run dev` first, then `npm run sync:cricket`
  *

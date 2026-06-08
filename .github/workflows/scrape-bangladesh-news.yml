@@ -2,7 +2,8 @@ name: Scrape Bangladesh cricket news
 
 on:
   schedule:
-    - cron: "0 3 * * *"
+    # 21:45 UTC daily (≈ 3:45 AM Bangladesh)
+    - cron: "45 21 * * *"
   workflow_dispatch:
 
 permissions:

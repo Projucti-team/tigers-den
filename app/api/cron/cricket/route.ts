@@ -20,7 +20,7 @@ function authorizeCron(request: Request): boolean {
   return false;
 }
 
-/** Nightly refresh — schedule 21:00 UTC (= 3:00 AM Bangladesh time). */
+/** Nightly refresh — 21:00 UTC (= 3:00 AM BDT). See docs/cricket-api.md for full 3:00–4:00 AM schedule. */
 export async function GET(request: Request) {
   if (!authorizeCron(request)) {
     return NextResponse.json({ error: "Unauthorized" }, { status: 401 });

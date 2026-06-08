@@ -3,6 +3,7 @@ import {
   fetchMatchesList,
   isCricApiConfigured,
 } from "@/lib/cricket/providers/cricapi";
+import { enrichUpcomingMatchFixtureTimes } from "@/lib/cricket/providers/espn-fixtures";
 import {
   readBangladeshUpcomingMatches,
   writeBangladeshUpcomingMatches,
@@ -47,10 +48,17 @@ export async function scrapeBangladeshUpcomingMatches(
     }
     matches = [...byId.values()];
   }
-  const upcoming = findUpcomingBangladeshMatches(matches);
+  const upcoming = await enrichUpcomingMatchFixtureTimes(
+    findUpcomingBangladeshMatches(matches),
+  );
 
   if (!upcoming.length) {
-    return readBangladeshUpcomingMatches();
+    const fallback = await readBangladeshUpcomingMatches();
+    if (!fallback?.matches?.length) return fallback;
+    return {
+      ...fallback,
+      matches: await enrichUpcomingMatchFixtureTimes(fallback.matches),
+    };
   }
 
   const snapshot: BangladeshUpcomingMatchesSnapshot = {
@@ -64,13 +72,19 @@ export async function scrapeBangladeshUpcomingMatches(
 }
 
 export async function getCachedUpcomingBangladeshMatches(): Promise<LiveMatchSummary[]> {
+  let matches: LiveMatchSummary[] = [];
+
   if (isPayloadConfigured()) {
     const cached = await readCricketSnapshot<BangladeshUpcomingMatchesSnapshot>(
       CRICKET_SNAPSHOT_KEYS.upcomingMatches,
     );
-    if (cached?.matches?.length) return cached.matches;
+    if (cached?.matches?.length) matches = cached.matches;
   }
 
-  const file = await readBangladeshUpcomingMatches();
-  return file?.matches ?? [];
+  if (!matches.length) {
+    const file = await readBangladeshUpcomingMatches();
+    matches = file?.matches ?? [];
+  }
+
+  return enrichUpcomingMatchFixtureTimes(matches);
 }

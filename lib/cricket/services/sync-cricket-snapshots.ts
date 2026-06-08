@@ -51,7 +51,7 @@ async function refreshWtcSource(): Promise<WtcStandingsSnapshot> {
 }
 
 /**
- * Nightly job (~3:00 AM BDT via Vercel cron): refresh sources, build page snapshots, save to DB.
+ * Nightly job (3:00 AM BDT via Vercel/server cron): refresh sources, build page snapshots, save to DB.
  * On Vercel, `data/*.json` is read-only — snapshots are stored in Postgres instead.
  */
 export async function syncCricketSnapshots(): Promise<SyncCricketResult> {

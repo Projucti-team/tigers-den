@@ -76,7 +76,7 @@ export default function CricketSyncPanel() {
       <h3 style={{ margin: 0, fontSize: "1rem", fontWeight: 600 }}>Cricket data sync</h3>
       <p style={{ margin: "0.5rem 0 1rem", fontSize: "0.875rem", opacity: 0.85 }}>
         Refresh rankings, tours, squads, and match snapshots from live sources. Runs automatically
-        nightly at ~3:00 AM BDT; use this after deploy or when pages look stale. May take 1–3
+        nightly between 3:00–4:00 AM BDT; use this after deploy or when pages look stale. May take 1–3
         minutes.
       </p>
 

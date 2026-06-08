@@ -17,13 +17,29 @@ CRICKET_DATA_API_KEY=your_key_from_cricketdata.org
 
 ICC rankings do **not** need an API key. They are fetched from the same JSON feed as [icc-cricket.com/rankings](https://www.icc-cricket.com/rankings) and cached in `data/icc-rankings.json`.
 
+### Tour squads (ESPNcricinfo only)
+
+Squad lists on `/tours/[slug]` come from **ESPNcricinfo**, not CricAPI:
+
+1. `core.espnuk.org` league rosters (when published)
+2. Squad announcement stories via ESPN RSS
+3. Cache in `data/espn-tour-squads.json`
+
+Refresh manually or on nightly sync:
+
+```bash
+npm run scrape:espn-squads
+```
+
+CricAPI is still used for **fixtures and live scores** only.
+
 ### Nightly ICC rankings update
 
 ```bash
 npm run scrape:icc-rankings
 ```
 
-This writes `data/icc-rankings.json`. A GitHub Action (`.github/workflows/scrape-icc-rankings.yml`) runs the same command every night at 02:00 UTC and commits changes.
+This writes `data/icc-rankings.json`. A GitHub Action (`.github/workflows/scrape-icc-rankings.yml`) runs the same command every night at **3:15 AM Bangladesh time** and commits changes.
 
 The site reads the cache first; if the file is missing it fetches live once as a fallback.
 
@@ -35,7 +51,7 @@ The home page and `/match-centre` always show Bangladesh's **most recent match r
 npm run scrape:bangladesh-match
 ```
 
-Runs nightly via `.github/workflows/scrape-bangladesh-match.yml` (set `CRICKET_DATA_API_KEY` in GitHub secrets).
+Runs nightly at **3:30 AM BDT** via `.github/workflows/scrape-bangladesh-match.yml` (set `CRICKET_DATA_API_KEY` in GitHub secrets).
 
 ### Bangladesh cricket news feed (live, free tier)
 
@@ -53,7 +69,16 @@ No paid API key. Nightly scrape adds richer Cricbuzz articles without hitting so
 npm run scrape:bangladesh-news
 ```
 
-Runs nightly via `.github/workflows/scrape-bangladesh-news.yml`.
+Runs nightly at **3:45 AM BDT** via `.github/workflows/scrape-bangladesh-news.yml`.
+
+### Nightly job schedule (all times Bangladesh)
+
+| Time (BDT) | Job | Where |
+|------------|-----|--------|
+| 3:00 AM | **Cricket sync** — tours, squads, fixtures, rankings → DB | `POST /api/cron/cricket` (Vercel / server cron) |
+| 3:15 AM | ICC rankings + WTC → `data/*.json` | GitHub Action `scrape-icc-rankings` |
+| 3:30 AM | Bangladesh last/upcoming matches → `data/*.json` | GitHub Action `scrape-bangladesh-match` |
+| 3:45 AM | Bangladesh cricket news → `data/*.json` | GitHub Action `scrape-bangladesh-news` |
 
 ## Endpoints
 

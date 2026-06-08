@@ -70,7 +70,7 @@ curl -fsS -X POST "https://your-domain.com/api/cron/cricket" \
   -H "Authorization: Bearer YOUR_CRON_SECRET"
 ```
 
-Schedule: `0 21 * * *` (21:00 UTC ≈ 3:00 AM Bangladesh).
+Schedule: `0 21 * * *` (21:00 UTC ≈ 3:00 AM Bangladesh). GitHub Actions for JSON caches run at 3:15–3:45 AM BDT — see `docs/cricket-api.md`.
 
 ## After pushing to `main`
 

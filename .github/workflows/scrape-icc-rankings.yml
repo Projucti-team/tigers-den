@@ -2,8 +2,8 @@ name: Scrape ICC rankings
 
 on:
   schedule:
-    # 02:00 UTC daily (≈ 08:00 Bangladesh)
-    - cron: "0 2 * * *"
+    # 21:15 UTC daily (≈ 3:15 AM Bangladesh)
+    - cron: "15 21 * * *"
   workflow_dispatch:
 
 permissions:

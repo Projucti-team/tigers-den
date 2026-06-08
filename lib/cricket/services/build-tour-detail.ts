@@ -1,16 +1,12 @@
 import {
   fetchMatchesList,
   fetchSeriesInfo,
-  fetchSeriesSquads,
   isCricApiConfigured,
 } from "@/lib/cricket/providers/cricapi";
-import {
-  applyCuratedTourSquads,
-  type SeriesSquad,
-} from "@/lib/cricket/curated-squads";
+import { enrichMatchFixtureTimes } from "@/lib/cricket/providers/espn-fixtures";
+import { refreshEspnTourSquads, applyEspnTourSquads } from "@/lib/cricket/providers/espn-squads";
 import { tourToCard } from "@/lib/cricket/services/tours-display";
 import type { TourDetailSnapshot } from "@/lib/cricket/snapshot-types";
-import { tourSlug } from "@/lib/cricket/tour-slug";
 import type { TourDetail } from "@/lib/cricket/tour-detail-types";
 import type { LiveMatchSummary, Tour } from "@/lib/cricket/types";
 import { sortMatchesByDate } from "@/lib/cricket/match-sort";
@@ -51,16 +47,9 @@ export async function buildTourDetailLive(
 ): Promise<TourDetail> {
   const warnings = [...tourWarnings];
   let matches: LiveMatchSummary[] = [];
-  let squads: SeriesSquad[] = [];
-
   if (isCricApiConfigured()) {
     const info = await fetchSeriesInfo(tour.id).catch(() => ({ matches: [], squads: [] }));
     matches = info.matches;
-    squads = info.squads;
-
-    if (!squads.length) {
-      squads = await fetchSeriesSquads(tour.id).catch(() => []);
-    }
 
     if (!matches.length) {
       matches = await fallbackMatches(tour);
@@ -72,21 +61,28 @@ export async function buildTourDetailLive(
     }
 
   } else {
-    warnings.push("Live tour data unavailable — set CRICKET_DATA_API_KEY for fixtures and squads.");
+    warnings.push("Live tour data unavailable — set CRICKET_DATA_API_KEY for fixtures.");
     matches = await fallbackMatches(tour);
   }
 
-  const sortedMatches = sortMatchesByDate(matches);
+  const { squads, warnings: squadWarnings } = await refreshEspnTourSquads(tour);
+  warnings.push(...squadWarnings);
+
+  const timedMatches = await enrichMatchFixtureTimes(matches, { tour });
+  const sortedMatches = sortMatchesByDate(timedMatches);
   const venues = uniqueVenuesFromMatches(sortedMatches);
 
-  return applyCuratedTourSquads({
-    tour,
-    card: tourToCard(tour, 0),
-    matches: sortedMatches,
+  return applyEspnTourSquads(
+    {
+      tour,
+      card: tourToCard(tour, 0),
+      matches: sortedMatches,
+      squads,
+      venues,
+      warnings,
+    },
     squads,
-    venues,
-    warnings,
-  });
+  );
 }
 
 export function toTourDetailSnapshot(detail: TourDetail, slug: string): TourDetailSnapshot {

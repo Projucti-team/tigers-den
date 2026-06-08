@@ -126,6 +126,7 @@ crontab -e
 ```
 
 ```cron
+# 3:00 AM Bangladesh — main cricket sync (GitHub JSON jobs run 3:15–3:45 AM BDT)
 0 21 * * * curl -fsS -X POST -H "Authorization: Bearer YOUR_CRON_SECRET" https://tigers-den.yourdomain.com/api/cron/cricket
 ```
 

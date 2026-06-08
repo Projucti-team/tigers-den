@@ -9,7 +9,7 @@
       "status": "Match not started",
       "venue": "Shere Bangla National Stadium, Dhaka",
       "date": "2026-06-09",
-      "dateTimeGMT": "2026-06-09T08:00:00.000Z",
+      "dateTimeGMT": "2026-06-09T05:00:00.000Z",
       "teams": ["Bangladesh", "Australia"],
       "isLive": false
     },
@@ -20,7 +20,7 @@
       "status": "Match not started",
       "venue": "Shere Bangla National Stadium, Dhaka",
       "date": "2026-06-11",
-      "dateTimeGMT": "2026-06-11T08:00:00.000Z",
+      "dateTimeGMT": "2026-06-11T05:00:00.000Z",
       "teams": ["Bangladesh", "Australia"],
       "isLive": false
     },
@@ -31,7 +31,7 @@
       "status": "Match not started",
       "venue": "Zahur Ahmed Chowdhury Stadium, Chattogram",
       "date": "2026-06-14",
-      "dateTimeGMT": "2026-06-14T08:00:00.000Z",
+      "dateTimeGMT": "2026-06-14T05:00:00.000Z",
       "teams": ["Bangladesh", "Australia"],
       "isLive": false
     },
@@ -42,7 +42,7 @@
       "status": "Match not started",
       "venue": "Sylhet International Cricket Stadium, Sylhet",
       "date": "2026-06-17",
-      "dateTimeGMT": "2026-06-17T12:00:00.000Z",
+      "dateTimeGMT": "2026-06-17T08:00:00.000Z",
       "teams": ["Bangladesh", "Australia"],
       "isLive": false
     },
@@ -53,7 +53,7 @@
       "status": "Match not started",
       "venue": "Sylhet International Cricket Stadium, Sylhet",
       "date": "2026-06-19",
-      "dateTimeGMT": "2026-06-19T12:00:00.000Z",
+      "dateTimeGMT": "2026-06-19T08:00:00.000Z",
       "teams": ["Bangladesh", "Australia"],
       "isLive": false
     }

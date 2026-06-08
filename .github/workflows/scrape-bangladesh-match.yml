@@ -2,7 +2,8 @@ name: Scrape Bangladesh last match
 
 on:
   schedule:
-    - cron: "30 2 * * *"
+    # 21:30 UTC daily (≈ 3:30 AM Bangladesh)
+    - cron: "30 21 * * *"
   workflow_dispatch:
 
 permissions:
