@@ -10,23 +10,30 @@ import { PostComposer } from "@/components/profile/PostComposer";
 import { PostGrid } from "@/components/profile/PostGrid";
 import { PostModal } from "@/components/profile/PostModal";
 import { ProfileHeader } from "@/components/profile/ProfileHeader";
+import { ProfileStandPlaceholder } from "@/components/profile/ProfileStandPlaceholder";
+import { ProfileTabGuide } from "@/components/profile/ProfileTabGuide";
 import { MemberAvatar } from "@/components/profile/MemberAvatar";
 import { formatMemberDisplayName } from "@/lib/members/display";
+import {
+  PROFILE_CHANTS_GUIDE,
+  PROFILE_DISCUSSIONS_GUIDE,
+} from "@/lib/profile/tab-guides";
 import { JOIN_PAGE_PATH, profilePath } from "@/lib/site-content";
 import type { MemberSearchResult, SocialPost } from "@/lib/social/types";
 
-type Tab = "posts" | "feed" | "timeline" | "discover";
+type Tab = "posts" | "feed" | "discussions" | "chants" | "discover";
 
 type ProfileAppProps = {
   username: string;
   isOwnProfile: boolean;
 };
 
-const OWN_TABS: { id: Tab; label: string }[] = [
-  { id: "posts", label: "Posts" },
-  { id: "feed", label: "Feed" },
-  { id: "timeline", label: "Timeline" },
-  { id: "discover", label: "Discover" },
+const OWN_TABS: { id: Tab; label: string; title?: string }[] = [
+  { id: "posts", label: "Posts", title: "Photos and quick updates" },
+  { id: "feed", label: "Feed", title: "Posts from fans you follow" },
+  { id: "discussions", label: "Discuss", title: "Threads for meetups, travel, and debate" },
+  { id: "chants", label: "Chants", title: "Submit terrace lyrics for the Den" },
+  { id: "discover", label: "Discover", title: "Find fans to follow" },
 ];
 
 export function ProfileApp({ username, isOwnProfile }: ProfileAppProps) {
@@ -44,8 +51,6 @@ export function ProfileApp({ username, isOwnProfile }: ProfileAppProps) {
   const [searchQ, setSearchQ] = useState("");
   const [searchResults, setSearchResults] = useState<MemberSearchResult[]>([]);
   const [followBusy, setFollowBusy] = useState<string | null>(null);
-  const [timelinePosts, setTimelinePosts] = useState<SocialPost[]>([]);
-  const [timelineLoading, setTimelineLoading] = useState(false);
   const [avatarUploading, setAvatarUploading] = useState(false);
   const [avatarError, setAvatarError] = useState<string | null>(null);
   const [selectedPost, setSelectedPost] = useState<SocialPost | null>(null);
@@ -79,16 +84,6 @@ export function ProfileApp({ username, isOwnProfile }: ProfileAppProps) {
   useEffect(() => {
     void loadProfile();
   }, [loadProfile]);
-
-  useEffect(() => {
-    if (!isOwnProfile || tab !== "timeline") return;
-
-    setTimelineLoading(true);
-    fetch("/api/social/timeline")
-      .then((res) => (res.ok ? res.json() : { posts: [] }))
-      .then((data) => setTimelinePosts((data as { posts: SocialPost[] }).posts ?? []))
-      .finally(() => setTimelineLoading(false));
-  }, [tab, isOwnProfile]);
 
   useEffect(() => {
     if (tab !== "discover" || !searchQ.trim()) {
@@ -253,8 +248,9 @@ export function ProfileApp({ username, isOwnProfile }: ProfileAppProps) {
             <button
               key={t.id}
               type="button"
+              title={t.title}
               onClick={() => setTab(t.id)}
-              className={`flex-1 py-3 text-center text-xs font-extrabold uppercase tracking-wide transition ${
+              className={`min-w-0 flex-1 px-1 py-3 text-center text-[10px] font-extrabold uppercase tracking-wide transition sm:text-xs ${
                 activeTab === t.id
                   ? "border-b-2 border-emerald-glow text-white"
                   : "text-white/45 hover:text-white/70"
@@ -307,16 +303,36 @@ export function ProfileApp({ username, isOwnProfile }: ProfileAppProps) {
           )
         ) : null}
 
-        {isOwnProfile && activeTab === "timeline" ? (
-          timelineLoading ? (
-            <p className="py-12 text-center text-sm text-white/50">Loading timeline…</p>
-          ) : timelinePosts.length === 0 ? (
-            <div className="rounded-2xl border border-dashed border-white/15 py-12 text-center">
-              <p className="text-sm text-white/60">No posts on the timeline yet.</p>
-            </div>
-          ) : (
-            timelinePosts.map((post) => <PostCard key={post.id} post={post} />)
-          )
+        {activeTab === "discussions" ? (
+          <>
+            <ProfileTabGuide
+              guide={PROFILE_DISCUSSIONS_GUIDE}
+              viewingOthers={!isOwnProfile}
+              comingSoon={isOwnProfile}
+              comingSoonMessage="Starting threads from your profile is coming soon. Until then, browse meetups and debates on The Stand."
+            />
+            <ProfileStandPlaceholder
+              kind="discussions"
+              isOwnProfile={isOwnProfile}
+              username={formatMemberDisplayName(profile.name)}
+            />
+          </>
+        ) : null}
+
+        {activeTab === "chants" ? (
+          <>
+            <ProfileTabGuide
+              guide={PROFILE_CHANTS_GUIDE}
+              viewingOthers={!isOwnProfile}
+              comingSoon={isOwnProfile}
+              comingSoonMessage="Submitting chants from your profile is coming soon. Check the homepage for this week's featured chant in the meantime."
+            />
+            <ProfileStandPlaceholder
+              kind="chants"
+              isOwnProfile={isOwnProfile}
+              username={formatMemberDisplayName(profile.name)}
+            />
+          </>
         ) : null}
 
         {isOwnProfile && activeTab === "discover" ? (

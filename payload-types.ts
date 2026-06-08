@@ -87,6 +87,52 @@ export type HeroSlide = {
   createdAt: string;
 };
 
+export type StandDiscussion = {
+  id: number;
+  title: string;
+  slug: string;
+  excerpt?: string | null;
+  body: string;
+  category?: "meetup" | "travel" | "squad" | "match-day" | "general" | null;
+  author: number | Member;
+  status: "draft" | "published" | "hidden";
+  publishedAt?: string | null;
+  pinned?: boolean | null;
+  updatedAt: string;
+  createdAt: string;
+};
+
+export type Chant = {
+  id: number;
+  title: string;
+  lyrics: string;
+  author: number | Member;
+  status: "pending" | "approved" | "featured" | "rejected";
+  featuredAt?: string | null;
+  updatedAt: string;
+  createdAt: string;
+};
+
+export type StandReaction = {
+  id: number;
+  targetType: "member-post" | "stand-discussion" | "chant";
+  targetId: number;
+  member: number | Member;
+  reaction: "roar" | "love" | "fire" | "clap" | "hundred";
+  createdAt: string;
+  updatedAt: string;
+};
+
+export type StandComment = {
+  id: number;
+  targetType: "member-post" | "stand-discussion";
+  targetId: number;
+  author: number | Member;
+  body: string;
+  createdAt: string;
+  updatedAt: string;
+};
+
 /** Nightly cricket snapshots (rankings, tours, squads, venues) — see sync:cricket */
 export type CricketSnapshot = {
   id: number;

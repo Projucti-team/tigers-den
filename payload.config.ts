@@ -4,6 +4,7 @@ import { buildConfig } from "payload";
 import sharp from "sharp";
 import { fileURLToPath } from "url";
 
+import { Chants } from "./collections/Chants";
 import { CricketSnapshots } from "./collections/CricketSnapshots";
 import { HeroSlides } from "./collections/HeroSlides";
 import { Media } from "./collections/Media";
@@ -11,6 +12,9 @@ import { MemberFollows } from "./collections/MemberFollows";
 import { MemberPosts } from "./collections/MemberPosts";
 import { Members } from "./collections/Members";
 import { Posts } from "./collections/Posts";
+import { StandComments } from "./collections/StandComments";
+import { StandDiscussions } from "./collections/StandDiscussions";
+import { StandReactions } from "./collections/StandReactions";
 import { Users } from "./collections/Users";
 import { getPayloadDatabase } from "./lib/payload-db";
 import { getPayloadPlugins } from "./lib/payload-plugins";
@@ -45,6 +49,10 @@ export default buildConfig({
     MemberFollows,
     Media,
     Posts,
+    StandDiscussions,
+    Chants,
+    StandReactions,
+    StandComments,
     HeroSlides,
     CricketSnapshots,
   ],

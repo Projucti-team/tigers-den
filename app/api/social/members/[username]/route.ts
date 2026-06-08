@@ -5,6 +5,7 @@ import { socialApiError } from "@/lib/social/api-error";
 import { enrichMemberSearch } from "@/lib/social/follows";
 import { getMemberByEmail, getMemberByUsername } from "@/lib/social/member-record";
 import { getPostsForUsername } from "@/lib/social/posts";
+import { attachPostEngagement } from "@/lib/stand/engagement";
 
 type RouteContext = { params: Promise<{ username: string }> };
 
@@ -23,10 +24,11 @@ export async function GET(_request: Request, context: RouteContext) {
       viewerId = viewer?.id;
     }
 
-    const [profile, posts] = await Promise.all([
+    const [profile, rawPosts] = await Promise.all([
       enrichMemberSearch(member, viewerId),
       getPostsForUsername(username),
     ]);
+    const posts = await attachPostEngagement(rawPosts, viewerId);
 
     return NextResponse.json({ profile, posts });
   } catch (err) {

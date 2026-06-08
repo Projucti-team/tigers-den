@@ -31,7 +31,7 @@ export function PostModal({ post, onClose }: PostModalProps) {
             Close
           </button>
         </div>
-        <PostCard post={post} />
+        <PostCard post={post} commentsExpanded />
       </div>
     </div>
   );

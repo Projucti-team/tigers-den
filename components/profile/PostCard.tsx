@@ -1,5 +1,7 @@
 import Link from "next/link";
 
+import { CommentThread } from "@/components/stand/CommentThread";
+import { ReactionBar } from "@/components/stand/ReactionBar";
 import { formatPostTime } from "@/components/profile/format-time";
 import { formatMemberDisplayName } from "@/lib/members/display";
 import { resolveMediaSrc } from "@/lib/media";
@@ -7,7 +9,12 @@ import { MemberAvatar } from "@/components/profile/MemberAvatar";
 import { profilePath } from "@/lib/site-content";
 import type { SocialPost } from "@/lib/social/types";
 
-export function PostCard({ post }: { post: SocialPost }) {
+type PostCardProps = {
+  post: SocialPost;
+  commentsExpanded?: boolean;
+};
+
+export function PostCard({ post, commentsExpanded = false }: PostCardProps) {
   const when = formatPostTime(post.createdAt);
 
   return (
@@ -62,6 +69,22 @@ export function PostCard({ post }: { post: SocialPost }) {
           ))}
         </div>
       ) : null}
+
+      <div className="px-4 py-3">
+        <ReactionBar
+          targetType="member-post"
+          targetId={post.id}
+          initial={post.reactions}
+          compact
+        />
+      </div>
+
+      <CommentThread
+        targetType="member-post"
+        targetId={post.id}
+        initialCount={post.commentCount ?? 0}
+        defaultExpanded={commentsExpanded}
+      />
     </article>
   );
 }

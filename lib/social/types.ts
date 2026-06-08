@@ -1,3 +1,5 @@
+import type { ReactionSummary } from "@/lib/stand/engagement-types";
+
 export type PublicMember = {
   id: number;
   username: string;
@@ -16,6 +18,8 @@ export type SocialPost = {
   createdAt: string;
   author: PublicMember;
   imageUrls: string[];
+  reactions?: ReactionSummary;
+  commentCount?: number;
 };
 
 export type MemberSearchResult = PublicMember & {
