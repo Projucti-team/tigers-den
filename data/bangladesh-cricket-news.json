@@ -1,14 +1,65 @@
 {
-  "fetchedAt": "2026-06-08T08:18:52.985Z",
+  "fetchedAt": "2026-06-08T23:03:21.773Z",
   "items": [
+    {
+      "id": "dailystar-https://www.thedailystar.net/sports/cricket/news/zakir-ton-powers-emerging-team-emphatic-win-over-zimbabwe-4193806",
+      "title": "Zakir ton powers Emerging team to emphatic win over Zimbabwe A",
+      "summary": "Captain Zakir Hasan struck a superb century as Bangladesh Emerging Team cruised to an 85-run victory over Zimbabwe 'A' in the opening one-dayer of the three-match series at the Shaheed Chandu Stadium in Bogura on Monday.",
+      "url": "https://www.thedailystar.net/sports/cricket/news/zakir-ton-powers-emerging-team-emphatic-win-over-zimbabwe-4193806",
+      "source": "dailystar",
+      "publishedAt": "2026-06-08T15:33:05.000Z"
+    },
+    {
+      "id": "dailystar-https://www.thedailystar.net/sports/cricket/news/shakrul-quits-bcb-board-day-after-election-4193776",
+      "title": "Shakrul quits BCB board a day after election",
+      "summary": "Mir Shakrul Alam Simanto, who was elected as a Bangladesh Cricket Board (BCB) director from the Rajshahi Division, tendered his resignation on Sunday, a day after the BCB elections were held on June 7.",
+      "url": "https://www.thedailystar.net/sports/cricket/news/shakrul-quits-bcb-board-day-after-election-4193776",
+      "source": "dailystar",
+      "publishedAt": "2026-06-08T14:51:17.000Z"
+    },
+    {
+      "id": "cricbuzz-139084",
+      "title": "Miraz backs Mosaddek recall, sees value in all-round depth",
+      "summary": "The skipper believes the recalled all-rounder can add balance to the side, while urging legspinner Rishad Hossain to keep developing his 50-over game",
+      "url": "https://www.cricbuzz.com/cricket-news/139084/miraz-backs-mosaddek-recall-sees-value-in-all-round-depth",
+      "imageUrl": "https://static.cricbuzz.com/a/img/v1/540x303/i1/c1005043/mosaddek-will-play-his-role-and-i-will-play-mine-miraz.jpg",
+      "source": "cricbuzz",
+      "publishedAt": "2026-06-08T14:07:03.000Z"
+    },
+    {
+      "id": "espn-https://www.espncricinfo.com/ci/content/story/1540169.html",
+      "title": "Mehidy confident of taking on Australia on green-tinged pitch",
+      "summary": "Both Mehidy and Inglis welcomed the seam-friendly nature of the Mirpur pitch on the eve of the series opener",
+      "url": "https://www.espncricinfo.com/story/mehidy-confident-of-bangladesh-taking-on-australia-on-green-tinged-pitch-in-mirpur-1540169",
+      "imageUrl": "https://p.imgci.com/db/PICTURES/CMS/418000/418029.5.jpg",
+      "source": "espncricinfo",
+      "publishedAt": "2026-06-08T13:41:46.000Z"
+    },
+    {
+      "id": "dailystar-https://www.thedailystar.net/sports/cricket/news/well-find-out-after-the-series-inglis-bangladeshs-pace-prowess-4193701",
+      "title": "'We'll find out after the series': Inglis on Bangladesh's pace prowess",
+      "summary": "Bangladesh will take on Australia in the first ODI at the Sher-e-Bangla National Cricket Stadium in Mirpur on Tuesday, marking Australia's first ODI tour of Bangladesh in 15 years.",
+      "url": "https://www.thedailystar.net/sports/cricket/news/well-find-out-after-the-series-inglis-bangladeshs-pace-prowess-4193701",
+      "source": "dailystar",
+      "publishedAt": "2026-06-08T13:20:45.000Z"
+    },
     {
       "id": "espn-https://www.espncricinfo.com/ci/content/story/1540123.html",
       "title": "Confident Bangladesh pose Australia a fresh challenge after 15-year wait for an ODI series",
       "summary": "While spin dominated in Pakistan, Australia could find pace playing more of a role this series",
       "url": "https://www.espncricinfo.com/story/confident-bangladesh-pose-a-fresh-challenge-after-15-year-wait-for-an-odi-series-1540123",
-      "imageUrl": "https://p.imgci.com/db/PICTURES/CMS/414700/414705.5.jpg",
+      "imageUrl": "https://p.imgci.com/db/PICTURES/CMS/418000/418030.5.jpg",
       "source": "espncricinfo",
-      "publishedAt": "2026-06-08T07:31:53.000Z"
+      "publishedAt": "2026-06-08T10:18:09.000Z"
+    },
+    {
+      "id": "cricbuzz-139080",
+      "title": "'I will step in when I need to' - Inglis on Australia captaincy",
+      "summary": "In the absence of regular stars, Josh Inglis will be leading Australia in the ODI series in Bangladesh",
+      "url": "https://www.cricbuzz.com/cricket-news/139080/i-will-step-in-when-i-need-to-inglis-on-australia-captaincy",
+      "imageUrl": "https://static.cricbuzz.com/a/img/v1/540x303/i1/c1004888/inglis-will-lead-australia-in-the-absence-of-the-big-guns.jpg",
+      "source": "cricbuzz",
+      "publishedAt": "2026-06-08T09:22:19.000Z"
     },
     {
       "id": "dailystar-https://www.thedailystar.net/sports/cricket/news/pace-or-spin-onus-batters-meet-the-challenge-4192951",
@@ -45,15 +96,6 @@
       "publishedAt": "2026-06-08T02:46:31.000Z"
     },
     {
-      "id": "cricbuzz-139076",
-      "title": "Spin-heavy Bangladesh bank on experienced core to survive stiff group",
-      "summary": "This is Bangladesh's most experienced group yet, but Group 1 poses an immense challenge",
-      "url": "https://www.cricbuzz.com/cricket-news/139076/spin-heavy-bangladesh-bank-on-experienced-core-to-survive-stiff-group",
-      "imageUrl": "https://static.cricbuzz.com/a/img/v1/540x303/i1/c1004656/nigar-sultana-with-the-team-during-a-world-cup-warm-up-fixture.jpg",
-      "source": "cricbuzz",
-      "publishedAt": "2026-06-08T01:20:12.000Z"
-    },
-    {
       "id": "espn-https://www.espncricinfo.com/ci/content/story/1540057.html",
       "title": "Tamim: Building a world-class High Performance Centre 'my biggest dream'",
       "summary": "The newly elected BCB president also hopes to restore the reputation of Bangladesh cricket",
@@ -63,14 +105,6 @@
       "publishedAt": "2026-06-07T16:15:51.000Z"
     },
     {
-      "id": "dailystar-https://www.thedailystar.net/sports/cricket/news/tamim-vows-transparency-after-being-elected-bcb-president-4192956",
-      "title": "Tamim vows transparency after being elected BCB president",
-      "summary": "A new Bangladesh Cricket Board (BCB) elections were held just eight months after the previous one and, as widely expected, Tamim Iqbal was elected unopposed as board president by the newly formed panel of directors on Sunday.",
-      "url": "https://www.thedailystar.net/sports/cricket/news/tamim-vows-transparency-after-being-elected-bcb-president-4192956",
-      "source": "dailystar",
-      "publishedAt": "2026-06-07T15:49:49.000Z"
-    },
-    {
       "id": "espn-https://www.espncricinfo.com/ci/content/story/1540031.html",
       "title": "Tamim Iqbal elected new BCB president",
       "summary": "The former Bangladesh captain will serve a four-year term, having already completed two months as the president of an ad-hoc committee",
@@ -78,39 +112,6 @@
       "imageUrl": "https://p.imgci.com/db/PICTURES/CMS/417900/417992.5.jpg",
       "source": "espncricinfo",
       "publishedAt": "2026-06-07T14:50:22.000Z"
-    },
-    {
-      "id": "dailystar-https://www.thedailystar.net/sports/cricket/news/tamim-becomes-bcb-president-uncontested-after-election-sweep-4192871",
-      "title": "Tamim becomes BCB president uncontested after election sweep",
-      "summary": "Former Bangladesh captain Tamim Iqbal was elected uncontested as president of the Bangladesh Cricket Board (BCB) after no other candidate challenged his nomination following Sunday's board elections, the BCB Election Commission announced in Mirpur.",
-      "url": "https://www.thedailystar.net/sports/cricket/news/tamim-becomes-bcb-president-uncontested-after-election-sweep-4192871",
-      "source": "dailystar",
-      "publishedAt": "2026-06-07T14:01:50.000Z"
-    },
-    {
-      "id": "cricbuzz-139072",
-      "title": "Tamim Iqbal appointed BCB president",
-      "summary": "The former left-handed batter was serving as the interim head of the board after the Bangladesh government dissolved the BCB board of directors in April this year",
-      "url": "https://www.cricbuzz.com/cricket-news/139072/tamim-iqbal-appointed-bcb-president",
-      "imageUrl": "https://static.cricbuzz.com/a/img/v1/540x303/i1/c1004630/tamim-was-serving-as-the-interim-head-after-the-bangladesh-government-dissolved-the-bcb-board-of-directors-in-april-this-year.jpg",
-      "source": "cricbuzz",
-      "publishedAt": "2026-06-07T13:45:50.000Z"
-    },
-    {
-      "id": "dailystar-https://www.thedailystar.net/sports/cricket/news/fresh-election-familiar-pattern-4192256",
-      "title": "Fresh election, familiar pattern",
-      "summary": "Eight months after the last Bangladesh Cricket Board (BCB) election, the country's cricket governing body is set to hold another board of directors' election today. Yet despite a change in administration, the overall picture appears largely unchanged, making this another largely predictable and excitement-free contest.",
-      "url": "https://www.thedailystar.net/sports/cricket/news/fresh-election-familiar-pattern-4192256",
-      "source": "dailystar",
-      "publishedAt": "2026-06-07T02:00:00.000Z"
-    },
-    {
-      "id": "dailystar-https://www.thedailystar.net/sports/cricket/news/tigresses-suffer-heavy-defeat-t20-world-cup-warm-4192261",
-      "title": "Tigresses suffer heavy defeat in T20 World Cup warm-up",
-      "summary": "Bangladesh national women's team suffered a crushing 68-run defeat in their opening warm-up match of the upcoming ICC Women's T20 World Cup at the Loughborough University, Loughborough on Saturday.",
-      "url": "https://www.thedailystar.net/sports/cricket/news/tigresses-suffer-heavy-defeat-t20-world-cup-warm-4192261",
-      "source": "dailystar",
-      "publishedAt": "2026-06-06T18:39:24.000Z"
     },
     {
       "id": "espn-https://www.espncricinfo.com/ci/content/story/1539936.html",
@@ -183,15 +184,6 @@
       "imageUrl": "https://p.imgci.com/db/PICTURES/CMS/417500/417589.5.jpg",
       "source": "espncricinfo",
       "publishedAt": "2026-06-03T05:14:01.000Z"
-    },
-    {
-      "id": "espn-https://www.espncricinfo.com/ci/content/story/1539337.html",
-      "title": "Sultana, Moni help Bangladesh bounce back against Scotland",
-      "summary": "Fast bowler Moni starred with a career-best four-for to trigger Scotland's collapse, in their chase of 153",
-      "url": "https://www.espncricinfo.com/story/nigar-sultana-fifty-ritu-moni-four-for-help-bangladesh-bounce-back-against-scotland-1539337",
-      "imageUrl": "https://p.imgci.com/db/PICTURES/CMS/415900/415940.5.jpg",
-      "source": "espncricinfo",
-      "publishedAt": "2026-06-02T17:14:48.000Z"
     }
   ]
 }
