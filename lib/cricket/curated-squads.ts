@@ -26,32 +26,56 @@ function player(name: string, cricinfoId: number): SquadPlayer {
   };
 }
 
-/** Announced squads — ESPNcricinfo, May 2026 */
+/** Announced squads — ESPNcricinfo, Jun 2026 */
 export const AUSTRALIA_BANGLADESH_2026_SQUADS: SeriesSquad[] = [
   {
-    team: "Australia — ODI squad (Bangladesh)",
-    source: "https://www.espncricinfo.com/story/ollie-peake-called-into-australia-s-odi-squad-big-three-absent-maxwell-left-out-of-t20s-1536219",
+    team: "Bangladesh — ODI squad",
+    source:
+      "https://www.espncricinfo.com/story/bangladesh-recall-mosaddek-after-four-years-for-odis-against-australia-1539528",
     players: [
-      player("Mitchell Marsh (capt)", 272450),
+      player("Mehidy Hasan Miraz (capt)", 350016),
+      player("Soumya Sarkar", 330902),
+      player("Saif Hassan", 1150523),
+      player("Tanzid Hasan", 1113856),
+      player("Najmul Hossain Shanto", 597805),
+      player("Tawhid Hridoy", 1273808),
+      player("Litton Das", 56029),
+      player("Mosaddek Hossain", 330903),
+      player("Nurul Hasan", 330756),
+      player("Rishad Hossain", 1321710),
+      player("Tanvir Islam", 1148234),
+      player("Mustafizur Rahman", 530957),
+      player("Taskin Ahmed", 599345),
+      player("Shoriful Islam", 1279593),
+      player("Nahid Rana", 1384319),
+    ],
+  },
+  {
+    team: "Australia — ODI squad",
+    source:
+      "https://www.espncricinfo.com/story/travis-head-out-of-bangladesh-tour-mitchell-marsh-to-miss-odis-todd-murphy-called-up-1539607",
+    players: [
+      player("Josh Inglis (capt)", 1142599),
       player("Xavier Bartlett", 1176483),
       player("Alex Carey", 502687),
       player("Cooper Connolly", 1283024),
       player("Ben Dwarshuis", 722302),
       player("Nathan Ellis", 785177),
       player("Cameron Green", 902965),
-      player("Travis Head", 498028),
-      player("Josh Inglis", 1142599),
       player("Matthew Kuhnemann", 1021298),
       player("Marnus Labuschagne", 787987),
+      player("Todd Murphy", 1181638),
+      player("Oliver Peake", 1321695),
       player("Matthew Renshaw", 898873),
-      player("Tanveer Sangha", 1240422),
       player("Liam Scott", 1076376),
+      player("Matt Short", 1170476),
       player("Adam Zampa", 475281),
     ],
   },
   {
-    team: "Australia — T20I squad (Bangladesh)",
-    source: "https://www.espncricinfo.com/story/ollie-peake-called-into-australia-s-odi-squad-big-three-absent-maxwell-left-out-of-t20s-1536219",
+    team: "Australia — T20I squad",
+    source:
+      "https://www.espncricinfo.com/story/travis-head-out-of-bangladesh-tour-mitchell-marsh-to-miss-odis-todd-murphy-called-up-1539607",
     players: [
       player("Mitchell Marsh (capt)", 272450),
       player("Xavier Bartlett", 1176483),
@@ -89,6 +113,14 @@ export function normalizeSquadPlayers(players: (string | SquadPlayer)[]): SquadP
   return players.map((p) => (typeof p === "string" ? { name: p } : p));
 }
 
+function squadKey(team: string): string {
+  const n = team.toLowerCase();
+  if (n.includes("bangladesh")) return "bangladesh";
+  if (n.includes("australia") && n.includes("t20")) return "australia-t20";
+  if (n.includes("australia")) return "australia-odi";
+  return n;
+}
+
 export function mergeCuratedSquads(
   apiSquads: SeriesSquad[],
   curated: SeriesSquad[],
@@ -96,7 +128,29 @@ export function mergeCuratedSquads(
   if (!curated.length) return apiSquads;
   if (!apiSquads.length) return curated;
 
-  const curatedTeams = new Set(curated.map((s) => s.team.toLowerCase()));
-  const kept = apiSquads.filter((s) => !curatedTeams.has(s.team.toLowerCase()));
+  const curatedKeys = new Set(curated.map((s) => squadKey(s.team)));
+  const kept = apiSquads.filter((s) => !curatedKeys.has(squadKey(s.team)));
   return [...curated, ...kept];
+}
+
+/** Overlay curated squads and clean stale API warnings (used at read + sync time). */
+export function applyCuratedTourSquads<T extends { tour: { name: string }; squads: SeriesSquad[]; warnings: string[] }>(
+  detail: T,
+): T {
+  const curated = curatedSquadsForTour(detail.tour.name);
+  const squads = mergeCuratedSquads(detail.squads, curated);
+
+  const warnings = detail.warnings.filter(
+    (w) =>
+      !w.startsWith("Squads not published yet") &&
+      !w.includes("Australia squads sourced from ESPNcricinfo"),
+  );
+
+  if (!squads.length) {
+    warnings.push(
+      "Squads not published yet for this series — check back closer to the first match.",
+    );
+  }
+
+  return { ...detail, squads, warnings };
 }

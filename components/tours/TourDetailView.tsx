@@ -55,7 +55,7 @@ export function TourDetailView({ detail }: { detail: TourDetail }) {
       </header>
 
       {warnings.length > 0 ? (
-        <ul className="mt-4 space-y-1 rounded border border-amber/40 bg-amber/10 px-4 py-3 text-xs text-charcoal/75">
+        <ul className="mt-4 space-y-1 rounded-lg border border-amber/40 bg-amber/15 px-4 py-3 text-xs font-medium text-amber">
           {warnings.map((w) => (
             <li key={w}>• {w}</li>
           ))}
@@ -63,9 +63,9 @@ export function TourDetailView({ detail }: { detail: TourDetail }) {
       ) : null}
 
       <section className="mt-10">
-        <h2 className="font-display text-lg font-extrabold uppercase text-charcoal">Squads</h2>
+        <h2 className="fan-section-label text-amber">Squads</h2>
         {squads.length === 0 ? (
-          <p className="mt-3 text-sm text-charcoal/60">
+          <p className="mt-3 text-sm text-white/60">
             Squads will appear here when announced by the boards — check back before the series
             starts.
           </p>
@@ -103,9 +103,9 @@ export function TourDetailView({ detail }: { detail: TourDetail }) {
       </section>
 
       <section className="mt-10">
-        <h2 className="font-display text-lg font-extrabold uppercase text-charcoal">Fixtures</h2>
+        <h2 className="fan-section-label text-amber">Fixtures</h2>
         {matches.length === 0 ? (
-          <p className="mt-3 text-sm text-charcoal/60">
+          <p className="mt-3 text-sm text-white/60">
             Fixtures are not listed yet. Follow the series on our Match Centre for live updates.
           </p>
         ) : (
@@ -137,11 +137,9 @@ export function TourDetailView({ detail }: { detail: TourDetail }) {
       </section>
 
       <section className="mt-10">
-        <h2 className="font-display text-lg font-extrabold uppercase text-charcoal">
-          Venues & host cities
-        </h2>
+        <h2 className="fan-section-label text-amber">Venues & host cities</h2>
         {venues.length === 0 ? (
-          <p className="mt-3 text-sm text-charcoal/60">
+          <p className="mt-3 text-sm text-white/60">
             Venue guides will appear when fixtures are confirmed.
           </p>
         ) : (

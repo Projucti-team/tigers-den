@@ -5,8 +5,7 @@ import {
   isCricApiConfigured,
 } from "@/lib/cricket/providers/cricapi";
 import {
-  curatedSquadsForTour,
-  mergeCuratedSquads,
+  applyCuratedTourSquads,
   type SeriesSquad,
 } from "@/lib/cricket/curated-squads";
 import { tourToCard } from "@/lib/cricket/services/tours-display";
@@ -72,33 +71,22 @@ export async function buildTourDetailLive(
       }
     }
 
-    if (!squads.length) {
-      warnings.push(
-        "Squads not published yet for this series — check back closer to the first match.",
-      );
-    }
   } else {
     warnings.push("Live tour data unavailable — set CRICKET_DATA_API_KEY for fixtures and squads.");
     matches = await fallbackMatches(tour);
   }
 
-  const curated = curatedSquadsForTour(tour.name);
-  squads = mergeCuratedSquads(squads, curated);
-  if (curated.length) {
-    warnings.push("Australia squads sourced from ESPNcricinfo (May 2026 announcement).");
-  }
-
   const sortedMatches = sortMatchesByDate(matches);
   const venues = uniqueVenuesFromMatches(sortedMatches);
 
-  return {
+  return applyCuratedTourSquads({
     tour,
     card: tourToCard(tour, 0),
     matches: sortedMatches,
     squads,
     venues,
     warnings,
-  };
+  });
 }
 
 export function toTourDetailSnapshot(detail: TourDetail, slug: string): TourDetailSnapshot {
