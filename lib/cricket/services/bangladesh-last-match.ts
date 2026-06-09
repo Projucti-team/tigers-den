@@ -4,14 +4,17 @@ import {
   isCricApiBlocked,
   isCricApiConfigured,
 } from "@/lib/cricket/providers/cricapi";
-import { fetchEspnLiveBangladeshHighlight } from "@/lib/cricket/providers/espn-live";
+import {
+  fetchEspnLiveBangladeshHighlight,
+  fetchEspnRecentBangladeshHighlight,
+} from "@/lib/cricket/providers/espn-live";
 import {
   readBangladeshLastMatch,
   writeBangladeshLastMatch,
   type BangladeshLastMatchSnapshot,
 } from "@/lib/cricket/bangladesh-match-store";
 import { CRICKET_SNAPSHOT_KEYS } from "@/lib/cricket/snapshot-keys";
-import { readCricketSnapshot } from "@/lib/cricket/snapshot-db";
+import { readCricketSnapshot, upsertCricketSnapshot } from "@/lib/cricket/snapshot-db";
 import { isPayloadConfigured } from "@/lib/payload";
 import type { LiveMatchSummary } from "@/lib/cricket/types";
 import {
@@ -69,6 +72,43 @@ export async function getCachedBangladeshLastMatch(): Promise<MatchHighlight | n
 
   const file = await readBangladeshLastMatch();
   return file?.highlight ?? null;
+}
+
+/** Persist a fresh last-match highlight (ESPN after full time, or CricAPI scrape). */
+export async function persistBangladeshLastMatchHighlight(
+  highlight: MatchHighlight,
+  source = "espn",
+): Promise<void> {
+  const snapshot: BangladeshLastMatchSnapshot = {
+    fetchedAt: new Date().toISOString(),
+    source,
+    highlight,
+  };
+
+  await writeBangladeshLastMatch(snapshot);
+
+  if (isPayloadConfigured()) {
+    await upsertCricketSnapshot(
+      CRICKET_SNAPSHOT_KEYS.lastMatch,
+      "Bangladesh last completed match",
+      snapshot,
+    );
+  }
+}
+
+/** ESPN completed result first, then nightly CricAPI cache. */
+export async function getRecentBangladeshMatchHighlight(): Promise<MatchHighlight | null> {
+  const espnRecent = await fetchEspnRecentBangladeshHighlight().catch(() => null);
+  const cached = await getCachedBangladeshLastMatch();
+
+  if (espnRecent) {
+    if (!cached || cached.matchId !== espnRecent.matchId) {
+      void persistBangladeshLastMatchHighlight(espnRecent).catch(() => {});
+    }
+    return espnRecent;
+  }
+
+  return cached;
 }
 
 /** Live scores — ESPNcricinfo first (free), then CricAPI when available. */

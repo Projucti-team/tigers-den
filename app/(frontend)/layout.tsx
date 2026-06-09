@@ -22,7 +22,7 @@ import { SiteFooter } from "@/components/layout/SiteFooter";
 import { TopBar } from "@/components/layout/TopBar";
 import { AuthSessionProvider } from "@/components/providers/AuthSessionProvider";
 import { ensureCricketSnapshotsFresh } from "@/lib/cricket/services/ensure-cricket-fresh";
-import { getMarqueeTickerItems } from "@/lib/cricket/services/marquee-ticker";
+import { getMarqueeTickerSnapshot } from "@/lib/cricket/services/marquee-ticker";
 import { getToursIndexSnapshot } from "@/lib/cricket/services/tours";
 
 const montserrat = Montserrat({
@@ -45,12 +45,11 @@ const robotoMono = Roboto_Mono({
 export default async function FrontendLayout({ children }: { children: ReactNode }) {
   await ensureCricketSnapshotsFresh();
 
-  const [marqueeItems, toursSnapshot] = await Promise.all([
-    getMarqueeTickerItems().catch(() => [
-      "🐅 THE TIGERS' DEN",
-      "🇧🇩 GREEN & RED ARMY",
-      "🔥 ROAR FOR BANGLADESH",
-    ]),
+  const [marqueeSnapshot, toursSnapshot] = await Promise.all([
+    getMarqueeTickerSnapshot().catch(() => ({
+      items: ["🐅 THE TIGERS' DEN", "🇧🇩 GREEN & RED ARMY", "🔥 ROAR FOR BANGLADESH"],
+      isLive: false,
+    })),
     getToursIndexSnapshot(),
   ]);
 
@@ -64,8 +63,8 @@ export default async function FrontendLayout({ children }: { children: ReactNode
             className={`${montserrat.variable} ${inter.variable} ${robotoMono.variable} fan-page-bg min-h-screen text-white`}
           >
             <TopBar />
-            <Navbar tourLinks={tourLinks} />
-            <LiveMarquee initialItems={marqueeItems} />
+            <Navbar tourLinks={tourLinks} initialIsLive={marqueeSnapshot.isLive} />
+            <LiveMarquee initialItems={marqueeSnapshot.items} />
             <main>{children}</main>
             <SiteFooter />
           </div>

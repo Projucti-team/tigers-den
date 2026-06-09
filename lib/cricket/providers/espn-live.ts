@@ -14,6 +14,7 @@ const BROWSER_USER_AGENT =
   "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36";
 
 const LIVE_CACHE_MS = 45_000;
+const RECENT_CACHE_MS = 45_000;
 
 type CoreList = { items?: { $ref: string }[] };
 
@@ -49,6 +50,7 @@ type LeagueRef = {
 };
 
 let liveCache: { at: number; highlight: MatchHighlight | null } | null = null;
+let recentCache: { at: number; highlight: MatchHighlight | null } | null = null;
 
 async function fetchCoreJson<T>(url: string): Promise<T | null> {
   try {
@@ -122,6 +124,34 @@ function isLiveStatus(status: CoreStatus | null, competition: CoreCompetition): 
   return false;
 }
 
+function isCompletedStatus(status: CoreStatus | null, competition: CoreCompetition): boolean {
+  if (isLiveStatus(status, competition)) return false;
+
+  const state = status?.type?.state?.toLowerCase();
+  if (state === "post") return true;
+
+  const blob = [
+    status?.longSummary,
+    status?.summary,
+    status?.type?.detail,
+    competition.note,
+  ]
+    .filter(Boolean)
+    .join(" ")
+    .toLowerCase();
+
+  if (/not started|upcoming|scheduled|match starts/i.test(blob)) return false;
+  return /won|beat|defeat|tied|draw|no result|abandon|completed|finished|margin/i.test(blob);
+}
+
+async function fetchEventTimestamp(leagueId: number, eventId: string): Promise<number> {
+  const event = await fetchCoreJson<{ date?: string }>(
+    `${CORE_BASE}/leagues/${leagueId}/events/${eventId}`,
+  );
+  const t = event?.date ? new Date(event.date).getTime() : 0;
+  return Number.isNaN(t) ? 0 : t;
+}
+
 async function fetchCompetitorScore(
   compRef: string,
 ): Promise<{ team: string; score: string } | null> {
@@ -146,6 +176,7 @@ async function fetchCompetitorScore(
 async function buildHighlightFromEspnEvent(
   leagueId: number,
   eventId: string,
+  mode: "live" | "completed",
 ): Promise<MatchHighlight | null> {
   const competition = await fetchCoreJson<CoreCompetition>(
     `${CORE_BASE}/leagues/${leagueId}/events/${eventId}/competitions/${eventId}`,
@@ -156,7 +187,11 @@ async function buildHighlightFromEspnEvent(
     ? await fetchCoreJson<CoreStatus>(competition.status.$ref)
     : null;
 
-  if (!isLiveStatus(status, competition)) return null;
+  if (mode === "live") {
+    if (!isLiveStatus(status, competition)) return null;
+  } else if (!isCompletedStatus(status, competition)) {
+    return null;
+  }
 
   const competitors = await fetchCoreList(
     `${CORE_BASE}/leagues/${leagueId}/events/${eventId}/competitions/${eventId}/competitors`,
@@ -207,10 +242,13 @@ async function buildHighlightFromEspnEvent(
     `Bangladesh match · Event ${eventId}`;
 
   const detailLine =
-    status?.longSummary ?? status?.summary ?? competition.note ?? "Live on ESPNcricinfo";
+    status?.longSummary ??
+    status?.summary ??
+    competition.note ??
+    (mode === "live" ? "Live on ESPNcricinfo" : "Result on ESPNcricinfo");
 
   return {
-    mode: "live",
+    mode,
     matchId: `espn-${eventId}`,
     title,
     scoreLine,
@@ -219,19 +257,17 @@ async function buildHighlightFromEspnEvent(
   };
 }
 
-/** Live Bangladesh internationals from ESPNcricinfo (no CricAPI quota). */
-export async function fetchEspnLiveBangladeshHighlight(): Promise<MatchHighlight | null> {
-  if (liveCache && Date.now() - liveCache.at < LIVE_CACHE_MS) {
-    return liveCache.highlight;
-  }
-
+async function scanEspnBangladeshHighlights(
+  mode: "live" | "completed",
+): Promise<{ highlight: MatchHighlight; eventAt: number }[]> {
   const leagues = await trackedLeagues();
+  const candidates: { highlight: MatchHighlight; eventAt: number }[] = [];
+  const seenEvents = new Set<string>();
 
   for (const league of leagues) {
     const leagueIds = [league.espnLeagueId, league.cricinfoSeriesId].filter(
       (id): id is number => Number.isFinite(id),
     );
-    const seenEvents = new Set<string>();
 
     for (const leagueId of leagueIds) {
       const events = await fetchCoreList(
@@ -243,15 +279,42 @@ export async function fetchEspnLiveBangladeshHighlight(): Promise<MatchHighlight
         if (!eventId || seenEvents.has(eventId)) continue;
         seenEvents.add(eventId);
 
-        const highlight = await buildHighlightFromEspnEvent(league.espnLeagueId, eventId);
-        if (highlight) {
-          liveCache = { at: Date.now(), highlight };
-          return highlight;
-        }
+        const highlight = await buildHighlightFromEspnEvent(league.espnLeagueId, eventId, mode);
+        if (!highlight) continue;
+
+        const eventAt = await fetchEventTimestamp(league.espnLeagueId, eventId);
+        candidates.push({ highlight, eventAt });
       }
     }
   }
 
-  liveCache = { at: Date.now(), highlight: null };
-  return null;
+  return candidates;
+}
+
+/** Live Bangladesh internationals from ESPNcricinfo (no CricAPI quota). */
+export async function fetchEspnLiveBangladeshHighlight(): Promise<MatchHighlight | null> {
+  if (liveCache && Date.now() - liveCache.at < LIVE_CACHE_MS) {
+    return liveCache.highlight;
+  }
+
+  const candidates = await scanEspnBangladeshHighlights("live");
+  const highlight =
+    candidates.sort((a, b) => b.eventAt - a.eventAt)[0]?.highlight ?? null;
+
+  liveCache = { at: Date.now(), highlight };
+  return highlight;
+}
+
+/** Most recent completed Bangladesh match from ESPN — used when live play has ended. */
+export async function fetchEspnRecentBangladeshHighlight(): Promise<MatchHighlight | null> {
+  if (recentCache && Date.now() - recentCache.at < RECENT_CACHE_MS) {
+    return recentCache.highlight;
+  }
+
+  const candidates = await scanEspnBangladeshHighlights("completed");
+  const highlight =
+    candidates.sort((a, b) => b.eventAt - a.eventAt)[0]?.highlight ?? null;
+
+  recentCache = { at: Date.now(), highlight };
+  return highlight;
 }

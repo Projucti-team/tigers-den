@@ -1,6 +1,6 @@
 import Link from "next/link";
 
-import { socialLinks } from "@/lib/site-content";
+import { PROFILE_PAGE_PATH, socialLinks } from "@/lib/site-content";
 
 const quickLinks = [
   { label: "About", href: "/about" },
@@ -9,6 +9,7 @@ const quickLinks = [
   { label: "Match Centre", href: "/match-centre" },
   { label: "News", href: "/chants" },
   { label: "Shop", href: "/shop" },
+  { label: "Profile", href: PROFILE_PAGE_PATH },
 ];
 
 export function SiteFooter() {

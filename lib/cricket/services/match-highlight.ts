@@ -3,8 +3,8 @@ import { fetchScorecard, isCricApiConfigured } from "@/lib/cricket/providers/cri
 import { fetchEspnMatchCentre } from "@/lib/cricket/providers/espn-match-centre";
 import type { LiveMatchFeed } from "@/lib/cricket/types";
 import {
-  getCachedBangladeshLastMatch,
   getLiveBangladeshHighlight,
+  getRecentBangladeshMatchHighlight,
 } from "@/lib/cricket/services/bangladesh-last-match";
 import type { LiveMatchSummary, Scorecard } from "@/lib/cricket/types";
 
@@ -126,12 +126,12 @@ export function findLastBangladeshMatch(matches: LiveMatchSummary[]): LiveMatchS
   return candidates[0] ?? null;
 }
 
-/** Live from API; otherwise always the cached last Bangladesh match. */
+/** Live from ESPN/CricAPI; otherwise the most recent completed match (ESPN first). */
 export async function getMatchHighlight(): Promise<MatchHighlight | null> {
   const live = await getLiveBangladeshHighlight();
   if (live) return live;
 
-  return getCachedBangladeshLastMatch();
+  return getRecentBangladeshMatchHighlight();
 }
 
 export async function getMatchCentreData(): Promise<{

@@ -127,6 +127,7 @@ export const navItemsAfterTours: NavLink[] = [
   { label: "Match Centre", href: "/match-centre" },
   { label: "News", href: "/chants" },
   { label: "The Stand", href: "/the-stand" },
+  { label: "Profile", href: PROFILE_PAGE_PATH },
   { label: "Tickets", href: "/tickets" },
   { label: "Shop", href: "/shop" },
   { label: "About", href: "/about" },

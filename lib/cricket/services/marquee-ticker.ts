@@ -1,4 +1,4 @@
-import { getCachedBangladeshLastMatch, getLiveBangladeshHighlight } from "@/lib/cricket/services/bangladesh-last-match";
+import { getMatchHighlight } from "@/lib/cricket/services/match-highlight";
 import { getCachedUpcomingBangladeshMatches } from "@/lib/cricket/services/bangladesh-upcoming-matches";
 import {
   formatLastMatchMarqueeLine,
@@ -13,21 +13,27 @@ const BRAND_ITEMS = [
   "🔥 ROAR FOR BANGLADESH",
 ] as const;
 
-export async function getMarqueeTickerItems(): Promise<string[]> {
-  const live = await getLiveBangladeshHighlight();
-  const completed = live ? null : await getCachedBangladeshLastMatch();
+export type MarqueeTickerSnapshot = {
+  items: string[];
+  isLive: boolean;
+};
+
+export async function getMarqueeTickerSnapshot(): Promise<MarqueeTickerSnapshot> {
+  const highlight = await getMatchHighlight();
+  const isLive = highlight?.mode === "live";
 
   let lastLine: string | null = null;
-  if (live) {
-    lastLine = `LIVE · ${formatLiveMarqueeLine(live)}`;
-  } else if (completed) {
-    lastLine = formatLastMatchMarqueeLine(completed);
+  if (highlight?.mode === "live") {
+    lastLine = `LIVE · ${formatLiveMarqueeLine(highlight)}`;
+  } else if (highlight) {
+    lastLine = formatLastMatchMarqueeLine(highlight);
   }
 
   const upcoming = await getCachedUpcomingBangladeshMatches();
-  const visibleUpcoming = live
-    ? upcoming.filter((m) => !isUpcomingHiddenByLive(live, m))
-    : upcoming;
+  const visibleUpcoming =
+    isLive && highlight
+      ? upcoming.filter((m) => !isUpcomingHiddenByLive(highlight, m))
+      : upcoming;
   const upcomingLines = visibleUpcoming.map((m) => formatUpcomingMatchMarqueeLine(m));
 
   const dynamic: string[] = [];
@@ -36,5 +42,10 @@ export async function getMarqueeTickerItems(): Promise<string[]> {
     dynamic.push(`📅 ${line}`);
   }
 
-  return [...BRAND_ITEMS, ...dynamic];
+  return { items: [...BRAND_ITEMS, ...dynamic], isLive };
+}
+
+export async function getMarqueeTickerItems(): Promise<string[]> {
+  const { items } = await getMarqueeTickerSnapshot();
+  return items;
 }

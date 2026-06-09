@@ -5,15 +5,32 @@ import { useSession } from "next-auth/react";
 import { useState } from "react";
 
 import { JOIN_PAGE_PATH, buildMainNav, type NavLink } from "@/lib/site-content";
+import { useLiveMatchStatus } from "@/lib/hooks/useLiveMatchStatus";
 
 type NavbarProps = {
   tourLinks: NavLink[];
+  initialIsLive?: boolean;
 };
 
-export function Navbar({ tourLinks }: NavbarProps) {
+function MatchCentreNavLabel({ isLive }: { isLive: boolean }) {
+  return (
+    <>
+      {isLive ? (
+        <span
+          className="h-1.5 w-1.5 shrink-0 animate-pulse rounded-full bg-crimson shadow-[0_0_6px_rgba(244,42,65,0.8)]"
+          aria-hidden
+        />
+      ) : null}
+      Match Centre
+    </>
+  );
+}
+
+export function Navbar({ tourLinks, initialIsLive = false }: NavbarProps) {
   const [mobileOpen, setMobileOpen] = useState(false);
   const { status } = useSession();
   const isLoggedIn = status === "authenticated";
+  const isLive = useLiveMatchStatus(initialIsLive);
   const navItems = buildMainNav(tourLinks);
 
   return (
@@ -61,6 +78,19 @@ export function Navbar({ tourLinks }: NavbarProps) {
                   ))}
                 </div>
               </div>
+            ) : item.label === "Match Centre" ? (
+              <Link
+                key={item.label}
+                href={item.href}
+                className={`flex items-center gap-1.5 px-3 py-2 text-sm font-bold uppercase tracking-wide transition-colors ${
+                  isLive
+                    ? "nav-match-centre-live text-crimson hover:text-crimson-bright"
+                    : "text-charcoal hover:text-crimson"
+                }`}
+                aria-label={isLive ? "Match Centre — live match" : "Match Centre"}
+              >
+                <MatchCentreNavLabel isLive={isLive} />
+              </Link>
             ) : (
               <Link
                 key={item.label}
@@ -127,6 +157,18 @@ export function Navbar({ tourLinks }: NavbarProps) {
                   ))}
                 </ul>
               </div>
+            ) : item.label === "Match Centre" ? (
+              <Link
+                key={item.label}
+                href={item.href}
+                className={`flex items-center gap-2 border-b border-emerald/10 py-2.5 text-sm font-bold uppercase ${
+                  isLive ? "nav-match-centre-live text-crimson" : "text-charcoal"
+                }`}
+                onClick={() => setMobileOpen(false)}
+                aria-label={isLive ? "Match Centre — live match" : "Match Centre"}
+              >
+                <MatchCentreNavLabel isLive={isLive} />
+              </Link>
             ) : (
               <Link
                 key={item.label}
