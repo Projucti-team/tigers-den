@@ -45,6 +45,7 @@ export type ScorecardPlayer = {
   sr?: number;
   wickets?: number;
   overs?: string;
+  maidens?: number;
   economy?: number;
   dismissed?: string;
 };
@@ -65,6 +66,28 @@ export type Scorecard = {
   venue?: string;
   teams?: string[];
   innings: ScorecardInnings[];
+};
+
+export type LiveBall = {
+  over: number;
+  ball: number;
+  label: string;
+  runs: number;
+  isWicket: boolean;
+};
+
+export type LiveOverBalls = {
+  overNumber: number;
+  balls: LiveBall[];
+  runsInOver: number;
+};
+
+export type LiveMatchFeed = {
+  batters: ScorecardPlayer[];
+  bowlers: ScorecardPlayer[];
+  partnership?: string;
+  lastWicket?: string;
+  recentOvers: LiveOverBalls[];
 };
 
 export type RankedPlayer = {

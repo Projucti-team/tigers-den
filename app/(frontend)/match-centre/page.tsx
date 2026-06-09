@@ -2,8 +2,10 @@ import Link from "next/link";
 
 import { ChantOfWeek } from "@/components/home/ChantOfWeek";
 import { LiveChat } from "@/components/home/LiveChat";
-import { MatchCentre } from "@/components/home/MatchCentre";
+import { LiveMatchCentre } from "@/components/cricket/LiveMatchCentre";
 import { getMatchCentreData } from "@/lib/cricket";
+
+export const dynamic = "force-dynamic";
 
 export const metadata = {
   title: "Match Centre — The Tigers' Den",
@@ -11,9 +13,10 @@ export const metadata = {
 };
 
 export default async function MatchCentrePage() {
-  const { highlight, scorecard } = await getMatchCentreData().catch(() => ({
+  const { highlight, scorecard, liveFeed } = await getMatchCentreData().catch(() => ({
     highlight: null,
     scorecard: null,
+    liveFeed: null,
   }));
 
   const isLive = highlight?.mode === "live";
@@ -34,8 +37,16 @@ export default async function MatchCentrePage() {
 
       <div className="mx-auto max-w-[1440px] space-y-6 px-4 py-8 md:px-8">
         <div className="grid gap-6 lg:grid-cols-[1fr_320px]">
-          <MatchCentre highlight={highlight} scorecard={scorecard} />
-          <LiveChat />
+          <LiveMatchCentre
+            initialHighlight={highlight}
+            initialScorecard={scorecard}
+            initialLiveFeed={liveFeed}
+          />
+          <LiveChat
+            matchId={highlight?.matchId ?? null}
+            matchTitle={highlight?.title}
+            initialIsLive={isLive}
+          />
         </div>
         <div className="max-w-md">
           <ChantOfWeek />

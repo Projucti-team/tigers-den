@@ -164,7 +164,13 @@ function mapLiveMatch(m: any): LiveMatchSummary {
     teams: m.teams,
     teamInfo: m.teamInfo,
     score: m.score,
-    isLive: /live|in progress|stumps|innings/i.test(m.status || ""),
+    isLive:
+      /live|in progress|stumps|innings|overs remaining|require.*runs/i.test(m.status || "") ||
+      (Array.isArray(m.score) &&
+        m.score.length > 0 &&
+        !/not started|match starts|won |beat |completed|finished|no result/i.test(
+          String(m.status || ""),
+        )),
     seriesId: m.series_id ?? m.seriesId ?? m.series?.id,
     seriesName: m.seriesName ?? m.series_name ?? m.series?.name,
   };

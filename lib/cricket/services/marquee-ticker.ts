@@ -2,7 +2,9 @@ import { getCachedBangladeshLastMatch, getLiveBangladeshHighlight } from "@/lib/
 import { getCachedUpcomingBangladeshMatches } from "@/lib/cricket/services/bangladesh-upcoming-matches";
 import {
   formatLastMatchMarqueeLine,
+  formatLiveMarqueeLine,
   formatUpcomingMatchMarqueeLine,
+  isUpcomingHiddenByLive,
 } from "@/lib/cricket/services/marquee-format";
 
 const BRAND_ITEMS = [
@@ -17,13 +19,16 @@ export async function getMarqueeTickerItems(): Promise<string[]> {
 
   let lastLine: string | null = null;
   if (live) {
-    lastLine = `LIVE · ${formatLastMatchMarqueeLine(live)}`;
+    lastLine = `LIVE · ${formatLiveMarqueeLine(live)}`;
   } else if (completed) {
     lastLine = formatLastMatchMarqueeLine(completed);
   }
 
   const upcoming = await getCachedUpcomingBangladeshMatches();
-  const upcomingLines = upcoming.map((m) => formatUpcomingMatchMarqueeLine(m));
+  const visibleUpcoming = live
+    ? upcoming.filter((m) => !isUpcomingHiddenByLive(live, m))
+    : upcoming;
+  const upcomingLines = visibleUpcoming.map((m) => formatUpcomingMatchMarqueeLine(m));
 
   const dynamic: string[] = [];
   if (lastLine) dynamic.push(`🏏 ${lastLine}`);

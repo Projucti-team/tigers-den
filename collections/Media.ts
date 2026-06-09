@@ -1,11 +1,15 @@
-import { revalidatePath } from "next/cache";
 import type { CollectionConfig } from "payload";
+
+async function revalidateHomeHero() {
+  const { revalidatePath } = await import("next/cache");
+  revalidatePath("/");
+}
 
 export const Media: CollectionConfig = {
   slug: "media",
   hooks: {
-    afterChange: [() => revalidatePath("/")],
-    afterDelete: [() => revalidatePath("/")],
+    afterChange: [revalidateHomeHero],
+    afterDelete: [revalidateHomeHero],
   },
   access: {
     read: () => true,

@@ -4,6 +4,8 @@ import type { ReactNode } from "react";
 
 import "@/app/globals.css";
 
+export const dynamic = "force-dynamic";
+
 export const metadata: Metadata = {
   title: "The Tigers' Den — Bangladesh Cricket Fan Army",
   description:
@@ -14,7 +16,7 @@ export const metadata: Metadata = {
   },
 };
 
-import { FanMarquee } from "@/components/layout/FanMarquee";
+import { LiveMarquee } from "@/components/cricket/LiveMarquee";
 import { Navbar } from "@/components/layout/Navbar";
 import { SiteFooter } from "@/components/layout/SiteFooter";
 import { TopBar } from "@/components/layout/TopBar";
@@ -63,7 +65,7 @@ export default async function FrontendLayout({ children }: { children: ReactNode
           >
             <TopBar />
             <Navbar tourLinks={tourLinks} />
-            <FanMarquee items={marqueeItems} />
+            <LiveMarquee initialItems={marqueeItems} />
             <main>{children}</main>
             <SiteFooter />
           </div>

@@ -1,4 +1,6 @@
 import { isBangladeshTeam } from "@/lib/cricket/constants";
+import { ordinalSuffix } from "@/lib/cricket/ordinal";
+import { compactCricketScore } from "@/lib/cricket/score-format";
 import { matchTime, type MatchHighlight } from "@/lib/cricket/services/match-highlight";
 import type { LiveMatchSummary } from "@/lib/cricket/types";
 
@@ -26,8 +28,25 @@ function teamFromInningsLabel(label: string): string {
   return teamShortCode(cleaned);
 }
 
+/** Ban 284/8 vs Aus 91/3 (18) (Australia require another 194 runs…) */
+export function formatLiveMarqueeLine(highlight: MatchHighlight): string {
+  const ban = highlight.scores.find((s) => isBangladeshTeam(s.label));
+  const opp = highlight.scores.find((s) => !isBangladeshTeam(s.label));
+
+  if (ban && opp) {
+    const banScore = compactCricketScore(ban.value, true);
+    const oppScore = compactCricketScore(opp.value, false);
+    const oppCode = teamShortCode(opp.label);
+    const status = highlight.detailLine.replace(/Bangladesh/gi, "Ban");
+    return `Ban ${banScore} vs ${oppCode} ${oppScore} (${status})`;
+  }
+
+  return highlight.scoreLine.replace(/Bangladesh/gi, "Ban");
+}
+
 /** Ban 278 & 390 vs Pak 232 & 358 (Ban won by 78 runs) */
 export function formatLastMatchMarqueeLine(highlight: MatchHighlight): string {
+  if (highlight.mode === "live") return formatLiveMarqueeLine(highlight);
   const byTeam = new Map<string, number[]>();
 
   for (const row of highlight.scores) {
@@ -54,15 +73,6 @@ export function formatLastMatchMarqueeLine(highlight: MatchHighlight): string {
 
   const compact = highlight.scoreLine.replace(/\s*·\s*/g, " vs ");
   return `${compact} (${highlight.detailLine.replace(/Bangladesh/gi, "Ban")})`;
-}
-
-function ordinalSuffix(n: number): string {
-  const mod100 = n % 100;
-  if (mod100 >= 11 && mod100 <= 13) return "th";
-  if (n % 10 === 1) return "st";
-  if (n % 10 === 2) return "nd";
-  if (n % 10 === 3) return "rd";
-  return "th";
 }
 
 function formatOrdinalDay(d: Date): string {
@@ -118,6 +128,27 @@ export function formatUpcomingMatchMarqueeLine(match: LiveMatchSummary): string 
   const time = formatBangladeshTime(match.dateTimeGMT);
 
   return ["Ban vs", opp, format, datePart, city, time].filter(Boolean).join(" ");
+}
+
+function fixtureOrdinalLabel(text: string): string | null {
+  return text.match(/\d+(?:st|nd|rd|th)\s+(?:odi|t20i?|test)/i)?.[0]?.toLowerCase() ?? null;
+}
+
+/** Hide a cached upcoming row when that fixture is already live. */
+export function isUpcomingHiddenByLive(
+  live: MatchHighlight,
+  match: LiveMatchSummary,
+): boolean {
+  if (live.mode !== "live") return false;
+
+  const kickoff = matchTime(match);
+  if (kickoff > 0 && kickoff <= Date.now()) return true;
+
+  const liveLabel = fixtureOrdinalLabel(`${live.title} ${live.scoreLine}`);
+  const upcomingLabel = fixtureOrdinalLabel(match.name);
+  if (liveLabel && upcomingLabel && liveLabel === upcomingLabel) return true;
+
+  return false;
 }
 
 export function isUpcomingBangladeshMatch(match: LiveMatchSummary): boolean {

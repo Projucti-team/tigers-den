@@ -7,6 +7,8 @@ import { fileURLToPath } from "url";
 import { Chants } from "./collections/Chants";
 import { CricketSnapshots } from "./collections/CricketSnapshots";
 import { HeroSlides } from "./collections/HeroSlides";
+import { MatchChatMessages } from "./collections/MatchChatMessages";
+import { MatchChatRooms } from "./collections/MatchChatRooms";
 import { Media } from "./collections/Media";
 import { MemberFollows } from "./collections/MemberFollows";
 import { MemberPosts } from "./collections/MemberPosts";
@@ -53,6 +55,8 @@ export default buildConfig({
     Chants,
     StandReactions,
     StandComments,
+    MatchChatRooms,
+    MatchChatMessages,
     HeroSlides,
     CricketSnapshots,
   ],

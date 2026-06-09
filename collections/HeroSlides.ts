@@ -1,7 +1,7 @@
-import { revalidatePath } from "next/cache";
 import type { CollectionConfig } from "payload";
 
-function revalidateHomeHero() {
+async function revalidateHomeHero() {
+  const { revalidatePath } = await import("next/cache");
   revalidatePath("/");
 }
 

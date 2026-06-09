@@ -1,8 +1,10 @@
 import {
   fetchCurrentMatches,
   fetchMatchesList,
+  isCricApiBlocked,
   isCricApiConfigured,
 } from "@/lib/cricket/providers/cricapi";
+import { fetchEspnLiveBangladeshHighlight } from "@/lib/cricket/providers/espn-live";
 import {
   readBangladeshLastMatch,
   writeBangladeshLastMatch,
@@ -69,9 +71,12 @@ export async function getCachedBangladeshLastMatch(): Promise<MatchHighlight | n
   return file?.highlight ?? null;
 }
 
-/** One lightweight API call for live; last result always from cache. */
+/** Live scores — ESPNcricinfo first (free), then CricAPI when available. */
 export async function getLiveBangladeshHighlight(): Promise<MatchHighlight | null> {
-  if (!isCricApiConfigured()) return null;
+  const espnLive = await fetchEspnLiveBangladeshHighlight().catch(() => null);
+  if (espnLive) return espnLive;
+
+  if (!isCricApiConfigured() || isCricApiBlocked()) return null;
 
   try {
     const current = await fetchCurrentMatches();

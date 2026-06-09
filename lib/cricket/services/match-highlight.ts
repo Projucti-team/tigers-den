@@ -1,5 +1,7 @@
 import { isBangladeshTeam } from "@/lib/cricket/constants";
 import { fetchScorecard, isCricApiConfigured } from "@/lib/cricket/providers/cricapi";
+import { fetchEspnMatchCentre } from "@/lib/cricket/providers/espn-match-centre";
+import type { LiveMatchFeed } from "@/lib/cricket/types";
 import {
   getCachedBangladeshLastMatch,
   getLiveBangladeshHighlight,
@@ -135,20 +137,30 @@ export async function getMatchHighlight(): Promise<MatchHighlight | null> {
 export async function getMatchCentreData(): Promise<{
   highlight: MatchHighlight | null;
   scorecard: Scorecard | null;
+  liveFeed: LiveMatchFeed | null;
 }> {
   const highlight = await getMatchHighlight();
   if (!highlight?.matchId) {
-    return { highlight: null, scorecard: null };
+    return { highlight: null, scorecard: null, liveFeed: null };
+  }
+
+  if (highlight.matchId.startsWith("espn-")) {
+    const espn = await fetchEspnMatchCentre(highlight.matchId).catch(() => null);
+    return {
+      highlight,
+      scorecard: espn?.scorecard ?? null,
+      liveFeed: highlight.mode === "live" ? (espn?.liveFeed ?? null) : null,
+    };
   }
 
   if (!isCricApiConfigured() || highlight.matchId.startsWith("seed-")) {
-    return { highlight, scorecard: null };
+    return { highlight, scorecard: null, liveFeed: null };
   }
 
   try {
     const scorecard = await fetchScorecard(highlight.matchId);
-    return { highlight, scorecard };
+    return { highlight, scorecard, liveFeed: null };
   } catch {
-    return { highlight, scorecard: null };
+    return { highlight, scorecard: null, liveFeed: null };
   }
 }
