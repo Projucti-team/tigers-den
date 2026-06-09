@@ -14,9 +14,11 @@ export async function resolveMatchChatState(matchId: string): Promise<MatchChatM
     getMatchHighlight().catch(() => null),
   ]);
 
-  const isLive = liveHighlight?.matchId === matchId;
   const isCurrent = highlight?.matchId === matchId;
-  const isCompleted = isCurrent && highlight?.mode === "completed" && !isLive;
+  const isLive =
+    liveHighlight?.matchId === matchId ||
+    (isCurrent && highlight.mode === "live");
+  const isCompleted = isCurrent && highlight.mode === "completed" && !isLive;
 
   return {
     isLive,

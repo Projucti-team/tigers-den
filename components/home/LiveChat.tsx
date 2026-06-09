@@ -25,11 +25,12 @@ export function LiveChat({ matchId, matchTitle, initialIsLive = false }: LiveCha
   const [snapshot, setSnapshot] = useState<MatchChatSnapshot | null>(null);
   const [message, setMessage] = useState("");
   const [posting, setPosting] = useState(false);
+  const [postError, setPostError] = useState<string | null>(null);
   const [loading, setLoading] = useState(Boolean(matchId));
   const scrollRef = useRef<HTMLDivElement>(null);
   const stickToBottom = useRef(true);
 
-  const chatOpen = snapshot?.canPost ?? initialIsLive;
+  const chatOpen = snapshot ? snapshot.canPost : initialIsLive;
 
   const refresh = useCallback(async () => {
     if (!matchId) return;
@@ -75,19 +76,26 @@ export function LiveChat({ matchId, matchTitle, initialIsLive = false }: LiveCha
     if (!matchId || !message.trim() || !isLoggedIn || !chatOpen) return;
 
     setPosting(true);
+    setPostError(null);
     try {
       const res = await fetch("/api/match-chat", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ matchId, message }),
       });
-      if (!res.ok) return;
-      const data = (await res.json()) as { message: MatchChatMessage };
+      const data = (await res.json()) as { message?: MatchChatMessage; error?: string };
+      if (!res.ok) {
+        setPostError(data.error ?? "Could not send message. Try again.");
+        return;
+      }
+      const posted = data.message;
+      if (!posted) return;
       setSnapshot((prev) =>
-        prev ? { ...prev, messages: [...prev.messages, data.message] } : prev,
+        prev ? { ...prev, messages: [...prev.messages, posted] } : prev,
       );
       setMessage("");
       stickToBottom.current = true;
+      void refresh();
     } finally {
       setPosting(false);
     }
@@ -187,10 +195,13 @@ export function LiveChat({ matchId, matchTitle, initialIsLive = false }: LiveCha
               id="chat-input"
               type="text"
               value={message}
-              onChange={(e) => setMessage(e.target.value)}
+              onChange={(e) => {
+                setMessage(e.target.value);
+                if (postError) setPostError(null);
+              }}
               maxLength={500}
               placeholder="🔥 Type your roar…"
-              className="flex-1 rounded-lg border-2 border-emerald bg-white px-3 py-2.5 text-sm font-semibold outline-none focus:border-crimson focus:ring-2 focus:ring-crimson/30"
+              className="flex-1 rounded-lg border-2 border-emerald bg-white px-3 py-2.5 text-sm font-semibold text-charcoal placeholder:text-charcoal/45 outline-none focus:border-crimson focus:ring-2 focus:ring-crimson/30"
             />
             <button
               type="submit"
@@ -200,6 +211,9 @@ export function LiveChat({ matchId, matchTitle, initialIsLive = false }: LiveCha
               {posting ? "…" : "Send"}
             </button>
           </div>
+          {postError ? (
+            <p className="mt-2 text-center text-xs font-semibold text-crimson">{postError}</p>
+          ) : null}
         </form>
       ) : (
         <div className="border-t-4 border-charcoal/15 bg-charcoal/5 p-4 text-center">

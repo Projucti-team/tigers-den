@@ -35,13 +35,12 @@ export async function POST(request: Request) {
     }
 
     const state = await resolveMatchChatState(matchId);
-    await getMatchChatSnapshot(matchId, state.title, state);
 
     const message = await createMatchChatMessage(
       member,
       matchId,
       typeof body.message === "string" ? body.message : "",
-      state.isLive,
+      state,
     );
 
     return NextResponse.json({ message });

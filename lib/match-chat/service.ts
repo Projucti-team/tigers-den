@@ -79,6 +79,7 @@ export async function syncMatchChatRoom(
       data: {
         matchId,
         title: title ?? "Bangladesh match",
+        endedAt: isCompleted ? nowIso : undefined,
       },
     });
     return created as MatchChatRoomDoc;
@@ -124,25 +125,18 @@ export async function createMatchChatMessage(
   author: Member,
   matchId: string,
   body: string,
-  isLive: boolean,
+  state: MatchChatRoomState,
 ): Promise<MatchChatMessage> {
   const trimmed = body.trim();
   if (!trimmed) throw new Error("EMPTY_MESSAGE");
   if (trimmed.length > MATCH_CHAT_MESSAGE_MAX) throw new Error("MESSAGE_TOO_LONG");
 
-  const payload = await getPayloadClient();
-  const roomResult = await payload.find({
-    collection: "match-chat-rooms",
-    where: { matchId: { equals: matchId } },
-    limit: 1,
-    depth: 0,
-    overrideAccess: true,
-  });
-
-  const room = roomResult.docs[0] as MatchChatRoomDoc | undefined;
-  if (!room || !canPostInChat(room, isLive)) {
+  const room = await syncMatchChatRoom(matchId, undefined, state);
+  if (!canPostInChat(room, state.isLive)) {
     throw new Error("CHAT_CLOSED");
   }
+
+  const payload = await getPayloadClient();
 
   const doc = await payload.create({
     collection: "match-chat-messages",
