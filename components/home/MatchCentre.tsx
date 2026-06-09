@@ -30,8 +30,12 @@ export function MatchCentre({ highlight, scorecard, liveFeed }: Props) {
 
   return (
     <section id="match-centre" className="fan-card">
-      <div className="fan-card-header-split flex items-center justify-between px-4 py-3 md:px-5">
-        <h2 className="font-display text-sm font-extrabold uppercase tracking-wider md:text-lg">
+      <div className="fan-card-header-split flex items-center justify-between gap-3 px-4 py-3 md:px-5">
+        <h2
+          className={`font-display text-sm font-extrabold uppercase tracking-wider md:text-lg ${
+            isLive ? "match-centre-live-title -mx-1 px-2 py-1" : ""
+          }`}
+        >
           {isLive ? "🔴 Live Now — Match Centre" : "📋 Last Result — Match Centre"}
         </h2>
         {isLive ? (
