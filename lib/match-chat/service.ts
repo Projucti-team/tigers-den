@@ -91,11 +91,15 @@ export async function syncMatchChatRoom(
   }
 
   const data: { title?: string; endedAt?: string | null } = {};
-  if (title) data.title = title;
+  if (title && title !== doc.title) data.title = title;
   if (isLive) {
     if (doc.endedAt != null) data.endedAt = null;
   } else if (isCompleted && !doc.endedAt) {
     data.endedAt = nowIso;
+  }
+
+  if (Object.keys(data).length === 0) {
+    return doc;
   }
 
   const updated = await payload.update({
@@ -164,8 +168,10 @@ export async function getMatchChatSnapshot(
   state: MatchChatRoomState,
 ): Promise<MatchChatSnapshot> {
   await ensureSqliteMatchChatTables().catch(() => undefined);
-  const room = await syncMatchChatRoom(matchId, title, state);
-  const messages = await listMatchChatMessages(matchId);
+  const [room, messages] = await Promise.all([
+    syncMatchChatRoom(matchId, title, state),
+    listMatchChatMessages(matchId),
+  ]);
 
   return {
     matchId,

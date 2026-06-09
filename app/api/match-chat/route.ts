@@ -7,8 +7,8 @@ import { requireMemberSession } from "@/lib/social/session";
 
 export const dynamic = "force-dynamic";
 
-function liveHintFromRequest(searchParams: URLSearchParams): boolean {
-  return searchParams.get("live") === "1" || searchParams.get("live") === "true";
+function flag(value: string | null): boolean {
+  return value === "1" || value === "true";
 }
 
 export async function GET(request: Request) {
@@ -20,10 +20,13 @@ export async function GET(request: Request) {
       return NextResponse.json({ error: "matchId is required" }, { status: 400 });
     }
 
+    const title = searchParams.get("title")?.trim() || undefined;
     const state = await resolveMatchChatState(matchId, {
-      liveHint: liveHintFromRequest(searchParams),
+      liveHint: flag(searchParams.get("live")),
+      completedHint: flag(searchParams.get("completed")),
+      title,
     });
-    const snapshot = await getMatchChatSnapshot(matchId, state.title, state);
+    const snapshot = await getMatchChatSnapshot(matchId, state.title ?? title, state);
     return NextResponse.json(snapshot);
   } catch (err) {
     return matchChatApiError(err);
@@ -37,6 +40,8 @@ export async function POST(request: Request) {
       matchId?: string;
       message?: string;
       live?: boolean;
+      completed?: boolean;
+      title?: string;
     };
 
     const matchId = body.matchId?.trim();
@@ -46,6 +51,8 @@ export async function POST(request: Request) {
 
     const state = await resolveMatchChatState(matchId, {
       liveHint: body.live === true,
+      completedHint: body.completed === true,
+      title: typeof body.title === "string" ? body.title.trim() : undefined,
     });
 
     const message = await createMatchChatMessage(

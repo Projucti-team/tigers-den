@@ -10,6 +10,9 @@ export type MatchChatMatchState = {
 export type MatchChatStateOptions = {
   /** Client already knows this fixture is live (match-centre poll). */
   liveHint?: boolean;
+  /** Client already knows this fixture is completed (match-centre poll). */
+  completedHint?: boolean;
+  title?: string;
 };
 
 /** Resolve whether chat is open for this match. */
@@ -17,6 +20,22 @@ export async function resolveMatchChatState(
   matchId: string,
   options?: MatchChatStateOptions,
 ): Promise<MatchChatMatchState> {
+  if (options?.liveHint) {
+    return {
+      isLive: true,
+      isCompleted: false,
+      title: options.title,
+    };
+  }
+
+  if (options?.completedHint) {
+    return {
+      isLive: false,
+      isCompleted: true,
+      title: options.title,
+    };
+  }
+
   const [liveHighlight, highlight] = await Promise.all([
     getLiveBangladeshHighlight().catch(() => null),
     getMatchHighlight().catch(() => null),
@@ -24,7 +43,6 @@ export async function resolveMatchChatState(
 
   const isCurrent = highlight?.matchId === matchId;
   const isLive =
-    Boolean(options?.liveHint) ||
     liveHighlight?.matchId === matchId ||
     (isCurrent && highlight.mode === "live");
   const isCompleted = isCurrent && highlight.mode === "completed" && !isLive;
@@ -32,7 +50,7 @@ export async function resolveMatchChatState(
   return {
     isLive,
     isCompleted,
-    title: isCurrent ? highlight?.title : undefined,
+    title: isCurrent ? highlight?.title : options?.title,
   };
 }
 

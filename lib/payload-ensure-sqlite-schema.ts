@@ -35,8 +35,12 @@ export async function ensureSqliteCricketSnapshotsTable(): Promise<void> {
   `);
 }
 
+let sqliteMatchChatReady = false;
+
 /** Match chat tables for Coolify/Docker SQLite (prodMigrations are Postgres-only). */
 export async function ensureSqliteMatchChatTables(): Promise<void> {
+  if (sqliteMatchChatReady) return;
+
   const client = sqliteClient();
   if (!client) return;
 
@@ -76,6 +80,8 @@ export async function ensureSqliteMatchChatTables(): Promise<void> {
     CREATE INDEX IF NOT EXISTS "match_chat_messages_match_created_idx"
     ON "match_chat_messages" ("match_id", "created_at");
   `);
+
+  sqliteMatchChatReady = true;
 }
 
 /** Idempotent SQLite schema patches for VPS/Docker deploys. */

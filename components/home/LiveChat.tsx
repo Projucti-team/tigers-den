@@ -15,12 +15,18 @@ type LiveChatProps = {
   matchTitle?: string;
   /** Kept in sync with match-centre polling (not just SSR). */
   isLive?: boolean;
+  isCompleted?: boolean;
 };
 
 const POLL_LIVE_MS = 20_000;
 const POLL_CLOSED_MS = 60_000;
 
-export function LiveChat({ matchId, matchTitle, isLive = false }: LiveChatProps) {
+export function LiveChat({
+  matchId,
+  matchTitle,
+  isLive = false,
+  isCompleted = false,
+}: LiveChatProps) {
   const { status } = useSession();
   const isLoggedIn = status === "authenticated";
   const [snapshot, setSnapshot] = useState<MatchChatSnapshot | null>(null);
@@ -40,6 +46,8 @@ export function LiveChat({ matchId, matchTitle, isLive = false }: LiveChatProps)
     try {
       const params = new URLSearchParams({ matchId });
       if (isLive) params.set("live", "1");
+      else if (isCompleted) params.set("completed", "1");
+      if (matchTitle) params.set("title", matchTitle);
       const res = await fetch(`/api/match-chat?${params.toString()}`, {
         cache: "no-store",
       });
@@ -49,7 +57,7 @@ export function LiveChat({ matchId, matchTitle, isLive = false }: LiveChatProps)
     } finally {
       setLoading(false);
     }
-  }, [matchId, isLive]);
+  }, [matchId, isLive, isCompleted, matchTitle]);
 
   useEffect(() => {
     if (!matchId) {
@@ -61,10 +69,15 @@ export function LiveChat({ matchId, matchTitle, isLive = false }: LiveChatProps)
     setSnapshot(null);
     setLoading(true);
     void refresh();
-    const pollMs = chatOpen ? POLL_LIVE_MS : POLL_CLOSED_MS;
+  }, [matchId, refresh]);
+
+  useEffect(() => {
+    if (!matchId) return;
+    const active = snapshot?.isLive ?? isLive;
+    const pollMs = active ? POLL_LIVE_MS : POLL_CLOSED_MS;
     const timer = window.setInterval(() => void refresh(), pollMs);
     return () => window.clearInterval(timer);
-  }, [matchId, refresh, chatOpen]);
+  }, [matchId, refresh, snapshot?.isLive, isLive]);
 
   useEffect(() => {
     if (!stickToBottom.current || !scrollRef.current) return;
@@ -87,7 +100,13 @@ export function LiveChat({ matchId, matchTitle, isLive = false }: LiveChatProps)
       const res = await fetch("/api/match-chat", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ matchId, message, live: isLive }),
+        body: JSON.stringify({
+          matchId,
+          message,
+          live: isLive,
+          completed: isCompleted,
+          title: matchTitle,
+        }),
       });
       const data = (await res.json()) as { message?: MatchChatMessage; error?: string };
       if (!res.ok) {

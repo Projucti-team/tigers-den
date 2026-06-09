@@ -55,6 +55,7 @@ export function MatchCentreWithChat({
   }, []);
 
   const isLive = highlight?.mode === "live";
+  const isCompleted = highlight?.mode === "completed";
 
   return (
     <div className="grid gap-6 lg:grid-cols-[1fr_320px]">
@@ -63,6 +64,7 @@ export function MatchCentreWithChat({
         matchId={highlight?.matchId ?? null}
         matchTitle={highlight?.title}
         isLive={isLive}
+        isCompleted={isCompleted}
       />
     </div>
   );
