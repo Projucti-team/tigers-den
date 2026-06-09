@@ -4,8 +4,10 @@ import Link from "next/link";
 import { useSession } from "next-auth/react";
 import { useCallback, useEffect, useRef, useState } from "react";
 
+import { ChatEmojiPicker } from "@/components/match-chat/ChatEmojiPicker";
 import { formatPostTime } from "@/components/profile/format-time";
 import { MemberAvatar } from "@/components/profile/MemberAvatar";
+import { MATCH_CHAT_MESSAGE_MAX } from "@/lib/match-chat/types";
 import { formatMemberDisplayName } from "@/lib/members/display";
 import type { MatchChatMessage, MatchChatSnapshot } from "@/lib/match-chat/types";
 import { profilePath, JOIN_PAGE_PATH } from "@/lib/site-content";
@@ -22,6 +24,7 @@ export function LiveChat() {
   const [postError, setPostError] = useState<string | null>(null);
   const [loading, setLoading] = useState(true);
   const scrollRef = useRef<HTMLDivElement>(null);
+  const inputRef = useRef<HTMLInputElement>(null);
   const stickToBottom = useRef(true);
 
   const matchId = snapshot?.matchId ?? null;
@@ -58,6 +61,29 @@ export function LiveChat() {
     const el = scrollRef.current;
     if (!el) return;
     stickToBottom.current = el.scrollHeight - el.scrollTop - el.clientHeight < 48;
+  }
+
+  function insertEmoji(emoji: string) {
+    const input = inputRef.current;
+    if (!input) {
+      setMessage((prev) => (prev + emoji).slice(0, MATCH_CHAT_MESSAGE_MAX));
+      return;
+    }
+
+    const start = input.selectionStart ?? message.length;
+    const end = input.selectionEnd ?? message.length;
+    const next = (message.slice(0, start) + emoji + message.slice(end)).slice(
+      0,
+      MATCH_CHAT_MESSAGE_MAX,
+    );
+    setMessage(next);
+    if (postError) setPostError(null);
+
+    const caret = Math.min(start + emoji.length, MATCH_CHAT_MESSAGE_MAX);
+    requestAnimationFrame(() => {
+      input.focus();
+      input.setSelectionRange(caret, caret);
+    });
   }
 
   async function handleSubmit(e: React.FormEvent) {
@@ -153,7 +179,9 @@ export function LiveChat() {
                       {formatPostTime(entry.createdAt)}
                     </span>
                   </p>
-                  <p className="mt-1 text-sm font-medium text-charcoal">&ldquo;{entry.body}&rdquo;</p>
+                  <p className="mt-1 whitespace-pre-wrap break-words text-sm font-medium text-charcoal">
+                    {entry.body}
+                  </p>
                 </div>
               </div>
             </div>
@@ -182,7 +210,9 @@ export function LiveChat() {
             Type message
           </label>
           <div className="flex gap-2">
+            <ChatEmojiPicker onPick={insertEmoji} disabled={posting} />
             <input
+              ref={inputRef}
               id="chat-input"
               type="text"
               value={message}
@@ -190,9 +220,9 @@ export function LiveChat() {
                 setMessage(e.target.value);
                 if (postError) setPostError(null);
               }}
-              maxLength={500}
+              maxLength={MATCH_CHAT_MESSAGE_MAX}
               placeholder="🔥 Type your roar…"
-              className="flex-1 rounded-lg border-2 border-emerald bg-white px-3 py-2.5 text-sm font-semibold text-charcoal placeholder:text-charcoal/45 outline-none focus:border-crimson focus:ring-2 focus:ring-crimson/30"
+              className="min-w-0 flex-1 rounded-lg border-2 border-emerald bg-white px-3 py-2.5 text-sm font-semibold text-charcoal placeholder:text-charcoal/45 outline-none focus:border-crimson focus:ring-2 focus:ring-crimson/30"
             />
             <button
               type="submit"
