@@ -201,11 +201,21 @@ async function fetchAthletesFromRef(url: string): Promise<SquadPlayer[]> {
   return players;
 }
 
+/** League-level athlete lists are often duplicates of story squads — skip bare country names. */
+function isGenericCountrySquad(label: string): boolean {
+  const n = label.trim().toLowerCase();
+  if (/\b(odi|t20|test)\b/i.test(n) || /\s[—–-]\s/.test(label)) return false;
+  return /^(australia|bangladesh|england|india|pakistan|sri lanka|new zealand|west indies)$/.test(
+    n,
+  );
+}
+
 async function fetchRosterSquad(
   rosterUrl: string,
   teamLabel: string,
   source: string,
 ): Promise<SeriesSquad | null> {
+  if (isGenericCountrySquad(teamLabel)) return null;
   const roster = await fetchCoreJson<CoreRoster>(rosterUrl);
   if (!roster?.entries?.length) return null;
 
@@ -239,6 +249,7 @@ export async function fetchSquadsFromEspnCore(league: EspnLeagueRef): Promise<Se
   for (const item of teamsList.items ?? []) {
     const team = await fetchCoreJson<CoreTeam>(item.$ref);
     if (!team?.displayName || !team.athletes?.$ref) continue;
+    if (isGenericCountrySquad(team.displayName)) continue;
 
     const players = await fetchAthletesFromRef(team.athletes.$ref);
     if (players.length >= 8) {

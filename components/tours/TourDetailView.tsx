@@ -73,7 +73,7 @@ export function TourDetailView({ detail }: { detail: TourDetail }) {
           <div className="mt-4 grid gap-6 md:grid-cols-2">
             {squads.map((squad) => (
               <div
-                key={squad.team}
+                key={`${squad.team}-${squad.source ?? "local"}`}
                 className="rounded-lg border-2 border-emerald/30 bg-white p-5 shadow-sm"
               >
                 <h3 className="font-display text-sm font-extrabold uppercase text-emerald">
