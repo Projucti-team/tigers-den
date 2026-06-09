@@ -1,3 +1,5 @@
+"use client";
+
 import { MatchCentreTabs } from "@/components/match-centre/MatchCentreTabs";
 import type { MatchHighlight } from "@/lib/cricket/services/match-highlight";
 import type { LiveMatchFeed, Scorecard } from "@/lib/cricket/types";
