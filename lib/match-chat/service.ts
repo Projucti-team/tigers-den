@@ -1,26 +1,37 @@
 import { ensureSqliteMatchChatTables } from "@/lib/payload-ensure-sqlite-schema";
+import { resolveCurrentBangladeshChatMatch, resolveMatchChatState } from "@/lib/match-chat/match-state";
+import {
+  canPostFromRoom,
+  findOpenChatMatchId,
+  findRecentChatMatchId,
+  findRoomByMatchId,
+  roomIsLive,
+  type MatchChatRoomDoc,
+  type MatchChatRoomState,
+} from "@/lib/match-chat/room";
 import { resolveMemberId, toPublicMember } from "@/lib/social/member-record";
 import { getPayloadClient } from "@/lib/payload";
 import {
   MATCH_CHAT_MESSAGE_MAX,
-  MATCH_CHAT_POST_MATCH_MS,
   type MatchChatMessage,
   type MatchChatSnapshot,
 } from "@/lib/match-chat/types";
 import type { Member } from "@/payload-types";
-
-type MatchChatRoomDoc = {
-  id: number;
-  matchId: string;
-  title: string;
-  endedAt?: string | null;
-};
 
 type MatchChatMessageDoc = {
   id: number;
   body: string;
   createdAt: string;
   author: number | Member;
+};
+
+const EMPTY_SNAPSHOT: MatchChatSnapshot = {
+  matchId: null,
+  matchTitle: "The Roar",
+  canPost: false,
+  isLive: false,
+  endedAt: null,
+  messages: [],
 };
 
 function toChatMessage(doc: MatchChatMessageDoc): MatchChatMessage {
@@ -41,22 +52,11 @@ function toChatMessage(doc: MatchChatMessageDoc): MatchChatMessage {
   };
 }
 
-export function canPostInChat(
-  room: Pick<MatchChatRoomDoc, "endedAt">,
-  state: MatchChatRoomState,
-): boolean {
-  if (state.isLive) return true;
-  if (!state.isCompleted) return false;
-  if (!room.endedAt) return true;
-  const ended = new Date(room.endedAt).getTime();
-  if (Number.isNaN(ended)) return true;
-  return Date.now() < ended + MATCH_CHAT_POST_MATCH_MS;
+function needsLifecycleSync(room: MatchChatRoomDoc, state: MatchChatRoomState): boolean {
+  if (state.isLive && room.endedAt != null) return true;
+  if (state.isCompleted && !room.endedAt) return true;
+  return false;
 }
-
-type MatchChatRoomState = {
-  isLive: boolean;
-  isCompleted: boolean;
-};
 
 export async function syncMatchChatRoom(
   matchId: string,
@@ -130,18 +130,77 @@ export async function listMatchChatMessages(
   return (result.docs as MatchChatMessageDoc[]).map(toChatMessage);
 }
 
+async function resolveChatMatchId(requested?: string): Promise<string | null> {
+  if (requested) return requested;
+
+  const open = await findOpenChatMatchId();
+  if (open) return open;
+
+  const recent = await findRecentChatMatchId();
+  if (recent) return recent;
+
+  const current = await resolveCurrentBangladeshChatMatch();
+  if (!current) return null;
+
+  await syncMatchChatRoom(current.matchId, current.state.title, current.state);
+  return current.matchId;
+}
+
+async function refreshRoomIfNeeded(
+  matchId: string,
+  room: MatchChatRoomDoc | null,
+): Promise<MatchChatRoomDoc> {
+  if (!room) {
+    const state = await resolveMatchChatState(matchId);
+    return syncMatchChatRoom(matchId, state.title, state);
+  }
+
+  // Open room: check cricket (cached) only to close when the match finishes.
+  if (!room.endedAt) {
+    const state = await resolveMatchChatState(matchId);
+    if (needsLifecycleSync(room, state) || (state.title && state.title !== room.title)) {
+      return syncMatchChatRoom(matchId, state.title, state);
+    }
+  }
+
+  return room;
+}
+
+export async function getMatchChatSnapshot(requestedMatchId?: string): Promise<MatchChatSnapshot> {
+  await ensureSqliteMatchChatTables().catch(() => undefined);
+
+  const matchId = await resolveChatMatchId(requestedMatchId);
+  if (!matchId) return EMPTY_SNAPSHOT;
+
+  const [messages, existingRoom] = await Promise.all([
+    listMatchChatMessages(matchId),
+    findRoomByMatchId(matchId),
+  ]);
+
+  const room = await refreshRoomIfNeeded(matchId, existingRoom);
+
+  return {
+    matchId,
+    matchTitle: String(room.title),
+    canPost: canPostFromRoom(room),
+    isLive: roomIsLive(room),
+    endedAt: room.endedAt ? String(room.endedAt) : null,
+    messages,
+  };
+}
+
 export async function createMatchChatMessage(
   author: Member,
   matchId: string,
   body: string,
-  state: MatchChatRoomState,
 ): Promise<MatchChatMessage> {
   const trimmed = body.trim();
   if (!trimmed) throw new Error("EMPTY_MESSAGE");
   if (trimmed.length > MATCH_CHAT_MESSAGE_MAX) throw new Error("MESSAGE_TOO_LONG");
 
-  const room = await syncMatchChatRoom(matchId, undefined, state);
-  if (!canPostInChat(room, state)) {
+  const state = await resolveMatchChatState(matchId);
+  const room = await syncMatchChatRoom(matchId, state.title, state);
+  if (!canPostFromRoom(room)) {
     throw new Error("CHAT_CLOSED");
   }
 
@@ -160,25 +219,4 @@ export async function createMatchChatMessage(
   });
 
   return toChatMessage(doc as MatchChatMessageDoc);
-}
-
-export async function getMatchChatSnapshot(
-  matchId: string,
-  title: string | undefined,
-  state: MatchChatRoomState,
-): Promise<MatchChatSnapshot> {
-  await ensureSqliteMatchChatTables().catch(() => undefined);
-  const [room, messages] = await Promise.all([
-    syncMatchChatRoom(matchId, title, state),
-    listMatchChatMessages(matchId),
-  ]);
-
-  return {
-    matchId,
-    matchTitle: String(room.title || title),
-    canPost: canPostInChat(room, state),
-    isLive: state.isLive,
-    endedAt: room.endedAt ? String(room.endedAt) : null,
-    messages,
-  };
 }

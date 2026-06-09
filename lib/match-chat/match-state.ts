@@ -1,39 +1,20 @@
 import { getLiveBangladeshHighlight } from "@/lib/cricket/services/bangladesh-last-match";
-import { getMatchHighlight, type MatchHighlight } from "@/lib/cricket/services/match-highlight";
+import { getMatchHighlight } from "@/lib/cricket/services/match-highlight";
 
-export type MatchChatMatchState = {
-  isLive: boolean;
-  isCompleted: boolean;
+import type { MatchChatRoomState } from "@/lib/match-chat/room";
+
+export type MatchChatMatchState = MatchChatRoomState & {
   title?: string;
 };
 
-export type MatchChatStateOptions = {
-  /** Client already knows this fixture is live (match-centre poll). */
-  liveHint?: boolean;
-  /** Client already knows this fixture is completed (match-centre poll). */
-  completedHint?: boolean;
-  title?: string;
-};
+/** Cricket lookups for chat room lifecycle — cached, independent of scorecard polling. */
+const CRICKET_CACHE_MS = 60_000;
+const cricketCache = new Map<string, { at: number; state: MatchChatMatchState }>();
 
-/** Resolve whether chat is open for this match. */
-export async function resolveMatchChatState(
-  matchId: string,
-  options?: MatchChatStateOptions,
-): Promise<MatchChatMatchState> {
-  if (options?.liveHint) {
-    return {
-      isLive: true,
-      isCompleted: false,
-      title: options.title,
-    };
-  }
-
-  if (options?.completedHint) {
-    return {
-      isLive: false,
-      isCompleted: true,
-      title: options.title,
-    };
+export async function resolveMatchChatState(matchId: string): Promise<MatchChatMatchState> {
+  const hit = cricketCache.get(matchId);
+  if (hit && Date.now() - hit.at < CRICKET_CACHE_MS) {
+    return hit.state;
   }
 
   const [liveHighlight, highlight] = await Promise.all([
@@ -47,23 +28,40 @@ export async function resolveMatchChatState(
     (isCurrent && highlight.mode === "live");
   const isCompleted = isCurrent && highlight.mode === "completed" && !isLive;
 
-  return {
+  const state: MatchChatMatchState = {
     isLive,
     isCompleted,
-    title: isCurrent ? highlight?.title : options?.title,
-  };
-}
-
-export function matchChatStateFromHighlight(
-  matchId: string,
-  highlight: MatchHighlight | null | undefined,
-  isLiveHint?: boolean,
-): MatchChatMatchState {
-  const isLive = Boolean(isLiveHint) || (highlight?.matchId === matchId && highlight.mode === "live");
-  const isCurrent = highlight?.matchId === matchId;
-  return {
-    isLive,
-    isCompleted: isCurrent && highlight?.mode === "completed" && !isLive,
     title: isCurrent ? highlight?.title : undefined,
   };
+
+  cricketCache.set(matchId, { at: Date.now(), state });
+  return state;
+}
+
+/** Bangladesh fixture that should have a chat room (cached cricket fetch). */
+export async function resolveCurrentBangladeshChatMatch(): Promise<{
+  matchId: string;
+  state: MatchChatMatchState;
+} | null> {
+  const live = await getLiveBangladeshHighlight().catch(() => null);
+  if (live) {
+    const state: MatchChatMatchState = {
+      isLive: true,
+      isCompleted: false,
+      title: live.title,
+    };
+    cricketCache.set(live.matchId, { at: Date.now(), state });
+    return { matchId: live.matchId, state };
+  }
+
+  const highlight = await getMatchHighlight().catch(() => null);
+  if (!highlight?.matchId) return null;
+
+  const state: MatchChatMatchState = {
+    isLive: false,
+    isCompleted: highlight.mode === "completed",
+    title: highlight.title,
+  };
+  cricketCache.set(highlight.matchId, { at: Date.now(), state });
+  return { matchId: highlight.matchId, state };
 }

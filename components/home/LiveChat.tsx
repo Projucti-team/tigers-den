@@ -10,74 +10,44 @@ import { formatMemberDisplayName } from "@/lib/members/display";
 import type { MatchChatMessage, MatchChatSnapshot } from "@/lib/match-chat/types";
 import { profilePath, JOIN_PAGE_PATH } from "@/lib/site-content";
 
-type LiveChatProps = {
-  matchId: string | null;
-  matchTitle?: string;
-  /** Kept in sync with match-centre polling (not just SSR). */
-  isLive?: boolean;
-  isCompleted?: boolean;
-};
-
-const POLL_LIVE_MS = 20_000;
+const POLL_OPEN_MS = 20_000;
 const POLL_CLOSED_MS = 60_000;
 
-export function LiveChat({
-  matchId,
-  matchTitle,
-  isLive = false,
-  isCompleted = false,
-}: LiveChatProps) {
+export function LiveChat() {
   const { status } = useSession();
   const isLoggedIn = status === "authenticated";
   const [snapshot, setSnapshot] = useState<MatchChatSnapshot | null>(null);
   const [message, setMessage] = useState("");
   const [posting, setPosting] = useState(false);
   const [postError, setPostError] = useState<string | null>(null);
-  const [loading, setLoading] = useState(Boolean(matchId));
+  const [loading, setLoading] = useState(true);
   const scrollRef = useRef<HTMLDivElement>(null);
   const stickToBottom = useRef(true);
 
-  const chatOpen = snapshot
-    ? snapshot.canPost || snapshot.isLive
-    : isLive;
+  const matchId = snapshot?.matchId ?? null;
+  const chatOpen = snapshot?.canPost ?? false;
 
   const refresh = useCallback(async () => {
-    if (!matchId) return;
     try {
-      const params = new URLSearchParams({ matchId });
-      if (isLive) params.set("live", "1");
-      else if (isCompleted) params.set("completed", "1");
-      if (matchTitle) params.set("title", matchTitle);
-      const res = await fetch(`/api/match-chat?${params.toString()}`, {
-        cache: "no-store",
-      });
+      const res = await fetch("/api/match-chat", { cache: "no-store" });
       if (!res.ok) return;
       const data = (await res.json()) as MatchChatSnapshot;
       setSnapshot(data);
     } finally {
       setLoading(false);
     }
-  }, [matchId, isLive, isCompleted, matchTitle]);
+  }, []);
 
   useEffect(() => {
-    if (!matchId) {
-      setSnapshot(null);
-      setLoading(false);
-      return;
-    }
-
-    setSnapshot(null);
     setLoading(true);
     void refresh();
-  }, [matchId, refresh]);
+  }, [refresh]);
 
   useEffect(() => {
-    if (!matchId) return;
-    const active = snapshot?.isLive ?? isLive;
-    const pollMs = active ? POLL_LIVE_MS : POLL_CLOSED_MS;
+    const pollMs = chatOpen ? POLL_OPEN_MS : POLL_CLOSED_MS;
     const timer = window.setInterval(() => void refresh(), pollMs);
     return () => window.clearInterval(timer);
-  }, [matchId, refresh, snapshot?.isLive, isLive]);
+  }, [refresh, chatOpen]);
 
   useEffect(() => {
     if (!stickToBottom.current || !scrollRef.current) return;
@@ -100,13 +70,7 @@ export function LiveChat({
       const res = await fetch("/api/match-chat", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({
-          matchId,
-          message,
-          live: isLive,
-          completed: isCompleted,
-          title: matchTitle,
-        }),
+        body: JSON.stringify({ matchId, message }),
       });
       const data = (await res.json()) as { message?: MatchChatMessage; error?: string };
       if (!res.ok) {
@@ -116,7 +80,9 @@ export function LiveChat({
       const posted = data.message;
       if (!posted) return;
       setSnapshot((prev) =>
-        prev ? { ...prev, messages: [...prev.messages, posted] } : prev,
+        prev && prev.matchId
+          ? { ...prev, messages: [...prev.messages, posted] }
+          : prev,
       );
       setMessage("");
       stickToBottom.current = true;
@@ -127,7 +93,7 @@ export function LiveChat({
   }
 
   const messages = snapshot?.messages ?? [];
-  const title = snapshot?.matchTitle ?? matchTitle ?? "The Roar";
+  const title = snapshot?.matchTitle ?? "The Roar";
 
   return (
     <section className="fan-card flex h-full min-h-[420px] flex-col">

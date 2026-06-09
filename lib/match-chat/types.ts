@@ -11,7 +11,7 @@ export type MatchChatMessage = {
 };
 
 export type MatchChatSnapshot = {
-  matchId: string;
+  matchId: string | null;
   matchTitle: string;
   canPost: boolean;
   isLive: boolean;
