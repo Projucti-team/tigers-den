@@ -1,8 +1,7 @@
 import Link from "next/link";
 
 import { ChantOfWeek } from "@/components/home/ChantOfWeek";
-import { LiveChat } from "@/components/home/LiveChat";
-import { LiveMatchCentre } from "@/components/cricket/LiveMatchCentre";
+import { MatchCentreWithChat } from "@/components/cricket/MatchCentreWithChat";
 import { getMatchCentreData } from "@/lib/cricket";
 
 export const dynamic = "force-dynamic";
@@ -36,18 +35,11 @@ export default async function MatchCentrePage() {
       </div>
 
       <div className="mx-auto max-w-[1440px] space-y-6 px-4 py-8 md:px-8">
-        <div className="grid gap-6 lg:grid-cols-[1fr_320px]">
-          <LiveMatchCentre
-            initialHighlight={highlight}
-            initialScorecard={scorecard}
-            initialLiveFeed={liveFeed}
-          />
-          <LiveChat
-            matchId={highlight?.matchId ?? null}
-            matchTitle={highlight?.title}
-            initialIsLive={isLive}
-          />
-        </div>
+        <MatchCentreWithChat
+          initialHighlight={highlight}
+          initialScorecard={scorecard}
+          initialLiveFeed={liveFeed}
+        />
         <div className="max-w-md">
           <ChantOfWeek />
         </div>

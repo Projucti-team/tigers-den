@@ -13,13 +13,14 @@ import { profilePath, JOIN_PAGE_PATH } from "@/lib/site-content";
 type LiveChatProps = {
   matchId: string | null;
   matchTitle?: string;
-  initialIsLive?: boolean;
+  /** Kept in sync with match-centre polling (not just SSR). */
+  isLive?: boolean;
 };
 
 const POLL_LIVE_MS = 20_000;
 const POLL_CLOSED_MS = 60_000;
 
-export function LiveChat({ matchId, matchTitle, initialIsLive = false }: LiveChatProps) {
+export function LiveChat({ matchId, matchTitle, isLive = false }: LiveChatProps) {
   const { status } = useSession();
   const isLoggedIn = status === "authenticated";
   const [snapshot, setSnapshot] = useState<MatchChatSnapshot | null>(null);
@@ -30,12 +31,16 @@ export function LiveChat({ matchId, matchTitle, initialIsLive = false }: LiveCha
   const scrollRef = useRef<HTMLDivElement>(null);
   const stickToBottom = useRef(true);
 
-  const chatOpen = snapshot ? snapshot.canPost : initialIsLive;
+  const chatOpen = snapshot
+    ? snapshot.canPost || snapshot.isLive
+    : isLive;
 
   const refresh = useCallback(async () => {
     if (!matchId) return;
     try {
-      const res = await fetch(`/api/match-chat?matchId=${encodeURIComponent(matchId)}`, {
+      const params = new URLSearchParams({ matchId });
+      if (isLive) params.set("live", "1");
+      const res = await fetch(`/api/match-chat?${params.toString()}`, {
         cache: "no-store",
       });
       if (!res.ok) return;
@@ -44,7 +49,7 @@ export function LiveChat({ matchId, matchTitle, initialIsLive = false }: LiveCha
     } finally {
       setLoading(false);
     }
-  }, [matchId]);
+  }, [matchId, isLive]);
 
   useEffect(() => {
     if (!matchId) {
@@ -53,6 +58,7 @@ export function LiveChat({ matchId, matchTitle, initialIsLive = false }: LiveCha
       return;
     }
 
+    setSnapshot(null);
     setLoading(true);
     void refresh();
     const pollMs = chatOpen ? POLL_LIVE_MS : POLL_CLOSED_MS;
@@ -81,7 +87,7 @@ export function LiveChat({ matchId, matchTitle, initialIsLive = false }: LiveCha
       const res = await fetch("/api/match-chat", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ matchId, message }),
+        body: JSON.stringify({ matchId, message, live: isLive }),
       });
       const data = (await res.json()) as { message?: MatchChatMessage; error?: string };
       if (!res.ok) {

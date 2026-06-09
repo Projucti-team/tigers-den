@@ -7,8 +7,16 @@ export type MatchChatMatchState = {
   title?: string;
 };
 
-/** Live flag from the live feed only — not the cached last-result fallback. */
-export async function resolveMatchChatState(matchId: string): Promise<MatchChatMatchState> {
+export type MatchChatStateOptions = {
+  /** Client already knows this fixture is live (match-centre poll). */
+  liveHint?: boolean;
+};
+
+/** Resolve whether chat is open for this match. */
+export async function resolveMatchChatState(
+  matchId: string,
+  options?: MatchChatStateOptions,
+): Promise<MatchChatMatchState> {
   const [liveHighlight, highlight] = await Promise.all([
     getLiveBangladeshHighlight().catch(() => null),
     getMatchHighlight().catch(() => null),
@@ -16,6 +24,7 @@ export async function resolveMatchChatState(matchId: string): Promise<MatchChatM
 
   const isCurrent = highlight?.matchId === matchId;
   const isLive =
+    Boolean(options?.liveHint) ||
     liveHighlight?.matchId === matchId ||
     (isCurrent && highlight.mode === "live");
   const isCompleted = isCurrent && highlight.mode === "completed" && !isLive;

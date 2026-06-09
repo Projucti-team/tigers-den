@@ -41,11 +41,15 @@ function toChatMessage(doc: MatchChatMessageDoc): MatchChatMessage {
   };
 }
 
-export function canPostInChat(room: Pick<MatchChatRoomDoc, "endedAt">, isLive: boolean): boolean {
-  if (isLive) return true;
-  if (!room.endedAt) return false;
+export function canPostInChat(
+  room: Pick<MatchChatRoomDoc, "endedAt">,
+  state: MatchChatRoomState,
+): boolean {
+  if (state.isLive) return true;
+  if (!state.isCompleted) return false;
+  if (!room.endedAt) return true;
   const ended = new Date(room.endedAt).getTime();
-  if (Number.isNaN(ended)) return false;
+  if (Number.isNaN(ended)) return true;
   return Date.now() < ended + MATCH_CHAT_POST_MATCH_MS;
 }
 
@@ -89,7 +93,7 @@ export async function syncMatchChatRoom(
   const data: { title?: string; endedAt?: string | null } = {};
   if (title) data.title = title;
   if (isLive) {
-    data.endedAt = null;
+    if (doc.endedAt != null) data.endedAt = null;
   } else if (isCompleted && !doc.endedAt) {
     data.endedAt = nowIso;
   }
@@ -133,7 +137,7 @@ export async function createMatchChatMessage(
   if (trimmed.length > MATCH_CHAT_MESSAGE_MAX) throw new Error("MESSAGE_TOO_LONG");
 
   const room = await syncMatchChatRoom(matchId, undefined, state);
-  if (!canPostInChat(room, state.isLive)) {
+  if (!canPostInChat(room, state)) {
     throw new Error("CHAT_CLOSED");
   }
 
@@ -161,14 +165,13 @@ export async function getMatchChatSnapshot(
 ): Promise<MatchChatSnapshot> {
   await ensureSqliteMatchChatTables().catch(() => undefined);
   const room = await syncMatchChatRoom(matchId, title, state);
-  const { isLive } = state;
   const messages = await listMatchChatMessages(matchId);
 
   return {
     matchId,
     matchTitle: String(room.title || title),
-    canPost: canPostInChat(room, isLive),
-    isLive,
+    canPost: canPostInChat(room, state),
+    isLive: state.isLive,
     endedAt: room.endedAt ? String(room.endedAt) : null,
     messages,
   };
