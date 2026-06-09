@@ -25,7 +25,9 @@ async function main() {
       const teams = data.teams[format]?.length ?? 0;
       const bat = data.players[format]?.topBatsmen?.length ?? 0;
       const bowl = data.players[format]?.topBowlers?.length ?? 0;
-      console.log(`  ${gender} ${format}: ${teams} teams, ${bat} batters, ${bowl} bowlers`);
+      console.log(
+        `  ${gender} ${format}: ${teams} teams, ${bat} batters, ${bowl} bowlers (top 100 depth)`,
+      );
     }
   }
 }

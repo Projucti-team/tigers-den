@@ -12,6 +12,7 @@ const MAX_CACHE_AGE_HOURS = 36;
 export type WtcShowcase = {
   cycleLabel: string;
   standings: WtcTeamStanding[];
+  topStandings: WtcTeamStanding[];
   bangladesh: WtcTeamStanding | null;
 };
 
@@ -30,6 +31,7 @@ export function wtcShowcaseFromSnapshot(snapshot: WtcStandingsSnapshot): WtcShow
   return {
     cycleLabel: snapshot.cycleLabel,
     standings: snapshot.standings,
+    topStandings: snapshot.standings.slice(0, 10),
     bangladesh: findBangladesh(snapshot.standings),
   };
 }

@@ -1,7 +1,10 @@
-import { PlayerRankAvatar } from "@/components/home/PlayerRankAvatar";
+import {
+  BangladeshRankCard,
+  TigerPlayerCard,
+  WtcBangladeshCard,
+} from "@/components/rankings/RankingsUi";
 import type { FormatShowcase, RankingsShowcase } from "@/lib/cricket/services/rankings-display";
 import type { WtcShowcase } from "@/lib/cricket/services/wtc";
-import type { RankedPlayer } from "@/lib/cricket/types";
 
 type Props = {
   men: RankingsShowcase;
@@ -9,176 +12,6 @@ type Props = {
   wtc?: WtcShowcase | null;
   warnings?: string[];
 };
-
-function BangladeshRankCard({ format }: { format: FormatShowcase }) {
-  const hasRank = format.bangladeshRank != null;
-
-  return (
-    <div className="flex flex-1 flex-col items-center rounded-xl border-4 border-emerald bg-white p-5 shadow-lg transition-transform hover:-translate-y-1">
-      <p className="font-display text-sm font-extrabold uppercase tracking-widest text-crimson">
-        {format.label}
-      </p>
-      {hasRank ? (
-        <>
-          <p className="mt-3 font-display text-6xl font-extrabold leading-none text-emerald md:text-7xl">
-            #{format.bangladeshRank}
-          </p>
-          <p className="mt-2 font-mono text-xs font-bold uppercase text-charcoal/60">
-            ICC Team Ranking
-          </p>
-          {format.bangladeshRating != null && (
-            <p className="mt-3 rounded-full bg-emerald/10 px-4 py-1 font-mono text-sm font-bold text-emerald">
-              Rating {format.bangladeshRating}
-            </p>
-          )}
-        </>
-      ) : (
-        <p className="mt-6 text-center text-sm font-semibold text-charcoal/50">
-          Ranking unavailable
-        </p>
-      )}
-      <div className="mt-4 h-1 w-full rounded-full bg-gradient-to-r from-emerald to-crimson" />
-    </div>
-  );
-}
-
-function WtcBangladeshCard({ wtc }: { wtc: WtcShowcase }) {
-  const bd = wtc.bangladesh;
-  if (!bd) {
-    return (
-      <div className="flex flex-1 flex-col items-center rounded-xl border-4 border-crimson/40 bg-white p-5 shadow-lg">
-        <p className="font-display text-sm font-extrabold uppercase tracking-widest text-crimson">
-          WTC {wtc.cycleLabel}
-        </p>
-        <p className="mt-6 text-center text-sm font-semibold text-charcoal/50">
-          Standings unavailable
-        </p>
-      </div>
-    );
-  }
-
-  return (
-    <div className="flex flex-1 flex-col items-center rounded-xl border-4 border-crimson bg-white p-5 shadow-lg transition-transform hover:-translate-y-1">
-      <p className="font-display text-sm font-extrabold uppercase tracking-widest text-crimson">
-        WTC {wtc.cycleLabel}
-      </p>
-      <p className="mt-3 font-display text-6xl font-extrabold leading-none text-emerald md:text-7xl">
-        #{bd.rank}
-      </p>
-      <p className="mt-2 font-mono text-xs font-bold uppercase text-charcoal/60">
-        World Test Championship
-      </p>
-      <p className="mt-3 rounded-full bg-crimson/10 px-4 py-1 font-mono text-sm font-bold text-crimson">
-        {bd.pct}% PCT
-      </p>
-      <p className="mt-2 font-mono text-xs font-bold text-charcoal/50">
-        {bd.won}W · {bd.lost}L{bd.drawn > 0 ? ` · ${bd.drawn}D` : ""} · {bd.played} played
-      </p>
-      <div className="mt-4 h-1 w-full rounded-full bg-gradient-to-r from-crimson to-emerald" />
-    </div>
-  );
-}
-
-const ACCENT_STYLES = {
-  green: {
-    border: "border-emerald/40",
-    accent: "border-l-emerald",
-    badge: "bg-emerald text-white",
-    rank: "text-emerald",
-  },
-  red: {
-    border: "border-crimson/40",
-    accent: "border-l-crimson",
-    badge: "bg-crimson text-white",
-    rank: "text-crimson",
-  },
-  amber: {
-    border: "border-amber/50",
-    accent: "border-l-amber",
-    badge: "bg-charcoal text-amber",
-    rank: "text-charcoal",
-  },
-} as const;
-
-function playerPhotoSrc(player: RankedPlayer): string | null {
-  const url = player.imageUrl ?? "";
-  if (!url || url.includes("ui-avatars.com")) return null;
-  if (url.includes("/icon512.") || url.includes("default-player-logo")) return null;
-  if (player.iccPlayerId && url.includes("a.espncdn.com")) return null;
-  return url;
-}
-
-function TigerPlayerCard({
-  player,
-  role,
-  accent,
-}: {
-  player: FormatShowcase["topBatsman"];
-  role: "Batter" | "Bowler" | "All-Rounder";
-  accent: keyof typeof ACCENT_STYLES;
-}) {
-  if (!player) {
-    return (
-      <div className="flex min-h-[7rem] items-center justify-center rounded-xl border-2 border-dashed border-charcoal/20 bg-charcoal/5 px-4 text-center text-xs text-charcoal/40">
-        No ranked Tiger {role.toLowerCase()}
-      </div>
-    );
-  }
-
-  const { border, accent: accentBorder, badge, rank: rankColor } = ACCENT_STYLES[accent];
-  const fallbackSrc = `https://ui-avatars.com/api/?name=${encodeURIComponent(player.name)}&background=006a4e&color=fff&size=256&bold=true`;
-  const photo = playerPhotoSrc(player) ?? fallbackSrc;
-  const profileUrl = player.profileUrl;
-
-  const card = (
-    <article
-      className={`group relative flex min-h-[7rem] overflow-hidden rounded-xl border ${border} border-l-4 ${accentBorder} bg-white shadow-sm transition-shadow hover:shadow-md`}
-    >
-      <div className="flex min-w-0 flex-1 flex-col justify-center gap-1 py-4 pl-4 pr-[7.5rem] md:pr-36">
-        <span
-          className={`w-fit rounded px-2 py-0.5 font-display text-[10px] font-extrabold uppercase tracking-wide ${badge}`}
-        >
-          {role}
-        </span>
-        <p className={`font-display text-4xl font-extrabold leading-none md:text-5xl ${rankColor}`}>
-          #{player.rank}
-        </p>
-        <p className="font-display text-sm font-bold leading-snug text-charcoal md:text-base">
-          {player.name}
-        </p>
-      </div>
-
-      <div
-        className="pointer-events-none absolute inset-y-0 right-0 w-[7.5rem] bg-gradient-to-l from-charcoal/5 to-transparent md:w-36"
-        aria-hidden
-      />
-      <div className="absolute inset-y-0 right-0 w-[7.5rem] overflow-hidden md:w-36">
-        <PlayerRankAvatar
-          src={photo}
-          fallbackSrc={fallbackSrc}
-          alt={player.name}
-          className="h-full w-full object-cover object-top"
-        />
-      </div>
-    </article>
-  );
-
-  if (profileUrl) {
-    return (
-      <a
-        href={profileUrl}
-        target="_blank"
-        rel="noopener noreferrer"
-        className="block rounded-xl focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-emerald"
-        title={`View ${player.name} on ICC`}
-      >
-        {card}
-      </a>
-    );
-  }
-
-  return card;
-}
 
 function FormatColumn({ format }: { format: FormatShowcase }) {
   return (
@@ -227,7 +60,7 @@ function GenderBlock({
         {showcase.formats.map((f) => (
           <BangladeshRankCard key={f.format} format={f} />
         ))}
-        {wtc && <WtcBangladeshCard wtc={wtc} />}
+        {wtc ? <WtcBangladeshCard wtc={wtc} /> : null}
       </div>
 
       <div className="fan-vibrant-card rounded-2xl border-4 border-amber/50 p-5 md:p-8">
@@ -265,12 +98,12 @@ export function IccRankingsShowcase({ men, women, wtc = null, warnings = [] }: P
           <GenderBlock showcase={women} title="Women's Team" />
         </div>
 
-        {warnings.length > 0 && (
+        {warnings.length > 0 ? (
           <div className="mt-8 rounded-lg border-2 border-amber/40 bg-amber/15 px-4 py-3 text-center text-xs font-semibold text-amber">
             {warnings[0]}
-            {warnings.length > 1 && ` (+${warnings.length - 1} more — check /api/cricket)`}
+            {warnings.length > 1 ? ` (+${warnings.length - 1} more — check /api/cricket)` : null}
           </div>
-        )}
+        ) : null}
       </div>
     </section>
   );

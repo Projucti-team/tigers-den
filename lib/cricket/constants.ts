@@ -34,11 +34,24 @@ export function isBangladeshTeam(name: string): boolean {
   return false;
 }
 
+export const RANKINGS_TEAM_TOP = 10;
+export const RANKINGS_PLAYER_DEPTH = 100;
+
 /** Best ICC-ranked player from Bangladesh in a discipline (lowest rank number). */
 export function topBangladeshPlayer(players: RankedPlayer[]): RankedPlayer | null {
   const fromBd = players.filter((p) => isBangladeshTeam(p.team));
   if (!fromBd.length) return null;
   return fromBd.reduce((best, p) => (p.rank < best.rank ? p : best));
+}
+
+/** All Bangladesh players within the top N ICC positions. */
+export function bangladeshPlayersInTopRank(
+  players: RankedPlayer[],
+  maxRank = RANKINGS_PLAYER_DEPTH,
+): RankedPlayer[] {
+  return players
+    .filter((p) => p.rank > 0 && p.rank <= maxRank && isBangladeshTeam(p.team))
+    .sort((a, b) => a.rank - b.rank);
 }
 
 export function normalizeFormat(value: string): CricketFormat | null {

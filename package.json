@@ -26,6 +26,7 @@
     "scrape:espn-squads": "tsx scripts/scrape-espn-squads.ts",
     "sync:cricket": "tsx scripts/sync-cricket-nightly.ts",
     "sync:cricket:prod": "bash scripts/prod-cricket-sync.sh",
+    "rebuild:rankings": "tsx scripts/rebuild-rankings-showcase.ts",
     "generate:logo": "python3 scripts/process-tigers-den-logo.py"
   },
   "dependencies": {

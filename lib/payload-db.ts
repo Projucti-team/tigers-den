@@ -2,11 +2,13 @@ import { sqliteAdapter } from "@payloadcms/db-sqlite";
 import { vercelPostgresAdapter } from "@payloadcms/db-vercel-postgres";
 import type { DatabaseAdapterObj } from "payload";
 
+import { getPostgresConnectionString, isPostgresDatabase } from "@/lib/payload-postgres-url";
+
 import { migrations } from "../migrations";
 
 /** Neon / Vercel Postgres in production; SQLite file locally. */
 export function getPayloadDatabase(): DatabaseAdapterObj {
-  const postgresUrl = process.env.POSTGRES_URL || process.env.DATABASE_URL;
+  const postgresUrl = getPostgresConnectionString();
 
   if (postgresUrl) {
     return vercelPostgresAdapter({
@@ -26,9 +28,9 @@ export function getPayloadDatabase(): DatabaseAdapterObj {
   });
 }
 
-/** Postgres (Vercel/Neon) — uses committed SQL migrations. */
+/** Postgres (Vercel/Neon/Coolify) — uses committed SQL migrations. */
 export function isProductionDatabase(): boolean {
-  return Boolean(process.env.POSTGRES_URL || process.env.DATABASE_URL);
+  return isPostgresDatabase();
 }
 
 /** Any persisted Payload DB (Postgres or SQLite file on VPS/Docker). */

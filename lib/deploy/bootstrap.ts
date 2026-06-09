@@ -1,6 +1,8 @@
+import { needsRankingsShowcaseRebuild } from "@/lib/cricket/services/build-rankings-showcase";
+import { refreshRankingsShowcase } from "@/lib/cricket/services/rankings-display";
 import { CRICKET_SNAPSHOT_KEYS } from "@/lib/cricket/snapshot-keys";
 import { getLastCricketSyncFetchedAt, readCricketSnapshot } from "@/lib/cricket/snapshot-db";
-import type { ToursIndexSnapshot } from "@/lib/cricket/snapshot-types";
+import type { RankingsShowcaseSnapshot, ToursIndexSnapshot } from "@/lib/cricket/snapshot-types";
 import {
   syncCricketSnapshots,
   type SyncCricketResult,
@@ -57,13 +59,25 @@ export async function runDeployBootstrap(options?: {
 
   const forceSync = options?.forceCricketSync === true;
   const lastSync = await getLastCricketSyncFetchedAt();
-  const toursSnapshot = await readCricketSnapshot<ToursIndexSnapshot>(
-    CRICKET_SNAPSHOT_KEYS.toursIndex,
-  );
+  const [toursSnapshot, rankingsSnapshot] = await Promise.all([
+    readCricketSnapshot<ToursIndexSnapshot>(CRICKET_SNAPSHOT_KEYS.toursIndex),
+    readCricketSnapshot<RankingsShowcaseSnapshot>(CRICKET_SNAPSHOT_KEYS.rankingsShowcase),
+  ]);
   const hasTours = (toursSnapshot?.tours?.length ?? 0) > 0;
+  const rankingsCurrent = !needsRankingsShowcaseRebuild(rankingsSnapshot);
 
-  if (!forceSync && lastSync && hasTours) {
+  if (!forceSync && lastSync && hasTours && rankingsCurrent) {
     return { migrations: "ok", cricketSync: "skipped", errors: [] };
+  }
+
+  if (!forceSync && hasTours && !rankingsCurrent) {
+    try {
+      await refreshRankingsShowcase();
+      return { migrations: "ok", cricketSync: "ran", errors: [] };
+    } catch (err) {
+      const message = err instanceof Error ? err.message : "Rankings rebuild failed";
+      errors.push(message);
+    }
   }
 
   if (!process.env.CRICKET_DATA_API_KEY?.trim()) {

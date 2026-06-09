@@ -1,5 +1,11 @@
 import type { CricketFormat, Gender, GenderRankings, RankedPlayer, RankedTeam } from "@/lib/cricket/types";
-import { FORMATS, FORMATS_BY_GENDER, isBangladeshTeam, topBangladeshPlayer } from "@/lib/cricket/constants";
+import {
+  FORMATS,
+  FORMATS_BY_GENDER,
+  RANKINGS_PLAYER_DEPTH,
+  isBangladeshTeam,
+  topBangladeshPlayer,
+} from "@/lib/cricket/constants";
 
 /** Public JSON feed used by https://www.icc-cricket.com/rankings */
 const ICC_SPORTZ_BASE = "https://assets-icc.sportz.io/cricket/v1/ranking";
@@ -192,9 +198,9 @@ async function buildGenderRankings(gender: Gender): Promise<GenderRankings> {
     bangladesh[format] = findBangladesh(teamList);
     players[format] = {
       format,
-      topBatsmen: batsmen.slice(0, 5),
-      topBowlers: bowlers.slice(0, 5),
-      topAllRounders: allRounders.slice(0, 5),
+      topBatsmen: batsmen.slice(0, RANKINGS_PLAYER_DEPTH),
+      topBowlers: bowlers.slice(0, RANKINGS_PLAYER_DEPTH),
+      topAllRounders: allRounders.slice(0, RANKINGS_PLAYER_DEPTH),
       topBangladeshBatsman: topBangladeshPlayer(batsmen),
       topBangladeshBowler: topBangladeshPlayer(bowlers),
       topBangladeshAllRounder: topBangladeshPlayer(allRounders),

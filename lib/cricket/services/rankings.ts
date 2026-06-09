@@ -1,4 +1,10 @@
-import { FORMATS, isBangladeshTeam } from "@/lib/cricket/constants";
+import {
+  FORMATS,
+  FORMATS_BY_GENDER,
+  GENDERS,
+  RANKINGS_PLAYER_DEPTH,
+  isBangladeshTeam,
+} from "@/lib/cricket/constants";
 import {
   readIccRankingsSnapshot,
   snapshotAgeHours,
@@ -9,6 +15,17 @@ import type { IccRankingsSnapshot } from "@/lib/cricket/providers/icc-sportz";
 import type { GenderRankings } from "@/lib/cricket/types";
 
 const MAX_CACHE_AGE_HOURS = 36;
+
+/** Older scrapes only stored the ICC top 5 — refetch when lists are shallow. */
+function isShallowIccSnapshot(snapshot: IccRankingsSnapshot): boolean {
+  for (const gender of GENDERS) {
+    for (const format of FORMATS_BY_GENDER[gender]) {
+      const count = snapshot[gender].players[format]?.topBatsmen?.length ?? 0;
+      if (count > 0 && count < RANKINGS_PLAYER_DEPTH) return true;
+    }
+  }
+  return false;
+}
 
 function findBangladesh(teams: GenderRankings["teams"]["test"]) {
   return (
@@ -51,16 +68,28 @@ export async function getRankings(): Promise<{
 
   if (snapshot) {
     const ageH = snapshotAgeHours(snapshot);
-    if (ageH > MAX_CACHE_AGE_HOURS) {
+    const shallow = isShallowIccSnapshot(snapshot);
+
+    if (shallow) {
+      warnings.push(
+        "ICC rankings cache only has top-5 players — refreshing from icc-cricket.com for full top 100.",
+      );
+    } else if (ageH > MAX_CACHE_AGE_HOURS) {
       warnings.push(
         `ICC rankings cache is ${Math.round(ageH)}h old. Run \`npm run scrape:icc-rankings\` or wait for the nightly job.`,
       );
+      return {
+        men: normalizeGenderRankings(snapshot.men),
+        women: normalizeGenderRankings(snapshot.women),
+        warnings,
+      };
+    } else {
+      return {
+        men: normalizeGenderRankings(snapshot.men),
+        women: normalizeGenderRankings(snapshot.women),
+        warnings,
+      };
     }
-    return {
-      men: normalizeGenderRankings(snapshot.men),
-      women: normalizeGenderRankings(snapshot.women),
-      warnings,
-    };
   }
 
   warnings.push(

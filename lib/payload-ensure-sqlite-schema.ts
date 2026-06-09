@@ -84,7 +84,41 @@ export async function ensureSqliteMatchChatTables(): Promise<void> {
   sqliteMatchChatReady = true;
 }
 
+const SQLITE_LOCKED_DOCS_REL_COLUMNS = [
+  "stand_discussions_id",
+  "chants_id",
+  "stand_reactions_id",
+  "stand_comments_id",
+  "match_chat_rooms_id",
+  "match_chat_messages_id",
+  "cricket_snapshots_id",
+] as const;
+
+/** Payload locked-document rels need a column per collection (SQLite). */
+export async function ensureSqlitePayloadLockedDocumentsRels(): Promise<void> {
+  const client = sqliteClient();
+  if (!client) return;
+
+  const info = await client.execute(`PRAGMA table_info("payload_locked_documents_rels")`);
+  const existing = new Set(
+    info.rows.map((row) => String((row as Record<string, unknown>).name ?? "")),
+  );
+
+  if (!existing.size) return;
+
+  for (const column of SQLITE_LOCKED_DOCS_REL_COLUMNS) {
+    if (existing.has(column)) continue;
+    await client.execute(
+      `ALTER TABLE "payload_locked_documents_rels" ADD COLUMN "${column}" integer`,
+    );
+  }
+}
+
 /** Idempotent SQLite schema patches for VPS/Docker deploys. */
 export async function ensureSqliteIncrementalSchema(): Promise<void> {
-  await Promise.all([ensureSqliteCricketSnapshotsTable(), ensureSqliteMatchChatTables()]);
+  await Promise.all([
+    ensureSqliteCricketSnapshotsTable(),
+    ensureSqliteMatchChatTables(),
+    ensureSqlitePayloadLockedDocumentsRels(),
+  ]);
 }

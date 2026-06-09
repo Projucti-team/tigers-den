@@ -1,16 +1,25 @@
-import { FORMATS_BY_GENDER, topBangladeshPlayer } from "@/lib/cricket/constants";
+import {
+  FORMATS_BY_GENDER,
+  RANKINGS_TEAM_TOP,
+  bangladeshPlayersInTopRank,
+  topBangladeshPlayer,
+} from "@/lib/cricket/constants";
 import { enrichPlayerImage } from "@/lib/cricket/player-images";
 import type { IccRankingsSnapshot } from "@/lib/cricket/providers/icc-sportz";
 import { getRankings, rankingsFromIccSnapshot } from "@/lib/cricket/services/rankings";
 import { getWtcStandings, wtcShowcaseFromSnapshot, type WtcShowcase } from "@/lib/cricket/services/wtc";
 import type { WtcStandingsSnapshot } from "@/lib/cricket/types";
-import type { RankingsShowcaseSnapshot } from "@/lib/cricket/snapshot-types";
+import {
+  RANKINGS_SHOWCASE_VERSION,
+  type RankingsShowcaseSnapshot,
+} from "@/lib/cricket/snapshot-types";
 import type {
   CricketFormat,
   FormatRankings,
   Gender,
   GenderRankings,
   RankedPlayer,
+  RankedTeam,
 } from "@/lib/cricket/types";
 
 export type FormatShowcase = {
@@ -21,6 +30,10 @@ export type FormatShowcase = {
   topBatsman: RankedPlayer | null;
   topBowler: RankedPlayer | null;
   topAllRounder: RankedPlayer | null;
+  topTeams: RankedTeam[];
+  bangladeshBatters: RankedPlayer[];
+  bangladeshBowlers: RankedPlayer[];
+  bangladeshAllRounders: RankedPlayer[];
 };
 
 export type RankingsShowcase = {
@@ -34,6 +47,30 @@ const FORMAT_LABELS: Record<CricketFormat, string> = {
   odi: "ODI",
   t20: "T20I",
 };
+
+export function emptyFormatShowcase(format: CricketFormat): FormatShowcase {
+  return {
+    format,
+    label: FORMAT_LABELS[format],
+    bangladeshRank: null,
+    bangladeshRating: null,
+    topBatsman: null,
+    topBowler: null,
+    topAllRounder: null,
+    topTeams: [],
+    bangladeshBatters: [],
+    bangladeshBowlers: [],
+    bangladeshAllRounders: [],
+  };
+}
+
+export function emptyRankingsShowcase(gender: Gender): RankingsShowcase {
+  return {
+    gender,
+    formats: FORMATS_BY_GENDER[gender].map((format) => emptyFormatShowcase(format)),
+    warnings: [],
+  };
+}
 
 function resolveTopBangladesh(
   formatData: FormatRankings,
@@ -89,7 +126,8 @@ async function buildShowcase(gender: Gender, data: GenderRankings): Promise<Rank
 
   for (const format of FORMATS_BY_GENDER[gender]) {
     const bd = data.bangladesh[format];
-    const players = await enrichFormatPlayers(data.players[format]);
+    const formatPlayers = data.players[format];
+    const players = await enrichFormatPlayers(formatPlayers);
 
     formats.push({
       format,
@@ -99,6 +137,10 @@ async function buildShowcase(gender: Gender, data: GenderRankings): Promise<Rank
       topBatsman: players.topBatsman,
       topBowler: players.topBowler,
       topAllRounder: players.topAllRounder,
+      topTeams: data.teams[format].slice(0, RANKINGS_TEAM_TOP),
+      bangladeshBatters: bangladeshPlayersInTopRank(formatPlayers.topBatsmen),
+      bangladeshBowlers: bangladeshPlayersInTopRank(formatPlayers.topBowlers),
+      bangladeshAllRounders: bangladeshPlayersInTopRank(formatPlayers.topAllRounders),
     });
   }
 
@@ -133,12 +175,34 @@ export async function buildRankingsShowcaseLive(
   ]);
 
   return {
+    version: RANKINGS_SHOWCASE_VERSION,
     fetchedAt: new Date().toISOString(),
     men: menShowcase,
     women: womenShowcase,
     wtc,
     warnings: [...rankWarnings, ...wtcWarnings],
   };
+}
+
+export function needsRankingsShowcaseRebuild(
+  snapshot: RankingsShowcaseSnapshot | null | undefined,
+): boolean {
+  return !snapshot || snapshot.version !== RANKINGS_SHOWCASE_VERSION;
+}
+
+export function logRankingsShowcaseStats(snapshot: RankingsShowcaseSnapshot): void {
+  for (const showcase of [snapshot.men, snapshot.women]) {
+    for (const f of showcase.formats) {
+      console.log(
+        `  ${showcase.gender} ${f.format}: ${f.topTeams.length} teams, ` +
+          `${f.bangladeshBatters.length} bat, ${f.bangladeshBowlers.length} bowl, ` +
+          `${f.bangladeshAllRounders.length} ar`,
+      );
+    }
+  }
+  if (snapshot.wtc) {
+    console.log(`  wtc: ${snapshot.wtc.topStandings.length} teams (${snapshot.wtc.cycleLabel})`);
+  }
 }
 
 export type { WtcShowcase };

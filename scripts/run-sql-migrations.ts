@@ -62,8 +62,8 @@ async function appliedNames(pool: Pool): Promise<Set<string>> {
 async function main() {
   loadEnvFiles();
 
-  const connectionString =
-    process.env.POSTGRES_URL?.trim() || process.env.DATABASE_URL?.trim();
+  const { getPostgresConnectionString } = await import("../lib/payload-postgres-url");
+  const connectionString = getPostgresConnectionString();
 
   if (!connectionString) {
     console.log("[deploy:migrate] No POSTGRES_URL — skipping (SQLite uses runtime schema ensure).");

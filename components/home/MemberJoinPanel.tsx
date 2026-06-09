@@ -186,7 +186,7 @@ export function MemberJoinPanel({ authConfigured, enabledProviders }: MemberJoin
                 value={country}
                 onChange={(e) => setCountry(e.target.value)}
                 placeholder="e.g. Bangladesh, UK, USA"
-                className="w-full rounded border-2 border-emerald/40 bg-white px-4 py-3 text-sm outline-none focus:border-emerald"
+                className="w-full rounded border-2 border-emerald/40 bg-white px-4 py-3 text-sm text-charcoal placeholder:text-charcoal/45 outline-none focus:border-emerald"
               />
             </div>
             <div>
@@ -202,7 +202,7 @@ export function MemberJoinPanel({ authConfigured, enabledProviders }: MemberJoin
                 value={favoritePlayer}
                 onChange={(e) => setFavoritePlayer(e.target.value)}
                 placeholder="e.g. Shakib Al Hasan"
-                className="w-full rounded border-2 border-emerald/40 bg-white px-4 py-3 text-sm outline-none focus:border-emerald"
+                className="w-full rounded border-2 border-emerald/40 bg-white px-4 py-3 text-sm text-charcoal placeholder:text-charcoal/45 outline-none focus:border-emerald"
               />
             </div>
 

@@ -19,9 +19,9 @@ if [ -d /app/media-seed ] && [ -z "$(ls -A /app/media 2>/dev/null)" ]; then
   cp -r /app/media-seed/. /app/media/ 2>/dev/null || true
 fi
 
-# After Coolify/VPS deploy: ensure tours exist (skips if snapshots already fresh).
+# After Coolify/VPS deploy: run DB migrations (+ optional cricket sync).
 # Set CRICKET_SYNC_ON_START=0 to disable. Set to "force" to always run full sync.
-if [ -n "${CRON_SECRET:-}" ] && [ -n "${CRICKET_DATA_API_KEY:-}" ]; then
+if [ -n "${CRON_SECRET:-}" ]; then
   case "${CRICKET_SYNC_ON_START:-1}" in
     0|false|no|off) ;;
     *)

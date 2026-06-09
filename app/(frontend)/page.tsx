@@ -7,14 +7,12 @@ import { LiveMatchStrip } from "@/components/home/LiveMatchStrip";
 import { NewsFeed } from "@/components/home/NewsFeed";
 import { MerchSection } from "@/components/home/MerchSection";
 // import { WhyJoinSection } from "@/components/home/WhyJoinSection";
-import { FORMATS_BY_GENDER } from "@/lib/cricket/constants";
 import { getMatchHighlight, getRankingsShowcase, getTourCards } from "@/lib/cricket";
 import { getBangladeshCricketNews } from "@/lib/news/services/bangladesh-news";
-import type { CricketFormat } from "@/lib/cricket/types";
+import { emptyRankingsShowcase } from "@/lib/cricket/services/rankings-display";
 import { formatThreadFromPost, isSlideVisible } from "@/lib/data";
 import { getPayloadClient } from "@/lib/payload";
 import type { HeroSlide, Media, Post } from "@/payload-types";
-import type { RankingsShowcase } from "@/lib/cricket/services/rankings-display";
 
 /** CMS hero + forum threads must not be frozen at build time. */
 export const dynamic = "force-dynamic";
@@ -68,32 +66,12 @@ async function getHomeContent() {
   }
 }
 
-const FORMAT_LABELS: Record<CricketFormat, string> = {
-  test: "Test",
-  odi: "ODI",
-  t20: "T20I",
-};
-
-const emptyShowcase = (gender: "men" | "women"): RankingsShowcase => ({
-  gender,
-  formats: FORMATS_BY_GENDER[gender].map((format) => ({
-    format,
-    label: FORMAT_LABELS[format],
-    bangladeshRank: null,
-    bangladeshRating: null,
-    topBatsman: null,
-    topBowler: null,
-    topAllRounder: null,
-  })),
-  warnings: [],
-});
-
 export default async function HomePage() {
   const [{ slides, threads }, rankings, toursResult, matchHighlight, news] = await Promise.all([
     getHomeContent(),
     getRankingsShowcase().catch(() => ({
-      men: emptyShowcase("men"),
-      women: emptyShowcase("women"),
+      men: emptyRankingsShowcase("men"),
+      women: emptyRankingsShowcase("women"),
       wtc: null,
       warnings: ["ICC rankings unavailable. Run npm run scrape:icc-rankings to refresh data/icc-rankings.json."],
     })),

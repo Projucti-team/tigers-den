@@ -2,6 +2,7 @@ import { migrations } from "@/migrations";
 
 import type { Payload } from "payload";
 
+import { ensurePostgresPayloadSchema } from "@/lib/payload-ensure-postgres-schema";
 import { ensureSqliteIncrementalSchema } from "@/lib/payload-ensure-sqlite-schema";
 import { isProductionDatabase } from "@/lib/payload-db";
 
@@ -20,6 +21,7 @@ export function ensurePayloadSchema(payload: Payload): Promise<void> {
 
 async function runSchemaEnsure(payload: Payload): Promise<void> {
   if (isProductionDatabase()) {
+    await ensurePostgresPayloadSchema();
     if (migrations.length === 0) return;
     const adapter = payload.db as {
       migrate: (args: { migrations: typeof migrations }) => Promise<void>;

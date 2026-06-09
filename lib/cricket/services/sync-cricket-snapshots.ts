@@ -4,7 +4,10 @@ import type { IccRankingsSnapshot } from "@/lib/cricket/providers/icc-sportz";
 import { fetchWtcStandingsFromEspn } from "@/lib/cricket/providers/wtc-espn";
 import { writeIccRankingsSnapshot } from "@/lib/cricket/icc-rankings-store";
 import { writeWtcStandingsSnapshot } from "@/lib/cricket/wtc-store";
-import { buildRankingsShowcaseLive } from "@/lib/cricket/services/build-rankings-showcase";
+import {
+  buildRankingsShowcaseLive,
+  logRankingsShowcaseStats,
+} from "@/lib/cricket/services/build-rankings-showcase";
 import { buildTourDetailLive, toTourDetailSnapshot } from "@/lib/cricket/services/build-tour-detail";
 import {
   beginCricApiSyncSession,
@@ -169,6 +172,8 @@ export async function syncCricketSnapshots(): Promise<SyncCricketResult> {
       "ICC rankings showcase",
       rankings,
     );
+    console.log("[cricket] rankings showcase saved:");
+    logRankingsShowcaseStats(rankings);
     warnings.push(...rankings.warnings);
   } catch (e) {
     errors.push(`Rankings showcase: ${e instanceof Error ? e.message : "failed"}`);

@@ -1,0 +1,87 @@
+import { getPostgresConnectionString } from "@/lib/payload-postgres-url";
+
+let postgresSchemaReady: Promise<void> | null = null;
+
+/**
+ * Idempotent Postgres DDL — runs on every app boot so Coolify/Docker never miss a rel column
+ * (deploy:migrate uses tsx and is not available in the production container).
+ */
+export function ensurePostgresPayloadSchema(): Promise<void> {
+  if (!postgresSchemaReady) {
+    postgresSchemaReady = runPostgresPatches().catch((err) => {
+      postgresSchemaReady = null;
+      throw err;
+    });
+  }
+  return postgresSchemaReady;
+}
+
+async function runPostgresPatches(): Promise<void> {
+  const connectionString = getPostgresConnectionString();
+  if (!connectionString) return;
+
+  const { Pool } = await import("pg");
+  const pool = new Pool({ connectionString });
+
+  try {
+    await pool.query(`
+      CREATE TABLE IF NOT EXISTS "cricket_snapshots" (
+        "id" serial PRIMARY KEY NOT NULL,
+        "key" varchar NOT NULL,
+        "label" varchar NOT NULL,
+        "fetched_at" timestamp(3) with time zone NOT NULL,
+        "data" jsonb NOT NULL,
+        "updated_at" timestamp(3) with time zone DEFAULT now() NOT NULL,
+        "created_at" timestamp(3) with time zone DEFAULT now() NOT NULL
+      );
+    `);
+
+    await pool.query(`
+      CREATE UNIQUE INDEX IF NOT EXISTS "cricket_snapshots_key_idx"
+      ON "cricket_snapshots" USING btree ("key");
+    `);
+
+    await pool.query(`
+      CREATE TABLE IF NOT EXISTS "payload_locked_documents_rels" (
+        "id" serial PRIMARY KEY NOT NULL,
+        "order" integer,
+        "parent_id" integer NOT NULL,
+        "path" varchar NOT NULL,
+        "users_id" integer,
+        "members_id" integer,
+        "member_posts_id" integer,
+        "member_follows_id" integer,
+        "media_id" integer,
+        "posts_id" integer,
+        "hero_slides_id" integer,
+        "cricket_snapshots_id" integer,
+        "stand_discussions_id" integer,
+        "chants_id" integer,
+        "stand_reactions_id" integer,
+        "stand_comments_id" integer,
+        "match_chat_rooms_id" integer,
+        "match_chat_messages_id" integer
+      );
+    `);
+
+    await pool.query(`
+      ALTER TABLE "payload_locked_documents_rels"
+        ADD COLUMN IF NOT EXISTS "users_id" integer,
+        ADD COLUMN IF NOT EXISTS "members_id" integer,
+        ADD COLUMN IF NOT EXISTS "member_posts_id" integer,
+        ADD COLUMN IF NOT EXISTS "member_follows_id" integer,
+        ADD COLUMN IF NOT EXISTS "media_id" integer,
+        ADD COLUMN IF NOT EXISTS "posts_id" integer,
+        ADD COLUMN IF NOT EXISTS "hero_slides_id" integer,
+        ADD COLUMN IF NOT EXISTS "cricket_snapshots_id" integer,
+        ADD COLUMN IF NOT EXISTS "stand_discussions_id" integer,
+        ADD COLUMN IF NOT EXISTS "chants_id" integer,
+        ADD COLUMN IF NOT EXISTS "stand_reactions_id" integer,
+        ADD COLUMN IF NOT EXISTS "stand_comments_id" integer,
+        ADD COLUMN IF NOT EXISTS "match_chat_rooms_id" integer,
+        ADD COLUMN IF NOT EXISTS "match_chat_messages_id" integer;
+    `);
+  } finally {
+    await pool.end();
+  }
+}
