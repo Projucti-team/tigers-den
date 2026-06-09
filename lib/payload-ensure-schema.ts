@@ -2,16 +2,15 @@ import { migrations } from "@/migrations";
 
 import type { Payload } from "payload";
 
+import { ensureSqliteIncrementalSchema } from "@/lib/payload-ensure-sqlite-schema";
 import { isProductionDatabase } from "@/lib/payload-db";
 
 let schemaReady: Promise<void> | null = null;
 
-/** Run committed SQL migrations (no drizzle-kit — safe on Vercel serverless). */
+/** Run committed SQL migrations (Postgres) or incremental SQLite DDL (VPS/Docker). */
 export function ensurePayloadSchema(payload: Payload): Promise<void> {
-  if (!isProductionDatabase() || migrations.length === 0) return Promise.resolve();
-
   if (!schemaReady) {
-    schemaReady = runMigrations(payload).catch((err) => {
+    schemaReady = runSchemaEnsure(payload).catch((err) => {
       schemaReady = null;
       throw err;
     });
@@ -19,10 +18,18 @@ export function ensurePayloadSchema(payload: Payload): Promise<void> {
   return schemaReady;
 }
 
-async function runMigrations(payload: Payload): Promise<void> {
-  const adapter = payload.db as {
-    migrate: (args: { migrations: typeof migrations }) => Promise<void>;
-  };
-  // prodMigrations on connect usually runs first; this covers manual bootstrap calls.
-  await adapter.migrate({ migrations });
+async function runSchemaEnsure(payload: Payload): Promise<void> {
+  if (isProductionDatabase()) {
+    if (migrations.length === 0) return;
+    const adapter = payload.db as {
+      migrate: (args: { migrations: typeof migrations }) => Promise<void>;
+    };
+    await adapter.migrate({ migrations });
+    return;
+  }
+
+  const uri = process.env.DATABASE_URI?.trim();
+  if (uri?.startsWith("file:")) {
+    await ensureSqliteIncrementalSchema();
+  }
 }

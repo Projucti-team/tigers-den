@@ -1,3 +1,4 @@
+import { ensureSqliteMatchChatTables } from "@/lib/payload-ensure-sqlite-schema";
 import { resolveMemberId, toPublicMember } from "@/lib/social/member-record";
 import { getPayloadClient } from "@/lib/payload";
 import {
@@ -158,6 +159,7 @@ export async function getMatchChatSnapshot(
   title: string | undefined,
   state: MatchChatRoomState,
 ): Promise<MatchChatSnapshot> {
+  await ensureSqliteMatchChatTables().catch(() => undefined);
   const room = await syncMatchChatRoom(matchId, title, state);
   const { isLive } = state;
   const messages = await listMatchChatMessages(matchId);

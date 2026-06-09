@@ -1,15 +1,16 @@
 /**
- * Apply Payload SQL migrations without loading Payload CLI (avoids @next/env / undici issues).
+ * Apply pending Payload SQL migrations without loading Payload CLI (Vercel builds).
+ * Coolify/Docker SQLite uses ensureSqliteIncrementalSchema at runtime instead.
  */
 import { readFileSync, existsSync } from "node:fs";
 import { resolve } from "node:path";
 import { drizzle } from "drizzle-orm/node-postgres";
 import { Pool } from "pg";
 
-import { up } from "../migrations/20260524_000000_initial_schema";
+import { migrations } from "../migrations";
 
 function loadEnvFiles() {
-  for (const name of [".env", ".env.local"]) {
+  for (const name of [".env", ".env.local", ".env.production"]) {
     const path = resolve(process.cwd(), name);
     if (!existsSync(path)) continue;
     const content = readFileSync(path, "utf8");
@@ -33,6 +34,31 @@ function loadEnvFiles() {
   }
 }
 
+async function latestBatch(pool: Pool): Promise<number> {
+  const exists = await pool.query(
+    `SELECT 1 FROM information_schema.tables WHERE table_schema = 'public' AND table_name = 'payload_migrations'`,
+  );
+  if ((exists.rowCount ?? 0) === 0) return 0;
+
+  const result = await pool.query<{ batch: string | number | null }>(
+    `SELECT batch FROM payload_migrations ORDER BY batch DESC NULLS LAST LIMIT 1`,
+  );
+  const batch = Number(result.rows[0]?.batch ?? 0);
+  return Number.isFinite(batch) ? batch : 0;
+}
+
+async function appliedNames(pool: Pool): Promise<Set<string>> {
+  const exists = await pool.query(
+    `SELECT 1 FROM information_schema.tables WHERE table_schema = 'public' AND table_name = 'payload_migrations'`,
+  );
+  if ((exists.rowCount ?? 0) === 0) return new Set();
+
+  const result = await pool.query<{ name: string | null }>(
+    `SELECT name FROM payload_migrations WHERE name IS NOT NULL`,
+  );
+  return new Set(result.rows.map((row) => String(row.name)));
+}
+
 async function main() {
   loadEnvFiles();
 
@@ -40,7 +66,7 @@ async function main() {
     process.env.POSTGRES_URL?.trim() || process.env.DATABASE_URL?.trim();
 
   if (!connectionString) {
-    console.log("[deploy:migrate] No POSTGRES_URL — skipping (local SQLite build).");
+    console.log("[deploy:migrate] No POSTGRES_URL — skipping (SQLite uses runtime schema ensure).");
     return;
   }
 
@@ -48,17 +74,26 @@ async function main() {
   const db = drizzle(pool);
 
   try {
-    const exists = await pool.query(
-      `SELECT 1 FROM information_schema.tables WHERE table_schema = 'public' AND table_name = 'cricket_snapshots'`,
-    );
+    const done = await appliedNames(pool);
+    const pending = migrations.filter((m) => !done.has(m.name));
 
-    if ((exists.rowCount ?? 0) > 0) {
-      console.log("[deploy:migrate] Schema already present — skipping.");
+    if (pending.length === 0) {
+      console.log("[deploy:migrate] All migrations already applied.");
       return;
     }
 
-    console.log("[deploy:migrate] Applying initial schema…");
-    await up({ db } as unknown as Parameters<typeof up>[0]);
+    const batch = (await latestBatch(pool)) + 1;
+
+    for (const migration of pending) {
+      console.log(`[deploy:migrate] Applying ${migration.name}…`);
+      await migration.up({ db } as unknown as Parameters<typeof migration.up>[0]);
+      await pool.query(`INSERT INTO payload_migrations (name, batch) VALUES ($1, $2)`, [
+        migration.name,
+        batch,
+      ]);
+      console.log(`[deploy:migrate] Applied ${migration.name}.`);
+    }
+
     console.log("[deploy:migrate] Done.");
   } finally {
     await pool.end();

@@ -41,15 +41,23 @@ Set these in Coolify → **Environment Variables** (production):
 
 Do **not** set `POSTGRES_URL` unless you intentionally use Neon/Postgres instead of SQLite.
 
-### One-time: missing `cricket_snapshots` table
+### Database schema (tours, stand, match chat)
 
-If admin sync errors mention the database table, add temporarily:
+Coolify uses **SQLite** on `/app/data` — do **not** run `npm run deploy:migrate` inside the production container (`tsx` is not installed there; that script is for Vercel/Postgres builds).
 
-```env
-PAYLOAD_SQLITE_PUSH_SCHEMA=1
+Schema updates run automatically when the app boots:
+
+1. **Container entrypoint** → `POST /api/admin/bootstrap-db` (when `CRON_SECRET` + `CRICKET_DATA_API_KEY` are set).
+2. **First chat load** → creates `match_chat_*` tables if missing.
+
+To apply schema manually after a deploy:
+
+```bash
+curl -fsS -X POST "https://your-domain.com/api/admin/bootstrap-db" \
+  -H "Authorization: Bearer YOUR_CRON_SECRET"
 ```
 
-Redeploy once, then remove the variable and redeploy again.
+If admin sync still errors about a missing table, add temporarily `PAYLOAD_SQLITE_PUSH_SCHEMA=1`, redeploy once, then remove it.
 
 ## What runs automatically on each deploy
 
