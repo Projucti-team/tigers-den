@@ -15,21 +15,51 @@ type CricApiResponse<T> = {
 const CRICAPI_MIN_INTERVAL_MS = 2_000;
 let lastCricApiCallAt = 0;
 let cricApiBlocked = false;
+/** Index into apiKeys() — advances when a key hits its daily quota. */
+let activeKeyIndex = 0;
+
+/**
+ * Primary + fallback keys. Supports comma-separated CRICKET_DATA_API_KEY and/or
+ * CRICKET_DATA_API_KEY_FALLBACK from a second cricketdata.org account.
+ */
+function apiKeys(): string[] {
+  const keys = [
+    ...(process.env.CRICKET_DATA_API_KEY ?? "").split(","),
+    ...(process.env.CRICKET_DATA_API_KEY_FALLBACK ?? "").split(","),
+  ]
+    .map((k) => k.trim())
+    .filter(Boolean);
+  return [...new Set(keys)];
+}
 
 export function beginCricApiSyncSession(): void {
   lastCricApiCallAt = 0;
   cricApiBlocked = false;
+  activeKeyIndex = 0;
 }
 
 export function isCricApiBlocked(): boolean {
   return cricApiBlocked;
 }
 
-function markCricApiBlocked(reason: string): void {
+function isQuotaReason(reason: string): boolean {
   // "Blocked for 15 minutes", "rate limit", "hits today exceeded hits limit", HTTP 429…
-  if (/blocked|rate|quota|hits|limit|exceed|429/i.test(reason)) {
-    cricApiBlocked = true;
+  return /blocked|rate|quota|hits|limit|exceed|429/i.test(reason);
+}
+
+/** Rotate to the next key; only mark blocked when every key is exhausted. */
+function handleCricApiFailure(reason: string): void {
+  if (!isQuotaReason(reason)) return;
+
+  if (activeKeyIndex < apiKeys().length - 1) {
+    activeKeyIndex += 1;
+    console.warn(
+      `[cricapi] Key ${activeKeyIndex} quota/rate-limited — switching to fallback key ${activeKeyIndex + 1}/${apiKeys().length}.`,
+    );
+    return;
   }
+
+  cricApiBlocked = true;
 }
 
 async function waitForCricApiSlot(): Promise<void> {
@@ -44,16 +74,16 @@ async function waitForCricApiSlot(): Promise<void> {
 }
 
 function getApiKey(): string {
-  const key = process.env.CRICKET_DATA_API_KEY;
-  if (!key) {
+  const keys = apiKeys();
+  if (!keys.length) {
     throw new Error(
       "CRICKET_DATA_API_KEY is not set. Get a free key at https://cricketdata.org/signup.aspx",
     );
   }
-  return key;
+  return keys[Math.min(activeKeyIndex, keys.length - 1)];
 }
 
-async function cricFetch<T>(path: string, params: Record<string, string> = {}): Promise<T> {
+async function cricFetchOnce<T>(path: string, params: Record<string, string>): Promise<T> {
   await waitForCricApiSlot();
 
   const url = new URL(`${CRICAPI_BASE}/${path}`);
@@ -65,18 +95,36 @@ async function cricFetch<T>(path: string, params: Record<string, string> = {}): 
   const res = await fetch(url.toString(), { cache: "no-store" });
   if (!res.ok) {
     const message = `CricAPI HTTP ${res.status} for ${path}`;
-    markCricApiBlocked(message);
+    handleCricApiFailure(message);
     throw new Error(message);
   }
 
   const json = (await res.json()) as CricApiResponse<T>;
   if (json.status !== "success" || !json.data) {
     const reason = json.reason || `CricAPI failed for ${path}`;
-    markCricApiBlocked(reason);
+    handleCricApiFailure(reason);
     throw new Error(reason);
   }
 
   return json.data;
+}
+
+async function cricFetch<T>(path: string, params: Record<string, string> = {}): Promise<T> {
+  const attempts = Math.max(apiKeys().length, 1);
+
+  let lastError: unknown;
+  for (let i = 0; i < attempts; i += 1) {
+    const keyBefore = activeKeyIndex;
+    try {
+      return await cricFetchOnce<T>(path, params);
+    } catch (err) {
+      lastError = err;
+      // Retry immediately only when the failure rotated us onto a fresh key.
+      if (cricApiBlocked || activeKeyIndex === keyBefore) break;
+    }
+  }
+
+  throw lastError instanceof Error ? lastError : new Error("CricAPI request failed");
 }
 
 /** One shared match fetch for sync — avoids duplicate parallel CricAPI bursts. */
@@ -467,5 +515,5 @@ export async function fetchScorecard(matchId: string): Promise<Scorecard> {
 }
 
 export function isCricApiConfigured(): boolean {
-  return Boolean(process.env.CRICKET_DATA_API_KEY);
+  return apiKeys().length > 0;
 }
