@@ -26,7 +26,8 @@ export function isCricApiBlocked(): boolean {
 }
 
 function markCricApiBlocked(reason: string): void {
-  if (/blocked|rate|quota/i.test(reason)) {
+  // "Blocked for 15 minutes", "rate limit", "hits today exceeded hits limit", HTTP 429…
+  if (/blocked|rate|quota|hits|limit|exceed|429/i.test(reason)) {
     cricApiBlocked = true;
   }
 }
