@@ -1,6 +1,55 @@
 {
-  "fetchedAt": "2026-06-09T23:04:43.464Z",
+  "fetchedAt": "2026-06-10T23:14:18.155Z",
   "items": [
+    {
+      "id": "dailystar-https://www.thedailystar.net/sports/cricket/news/rana-turns-heads-tigers-ready-the-kill-4195696",
+      "title": "Rana turns heads as Tigers ready for the kill",
+      "summary": "Rana is a sensation unlike any before in Bangladesh cricket.",
+      "url": "https://www.thedailystar.net/sports/cricket/news/rana-turns-heads-tigers-ready-the-kill-4195696",
+      "source": "dailystar",
+      "publishedAt": "2026-06-10T18:30:00.000Z"
+    },
+    {
+      "id": "dailystar-https://www.thedailystar.net/sports/cricket/news/mushfiqur-taijul-nominated-icc-player-the-month-4195601",
+      "title": "Mushfiqur, Taijul nominated for ICC Player of the Month",
+      "summary": "Bangladesh's Mushfiqur Rahim and Taijul Islam, along with Nepal all-rounder Dipendra Singh Airee, have been nominated for the ICC Men's Player of the Month award for May 2026 following a string of impressive performances.",
+      "url": "https://www.thedailystar.net/sports/cricket/news/mushfiqur-taijul-nominated-icc-player-the-month-4195601",
+      "source": "dailystar",
+      "publishedAt": "2026-06-10T16:31:21.000Z"
+    },
+    {
+      "id": "dailystar-https://www.thedailystar.net/news/news/cricketer-nasir-wife-tamima-acquitted-adultery-case-4195176",
+      "title": "Cricketer Nasir, wife Tamima acquitted in adultery case",
+      "summary": "Ex-husband filed the case, alleging that Tamima married Nasir without divorcing him",
+      "url": "https://www.thedailystar.net/news/news/cricketer-nasir-wife-tamima-acquitted-adultery-case-4195176",
+      "source": "dailystar",
+      "publishedAt": "2026-06-10T06:26:06.000Z"
+    },
+    {
+      "id": "espn-https://www.espncricinfo.com/ci/content/story/1540359.html",
+      "title": "Australia seek response as Bangladesh close in on landmark series win",
+      "summary": "Confident hosts will hope for another complete performance as they eye a maiden ODI series win against Australia",
+      "url": "https://www.espncricinfo.com/story/ban-vs-aus-2nd-odi-australia-seek-response-as-bangladesh-close-in-on-landmark-series-win-1540359",
+      "imageUrl": "https://p.imgci.com/db/PICTURES/CMS/418000/418077.5.jpg",
+      "source": "espncricinfo",
+      "publishedAt": "2026-06-10T05:43:55.000Z"
+    },
+    {
+      "id": "dailystar-https://www.thedailystar.net/sports/cricket/news/joty-remains-upbeat-despite-warm-defeats-4195131",
+      "title": "Joty remains upbeat despite warm-up defeats",
+      "summary": "The Bangladesh skipper highlighted the performances of young opener Juairiya Ferdous and spinner Sanjida Akter Meghla, expressing optimism that the team will be better prepared when the tournament gets underway.",
+      "url": "https://www.thedailystar.net/sports/cricket/news/joty-remains-upbeat-despite-warm-defeats-4195131",
+      "source": "dailystar",
+      "publishedAt": "2026-06-10T04:48:50.000Z"
+    },
+    {
+      "id": "dailystar-https://www.thedailystar.net/sports/cricket/news/we-just-werent-able-keep-him-out-the-game-carey-rana-4195116",
+      "title": "‘We just weren’t able to keep him out of the game’: Carey on Rana",
+      "summary": "He channelled that fire into a series of seriously fast spells on Tuesday, registering the best bowling figures by a Bangladesh bowler against Australia in ODIs, finishing with four for 41.",
+      "url": "https://www.thedailystar.net/sports/cricket/news/we-just-werent-able-keep-him-out-the-game-carey-rana-4195116",
+      "source": "dailystar",
+      "publishedAt": "2026-06-10T03:59:52.000Z"
+    },
     {
       "id": "espn-https://www.espncricinfo.com/ci/content/story/1540334.html",
       "title": "Ireland beat Bangladesh; Scotland thump Pakistan; NZ ace 184 chase vs SA",
@@ -18,42 +67,6 @@
       "imageUrl": "https://p.imgci.com/db/PICTURES/CMS/418000/418092.5.jpg",
       "source": "espncricinfo",
       "publishedAt": "2026-06-09T17:33:00.000Z"
-    },
-    {
-      "id": "cricbuzz-139101",
-      "title": "We weren't able to keep Nahid Rana out of the game: Carey",
-      "summary": "The keeper-bat said his side was not overly concerned by the opening ODI defeat, only Australia's second loss to Bangladesh in the format",
-      "url": "https://www.cricbuzz.com/cricket-news/139101/we-werent-able-to-keep-nahid-rana-out-of-the-game-carey",
-      "imageUrl": "https://static.cricbuzz.com/a/img/v1/540x303/i1/c1005247/nahid-rana-took-4-for-in-bangladeshs-historic-win.jpg",
-      "source": "cricbuzz",
-      "publishedAt": "2026-06-09T16:50:38.000Z"
-    },
-    {
-      "id": "cricbuzz-139100",
-      "title": "'I always believed': Mosaddek on ending four-year ODI exile in style",
-      "summary": "The Bangladesh batter hit career-best 86 not out off just 70 deliveries to set up his team's statement win against Australia ",
-      "url": "https://www.cricbuzz.com/cricket-news/139100/i-always-believed-mosaddek-on-ending-four-year-odi-exile-in-style",
-      "imageUrl": "https://static.cricbuzz.com/a/img/v1/540x303/i1/c1005246/mosaddek-hit-career-best-86-not-out-off-just-70-deliveries.jpg",
-      "source": "cricbuzz",
-      "publishedAt": "2026-06-09T16:16:09.000Z"
-    },
-    {
-      "id": "cricbuzz-139099",
-      "title": "Fahim Sinha replaces Aminul Islam as BPL chairman",
-      "summary": "The decision was taken during the first meeting of the newly elected Board of Directors under BCB chairman Tamim Iqbal",
-      "url": "https://www.cricbuzz.com/cricket-news/139099/fahim-sinha-replaces-aminul-islam-as-bpl-chairman",
-      "imageUrl": "https://static.cricbuzz.com/a/img/v1/540x303/i1/c1005245/fahim-sinha-has-major-issues-to-fix-in-the-bpl.jpg",
-      "source": "cricbuzz",
-      "publishedAt": "2026-06-09T15:46:53.000Z"
-    },
-    {
-      "id": "cricbuzz-139098",
-      "title": "Mosaddek's comeback masterclass, Rana's firepower flatten Australia",
-      "summary": "Bangladesh crush Australia by 86 runs to end 21-year ODI drought",
-      "url": "https://www.cricbuzz.com/cricket-news/139098/mosaddeks-comeback-masterclass-ranas-firepower-flatten-australia",
-      "imageUrl": "https://static.cricbuzz.com/a/img/v1/540x303/i1/c1005240/bangladesh-crush-australia-by-86-runs-to-end-21-year-odi-drought.jpg",
-      "source": "cricbuzz",
-      "publishedAt": "2026-06-09T14:28:26.000Z"
     },
     {
       "id": "espn-https://www.espncricinfo.com/ci/content/story/1540267.html",
@@ -81,14 +94,6 @@
       "publishedAt": "2026-06-09T09:14:00.000Z"
     },
     {
-      "id": "dailystar-https://www.thedailystar.net/sports/cricket/news/tanzid-falls-after-brisk-half-century-4194356",
-      "title": "Mosaddek's dream return, Nahid's pace storm hand Tigers emphatic win over Australia",
-      "summary": "Bangladesh ended a 21-year wait for an ODI victory over Australia with an emphatic 86-run win via the DLS method in the first ODI of the three-match series at the Sher-e-Bangla National Cricket Stadium in Mirpur on Tuesday.",
-      "url": "https://www.thedailystar.net/sports/cricket/news/tanzid-falls-after-brisk-half-century-4194356",
-      "source": "dailystar",
-      "publishedAt": "2026-06-09T06:29:02.000Z"
-    },
-    {
       "id": "espn-https://www.espncricinfo.com/ci/content/story/1540235.html",
       "title": "Australia bowl first in series opener, hand Liam Scott debut",
       "summary": "Mosaddek Hossain returns to the side after a gap of nearly four years as Bangladesh look to extend a strong home record",
@@ -96,31 +101,6 @@
       "imageUrl": "https://p.imgci.com/db/PICTURES/CMS/418000/418056.5.jpg",
       "source": "espncricinfo",
       "publishedAt": "2026-06-09T05:14:40.000Z"
-    },
-    {
-      "id": "dailystar-https://www.thedailystar.net/sports/cricket/news/australia-opt-bowl-first-odi-against-bangladesh-4194306",
-      "title": "Mosaddek returns as Australia opt to bowl in Mirpur ODI opener",
-      "summary": "The series marks Australia's first ODI tour of Bangladesh in 15 years, with the visitors aiming to bounce back after their recent ODI series defeat to Pakistan.",
-      "url": "https://www.thedailystar.net/sports/cricket/news/australia-opt-bowl-first-odi-against-bangladesh-4194306",
-      "source": "dailystar",
-      "publishedAt": "2026-06-09T04:44:15.000Z"
-    },
-    {
-      "id": "dailystar-https://www.thedailystar.net/sports/cricket/news/zakir-ton-powers-emerging-team-emphatic-win-over-zimbabwe-4193806",
-      "title": "Zakir ton powers Emerging team to emphatic win over Zimbabwe A",
-      "summary": "Captain Zakir Hasan struck a superb century as Bangladesh Emerging Team cruised to an 85-run victory over Zimbabwe 'A' in the opening one-dayer of the three-match series at the Shaheed Chandu Stadium in Bogura on Monday.",
-      "url": "https://www.thedailystar.net/sports/cricket/news/zakir-ton-powers-emerging-team-emphatic-win-over-zimbabwe-4193806",
-      "source": "dailystar",
-      "publishedAt": "2026-06-08T15:33:05.000Z"
-    },
-    {
-      "id": "cricbuzz-139084",
-      "title": "Miraz backs Mosaddek recall, sees value in all-round depth",
-      "summary": "The skipper believes the recalled all-rounder can add balance to the side, while urging legspinner Rishad Hossain to keep developing his 50-over game",
-      "url": "https://www.cricbuzz.com/cricket-news/139084/miraz-backs-mosaddek-recall-sees-value-in-all-round-depth",
-      "imageUrl": "https://static.cricbuzz.com/a/img/v1/540x303/i1/c1005043/mosaddek-will-play-his-role-and-i-will-play-mine-miraz.jpg",
-      "source": "cricbuzz",
-      "publishedAt": "2026-06-08T14:07:03.000Z"
     },
     {
       "id": "espn-https://www.espncricinfo.com/ci/content/story/1540169.html",
@@ -184,42 +164,6 @@
       "imageUrl": "https://p.imgci.com/db/PICTURES/CMS/413700/413751.6.jpg",
       "source": "espncricinfo",
       "publishedAt": "2026-06-05T06:08:48.000Z"
-    },
-    {
-      "id": "espn-https://www.espncricinfo.com/ci/content/story/1539690.html",
-      "title": "Dilara's fastest fifty guides Bangladesh to victory over Netherlands",
-      "summary": "Dilara scored her fifty off 22 balls, the fastest by a Bangladesh batter in women's T20I",
-      "url": "https://www.espncricinfo.com/story/dilara-akthers-fastest-fifty-guides-bangladesh-to-victory-over-netherlands-1539690",
-      "imageUrl": "https://p.imgci.com/db/PICTURES/CMS/392300/392323.5.jpg",
-      "source": "espncricinfo",
-      "publishedAt": "2026-06-04T18:08:30.000Z"
-    },
-    {
-      "id": "cricbuzz-139043",
-      "title": "Dilara fifty powers Bangladesh to win over Netherlands",
-      "summary": "In yet another rain-affected contest, Bangladesh posted 98/3 in 8 overs before Fariha Trisna led the way in the defense",
-      "url": "https://www.cricbuzz.com/cricket-news/139043/dilara-fifty-powers-bangladesh-to-win-over-netherlands",
-      "imageUrl": "https://static.cricbuzz.com/a/img/v1/540x303/i1/c1003505/dilara-akter-file-image-powered-bangladesh-along-with-a-26-ball-51.jpg",
-      "source": "cricbuzz",
-      "publishedAt": "2026-06-04T17:26:06.000Z"
-    },
-    {
-      "id": "espn-https://www.espncricinfo.com/ci/content/story/1539594.html",
-      "title": "ICC delegation visits Bangladesh to 'review developments' on BCB's governance, electoral matters",
-      "summary": "ICC's Dr Mohammed Moosajee and Tavengwa Mukuhlani will submit their findings and observations to the ICC around the BCB's governance issues",
-      "url": "https://www.espncricinfo.com/story/icc-delegation-visits-bangladesh-to-review-developments-on-bcbs-governance-electoral-matters-1539594",
-      "imageUrl": "https://p.imgci.com/db/PICTURES/CMS/416700/416756.5.jpg",
-      "source": "espncricinfo",
-      "publishedAt": "2026-06-04T10:49:41.000Z"
-    },
-    {
-      "id": "espn-https://www.espncricinfo.com/ci/content/story/1539600.html",
-      "title": "Shaun Tait resigns as Bangladesh fast bowling coach",
-      "summary": "After 12 months in the role, he is stepping down to prioritise family time",
-      "url": "https://www.espncricinfo.com/story/shaun-tait-resigns-as-bangladesh-fast-bowling-coach-1539600",
-      "imageUrl": "https://p.imgci.com/db/PICTURES/CMS/417800/417807.5.jpg",
-      "source": "espncricinfo",
-      "publishedAt": "2026-06-04T10:16:10.000Z"
     }
   ]
 }
