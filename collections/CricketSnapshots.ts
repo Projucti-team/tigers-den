@@ -27,7 +27,8 @@ export const CricketSnapshots: CollectionConfig = {
         }
 
         try {
-          const result = await syncCricketSnapshots();
+          const force = req.url ? new URL(req.url).searchParams.get("force") === "1" : false;
+          const result = await syncCricketSnapshots({ force });
           return Response.json(result, {
             status: result.ok ? 200 : 207,
             headers: headersWithCors({ headers: new Headers(), req }),

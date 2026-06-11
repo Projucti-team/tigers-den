@@ -27,7 +27,8 @@ export async function GET(request: Request) {
   }
 
   try {
-    const result = await syncCricketSnapshots();
+    const force = new URL(request.url).searchParams.get("force") === "1";
+    const result = await syncCricketSnapshots({ force });
     return NextResponse.json(result, { status: result.ok ? 200 : 207 });
   } catch (err) {
     return NextResponse.json(

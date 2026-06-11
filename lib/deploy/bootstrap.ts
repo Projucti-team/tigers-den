@@ -87,7 +87,7 @@ export async function runDeployBootstrap(options?: {
     return { migrations: "ok", cricketSync: "skipped", errors };
   }
 
-  const cricketSyncResult = await syncCricketSnapshots();
+  const cricketSyncResult = await syncCricketSnapshots({ force: forceSync });
   if (!cricketSyncResult.ok) {
     errors.push(...cricketSyncResult.errors);
     return { migrations: "ok", cricketSync: "failed", cricketSyncResult, errors };

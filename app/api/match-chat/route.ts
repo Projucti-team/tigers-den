@@ -6,11 +6,9 @@ import { requireMemberSession } from "@/lib/social/session";
 
 export const dynamic = "force-dynamic";
 
-export async function GET(request: Request) {
+export async function GET() {
   try {
-    const { searchParams } = new URL(request.url);
-    const matchId = searchParams.get("matchId")?.trim() || undefined;
-    const snapshot = await getMatchChatSnapshot(matchId);
+    const snapshot = await getMatchChatSnapshot();
     return NextResponse.json(snapshot);
   } catch (err) {
     return matchChatApiError(err);
@@ -20,16 +18,10 @@ export async function GET(request: Request) {
 export async function POST(request: Request) {
   try {
     const { member } = await requireMemberSession();
-    const body = (await request.json()) as { matchId?: string; message?: string };
-
-    const matchId = body.matchId?.trim();
-    if (!matchId) {
-      return NextResponse.json({ error: "matchId is required" }, { status: 400 });
-    }
+    const body = (await request.json()) as { message?: string };
 
     const message = await createMatchChatMessage(
       member,
-      matchId,
       typeof body.message === "string" ? body.message : "",
     );
 

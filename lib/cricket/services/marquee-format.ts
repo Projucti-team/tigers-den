@@ -41,7 +41,10 @@ export function formatLiveMarqueeLine(highlight: MatchHighlight): string {
     return `Ban ${banScore} vs ${oppCode} ${oppScore} (${status})`;
   }
 
-  return highlight.scoreLine.replace(/Bangladesh/gi, "Ban");
+  // One innings (or none) so far — still show the live status (toss, rain delay…).
+  const scorePart = highlight.scoreLine.replace(/Bangladesh/gi, "Ban");
+  const status = highlight.detailLine.replace(/Bangladesh/gi, "Ban");
+  return status && !scorePart.includes(status) ? `${scorePart} (${status})` : scorePart;
 }
 
 /** Ban 278 & 390 vs Pak 232 & 358 (Ban won by 78 runs) */

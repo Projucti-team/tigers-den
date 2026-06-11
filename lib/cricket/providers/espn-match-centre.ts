@@ -605,7 +605,9 @@ export async function fetchEspnMatchCentre(
       wickets: isCurrentBatting ? currentTotals.wickets || summary.wickets : summary.wickets,
       overs: isCurrentBatting ? currentTotals.overs || summary.overs : summary.overs,
       batting: isCurrentBatting ? batting : [],
-      bowling: isCurrentBatting ? [] : [],
+      // The ESPN bowling card lists the side bowling at the current batting team,
+      // so it belongs to the in-progress innings.
+      bowling: isCurrentBatting ? bowling : [],
     };
   });
 

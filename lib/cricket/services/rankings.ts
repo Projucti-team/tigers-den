@@ -16,9 +16,10 @@ import type { GenderRankings } from "@/lib/cricket/types";
 
 const MAX_CACHE_AGE_HOURS = 36;
 
-/** Older scrapes only stored the ICC top 5 — refetch when lists are shallow. */
+/** Older scrapes only stored the ICC top 5 or lack rank dates — refetch when outdated. */
 function isShallowIccSnapshot(snapshot: IccRankingsSnapshot): boolean {
   for (const gender of GENDERS) {
+    if (!snapshot[gender].rankUpdatedAt) return true;
     for (const format of FORMATS_BY_GENDER[gender]) {
       const count = snapshot[gender].players[format]?.topBatsmen?.length ?? 0;
       if (count > 0 && count < RANKINGS_PLAYER_DEPTH) return true;

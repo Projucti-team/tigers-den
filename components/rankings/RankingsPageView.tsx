@@ -4,6 +4,7 @@ import {
   TeamStandingsTable,
   TigersPlayerList,
   WtcStandingsTable,
+  formatRankDate,
 } from "@/components/rankings/RankingsUi";
 import type { FormatShowcase, RankingsShowcase } from "@/lib/cricket/services/rankings-display";
 import type { WtcShowcase } from "@/lib/cricket/services/wtc";
@@ -40,9 +41,13 @@ function VibrantPanel({ children }: { children: ReactNode }) {
 }
 
 function FormatBlock({ format }: { format: FormatShowcase }) {
+  const updated = formatRankDate(format.rankUpdatedAt);
   return (
     <div className="space-y-6">
-      <SectionHeading title={FORMAT_OVERALL_LABEL[format.format]} subtitle="ICC top 10 teams" />
+      <SectionHeading
+        title={FORMAT_OVERALL_LABEL[format.format]}
+        subtitle={updated ? `ICC top 10 teams · Rankings updated ${updated}` : "ICC top 10 teams"}
+      />
       <VibrantPanel>
         <TeamStandingsTable teams={format.topTeams ?? []} formatLabel={format.label} />
       </VibrantPanel>

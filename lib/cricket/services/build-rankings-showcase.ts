@@ -25,6 +25,8 @@ import type {
 export type FormatShowcase = {
   format: CricketFormat;
   label: string;
+  /** ICC rank_date (YYYY-MM-DD) — when ICC last updated this format's tables. */
+  rankUpdatedAt: string | null;
   bangladeshRank: number | null;
   bangladeshRating: number | null;
   topBatsman: RankedPlayer | null;
@@ -52,6 +54,7 @@ export function emptyFormatShowcase(format: CricketFormat): FormatShowcase {
   return {
     format,
     label: FORMAT_LABELS[format],
+    rankUpdatedAt: null,
     bangladeshRank: null,
     bangladeshRating: null,
     topBatsman: null,
@@ -132,6 +135,7 @@ async function buildShowcase(gender: Gender, data: GenderRankings): Promise<Rank
     formats.push({
       format,
       label: FORMAT_LABELS[format],
+      rankUpdatedAt: data.rankUpdatedAt?.[format] ?? null,
       bangladeshRank: bd?.rank ?? null,
       bangladeshRating: bd?.rating ?? null,
       topBatsman: players.topBatsman,

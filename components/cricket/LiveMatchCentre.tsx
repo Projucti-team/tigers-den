@@ -3,6 +3,7 @@
 import { useEffect, useState } from "react";
 
 import { MatchCentre } from "@/components/home/MatchCentre";
+import type { MatchWeather } from "@/lib/cricket/providers/weather";
 import type { MatchHighlight } from "@/lib/cricket/services/match-highlight";
 import type { LiveMatchFeed, Scorecard } from "@/lib/cricket/types";
 
@@ -10,6 +11,7 @@ type LiveMatchCentreProps = {
   initialHighlight: MatchHighlight | null;
   initialScorecard: Scorecard | null;
   initialLiveFeed?: LiveMatchFeed | null;
+  initialWeather?: MatchWeather | null;
 };
 
 const POLL_MS = 30_000;
@@ -18,10 +20,12 @@ export function LiveMatchCentre({
   initialHighlight,
   initialScorecard,
   initialLiveFeed = null,
+  initialWeather = null,
 }: LiveMatchCentreProps) {
   const [highlight, setHighlight] = useState(initialHighlight);
   const [scorecard, setScorecard] = useState(initialScorecard);
   const [liveFeed, setLiveFeed] = useState(initialLiveFeed);
+  const [weather, setWeather] = useState(initialWeather);
 
   useEffect(() => {
     let cancelled = false;
@@ -34,11 +38,13 @@ export function LiveMatchCentre({
           highlight: MatchHighlight | null;
           scorecard: Scorecard | null;
           liveFeed: LiveMatchFeed | null;
+          weather?: MatchWeather | null;
         };
         if (!cancelled) {
           setHighlight(data.highlight);
           setScorecard(data.scorecard);
           setLiveFeed(data.liveFeed);
+          setWeather(data.weather ?? null);
         }
       } catch {
         // keep last snapshot
@@ -53,5 +59,12 @@ export function LiveMatchCentre({
     };
   }, []);
 
-  return <MatchCentre highlight={highlight} scorecard={scorecard} liveFeed={liveFeed} />;
+  return (
+    <MatchCentre
+      highlight={highlight}
+      scorecard={scorecard}
+      liveFeed={liveFeed}
+      weather={weather}
+    />
+  );
 }

@@ -32,6 +32,30 @@ export function formatRank(rank: number, tied?: boolean): string {
   return tied ? `=${rank}` : String(rank);
 }
 
+/** ICC rank_date ("2026-06-08") → "8 Jun 2026". */
+export function formatRankDate(date: string | null | undefined): string | null {
+  if (!date) return null;
+  const parsed = new Date(date.includes("T") ? date : `${date}T00:00:00Z`);
+  if (Number.isNaN(parsed.getTime())) return null;
+  return parsed.toLocaleDateString("en-GB", {
+    day: "numeric",
+    month: "short",
+    year: "numeric",
+    timeZone: "UTC",
+  });
+}
+
+/** Most recent ICC rank_date across format showcases. */
+export function latestRankUpdatedAt(formats: FormatShowcase[]): string | null {
+  return (
+    formats
+      .map((f) => f.rankUpdatedAt)
+      .filter((d): d is string => Boolean(d))
+      .sort()
+      .pop() ?? null
+  );
+}
+
 export function playerPhotoSrc(player: RankedPlayer): string | null {
   const url = player.imageUrl ?? "";
   if (!url || url.includes("ui-avatars.com")) return null;

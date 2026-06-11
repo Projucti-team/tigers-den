@@ -1,6 +1,7 @@
 "use client";
 
 import { MatchCentreTabs } from "@/components/match-centre/MatchCentreTabs";
+import type { MatchWeather } from "@/lib/cricket/providers/weather";
 import type { MatchHighlight } from "@/lib/cricket/services/match-highlight";
 import type { LiveMatchFeed, Scorecard } from "@/lib/cricket/types";
 
@@ -8,9 +9,57 @@ type Props = {
   highlight: MatchHighlight | null;
   scorecard?: Scorecard | null;
   liveFeed?: LiveMatchFeed | null;
+  weather?: MatchWeather | null;
 };
 
-export function MatchCentre({ highlight, scorecard, liveFeed }: Props) {
+function VenueWeather({ weather }: { weather: MatchWeather }) {
+  const parts = [
+    `${weather.tempC}°C`,
+    weather.label,
+    weather.windKmh != null ? `💨 ${weather.windKmh} km/h` : null,
+    weather.humidityPct != null ? `💧 ${weather.humidityPct}%` : null,
+  ].filter(Boolean);
+
+  return (
+    <div className="rounded-lg border-2 border-emerald/25 bg-white/70 px-3 py-2">
+      <p className="flex flex-wrap items-center gap-x-2 text-xs font-bold uppercase text-charcoal/80">
+        <span aria-hidden>{weather.emoji}</span>
+        <span>{weather.city}</span>
+        <span className="text-charcoal/40">·</span>
+        <span>{parts.join(" · ")}</span>
+      </p>
+
+      {weather.hourly.length > 0 ? (
+        <div className="mt-2 grid grid-cols-3 gap-1 border-t border-emerald/15 pt-2 sm:grid-cols-6">
+          {weather.hourly.map((hour) => (
+            <div
+              key={hour.time}
+              className="flex flex-col items-center rounded bg-emerald/5 px-1 py-1.5 text-center"
+              title={`${hour.time} — ${hour.label}${
+                hour.precipitationMm ? ` · ${hour.precipitationMm} mm` : ""
+              }`}
+            >
+              <span className="font-mono text-[10px] font-bold text-charcoal/55">
+                {hour.time}
+              </span>
+              <span className="text-sm leading-tight" aria-hidden>
+                {hour.emoji}
+              </span>
+              <span className="text-[11px] font-bold text-charcoal/80">{hour.tempC}°</span>
+              {hour.precipitationMm ? (
+                <span className="text-[10px] font-bold text-emerald">
+                  {hour.precipitationMm} mm
+                </span>
+              ) : null}
+            </div>
+          ))}
+        </div>
+      ) : null}
+    </div>
+  );
+}
+
+export function MatchCentre({ highlight, scorecard, liveFeed, weather }: Props) {
   if (!highlight) {
     return (
       <section id="match-centre" className="fan-card">
@@ -61,6 +110,8 @@ export function MatchCentre({ highlight, scorecard, liveFeed }: Props) {
           </p>
           <p className="mt-2 text-sm font-bold uppercase text-charcoal">{highlight.detailLine}</p>
         </div>
+
+        {weather ? <VenueWeather weather={weather} /> : null}
 
         <MatchCentreTabs isLive={isLive} liveFeed={liveFeed ?? null} scorecard={scorecard ?? null} />
       </div>

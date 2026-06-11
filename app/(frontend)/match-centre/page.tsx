@@ -13,10 +13,11 @@ export const metadata = {
 };
 
 export default async function MatchCentrePage() {
-  const { highlight, scorecard, liveFeed } = await getMatchCentreData().catch(() => ({
+  const { highlight, scorecard, liveFeed, weather } = await getMatchCentreData().catch(() => ({
     highlight: null,
     scorecard: null,
     liveFeed: null,
+    weather: null,
   }));
 
   const isLive = highlight?.mode === "live";
@@ -41,6 +42,7 @@ export default async function MatchCentrePage() {
             initialHighlight={highlight}
             initialScorecard={scorecard}
             initialLiveFeed={liveFeed}
+            initialWeather={weather}
           />
           <LiveChat />
         </div>

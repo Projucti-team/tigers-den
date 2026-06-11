@@ -54,17 +54,27 @@ function buildUrl(compType: string, type: RankingType): string {
   return url.toString();
 }
 
-async function fetchSportz(compType: string, type: RankingType): Promise<SportzRankRow[]> {
+type SportzFeed = {
+  rows: SportzRankRow[];
+  /** ICC's "rank_date" (YYYY-MM-DD) — when this ranking table was last updated. */
+  rankDate: string | null;
+};
+
+async function fetchSportz(compType: string, type: RankingType): Promise<SportzFeed> {
   try {
     const res = await fetch(buildUrl(compType, type), {
       signal: AbortSignal.timeout(15000),
       headers: { Accept: "application/json" },
     });
-    if (!res.ok) return [];
+    if (!res.ok) return { rows: [], rankDate: null };
     const json = (await res.json()) as SportzResponse;
-    return json.data?.["bat-rank"]?.rank ?? [];
+    const block = json.data?.["bat-rank"];
+    return {
+      rows: block?.rank ?? [],
+      rankDate: block?.rank_date?.trim() || block?.last_updated?.trim() || null,
+    };
   } catch {
-    return [];
+    return { rows: [], rankDate: null };
   }
 }
 
@@ -171,28 +181,38 @@ async function buildGenderRankings(gender: Gender): Promise<GenderRankings> {
   const teams = {} as GenderRankings["teams"];
   const bangladesh = {} as GenderRankings["bangladesh"];
   const players = {} as GenderRankings["players"];
+  const rankUpdatedAt = {} as NonNullable<GenderRankings["rankUpdatedAt"]>;
 
   for (const format of FORMATS) {
     teams[format] = [];
     bangladesh[format] = null;
     players[format] = emptyFormatPlayers(format);
+    rankUpdatedAt[format] = null;
   }
 
   for (const format of FORMATS_BY_GENDER[gender]) {
     const compType = compTypeFor(gender, format);
     if (!compType) continue;
 
-    const [teamRows, batRows, bowlRows, arRows] = await Promise.all([
+    const [teamFeed, batFeed, bowlFeed, arFeed] = await Promise.all([
       fetchSportz(compType, "team"),
       fetchSportz(compType, "bat"),
       fetchSportz(compType, "bowl"),
       fetchSportz(compType, "allrounder"),
     ]);
 
-    const teamList = mapTeams(teamRows);
-    const batsmen = mapPlayers(batRows);
-    const bowlers = mapPlayers(bowlRows);
-    const allRounders = mapPlayers(arRows);
+    // Most recent rank_date across the four tables (YYYY-MM-DD sorts lexicographically).
+    rankUpdatedAt[format] =
+      [teamFeed, batFeed, bowlFeed, arFeed]
+        .map((f) => f.rankDate)
+        .filter((d): d is string => Boolean(d))
+        .sort()
+        .pop() ?? null;
+
+    const teamList = mapTeams(teamFeed.rows);
+    const batsmen = mapPlayers(batFeed.rows);
+    const bowlers = mapPlayers(bowlFeed.rows);
+    const allRounders = mapPlayers(arFeed.rows);
 
     teams[format] = teamList;
     bangladesh[format] = findBangladesh(teamList);
@@ -207,7 +227,7 @@ async function buildGenderRankings(gender: Gender): Promise<GenderRankings> {
     };
   }
 
-  return { gender, teams, bangladesh, players };
+  return { gender, teams, bangladesh, players, rankUpdatedAt };
 }
 
 /** Fetch all ICC rankings from the Sportz.io feed (same data as icc-cricket.com). */

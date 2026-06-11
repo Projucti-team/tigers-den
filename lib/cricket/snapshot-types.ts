@@ -9,7 +9,7 @@ export type SnapshotMeta = {
 };
 
 /** Bump when rankings page shape changes — triggers rebuild on read and on deploy bootstrap. */
-export const RANKINGS_SHOWCASE_VERSION = 2;
+export const RANKINGS_SHOWCASE_VERSION = 3;
 
 export type RankingsShowcaseSnapshot = SnapshotMeta & {
   version?: number;

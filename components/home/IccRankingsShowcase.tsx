@@ -2,6 +2,8 @@ import {
   BangladeshRankCard,
   TigerPlayerCard,
   WtcBangladeshCard,
+  formatRankDate,
+  latestRankUpdatedAt,
 } from "@/components/rankings/RankingsUi";
 import type { FormatShowcase, RankingsShowcase } from "@/lib/cricket/services/rankings-display";
 import type { WtcShowcase } from "@/lib/cricket/services/wtc";
@@ -80,6 +82,8 @@ function GenderBlock({
 }
 
 export function IccRankingsShowcase({ men, women, wtc = null, warnings = [] }: Props) {
+  const updated = formatRankDate(latestRankUpdatedAt([...men.formats, ...women.formats]));
+
   return (
     <section
       id="rankings"
@@ -91,6 +95,11 @@ export function IccRankingsShowcase({ men, women, wtc = null, warnings = [] }: P
           <h2 className="mt-4 font-display text-3xl font-extrabold uppercase text-white md:text-4xl">
             Bangladesh <span className="text-emerald-glow">on the world stage</span>
           </h2>
+          {updated ? (
+            <p className="mt-2 font-mono text-xs font-bold uppercase tracking-widest text-white/55">
+              ICC rankings updated {updated}
+            </p>
+          ) : null}
         </div>
 
         <div className="mt-12 space-y-16">

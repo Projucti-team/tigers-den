@@ -23,6 +23,7 @@ import { CRICKET_SNAPSHOT_KEYS } from "@/lib/cricket/snapshot-keys";
 import {
   deleteCricketSnapshotsExcept,
   readCricketSnapshot,
+  snapshotAgeHours,
   upsertCricketSnapshot,
 } from "@/lib/cricket/snapshot-db";
 import type { LiveMatchSummary } from "@/lib/cricket/types";
@@ -39,6 +40,17 @@ export type SyncCricketResult = {
   warnings: string[];
   errors: string[];
 };
+
+export type SyncCricketOptions = {
+  /** Re-fetch CricAPI data even when the tours snapshot is younger than 24h. */
+  force?: boolean;
+};
+
+/**
+ * Slightly under 24h so the nightly cron (every 24h) still refreshes —
+ * by completion time the previous snapshot is ~23.9h old at the next run.
+ */
+const CRICAPI_FRESH_MAX_AGE_HOURS = 23;
 
 async function refreshIccRankingsSource(): Promise<IccRankingsSnapshot> {
   let snapshot = await fetchAllIccRankingsFromSportz();
@@ -57,7 +69,9 @@ async function refreshWtcSource(): Promise<WtcStandingsSnapshot> {
  * Nightly job (3:00 AM BDT via Vercel/server cron): refresh sources, build page snapshots, save to DB.
  * On Vercel, `data/*.json` is read-only — snapshots are stored in Postgres instead.
  */
-export async function syncCricketSnapshots(): Promise<SyncCricketResult> {
+export async function syncCricketSnapshots(
+  options?: SyncCricketOptions,
+): Promise<SyncCricketResult> {
   const warnings: string[] = [];
   const errors: string[] = [];
 
@@ -109,6 +123,19 @@ export async function syncCricketSnapshots(): Promise<SyncCricketResult> {
     CRICKET_SNAPSHOT_KEYS.upcomingMatches,
   ]);
 
+  // CricAPI daily-quota guard: if the last tours snapshot is younger than ~24h,
+  // reuse it and skip every CricAPI call (rankings/WTC below don't use CricAPI).
+  const previousTours = await readCricketSnapshot<ToursIndexSnapshot>(
+    CRICKET_SNAPSHOT_KEYS.toursIndex,
+  );
+  const previousToursAgeHours = previousTours?.fetchedAt
+    ? snapshotAgeHours(previousTours.fetchedAt)
+    : Number.POSITIVE_INFINITY;
+  const skipCricApi =
+    !options?.force &&
+    (previousTours?.tours?.length ?? 0) > 0 &&
+    previousToursAgeHours < CRICAPI_FRESH_MAX_AGE_HOURS;
+
   let iccSnapshot: IccRankingsSnapshot | null = null;
   let wtcSnapshot: WtcStandingsSnapshot | null = null;
 
@@ -127,7 +154,7 @@ export async function syncCricketSnapshots(): Promise<SyncCricketResult> {
   beginCricApiSyncSession();
   let prefetchedMatches: LiveMatchSummary[] = [];
 
-  if (isCricApiConfigured()) {
+  if (!skipCricApi && isCricApiConfigured()) {
     try {
       prefetchedMatches = await prefetchMatchesForSync();
     } catch (e) {
@@ -136,30 +163,32 @@ export async function syncCricketSnapshots(): Promise<SyncCricketResult> {
     }
   }
 
-  try {
-    const lastMatch = await scrapeBangladeshLastMatch(prefetchedMatches);
-    if (lastMatch) {
-      await upsertCricketSnapshot(
-        CRICKET_SNAPSHOT_KEYS.lastMatch,
-        "Bangladesh last completed match",
-        lastMatch,
-      );
+  if (!skipCricApi) {
+    try {
+      const lastMatch = await scrapeBangladeshLastMatch(prefetchedMatches);
+      if (lastMatch) {
+        await upsertCricketSnapshot(
+          CRICKET_SNAPSHOT_KEYS.lastMatch,
+          "Bangladesh last completed match",
+          lastMatch,
+        );
+      }
+    } catch (e) {
+      errors.push(`Last match: ${e instanceof Error ? e.message : "failed"}`);
     }
-  } catch (e) {
-    errors.push(`Last match: ${e instanceof Error ? e.message : "failed"}`);
-  }
 
-  try {
-    const upcoming = await scrapeBangladeshUpcomingMatches(prefetchedMatches);
-    if (upcoming) {
-      await upsertCricketSnapshot(
-        CRICKET_SNAPSHOT_KEYS.upcomingMatches,
-        "Bangladesh upcoming matches",
-        upcoming,
-      );
+    try {
+      const upcoming = await scrapeBangladeshUpcomingMatches(prefetchedMatches);
+      if (upcoming) {
+        await upsertCricketSnapshot(
+          CRICKET_SNAPSHOT_KEYS.upcomingMatches,
+          "Bangladesh upcoming matches",
+          upcoming,
+        );
+      }
+    } catch (e) {
+      errors.push(`Upcoming matches: ${e instanceof Error ? e.message : "failed"}`);
     }
-  } catch (e) {
-    errors.push(`Upcoming matches: ${e instanceof Error ? e.message : "failed"}`);
   }
 
   try {
@@ -182,66 +211,77 @@ export async function syncCricketSnapshots(): Promise<SyncCricketResult> {
   let toursCount = 0;
   let tourDetailsCount = 0;
 
-  try {
-    const toursIndex = await buildToursIndexLive({ prefetchedMatches });
-    warnings.push(...toursIndex.warnings);
-    const rateLimited =
-      isCricApiBlocked() ||
-      toursIndex.warnings.some((w) => /blocked|quota|rate|hits|limit|exceed|429/i.test(w));
-    let toursToProcess = toursIndex;
-    let keptPrevious = false;
-
-    if (toursIndex.tours.length === 0) {
-      // Quota/rate-limit or any empty fetch — never overwrite or prune good tour data.
-      const previous = await readCricketSnapshot<ToursIndexSnapshot>(CRICKET_SNAPSHOT_KEYS.toursIndex);
-      if (previous?.tours?.length) {
-        toursToProcess = previous;
-        keptPrevious = true;
-        toursCount = previous.tours.length;
-        warnings.push(
-          rateLimited
-            ? "CricAPI quota/rate-limited — kept the previous tours snapshot. Try again after the quota resets."
-            : "CricAPI returned no tours — kept the previous tours snapshot.",
-        );
-      } else if (rateLimited) {
-        errors.push(
-          "Tours index: CricAPI quota/rate-limited and no cached tours. Wait for quota reset, then sync again.",
-        );
-      }
-    } else {
-      await upsertCricketSnapshot(
-        CRICKET_SNAPSHOT_KEYS.toursIndex,
-        "Upcoming tours index",
-        toursIndex,
-      );
-      toursCount = toursIndex.tours.length;
+  if (skipCricApi && previousTours) {
+    // Keep existing tours + detail pages — no CricAPI calls within the 24h window.
+    toursCount = previousTours.tours.length;
+    for (const tour of previousTours.tours) {
+      keysToKeep.add(CRICKET_SNAPSHOT_KEYS.tourDetail(tourSlug(tour)));
+      tourDetailsCount += 1;
     }
+    warnings.push(
+      `Tours snapshot is ${previousToursAgeHours.toFixed(1)}h old — skipped CricAPI calls (refreshes after 24h, or use force).`,
+    );
+  } else {
+    try {
+      const toursIndex = await buildToursIndexLive({ prefetchedMatches });
+      warnings.push(...toursIndex.warnings);
+      const rateLimited =
+        isCricApiBlocked() ||
+        toursIndex.warnings.some((w) => /blocked|quota|rate|hits|limit|exceed|429/i.test(w));
+      let toursToProcess = toursIndex;
+      let keptPrevious = false;
 
-    for (const tour of toursToProcess.tours) {
-      const slug = tourSlug(tour);
-      const key = CRICKET_SNAPSHOT_KEYS.tourDetail(slug);
-      keysToKeep.add(key);
-
-      // Keep existing detail snapshots as-is when quota-limited or reusing the cached index.
-      if (rateLimited || keptPrevious) {
-        tourDetailsCount += 1;
-        continue;
-      }
-
-      try {
-        const detail = await buildTourDetailLive(tour, toursToProcess.warnings);
+      if (toursIndex.tours.length === 0) {
+        // Quota/rate-limit or any empty fetch — never overwrite or prune good tour data.
+        if (previousTours?.tours?.length) {
+          toursToProcess = previousTours;
+          keptPrevious = true;
+          toursCount = previousTours.tours.length;
+          warnings.push(
+            rateLimited
+              ? "CricAPI quota/rate-limited — kept the previous tours snapshot. Try again after the quota resets."
+              : "CricAPI returned no tours — kept the previous tours snapshot.",
+          );
+        } else if (rateLimited) {
+          errors.push(
+            "Tours index: CricAPI quota/rate-limited and no cached tours. Wait for quota reset, then sync again.",
+          );
+        }
+      } else {
         await upsertCricketSnapshot(
-          key,
-          `Tour: ${tour.name}`,
-          toTourDetailSnapshot(detail, slug),
+          CRICKET_SNAPSHOT_KEYS.toursIndex,
+          "Upcoming tours index",
+          toursIndex,
         );
-        tourDetailsCount += 1;
-      } catch (e) {
-        errors.push(`Tour ${slug}: ${e instanceof Error ? e.message : "failed"}`);
+        toursCount = toursIndex.tours.length;
       }
+
+      for (const tour of toursToProcess.tours) {
+        const slug = tourSlug(tour);
+        const key = CRICKET_SNAPSHOT_KEYS.tourDetail(slug);
+        keysToKeep.add(key);
+
+        // Keep existing detail snapshots as-is when quota-limited or reusing the cached index.
+        if (rateLimited || keptPrevious) {
+          tourDetailsCount += 1;
+          continue;
+        }
+
+        try {
+          const detail = await buildTourDetailLive(tour, toursToProcess.warnings);
+          await upsertCricketSnapshot(
+            key,
+            `Tour: ${tour.name}`,
+            toTourDetailSnapshot(detail, slug),
+          );
+          tourDetailsCount += 1;
+        } catch (e) {
+          errors.push(`Tour ${slug}: ${e instanceof Error ? e.message : "failed"}`);
+        }
+      }
+    } catch (e) {
+      errors.push(`Tours index: ${e instanceof Error ? e.message : "failed"}`);
     }
-  } catch (e) {
-    errors.push(`Tours index: ${e instanceof Error ? e.message : "failed"}`);
   }
 
   // Never prune when we ended up with zero tours — a failed fetch must not delete good pages.

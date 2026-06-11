@@ -1,6 +1,7 @@
 import { isBangladeshTeam } from "@/lib/cricket/constants";
 import { fetchScorecard, isCricApiConfigured } from "@/lib/cricket/providers/cricapi";
 import { fetchEspnMatchCentre } from "@/lib/cricket/providers/espn-match-centre";
+import { getCityWeather, type MatchWeather } from "@/lib/cricket/providers/weather";
 import type { LiveMatchFeed } from "@/lib/cricket/types";
 import {
   getLiveBangladeshHighlight,
@@ -15,6 +16,7 @@ export type MatchHighlight = {
   scoreLine: string;
   detailLine: string;
   scores: { label: string; value: string }[];
+  venue?: { name?: string; city?: string; country?: string };
 };
 
 export function involvesBangladesh(match: LiveMatchSummary): boolean {
@@ -103,6 +105,12 @@ export function matchToHighlight(
   match: LiveMatchSummary,
   mode: "live" | "completed",
 ): MatchHighlight {
+  // CricAPI venue strings look like "Shere Bangla National Stadium, Dhaka".
+  const venueParts = (match.venue ?? "").split(",").map((p) => p.trim()).filter(Boolean);
+  const venue = venueParts.length
+    ? { name: match.venue, city: venueParts[venueParts.length - 1] }
+    : undefined;
+
   return {
     mode,
     matchId: match.id,
@@ -110,6 +118,7 @@ export function matchToHighlight(
     scoreLine: formatBangladeshScoreLine(match),
     detailLine: match.status,
     scores: formatInningsScores(match),
+    venue,
   };
 }
 
@@ -134,33 +143,48 @@ export async function getMatchHighlight(): Promise<MatchHighlight | null> {
   return getRecentBangladeshMatchHighlight();
 }
 
+/** Current weather at the match venue — live matches only. */
+async function getHighlightWeather(
+  highlight: MatchHighlight,
+): Promise<MatchWeather | null> {
+  if (highlight.mode !== "live" || !highlight.venue?.city) return null;
+  return getCityWeather(highlight.venue.city, highlight.venue.country).catch(() => null);
+}
+
 export async function getMatchCentreData(): Promise<{
   highlight: MatchHighlight | null;
   scorecard: Scorecard | null;
   liveFeed: LiveMatchFeed | null;
+  weather: MatchWeather | null;
 }> {
   const highlight = await getMatchHighlight();
   if (!highlight?.matchId) {
-    return { highlight: null, scorecard: null, liveFeed: null };
+    return { highlight: null, scorecard: null, liveFeed: null, weather: null };
   }
 
   if (highlight.matchId.startsWith("espn-")) {
-    const espn = await fetchEspnMatchCentre(highlight.matchId).catch(() => null);
+    const [espn, weather] = await Promise.all([
+      fetchEspnMatchCentre(highlight.matchId).catch(() => null),
+      getHighlightWeather(highlight),
+    ]);
     return {
       highlight,
       scorecard: espn?.scorecard ?? null,
       liveFeed: highlight.mode === "live" ? (espn?.liveFeed ?? null) : null,
+      weather,
     };
   }
 
+  const weather = await getHighlightWeather(highlight);
+
   if (!isCricApiConfigured() || highlight.matchId.startsWith("seed-")) {
-    return { highlight, scorecard: null, liveFeed: null };
+    return { highlight, scorecard: null, liveFeed: null, weather };
   }
 
   try {
     const scorecard = await fetchScorecard(highlight.matchId);
-    return { highlight, scorecard, liveFeed: null };
+    return { highlight, scorecard, liveFeed: null, weather };
   } catch {
-    return { highlight, scorecard: null, liveFeed: null };
+    return { highlight, scorecard: null, liveFeed: null, weather };
   }
 }

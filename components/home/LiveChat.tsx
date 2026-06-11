@@ -7,18 +7,17 @@ import { useCallback, useEffect, useRef, useState } from "react";
 import { ChatEmojiPicker } from "@/components/match-chat/ChatEmojiPicker";
 import { formatPostTime } from "@/components/profile/format-time";
 import { MemberAvatar } from "@/components/profile/MemberAvatar";
-import { MATCH_CHAT_MESSAGE_MAX } from "@/lib/match-chat/types";
+import { MATCH_CHAT_MESSAGE_MAX, THE_ROAR_CHAT_TITLE } from "@/lib/match-chat/types";
 import { formatMemberDisplayName } from "@/lib/members/display";
 import type { MatchChatMessage, MatchChatSnapshot } from "@/lib/match-chat/types";
 import { profilePath, JOIN_PAGE_PATH } from "@/lib/site-content";
 
-const POLL_OPEN_MS = 20_000;
-const POLL_CLOSED_MS = 60_000;
+const POLL_MS = 20_000;
 
 export function LiveChat() {
   const { status } = useSession();
   const isLoggedIn = status === "authenticated";
-  const [snapshot, setSnapshot] = useState<MatchChatSnapshot | null>(null);
+  const [messages, setMessages] = useState<MatchChatMessage[]>([]);
   const [message, setMessage] = useState("");
   const [posting, setPosting] = useState(false);
   const [postError, setPostError] = useState<string | null>(null);
@@ -27,35 +26,27 @@ export function LiveChat() {
   const inputRef = useRef<HTMLInputElement>(null);
   const stickToBottom = useRef(true);
 
-  const matchId = snapshot?.matchId ?? null;
-  const chatOpen = snapshot?.canPost ?? false;
-
   const refresh = useCallback(async () => {
     try {
       const res = await fetch("/api/match-chat", { cache: "no-store" });
       if (!res.ok) return;
       const data = (await res.json()) as MatchChatSnapshot;
-      setSnapshot(data);
+      setMessages(data.messages);
     } finally {
       setLoading(false);
     }
   }, []);
 
   useEffect(() => {
-    setLoading(true);
     void refresh();
-  }, [refresh]);
-
-  useEffect(() => {
-    const pollMs = chatOpen ? POLL_OPEN_MS : POLL_CLOSED_MS;
-    const timer = window.setInterval(() => void refresh(), pollMs);
+    const timer = window.setInterval(() => void refresh(), POLL_MS);
     return () => window.clearInterval(timer);
-  }, [refresh, chatOpen]);
+  }, [refresh]);
 
   useEffect(() => {
     if (!stickToBottom.current || !scrollRef.current) return;
     scrollRef.current.scrollTop = scrollRef.current.scrollHeight;
-  }, [snapshot?.messages.length]);
+  }, [messages.length]);
 
   function handleScroll() {
     const el = scrollRef.current;
@@ -88,7 +79,7 @@ export function LiveChat() {
 
   async function handleSubmit(e: React.FormEvent) {
     e.preventDefault();
-    if (!matchId || !message.trim() || !isLoggedIn || !chatOpen) return;
+    if (!message.trim() || !isLoggedIn) return;
 
     setPosting(true);
     setPostError(null);
@@ -96,7 +87,7 @@ export function LiveChat() {
       const res = await fetch("/api/match-chat", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ matchId, message }),
+        body: JSON.stringify({ message }),
       });
       const data = (await res.json()) as { message?: MatchChatMessage; error?: string };
       if (!res.ok) {
@@ -105,11 +96,7 @@ export function LiveChat() {
       }
       const posted = data.message;
       if (!posted) return;
-      setSnapshot((prev) =>
-        prev && prev.matchId
-          ? { ...prev, messages: [...prev.messages, posted] }
-          : prev,
-      );
+      setMessages((prev) => [...prev, posted]);
       setMessage("");
       stickToBottom.current = true;
       void refresh();
@@ -118,18 +105,15 @@ export function LiveChat() {
     }
   }
 
-  const messages = snapshot?.messages ?? [];
-  const title = snapshot?.matchTitle ?? "The Roar";
-
   return (
     <section className="fan-card flex h-full min-h-[420px] flex-col">
       <div className="fan-card-header-red px-4 py-3">
         <h2 className="font-display text-sm font-extrabold uppercase tracking-wider md:text-base">
           📣 The Roar — Live Chat
         </h2>
-        {matchId ? (
-          <p className="mt-1 truncate text-xs font-semibold text-white/80">{title}</p>
-        ) : null}
+        <p className="mt-1 truncate text-xs font-semibold text-white/80">
+          {THE_ROAR_CHAT_TITLE}
+        </p>
       </div>
 
       <div
@@ -137,11 +121,7 @@ export function LiveChat() {
         onScroll={handleScroll}
         className="flex-1 space-y-3 overflow-y-auto bg-gradient-to-b from-crimson/5 to-emerald/5 p-4"
       >
-        {!matchId ? (
-          <p className="text-center text-sm text-charcoal/60">
-            No match chat right now. Head to Match Centre on match day.
-          </p>
-        ) : loading && !messages.length ? (
+        {loading && !messages.length ? (
           <p className="text-center text-sm text-charcoal/60">Loading The Roar…</p>
         ) : messages.length === 0 ? (
           <p className="text-center text-sm text-charcoal/60">
@@ -189,7 +169,7 @@ export function LiveChat() {
         )}
       </div>
 
-      {!matchId ? null : chatOpen && !isLoggedIn ? (
+      {!isLoggedIn ? (
         <div className="border-t-4 border-amber bg-gradient-to-r from-emerald/20 to-crimson/20 p-4 text-center">
           <p className="text-sm font-medium text-charcoal">
             You need to sign in to join The Roar and chat with fellow fans.
@@ -201,7 +181,7 @@ export function LiveChat() {
             Sign in to chat
           </Link>
         </div>
-      ) : chatOpen && isLoggedIn ? (
+      ) : (
         <form
           className="border-t-4 border-amber bg-gradient-to-r from-emerald/20 to-crimson/20 p-3"
           onSubmit={(e) => void handleSubmit(e)}
@@ -236,17 +216,6 @@ export function LiveChat() {
             <p className="mt-2 text-center text-xs font-semibold text-crimson">{postError}</p>
           ) : null}
         </form>
-      ) : (
-        <div className="border-t-4 border-charcoal/15 bg-charcoal/5 p-4 text-center">
-          <p className="text-sm font-semibold text-charcoal/60">
-            Chat closed — scroll above to read past messages.
-          </p>
-          {snapshot?.endedAt ? (
-            <p className="mt-1 text-xs text-charcoal/45">
-              New messages closed 30 minutes after full time.
-            </p>
-          ) : null}
-        </div>
       )}
     </section>
   );

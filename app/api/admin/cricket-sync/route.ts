@@ -20,7 +20,8 @@ export async function POST(request: Request) {
       );
     }
 
-    const result = await syncCricketSnapshots();
+    const force = new URL(request.url).searchParams.get("force") === "1";
+    const result = await syncCricketSnapshots({ force });
 
     if (result.ok) {
       revalidatePath("/");

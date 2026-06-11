@@ -17,7 +17,14 @@ import { matchTime } from "@/lib/cricket/services/match-highlight";
 import type { LiveMatchSummary } from "@/lib/cricket/types";
 
 const UPCOMING_LIMIT = 5;
+/** Merged cache can hold more — e.g. men's tour + women's fixtures side by side. */
+const UPCOMING_MERGED_LIMIT = 8;
+/** Grace before a fixture counts as started (clock skew, delayed toss). */
+const UPCOMING_GRACE_MS = 15 * 60 * 1000;
 
+function isStillUpcoming(match: LiveMatchSummary): boolean {
+  return matchTime(match) > Date.now() - UPCOMING_GRACE_MS;
+}
 
 export function findUpcomingBangladeshMatches(
   matches: LiveMatchSummary[],
@@ -52,7 +59,23 @@ export async function scrapeBangladeshUpcomingMatches(
     findUpcomingBangladeshMatches(matches),
   );
 
-  if (!upcoming.length) {
+  // CricAPI's match list is flaky (quota, partial pages, mixed men's/women's
+  // fixtures) — merge with cached/seeded fixtures that are still in the future
+  // so a bad scrape never wipes known upcoming matches.
+  const [previousCached, previousFile] = await Promise.all([
+    getCachedUpcomingBangladeshMatches().catch(() => []),
+    readBangladeshUpcomingMatches().catch(() => null),
+  ]);
+  const byId = new Map<string, LiveMatchSummary>();
+  for (const m of [...upcoming, ...previousCached, ...(previousFile?.matches ?? [])]) {
+    if (m.id && !byId.has(m.id)) byId.set(m.id, m);
+  }
+  const merged = [...byId.values()]
+    .filter(isStillUpcoming)
+    .sort((a, b) => matchTime(a) - matchTime(b))
+    .slice(0, UPCOMING_MERGED_LIMIT);
+
+  if (!merged.length) {
     const fallback = await readBangladeshUpcomingMatches();
     if (!fallback?.matches?.length) return fallback;
     return {
@@ -64,7 +87,7 @@ export async function scrapeBangladeshUpcomingMatches(
   const snapshot: BangladeshUpcomingMatchesSnapshot = {
     fetchedAt: new Date().toISOString(),
     source: "cricapi",
-    matches: upcoming,
+    matches: merged,
   };
 
   await writeBangladeshUpcomingMatches(snapshot);
@@ -86,5 +109,6 @@ export async function getCachedUpcomingBangladeshMatches(): Promise<LiveMatchSum
     matches = file?.matches ?? [];
   }
 
-  return enrichUpcomingMatchFixtureTimes(matches);
+  // Drop fixtures that have already started — the live/last-match line covers those.
+  return enrichUpcomingMatchFixtureTimes(matches.filter(isStillUpcoming));
 }

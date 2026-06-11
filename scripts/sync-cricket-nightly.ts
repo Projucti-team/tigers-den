@@ -4,12 +4,14 @@
  *
  * Local: start `npm run dev` first, then `npm run sync:cricket`
  *
- * Usage: npm run sync:cricket
+ * Usage: npm run sync:cricket [-- --force]
+ *   --force re-fetches CricAPI even if the tours snapshot is younger than 24h.
  */
 async function main() {
   const base = (process.env.NEXT_PUBLIC_SITE_URL || "http://localhost:3000").replace(/\/$/, "");
   const secret = process.env.CRON_SECRET;
-  const url = `${base}/api/cron/cricket`;
+  const force = process.argv.includes("--force");
+  const url = `${base}/api/cron/cricket${force ? "?force=1" : ""}`;
 
   console.log(`Triggering cricket sync at ${url} …`);
 

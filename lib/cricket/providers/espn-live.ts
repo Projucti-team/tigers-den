@@ -25,6 +25,10 @@ type CoreCompetition = {
   description?: string;
   shortDescription?: string;
   status?: { $ref: string };
+  venue?: {
+    fullName?: string;
+    address?: { city?: string; country?: string };
+  };
 };
 
 type CoreStatus = {
@@ -197,28 +201,28 @@ async function buildHighlightFromEspnEvent(
     `${CORE_BASE}/leagues/${leagueId}/events/${eventId}/competitions/${eventId}/competitors`,
   );
 
-  const innings = (
+  // Keep every competitor with a team name — a side that hasn't batted yet
+  // (toss, rain delay, opponent's first innings) simply has an empty score.
+  const rows = (
     await Promise.all(
       (competitors.items ?? []).map((item) => fetchCompetitorScore(item.$ref)),
     )
-  ).filter((row): row is { team: string; score: string } => Boolean(row?.score));
+  ).filter((row): row is { team: string; score: string } => Boolean(row));
 
-  const involvesBd =
-    innings.some((inn) => isBangladeshTeam(inn.team)) ||
+  const innings = rows.filter((row) => row.score);
+
+  let involvesBd =
+    rows.some((row) => isBangladeshTeam(row.team)) ||
     /bangladesh/i.test(competition.note ?? "");
 
-  if (!involvesBd && innings.length >= 2) {
+  if (!involvesBd) {
     const event = await fetchCoreJson<{ name?: string; shortName?: string }>(
       `${CORE_BASE}/leagues/${leagueId}/events/${eventId}`,
     );
     const blob = `${event?.name ?? ""} ${event?.shortName ?? ""}`.toLowerCase();
-    if (!blob.includes("bangladesh") && !blob.includes("ban")) return null;
-  } else if (!involvesBd) {
-    return null;
+    involvesBd = blob.includes("bangladesh") || /\bban\b/.test(blob);
   }
-
-  const bd = innings.find((inn) => isBangladeshTeam(inn.team));
-  const other = innings.find((inn) => !isBangladeshTeam(inn.team));
+  if (!involvesBd) return null;
 
   const scores = innings.map((inn) => {
     const chasing =
@@ -234,18 +238,41 @@ async function buildHighlightFromEspnEvent(
   const scoreLine =
     bdScore && otherScore
       ? `${teamShortCode(bdScore.label)} ${bdScore.value} · ${teamShortCode(otherScore.label)} ${otherScore.value}`
-      : scores.map((s) => `${teamShortCode(s.label)} ${s.value}`).join(" · ");
+      : scores.length
+        ? scores.map((s) => `${teamShortCode(s.label)} ${s.value}`).join(" · ")
+        : // No ball bowled yet (toss / rain delay) — fall back to team names.
+          rows.map((row) => teamShortCode(row.team)).join(" vs ");
 
   const title =
     competition.shortDescription?.trim() ||
     competition.description?.trim() ||
     `Bangladesh match · Event ${eventId}`;
 
-  const detailLine =
+  const baseDetail =
     status?.longSummary ??
     status?.summary ??
     competition.note ??
     (mode === "live" ? "Live on ESPNcricinfo" : "Result on ESPNcricinfo");
+
+  // During interruptions ESPN puts the real state in type.description
+  // (e.g. "Match delayed by rain", "Rain stopped play") while the summary
+  // still shows the toss — surface it when it's more than a generic "Live".
+  const interruption = status?.type?.description?.trim() ?? "";
+  const detailLine =
+    mode === "live" &&
+    interruption &&
+    !/^(live|in progress|scheduled|current)$/i.test(interruption) &&
+    interruption.toLowerCase() !== baseDetail.toLowerCase()
+      ? `${interruption} · ${baseDetail}`
+      : baseDetail;
+
+  const venue = competition.venue
+    ? {
+        name: competition.venue.fullName,
+        city: competition.venue.address?.city,
+        country: competition.venue.address?.country,
+      }
+    : undefined;
 
   return {
     mode,
@@ -254,6 +281,7 @@ async function buildHighlightFromEspnEvent(
     scoreLine,
     detailLine,
     scores,
+    venue,
   };
 }
 

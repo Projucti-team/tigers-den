@@ -130,6 +130,8 @@ export type GenderRankings = {
   teams: Record<CricketFormat, RankedTeam[]>;
   bangladesh: Record<CricketFormat, RankedTeam | null>;
   players: Record<CricketFormat, FormatRankings>;
+  /** ICC "rank_date" per format (YYYY-MM-DD) — when ICC last updated the table. */
+  rankUpdatedAt?: Record<CricketFormat, string | null>;
 };
 
 export type WtcTeamStanding = {
