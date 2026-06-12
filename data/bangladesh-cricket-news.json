@@ -1,5 +1,5 @@
 {
-  "fetchedAt": "2026-06-11T23:10:14.109Z",
+  "fetchedAt": "2026-06-12T23:03:01.604Z",
   "items": [
     {
       "id": "espn-https://www.espncricinfo.com/ci/content/story/1540534.html",
@@ -8,43 +8,32 @@
       "url": "https://www.espncricinfo.com/story/ban-vs-aus-2nd-odi-mehidy-hasan-miraz-taken-to-hospital-after-being-hit-by-bouncer-1540534",
       "imageUrl": "https://p.imgci.com/db/PICTURES/CMS/418100/418140.5.jpg",
       "source": "espncricinfo",
-      "publishedAt": "2026-06-11T18:22:39.000Z"
+      "publishedAt": "2026-06-12T13:41:11.000Z"
     },
     {
-      "id": "cricbuzz-139122",
-      "title": "'Not a paddy field': Taskin savours Australia series win on sporting wicket",
-      "summary": "The Bangladesh pacer said that the critics can no longer blame Mirpur pitches ",
-      "url": "https://www.cricbuzz.com/cricket-news/139122/not-a-paddy-field-taskin-savours-australia-series-win-on-sporting-wicket",
-      "imageUrl": "https://static.cricbuzz.com/a/img/v1/540x303/i1/c1005688/the-bangladesh-pacer-said-that-the-critics-can-no-longer-blame-mirpur-pitches-for-hosts-success.jpg",
+      "id": "cricbuzz-139130",
+      "title": "Mehidy discharged from hospital after head injury scare",
+      "summary": "The Bangladesh ODI captain has been discharged from hospital after undergoing two scans following a blow to the head against Australia, though his availability for training remains uncertain",
+      "url": "https://www.cricbuzz.com/cricket-news/139130/mehidy-discharged-from-hospital-after-head-injury-scare",
+      "imageUrl": "https://static.cricbuzz.com/a/img/v1/540x303/i1/c1005833/miraz-was-struck-on-the-head-by-a-bouncer-file.jpg",
       "source": "cricbuzz",
-      "publishedAt": "2026-06-11T16:35:30.000Z"
+      "publishedAt": "2026-06-12T13:20:32.000Z"
     },
     {
-      "id": "cricbuzz-139121",
-      "title": "Muted celebrations, bigger ambitions: Business as usual for Bangladesh",
-      "summary": "Head coach Phil Simmons claimed that Bangladesh winning was \"not a surprise anymore\" after a historic series win over Australia",
-      "url": "https://www.cricbuzz.com/cricket-news/139121/muted-celebrations-bigger-ambitions-business-as-usual-for-bangladesh",
-      "imageUrl": "https://static.cricbuzz.com/a/img/v1/540x303/i1/c1005687/bangladesh-scripted-their-fifth-consecutive-odi-series-win-at-home-and-their-first-ever-over-australia.jpg",
-      "source": "cricbuzz",
-      "publishedAt": "2026-06-11T16:10:49.000Z"
+      "id": "dailystar-https://www.thedailystar.net/sports/cricket/news/miraz-released-hospital-tigers-stay-unchanged-3rd-australia-odi-4197131",
+      "title": "Miraz released from hospital as Tigers stay unchanged for 3rd Australia ODI",
+      "summary": "Miraz was hit on the helmet by a bouncer in the second ODI against Australia",
+      "url": "https://www.thedailystar.net/sports/cricket/news/miraz-released-hospital-tigers-stay-unchanged-3rd-australia-odi-4197131",
+      "source": "dailystar",
+      "publishedAt": "2026-06-12T11:17:02.000Z"
     },
     {
-      "id": "cricbuzz-139120",
-      "title": "Bowlers fire Bangladesh to historic ODI series win over Australia",
-      "summary": "Australia fought back after being reduced to 0 for 3, but did not have enough runs on the board in a rain-curtailed match",
-      "url": "https://www.cricbuzz.com/cricket-news/139120/bowlers-fire-bangladesh-to-historic-odi-series-win-over-australia",
-      "imageUrl": "https://static.cricbuzz.com/a/img/v1/540x303/i1/c1005684/australia-fought-back-after-being-reduced-to-0-for-3-but-did-not-have-enough-runs-on-the-board-in-a-rain-curtailed-match.jpg",
-      "source": "cricbuzz",
-      "publishedAt": "2026-06-11T15:28:17.000Z"
-    },
-    {
-      "id": "cricbuzz-139119",
-      "title": "Rob Key considers alcohol ban; no decision yet on Stokes' captaincy",
-      "summary": "England's Director of Cricket said, however, that he was still \"incredibly angry\" after the latest alcohol-related incident marring English cricket",
-      "url": "https://www.cricbuzz.com/cricket-news/139119/rob-key-considers-alcohol-ban-no-decision-yet-on-stokes-captaincy",
-      "imageUrl": "https://static.cricbuzz.com/a/img/v1/540x303/i1/c1005683/rob-key-said-that-he-was-incredibly-angry-after-another-alcohol-related-incident-marring-english-cricket.jpg",
-      "source": "cricbuzz",
-      "publishedAt": "2026-06-11T15:25:59.000Z"
+      "id": "dailystar-https://www.thedailystar.net/sports/cricket/news/no-more-paddy-fields-taskins-pride-win-sporting-wickets-4196631",
+      "title": "‘No more paddy fields’: Taskin’s pride at win on sporting wickets",
+      "summary": "Taskin Ahmed and company are now savouring the pride of dismantling Australia on tracks with pace and bounce, sealing a five-wicket win in the second and penultimate One-Day International to clinch the series 2-0.",
+      "url": "https://www.thedailystar.net/sports/cricket/news/no-more-paddy-fields-taskins-pride-win-sporting-wickets-4196631",
+      "source": "dailystar",
+      "publishedAt": "2026-06-12T01:00:00.000Z"
     },
     {
       "id": "espn-https://www.espncricinfo.com/ci/content/story/1540450.html",
@@ -73,24 +62,6 @@
       "publishedAt": "2026-06-11T11:03:24.000Z"
     },
     {
-      "id": "cricbuzz-139116",
-      "title": "Bangladesh pick Hridoy in Test squad, recall pace trio for Australia T20Is",
-      "summary": "Hridoy could make his Test debut against Zimbabwe, while Taskin Ahmed, Mustafizur Rahman and Nahid Rana return for the Australia T20Is",
-      "url": "https://www.cricbuzz.com/cricket-news/139116/bangladesh-pick-hridoy-in-test-squad-recall-pace-trio-for-australia-t20is",
-      "imageUrl": "https://static.cricbuzz.com/a/img/v1/540x303/i1/c1005439/hridoy-will-serve-as-vice-captain-in-the-t20i-side-under-litton-kumar-das.jpg",
-      "source": "cricbuzz",
-      "publishedAt": "2026-06-11T10:57:29.000Z"
-    },
-    {
-      "id": "cricbuzz-139115",
-      "title": "Nikhil Chaudhary earns maiden Australia callup",
-      "summary": "The India-born all-rounder replaces Travis Head for the T20Is against Bangladesh",
-      "url": "https://www.cricbuzz.com/cricket-news/139115/nikhil-chaudhary-earns-maiden-australia-callup",
-      "imageUrl": "https://static.cricbuzz.com/a/img/v1/540x303/i1/c1005433/nikhil-chaudhary-represented-punjab-in-domestic-cricket-before-moving-to-australia.jpg",
-      "source": "cricbuzz",
-      "publishedAt": "2026-06-11T10:55:26.000Z"
-    },
-    {
       "id": "espn-https://www.espncricinfo.com/ci/content/story/1540473.html",
       "title": "Taskin and Rana return for T20Is against Australia",
       "summary": "Towhid Hridoy and the uncapped fast-bowling allrounder Robiul Haque have been brought into the side for the one-off Test against Zimbabwe",
@@ -108,22 +79,6 @@
       "publishedAt": "2026-06-11T06:18:18.000Z"
     },
     {
-      "id": "dailystar-https://www.thedailystar.net/sports/cricket/news/tigers-bowl-first-4196041",
-      "title": "Bangladesh down Australia in 2nd ODI to script historic series win",
-      "summary": "Bowlers laid the foundation and the batters held their nerve as Bangladesh scripted history, beating Australia by five wickets via DLS method in the second ODI of the three-match series at the Sher-e-Bangla National Cricket Stadium on Thursday to seal their first-ever ODI series win over the Aussies.",
-      "url": "https://www.thedailystar.net/sports/cricket/news/tigers-bowl-first-4196041",
-      "source": "dailystar",
-      "publishedAt": "2026-06-11T04:39:38.000Z"
-    },
-    {
-      "id": "dailystar-https://www.thedailystar.net/sports/cricket/news/bangladesh-vs-australia-2nd-odi-heres-whats-stake-4196031",
-      "title": "Bangladesh vs Australia 2nd ODI: Here's what's at stake",
-      "summary": "Bangladesh will head into the second ODI of the three-match series against Australia on Thursday with a chance to script history against the world champions.",
-      "url": "https://www.thedailystar.net/sports/cricket/news/bangladesh-vs-australia-2nd-odi-heres-whats-stake-4196031",
-      "source": "dailystar",
-      "publishedAt": "2026-06-11T04:24:00.000Z"
-    },
-    {
       "id": "espn-https://www.espncricinfo.com/ci/content/story/1540440.html",
       "title": "Australia change NZ and Bangladesh schedules due to women's Champions Trophy",
       "summary": "New Zealand to tour twice in October and March due to February Champions Trophy while Bangladesh T20Is have been scrapped",
@@ -131,30 +86,6 @@
       "imageUrl": "https://p.imgci.com/db/PICTURES/CMS/398100/398191.5.jpg",
       "source": "espncricinfo",
       "publishedAt": "2026-06-11T02:53:05.000Z"
-    },
-    {
-      "id": "dailystar-https://www.thedailystar.net/sports/cricket/news/rana-turns-heads-tigers-ready-the-kill-4195696",
-      "title": "Rana turns heads as Tigers ready for the kill",
-      "summary": "Rana is a sensation unlike any before in Bangladesh cricket.",
-      "url": "https://www.thedailystar.net/sports/cricket/news/rana-turns-heads-tigers-ready-the-kill-4195696",
-      "source": "dailystar",
-      "publishedAt": "2026-06-10T18:30:00.000Z"
-    },
-    {
-      "id": "dailystar-https://www.thedailystar.net/sports/cricket/news/mushfiqur-taijul-nominated-icc-player-the-month-4195601",
-      "title": "Mushfiqur, Taijul nominated for ICC Player of the Month",
-      "summary": "Bangladesh's Mushfiqur Rahim and Taijul Islam, along with Nepal all-rounder Dipendra Singh Airee, have been nominated for the ICC Men's Player of the Month award for May 2026 following a string of impressive performances.",
-      "url": "https://www.thedailystar.net/sports/cricket/news/mushfiqur-taijul-nominated-icc-player-the-month-4195601",
-      "source": "dailystar",
-      "publishedAt": "2026-06-10T16:31:21.000Z"
-    },
-    {
-      "id": "dailystar-https://www.thedailystar.net/news/news/cricketer-nasir-wife-tamima-acquitted-adultery-case-4195176",
-      "title": "Cricketer Nasir, wife Tamima acquitted in adultery case",
-      "summary": "Ex-husband filed the case, alleging that Tamima married Nasir without divorcing him",
-      "url": "https://www.thedailystar.net/news/news/cricketer-nasir-wife-tamima-acquitted-adultery-case-4195176",
-      "source": "dailystar",
-      "publishedAt": "2026-06-10T06:26:06.000Z"
     },
     {
       "id": "espn-https://www.espncricinfo.com/ci/content/story/1540359.html",
@@ -236,24 +167,6 @@
       "imageUrl": "https://p.imgci.com/db/PICTURES/CMS/415300/415363.5.jpg",
       "source": "espncricinfo",
       "publishedAt": "2026-06-07T16:15:51.000Z"
-    },
-    {
-      "id": "espn-https://www.espncricinfo.com/ci/content/story/1540031.html",
-      "title": "Tamim Iqbal elected new BCB president",
-      "summary": "The former Bangladesh captain will serve a four-year term, having already completed two months as the president of an ad-hoc committee",
-      "url": "https://www.espncricinfo.com/story/tamim-iqbal-elected-new-bcb-president-1540031",
-      "imageUrl": "https://p.imgci.com/db/PICTURES/CMS/417900/417992.5.jpg",
-      "source": "espncricinfo",
-      "publishedAt": "2026-06-07T14:50:22.000Z"
-    },
-    {
-      "id": "espn-https://www.espncricinfo.com/ci/content/story/1539936.html",
-      "title": "Women's T20 World Cup 2026 warm-up: Kapp, Wolvaardt take SA past Ireland",
-      "summary": "Scotland thumped Netherlands by 58 runs, Athapaththu helped SL beat Pakistan, and NZ eased past Bangladesh",
-      "url": "https://www.espncricinfo.com/story/womens-t20-world-cup-2026-kapp-wolvaardt-take-south-africa-past-ireland-in-18-over-game-1539936",
-      "imageUrl": "https://p.imgci.com/db/PICTURES/CMS/417900/417958.5.jpg",
-      "source": "espncricinfo",
-      "publishedAt": "2026-06-06T18:20:18.000Z"
     }
   ]
 }
