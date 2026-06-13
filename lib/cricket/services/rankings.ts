@@ -12,14 +12,29 @@ import {
 } from "@/lib/cricket/icc-rankings-store";
 import { fetchAllIccRankingsFromSportz } from "@/lib/cricket/providers/icc-sportz";
 import type { IccRankingsSnapshot } from "@/lib/cricket/providers/icc-sportz";
-import type { GenderRankings } from "@/lib/cricket/types";
+import type { GenderRankings, IccRankDates } from "@/lib/cricket/types";
 
 const MAX_CACHE_AGE_HOURS = 36;
 
-/** Older scrapes only stored the ICC top 5 or lack rank dates — refetch when outdated. */
+function isLegacyRankDates(
+  dates: GenderRankings["rankUpdatedAt"] | undefined,
+): boolean {
+  if (!dates) return true;
+  for (const format of FORMATS) {
+    const entry = dates[format];
+    if (entry == null) continue;
+    // v3 stored one string per format; v4 stores per-table dates.
+    if (typeof entry === "string") return true;
+    const perTable = entry as IccRankDates;
+    if (!("team" in perTable && "bat" in perTable)) return true;
+  }
+  return false;
+}
+
+/** Older scrapes only stored the ICC top 5 or lack per-table rank dates — refetch when outdated. */
 function isShallowIccSnapshot(snapshot: IccRankingsSnapshot): boolean {
   for (const gender of GENDERS) {
-    if (!snapshot[gender].rankUpdatedAt) return true;
+    if (isLegacyRankDates(snapshot[gender].rankUpdatedAt)) return true;
     for (const format of FORMATS_BY_GENDER[gender]) {
       const count = snapshot[gender].players[format]?.topBatsmen?.length ?? 0;
       if (count > 0 && count < RANKINGS_PLAYER_DEPTH) return true;

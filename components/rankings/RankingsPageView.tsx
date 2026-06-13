@@ -4,7 +4,7 @@ import {
   TeamStandingsTable,
   TigersPlayerList,
   WtcStandingsTable,
-  formatRankDate,
+  rankDateSubtitle,
 } from "@/components/rankings/RankingsUi";
 import type { FormatShowcase, RankingsShowcase } from "@/lib/cricket/services/rankings-display";
 import type { WtcShowcase } from "@/lib/cricket/services/wtc";
@@ -41,12 +41,16 @@ function VibrantPanel({ children }: { children: ReactNode }) {
 }
 
 function FormatBlock({ format }: { format: FormatShowcase }) {
-  const updated = formatRankDate(format.rankUpdatedAt);
+  const teamUpdated = rankDateSubtitle(format.rankUpdatedAt.team);
+  const batUpdated = rankDateSubtitle(format.rankUpdatedAt.bat);
+  const bowlUpdated = rankDateSubtitle(format.rankUpdatedAt.bowl);
+  const arUpdated = rankDateSubtitle(format.rankUpdatedAt.allrounder);
+
   return (
     <div className="space-y-6">
       <SectionHeading
         title={FORMAT_OVERALL_LABEL[format.format]}
-        subtitle={updated ? `ICC top 10 teams · Rankings updated ${updated}` : "ICC top 10 teams"}
+        subtitle={teamUpdated ? `ICC top 10 teams · ${teamUpdated}` : "ICC top 10 teams"}
       />
       <VibrantPanel>
         <TeamStandingsTable teams={format.topTeams ?? []} formatLabel={format.label} />
@@ -57,6 +61,9 @@ function FormatBlock({ format }: { format: FormatShowcase }) {
           <p className="text-center font-display text-xs font-extrabold uppercase tracking-widest text-emerald">
             Top Bangladeshi Batters
           </p>
+          {batUpdated ? (
+            <p className="text-center text-[11px] font-semibold text-white/55">{batUpdated}</p>
+          ) : null}
           <VibrantPanel>
             <TigersPlayerList
               players={format.bangladeshBatters ?? []}
@@ -69,6 +76,9 @@ function FormatBlock({ format }: { format: FormatShowcase }) {
           <p className="text-center font-display text-xs font-extrabold uppercase tracking-widest text-crimson">
             Top Bangladeshi Bowlers
           </p>
+          {bowlUpdated ? (
+            <p className="text-center text-[11px] font-semibold text-white/55">{bowlUpdated}</p>
+          ) : null}
           <VibrantPanel>
             <TigersPlayerList
               players={format.bangladeshBowlers ?? []}
@@ -81,6 +91,9 @@ function FormatBlock({ format }: { format: FormatShowcase }) {
           <p className="text-center font-display text-xs font-extrabold uppercase tracking-widest fan-gradient-text">
             Top Bangladeshi All-rounders
           </p>
+          {arUpdated ? (
+            <p className="text-center text-[11px] font-semibold text-white/55">{arUpdated}</p>
+          ) : null}
           <VibrantPanel>
             <TigersPlayerList
               players={format.bangladeshAllRounders ?? []}

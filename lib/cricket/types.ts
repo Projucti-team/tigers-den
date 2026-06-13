@@ -125,13 +125,20 @@ export type FormatRankings = {
   topBangladeshAllRounder: RankedPlayer | null;
 };
 
+export type IccRankDates = {
+  team: string | null;
+  bat: string | null;
+  bowl: string | null;
+  allrounder: string | null;
+};
+
 export type GenderRankings = {
   gender: Gender;
   teams: Record<CricketFormat, RankedTeam[]>;
   bangladesh: Record<CricketFormat, RankedTeam | null>;
   players: Record<CricketFormat, FormatRankings>;
-  /** ICC "rank_date" per format (YYYY-MM-DD) — when ICC last updated the table. */
-  rankUpdatedAt?: Record<CricketFormat, string | null>;
+  /** ICC rank_date per table — team/bat/bowl/allrounder update on different days. */
+  rankUpdatedAt?: Record<CricketFormat, IccRankDates>;
 };
 
 export type WtcTeamStanding = {

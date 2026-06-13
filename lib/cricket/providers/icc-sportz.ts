@@ -1,4 +1,4 @@
-import type { CricketFormat, Gender, GenderRankings, RankedPlayer, RankedTeam } from "@/lib/cricket/types";
+import type { CricketFormat, Gender, GenderRankings, IccRankDates, RankedPlayer, RankedTeam } from "@/lib/cricket/types";
 import {
   FORMATS,
   FORMATS_BY_GENDER,
@@ -177,6 +177,13 @@ const emptyFormatPlayers = (format: CricketFormat) => ({
   topBangladeshAllRounder: null,
 });
 
+const emptyRankDates = (): IccRankDates => ({
+  team: null,
+  bat: null,
+  bowl: null,
+  allrounder: null,
+});
+
 async function buildGenderRankings(gender: Gender): Promise<GenderRankings> {
   const teams = {} as GenderRankings["teams"];
   const bangladesh = {} as GenderRankings["bangladesh"];
@@ -187,7 +194,7 @@ async function buildGenderRankings(gender: Gender): Promise<GenderRankings> {
     teams[format] = [];
     bangladesh[format] = null;
     players[format] = emptyFormatPlayers(format);
-    rankUpdatedAt[format] = null;
+    rankUpdatedAt[format] = emptyRankDates();
   }
 
   for (const format of FORMATS_BY_GENDER[gender]) {
@@ -201,13 +208,12 @@ async function buildGenderRankings(gender: Gender): Promise<GenderRankings> {
       fetchSportz(compType, "allrounder"),
     ]);
 
-    // Most recent rank_date across the four tables (YYYY-MM-DD sorts lexicographically).
-    rankUpdatedAt[format] =
-      [teamFeed, batFeed, bowlFeed, arFeed]
-        .map((f) => f.rankDate)
-        .filter((d): d is string => Boolean(d))
-        .sort()
-        .pop() ?? null;
+    rankUpdatedAt[format] = {
+      team: teamFeed.rankDate,
+      bat: batFeed.rankDate,
+      bowl: bowlFeed.rankDate,
+      allrounder: arFeed.rankDate,
+    };
 
     const teamList = mapTeams(teamFeed.rows);
     const batsmen = mapPlayers(batFeed.rows);

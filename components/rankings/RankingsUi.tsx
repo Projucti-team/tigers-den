@@ -45,15 +45,21 @@ export function formatRankDate(date: string | null | undefined): string | null {
   });
 }
 
-/** Most recent ICC rank_date across format showcases. */
+/** ICC rank_date subtitle, e.g. "Rankings updated 9 Jun 2026". */
+export function rankDateSubtitle(date: string | null | undefined): string | undefined {
+  const formatted = formatRankDate(date);
+  return formatted ? `Rankings updated ${formatted}` : undefined;
+}
+
+/** Most recent ICC rank_date across all tables in format showcases. */
 export function latestRankUpdatedAt(formats: FormatShowcase[]): string | null {
-  return (
-    formats
-      .map((f) => f.rankUpdatedAt)
-      .filter((d): d is string => Boolean(d))
-      .sort()
-      .pop() ?? null
-  );
+  const dates = formats.flatMap((f) => [
+    f.rankUpdatedAt.team,
+    f.rankUpdatedAt.bat,
+    f.rankUpdatedAt.bowl,
+    f.rankUpdatedAt.allrounder,
+  ]);
+  return dates.filter((d): d is string => Boolean(d)).sort().pop() ?? null;
 }
 
 export function playerPhotoSrc(player: RankedPlayer): string | null {

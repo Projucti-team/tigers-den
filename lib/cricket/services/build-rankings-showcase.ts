@@ -18,6 +18,7 @@ import type {
   FormatRankings,
   Gender,
   GenderRankings,
+  IccRankDates,
   RankedPlayer,
   RankedTeam,
 } from "@/lib/cricket/types";
@@ -25,8 +26,8 @@ import type {
 export type FormatShowcase = {
   format: CricketFormat;
   label: string;
-  /** ICC rank_date (YYYY-MM-DD) — when ICC last updated this format's tables. */
-  rankUpdatedAt: string | null;
+  /** ICC rank_date per table — each discipline updates on its own schedule. */
+  rankUpdatedAt: IccRankDates;
   bangladeshRank: number | null;
   bangladeshRating: number | null;
   topBatsman: RankedPlayer | null;
@@ -50,11 +51,18 @@ const FORMAT_LABELS: Record<CricketFormat, string> = {
   t20: "T20I",
 };
 
+const EMPTY_RANK_DATES: IccRankDates = {
+  team: null,
+  bat: null,
+  bowl: null,
+  allrounder: null,
+};
+
 export function emptyFormatShowcase(format: CricketFormat): FormatShowcase {
   return {
     format,
     label: FORMAT_LABELS[format],
-    rankUpdatedAt: null,
+    rankUpdatedAt: { ...EMPTY_RANK_DATES },
     bangladeshRank: null,
     bangladeshRating: null,
     topBatsman: null,
@@ -135,7 +143,7 @@ async function buildShowcase(gender: Gender, data: GenderRankings): Promise<Rank
     formats.push({
       format,
       label: FORMAT_LABELS[format],
-      rankUpdatedAt: data.rankUpdatedAt?.[format] ?? null,
+      rankUpdatedAt: data.rankUpdatedAt?.[format] ?? { ...EMPTY_RANK_DATES },
       bangladeshRank: bd?.rank ?? null,
       bangladeshRating: bd?.rating ?? null,
       topBatsman: players.topBatsman,
