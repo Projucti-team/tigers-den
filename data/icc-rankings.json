@@ -1,5 +1,5 @@
 {
-  "fetchedAt": "2026-06-11T10:26:33.856Z",
+  "fetchedAt": "2026-06-13T22:20:06.958Z",
   "source": "icc-sportz.io",
   "sourceUrl": "https://www.icc-cricket.com/rankings",
   "men": {
@@ -92,9 +92,9 @@
           "rank": 1,
           "name": "India",
           "abbreviation": "IND",
-          "rating": 118,
-          "points": 3197,
-          "matches": 27
+          "rating": 119,
+          "points": 3340,
+          "matches": 28
         },
         {
           "rank": 2,
@@ -106,18 +106,18 @@
         },
         {
           "rank": 3,
-          "name": "Australia",
-          "abbreviation": "AUS",
-          "rating": 103,
-          "points": 2791,
-          "matches": 27
-        },
-        {
-          "rank": 4,
           "name": "South Africa",
           "abbreviation": "SA",
           "rating": 102,
           "points": 2855,
+          "matches": 28
+        },
+        {
+          "rank": 4,
+          "name": "Australia",
+          "abbreviation": "AUS",
+          "rating": 101,
+          "points": 2827,
           "matches": 28
         },
         {
@@ -140,9 +140,9 @@
           "rank": 7,
           "name": "Afghanistan",
           "abbreviation": "AFG",
-          "rating": 93,
-          "points": 1947,
-          "matches": 21
+          "rating": 92,
+          "points": 2015,
+          "matches": 22
         },
         {
           "rank": 8,
@@ -156,9 +156,9 @@
           "rank": 9,
           "name": "Bangladesh",
           "abbreviation": "BAN",
-          "rating": 86,
-          "points": 2919,
-          "matches": 34
+          "rating": 88,
+          "points": 3072,
+          "matches": 35
         },
         {
           "rank": 10,
@@ -204,9 +204,9 @@
           "rank": 15,
           "name": "USA",
           "abbreviation": "USA",
-          "rating": 39,
-          "points": 971,
-          "matches": 25
+          "rating": 40,
+          "points": 1035,
+          "matches": 26
         },
         {
           "rank": 16,
@@ -244,9 +244,9 @@
           "rank": 20,
           "name": "Canada",
           "abbreviation": "CAN",
-          "rating": 14,
-          "points": 253,
-          "matches": 18
+          "rating": 13,
+          "points": 242,
+          "matches": 19
         }
       ],
       "t20": [
@@ -302,9 +302,9 @@
           "rank": 7,
           "name": "West Indies",
           "abbreviation": "WI",
-          "rating": 233,
-          "points": 12367,
-          "matches": 53
+          "rating": 234,
+          "points": 12638,
+          "matches": 54
         },
         {
           "rank": 8,
@@ -316,19 +316,19 @@
         },
         {
           "rank": 9,
-          "name": "Sri Lanka",
-          "abbreviation": "SL",
-          "rating": 221,
-          "points": 9053,
-          "matches": 41
-        },
-        {
-          "rank": 10,
           "name": "Afghanistan",
           "abbreviation": "AFG",
           "rating": 220,
           "points": 7935,
           "matches": 36
+        },
+        {
+          "rank": 10,
+          "name": "Sri Lanka",
+          "abbreviation": "SL",
+          "rating": 220,
+          "points": 9236,
+          "matches": 42
         },
         {
           "rank": 11,
@@ -590,41 +590,41 @@
           "rank": 43,
           "name": "Austria",
           "abbreviation": "AUT",
-          "rating": 68,
-          "points": 3688,
-          "matches": 54
+          "rating": 65,
+          "points": 3709,
+          "matches": 57
         },
         {
           "rank": 44,
-          "name": "Norway",
-          "abbreviation": "NOR",
-          "rating": 61,
-          "points": 1641,
-          "matches": 27
+          "name": "Finland",
+          "abbreviation": "FIN",
+          "rating": 62,
+          "points": 1302,
+          "matches": 21
         },
         {
           "rank": 45,
           "name": "Sweden",
           "abbreviation": "SWE",
-          "rating": 59,
-          "points": 1721,
-          "matches": 29
+          "rating": 61,
+          "points": 1955,
+          "matches": 32
         },
         {
           "rank": 46,
+          "name": "Norway",
+          "abbreviation": "NOR",
+          "rating": 59,
+          "points": 1777,
+          "matches": 30
+        },
+        {
+          "rank": 47,
           "name": "Argentina",
           "abbreviation": "ARG",
           "rating": 54,
           "points": 758,
           "matches": 14
-        },
-        {
-          "rank": 47,
-          "name": "Finland",
-          "abbreviation": "FIN",
-          "rating": 53,
-          "points": 962,
-          "matches": 18
         },
         {
           "rank": 48,
@@ -1065,9 +1065,9 @@
         "rank": 9,
         "name": "Bangladesh",
         "abbreviation": "BAN",
-        "rating": 86,
-        "points": 2919,
-        "matches": 34
+        "rating": 88,
+        "points": 3072,
+        "matches": 35
       },
       "t20": {
         "rank": 8,
@@ -10362,9 +10362,24 @@
       }
     },
     "rankUpdatedAt": {
-      "test": "2026-06-09",
-      "odi": "2026-06-11",
-      "t20": "2026-06-09"
+      "test": {
+        "team": "2026-06-08",
+        "bat": "2026-06-09",
+        "bowl": "2026-06-09",
+        "allrounder": "2026-06-09"
+      },
+      "odi": {
+        "team": "2026-06-13",
+        "bat": "2026-06-09",
+        "bowl": "2026-06-09",
+        "allrounder": "2026-06-09"
+      },
+      "t20": {
+        "team": "2026-06-13",
+        "bat": "2026-06-09",
+        "bowl": "2026-06-09",
+        "allrounder": "2026-06-09"
+      }
     }
   },
   "women": {
@@ -10491,16 +10506,16 @@
           "name": "Australia",
           "abbreviation": "AUS",
           "rating": 287,
-          "points": 6022,
-          "matches": 21
+          "points": 6319,
+          "matches": 22
         },
         {
           "rank": 2,
           "name": "England",
           "abbreviation": "ENG",
           "rating": 275,
-          "points": 8520,
-          "matches": 31
+          "points": 8807,
+          "matches": 32
         },
         {
           "rank": 3,
@@ -10522,17 +10537,17 @@
           "rank": 5,
           "name": "South Africa",
           "abbreviation": "SA",
-          "rating": 243,
-          "points": 7762,
-          "matches": 32
+          "rating": 242,
+          "points": 7995,
+          "matches": 33
         },
         {
           "rank": 6,
           "name": "Sri Lanka",
           "abbreviation": "SL",
           "rating": 237,
-          "points": 6871,
-          "matches": 29
+          "points": 7096,
+          "matches": 30
         },
         {
           "rank": 7,
@@ -10554,9 +10569,9 @@
           "rank": 9,
           "name": "Ireland",
           "abbreviation": "IRE",
-          "rating": 204,
-          "points": 7544,
-          "matches": 37
+          "rating": 202,
+          "points": 7660,
+          "matches": 38
         },
         {
           "rank": 10,
@@ -10570,17 +10585,17 @@
           "rank": 11,
           "name": "Scotland",
           "abbreviation": "SCO",
-          "rating": 166,
-          "points": 5485,
-          "matches": 33
+          "rating": 169,
+          "points": 5739,
+          "matches": 34
         },
         {
           "rank": 12,
           "name": "Thailand",
           "abbreviation": "THA",
-          "rating": 153,
-          "points": 8731,
-          "matches": 57
+          "rating": 154,
+          "points": 9082,
+          "matches": 59
         },
         {
           "rank": 13,
@@ -10602,9 +10617,9 @@
           "rank": 15,
           "name": "United Arab Emirates",
           "abbreviation": "UAE",
-          "rating": 138,
-          "points": 6052,
-          "matches": 44
+          "rating": 137,
+          "points": 6303,
+          "matches": 46
         },
         {
           "rank": 16,
@@ -10650,20 +10665,12 @@
           "rank": 21,
           "name": "Indonesia",
           "abbreviation": "INA",
-          "rating": 93,
-          "points": 3145,
-          "matches": 34
+          "rating": 94,
+          "points": 3370,
+          "matches": 36
         },
         {
           "rank": 22,
-          "name": "Hong Kong",
-          "abbreviation": "HK",
-          "rating": 92,
-          "points": 4691,
-          "matches": 51
-        },
-        {
-          "rank": 23,
           "name": "Nepal",
           "abbreviation": "NEP",
           "rating": 92,
@@ -10671,12 +10678,20 @@
           "matches": 51
         },
         {
+          "rank": 23,
+          "name": "Hong Kong",
+          "abbreviation": "HK",
+          "rating": 91,
+          "points": 4815,
+          "matches": 53
+        },
+        {
           "rank": 24,
           "name": "Rwanda",
           "abbreviation": "RWA",
-          "rating": 85,
-          "points": 4406,
-          "matches": 52
+          "rating": 86,
+          "points": 4628,
+          "matches": 54
         },
         {
           "rank": 25,
@@ -10690,9 +10705,9 @@
           "rank": 26,
           "name": "Nigeria",
           "abbreviation": "NGR",
-          "rating": 80,
-          "points": 2388,
-          "matches": 30
+          "rating": 76,
+          "points": 2436,
+          "matches": 32
         },
         {
           "rank": 27,
@@ -10728,6 +10743,14 @@
         },
         {
           "rank": 31,
+          "name": "Brazil",
+          "abbreviation": "BRA",
+          "rating": 65,
+          "points": 2088,
+          "matches": 32
+        },
+        {
+          "rank": 32,
           "name": "Kenya",
           "abbreviation": "KEN",
           "rating": 64,
@@ -10735,20 +10758,12 @@
           "matches": 24
         },
         {
-          "rank": 32,
+          "rank": 33,
           "name": "Canada",
           "abbreviation": "CAN",
           "rating": 63,
           "points": 879,
           "matches": 14
-        },
-        {
-          "rank": 33,
-          "name": "Brazil",
-          "abbreviation": "BRA",
-          "rating": 63,
-          "points": 1883,
-          "matches": 30
         },
         {
           "rank": 34,
@@ -10928,19 +10943,19 @@
         },
         {
           "rank": 56,
-          "name": "Malawi",
-          "abbreviation": "MAW",
-          "rating": 20,
-          "points": 511,
-          "matches": 26
-        },
-        {
-          "rank": 57,
           "name": "Norway",
           "abbreviation": "NOR",
           "rating": 19,
           "points": 289,
           "matches": 15
+        },
+        {
+          "rank": 57,
+          "name": "Malawi",
+          "abbreviation": "MAW",
+          "rating": 19,
+          "points": 530,
+          "matches": 28
         },
         {
           "rank": 58,
@@ -17333,9 +17348,24 @@
       }
     },
     "rankUpdatedAt": {
-      "test": null,
-      "odi": "2026-05-18",
-      "t20": "2026-06-10"
+      "test": {
+        "team": null,
+        "bat": null,
+        "bowl": null,
+        "allrounder": null
+      },
+      "odi": {
+        "team": "2026-05-16",
+        "bat": "2026-05-18",
+        "bowl": "2026-05-18",
+        "allrounder": "2026-05-18"
+      },
+      "t20": {
+        "team": "2026-06-13",
+        "bat": "2026-06-08",
+        "bowl": "2026-06-08",
+        "allrounder": "2026-06-08"
+      }
     }
   }
 }
