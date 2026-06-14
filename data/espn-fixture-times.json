@@ -1,5 +1,5 @@
 {
-  "fetchedAt": "2026-06-08T00:00:00.000Z",
+  "fetchedAt": "2026-05-31T00:00:00.000Z",
   "series": {
     "1532475": {
       "tourName": "Australia tour of Bangladesh, 2026",
@@ -40,6 +40,55 @@
           "date": "2026-06-21",
           "matchType": "t20",
           "dateTimeGMT": "2026-06-21T08:00:00.000Z",
+          "source": "espncricinfo"
+        }
+      ]
+    },
+    "1538288": {
+      "tourName": "Bangladesh tour of Zimbabwe, 2026",
+      "cricinfoSeriesId": 1538288,
+      "espnLeagueId": 1538288,
+      "fixtures": [
+        {
+          "date": "2026-06-28",
+          "matchType": "test",
+          "dateTimeGMT": "2026-06-28T07:30:00.000Z",
+          "source": "espncricinfo"
+        },
+        {
+          "date": "2026-07-06",
+          "matchType": "odi",
+          "dateTimeGMT": "2026-07-06T07:30:00.000Z",
+          "source": "espncricinfo"
+        },
+        {
+          "date": "2026-07-09",
+          "matchType": "odi",
+          "dateTimeGMT": "2026-07-09T07:30:00.000Z",
+          "source": "espncricinfo"
+        },
+        {
+          "date": "2026-07-11",
+          "matchType": "odi",
+          "dateTimeGMT": "2026-07-11T07:30:00.000Z",
+          "source": "espncricinfo"
+        },
+        {
+          "date": "2026-07-15",
+          "matchType": "t20",
+          "dateTimeGMT": "2026-07-15T10:30:00.000Z",
+          "source": "espncricinfo"
+        },
+        {
+          "date": "2026-07-17",
+          "matchType": "t20",
+          "dateTimeGMT": "2026-07-17T10:30:00.000Z",
+          "source": "espncricinfo"
+        },
+        {
+          "date": "2026-07-19",
+          "matchType": "t20",
+          "dateTimeGMT": "2026-07-19T10:30:00.000Z",
           "source": "espncricinfo"
         }
       ]

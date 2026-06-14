@@ -3,7 +3,10 @@ import {
   fetchSeriesInfo,
   isCricApiConfigured,
 } from "@/lib/cricket/providers/cricapi";
-import { enrichMatchFixtureTimes } from "@/lib/cricket/providers/espn-fixtures";
+import {
+  buildMatchesFromCuratedFixtures,
+  enrichMatchFixtureTimes,
+} from "@/lib/cricket/providers/espn-fixtures";
 import { refreshEspnTourSquads, applyEspnTourSquads } from "@/lib/cricket/providers/espn-squads";
 import { tourToCard } from "@/lib/cricket/services/tours-display";
 import type { TourDetailSnapshot } from "@/lib/cricket/snapshot-types";
@@ -57,6 +60,13 @@ export async function buildTourDetailLive(
         warnings.push(
           "Match list matched by name — full series schedule may update when CricAPI syncs.",
         );
+      }
+    }
+
+    if (!matches.length) {
+      matches = await buildMatchesFromCuratedFixtures(tour);
+      if (matches.length) {
+        warnings.push("Fixture list from confirmed ESPN schedule (CricAPI not synced yet).");
       }
     }
 

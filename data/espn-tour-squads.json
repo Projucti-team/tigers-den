@@ -71,6 +71,13 @@
           ]
         }
       ]
+    },
+    "bangladesh-tour-of-zimbabwe": {
+      "tourName": "Bangladesh tour of Zimbabwe, 2026",
+      "cricinfoSeriesId": 1538288,
+      "espnLeagueId": 1538288,
+      "fetchedAt": "2026-05-31T00:00:00.000Z",
+      "squads": []
     }
   }
 }

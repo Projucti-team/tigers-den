@@ -1,6 +1,8 @@
 import { CRICAPI_BASE } from "@/lib/cricket/constants";
 import type { SeriesSquad, SquadPlayer } from "@/lib/cricket/curated-squads";
 import { normalizeSquadPlayers } from "@/lib/cricket/curated-squads";
+import { isFutureSeries } from "@/lib/cricket/tour-dates";
+import { fetchCuratedEspnTours } from "@/lib/cricket/providers/espn-fixtures";
 import { isUpcomingBangladeshMatch } from "@/lib/cricket/services/marquee-format";
 import type { LiveMatchSummary, Scorecard, ScorecardInnings, Tour } from "@/lib/cricket/types";
 
@@ -142,40 +144,7 @@ export async function prefetchMatchesForSync(): Promise<LiveMatchSummary[]> {
   return [...byId.values()];
 }
 
-/** CricAPI sometimes returns "Aug 26" without a year — infer from ISO startDate. */
-function parseSeriesEndDate(endRaw: string | undefined, startIso: string | undefined): Date | null {
-  if (!endRaw) return null;
-  const trimmed = endRaw.trim();
-  if (/^\d{4}-\d{2}-\d{2}/.test(trimmed)) {
-    const d = new Date(trimmed);
-    return Number.isNaN(d.getTime()) ? null : d;
-  }
-
-  const year = startIso ? new Date(startIso).getFullYear() : new Date().getFullYear();
-  const d = new Date(`${trimmed} ${year}`);
-  return Number.isNaN(d.getTime()) ? null : d;
-}
-
-function isFutureSeries(startDate?: string, endDate?: string): boolean {
-  const now = new Date();
-  now.setHours(0, 0, 0, 0);
-
-  const start = startDate ? new Date(startDate) : null;
-  const end = parseSeriesEndDate(endDate, startDate);
-
-  if (start && !Number.isNaN(start.getTime())) {
-    if (start >= now) return true;
-    // Include in-progress series (CricAPI often omits endDate until the tour finishes).
-    const daysSinceStart = (now.getTime() - start.getTime()) / 86_400_000;
-    if (daysSinceStart >= 0 && daysSinceStart <= 180 && (!end || end >= now)) {
-      return true;
-    }
-  }
-
-  if (end && end >= now) return true;
-  return false;
-}
-
+import { isFutureSeries } from "@/lib/cricket/tour-dates";
 function mapSeriesToTour(s: Record<string, unknown>): Tour {
   const name = String(s.name || "Series");
   const test = Number(s.test) || 0;
@@ -320,12 +289,37 @@ function sortToursByStart(tours: Tour[]): Tour[] {
   });
 }
 
-function addFutureTour(tours: Tour[], seen: Set<string>, raw: Record<string, unknown>): void {
-  const tour = mapSeriesToTour(raw);
+function normalizeTourName(name: string): string {
+  return name
+    .toLowerCase()
+    .replace(/,?\s*\d{4}(-\d{2})?$/i, "")
+    .replace(/\s+/g, " ")
+    .trim();
+}
+
+function mergeTour(
+  tours: Tour[],
+  seenIds: Set<string>,
+  seenNames: Set<string>,
+  tour: Tour,
+): void {
   if (!isFutureSeries(tour.startDate, tour.endDate)) return;
-  if (seen.has(tour.id)) return;
-  seen.add(tour.id);
+
+  const nameKey = normalizeTourName(tour.name);
+  if (seenIds.has(tour.id) || seenNames.has(nameKey)) return;
+
+  seenIds.add(tour.id);
+  seenNames.add(nameKey);
   tours.push(tour);
+}
+
+function addFutureTour(
+  tours: Tour[],
+  seenIds: Set<string>,
+  seenNames: Set<string>,
+  raw: Record<string, unknown>,
+): void {
+  mergeTour(tours, seenIds, seenNames, mapSeriesToTour(raw));
 }
 
 async function deriveToursFromUpcomingMatches(
@@ -424,26 +418,33 @@ export async function fetchUpcomingTours(options?: {
 }): Promise<{ tours: Tour[]; warnings: string[] }> {
   const tours: Tour[] = [];
   const warnings: string[] = [];
-  const seen = new Set<string>();
+  const seenIds = new Set<string>();
+  const seenNames = new Set<string>();
 
-  if (cricApiBlocked) {
-    return { tours: [], warnings: ["Blocked for 15 minutes"] };
-  }
-
-  const { rows, warning } = await fetchSeriesBatch({ offset: "0", search: "bangladesh" });
-  if (warning) {
-    warnings.push(warning);
+  if (!cricApiBlocked) {
+    const { rows, warning } = await fetchSeriesBatch({ offset: "0", search: "bangladesh" });
+    if (warning) {
+      warnings.push(warning);
+    } else {
+      for (const raw of rows) addFutureTour(tours, seenIds, seenNames, raw);
+    }
   } else {
-    for (const raw of rows) addFutureTour(tours, seen, raw);
+    warnings.push("Blocked for 15 minutes");
   }
 
-  if (!tours.length && !cricApiBlocked) {
+  if (!cricApiBlocked) {
     const derived = await deriveToursFromUpcomingMatches(options?.prefetchedMatches);
     warnings.push(...derived.warnings);
     for (const tour of derived.tours) {
-      if (seen.has(tour.id)) continue;
-      seen.add(tour.id);
-      tours.push(tour);
+      mergeTour(tours, seenIds, seenNames, tour);
+    }
+  }
+
+  const curated = await fetchCuratedEspnTours();
+  if (curated.length) {
+    warnings.push(`Included ${curated.length} confirmed series from ESPN fixture schedule.`);
+    for (const tour of curated) {
+      mergeTour(tours, seenIds, seenNames, tour);
     }
   }
 

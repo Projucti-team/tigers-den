@@ -1,6 +1,8 @@
 import { readFile } from "node:fs/promises";
 import path from "node:path";
 
+import { isFutureSeries } from "@/lib/cricket/tour-dates";
+import { ordinalSuffix } from "@/lib/cricket/ordinal";
 import { readEspnTourSquads } from "@/lib/cricket/squads/store";
 import { tourSlug } from "@/lib/cricket/tour-slug";
 import type { LiveMatchSummary, Tour } from "@/lib/cricket/types";
@@ -97,6 +99,119 @@ function addFixtureToLookup(
   if (!entry.date || !entry.dateTimeGMT) return;
   lookup.set(fixtureLookupKey(entry.date, entry.matchType), entry.dateTimeGMT);
   lookup.set(entry.date, entry.dateTimeGMT);
+}
+
+function teamsFromTourName(name: string): string[] | undefined {
+  const away = name.match(/bangladesh tour of ([^,]+)/i);
+  if (away) return ["Bangladesh", away[1].trim()];
+  const home = name.match(/([^,]+) tour of bangladesh/i);
+  if (home) return [home[1].trim(), "Bangladesh"];
+  return undefined;
+}
+
+function tourMatchesCuratedSeries(tour: Tour, series: CuratedSeriesFixtures, seriesId: string): boolean {
+  const tourId = String(tour.id);
+  if (tourId === seriesId || tourId === String(series.cricinfoSeriesId ?? "")) return true;
+
+  const tourSlugKey = tourSlug(tour);
+  const curatedSlug = (series.tourName ?? "")
+    .toLowerCase()
+    .replace(/,?\s*\d{4}(-\d{2})?$/i, "")
+    .replace(/[^a-z0-9]+/g, "-")
+    .replace(/^-+|-+$/g, "");
+
+  if (curatedSlug && tourSlugKey.startsWith(curatedSlug)) return true;
+
+  const tourName = tour.name.toLowerCase();
+  const curatedName = (series.tourName ?? "").toLowerCase();
+  if (!curatedName) return false;
+
+  const tokens = curatedName
+    .replace(/[^a-z0-9]+/g, " ")
+    .split(/\s+/)
+    .filter((w) => w.length > 2);
+  const hits = tokens.filter((t) => tourName.includes(t));
+  return hits.length >= Math.min(3, tokens.length);
+}
+
+function matchTypeLabel(matchType?: string): string {
+  const mt = normalizeMatchType(matchType);
+  if (mt === "test") return "Test";
+  if (mt === "odi") return "ODI";
+  if (mt === "t20") return "T20I";
+  return "Match";
+}
+
+/** Confirmed future series from data/espn-fixture-times.json (not always in CricAPI yet). */
+export async function fetchCuratedEspnTours(): Promise<Tour[]> {
+  const curated = await readCuratedFixtureTimes();
+  const tours: Tour[] = [];
+
+  for (const [seriesId, series] of Object.entries(curated.series)) {
+    const fixtures = series.fixtures ?? [];
+    if (!fixtures.length || !series.tourName) continue;
+
+    const sorted = [...fixtures].sort((a, b) => a.date.localeCompare(b.date));
+    const first = sorted[0];
+    const last = sorted[sorted.length - 1];
+    const test = fixtures.filter((f) => normalizeMatchType(f.matchType) === "test").length;
+    const odi = fixtures.filter((f) => normalizeMatchType(f.matchType) === "odi").length;
+    const t20 = fixtures.filter((f) => normalizeMatchType(f.matchType) === "t20").length;
+
+    const tour: Tour = {
+      id: String(series.cricinfoSeriesId ?? seriesId),
+      name: series.tourName,
+      startDate: first.date,
+      endDate: last.date,
+      test: test || undefined,
+      odi: odi || undefined,
+      t20: t20 || undefined,
+      matches: fixtures.length,
+      teams: teamsFromTourName(series.tourName),
+    };
+
+    if (isFutureSeries(tour.startDate, tour.endDate)) {
+      tours.push(tour);
+    }
+  }
+
+  return tours;
+}
+
+/** Synthetic fixtures when CricAPI has not published the series matches yet. */
+export async function buildMatchesFromCuratedFixtures(tour: Tour): Promise<LiveMatchSummary[]> {
+  const curated = await readCuratedFixtureTimes();
+  const teams = tour.teams ?? teamsFromTourName(tour.name) ?? ["Bangladesh"];
+  const matches: LiveMatchSummary[] = [];
+
+  for (const [seriesId, series] of Object.entries(curated.series)) {
+    if (!tourMatchesCuratedSeries(tour, series, seriesId)) continue;
+
+    const counters = new Map<string, number>();
+    for (const fixture of [...series.fixtures].sort((a, b) => a.date.localeCompare(b.date))) {
+      const mt = normalizeMatchType(fixture.matchType) || "match";
+      const n = (counters.get(mt) ?? 0) + 1;
+      counters.set(mt, n);
+      const label = matchTypeLabel(fixture.matchType);
+      const opponent = teams.find((t) => !/bangladesh/i.test(t)) ?? teams[0];
+
+      matches.push({
+        id: `curated-${tour.id}-${fixture.date}-${mt}-${n}`,
+        name: `${n}${ordinalSuffix(n)} ${label}, ${teams[0]} vs ${opponent}, ${series.tourName ?? tour.name}`,
+        matchType: fixture.matchType,
+        status: "Match not started",
+        date: fixture.date,
+        dateTimeGMT: fixture.dateTimeGMT,
+        teams,
+        isLive: false,
+        seriesId: tour.id,
+        seriesName: tour.name,
+      });
+    }
+    break;
+  }
+
+  return matches;
 }
 
 async function readCuratedFixtureTimes(): Promise<CuratedFixtureTimesSnapshot> {
