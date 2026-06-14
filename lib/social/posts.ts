@@ -54,6 +54,73 @@ export async function createMemberPost(
   return toSocialPost(doc as MemberPost);
 }
 
+async function getPostDoc(postId: number): Promise<MemberPost> {
+  const payload = await getPayloadClient();
+  try {
+    const doc = await payload.findByID({
+      collection: "member-posts",
+      id: postId,
+      depth: 2,
+      overrideAccess: true,
+    });
+    return doc as MemberPost;
+  } catch {
+    throw new Error("POST_NOT_FOUND");
+  }
+}
+
+function assertPostAuthor(doc: MemberPost, memberId: number): void {
+  const authorId = resolveMemberId(doc.author);
+  if (authorId !== memberId) {
+    throw new Error("FORBIDDEN");
+  }
+}
+
+export async function updateMemberPost(
+  postId: number,
+  member: Member,
+  body: string,
+): Promise<SocialPost> {
+  const existing = await getPostDoc(postId);
+  assertPostAuthor(existing, member.id);
+
+  const trimmed = body.trim();
+  const imageIds = Array.isArray(existing.images)
+    ? existing.images
+        .map((img) => (typeof img === "object" && img ? img.id : img))
+        .filter((id): id is number => typeof id === "number")
+    : [];
+
+  if (!trimmed && imageIds.length === 0) {
+    throw new Error("EMPTY_POST");
+  }
+
+  const payload = await getPayloadClient();
+  const doc = await payload.update({
+    collection: "member-posts",
+    id: postId,
+    overrideAccess: true,
+    depth: 2,
+    data: {
+      body: trimmed || "📷",
+    },
+  });
+
+  return toSocialPost(doc as MemberPost);
+}
+
+export async function deleteMemberPost(postId: number, member: Member): Promise<void> {
+  const existing = await getPostDoc(postId);
+  assertPostAuthor(existing, member.id);
+
+  const payload = await getPayloadClient();
+  await payload.delete({
+    collection: "member-posts",
+    id: postId,
+    overrideAccess: true,
+  });
+}
+
 export async function getPostsForUsername(
   username: string,
   limit = 30,

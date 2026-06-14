@@ -6,9 +6,18 @@ import type { SocialPost } from "@/lib/social/types";
 type PostModalProps = {
   post: SocialPost | null;
   onClose: () => void;
+  canManage?: boolean;
+  onUpdated?: (post: SocialPost) => void;
+  onDeleted?: (postId: number) => void;
 };
 
-export function PostModal({ post, onClose }: PostModalProps) {
+export function PostModal({
+  post,
+  onClose,
+  canManage = false,
+  onUpdated,
+  onDeleted,
+}: PostModalProps) {
   if (!post) return null;
 
   return (
@@ -31,7 +40,16 @@ export function PostModal({ post, onClose }: PostModalProps) {
             Close
           </button>
         </div>
-        <PostCard post={post} commentsExpanded />
+        <PostCard
+          post={post}
+          commentsExpanded
+          canManage={canManage}
+          onUpdated={onUpdated}
+          onDeleted={(id) => {
+            onDeleted?.(id);
+            onClose();
+          }}
+        />
       </div>
     </div>
   );

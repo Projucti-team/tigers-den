@@ -15,6 +15,12 @@ export function socialApiError(err: unknown): NextResponse {
   if (message === "EMPTY_POST") {
     return NextResponse.json({ error: "Post cannot be empty" }, { status: 400 });
   }
+  if (message === "POST_NOT_FOUND") {
+    return NextResponse.json({ error: "Post not found" }, { status: 404 });
+  }
+  if (message === "FORBIDDEN") {
+    return NextResponse.json({ error: "You can only edit or delete your own posts" }, { status: 403 });
+  }
 
   console.error("[social-api]", err);
   return NextResponse.json({ error: "Something went wrong" }, { status: 500 });

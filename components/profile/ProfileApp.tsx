@@ -174,6 +174,24 @@ export function ProfileApp({ username, isOwnProfile }: ProfileAppProps) {
     }
   }
 
+  function handlePostDeleted(postId: number) {
+    setProfilePosts((prev) => prev.filter((p) => p.id !== postId));
+    setFeedPosts((prev) => prev.filter((p) => p.id !== postId));
+    setSelectedPost((prev) => (prev?.id === postId ? null : prev));
+  }
+
+  function handlePostUpdated(updated: SocialPost) {
+    const replace = (list: SocialPost[]) =>
+      list.map((p) => (p.id === updated.id ? updated : p));
+    setProfilePosts(replace);
+    setFeedPosts(replace);
+    setSelectedPost((prev) => (prev?.id === updated.id ? updated : prev));
+  }
+
+  function canManagePost(post: SocialPost) {
+    return isOwnProfile && post.author.id === profile?.id;
+  }
+
   async function toggleFollow(targetUsername: string, currentlyFollowing: boolean) {
     setFollowBusy(targetUsername);
     try {
@@ -299,7 +317,15 @@ export function ProfileApp({ username, isOwnProfile }: ProfileAppProps) {
               </p>
             </div>
           ) : (
-            feedPosts.map((post) => <PostCard key={post.id} post={post} />)
+            feedPosts.map((post) => (
+              <PostCard
+                key={post.id}
+                post={post}
+                canManage={canManagePost(post)}
+                onDeleted={handlePostDeleted}
+                onUpdated={handlePostUpdated}
+              />
+            ))
           )
         ) : null}
 
@@ -391,7 +417,13 @@ export function ProfileApp({ username, isOwnProfile }: ProfileAppProps) {
         ) : null}
       </div>
 
-      <PostModal post={selectedPost} onClose={() => setSelectedPost(null)} />
+      <PostModal
+        post={selectedPost}
+        onClose={() => setSelectedPost(null)}
+        canManage={selectedPost ? canManagePost(selectedPost) : false}
+        onDeleted={handlePostDeleted}
+        onUpdated={handlePostUpdated}
+      />
     </div>
   );
 }
