@@ -1,22 +1,117 @@
 {
-  "fetchedAt": "2026-06-13T22:44:42.162Z",
+  "fetchedAt": "2026-06-14T22:49:55.460Z",
   "items": [
     {
-      "id": "dailystar-https://www.thedailystar.net/sports/cricket/news/sixr-represent-bangladesh-hua-hin-cricket-sixes-4197931",
-      "title": "SIXR to represent Bangladesh in Hua Hin Cricket Sixes",
-      "summary": "SIXR Cricket Club will represent Bangladesh in the upcoming Hua Hin Cricket Sixes in Thailand, with the six-a-side tournament scheduled to take place from June 29 to July 4 at the Alan Cooke Ground.",
-      "url": "https://www.thedailystar.net/sports/cricket/news/sixr-represent-bangladesh-hua-hin-cricket-sixes-4197931",
-      "source": "dailystar",
-      "publishedAt": "2026-06-13T17:55:40.000Z"
+      "id": "espn-https://www.espncricinfo.com/ci/content/story/1541169.html",
+      "title": "Ferdous, Sharmin take Bangladesh past Netherlands",
+      "summary": "Netherlands however put up a dazzling display on their T20 World Cup debut to give Bangladesh a scare",
+      "url": "https://www.espncricinfo.com/story/ban-vs-ned-t20wc-ferdous-sharmin-take-bangladesh-past-netherlands-1541169",
+      "imageUrl": "https://p.imgci.com/db/PICTURES/CMS/407300/407391.5.jpg",
+      "source": "espncricinfo",
+      "publishedAt": "2026-06-14T18:04:40.000Z"
     },
     {
-      "id": "cricbuzz-139149",
-      "title": "Nayeem Hasan appeals for privacy following police assault ",
-      "summary": "The Bangladesh off-spinner appeared visibly shaken and requested privacy as the BCB stepped in to provide support following the alleged incident.",
-      "url": "https://www.cricbuzz.com/cricket-news/139149/nayeem-hasan-appeals-for-privacy-following-police-assault",
-      "imageUrl": "https://static.cricbuzz.com/a/img/v1/540x303/i1/c1007383/nayeem-has-been-picked-for-an-upcoming-series-against-zimbabwe.jpg",
+      "id": "cricbuzz-139160",
+      "title": "'The biggest achievement is hearing Australia praise us' - Mehidy",
+      "summary": "Bangladesh won the series 2-1, the hosts securing their maiden ODI series win over Australia ",
+      "url": "https://www.cricbuzz.com/cricket-news/139160/the-biggest-achievement-is-hearing-australia-praise-us-mehidy",
+      "imageUrl": "https://static.cricbuzz.com/a/img/v1/540x303/i1/c1007987/bangladesh-won-the-series-2-1-the-hosts-securing-their-maiden-odi-series-win-over-australia.jpg",
       "source": "cricbuzz",
-      "publishedAt": "2026-06-13T17:47:59.000Z"
+      "publishedAt": "2026-06-14T17:00:05.000Z"
+    },
+    {
+      "id": "dailystar-https://www.thedailystar.net/sports/womens-sports/news/juairiya-repays-faith-match-winning-fifty-4198711",
+      "title": "Juairiya repays faith with match-winning fifty",
+      "summary": "Bangladesh opener Juairiya Ferdous justified her selection in the ICC Women’s T20 World Cup squad with a scintillating half-century as her side secured a six-wicket victory over the Netherlands in their Group A opener in Birmingham on Sunday.",
+      "url": "https://www.thedailystar.net/sports/womens-sports/news/juairiya-repays-faith-match-winning-fifty-4198711",
+      "source": "dailystar",
+      "publishedAt": "2026-06-14T16:15:41.000Z"
+    },
+    {
+      "id": "dailystar-https://www.thedailystar.net/sports/cricket/news/shorifuls-six-vain-connollys-maiden-ton-leads-australia-thrilling-win-4198661",
+      "title": "Shoriful's six-for in vain as Connolly's maiden ton leads Australia to thrilling win",
+      "summary": "Cooper Connolly struck a sensational maiden ODI century as Australia survived a dramatic late scare to edge Bangladesh by one wicket in the third and final ODI at the Sher-e-Bangla National Cricket Stadium in Mirpur on Sunday.",
+      "url": "https://www.thedailystar.net/sports/cricket/news/shorifuls-six-vain-connollys-maiden-ton-leads-australia-thrilling-win-4198661",
+      "source": "dailystar",
+      "publishedAt": "2026-06-14T14:41:09.000Z"
+    },
+    {
+      "id": "cricbuzz-139158",
+      "title": "Cooper Connolly's 149 helps Australia avoid series whitewash against Bangladesh",
+      "summary": "The 22-year-old's maiden ODI century trumped Shoriful Islam's six-wicket haul as Australia sealed a thrilling one-wicket win in Dhaka",
+      "url": "https://www.cricbuzz.com/cricket-news/139158/cooper-connollys-149-helps-australia-avoid-series-whitewash-against-bangladesh",
+      "imageUrl": "https://static.cricbuzz.com/a/img/v1/540x303/i1/c1007856/connolly-scored-his-maiden-odi-hundred.jpg",
+      "source": "cricbuzz",
+      "publishedAt": "2026-06-14T14:36:56.000Z"
+    },
+    {
+      "id": "cricbuzz-139155",
+      "title": "Fahima Khatun: \"Of course I miss the spotlight in a personal way\"",
+      "summary": "In a chat with Cricbuzz, the Bangladesh all-rounder reflects on 100 T20Is, mentoring the next generation of leg-spinners, the sacrifices behind a long international career and why she has never regretted choosing cricket",
+      "url": "https://www.cricbuzz.com/cricket-news/139155/fahima-khatun-of-course-i-miss-the-spotlight-in-a-personal-way",
+      "imageUrl": "https://static.cricbuzz.com/a/img/v1/540x303/i1/c1007735/everyone-in-the-team-calls-me-teacher-they-actually-address-me-that-way-fahima-tells-cricbuzz.jpg",
+      "source": "cricbuzz",
+      "publishedAt": "2026-06-14T13:49:48.379Z"
+    },
+    {
+      "id": "cricbuzz-139157",
+      "title": "Juairiya fifty on T20 World Cup debut headlines Bangladesh's winning start",
+      "summary": "Juairiya Ferdous struck a match-winning fifty as Bangladesh overcame a mid-innings collapse to chase down a target of 140 against the Netherlands",
+      "url": "https://www.cricbuzz.com/cricket-news/139157/juairiya-fifty-on-t20-world-cup-debut-headlines-bangladeshs-winning-start",
+      "imageUrl": "https://static.cricbuzz.com/a/img/v1/540x303/i1/c1007779/juairiya-ferdous-struck-a-match-winning-fifty-on-debut-against-the-netherlands.jpg",
+      "source": "cricbuzz",
+      "publishedAt": "2026-06-14T13:45:33.000Z"
+    },
+    {
+      "id": "dailystar-https://www.thedailystar.net/sports/womens-sports/news/juairiya-stars-tigresses-clinch-victory-t20-world-cup-opener-4198571",
+      "title": "Juairiya stars as Tigresses clinch victory in T20 World Cup opener",
+      "summary": "Opener Juairiya Ferdous struck a blistering half-century as Bangladesh launched their ICC Women's T20 World Cup campaign in style with a six-wicket victory over the Netherlands at Edgbaston in Birmingham on Sunday.",
+      "url": "https://www.thedailystar.net/sports/womens-sports/news/juairiya-stars-tigresses-clinch-victory-t20-world-cup-opener-4198571",
+      "source": "dailystar",
+      "publishedAt": "2026-06-14T13:05:16.000Z"
+    },
+    {
+      "id": "espn-https://www.espncricinfo.com/ci/content/story/1541140.html",
+      "title": "Netherlands opt to bat against Bangladesh on T20 World Cup debut",
+      "summary": "Netherlands captain Babette de Leede said it was a flat wicket with a fast outfield",
+      "url": "https://www.espncricinfo.com/story/womens-t20-world-cup-netherlands-opt-to-bat-against-bangladesh-on-debut-1541140",
+      "imageUrl": "https://p.imgci.com/db/PICTURES/CMS/418200/418218.5.jpg",
+      "source": "espncricinfo",
+      "publishedAt": "2026-06-14T09:32:59.000Z"
+    },
+    {
+      "id": "espn-https://www.espncricinfo.com/ci/content/story/1541133.html",
+      "title": "Nayeem assault: three police officers suspended, investigation set up",
+      "summary": "A three-member investigation committee will look into the events around the incident, which took place in Chattogram late on Friday night",
+      "url": "https://www.espncricinfo.com/story/bangladesh-news-nayeem-hasan-assault-three-police-officers-suspended-investigation-set-up-1541133",
+      "imageUrl": "https://p.imgci.com/db/PICTURES/CMS/402300/402327.6.jpg",
+      "source": "espncricinfo",
+      "publishedAt": "2026-06-14T08:25:58.000Z"
+    },
+    {
+      "id": "espn-https://www.espncricinfo.com/ci/content/story/1541121.html",
+      "title": "Shanto leads Bangladesh in final ODI; Australia bring in Peake and Dwarshuis",
+      "summary": "Mehidy Hasan Miraz sits out having suffered a concussion in the series-winning victory",
+      "url": "https://www.espncricinfo.com/story/shanto-leads-bangladesh-in-final-odi-australia-bring-in-peake-and-dwarshuis-1541121",
+      "imageUrl": "https://p.imgci.com/db/PICTURES/CMS/418100/418137.5.jpg",
+      "source": "espncricinfo",
+      "publishedAt": "2026-06-14T05:05:14.000Z"
+    },
+    {
+      "id": "dailystar-https://www.thedailystar.net/sports/womens-sports/news/tigresses-look-bring-game-wc-opener-4197821",
+      "title": "Tigresses look to ‘bring A-game’ in WC opener",
+      "summary": "Bangladesh will aim to open their ICC Women’s T20 World Cup campaign on a positive note when they face debutants Netherlands in their Group A opener at Edgbaston, Birmingham, today.",
+      "url": "https://www.thedailystar.net/sports/womens-sports/news/tigresses-look-bring-game-wc-opener-4197821",
+      "source": "dailystar",
+      "publishedAt": "2026-06-14T05:00:00.000Z"
+    },
+    {
+      "id": "dailystar-https://www.thedailystar.net/sports/cricket/news/mahedi-shoriful-bangladesh-opt-bat-4198291",
+      "title": "Connolly leads Australia recovery after Bangladesh strike early",
+      "summary": "Cooper Connolly struck a composed half-century after Bangladesh's pace attack claimed three early wickets as Australia rebuilt their innings in pursuit of 275 in the third and final ODI at the Sher-e-Bangla National Cricket Stadium in Mirpur on Sunday.",
+      "url": "https://www.thedailystar.net/sports/cricket/news/mahedi-shoriful-bangladesh-opt-bat-4198291",
+      "source": "dailystar",
+      "publishedAt": "2026-06-14T04:46:36.000Z"
     },
     {
       "id": "espn-https://www.espncricinfo.com/ci/content/story/1541043.html",
@@ -37,40 +132,6 @@
       "publishedAt": "2026-06-13T13:16:49.000Z"
     },
     {
-      "id": "dailystar-https://www.thedailystar.net/sports/cricket/news/labuschagne-looking-salvage-pride-dead-rubber-4197761",
-      "title": "Labuschagne looking to salvage pride in dead rubber",
-      "summary": "Australia batter Marnus Labuschagne on Saturday said his side would be eager to avoid a whitewash when they take on Bangladesh in the third and final ODI at the Sher-e-Bangla National Cricket Stadium tomorrow.",
-      "url": "https://www.thedailystar.net/sports/cricket/news/labuschagne-looking-salvage-pride-dead-rubber-4197761",
-      "source": "dailystar",
-      "publishedAt": "2026-06-13T13:05:11.000Z"
-    },
-    {
-      "id": "cricbuzz-139142",
-      "title": "Labuschagne lauds Bangladesh's impressive rise ahead of final ODI",
-      "summary": "Bangladesh have already won the three-match series 2-0",
-      "url": "https://www.cricbuzz.com/cricket-news/139142/labuschagne-lauds-bangladeshs-impressive-rise-ahead-of-final-odi",
-      "imageUrl": "https://static.cricbuzz.com/a/img/v1/540x303/i1/c1006197/australia-have-already-conceded-the-series-0-2.jpg",
-      "source": "cricbuzz",
-      "publishedAt": "2026-06-13T12:12:46.000Z"
-    },
-    {
-      "id": "cricbuzz-139140",
-      "title": "Soumya unfazed by criticism of reverse-sweep dismissal",
-      "summary": "The opener said he would continue backing his strengths and praised improved communication from the team management",
-      "url": "https://www.cricbuzz.com/cricket-news/139140/soumya-unfazed-by-criticism-of-reverse-sweep-dismissal",
-      "imageUrl": "https://static.cricbuzz.com/a/img/v1/540x303/i1/c1006119/the-opener-said-he-would-continue-backing-his-strengths-and-praised-improved-communication-from-the-team-management.jpg",
-      "source": "cricbuzz",
-      "publishedAt": "2026-06-13T10:44:13.000Z"
-    },
-    {
-      "id": "dailystar-https://www.thedailystar.net/sports/cricket/news/become-big-team-success-icc-events-must-soumya-4197671",
-      "title": "To become a big team, success in ICC events is a must: Soumya",
-      "summary": "Even pacer Mustafizur Rahman, known to be a man of few words, pointed out the team's shortcomings and urged his teammates to strive towards becoming a truly big team. Opener Soumya Sarkar echoed those sentiments during a press conference at the Sher-e-Bangla National Stadium in Mirpur today ahead of Sunday's final ODI.",
-      "url": "https://www.thedailystar.net/sports/cricket/news/become-big-team-success-icc-events-must-soumya-4197671",
-      "source": "dailystar",
-      "publishedAt": "2026-06-13T08:37:40.000Z"
-    },
-    {
       "id": "espn-https://www.espncricinfo.com/ci/content/story/1540830.html",
       "title": "Nayeem Hasan allegedly assaulted by policemen in Chattogram",
       "summary": "The auto-rickshaw Nayeem Hasan was returning home from the airport in was stopped by law-enforcement officials, who proceeded to physically assault the cricketer",
@@ -80,22 +141,6 @@
       "publishedAt": "2026-06-13T07:25:20.000Z"
     },
     {
-      "id": "dailystar-https://www.thedailystar.net/sports/cricket/news/bcb-cwab-and-cricketers-condemn-harassment-nayeem-demand-action-4197576",
-      "title": "BCB, CWAB and cricketers condemn harassment of Nayeem, demand action",
-      "summary": "The Bangladesh Cricket Board (BCB), the Cricketers' Welfare Association of Bangladesh (CWAB) and several national cricketers on Saturday condemned the alleged physical assault and harassment of Bangladesh spinner Nayeem Hasan by police personnel in Chattogram, calling for a thorough investigation and action against those responsible.",
-      "url": "https://www.thedailystar.net/sports/cricket/news/bcb-cwab-and-cricketers-condemn-harassment-nayeem-demand-action-4197576",
-      "source": "dailystar",
-      "publishedAt": "2026-06-13T03:54:37.000Z"
-    },
-    {
-      "id": "dailystar-https://www.thedailystar.net/sports/cricket/news/we-are-coming-people-pacers-lead-the-charge-pack-mentality-4197271",
-      "title": "‘We are coming at people’: Pacers lead the charge in pack mentality",
-      "summary": "Imagine Mustafizur Rahman giving a dressing room speech and asking for improvement, not just from the batters but also in their overall mentality. That is exactly what happened in the Bangladesh dressing room after sealing their maiden series win against Australia on Thursday.",
-      "url": "https://www.thedailystar.net/sports/cricket/news/we-are-coming-people-pacers-lead-the-charge-pack-mentality-4197271",
-      "source": "dailystar",
-      "publishedAt": "2026-06-13T03:30:00.000Z"
-    },
-    {
       "id": "espn-https://www.espncricinfo.com/ci/content/story/1540534.html",
       "title": "Mehidy taken to hospital after being hit on the head by bouncer",
       "summary": "Mehidy had a concussion, the team physio said, and will remain in hospital for 24 hours",
@@ -103,14 +148,6 @@
       "imageUrl": "https://p.imgci.com/db/PICTURES/CMS/418100/418140.5.jpg",
       "source": "espncricinfo",
       "publishedAt": "2026-06-12T13:41:11.000Z"
-    },
-    {
-      "id": "dailystar-https://www.thedailystar.net/sports/cricket/news/miraz-released-hospital-tigers-stay-unchanged-3rd-australia-odi-4197131",
-      "title": "Miraz released from hospital as Tigers stay unchanged for 3rd Australia ODI",
-      "summary": "Miraz was hit on the helmet by a bouncer in the second ODI against Australia",
-      "url": "https://www.thedailystar.net/sports/cricket/news/miraz-released-hospital-tigers-stay-unchanged-3rd-australia-odi-4197131",
-      "source": "dailystar",
-      "publishedAt": "2026-06-12T11:17:02.000Z"
     },
     {
       "id": "espn-https://www.espncricinfo.com/ci/content/story/1540450.html",
@@ -147,51 +184,6 @@
       "imageUrl": "https://p.imgci.com/db/PICTURES/CMS/398100/398191.5.jpg",
       "source": "espncricinfo",
       "publishedAt": "2026-06-11T02:53:05.000Z"
-    },
-    {
-      "id": "espn-https://www.espncricinfo.com/ci/content/story/1540359.html",
-      "title": "Australia seek response as Bangladesh close in on landmark series win",
-      "summary": "Confident hosts will hope for another complete performance as they eye a maiden ODI series win against Australia",
-      "url": "https://www.espncricinfo.com/story/ban-vs-aus-2nd-odi-australia-seek-response-as-bangladesh-close-in-on-landmark-series-win-1540359",
-      "imageUrl": "https://p.imgci.com/db/PICTURES/CMS/418000/418077.5.jpg",
-      "source": "espncricinfo",
-      "publishedAt": "2026-06-10T05:43:55.000Z"
-    },
-    {
-      "id": "espn-https://www.espncricinfo.com/ci/content/story/1540334.html",
-      "title": "Ireland beat Bangladesh; Scotland thump Pakistan; NZ ace 184 chase vs SA",
-      "summary": "Canning and Maguire starred for Ireland, while Bryce's 43-ball 94 took Scotland to a DLS win",
-      "url": "https://www.espncricinfo.com/story/womens-t20-world-cup-2026-warm-up-ireland-beat-bangladesh-scotland-thump-pakistan-1540334",
-      "imageUrl": "https://p.imgci.com/db/PICTURES/CMS/380400/380438.5.jpg",
-      "source": "espncricinfo",
-      "publishedAt": "2026-06-09T22:53:27.000Z"
-    },
-    {
-      "id": "espn-https://www.espncricinfo.com/ci/content/story/1540341.html",
-      "title": "'My best match at this level' - Mosaddek revels in successful Bangladesh comeback",
-      "summary": "In his first international appearance since November 2022, he scored 86* and picked up two wickets as Bangladesh beat Australia for only the second time in ODIs",
-      "url": "https://www.espncricinfo.com/story/ban-vs-aus-1st-odi-mosaddek-hossain-revels-in-successful-comeback-to-bangladesh-team-1540341",
-      "imageUrl": "https://p.imgci.com/db/PICTURES/CMS/418000/418092.5.jpg",
-      "source": "espncricinfo",
-      "publishedAt": "2026-06-09T17:33:00.000Z"
-    },
-    {
-      "id": "espn-https://www.espncricinfo.com/ci/content/story/1540267.html",
-      "title": "Rana and Mosaddek star as Bangladesh end 21-year wait with crushing win",
-      "summary": "Australia dropped four catches then lost early wickets in the chase before Nahid Rana's pace did the damage",
-      "url": "https://www.espncricinfo.com/story/nahid-rana-and-mosaddek-hossain-star-as-bangladesh-end-21-year-wait-1540267",
-      "imageUrl": "https://p.imgci.com/db/PICTURES/CMS/418000/418080.5.jpg",
-      "source": "espncricinfo",
-      "publishedAt": "2026-06-09T14:26:41.000Z"
-    },
-    {
-      "id": "espn-https://www.espncricinfo.com/ci/content/story/1540235.html",
-      "title": "Australia bowl first in series opener, hand Liam Scott debut",
-      "summary": "Mosaddek Hossain returns to the side after a gap of nearly four years as Bangladesh look to extend a strong home record",
-      "url": "https://www.espncricinfo.com/story/australia-bowl-first-in-series-opener-hand-liam-scott-debut-1540235",
-      "imageUrl": "https://p.imgci.com/db/PICTURES/CMS/418000/418056.5.jpg",
-      "source": "espncricinfo",
-      "publishedAt": "2026-06-09T05:14:40.000Z"
     }
   ]
 }
