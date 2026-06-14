@@ -62,7 +62,7 @@ export function MatchCentreTabs({ isLive, liveFeed, scorecard }: Props) {
 
       <div className="pt-5">
         {tab === "live" ? (
-          <MatchCentreLiveTab feed={liveFeed} />
+          <MatchCentreLiveTab feed={liveFeed} scorecard={scorecard} />
         ) : (
           <MatchCentreScorecardTab scorecard={scorecard} />
         )}

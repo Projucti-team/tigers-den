@@ -133,15 +133,21 @@ function mapBattingPlayers(
   dismissalById: Map<string, string> = new Map(),
 ): ScorecardPlayer[] {
   return players
-    .filter((p) => p.runs !== "" && p.runs != null && p.dismissal !== "")
+    .filter((p) => {
+      const hasRuns = p.runs != null && p.runs !== "";
+      const hasBalls = p.ballsFaced != null && p.ballsFaced !== "";
+      const hasDismissal = p.dismissal != null && p.dismissal !== "";
+      return hasRuns || hasBalls || hasDismissal;
+    })
     .map((p) => {
       const runs = num(p.runs);
       const balls = num(p.ballsFaced);
-      const notOut = /not out/i.test(p.dismissal ?? "");
+      const dismissal = p.dismissal?.trim() ?? "";
+      const notOut = !dismissal || /not out/i.test(dismissal);
       const playerId = p.playerID ?? "";
       const dismissed = notOut
         ? "not out"
-        : dismissalById.get(playerId) ?? formatShortDismissal(p.dismissal ?? "out");
+        : dismissalById.get(playerId) ?? formatShortDismissal(dismissal || "out");
 
       return {
         name: formatPlayerName(p.playerName ?? "Player"),
@@ -325,7 +331,60 @@ function bowlersFromRecentBall(
     }
     if (fallback.length >= 2) break;
   }
-  return fallback;
+  if (fallback.length) return fallback;
+
+  const lastBall = balls.at(-1);
+  if (lastBall?.bowler) {
+    const overs = lastBall.bowler.overs ?? 0;
+    if (overs > 0) {
+      const name = bowlerNameFromShortText(lastBall.shortText) ?? "Bowler";
+      return [
+        {
+          name: formatPlayerName(name),
+          overs: String(overs),
+          maidens: lastBall.bowler.maidens ?? 0,
+          runs: lastBall.bowler.conceded ?? 0,
+          wickets: lastBall.bowler.wickets ?? 0,
+          economy:
+            overs > 0
+              ? Math.round(((lastBall.bowler.conceded ?? 0) / overs) * 100) / 100
+              : undefined,
+        },
+      ];
+    }
+  }
+
+  return [];
+}
+
+async function battersFromRecentBalls(
+  leagueId: number,
+  balls: DetailBall[],
+): Promise<ScorecardPlayer[]> {
+  const lastBall = balls.at(-1);
+  if (!lastBall) return [];
+
+  const batters: ScorecardPlayer[] = [];
+  for (const slot of [lastBall.batsman, lastBall.otherBatsman]) {
+    if (!slot) continue;
+    const id = athleteIdFromRef(slot.athlete?.$ref);
+    const runs = slot.totalRuns ?? 0;
+    const faced = slot.faced ?? 0;
+    if (!id && faced <= 0 && runs <= 0) continue;
+
+    const name = id ? await athleteName(leagueId, id) : "Batter";
+    batters.push({
+      name,
+      runs,
+      balls: faced,
+      fours: slot.fours ?? 0,
+      sixes: slot.sixes ?? 0,
+      sr: sr(runs, faced),
+      dismissed: "not out",
+    });
+  }
+
+  return markStriker(batters, balls);
 }
 
 function markStriker(atCrease: ScorecardPlayer[], balls: DetailBall[]): ScorecardPlayer[] {
@@ -589,8 +648,12 @@ export async function fetchEspnMatchCentre(
 
   const batting = mapBattingPlayers(battingCard?.playerDetails ?? [], dismissalMap);
   const bowling = mapBowlingPlayers(bowlingCard?.playerDetails ?? []);
+  const periodBalls = recentBalls.filter((b) => b.period === currentPeriod);
   const atCrease = batting.filter((p) => /not out/i.test(p.dismissed ?? ""));
-  const markedBatters = markStriker(atCrease, recentBalls);
+  let liveBatters = markStriker(atCrease, periodBalls);
+  if (!liveBatters.length) {
+    liveBatters = await battersFromRecentBalls(leagueId, periodBalls);
+  }
 
   const orderedTeams = [
     ...teamSummaries.filter((t) => isBangladeshTeam(t.team)),
@@ -648,8 +711,6 @@ export async function fetchEspnMatchCentre(
       // keep innings total only
     }
   }
-  const periodBalls = recentBalls.filter((b) => b.period === currentPeriod);
-
   const scorecard: Scorecard = {
     id: matchId,
     name: competition?.shortDescription ?? competition?.description ?? "Bangladesh match",
@@ -660,7 +721,7 @@ export async function fetchEspnMatchCentre(
   };
 
   const liveFeed: LiveMatchFeed = {
-    batters: markedBatters,
+    batters: liveBatters,
     bowlers: bowlersFromRecentBall(bowling, periodBalls),
     partnership: currentPartnership(partnershipCard?.playerDetails as PartnershipRow[] | undefined),
     lastWicket: lastWicketText(periodBalls, batting),

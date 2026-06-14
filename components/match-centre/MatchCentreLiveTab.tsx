@@ -1,9 +1,20 @@
 import { ordinalSuffix } from "@/lib/cricket/ordinal";
-import type { LiveMatchFeed } from "@/lib/cricket/types";
+import type { LiveMatchFeed, Scorecard } from "@/lib/cricket/types";
 
 type Props = {
   feed: LiveMatchFeed | null;
+  scorecard?: Scorecard | null;
 };
+
+function currentInningsLine(scorecard: Scorecard | null): string | null {
+  if (!scorecard?.innings?.length) return null;
+  const current = [...scorecard.innings]
+    .reverse()
+    .find((inn) => inn.runs > 0 || inn.wickets > 0 || inn.overs > 0);
+  if (!current) return null;
+  const team = current.inning.replace(/\s+\d+(?:st|nd|rd|th)\s+Innings$/i, "").trim();
+  return `${team} ${current.runs}/${current.wickets} (${current.overs} ov)`;
+}
 
 const STAT_HEADERS = ["", "R", "B", "4s", "6s", "SR"] as const;
 
@@ -91,7 +102,7 @@ function overLabel(overNumber: number): string {
   return `${overNumber}${ordinalSuffix(overNumber).toUpperCase()}`;
 }
 
-export function MatchCentreLiveTab({ feed }: Props) {
+export function MatchCentreLiveTab({ feed, scorecard = null }: Props) {
   if (!feed) {
     return (
       <p className="py-8 text-center text-sm text-charcoal/60">
@@ -99,6 +110,8 @@ export function MatchCentreLiveTab({ feed }: Props) {
       </p>
     );
   }
+
+  const inningsLine = currentInningsLine(scorecard);
 
   const batterRows = feed.batters.map((p) => [
     p.name,
@@ -120,6 +133,12 @@ export function MatchCentreLiveTab({ feed }: Props) {
 
   return (
     <div className="space-y-5">
+      {inningsLine ? (
+        <p className="rounded-lg border-2 border-emerald/30 bg-emerald/10 px-4 py-3 font-display text-lg font-extrabold uppercase tracking-tight text-emerald">
+          {inningsLine}
+        </p>
+      ) : null}
+
       <LiveStatsTable title="Batters" headers={STAT_HEADERS} rows={batterRows} />
 
       <LiveStatsTable

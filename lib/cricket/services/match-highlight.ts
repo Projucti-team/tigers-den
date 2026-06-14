@@ -2,6 +2,7 @@ import { isBangladeshTeam } from "@/lib/cricket/constants";
 import { fetchScorecard, isCricApiConfigured } from "@/lib/cricket/providers/cricapi";
 import { fetchEspnMatchCentre } from "@/lib/cricket/providers/espn-match-centre";
 import { getCityWeather, type MatchWeather } from "@/lib/cricket/providers/weather";
+import { teamShortCode } from "@/lib/cricket/services/marquee-format";
 import type { LiveMatchFeed } from "@/lib/cricket/types";
 import {
   getLiveBangladeshHighlight,
@@ -151,6 +152,38 @@ async function getHighlightWeather(
   return getCityWeather(highlight.venue.city, highlight.venue.country).catch(() => null);
 }
 
+function inningsTeamLabel(inning: string): string {
+  return inning.replace(/\s+\d+(?:st|nd|rd|th)\s+Innings$/i, "").trim();
+}
+
+/** Fill in live scores when ESPN event list only has team names (early innings / toss). */
+export function enrichHighlightFromScorecard(
+  highlight: MatchHighlight,
+  scorecard: Scorecard | null,
+): MatchHighlight {
+  if (!scorecard?.innings?.length || /\d+\/\d+/.test(highlight.scoreLine)) {
+    return highlight;
+  }
+
+  const scores = scorecard.innings
+    .filter((inn) => inn.runs > 0 || inn.wickets > 0 || inn.overs > 0)
+    .map((inn) => ({
+      label: inningsTeamLabel(inn.inning),
+      value: `${inn.runs}/${inn.wickets} (${inn.overs} ov)`,
+    }));
+
+  if (!scores.length) return highlight;
+
+  const bdScore = scores.find((s) => isBangladeshTeam(s.label));
+  const otherScore = scores.find((s) => !isBangladeshTeam(s.label));
+  const scoreLine =
+    bdScore && otherScore
+      ? `${teamShortCode(bdScore.label)} ${bdScore.value} · ${teamShortCode(otherScore.label)} ${otherScore.value}`
+      : scores.map((s) => `${teamShortCode(s.label)} ${s.value}`).join(" · ");
+
+  return { ...highlight, scoreLine, scores };
+}
+
 export async function getMatchCentreData(): Promise<{
   highlight: MatchHighlight | null;
   scorecard: Scorecard | null;
@@ -167,8 +200,9 @@ export async function getMatchCentreData(): Promise<{
       fetchEspnMatchCentre(highlight.matchId).catch(() => null),
       getHighlightWeather(highlight),
     ]);
+    const enriched = enrichHighlightFromScorecard(highlight, espn?.scorecard ?? null);
     return {
-      highlight,
+      highlight: enriched,
       scorecard: espn?.scorecard ?? null,
       liveFeed: highlight.mode === "live" ? (espn?.liveFeed ?? null) : null,
       weather,
