@@ -1,5 +1,5 @@
 {
-  "fetchedAt": "2026-06-14T22:36:13.107Z",
+  "fetchedAt": "2026-06-15T23:10:11.238Z",
   "source": "icc-sportz.io",
   "sourceUrl": "https://www.icc-cricket.com/rankings",
   "men": {
@@ -302,9 +302,9 @@
           "rank": 7,
           "name": "West Indies",
           "abbreviation": "WI",
-          "rating": 233,
-          "points": 12808,
-          "matches": 55
+          "rating": 234,
+          "points": 13079,
+          "matches": 56
         },
         {
           "rank": 8,
@@ -319,8 +319,8 @@
           "name": "Sri Lanka",
           "abbreviation": "SL",
           "rating": 221,
-          "points": 9520,
-          "matches": 43
+          "points": 9703,
+          "matches": 44
         },
         {
           "rank": 10,
@@ -596,19 +596,19 @@
         },
         {
           "rank": 44,
-          "name": "Finland",
-          "abbreviation": "FIN",
-          "rating": 62,
-          "points": 1302,
-          "matches": 21
+          "name": "Sweden",
+          "abbreviation": "SWE",
+          "rating": 63,
+          "points": 2067,
+          "matches": 33
         },
         {
           "rank": 45,
-          "name": "Sweden",
-          "abbreviation": "SWE",
-          "rating": 61,
-          "points": 1955,
-          "matches": 32
+          "name": "Finland",
+          "abbreviation": "FIN",
+          "rating": 60,
+          "points": 1313,
+          "matches": 22
         },
         {
           "rank": 46,
@@ -10375,7 +10375,7 @@
         "allrounder": "2026-06-09"
       },
       "t20": {
-        "team": "2026-06-14",
+        "team": "2026-06-15",
         "bat": "2026-06-09",
         "bowl": "2026-06-09",
         "allrounder": "2026-06-09"
@@ -10705,9 +10705,9 @@
           "rank": 26,
           "name": "Nigeria",
           "abbreviation": "NGR",
-          "rating": 76,
-          "points": 2522,
-          "matches": 33
+          "rating": 75,
+          "points": 2536,
+          "matches": 34
         },
         {
           "rank": 27,
@@ -10727,6 +10727,14 @@
         },
         {
           "rank": 29,
+          "name": "Brazil",
+          "abbreviation": "BRA",
+          "rating": 66,
+          "points": 2250,
+          "matches": 34
+        },
+        {
+          "rank": 30,
           "name": "Germany",
           "abbreviation": "GER",
           "rating": 66,
@@ -10734,20 +10742,12 @@
           "matches": 25
         },
         {
-          "rank": 30,
+          "rank": 31,
           "name": "Vanuatu",
           "abbreviation": "VUT",
           "rating": 65,
           "points": 1762,
           "matches": 27
-        },
-        {
-          "rank": 31,
-          "name": "Brazil",
-          "abbreviation": "BRA",
-          "rating": 64,
-          "points": 2124,
-          "matches": 33
         },
         {
           "rank": 32,
@@ -17361,7 +17361,7 @@
         "allrounder": "2026-05-18"
       },
       "t20": {
-        "team": "2026-06-14",
+        "team": "2026-06-15",
         "bat": "2026-06-08",
         "bowl": "2026-06-08",
         "allrounder": "2026-06-08"
