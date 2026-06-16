@@ -513,5 +513,3 @@ export function applyEspnTourSquads<T extends { tour: Tour; squads: SeriesSquad[
 
   return { ...detail, squads, warnings };
 }
-
-export { normalizeSquadPlayers, squadKey, mergeSquads };
