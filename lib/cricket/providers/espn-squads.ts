@@ -133,6 +133,28 @@ function parsePlayerNames(block: string): SquadPlayer[] {
     .map((name) => ({ name }));
 }
 
+function normalizeSquadHeading(heading: string): string {
+  const h = heading.trim();
+  const nationMatch = h.match(
+    /^(bangladesh|australia|england|india|pakistan|sri lanka|new zealand|south africa|west indies)\b/i,
+  );
+  if (!nationMatch) return h;
+
+  const nation = nationMatch[1]
+    .split(/\s+/)
+    .map((w) => w.charAt(0).toUpperCase() + w.slice(1).toLowerCase())
+    .join(" ");
+  const format = /\bt20/i.test(h)
+    ? "T20I"
+    : /\bodi\b/i.test(h)
+      ? "ODI"
+      : /\btest\b/i.test(h)
+        ? "Test"
+        : null;
+
+  return format ? `${nation} — ${format} squad` : h;
+}
+
 /** Parse squad lists from an ESPNcricinfo story HTML page. */
 export function parseSquadsFromStoryHtml(html: string, source: string): SeriesSquad[] {
   const squads: SeriesSquad[] = [];
