@@ -105,7 +105,7 @@ export function mergeSquads(...lists: SeriesSquad[][]): SeriesSquad[] {
       const existing = byKey.get(key);
       if (
         !existing ||
-        squadQualityScore(squad, key) > squadQualityScore(existing, key)
+        squadQualityScore(squad, key) >= squadQualityScore(existing, key)
       ) {
         byKey.set(key, squad);
       }
