@@ -1,5 +1,5 @@
+import { postgresAdapter } from "@payloadcms/db-postgres";
 import { sqliteAdapter } from "@payloadcms/db-sqlite";
-import { vercelPostgresAdapter } from "@payloadcms/db-vercel-postgres";
 import type { DatabaseAdapterObj } from "payload";
 
 import { getPostgresConnectionString, isPostgresDatabase } from "@/lib/payload-postgres-url";
@@ -11,7 +11,7 @@ export function getPayloadDatabase(): DatabaseAdapterObj {
   const postgresUrl = getPostgresConnectionString();
 
   if (postgresUrl) {
-    return vercelPostgresAdapter({
+    return postgresAdapter({
       pool: {
         connectionString: postgresUrl,
       },

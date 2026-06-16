@@ -1,21 +1,12 @@
 /** Public site URL used by Payload (admin API, cookies, CSRF). */
 export function getPayloadServerURL(): string {
-  if (process.env.VERCEL_URL && process.env.VERCEL_ENV !== "production") {
-    return `https://${process.env.VERCEL_URL}`;
-  }
-
   const fromEnv =
     process.env.SERVER_URL ||
     process.env.SITE_URL ||
     process.env.NEXT_PUBLIC_SERVER_URL ||
-    process.env.NEXT_PUBLIC_SITE_URL ||
-    (process.env.VERCEL_PROJECT_PRODUCTION_URL
-      ? `https://${process.env.VERCEL_PROJECT_PRODUCTION_URL}`
-      : undefined);
+    process.env.NEXT_PUBLIC_SITE_URL;
 
   if (fromEnv) return fromEnv.replace(/\/$/, "");
-
-  if (process.env.VERCEL_URL) return `https://${process.env.VERCEL_URL}`;
 
   return "http://localhost:3000";
 }
