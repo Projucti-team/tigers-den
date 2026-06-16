@@ -23,7 +23,7 @@ export default function CricketSyncPanel() {
     const timeout = window.setTimeout(() => controller.abort(), 5 * 60 * 1000);
 
     try {
-      const res = await fetch("/api/admin/cricket-sync", {
+      const res = await fetch("/api/cricket-snapshots/sync", {
         method: "POST",
         credentials: "include",
         headers: { Accept: "application/json" },
