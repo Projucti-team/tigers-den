@@ -1,4 +1,5 @@
 import type { LiveMatchSummary } from "@/lib/cricket/types";
+import { resolveMatchStartIso } from "@/lib/cricket/match-sort";
 
 export const BANGLADESH_TIMEZONE = "Asia/Dhaka";
 
@@ -39,7 +40,7 @@ export function formatBangladeshDateTime(iso?: string | null): string {
 
 /** Replace CricAPI "Match starts at … GMT" copy with Bangladesh time when possible. */
 export function formatMatchStatus(match: LiveMatchSummary): string {
-  const iso = match.dateTimeGMT || match.date;
+  const iso = resolveMatchStartIso(match);
   const status = match.status?.trim() ?? "";
 
   if (iso && /not started|upcoming|scheduled|fixture|match starts|toss/i.test(status)) {
@@ -62,7 +63,8 @@ export function formatMatchStatus(match: LiveMatchSummary): string {
 }
 
 export function formatMatchScheduleLine(match: LiveMatchSummary): string {
-  const date = formatBangladeshDate(match.dateTimeGMT || match.date);
-  const time = formatBangladeshTime(match.dateTimeGMT || match.date);
+  const iso = resolveMatchStartIso(match);
+  const date = formatBangladeshDate(iso);
+  const time = formatBangladeshTime(iso);
   return [date, time].filter(Boolean).join(" · ");
 }

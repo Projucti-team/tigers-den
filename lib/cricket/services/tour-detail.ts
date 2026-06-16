@@ -15,6 +15,7 @@ import { tourToCard } from "@/lib/cricket/services/tours-display";
 import type { TourDetailSnapshot } from "@/lib/cricket/snapshot-types";
 import { findTourBySlug } from "@/lib/cricket/tour-slug";
 import { uniqueVenuesFromMatches } from "@/lib/cricket/venues";
+import { sortMatchesByDate } from "@/lib/cricket/match-sort";
 
 export type { TourDetail } from "@/lib/cricket/tour-detail-types";
 
@@ -23,9 +24,11 @@ async function buildCuratedTourDetail(slug: string): Promise<TourDetailSnapshot 
   const tour = findTourBySlug(tours, slug);
   if (!tour) return null;
 
-  const matches = await enrichMatchFixtureTimes(
-    await buildMatchesFromCuratedFixtures(tour),
-    { tour },
+  const matches = sortMatchesByDate(
+    await enrichMatchFixtureTimes(
+      await buildMatchesFromCuratedFixtures(tour),
+      { tour },
+    ),
   );
   if (!matches.length) return null;
 
@@ -70,7 +73,9 @@ export async function getTourDetail(slug: string): Promise<TourDetailSnapshot | 
     })),
   );
   const withSquads = applyEspnTourSquads(cached, squads);
-  const matches = await enrichMatchFixtureTimes(withSquads.matches, { tour: cached.tour });
+  const matches = sortMatchesByDate(
+    await enrichMatchFixtureTimes(withSquads.matches, { tour: cached.tour }),
+  );
   const enriched = { ...withSquads, matches };
   const warnings = [...enriched.warnings];
   const stale = staleSnapshotWarning(cached.fetchedAt, "Tour");

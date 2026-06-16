@@ -1,6 +1,7 @@
 import { readFile } from "node:fs/promises";
 import path from "node:path";
 
+import { resolveMatchStartIso } from "@/lib/cricket/match-sort";
 import { isFutureSeries } from "@/lib/cricket/tour-dates";
 import { ordinalSuffix } from "@/lib/cricket/ordinal";
 import { readEspnTourSquads } from "@/lib/cricket/squads/store";
@@ -43,11 +44,13 @@ type CoreEvent = {
 };
 
 function normalizeMatchType(matchType?: string): string {
-  return (matchType ?? "").toLowerCase().replace(/[^a-z0-9]/g, "");
+  const mt = (matchType ?? "").toLowerCase().replace(/[^a-z0-9]/g, "");
+  if (mt === "t20i" || mt === "t20s") return "t20";
+  return mt;
 }
 
 export function matchDateKey(match: LiveMatchSummary): string {
-  const raw = match.dateTimeGMT || match.date;
+  const raw = resolveMatchStartIso(match);
   if (!raw) return "";
   if (/^\d{4}-\d{2}-\d{2}$/.test(raw)) return raw;
   const d = new Date(raw);
