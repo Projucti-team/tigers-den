@@ -8,7 +8,7 @@ import {
   resolveCricinfoPlayerProfileUrl,
 } from "@/lib/cricket/squads/profile-urls";
 import type { SquadPlayer } from "@/lib/cricket/squads/types";
-import { resolveIccPlayerImageUrl, verifyPlayerImageUrl } from "@/lib/cricket/providers/icc-player";
+import { resolveIccPlayerImageUrl, verifyPlayerImageUrlCached } from "@/lib/cricket/providers/icc-player";
 import { resolveCricinfoPlayerImageUrl } from "@/lib/cricket/providers/cricinfo-player";
 import type { RankedPlayer } from "@/lib/cricket/types";
 import { COUNTRY_SEEDS } from "@/lib/cricket/players/countries-seed";
@@ -184,9 +184,14 @@ function profileUrlWithId(profileUrl: string | null | undefined): string | null 
 async function isUsableCachedImageUrl(url: string): Promise<boolean> {
   if (url.includes("ui-avatars.com")) return false;
   if (url.includes("a.espncdn.com/i/headshots/cricket")) {
-    return verifyPlayerImageUrl(url);
+    return verifyPlayerImageUrlCached(url);
   }
   return true;
+}
+
+async function validatedImageUrl(url: string | null | undefined): Promise<string | null> {
+  if (!url) return null;
+  return (await isUsableCachedImageUrl(url)) ? url : null;
 }
 
 async function resolvePlayerImageUrl(
@@ -222,7 +227,7 @@ async function resolveMissingUrls(input: EnsurePlayerInput): Promise<{
   cricinfoPlayerId: number | null;
 }> {
   let profileUrl = await validatedProfileUrl(input.name, input.profileUrl);
-  let imageUrl = input.imageUrl ?? null;
+  let imageUrl = await validatedImageUrl(input.imageUrl);
   let cricinfoPlayerId = input.cricinfoPlayerId ?? null;
 
   if (profileUrl && !cricinfoPlayerId) {
@@ -326,7 +331,7 @@ export async function enrichSquadPlayerForDisplay(
   }
 
   const playerId = profileUrl ? extractCricinfoPlayerId(profileUrl) : null;
-  let imageUrl = cached?.imageUrl ?? null;
+  let imageUrl = await validatedImageUrl(cached?.imageUrl);
   if (!imageUrl && playerId) {
     imageUrl = await fetchAthleteHeadshotUrl(playerId);
   }

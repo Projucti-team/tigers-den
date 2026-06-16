@@ -1,4 +1,4 @@
-import { verifyPlayerImageUrl } from "@/lib/cricket/providers/icc-player";
+import { verifyPlayerImageUrlCached } from "@/lib/cricket/providers/icc-player";
 
 const SEARCH_URL = "https://www.espncricinfo.com/ci/content/player/search.html";
 const CORE_ATHLETE_URL = "http://core.espnuk.org/v2/sports/cricket/athletes";
@@ -112,7 +112,7 @@ export async function resolveCricinfoPlayerImageUrl(playerName: string): Promise
       if (!athlete?.fullName || !namesMatch(athlete.fullName, playerName)) continue;
 
       const href = athlete.headshot?.href;
-      if (href && !isCricinfoPlaceholderPhoto(href) && (await verifyPlayerImageUrl(href))) {
+      if (href && !isCricinfoPlaceholderPhoto(href) && (await verifyPlayerImageUrlCached(href))) {
         return href;
       }
     }

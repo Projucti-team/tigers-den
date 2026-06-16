@@ -1,5 +1,7 @@
 /** Player headshots and profile URLs from icc-cricket.com (Sportz.io feed). */
 
+import { withCache } from "@/lib/cricket/cache";
+
 const ICC_PLAYER_IMAGE_BASE =
   "https://images.icc-cricket.com/image/upload/t_player-headshot-portrait-lg-webp/prd/assets/players/generic/colored";
 
@@ -22,6 +24,12 @@ export async function verifyPlayerImageUrl(url: string): Promise<boolean> {
   } catch {
     return false;
   }
+}
+
+export async function verifyPlayerImageUrlCached(url: string): Promise<boolean> {
+  return withCache(`player-img-head:${url}`, 7 * 24 * 60 * 60 * 1000, () =>
+    verifyPlayerImageUrl(url),
+  );
 }
 
 /** Prefer ICC headshot when we have a player id from the rankings feed. */
