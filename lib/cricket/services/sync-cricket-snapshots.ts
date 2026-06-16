@@ -9,6 +9,7 @@ import {
   logRankingsShowcaseStats,
 } from "@/lib/cricket/services/build-rankings-showcase";
 import { buildTourDetailLive, toTourDetailSnapshot } from "@/lib/cricket/services/build-tour-detail";
+import { applyEspnTourSquads, refreshEspnTourSquads } from "@/lib/cricket/providers/espn-squads";
 import {
   beginCricApiSyncSession,
   isCricApiBlocked,
@@ -18,7 +19,7 @@ import {
 import { buildToursIndexLive } from "@/lib/cricket/services/build-tours-index";
 import { scrapeBangladeshLastMatch } from "@/lib/cricket/services/bangladesh-last-match";
 import { scrapeBangladeshUpcomingMatches } from "@/lib/cricket/services/bangladesh-upcoming-matches";
-import type { ToursIndexSnapshot } from "@/lib/cricket/snapshot-types";
+import type { TourDetailSnapshot, ToursIndexSnapshot } from "@/lib/cricket/snapshot-types";
 import { CRICKET_SNAPSHOT_KEYS } from "@/lib/cricket/snapshot-keys";
 import {
   deleteCricketSnapshotsExcept,
@@ -211,14 +212,39 @@ export async function syncCricketSnapshots(
   let tourDetailsCount = 0;
 
   if (skipCricApi && previousTours) {
-    // Keep existing tours + detail pages — no CricAPI calls within the 24h window.
+    // Keep CricAPI traffic off, but still refresh squads from ESPN sources.
     toursCount = previousTours.tours.length;
     for (const tour of previousTours.tours) {
-      keysToKeep.add(CRICKET_SNAPSHOT_KEYS.tourDetail(tourSlug(tour)));
+      const slug = tourSlug(tour);
+      const key = CRICKET_SNAPSHOT_KEYS.tourDetail(slug);
+      keysToKeep.add(key);
+
+      try {
+        const cachedDetail = await readCricketSnapshot<TourDetailSnapshot>(key);
+        if (!cachedDetail) {
+          tourDetailsCount += 1;
+          continue;
+        }
+
+        const { squads, warnings: squadWarnings } = await refreshEspnTourSquads(tour);
+        const withFreshSquads = applyEspnTourSquads(cachedDetail, squads, squadWarnings);
+        await upsertCricketSnapshot(
+          key,
+          `Tour: ${tour.name}`,
+          {
+            ...withFreshSquads,
+            slug,
+            fetchedAt: new Date().toISOString(),
+          } satisfies TourDetailSnapshot,
+        );
+      } catch (e) {
+        errors.push(`Tour ${slug} squads: ${e instanceof Error ? e.message : "failed"}`);
+      }
+
       tourDetailsCount += 1;
     }
     warnings.push(
-      `Tours snapshot is ${previousToursAgeHours.toFixed(1)}h old — skipped CricAPI calls (refreshes after 24h, or use force).`,
+      `Tours snapshot is ${previousToursAgeHours.toFixed(1)}h old — skipped CricAPI calls, but refreshed squads from ESPN.`,
     );
   } else {
     try {
