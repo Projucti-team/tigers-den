@@ -6,10 +6,13 @@ import {
   upsertEspnTourSquads,
 } from "@/lib/cricket/squads/store";
 import {
-  cricinfoPlayerUrl,
+  profileUrlFromCoreAthlete,
+  type CoreAthleteProfile,
+} from "@/lib/cricket/squads/profile-urls";
+import { resolveSquadPlayers } from "@/lib/cricket/players/registry";
+import {
   mergeSquads,
-  normalizeSquadPlayers,
-  squadKey,
+  squadPrimaryNation,
   type SeriesSquad,
   type SquadPlayer,
 } from "@/lib/cricket/squads/types";
@@ -46,11 +49,7 @@ type CoreAthleteEntry = {
   athlete?: { $ref: string };
 };
 
-type CoreAthlete = {
-  id?: string;
-  fullName?: string;
-  displayName?: string;
-};
+type CoreAthlete = CoreAthleteProfile;
 
 type CoreRoster = {
   entries?: CoreAthleteEntry[];
@@ -213,10 +212,9 @@ async function fetchAthletesFromRef(url: string): Promise<SquadPlayer[]> {
     const name = athlete?.fullName ?? athlete?.displayName;
     if (!name) continue;
 
-    const id = Number(athlete?.id);
     players.push({
       name,
-      profileUrl: Number.isFinite(id) ? cricinfoPlayerUrl(id, name) : null,
+      profileUrl: athlete ? profileUrlFromCoreAthlete(athlete) : null,
     });
   }
 
@@ -248,10 +246,9 @@ async function fetchRosterSquad(
     const athlete = await fetchCoreJson<CoreAthlete>(athleteRef);
     const name = athlete?.fullName ?? athlete?.displayName;
     if (!name) continue;
-    const id = Number(athlete?.id);
     players.push({
       name,
-      profileUrl: Number.isFinite(id) ? cricinfoPlayerUrl(id, name) : null,
+      profileUrl: athlete ? profileUrlFromCoreAthlete(athlete) : null,
     });
   }
 
@@ -455,7 +452,15 @@ export async function refreshEspnTourSquads(tour: Tour): Promise<{
   const coreSquads = league ? await fetchSquadsFromEspnCore(league) : [];
   const storySquads = await fetchSquadsFromEspnStories(tour.name);
   const curatedSquads = await fetchSquadsFromStoryUrls(curatedStoryUrls);
-  const squads = mergeSquads(cached, coreSquads, storySquads, curatedSquads);
+  const merged = mergeSquads(cached, coreSquads, storySquads, curatedSquads);
+  const squads: SeriesSquad[] = [];
+
+  for (const squad of merged) {
+    squads.push({
+      ...squad,
+      players: await resolveSquadPlayers(squadPrimaryNation(squad.team), squad.players),
+    });
+  }
 
   if (squads.length) {
     const storageKey = tourStorageKey(tour);

@@ -1,4 +1,5 @@
 import { enrichIccSnapshotPlayerImages } from "@/lib/cricket/player-images";
+import { ensureCountriesSeeded } from "@/lib/cricket/players/registry";
 import { fetchAllIccRankingsFromSportz } from "@/lib/cricket/providers/icc-sportz";
 import type { IccRankingsSnapshot } from "@/lib/cricket/providers/icc-sportz";
 import { fetchWtcStandingsFromEspn } from "@/lib/cricket/providers/wtc-espn";
@@ -103,6 +104,7 @@ export async function syncCricketSnapshots(
 
   try {
     await ensureSqliteCricketSnapshotsTable();
+    await ensureCountriesSeeded();
   } catch (e) {
     return {
       ok: false,

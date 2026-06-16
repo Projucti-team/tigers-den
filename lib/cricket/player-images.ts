@@ -9,8 +9,10 @@ import {
   isCricinfoPlaceholderPhoto,
   resolveCricinfoPlayerImageUrl,
 } from "@/lib/cricket/providers/cricinfo-player";
+import { iccTeamNameToCountrySlug } from "@/lib/cricket/players/countries-seed";
 import type { IccRankingsSnapshot } from "@/lib/cricket/providers/icc-sportz";
 import type { RankedPlayer } from "@/lib/cricket/types";
+import { isPayloadConfigured } from "@/lib/payload";
 
 function sleep(ms: number): Promise<void> {
   return new Promise((resolve) => setTimeout(resolve, ms));
@@ -33,6 +35,20 @@ function hasUsableImage(player: RankedPlayer): boolean {
   return !url.includes("ui-avatars.com");
 }
 
+async function cachedPlayerImageFromDb(player: RankedPlayer): Promise<string | null> {
+  if (!isPayloadConfigured()) return null;
+
+  try {
+    const { ensureCountriesSeeded, lookupPlayer } = await import("@/lib/cricket/players/registry");
+    await ensureCountriesSeeded();
+    const countrySlug = iccTeamNameToCountrySlug(player.team ?? "") ?? "bangladesh";
+    const cached = await lookupPlayer(countrySlug, player.name);
+    return cached?.imageUrl ?? null;
+  } catch {
+    return null;
+  }
+}
+
 /** ICC headshot first, then Cricinfo, then initials. */
 export async function resolvePlayerImageUrl(player: RankedPlayer | string): Promise<string> {
   const ranked = typeof player === "string" ? ({ name: player } as RankedPlayer) : player;
@@ -41,6 +57,9 @@ export async function resolvePlayerImageUrl(player: RankedPlayer | string): Prom
     : `player-img:${ranked.name}`;
 
   return withCache(cacheKey, 24 * 60 * 60 * 1000, async () => {
+    const fromDb = await cachedPlayerImageFromDb(ranked);
+    if (fromDb) return fromDb;
+
     if (ranked.iccPlayerId) {
       const iccUrl = await resolveIccPlayerImageUrl(ranked.iccPlayerId);
       if (iccUrl) return iccUrl;
@@ -60,6 +79,17 @@ export async function resolvePlayerImageUrl(player: RankedPlayer | string): Prom
 export async function enrichPlayerImage(player: RankedPlayer | null): Promise<RankedPlayer | null> {
   if (!player) return null;
   if (hasUsableImage(player)) return player;
+
+  if (isPayloadConfigured()) {
+    try {
+      const { resolveRankedPlayer } = await import("@/lib/cricket/players/registry");
+      const resolved = await resolveRankedPlayer(player);
+      if (hasUsableImage(resolved)) return resolved;
+    } catch {
+      /* fall through */
+    }
+  }
+
   const imageUrl = await resolvePlayerImageUrl(player);
   return { ...player, imageUrl };
 }

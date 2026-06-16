@@ -1,5 +1,6 @@
 import Link from "next/link";
 
+import { PlayerRankAvatar } from "@/components/home/PlayerRankAvatar";
 import {
   formatBangladeshDate,
   formatMatchScheduleLine,
@@ -11,28 +12,57 @@ import type { TourDetail } from "@/lib/cricket/tour-detail-types";
 import { formatDateRange } from "@/lib/cricket/services/tours-display";
 import type { LiveMatchSummary } from "@/lib/cricket/types";
 
+function squadPlayerPhotoSrc(player: SquadPlayer): string | null {
+  const url = player.imageUrl ?? "";
+  if (!url || url.includes("ui-avatars.com")) return null;
+  if (url.includes("/icon512.") || url.includes("default-player-logo")) return null;
+  return url;
+}
+
+function squadPlayerInitials(name: string): string {
+  const clean = name.replace(/\s*\([^)]*\)/g, "").trim();
+  const parts = clean.split(/\s+/).filter(Boolean);
+  if (parts.length === 0) return "?";
+  if (parts.length === 1) return parts[0].slice(0, 2).toUpperCase();
+  return `${parts[0][0] ?? ""}${parts[parts.length - 1][0] ?? ""}`.toUpperCase();
+}
+
+function SquadPlayerRow({ player }: { player: SquadPlayer }) {
+  const photo = squadPlayerPhotoSrc(player);
+  const initials = squadPlayerInitials(player.name);
+  const fallbackSrc = `https://ui-avatars.com/api/?name=${encodeURIComponent(initials)}&background=006a4e&color=fff&size=96&bold=true`;
+
+  const nameEl = player.profileUrl ? (
+    <a
+      href={player.profileUrl}
+      target="_blank"
+      rel="noopener noreferrer"
+      className="font-semibold text-emerald hover:text-crimson hover:underline"
+    >
+      {player.name}
+    </a>
+  ) : (
+    <span>{player.name}</span>
+  );
+
+  return (
+    <div className="flex items-center gap-2.5">
+      <PlayerRankAvatar
+        src={photo ?? fallbackSrc}
+        fallbackSrc={fallbackSrc}
+        alt={player.name}
+        className="h-9 w-9 shrink-0 rounded-full border-2 border-emerald/30 bg-emerald/10 object-cover"
+      />
+      <div className="min-w-0">{nameEl}</div>
+    </div>
+  );
+}
 function formatMatchType(match: LiveMatchSummary): string {
   const t = match.matchType?.toUpperCase() ?? "";
   if (t === "TEST") return "Test";
   if (t === "ODI") return "ODI";
   if (t === "T20") return "T20I";
   return t || "International";
-}
-
-function SquadPlayerLink({ player }: { player: SquadPlayer }) {
-  if (player.profileUrl) {
-    return (
-      <a
-        href={player.profileUrl}
-        target="_blank"
-        rel="noopener noreferrer"
-        className="font-semibold text-emerald hover:text-crimson hover:underline"
-      >
-        {player.name}
-      </a>
-    );
-  }
-  return <span>{player.name}</span>;
 }
 
 export function TourDetailView({ detail }: { detail: TourDetail }) {
@@ -89,10 +119,10 @@ export function TourDetailView({ detail }: { detail: TourDetail }) {
                     Source: ESPNcricinfo →
                   </a>
                 ) : null}
-                <ul className="mt-3 columns-1 gap-x-6 text-sm text-charcoal/80 sm:columns-2">
+                <ul className="mt-3 space-y-2 text-sm text-charcoal/80">
                   {squad.players.map((player) => (
-                    <li key={`${squad.team}-${player.name}`} className="mb-1 break-inside-avoid">
-                      <SquadPlayerLink player={player} />
+                    <li key={`${squad.team}-${player.name}`}>
+                      <SquadPlayerRow player={player} />
                     </li>
                   ))}
                 </ul>

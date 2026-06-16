@@ -1,6 +1,7 @@
 export type SquadPlayer = {
   name: string;
   profileUrl?: string | null;
+  imageUrl?: string | null;
 };
 
 export type SeriesSquad = {

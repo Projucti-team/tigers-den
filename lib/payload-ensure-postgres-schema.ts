@@ -79,7 +79,46 @@ async function runPostgresPatches(): Promise<void> {
         ADD COLUMN IF NOT EXISTS "stand_reactions_id" integer,
         ADD COLUMN IF NOT EXISTS "stand_comments_id" integer,
         ADD COLUMN IF NOT EXISTS "match_chat_rooms_id" integer,
-        ADD COLUMN IF NOT EXISTS "match_chat_messages_id" integer;
+        ADD COLUMN IF NOT EXISTS "match_chat_messages_id" integer,
+        ADD COLUMN IF NOT EXISTS "countries_id" integer,
+        ADD COLUMN IF NOT EXISTS "players_id" integer;
+    `);
+
+    await pool.query(`
+      CREATE TABLE IF NOT EXISTS "countries" (
+        "id" serial PRIMARY KEY NOT NULL,
+        "slug" varchar NOT NULL,
+        "name" varchar NOT NULL,
+        "short_name" varchar,
+        "espn_team_id" numeric,
+        "icc_team_name" varchar,
+        "updated_at" timestamp(3) with time zone DEFAULT now() NOT NULL,
+        "created_at" timestamp(3) with time zone DEFAULT now() NOT NULL
+      );
+    `);
+    await pool.query(`
+      CREATE UNIQUE INDEX IF NOT EXISTS "countries_slug_idx"
+      ON "countries" USING btree ("slug");
+    `);
+
+    await pool.query(`
+      CREATE TABLE IF NOT EXISTS "players" (
+        "id" serial PRIMARY KEY NOT NULL,
+        "lookup_key" varchar NOT NULL,
+        "display_name" varchar NOT NULL,
+        "country_id" integer NOT NULL,
+        "profile_url" varchar,
+        "image_url" varchar,
+        "icc_player_id" numeric,
+        "cricinfo_player_id" numeric,
+        "last_resolved_at" timestamp(3) with time zone,
+        "updated_at" timestamp(3) with time zone DEFAULT now() NOT NULL,
+        "created_at" timestamp(3) with time zone DEFAULT now() NOT NULL
+      );
+    `);
+    await pool.query(`
+      CREATE UNIQUE INDEX IF NOT EXISTS "players_lookup_key_idx"
+      ON "players" USING btree ("lookup_key");
     `);
   } finally {
     await pool.end();

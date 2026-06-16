@@ -13,87 +13,267 @@
       "fetchedAt": "2026-06-08T00:00:00.000Z",
       "squads": [
         {
-          "team": "Bangladesh — ODI squad",
+          "team": "Bangladesh \u2014 ODI squad",
           "source": "https://www.espncricinfo.com/story/bangladesh-recall-mosaddek-after-four-years-for-odis-against-australia-1539528",
           "players": [
-            { "name": "Mehidy Hasan Miraz (capt)", "profileUrl": "https://www.espncricinfo.com/cricketers/mehidy-hasan-miraz-350016" },
-            { "name": "Soumya Sarkar", "profileUrl": "https://www.espncricinfo.com/cricketers/soumya-sarkar-330902" },
-            { "name": "Saif Hassan", "profileUrl": "https://www.espncricinfo.com/cricketers/saif-hassan-1150523" },
-            { "name": "Tanzid Hasan", "profileUrl": "https://www.espncricinfo.com/cricketers/tanzid-hasan-990023" },
-            { "name": "Najmul Hossain Shanto", "profileUrl": "https://www.espncricinfo.com/cricketers/najmul-hossain-shanto-597805" },
-            { "name": "Tawhid Hridoy", "profileUrl": "https://www.espncricinfo.com/cricketers/tawhid-hridoy-1273808" },
-            { "name": "Litton Das", "profileUrl": "https://www.espncricinfo.com/cricketers/litton-das-536936" },
-            { "name": "Mosaddek Hossain", "profileUrl": "https://www.espncricinfo.com/cricketers/mosaddek-hossain-330903" },
-            { "name": "Nurul Hasan", "profileUrl": "https://www.espncricinfo.com/cricketers/nurul-hasan-330756" },
-            { "name": "Rishad Hossain", "profileUrl": "https://www.espncricinfo.com/cricketers/rishad-hossain-1321710" },
-            { "name": "Tanvir Islam", "profileUrl": "https://www.espncricinfo.com/cricketers/tanvir-islam-1148234" },
-            { "name": "Mustafizur Rahman", "profileUrl": "https://www.espncricinfo.com/cricketers/mustafizur-rahman-530957" },
-            { "name": "Taskin Ahmed", "profileUrl": "https://www.espncricinfo.com/cricketers/taskin-ahmed-599345" },
-            { "name": "Shoriful Islam", "profileUrl": "https://www.espncricinfo.com/cricketers/shoriful-islam-1279593" },
-            { "name": "Nahid Rana", "profileUrl": "https://www.espncricinfo.com/cricketers/nahid-rana-1384319" }
+            {
+              "name": "Mehidy Hasan Miraz (capt)",
+              "profileUrl": "https://www.espncricinfo.com/cricketers/mehidy-hasan-miraz-629063"
+            },
+            {
+              "name": "Soumya Sarkar",
+              "profileUrl": "https://www.espncricinfo.com/cricketers/soumya-sarkar-436677"
+            },
+            {
+              "name": "Saif Hassan",
+              "profileUrl": "https://www.espncricinfo.com/cricketers/mohammad-saif-hassan-821749"
+            },
+            {
+              "name": "Tanzid Hasan",
+              "profileUrl": "https://www.espncricinfo.com/cricketers/tanzid-hasan-tamim-990023"
+            },
+            {
+              "name": "Najmul Hossain Shanto",
+              "profileUrl": "https://www.espncricinfo.com/cricketers/najmul-hossain-shanto-629058"
+            },
+            {
+              "name": "Tawhid Hridoy",
+              "profileUrl": "https://www.espncricinfo.com/cricketers/md-towhid-hridoy-990031"
+            },
+            {
+              "name": "Litton Das",
+              "profileUrl": "https://www.espncricinfo.com/cricketers/litton-kumer-das-536936"
+            },
+            {
+              "name": "Mosaddek Hossain",
+              "profileUrl": "https://www.espncricinfo.com/cricketers/mohammad-mosaddek-hossain-55993"
+            },
+            {
+              "name": "Nurul Hasan",
+              "profileUrl": "https://www.espncricinfo.com/cricketers/quazi-nurul-hasan-410765"
+            },
+            {
+              "name": "Rishad Hossain",
+              "profileUrl": "https://www.espncricinfo.com/cricketers/mohammad-rishad-hossain-1139523"
+            },
+            {
+              "name": "Tanvir Islam",
+              "profileUrl": "https://www.espncricinfo.com/cricketers/tanvir-islam-932665"
+            },
+            {
+              "name": "Mustafizur Rahman",
+              "profileUrl": "https://www.espncricinfo.com/cricketers/mustafizur-rahman-330902"
+            },
+            {
+              "name": "Taskin Ahmed",
+              "profileUrl": "https://www.espncricinfo.com/cricketers/taskin-ahmed-538506"
+            },
+            {
+              "name": "Shoriful Islam",
+              "profileUrl": "https://www.espncricinfo.com/cricketers/mohammad-shoriful-islam-990039"
+            },
+            {
+              "name": "Nahid Rana",
+              "profileUrl": "https://www.espncricinfo.com/cricketers/nahid-rana-1210511"
+            }
           ]
         },
         {
-          "team": "Bangladesh — T20I squad",
+          "team": "Bangladesh \u2014 T20I squad",
           "source": "https://www.espncricinfo.com/story/ban-vs-aus-taskin-ahmed-and-nahid-rana-return-for-t20is-against-australia-1540473",
           "players": [
-            { "name": "Litton Das (capt, wk)", "profileUrl": "https://www.espncricinfo.com/cricketers/litton-das-536936" },
-            { "name": "Parvez Hossain", "profileUrl": "https://www.espncricinfo.com/cricketers/parvez-hossain-emon-1139511" },
-            { "name": "Tanzid Hasan", "profileUrl": "https://www.espncricinfo.com/cricketers/tanzid-hasan-990023" },
-            { "name": "Saif Hassan", "profileUrl": "https://www.espncricinfo.com/cricketers/saif-hassan-1150523" },
-            { "name": "Shamim Hossain", "profileUrl": "https://www.espncricinfo.com/cricketers/shamim-hossain-1148233" },
-            { "name": "Tawhid Hridoy", "profileUrl": "https://www.espncricinfo.com/cricketers/tawhid-hridoy-1273808" },
-            { "name": "Nurul Hasan", "profileUrl": "https://www.espncricinfo.com/cricketers/nurul-hasan-330756" },
-            { "name": "Mahedi Hasan", "profileUrl": "https://www.espncricinfo.com/cricketers/mahedi-hasan-629063" },
-            { "name": "Nasum Ahmed", "profileUrl": "https://www.espncricinfo.com/cricketers/nasum-ahmed-1108378" },
-            { "name": "Rishad Hossain", "profileUrl": "https://www.espncricinfo.com/cricketers/rishad-hossain-1321710" },
-            { "name": "Shoriful Islam", "profileUrl": "https://www.espncricinfo.com/cricketers/shoriful-islam-1279593" },
-            { "name": "Mustafizur Rahman", "profileUrl": "https://www.espncricinfo.com/cricketers/mustafizur-rahman-530957" },
-            { "name": "Taskin Ahmed", "profileUrl": "https://www.espncricinfo.com/cricketers/taskin-ahmed-599345" },
-            { "name": "Nahid Rana", "profileUrl": "https://www.espncricinfo.com/cricketers/nahid-rana-1384319" },
-            { "name": "Abdul Gaffar Saqlain", "profileUrl": "https://www.espncricinfo.com/cricketers/abdul-gaffar-saqlain-1384320" }
+            {
+              "name": "Litton Das (capt, wk)",
+              "profileUrl": "https://www.espncricinfo.com/cricketers/litton-kumer-das-536936"
+            },
+            {
+              "name": "Parvez Hossain",
+              "profileUrl": "https://www.espncricinfo.com/cricketers/mohammad-parvez-hossain-emon-1139511"
+            },
+            {
+              "name": "Tanzid Hasan",
+              "profileUrl": "https://www.espncricinfo.com/cricketers/tanzid-hasan-tamim-990023"
+            },
+            {
+              "name": "Saif Hassan",
+              "profileUrl": "https://www.espncricinfo.com/cricketers/mohammad-saif-hassan-821749"
+            },
+            {
+              "name": "Shamim Hossain",
+              "profileUrl": "https://www.espncricinfo.com/cricketers/shamim-hossain-patwari-1161044"
+            },
+            {
+              "name": "Tawhid Hridoy",
+              "profileUrl": "https://www.espncricinfo.com/cricketers/md-towhid-hridoy-990031"
+            },
+            {
+              "name": "Nurul Hasan",
+              "profileUrl": "https://www.espncricinfo.com/cricketers/quazi-nurul-hasan-410765"
+            },
+            {
+              "name": "Mahedi Hasan",
+              "profileUrl": "https://www.espncricinfo.com/cricketers/mahedi-hasan-833087"
+            },
+            {
+              "name": "Nasum Ahmed",
+              "profileUrl": "https://www.espncricinfo.com/cricketers/nasum-ahmed-348049"
+            },
+            {
+              "name": "Rishad Hossain",
+              "profileUrl": "https://www.espncricinfo.com/cricketers/mohammad-rishad-hossain-1139523"
+            },
+            {
+              "name": "Shoriful Islam",
+              "profileUrl": "https://www.espncricinfo.com/cricketers/mohammad-shoriful-islam-990039"
+            },
+            {
+              "name": "Mustafizur Rahman",
+              "profileUrl": "https://www.espncricinfo.com/cricketers/mustafizur-rahman-330902"
+            },
+            {
+              "name": "Taskin Ahmed",
+              "profileUrl": "https://www.espncricinfo.com/cricketers/taskin-ahmed-538506"
+            },
+            {
+              "name": "Nahid Rana",
+              "profileUrl": "https://www.espncricinfo.com/cricketers/nahid-rana-1210511"
+            },
+            {
+              "name": "Abdul Gaffar Saqlain",
+              "profileUrl": "https://www.espncricinfo.com/cricketers/abdul-gaffar-saqlain-1182029"
+            }
           ]
         },
         {
-          "team": "Australia — ODI squad",
+          "team": "Australia \u2014 ODI squad",
           "source": "https://www.espncricinfo.com/story/travis-head-out-of-bangladesh-tour-mitchell-marsh-to-miss-odis-todd-murphy-called-up-1539607",
           "players": [
-            { "name": "Josh Inglis (capt)", "profileUrl": "https://www.espncricinfo.com/cricketers/josh-inglis-1142599" },
-            { "name": "Xavier Bartlett", "profileUrl": "https://www.espncricinfo.com/cricketers/xavier-bartlett-1176483" },
-            { "name": "Alex Carey", "profileUrl": "https://www.espncricinfo.com/cricketers/alex-carey-502687" },
-            { "name": "Cooper Connolly", "profileUrl": "https://www.espncricinfo.com/cricketers/cooper-connolly-1283024" },
-            { "name": "Ben Dwarshuis", "profileUrl": "https://www.espncricinfo.com/cricketers/ben-dwarshuis-722302" },
-            { "name": "Nathan Ellis", "profileUrl": "https://www.espncricinfo.com/cricketers/nathan-ellis-785177" },
-            { "name": "Cameron Green", "profileUrl": "https://www.espncricinfo.com/cricketers/cameron-green-902965" },
-            { "name": "Matthew Kuhnemann", "profileUrl": "https://www.espncricinfo.com/cricketers/matthew-kuhnemann-1021298" },
-            { "name": "Marnus Labuschagne", "profileUrl": "https://www.espncricinfo.com/cricketers/marnus-labuschagne-787987" },
-            { "name": "Todd Murphy", "profileUrl": "https://www.espncricinfo.com/cricketers/todd-murphy-1181638" },
-            { "name": "Oliver Peake", "profileUrl": "https://www.espncricinfo.com/cricketers/oliver-peake-1321695" },
-            { "name": "Matthew Renshaw", "profileUrl": "https://www.espncricinfo.com/cricketers/matthew-renshaw-898873" },
-            { "name": "Liam Scott", "profileUrl": "https://www.espncricinfo.com/cricketers/liam-scott-1076376" },
-            { "name": "Matt Short", "profileUrl": "https://www.espncricinfo.com/cricketers/matt-short-1170476" },
-            { "name": "Adam Zampa", "profileUrl": "https://www.espncricinfo.com/cricketers/adam-zampa-475281" }
+            {
+              "name": "Josh Inglis (capt)",
+              "profileUrl": "https://www.espncricinfo.com/cricketers/joshua-patrick-inglis-662235"
+            },
+            {
+              "name": "Xavier Bartlett",
+              "profileUrl": "https://www.espncricinfo.com/cricketers/xavier-colin-bartlett-1050545"
+            },
+            {
+              "name": "Alex Carey",
+              "profileUrl": "https://www.espncricinfo.com/cricketers/alex-tyson-carey-326434"
+            },
+            {
+              "name": "Cooper Connolly",
+              "profileUrl": "https://www.espncricinfo.com/cricketers/cooper-patrick-leonard-connolly-1210488"
+            },
+            {
+              "name": "Ben Dwarshuis",
+              "profileUrl": "https://www.espncricinfo.com/cricketers/benjamin-james-dwarshuis-679567"
+            },
+            {
+              "name": "Nathan Ellis",
+              "profileUrl": "https://www.espncricinfo.com/cricketers/nathan-ellis-826915"
+            },
+            {
+              "name": "Cameron Green",
+              "profileUrl": "https://www.espncricinfo.com/cricketers/cameron-donald-green-1076713"
+            },
+            {
+              "name": "Matthew Kuhnemann",
+              "profileUrl": "https://www.espncricinfo.com/cricketers/matthew-paul-kuhnemann-774219"
+            },
+            {
+              "name": "Marnus Labuschagne",
+              "profileUrl": "https://www.espncricinfo.com/cricketers/marnus-labuschagne-787987"
+            },
+            {
+              "name": "Todd Murphy",
+              "profileUrl": "https://www.espncricinfo.com/cricketers/todd-raymond-murphy-1193685"
+            },
+            {
+              "name": "Oliver Peake",
+              "profileUrl": "https://www.espncricinfo.com/cricketers/oliver-john-peake-1418371"
+            },
+            {
+              "name": "Matthew Renshaw",
+              "profileUrl": "https://www.espncricinfo.com/cricketers/matthew-thomas-renshaw-722303"
+            },
+            {
+              "name": "Liam Scott",
+              "profileUrl": "https://www.espncricinfo.com/cricketers/liam-alexander-hamilton-scott-1076376"
+            },
+            {
+              "name": "Matt Short",
+              "profileUrl": "https://www.espncricinfo.com/cricketers/matthew-william-short-605575"
+            },
+            {
+              "name": "Adam Zampa",
+              "profileUrl": "https://www.espncricinfo.com/cricketers/adam-zampa-379504"
+            }
           ]
         },
         {
-          "team": "Australia — T20I squad",
+          "team": "Australia \u2014 T20I squad",
           "source": "https://www.espncricinfo.com/story/travis-head-out-of-bangladesh-tour-mitchell-marsh-to-miss-odis-todd-murphy-called-up-1539607",
           "players": [
-            { "name": "Mitchell Marsh (capt)", "profileUrl": "https://www.espncricinfo.com/cricketers/mitchell-marsh-272450" },
-            { "name": "Xavier Bartlett", "profileUrl": "https://www.espncricinfo.com/cricketers/xavier-bartlett-1176483" },
-            { "name": "Cooper Connolly", "profileUrl": "https://www.espncricinfo.com/cricketers/cooper-connolly-1283024" },
-            { "name": "Tim David", "profileUrl": "https://www.espncricinfo.com/cricketers/tim-david-1150437" },
-            { "name": "Joel Davies", "profileUrl": "https://www.espncricinfo.com/cricketers/joel-davies-1295851" },
-            { "name": "Nathan Ellis", "profileUrl": "https://www.espncricinfo.com/cricketers/nathan-ellis-785177" },
-            { "name": "Cameron Green", "profileUrl": "https://www.espncricinfo.com/cricketers/cameron-green-902965" },
-            { "name": "Aaron Hardie", "profileUrl": "https://www.espncricinfo.com/cricketers/aaron-hardie-1187802" },
-            { "name": "Josh Inglis", "profileUrl": "https://www.espncricinfo.com/cricketers/josh-inglis-1142599" },
-            { "name": "Spencer Johnson", "profileUrl": "https://www.espncricinfo.com/cricketers/spencer-johnson-1161381" },
-            { "name": "Matthew Kuhnemann", "profileUrl": "https://www.espncricinfo.com/cricketers/matthew-kuhnemann-1021298" },
-            { "name": "Riley Meredith", "profileUrl": "https://www.espncricinfo.com/cricketers/riley-meredith-774781" },
-            { "name": "Josh Philippe", "profileUrl": "https://www.espncricinfo.com/cricketers/josh-philippe-630441" },
-            { "name": "Matthew Renshaw", "profileUrl": "https://www.espncricinfo.com/cricketers/matthew-renshaw-898873" },
-            { "name": "Adam Zampa", "profileUrl": "https://www.espncricinfo.com/cricketers/adam-zampa-475281" }
+            {
+              "name": "Mitchell Marsh (capt)",
+              "profileUrl": "https://www.espncricinfo.com/cricketers/mitchell-ross-marsh-272450"
+            },
+            {
+              "name": "Xavier Bartlett",
+              "profileUrl": "https://www.espncricinfo.com/cricketers/xavier-colin-bartlett-1050545"
+            },
+            {
+              "name": "Cooper Connolly",
+              "profileUrl": "https://www.espncricinfo.com/cricketers/cooper-patrick-leonard-connolly-1210488"
+            },
+            {
+              "name": "Tim David",
+              "profileUrl": "https://www.espncricinfo.com/cricketers/timothy-hays-david-892749"
+            },
+            {
+              "name": "Joel Davies",
+              "profileUrl": "https://www.espncricinfo.com/cricketers/joel-derek-davies-1295851"
+            },
+            {
+              "name": "Nathan Ellis",
+              "profileUrl": "https://www.espncricinfo.com/cricketers/nathan-ellis-826915"
+            },
+            {
+              "name": "Cameron Green",
+              "profileUrl": "https://www.espncricinfo.com/cricketers/cameron-donald-green-1076713"
+            },
+            {
+              "name": "Aaron Hardie",
+              "profileUrl": "https://www.espncricinfo.com/cricketers/aaron-mark-hardie-1124283"
+            },
+            {
+              "name": "Josh Inglis",
+              "profileUrl": "https://www.espncricinfo.com/cricketers/joshua-patrick-inglis-662235"
+            },
+            {
+              "name": "Spencer Johnson",
+              "profileUrl": "https://www.espncricinfo.com/cricketers/spencer-henry-johnson-1123718"
+            },
+            {
+              "name": "Matthew Kuhnemann",
+              "profileUrl": "https://www.espncricinfo.com/cricketers/matthew-paul-kuhnemann-774219"
+            },
+            {
+              "name": "Riley Meredith",
+              "profileUrl": "https://www.espncricinfo.com/cricketers/riley-patrick-meredith-961713"
+            },
+            {
+              "name": "Josh Philippe",
+              "profileUrl": "https://www.espncricinfo.com/cricketers/joshua-ryan-philippe-1124282"
+            },
+            {
+              "name": "Matthew Renshaw",
+              "profileUrl": "https://www.espncricinfo.com/cricketers/matthew-thomas-renshaw-722303"
+            },
+            {
+              "name": "Adam Zampa",
+              "profileUrl": "https://www.espncricinfo.com/cricketers/adam-zampa-379504"
+            }
           ]
         }
       ]

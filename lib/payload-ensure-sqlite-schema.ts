@@ -92,6 +92,8 @@ const SQLITE_LOCKED_DOCS_REL_COLUMNS = [
   "match_chat_rooms_id",
   "match_chat_messages_id",
   "cricket_snapshots_id",
+  "countries_id",
+  "players_id",
 ] as const;
 
 /** Payload locked-document rels need a column per collection (SQLite). */
@@ -114,11 +116,63 @@ export async function ensureSqlitePayloadLockedDocumentsRels(): Promise<void> {
   }
 }
 
+let sqlitePlayersReady = false;
+
+/** Countries + players tables for local SQLite (Payload collections). */
+export async function ensureSqliteCricketPlayersTables(): Promise<void> {
+  if (sqlitePlayersReady) return;
+
+  const client = sqliteClient();
+  if (!client) return;
+
+  await client.execute(`
+    CREATE TABLE IF NOT EXISTS "countries" (
+      "id" integer PRIMARY KEY NOT NULL,
+      "slug" text NOT NULL,
+      "name" text NOT NULL,
+      "short_name" text,
+      "espn_team_id" numeric,
+      "icc_team_name" text,
+      "updated_at" text DEFAULT (strftime('%Y-%m-%dT%H:%M:%fZ', 'now')) NOT NULL,
+      "created_at" text DEFAULT (strftime('%Y-%m-%dT%H:%M:%fZ', 'now')) NOT NULL
+    );
+  `);
+
+  await client.execute(`
+    CREATE UNIQUE INDEX IF NOT EXISTS "countries_slug_idx"
+    ON "countries" ("slug");
+  `);
+
+  await client.execute(`
+    CREATE TABLE IF NOT EXISTS "players" (
+      "id" integer PRIMARY KEY NOT NULL,
+      "lookup_key" text NOT NULL,
+      "display_name" text NOT NULL,
+      "country_id" integer NOT NULL,
+      "profile_url" text,
+      "image_url" text,
+      "icc_player_id" numeric,
+      "cricinfo_player_id" numeric,
+      "last_resolved_at" text,
+      "updated_at" text DEFAULT (strftime('%Y-%m-%dT%H:%M:%fZ', 'now')) NOT NULL,
+      "created_at" text DEFAULT (strftime('%Y-%m-%dT%H:%M:%fZ', 'now')) NOT NULL
+    );
+  `);
+
+  await client.execute(`
+    CREATE UNIQUE INDEX IF NOT EXISTS "players_lookup_key_idx"
+    ON "players" ("lookup_key");
+  `);
+
+  sqlitePlayersReady = true;
+}
+
 /** Idempotent SQLite schema patches for VPS/Docker deploys. */
 export async function ensureSqliteIncrementalSchema(): Promise<void> {
   await Promise.all([
     ensureSqliteCricketSnapshotsTable(),
     ensureSqliteMatchChatTables(),
+    ensureSqliteCricketPlayersTables(),
     ensureSqlitePayloadLockedDocumentsRels(),
   ]);
 }

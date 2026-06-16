@@ -5,6 +5,7 @@ import sharp from "sharp";
 import { fileURLToPath } from "url";
 
 import { Chants } from "./collections/Chants";
+import { Countries } from "./collections/Countries";
 import { CricketSnapshots } from "./collections/CricketSnapshots";
 import { HeroSlides } from "./collections/HeroSlides";
 import { MatchChatMessages } from "./collections/MatchChatMessages";
@@ -14,6 +15,7 @@ import { MemberFollows } from "./collections/MemberFollows";
 import { MemberPosts } from "./collections/MemberPosts";
 import { Members } from "./collections/Members";
 import { Posts } from "./collections/Posts";
+import { Players } from "./collections/Players";
 import { StandComments } from "./collections/StandComments";
 import { StandDiscussions } from "./collections/StandDiscussions";
 import { StandReactions } from "./collections/StandReactions";
@@ -58,6 +60,8 @@ export default buildConfig({
     MatchChatRooms,
     MatchChatMessages,
     HeroSlides,
+    Countries,
+    Players,
     CricketSnapshots,
   ],
   editor: lexicalEditor(),
