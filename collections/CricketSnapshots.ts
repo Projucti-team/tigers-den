@@ -27,7 +27,9 @@ export const CricketSnapshots: CollectionConfig = {
         }
 
         try {
-          const force = req.url ? new URL(req.url).searchParams.get("force") === "1" : false;
+          // Manual admin sync always forces a full refresh unless explicitly disabled.
+          const forceParam = req.url ? new URL(req.url).searchParams.get("force") : null;
+          const force = forceParam !== "0";
           const result = await syncCricketSnapshots({ force });
           return Response.json(result, {
             status: result.ok ? 200 : 207,

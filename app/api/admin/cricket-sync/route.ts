@@ -20,7 +20,8 @@ export async function POST(request: Request) {
       );
     }
 
-    const force = new URL(request.url).searchParams.get("force") === "1";
+    const forceParam = new URL(request.url).searchParams.get("force");
+    const force = forceParam !== "0";
     const result = await syncCricketSnapshots({ force });
 
     if (result.ok) {
