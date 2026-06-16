@@ -156,6 +156,10 @@ async function teamRosterProfileUrl(playerName: string, countrySlug: string): Pr
   return null;
 }
 
+export function cricinfoHeadshotUrl(playerId: number): string {
+  return `https://a.espncdn.com/i/headshots/cricket/players/full/${playerId}.png`;
+}
+
 export async function fetchAthleteHeadshotUrl(playerId: number): Promise<string | null> {
   const athlete = await fetchCoreAthleteProfile(playerId);
   const href = athlete?.headshot?.href;

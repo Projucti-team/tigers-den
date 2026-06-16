@@ -6,8 +6,8 @@ import {
   applyEspnTourSquads,
   loadEspnTourSquadsFromCache,
 } from "@/lib/cricket/providers/espn-squads";
+import { enrichSquadPlayersForDisplay } from "@/lib/cricket/players/registry";
 import { mergeSquads, squadPrimaryNation } from "@/lib/cricket/squads/types";
-import { resolveSquadPlayers } from "@/lib/cricket/players/registry";
 import { CRICKET_SNAPSHOT_KEYS } from "@/lib/cricket/snapshot-keys";
 import { readCricketSnapshot, staleSnapshotWarning } from "@/lib/cricket/snapshot-db";
 import { getFutureTours } from "@/lib/cricket/services/tours";
@@ -33,7 +33,13 @@ async function buildCuratedTourDetail(slug: string): Promise<TourDetailSnapshot 
   if (!matches.length) return null;
 
   const espnSquads = await loadEspnTourSquadsFromCache(tour);
-  const squads = mergeSquads([], espnSquads);
+  const mergedSquads = mergeSquads([], espnSquads);
+  const squads = await Promise.all(
+    mergedSquads.map(async (squad) => ({
+      ...squad,
+      players: await enrichSquadPlayersForDisplay(squadPrimaryNation(squad.team), squad.players),
+    })),
+  );
   const warnings = ["Fixture list from confirmed ESPN schedule (full sync pending)."];
 
   const detail = applyEspnTourSquads(
@@ -69,7 +75,7 @@ export async function getTourDetail(slug: string): Promise<TourDetailSnapshot | 
   const squads = await Promise.all(
     mergedSquads.map(async (squad) => ({
       ...squad,
-      players: await resolveSquadPlayers(squadPrimaryNation(squad.team), squad.players),
+      players: await enrichSquadPlayersForDisplay(squadPrimaryNation(squad.team), squad.players),
     })),
   );
   const withSquads = applyEspnTourSquads(cached, squads);

@@ -1,6 +1,7 @@
 import {
   extractCricinfoPlayerId,
   fetchAthleteHeadshotUrl,
+  cricinfoHeadshotUrl,
   squadPlayerDisplayName,
 } from "@/lib/cricket/squads/profile-urls";
 import {
@@ -13,6 +14,7 @@ import { resolveCricinfoPlayerImageUrl } from "@/lib/cricket/providers/cricinfo-
 import type { RankedPlayer } from "@/lib/cricket/types";
 import { COUNTRY_SEEDS } from "@/lib/cricket/players/countries-seed";
 import { getPayloadClient } from "@/lib/payload";
+import { lookupSeedPlayerProfileUrl } from "@/lib/cricket/squads/store";
 
 export type PlayerIdentity = {
   id: number;
@@ -170,7 +172,43 @@ async function validatedProfileUrl(
   profileUrl: string | null | undefined,
 ): Promise<string | null> {
   if (!profileUrl) return null;
+  const id = extractCricinfoPlayerId(profileUrl);
+  if (!id) return null;
   return (await isProfileUrlForPlayer(name, profileUrl)) ? profileUrl : null;
+}
+
+function profileUrlWithId(profileUrl: string | null | undefined): string | null {
+  if (!profileUrl) return null;
+  return extractCricinfoPlayerId(profileUrl) ? profileUrl : null;
+}
+
+async function resolvePlayerImageUrl(
+  name: string,
+  profileUrl: string | null,
+  cricinfoPlayerId: number | null,
+  iccPlayerId: number | null,
+  existingImageUrl: string | null | undefined,
+): Promise<string | null> {
+  if (existingImageUrl && !existingImageUrl.includes("ui-avatars.com")) {
+    return existingImageUrl;
+  }
+
+  const iccId = toNumericId(iccPlayerId);
+  if (iccId) {
+    const iccImage = await resolveIccPlayerImageUrl(String(iccId));
+    if (iccImage) return iccImage;
+  }
+
+  const id = cricinfoPlayerId ?? (profileUrl ? extractCricinfoPlayerId(profileUrl) : null);
+  if (id) {
+    const fromCore = await fetchAthleteHeadshotUrl(id);
+    if (fromCore) return fromCore;
+    return cricinfoHeadshotUrl(id);
+  }
+
+  const fromSearch = await resolveCricinfoPlayerImageUrl(name);
+  if (fromSearch?.includes("ui-avatars.com")) return null;
+  return fromSearch;
 }
 
 async function resolveMissingUrls(input: EnsurePlayerInput): Promise<{
@@ -194,17 +232,13 @@ async function resolveMissingUrls(input: EnsurePlayerInput): Promise<{
   }
 
   if (!imageUrl) {
-    const iccId = toNumericId(input.iccPlayerId);
-    if (iccId) {
-      imageUrl = await resolveIccPlayerImageUrl(String(iccId));
-    }
-    if (!imageUrl && cricinfoPlayerId) {
-      imageUrl = await fetchAthleteHeadshotUrl(cricinfoPlayerId);
-    }
-    if (!imageUrl) {
-      imageUrl = await resolveCricinfoPlayerImageUrl(input.name);
-    }
-    if (imageUrl?.includes("ui-avatars.com")) imageUrl = null;
+    imageUrl = await resolvePlayerImageUrl(
+      input.name,
+      profileUrl,
+      cricinfoPlayerId,
+      input.iccPlayerId ?? null,
+      input.imageUrl,
+    );
   }
 
   return { profileUrl, imageUrl, cricinfoPlayerId };
@@ -267,6 +301,40 @@ export async function ensurePlayer(input: EnsurePlayerInput): Promise<PlayerIden
   return toIdentity(doc as PlayerDoc, input.countrySlug);
 }
 
+export async function enrichSquadPlayerForDisplay(
+  countrySlug: string,
+  player: SquadPlayer,
+): Promise<SquadPlayer> {
+  const displayName = squadPlayerDisplayName(player.name);
+  let profileUrl =
+    profileUrlWithId(player.profileUrl) ??
+    profileUrlWithId((await lookupPlayer(countrySlug, player.name))?.profileUrl) ??
+    profileUrlWithId(await lookupSeedPlayerProfileUrl(displayName));
+
+  if (!profileUrl) {
+    profileUrl = await resolveCricinfoPlayerProfileUrl(displayName, countrySlug);
+  }
+
+  const playerId = profileUrl ? extractCricinfoPlayerId(profileUrl) : null;
+  let imageUrl = player.imageUrl ?? null;
+  if (!imageUrl && playerId) {
+    imageUrl = (await fetchAthleteHeadshotUrl(playerId)) ?? cricinfoHeadshotUrl(playerId);
+  }
+
+  return {
+    name: player.name,
+    profileUrl,
+    imageUrl,
+  };
+}
+
+export async function enrichSquadPlayersForDisplay(
+  countrySlug: string,
+  players: SquadPlayer[],
+): Promise<SquadPlayer[]> {
+  return Promise.all(players.map((player) => enrichSquadPlayerForDisplay(countrySlug, player)));
+}
+
 export async function resolveSquadPlayer(
   countrySlug: string,
   player: SquadPlayer,
@@ -289,11 +357,7 @@ export async function resolveSquadPlayers(
   countrySlug: string,
   players: SquadPlayer[],
 ): Promise<SquadPlayer[]> {
-  const resolved: SquadPlayer[] = [];
-  for (const player of players) {
-    resolved.push(await resolveSquadPlayer(countrySlug, player));
-  }
-  return resolved;
+  return Promise.all(players.map((player) => resolveSquadPlayer(countrySlug, player)));
 }
 
 export async function repairInvalidPlayerProfiles(): Promise<number> {

@@ -71,6 +71,33 @@ export async function readEspnTourSquads(): Promise<EspnTourSquadsSnapshot> {
   return mergeEspnTourSquadsSnapshots(seed, volume);
 }
 
+function normalizePlayerLookupName(name: string): string {
+  return name
+    .replace(/\s*\([^)]*\)/g, "")
+    .toLowerCase()
+    .replace(/[^a-z\s]/g, "")
+    .replace(/\s+/g, " ")
+    .trim();
+}
+
+/** Find a profile URL from bundled/volume squad seed data by player name. */
+export async function lookupSeedPlayerProfileUrl(playerName: string): Promise<string | null> {
+  const snapshot = await readEspnTourSquads();
+  const key = normalizePlayerLookupName(playerName);
+
+  for (const entry of Object.values(snapshot.entries)) {
+    for (const squad of entry.squads) {
+      for (const player of squad.players) {
+        if (normalizePlayerLookupName(player.name) === key && player.profileUrl) {
+          return player.profileUrl;
+        }
+      }
+    }
+  }
+
+  return null;
+}
+
 export async function writeEspnTourSquads(snapshot: EspnTourSquadsSnapshot): Promise<void> {
   await mkdir(path.dirname(ESPN_TOUR_SQUADS_PATH), { recursive: true });
   await writeFile(ESPN_TOUR_SQUADS_PATH, `${JSON.stringify(snapshot, null, 2)}\n`, "utf8");
