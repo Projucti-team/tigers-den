@@ -107,7 +107,7 @@ export async function syncCricketSnapshots(
     await ensureCountriesSeeded();
     const repairedPlayers = await repairInvalidPlayerProfiles();
     if (repairedPlayers > 0) {
-      warnings.push(`Cleared ${repairedPlayers} invalid cached player profile URLs.`);
+      warnings.push(`Cleared ${repairedPlayers} invalid cached player profile or headshot URLs.`);
     }
   } catch (e) {
     return {
