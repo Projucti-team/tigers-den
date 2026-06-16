@@ -1,14 +1,17 @@
 import { readFile, writeFile, mkdir } from "node:fs/promises";
 import path from "node:path";
 
-import type { SeriesSquad } from "@/lib/cricket/squads/types";
+import { mergeSquads, type SeriesSquad } from "@/lib/cricket/squads/types";
 
 export const ESPN_TOUR_SQUADS_PATH = path.join(process.cwd(), "data", "espn-tour-squads.json");
+const ESPN_TOUR_SQUADS_SEED_PATH = path.join(process.cwd(), "data-seed", "espn-tour-squads.json");
 
 export type EspnTourSquadsEntry = {
   tourName: string;
   cricinfoSeriesId?: number;
   espnLeagueId?: number;
+  /** Known ESPN story URLs to fetch when RSS/live discovery fails on the server. */
+  squadStoryUrls?: string[];
   fetchedAt: string;
   squads: SeriesSquad[];
 };
@@ -20,13 +23,52 @@ export type EspnTourSquadsSnapshot = {
 
 const EMPTY: EspnTourSquadsSnapshot = { fetchedAt: "", entries: {} };
 
-export async function readEspnTourSquads(): Promise<EspnTourSquadsSnapshot> {
+async function readEspnTourSquadsFile(filePath: string): Promise<EspnTourSquadsSnapshot> {
   try {
-    const raw = await readFile(ESPN_TOUR_SQUADS_PATH, "utf8");
+    const raw = await readFile(filePath, "utf8");
     return JSON.parse(raw) as EspnTourSquadsSnapshot;
   } catch {
     return { ...EMPTY };
   }
+}
+
+function mergeEspnTourSquadsSnapshots(
+  ...snapshots: EspnTourSquadsSnapshot[]
+): EspnTourSquadsSnapshot {
+  const entries: Record<string, EspnTourSquadsEntry> = {};
+
+  for (const snapshot of snapshots) {
+    for (const [key, entry] of Object.entries(snapshot.entries)) {
+      const existing = entries[key];
+      if (!existing) {
+        entries[key] = entry;
+        continue;
+      }
+      entries[key] = {
+        ...existing,
+        ...entry,
+        squadStoryUrls: [
+          ...new Set([...(existing.squadStoryUrls ?? []), ...(entry.squadStoryUrls ?? [])]),
+        ],
+        squads: mergeSquads(existing.squads, entry.squads),
+        fetchedAt: entry.fetchedAt || existing.fetchedAt,
+      };
+    }
+  }
+
+  const fetchedAt = snapshots
+    .map((s) => s.fetchedAt)
+    .filter(Boolean)
+    .sort()
+    .at(-1);
+
+  return { fetchedAt: fetchedAt ?? "", entries };
+}
+
+export async function readEspnTourSquads(): Promise<EspnTourSquadsSnapshot> {
+  const seed = await readEspnTourSquadsFile(ESPN_TOUR_SQUADS_SEED_PATH);
+  const volume = await readEspnTourSquadsFile(ESPN_TOUR_SQUADS_PATH);
+  return mergeEspnTourSquadsSnapshots(seed, volume);
 }
 
 export async function writeEspnTourSquads(snapshot: EspnTourSquadsSnapshot): Promise<void> {
@@ -38,11 +80,18 @@ export function lookupEspnTourSquads(
   snapshot: EspnTourSquadsSnapshot,
   keys: string[],
 ): SeriesSquad[] {
+  const lists: SeriesSquad[][] = [];
+  const seen = new Set<string>();
+
   for (const key of keys) {
     const entry = snapshot.entries[key];
-    if (entry?.squads.length) return entry.squads;
+    if (entry?.squads.length && !seen.has(key)) {
+      lists.push(entry.squads);
+      seen.add(key);
+    }
   }
-  return [];
+
+  return lists.length ? mergeSquads(...lists) : [];
 }
 
 export async function upsertEspnTourSquads(

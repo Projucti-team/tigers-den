@@ -13,7 +13,7 @@ import {
   type SeriesSquad,
   type SquadPlayer,
 } from "@/lib/cricket/squads/types";
-import { tourSlug } from "@/lib/cricket/tour-slug";
+import { tourSlug, tourStorageKey } from "@/lib/cricket/tour-slug";
 import type { Tour } from "@/lib/cricket/types";
 
 const CORE_BASE = "http://core.espnuk.org/v2/sports/cricket";
@@ -357,9 +357,40 @@ export async function fetchSquadsFromEspnStories(tourName: string): Promise<Seri
   return squads;
 }
 
+async function fetchSquadsFromStoryUrls(urls: string[]): Promise<SeriesSquad[]> {
+  const squads: SeriesSquad[] = [];
+
+  for (const rawUrl of urls) {
+    const url = rawUrl.split("?")[0];
+    if (!url) continue;
+
+    try {
+      const html = await fetchText(url, {
+        cache: "no-store",
+        headers: {
+          "User-Agent": BROWSER_USER_AGENT,
+          Accept: "text/html",
+          Referer: "https://www.espncricinfo.com/",
+        },
+      });
+      squads.push(...parseSquadsFromStoryHtml(html, url));
+    } catch {
+      // Fall back to bundled JSON squads when ESPN blocks the server.
+    }
+  }
+
+  return squads;
+}
+
 function lookupKeysForTour(tour: Tour): string[] {
+  const storageKey = tourStorageKey(tour);
   const slug = tourSlug(tour);
-  return [slug, tour.id, tour.name.toLowerCase().replace(/[^a-z0-9]+/g, "-")];
+  return [
+    storageKey,
+    slug,
+    tour.id,
+    tour.name.toLowerCase().replace(/[^a-z0-9]+/g, "-"),
+  ];
 }
 
 function leagueFromSnapshot(
@@ -386,19 +417,20 @@ function tourNamesMatch(a: string, b: string): boolean {
   return hits.length >= Math.min(2, tokens.length);
 }
 
-/** Fast path — read squads from data/espn-tour-squads.json only. */
+/** Fast path — read squads from bundled seed + data/espn-tour-squads.json. */
 export async function loadEspnTourSquadsFromCache(tour: Tour): Promise<SeriesSquad[]> {
   const snapshot = await readEspnTourSquads();
-  const direct = lookupEspnTourSquads(snapshot, lookupKeysForTour(tour));
-  if (direct.length) return direct;
+  const keys = lookupKeysForTour(tour);
+  const direct = lookupEspnTourSquads(snapshot, keys);
+  const lists: SeriesSquad[][] = direct.length ? [direct] : [];
 
   for (const entry of Object.values(snapshot.entries)) {
     if (tourNamesMatch(tour.name, entry.tourName)) {
-      return entry.squads;
+      lists.push(entry.squads);
     }
   }
 
-  return [];
+  return lists.length ? mergeSquads(...lists) : [];
 }
 
 /**
@@ -416,15 +448,23 @@ export async function refreshEspnTourSquads(tour: Tour): Promise<{
 
   const league = leagueFromSnapshot(snapshot, keys) ?? (await resolveEspnLeagueForTour(tour.name));
 
+  const curatedStoryUrls = keys
+    .map((key) => snapshot.entries[key]?.squadStoryUrls ?? [])
+    .flat();
+
   const coreSquads = league ? await fetchSquadsFromEspnCore(league) : [];
   const storySquads = await fetchSquadsFromEspnStories(tour.name);
-  const squads = mergeSquads(cached, coreSquads, storySquads);
+  const curatedSquads = await fetchSquadsFromStoryUrls(curatedStoryUrls);
+  const squads = mergeSquads(cached, coreSquads, storySquads, curatedSquads);
 
   if (squads.length) {
-    await upsertEspnTourSquads(keys[0], {
+    const storageKey = tourStorageKey(tour);
+    const existingEntry = snapshot.entries[storageKey];
+    await upsertEspnTourSquads(storageKey, {
       tourName: tour.name,
       espnLeagueId: league?.espnLeagueId,
       cricinfoSeriesId: league?.cricinfoSeriesId,
+      squadStoryUrls: existingEntry?.squadStoryUrls,
       squads,
     });
   } else if (!league) {

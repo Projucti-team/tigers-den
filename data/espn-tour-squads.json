@@ -5,6 +5,11 @@
       "tourName": "Australia tour of Bangladesh, 2026",
       "cricinfoSeriesId": 1532475,
       "espnLeagueId": 24324,
+      "squadStoryUrls": [
+        "https://www.espncricinfo.com/story/ban-vs-aus-taskin-ahmed-and-nahid-rana-return-for-t20is-against-australia-1540473",
+        "https://www.espncricinfo.com/story/bangladesh-recall-mosaddek-after-four-years-for-odis-against-australia-1539528",
+        "https://www.espncricinfo.com/story/travis-head-out-of-bangladesh-tour-mitchell-marsh-to-miss-odis-todd-murphy-called-up-1539607"
+      ],
       "fetchedAt": "2026-06-08T00:00:00.000Z",
       "squads": [
         {

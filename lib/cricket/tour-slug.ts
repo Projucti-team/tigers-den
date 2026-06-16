@@ -1,6 +1,7 @@
 import type { Tour } from "@/lib/cricket/types";
 
-export function tourSlug(tour: Tour): string {
+/** Stable key for squad JSON / lookups (no CricAPI id suffix). */
+export function tourStorageKey(tour: Pick<Tour, "name">): string {
   const base = tour.name
     .toLowerCase()
     .replace(/,?\s*\d{4}(-\d{2})?$/i, "")
@@ -8,7 +9,11 @@ export function tourSlug(tour: Tour): string {
     .replace(/^-+|-+$/g, "")
     .slice(0, 48);
 
-  return `${base || "series"}-${tour.id}`;
+  return base || "series";
+}
+
+export function tourSlug(tour: Tour): string {
+  return `${tourStorageKey(tour)}-${tour.id}`;
 }
 
 export function tourPath(tour: Tour): string {
