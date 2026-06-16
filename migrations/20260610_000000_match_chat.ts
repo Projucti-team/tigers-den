@@ -1,6 +1,4 @@
-type MigrationDb = { execute: (query: unknown) => Promise<unknown> };
-type MigrateUpArgs = { db: MigrationDb };
-type MigrateDownArgs = { db: MigrationDb };
+import type { MigrateDownArgs, MigrateUpArgs } from "@payloadcms/db-postgres";
 import { sql } from "drizzle-orm";
 
 export async function up({ db }: MigrateUpArgs): Promise<void> {
