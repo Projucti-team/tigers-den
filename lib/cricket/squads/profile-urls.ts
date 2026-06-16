@@ -4,15 +4,13 @@ import { cricinfoPlayerUrl, type SquadPlayer } from "@/lib/cricket/squads/types"
 
 const CORE_ATHLETE_URL = "http://core.espnuk.org/v2/sports/cricket/athletes";
 const CORE_TEAM_ATHLETES_URL = "http://core.espnuk.org/v2/sports/cricket/teams";
-import { espnTeamIdsFromSeeds } from "@/lib/cricket/players/countries-seed";
+import { COUNTRY_SEEDS } from "@/lib/cricket/players/countries-seed";
 const BROWSER_USER_AGENT =
   "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36";
 
 type CoreList = { items?: { $ref: string }[] };
 
 type RosterEntry = { name: string; url: string };
-
-let teamRosterIndexPromise: Promise<RosterEntry[]> | null = null;
 
 type CoreAthleteLink = {
   rel?: string[];
@@ -58,15 +56,15 @@ function normalizeName(name: string): string {
     .trim();
 }
 
-function namesMatch(candidate: string, target: string): boolean {
+function rosterNamesMatch(candidate: string, target: string): boolean {
   const a = normalizeName(candidate);
   const b = normalizeName(target);
   if (!a || !b) return false;
   if (a === b) return true;
-  if (a.includes(b) || b.includes(a)) return true;
 
   const aParts = a.split(" ");
   const bParts = b.split(" ");
+  if (aParts.length < 2 || bParts.length < 2) return false;
   return aParts[0] === bParts[0] && aParts[aParts.length - 1] === bParts[bParts.length - 1];
 }
 
@@ -77,46 +75,54 @@ function indexRosterName(entries: RosterEntry[], name: string, url: string): voi
   entries.push({ name, url });
 }
 
-async function fetchTeamRosterIndex(): Promise<RosterEntry[]> {
+async function fetchTeamRosterIndex(countrySlug: string): Promise<RosterEntry[]> {
   const entries: RosterEntry[] = [];
+  const teamId = COUNTRY_SEEDS.find((country) => country.slug === countrySlug)?.espnTeamId;
+  if (!teamId) return entries;
 
-  for (const teamId of espnTeamIdsFromSeeds()) {
-    const list = await fetch(`${CORE_TEAM_ATHLETES_URL}/${teamId}/athletes?limit=200`, {
+  const list = await fetch(`${CORE_TEAM_ATHLETES_URL}/${teamId}/athletes?limit=200`, {
+    headers: { "User-Agent": BROWSER_USER_AGENT },
+    cache: "no-store",
+  })
+    .then((res) => (res.ok ? (res.json() as Promise<CoreList>) : { items: [] }))
+    .catch(() => ({ items: [] } as CoreList));
+
+  for (const item of list.items ?? []) {
+    const athlete = await fetch(item.$ref, {
       headers: { "User-Agent": BROWSER_USER_AGENT },
       cache: "no-store",
     })
-      .then((res) => (res.ok ? (res.json() as Promise<CoreList>) : { items: [] }))
-      .catch(() => ({ items: [] } as CoreList));
+      .then((res) => (res.ok ? (res.json() as Promise<CoreAthleteProfile>) : null))
+      .catch(() => null);
 
-    for (const item of list.items ?? []) {
-      const athlete = await fetch(item.$ref, {
-        headers: { "User-Agent": BROWSER_USER_AGENT },
-        cache: "no-store",
-      })
-        .then((res) => (res.ok ? (res.json() as Promise<CoreAthleteProfile>) : null))
-        .catch(() => null);
+    if (!athlete) continue;
+    const url = profileUrlFromCoreAthlete(athlete);
+    if (!url) continue;
 
-      if (!athlete) continue;
-      const url = profileUrlFromCoreAthlete(athlete);
-      if (!url) continue;
-
-      const label = athlete.fullName ?? athlete.displayName ?? "";
-      indexRosterName(entries, label, url);
-    }
+    const label = athlete.fullName ?? athlete.displayName ?? "";
+    indexRosterName(entries, label, url);
   }
 
   return entries;
 }
 
-async function teamRosterProfileUrl(playerName: string): Promise<string | null> {
-  if (!teamRosterIndexPromise) {
-    teamRosterIndexPromise = withCache("cricinfo-team-roster-index", 24 * 60 * 60 * 1000, fetchTeamRosterIndex);
+const teamRosterIndexByCountry = new Map<string, Promise<RosterEntry[]>>();
+
+async function teamRosterProfileUrl(playerName: string, countrySlug: string): Promise<string | null> {
+  let rosterPromise = teamRosterIndexByCountry.get(countrySlug);
+  if (!rosterPromise) {
+    rosterPromise = withCache(
+      `cricinfo-team-roster-index:${countrySlug}`,
+      24 * 60 * 60 * 1000,
+      () => fetchTeamRosterIndex(countrySlug),
+    );
+    teamRosterIndexByCountry.set(countrySlug, rosterPromise);
   }
 
-  const entries = await teamRosterIndexPromise;
+  const entries = await rosterPromise;
   const cleanName = squadPlayerDisplayName(playerName);
   for (const entry of entries) {
-    if (namesMatch(entry.name, cleanName)) return entry.url;
+    if (rosterNamesMatch(entry.name, cleanName)) return entry.url;
   }
 
   return null;
@@ -132,11 +138,20 @@ export function profileUrlFromCoreAthlete(athlete: CoreAthleteProfile): string |
   return cricinfoPlayerUrl(id, label);
 }
 
-export async function resolveCricinfoPlayerProfileUrl(playerName: string): Promise<string | null> {
+export async function resolveCricinfoPlayerProfileUrl(
+  playerName: string,
+  countrySlug?: string,
+): Promise<string | null> {
   const cleanName = squadPlayerDisplayName(playerName);
-  return withCache(`cricinfo-profile:${cleanName.toLowerCase()}`, 7 * 24 * 60 * 60 * 1000, async () => {
-    const fromRoster = await teamRosterProfileUrl(cleanName);
-    if (fromRoster) return fromRoster;
+  const cacheKey = countrySlug
+    ? `cricinfo-profile:${countrySlug}:${cleanName.toLowerCase()}`
+    : `cricinfo-profile:${cleanName.toLowerCase()}`;
+
+  return withCache(cacheKey, 7 * 24 * 60 * 60 * 1000, async () => {
+    if (countrySlug) {
+      const fromRoster = await teamRosterProfileUrl(cleanName, countrySlug);
+      if (fromRoster) return fromRoster;
+    }
 
     const id = await findCricinfoPlayerId(cleanName);
     if (!id) return null;
@@ -144,10 +159,13 @@ export async function resolveCricinfoPlayerProfileUrl(playerName: string): Promi
     const athlete = await fetchCoreAthleteProfile(id);
     if (athlete) {
       const fromAthlete = profileUrlFromCoreAthlete(athlete);
-      if (fromAthlete) return fromAthlete;
+      if (fromAthlete && (await isProfileUrlForPlayer(cleanName, fromAthlete))) {
+        return fromAthlete;
+      }
     }
 
-    return cricinfoPlayerUrl(id, cleanName);
+    const fallback = cricinfoPlayerUrl(id, cleanName);
+    return (await isProfileUrlForPlayer(cleanName, fallback)) ? fallback : null;
   });
 }
 
@@ -162,7 +180,7 @@ export async function isProfileUrlForPlayer(
   if (!athlete?.fullName && !athlete?.displayName) return false;
 
   const candidate = athlete.fullName ?? athlete.displayName ?? "";
-  return namesMatch(candidate, squadPlayerDisplayName(playerName));
+  return rosterNamesMatch(candidate, squadPlayerDisplayName(playerName));
 }
 
 export async function enrichSquadPlayer(player: SquadPlayer): Promise<SquadPlayer> {

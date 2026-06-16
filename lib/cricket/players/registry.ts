@@ -1,5 +1,8 @@
 import { extractCricinfoPlayerId, squadPlayerDisplayName } from "@/lib/cricket/squads/profile-urls";
-import { resolveCricinfoPlayerProfileUrl } from "@/lib/cricket/squads/profile-urls";
+import {
+  isProfileUrlForPlayer,
+  resolveCricinfoPlayerProfileUrl,
+} from "@/lib/cricket/squads/profile-urls";
 import type { SquadPlayer } from "@/lib/cricket/squads/types";
 import { resolveIccPlayerImageUrl } from "@/lib/cricket/providers/icc-player";
 import { resolveCricinfoPlayerImageUrl } from "@/lib/cricket/providers/cricinfo-player";
@@ -158,12 +161,20 @@ type EnsurePlayerInput = {
   cricinfoPlayerId?: number | null;
 };
 
+async function validatedProfileUrl(
+  name: string,
+  profileUrl: string | null | undefined,
+): Promise<string | null> {
+  if (!profileUrl) return null;
+  return (await isProfileUrlForPlayer(name, profileUrl)) ? profileUrl : null;
+}
+
 async function resolveMissingUrls(input: EnsurePlayerInput): Promise<{
   profileUrl: string | null;
   imageUrl: string | null;
   cricinfoPlayerId: number | null;
 }> {
-  let profileUrl = input.profileUrl ?? null;
+  let profileUrl = await validatedProfileUrl(input.name, input.profileUrl);
   let imageUrl = input.imageUrl ?? null;
   let cricinfoPlayerId = input.cricinfoPlayerId ?? null;
 
@@ -172,7 +183,7 @@ async function resolveMissingUrls(input: EnsurePlayerInput): Promise<{
   }
 
   if (!profileUrl) {
-    profileUrl = await resolveCricinfoPlayerProfileUrl(input.name);
+    profileUrl = await resolveCricinfoPlayerProfileUrl(input.name, input.countrySlug);
     if (profileUrl && !cricinfoPlayerId) {
       cricinfoPlayerId = extractCricinfoPlayerId(profileUrl);
     }
@@ -203,15 +214,19 @@ export async function ensurePlayer(input: EnsurePlayerInput): Promise<PlayerIden
   const displayName = squadPlayerDisplayName(input.name);
   const lookupKey = playerLookupKey(input.countrySlug, displayName);
   const existing = await findPlayerDoc(input.countrySlug, displayName);
+  const existingProfileUrl = await validatedProfileUrl(displayName, existing?.doc.profileUrl);
 
-  if (existing?.doc.profileUrl && existing.doc.imageUrl) {
-    return toIdentity(existing.doc, input.countrySlug);
+  if (existingProfileUrl && existing?.doc.imageUrl) {
+    return toIdentity({ ...existing.doc, profileUrl: existingProfileUrl }, input.countrySlug);
   }
 
   const resolved = await resolveMissingUrls({
     ...input,
     name: displayName,
-    profileUrl: input.profileUrl ?? existing?.doc.profileUrl,
+    profileUrl:
+      (await validatedProfileUrl(displayName, input.profileUrl)) ??
+      existingProfileUrl ??
+      null,
     imageUrl: input.imageUrl ?? existing?.doc.imageUrl,
     iccPlayerId: input.iccPlayerId ?? existing?.doc.iccPlayerId,
     cricinfoPlayerId: input.cricinfoPlayerId ?? existing?.doc.cricinfoPlayerId,
@@ -249,20 +264,14 @@ export async function resolveSquadPlayer(
   countrySlug: string,
   player: SquadPlayer,
 ): Promise<SquadPlayer> {
-  const cached = await lookupPlayer(countrySlug, player.name);
-  if (cached?.profileUrl && cached.imageUrl) {
-    return {
-      name: player.name,
-      profileUrl: cached.profileUrl,
-      imageUrl: cached.imageUrl,
-    };
-  }
+  const displayName = squadPlayerDisplayName(player.name);
+  const trustedInputUrl = await validatedProfileUrl(displayName, player.profileUrl);
 
   const identity = await ensurePlayer({
     countrySlug,
     name: player.name,
-    profileUrl: player.profileUrl ?? cached?.profileUrl,
-    imageUrl: cached?.imageUrl,
+    profileUrl: trustedInputUrl,
+    imageUrl: player.imageUrl,
   });
 
   return {
@@ -281,6 +290,39 @@ export async function resolveSquadPlayers(
     resolved.push(await resolveSquadPlayer(countrySlug, player));
   }
   return resolved;
+}
+
+export async function repairInvalidPlayerProfiles(): Promise<number> {
+  const payload = await getPayloadClient();
+  const result = await payload.find({
+    collection: "players",
+    limit: 500,
+    depth: 0,
+    overrideAccess: true,
+  });
+
+  let repaired = 0;
+  for (const doc of result.docs) {
+    const profileUrl = doc.profileUrl as string | null | undefined;
+    const displayName = doc.displayName as string;
+    if (!profileUrl) continue;
+
+    if (await validatedProfileUrl(displayName, profileUrl)) continue;
+
+    await payload.update({
+      collection: "players",
+      id: doc.id,
+      data: {
+        profileUrl: null,
+        cricinfoPlayerId: null,
+        lastResolvedAt: null,
+      },
+      overrideAccess: true,
+    });
+    repaired += 1;
+  }
+
+  return repaired;
 }
 
 export async function resolveRankedPlayer(player: RankedPlayer): Promise<RankedPlayer> {
