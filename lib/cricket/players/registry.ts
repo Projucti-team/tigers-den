@@ -181,7 +181,7 @@ async function resolveMissingUrls(input: EnsurePlayerInput): Promise<{
   if (!imageUrl) {
     const iccId = toNumericId(input.iccPlayerId);
     if (iccId) {
-      imageUrl = await resolveIccPlayerImageUrl(iccId);
+      imageUrl = await resolveIccPlayerImageUrl(String(iccId));
     }
     if (!imageUrl) {
       imageUrl = await resolveCricinfoPlayerImageUrl(input.name);
