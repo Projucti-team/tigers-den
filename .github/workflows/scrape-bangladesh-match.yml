@@ -20,7 +20,7 @@ jobs:
           node-version: "22"
           cache: npm
 
-      - run: npm ci
+      - run: npm install
 
       - name: Fetch last Bangladesh match
         env:
