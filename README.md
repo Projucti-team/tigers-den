@@ -54,13 +54,7 @@ payload.config.ts # CMS configuration
 | `npm run build` | Production build |
 | `npm run generate:types` | Regenerate `payload-types.ts` from schema |
 
-## Deploy for free (recommended)
-
-No server to buy. Use **Vercel + Neon Postgres + Vercel Blob** (all have free tiers):
-
-**→ [docs/deploy-free.md](docs/deploy-free.md)** — push to GitHub, import on Vercel, connect storage, deploy.
-
-Local dev still uses SQLite; production uses Postgres + Blob automatically when Vercel env vars are set.
+## Deployment
 
 Production VPS / **Coolify** on Hetzner: [docs/deploy-coolify.md](docs/deploy-coolify.md)  
 Manual Docker on a VPS: [docs/deploy-production.md](docs/deploy-production.md)

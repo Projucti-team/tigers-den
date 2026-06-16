@@ -75,7 +75,7 @@ Runs nightly at **3:45 AM BDT** via `.github/workflows/scrape-bangladesh-news.ym
 
 | Time (BDT) | Job | Where |
 |------------|-----|--------|
-| 3:00 AM | **Cricket sync** — tours, squads, fixtures, rankings → DB | `POST /api/cron/cricket` (Vercel / server cron) |
+| 3:00 AM | **Cricket sync** — tours, squads, fixtures, rankings → DB | `POST /api/cron/cricket` (Coolify / server cron) |
 | 3:15 AM | ICC rankings + WTC → `data/*.json` | GitHub Action `scrape-icc-rankings` |
 | 3:30 AM | Bangladesh last/upcoming matches → `data/*.json` | GitHub Action `scrape-bangladesh-match` |
 | 3:45 AM | Bangladesh cricket news → `data/*.json` | GitHub Action `scrape-bangladesh-news` |

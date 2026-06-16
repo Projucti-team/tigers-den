@@ -1,7 +1,7 @@
 import { withPayload } from "@payloadcms/next/withPayload";
 import type { NextConfig } from "next";
 
-// Standalone is for Docker/VPS only — Vercel uses native Next.js output and breaks admin when this is set.
+// Standalone is for Docker/Coolify VPS deployments.
 const nextConfig: NextConfig = {
   ...(process.env.DOCKER_BUILD === "1" ? { output: "standalone" as const } : {}),
   images: {
@@ -47,10 +47,6 @@ const nextConfig: NextConfig = {
       {
         protocol: "http",
         hostname: "cricapi.com",
-      },
-      {
-        protocol: "https",
-        hostname: "*.public.blob.vercel-storage.com",
       },
       {
         protocol: "https",

@@ -66,8 +66,7 @@ async function refreshWtcSource(): Promise<WtcStandingsSnapshot> {
 }
 
 /**
- * Nightly job (3:00 AM BDT via Vercel/server cron): refresh sources, build page snapshots, save to DB.
- * On Vercel, `data/*.json` is read-only — snapshots are stored in Postgres instead.
+ * Nightly job (3:00 AM BDT via Coolify/server cron): refresh sources, build page snapshots, save to DB.
  */
 export async function syncCricketSnapshots(
   options?: SyncCricketOptions,
@@ -83,7 +82,7 @@ export async function syncCricketSnapshots(
       tourDetailsCount: 0,
       warnings: [],
       errors: [
-        "PAYLOAD_SECRET is not set — add it in Vercel Environment Variables (Production) and redeploy.",
+        "PAYLOAD_SECRET is not set — add it in production environment variables and redeploy.",
       ],
     };
   }
@@ -96,7 +95,7 @@ export async function syncCricketSnapshots(
       tourDetailsCount: 0,
       warnings: [],
       errors: [
-        "No database configured — set DATABASE_URI (VPS/Docker) or POSTGRES_URL (Vercel).",
+        "No database configured — set DATABASE_URI (or POSTGRES_URL/DATABASE_URL if using Postgres).",
       ],
     };
   }

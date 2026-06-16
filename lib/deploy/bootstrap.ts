@@ -22,7 +22,7 @@ export type DeployBootstrapResult = {
 
 /**
  * Idempotent production setup: SQL migrations, then cricket snapshots if missing.
- * Called from /api/admin/bootstrap-db and during Vercel builds (via deploy:seed).
+ * Called from /api/admin/bootstrap-db during deploy/bootstrap hooks.
  */
 export async function runDeployBootstrap(options?: {
   forceCricketSync?: boolean;
@@ -42,7 +42,7 @@ export async function runDeployBootstrap(options?: {
       migrations: "skipped",
       cricketSync: "skipped",
       errors: [
-        "No database configured — set DATABASE_URI (VPS/Docker) or POSTGRES_URL (Vercel).",
+        "No database configured — set DATABASE_URI (or DATABASE_URL/POSTGRES_URL if using Postgres).",
       ],
     };
   }

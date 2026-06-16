@@ -8,7 +8,7 @@
 |------|--------|
 | **Server** | Ubuntu 24.04, location EU (Helsinki/Nuremberg) for BD + EU users |
 | **Domain** | Optional at first; test on `http://SERVER_IP:3000` |
-| **Secrets** | Copy from Vercel or generate new (`openssl rand -base64 32`) |
+| **Secrets** | Generate new (`openssl rand -base64 32`) |
 
 Do **not** set `BLOB_READ_WRITE_TOKEN` on the VPS — CMS uploads use the `tigersden-media` Docker volume.
 
@@ -64,7 +64,7 @@ AUTH_SECRET=<openssl rand -base64 32>
 
 Optional: Google/Facebook OAuth vars from `.env.example`.
 
-**Keeping Neon Postgres from Vercel:** set `POSTGRES_URL=...` and **remove** the `DATABASE_URI` line. Migrations run via bootstrap (see step 7).
+If you intentionally use hosted Postgres, set `POSTGRES_URL=...` and **remove** the `DATABASE_URI` line.
 
 ## 5. Build and start
 
@@ -145,12 +145,6 @@ docker compose up -d
 2. No code changes; same `docker compose` and volumes.
 3. Optional: reduce or remove swap after upgrade.
 
-## Leaving Vercel
-
-1. Run CPX22 until site + admin + cricket data look good.
-2. Switch DNS to Hetzner.
-3. Disable Vercel project (keep Neon only if you still use `POSTGRES_URL`).
-
 ## Troubleshooting
 
 | Problem | Fix |
@@ -163,4 +157,3 @@ docker compose up -d
 ## Related docs
 
 - [deploy-production.md](./deploy-production.md) — generic VPS/Docker notes
-- [deploy-free.md](./deploy-free.md) — Vercel path (legacy)

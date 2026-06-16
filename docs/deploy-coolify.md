@@ -43,7 +43,7 @@ Do **not** set `POSTGRES_URL` unless you intentionally use Neon/Postgres instead
 
 ### Database schema (tours, stand, match chat)
 
-Coolify uses **SQLite** on `/app/data` — do **not** run `npm run deploy:migrate` inside the production container (`tsx` is not installed there; that script is for Vercel/Postgres builds).
+Coolify uses **SQLite** on `/app/data` — do **not** run `npm run deploy:migrate` inside the production container (`tsx` is not installed there).
 
 Schema updates run automatically when the app boots:
 

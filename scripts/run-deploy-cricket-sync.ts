@@ -1,5 +1,5 @@
 /**
- * Run cricket snapshots (including tours) directly (Vercel build or VPS with tsx).
+ * Run cricket snapshots (including tours) directly on a VPS with tsx.
  * Requires DATABASE_URI or POSTGRES_URL + CRICKET_DATA_API_KEY.
  */
 import { readFileSync, existsSync } from "node:fs";

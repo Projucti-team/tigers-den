@@ -1,24 +1,8 @@
 import { sqliteAdapter } from "@payloadcms/db-sqlite";
-import { vercelPostgresAdapter } from "@payloadcms/db-vercel-postgres";
 import type { DatabaseAdapterObj } from "payload";
 
-import { getPostgresConnectionString, isPostgresDatabase } from "@/lib/payload-postgres-url";
-
-import { migrations } from "../migrations";
-
-/** Neon / Vercel Postgres in production; SQLite file locally. */
+/** SQLite database for Coolify/VPS deployments. */
 export function getPayloadDatabase(): DatabaseAdapterObj {
-  const postgresUrl = getPostgresConnectionString();
-
-  if (postgresUrl) {
-    return vercelPostgresAdapter({
-      pool: {
-        connectionString: postgresUrl,
-      },
-      prodMigrations: migrations,
-    });
-  }
-
   return sqliteAdapter({
     client: {
       url: process.env.DATABASE_URI || "file:./tigersden.db",
@@ -28,9 +12,9 @@ export function getPayloadDatabase(): DatabaseAdapterObj {
   });
 }
 
-/** Postgres (Vercel/Neon/Coolify) — uses committed SQL migrations. */
+/** SQLite is the production database in this deployment model. */
 export function isProductionDatabase(): boolean {
-  return isPostgresDatabase();
+  return true;
 }
 
 /** Any persisted Payload DB (Postgres or SQLite file on VPS/Docker). */

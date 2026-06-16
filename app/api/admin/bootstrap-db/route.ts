@@ -7,7 +7,7 @@ import { isPayloadConfigured } from "@/lib/payload";
 export const maxDuration = 300;
 export const runtime = "nodejs";
 
-/** Migrations + cricket snapshot seed (protected by CRON_SECRET). Also runs automatically before Vercel builds. */
+/** Migrations + cricket snapshot seed (protected by CRON_SECRET). */
 export async function POST(request: Request) {
   const secret = process.env.CRON_SECRET?.trim();
   const auth = request.headers.get("authorization");
