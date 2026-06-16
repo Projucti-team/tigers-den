@@ -155,7 +155,7 @@ export function parseSquadsFromStoryHtml(html: string, source: string): SeriesSq
 
       const players = parsePlayerNames(listMatch);
       if (players.length >= 8) {
-        squads.push({ team: heading, players, source });
+        squads.push({ team: normalizeSquadHeading(heading), players, source });
       }
     }
   }
@@ -288,10 +288,17 @@ export async function fetchSquadsFromEspnCore(league: EspnLeagueRef): Promise<Se
 
 function storyMatchesTour(title: string, tourName: string): boolean {
   const blob = title.toLowerCase();
-  if (!/squad/i.test(blob)) return false;
   const tokens = tourTokens(tourName);
   const hits = tokens.filter((t) => blob.includes(t));
-  return hits.length >= 1;
+  if (hits.length < 1) return false;
+
+  // Explicit squad headlines, e.g. "Australia squad for T20Is in Bangladesh".
+  if (/\bsquad\b/i.test(blob)) return true;
+
+  // ESPN often titles announcements without "squad", e.g. "X return for T20Is against Australia".
+  if (/\bt20/i.test(blob)) return true;
+
+  return false;
 }
 
 /** Discover squad announcements via ESPNcricinfo RSS and parse story pages. */

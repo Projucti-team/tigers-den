@@ -29,6 +29,27 @@
           ]
         },
         {
+          "team": "Bangladesh — T20I squad",
+          "source": "https://www.espncricinfo.com/story/ban-vs-aus-taskin-ahmed-and-nahid-rana-return-for-t20is-against-australia-1540473",
+          "players": [
+            { "name": "Litton Das (capt, wk)", "profileUrl": "https://www.espncricinfo.com/cricketers/litton-das-56029" },
+            { "name": "Parvez Hossain", "profileUrl": "https://www.espncricinfo.com/cricketers/parvez-hossain-1273807" },
+            { "name": "Tanzid Hasan", "profileUrl": "https://www.espncricinfo.com/cricketers/tanzid-hasan-1113856" },
+            { "name": "Saif Hassan", "profileUrl": "https://www.espncricinfo.com/cricketers/saif-hassan-1150523" },
+            { "name": "Shamim Hossain", "profileUrl": "https://www.espncricinfo.com/cricketers/shamim-hossain-1148233" },
+            { "name": "Tawhid Hridoy", "profileUrl": "https://www.espncricinfo.com/cricketers/tawhid-hridoy-1273808" },
+            { "name": "Nurul Hasan", "profileUrl": "https://www.espncricinfo.com/cricketers/nurul-hasan-330756" },
+            { "name": "Mahedi Hasan", "profileUrl": "https://www.espncricinfo.com/cricketers/mahedi-hasan-629063" },
+            { "name": "Nasum Ahmed", "profileUrl": "https://www.espncricinfo.com/cricketers/nasum-ahmed-1108378" },
+            { "name": "Rishad Hossain", "profileUrl": "https://www.espncricinfo.com/cricketers/rishad-hossain-1321710" },
+            { "name": "Shoriful Islam", "profileUrl": "https://www.espncricinfo.com/cricketers/shoriful-islam-1279593" },
+            { "name": "Mustafizur Rahman", "profileUrl": "https://www.espncricinfo.com/cricketers/mustafizur-rahman-530957" },
+            { "name": "Taskin Ahmed", "profileUrl": "https://www.espncricinfo.com/cricketers/taskin-ahmed-599345" },
+            { "name": "Nahid Rana", "profileUrl": "https://www.espncricinfo.com/cricketers/nahid-rana-1384319" },
+            { "name": "Abdul Gaffar Saqlain", "profileUrl": "https://www.espncricinfo.com/cricketers/abdul-gaffar-saqlain-1384320" }
+          ]
+        },
+        {
           "team": "Australia — ODI squad",
           "source": "https://www.espncricinfo.com/story/travis-head-out-of-bangladesh-tour-mitchell-marsh-to-miss-odis-todd-murphy-called-up-1539607",
           "players": [
