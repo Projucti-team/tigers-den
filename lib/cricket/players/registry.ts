@@ -1,4 +1,8 @@
-import { extractCricinfoPlayerId, squadPlayerDisplayName } from "@/lib/cricket/squads/profile-urls";
+import {
+  extractCricinfoPlayerId,
+  fetchAthleteHeadshotUrl,
+  squadPlayerDisplayName,
+} from "@/lib/cricket/squads/profile-urls";
 import {
   isProfileUrlForPlayer,
   resolveCricinfoPlayerProfileUrl,
@@ -194,6 +198,9 @@ async function resolveMissingUrls(input: EnsurePlayerInput): Promise<{
     if (iccId) {
       imageUrl = await resolveIccPlayerImageUrl(String(iccId));
     }
+    if (!imageUrl && cricinfoPlayerId) {
+      imageUrl = await fetchAthleteHeadshotUrl(cricinfoPlayerId);
+    }
     if (!imageUrl) {
       imageUrl = await resolveCricinfoPlayerImageUrl(input.name);
     }
@@ -264,13 +271,10 @@ export async function resolveSquadPlayer(
   countrySlug: string,
   player: SquadPlayer,
 ): Promise<SquadPlayer> {
-  const displayName = squadPlayerDisplayName(player.name);
-  const trustedInputUrl = await validatedProfileUrl(displayName, player.profileUrl);
-
   const identity = await ensurePlayer({
     countrySlug,
     name: player.name,
-    profileUrl: trustedInputUrl,
+    profileUrl: player.profileUrl,
     imageUrl: player.imageUrl,
   });
 

@@ -1,4 +1,4 @@
-import { findCricinfoPlayerId } from "@/lib/cricket/providers/cricinfo-player";
+import { findCricinfoPlayerId, isCricinfoPlaceholderPhoto } from "@/lib/cricket/providers/cricinfo-player";
 import { withCache } from "@/lib/cricket/cache";
 import { cricinfoPlayerUrl, type SquadPlayer } from "@/lib/cricket/squads/types";
 
@@ -21,6 +21,7 @@ export type CoreAthleteProfile = {
   id?: string;
   fullName?: string;
   displayName?: string;
+  headshot?: { href?: string };
   links?: CoreAthleteLink[];
 };
 
@@ -51,21 +52,48 @@ export async function fetchCoreAthleteProfile(id: number): Promise<CoreAthletePr
 function normalizeName(name: string): string {
   return name
     .toLowerCase()
+    .replace(/\btowhid\b/g, "tawhid")
     .replace(/[^a-z\s]/g, "")
     .replace(/\s+/g, " ")
     .trim();
 }
 
-function rosterNamesMatch(candidate: string, target: string): boolean {
-  const a = normalizeName(candidate);
-  const b = normalizeName(target);
-  if (!a || !b) return false;
-  if (a === b) return true;
+const NAME_PREFIXES = new Set([
+  "md",
+  "mohammad",
+  "mohammed",
+  "abu",
+  "sheikh",
+  "syed",
+  "kumar",
+  "kumer",
+  "quazi",
+  "kazi",
+]);
 
-  const aParts = a.split(" ");
-  const bParts = b.split(" ");
-  if (aParts.length < 2 || bParts.length < 2) return false;
-  return aParts[0] === bParts[0] && aParts[aParts.length - 1] === bParts[bParts.length - 1];
+function significantNameParts(name: string): string[] {
+  return normalizeName(name)
+    .split(" ")
+    .filter((part) => part.length > 1 && !NAME_PREFIXES.has(part));
+}
+
+/** Squad label vs ESPN full name — every significant squad token must appear on the athlete. */
+export function playerNamesMatch(athleteName: string, squadName: string): boolean {
+  const athleteParts = significantNameParts(athleteName);
+  const squadParts = significantNameParts(squadName);
+  if (squadParts.length === 0 || athleteParts.length === 0) return false;
+
+  const athleteTokens = new Set(athleteParts);
+  if (squadParts.every((part) => athleteTokens.has(part))) return true;
+
+  const a = normalizeName(athleteName).split(" ");
+  const b = normalizeName(squadName).split(" ");
+  if (a.length < 2 || b.length < 2) return false;
+  return a[0] === b[0] && a[a.length - 1] === b[b.length - 1];
+}
+
+function rosterNamesMatch(candidate: string, target: string): boolean {
+  return playerNamesMatch(candidate, target);
 }
 
 /** Build a canonical Cricinfo profile URL from a core athlete payload. */
@@ -128,6 +156,13 @@ async function teamRosterProfileUrl(playerName: string, countrySlug: string): Pr
   return null;
 }
 
+export async function fetchAthleteHeadshotUrl(playerId: number): Promise<string | null> {
+  const athlete = await fetchCoreAthleteProfile(playerId);
+  const href = athlete?.headshot?.href;
+  if (!href || isCricinfoPlaceholderPhoto(href)) return null;
+  return href;
+}
+
 export function profileUrlFromCoreAthlete(athlete: CoreAthleteProfile): string | null {
   const playercard = athlete.links?.find((link) => link.rel?.includes("playercard"))?.href;
   const idFromLink = playercard ? extractCricinfoPlayerId(playercard) : null;
@@ -180,7 +215,7 @@ export async function isProfileUrlForPlayer(
   if (!athlete?.fullName && !athlete?.displayName) return false;
 
   const candidate = athlete.fullName ?? athlete.displayName ?? "";
-  return rosterNamesMatch(candidate, squadPlayerDisplayName(playerName));
+  return playerNamesMatch(candidate, squadPlayerDisplayName(playerName));
 }
 
 export async function enrichSquadPlayer(player: SquadPlayer): Promise<SquadPlayer> {

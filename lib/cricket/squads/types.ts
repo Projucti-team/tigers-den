@@ -97,6 +97,38 @@ export function sortSquadsForDisplay(squads: SeriesSquad[]): SeriesSquad[] {
   });
 }
 
+function normalizePlayerKey(name: string): string {
+  return name
+    .replace(/\s*\([^)]*\)/g, "")
+    .toLowerCase()
+    .replace(/[^a-z\s]/g, "")
+    .replace(/\s+/g, " ")
+    .trim();
+}
+
+function mergePlayerProfiles(
+  preferred: SquadPlayer[],
+  fallback: SquadPlayer[],
+): SquadPlayer[] {
+  const profileByName = new Map<string, string>();
+  const imageByName = new Map<string, string>();
+
+  for (const player of fallback) {
+    const key = normalizePlayerKey(player.name);
+    if (player.profileUrl) profileByName.set(key, player.profileUrl);
+    if (player.imageUrl) imageByName.set(key, player.imageUrl);
+  }
+
+  return preferred.map((player) => {
+    const key = normalizePlayerKey(player.name);
+    return {
+      ...player,
+      profileUrl: player.profileUrl ?? profileByName.get(key),
+      imageUrl: player.imageUrl ?? imageByName.get(key),
+    };
+  });
+}
+
 export function mergeSquads(...lists: SeriesSquad[][]): SeriesSquad[] {
   const byKey = new Map<string, SeriesSquad>();
 
@@ -108,7 +140,15 @@ export function mergeSquads(...lists: SeriesSquad[][]): SeriesSquad[] {
         !existing ||
         squadQualityScore(squad, key) >= squadQualityScore(existing, key)
       ) {
-        byKey.set(key, squad);
+        const players = existing
+          ? mergePlayerProfiles(squad.players, existing.players)
+          : squad.players;
+        byKey.set(key, { ...squad, players });
+      } else if (existing) {
+        byKey.set(key, {
+          ...existing,
+          players: mergePlayerProfiles(existing.players, squad.players),
+        });
       }
     }
   }
