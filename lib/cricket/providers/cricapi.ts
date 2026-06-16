@@ -144,7 +144,6 @@ export async function prefetchMatchesForSync(): Promise<LiveMatchSummary[]> {
   return [...byId.values()];
 }
 
-import { isFutureSeries } from "@/lib/cricket/tour-dates";
 function mapSeriesToTour(s: Record<string, unknown>): Tour {
   const name = String(s.name || "Series");
   const test = Number(s.test) || 0;
