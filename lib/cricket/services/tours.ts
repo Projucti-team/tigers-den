@@ -1,6 +1,10 @@
 import { isBangladeshTeam } from "@/lib/cricket/constants";
-import { fetchUpcomingTours, isCricApiConfigured } from "@/lib/cricket/providers/cricapi";
-import { fetchCuratedEspnTours } from "@/lib/cricket/providers/espn-fixtures";
+import {
+  fetchUpcomingTours,
+  isCricApiBlocked,
+  isCricApiConfigured,
+} from "@/lib/cricket/providers/cricapi";
+import { fetchEspnFutureTours } from "@/lib/cricket/providers/espn-fixtures";
 import { CRICKET_SNAPSHOT_KEYS } from "@/lib/cricket/snapshot-keys";
 import { readCricketSnapshot, staleSnapshotWarning } from "@/lib/cricket/snapshot-db";
 import { isFutureSeries } from "@/lib/cricket/tour-dates";
@@ -26,7 +30,7 @@ function normalizeTourName(name: string): string {
 
 /** Add confirmed ESPN schedules missing from the nightly CricAPI snapshot. */
 async function mergeCuratedTours(tours: Tour[]): Promise<Tour[]> {
-  const curated = await fetchCuratedEspnTours();
+  const { tours: curated } = await fetchEspnFutureTours();
   if (!curated.length) return tours;
 
   const seenIds = new Set(tours.map((t) => t.id));
@@ -49,7 +53,7 @@ async function mergeCuratedTours(tours: Tour[]): Promise<Tour[]> {
   });
 }
 
-/** Live CricAPI fetch — nightly sync only. */
+/** Live CricAPI fetch — nightly sync only. Falls back to ESPNcricinfo when CricAPI is blocked. */
 export async function buildFutureToursLive(options?: {
   bangladeshOnly?: boolean;
   prefetchedMatches?: LiveMatchSummary[];
@@ -58,34 +62,41 @@ export async function buildFutureToursLive(options?: {
   warnings: string[];
 }> {
   const warnings: string[] = [];
+  let tours: Tour[] = [];
 
-  if (!isCricApiConfigured()) {
-    warnings.push("CRICKET_DATA_API_KEY is not set — tour fixtures unavailable.");
-    return { tours: [], warnings };
-  }
-
-  try {
-    const { tours: fetched, warnings: fetchWarnings } = await fetchUpcomingTours({
-      prefetchedMatches: options?.prefetchedMatches,
-    });
-    warnings.push(...fetchWarnings);
-
-    let tours = fetched;
-    if (options?.bangladeshOnly) {
-      const before = tours.length;
-      tours = filterBangladeshTours(tours);
-      if (before > 0 && tours.length === 0) {
-        warnings.push(
-          `CricAPI returned ${before} future series, but none involve Bangladesh after filtering.`,
-        );
-      }
+  if (isCricApiConfigured() && !isCricApiBlocked()) {
+    try {
+      const { tours: fetched, warnings: fetchWarnings } = await fetchUpcomingTours({
+        prefetchedMatches: options?.prefetchedMatches,
+      });
+      tours = fetched;
+      warnings.push(...fetchWarnings);
+    } catch (e) {
+      warnings.push(e instanceof Error ? e.message : "Failed to fetch tours.");
     }
-
-    return { tours, warnings: [...new Set(warnings)] };
-  } catch (e) {
-    warnings.push(e instanceof Error ? e.message : "Failed to fetch tours.");
-    return { tours: [], warnings };
+  } else if (isCricApiBlocked()) {
+    warnings.push("CricAPI quota/rate-limited — using ESPNcricinfo for tours.");
+    const espn = await fetchEspnFutureTours();
+    tours = espn.tours;
+    warnings.push(...espn.warnings);
+  } else {
+    warnings.push("CricAPI not configured — using ESPNcricinfo for tours.");
+    const espn = await fetchEspnFutureTours();
+    tours = espn.tours;
+    warnings.push(...espn.warnings);
   }
+
+  if (options?.bangladeshOnly) {
+    const before = tours.length;
+    tours = filterBangladeshTours(tours);
+    if (before > 0 && tours.length === 0) {
+      warnings.push(
+        `Found ${before} future series, but none involve Bangladesh after filtering.`,
+      );
+    }
+  }
+
+  return { tours, warnings: [...new Set(warnings)] };
 }
 
 /** Read pre-built tours from DB (nightly cron). */

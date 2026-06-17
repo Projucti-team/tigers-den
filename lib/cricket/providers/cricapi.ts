@@ -2,7 +2,7 @@ import { CRICAPI_BASE } from "@/lib/cricket/constants";
 import type { SeriesSquad, SquadPlayer } from "@/lib/cricket/curated-squads";
 import { normalizeSquadPlayers } from "@/lib/cricket/curated-squads";
 import { isFutureSeries } from "@/lib/cricket/tour-dates";
-import { fetchCuratedEspnTours } from "@/lib/cricket/providers/espn-fixtures";
+import { fetchEspnFutureTours } from "@/lib/cricket/providers/espn-fixtures";
 import { isUpcomingBangladeshMatch } from "@/lib/cricket/services/marquee-format";
 import type { LiveMatchSummary, Scorecard, ScorecardInnings, Tour } from "@/lib/cricket/types";
 
@@ -439,12 +439,10 @@ export async function fetchUpcomingTours(options?: {
     }
   }
 
-  const curated = await fetchCuratedEspnTours();
-  if (curated.length) {
-    warnings.push(`Included ${curated.length} confirmed series from ESPN fixture schedule.`);
-    for (const tour of curated) {
-      mergeTour(tours, seenIds, seenNames, tour);
-    }
+  const espn = await fetchEspnFutureTours();
+  warnings.push(...espn.warnings);
+  for (const tour of espn.tours) {
+    mergeTour(tours, seenIds, seenNames, tour);
   }
 
   if (!tours.length && warnings.length === 0) {

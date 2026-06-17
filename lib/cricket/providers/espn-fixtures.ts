@@ -43,6 +43,61 @@ type CoreEvent = {
   competitions?: { date?: string; description?: string; class?: { eventType?: string } }[];
 };
 
+type CoreLeague = {
+  id?: string;
+  name?: string;
+  shortName?: string;
+  mappings?: { cricinfo?: number };
+};
+
+function normalizeTourName(name: string): string {
+  return name
+    .toLowerCase()
+    .replace(/,?\s*\d{4}(-\d{2})?$/i, "")
+    .replace(/\s+/g, " ")
+    .trim();
+}
+
+function sortToursByStart(tours: Tour[]): Tour[] {
+  return tours.sort((a, b) => {
+    const da = a.startDate ? new Date(a.startDate).getTime() : 0;
+    const db = b.startDate ? new Date(b.startDate).getTime() : 0;
+    return da - db;
+  });
+}
+
+function leagueInvolvesBangladesh(league: CoreLeague): boolean {
+  const blob = `${league.name ?? ""} ${league.shortName ?? ""}`.toLowerCase();
+  return blob.includes("bangladesh");
+}
+
+function tourFromFixtures(
+  name: string,
+  id: string,
+  fixtures: FixtureTimeEntry[],
+): Tour | null {
+  if (!fixtures.length) return null;
+
+  const sorted = [...fixtures].sort((a, b) => a.date.localeCompare(b.date));
+  const first = sorted[0];
+  const last = sorted[sorted.length - 1];
+  const test = fixtures.filter((f) => normalizeMatchType(f.matchType) === "test").length;
+  const odi = fixtures.filter((f) => normalizeMatchType(f.matchType) === "odi").length;
+  const t20 = fixtures.filter((f) => normalizeMatchType(f.matchType) === "t20").length;
+
+  return {
+    id,
+    name,
+    startDate: first.date,
+    endDate: last.date,
+    test: test || undefined,
+    odi: odi || undefined,
+    t20: t20 || undefined,
+    matches: fixtures.length,
+    teams: teamsFromTourName(name),
+  };
+}
+
 function normalizeMatchType(matchType?: string): string {
   const mt = (matchType ?? "").toLowerCase().replace(/[^a-z0-9]/g, "");
   if (mt === "t20i" || mt === "t20s") return "t20";
@@ -145,6 +200,64 @@ function matchTypeLabel(matchType?: string): string {
   return "Match";
 }
 
+/**
+ * Future Bangladesh tours from ESPNcricinfo — curated JSON plus live core API league scan.
+ * Used when CricAPI is blocked or has not published the series yet.
+ */
+export async function fetchEspnFutureTours(): Promise<{ tours: Tour[]; warnings: string[] }> {
+  const warnings: string[] = [];
+  const tours: Tour[] = [];
+  const seenIds = new Set<string>();
+  const seenNames = new Set<string>();
+
+  function addTour(tour: Tour): void {
+    if (!isFutureSeries(tour.startDate, tour.endDate)) return;
+    const nameKey = normalizeTourName(tour.name);
+    if (seenIds.has(tour.id) || seenNames.has(nameKey)) return;
+    seenIds.add(tour.id);
+    seenNames.add(nameKey);
+    tours.push(tour);
+  }
+
+  for (const tour of await fetchCuratedEspnTours()) {
+    addTour(tour);
+  }
+
+  let discoveredLive = 0;
+  for (let page = 1; page <= 8; page += 1) {
+    const list = await fetchCoreList(`${CORE_BASE}/leagues?page=${page}&pageSize=100`);
+    if (!list.items?.length) break;
+
+    for (const item of list.items) {
+      const league = await fetchCoreJson<CoreLeague>(item.$ref);
+      if (!league?.id || !league.name || !leagueInvolvesBangladesh(league)) continue;
+
+      const cricinfoSeriesId = Number(league.mappings?.cricinfo);
+      if (!Number.isFinite(cricinfoSeriesId)) continue;
+
+      const fixtures = await fetchLiveEspnFixtureTimes({
+        cricinfoSeriesId,
+        espnLeagueId: Number(league.id),
+      });
+      const tour = tourFromFixtures(league.name, String(cricinfoSeriesId), fixtures);
+      if (!tour) continue;
+
+      const before = tours.length;
+      addTour(tour);
+      if (tours.length > before) discoveredLive += 1;
+    }
+  }
+
+  if (discoveredLive > 0) {
+    warnings.push(`Discovered ${discoveredLive} future Bangladesh series from ESPNcricinfo.`);
+  }
+  if (tours.length > 0) {
+    warnings.push(`ESPNcricinfo: ${tours.length} future tour(s) available.`);
+  }
+
+  return { tours: sortToursByStart(tours), warnings };
+}
+
 /** Confirmed future series from data/espn-fixture-times.json (not always in CricAPI yet). */
 export async function fetchCuratedEspnTours(): Promise<Tour[]> {
   const curated = await readCuratedFixtureTimes();
@@ -212,6 +325,42 @@ export async function buildMatchesFromCuratedFixtures(tour: Tour): Promise<LiveM
       });
     }
     break;
+  }
+
+  return matches;
+}
+
+/** Live fixtures from ESPN core when curated JSON is missing or incomplete. */
+export async function buildMatchesFromEspnEvents(tour: Tour): Promise<LiveMatchSummary[]> {
+  const league = await leagueForTour(tour);
+  if (!league) return [];
+
+  const fixtures = await fetchLiveEspnFixtureTimes(league);
+  if (!fixtures.length) return [];
+
+  const teams = tour.teams ?? teamsFromTourName(tour.name) ?? ["Bangladesh"];
+  const matches: LiveMatchSummary[] = [];
+  const counters = new Map<string, number>();
+
+  for (const fixture of [...fixtures].sort((a, b) => a.date.localeCompare(b.date))) {
+    const mt = normalizeMatchType(fixture.matchType) || "match";
+    const n = (counters.get(mt) ?? 0) + 1;
+    counters.set(mt, n);
+    const label = matchTypeLabel(fixture.matchType);
+    const opponent = teams.find((t) => !/bangladesh/i.test(t)) ?? teams[0];
+
+    matches.push({
+      id: `espn-${tour.id}-${fixture.date}-${mt}-${n}`,
+      name: `${n}${ordinalSuffix(n)} ${label}, ${teams[0]} vs ${opponent}, ${tour.name}`,
+      matchType: fixture.matchType,
+      status: "Match not started",
+      date: fixture.date,
+      dateTimeGMT: fixture.dateTimeGMT,
+      teams,
+      isLive: false,
+      seriesId: tour.id,
+      seriesName: tour.name,
+    });
   }
 
   return matches;
