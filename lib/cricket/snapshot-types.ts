@@ -22,6 +22,8 @@ export type ToursIndexSnapshot = SnapshotMeta & {
   tours: Tour[];
   cards: TourCard[];
   navLinks: { label: string; href: string }[];
+  /** Where the index was built — used to keep recent CricAPI data when quota is hit. */
+  toursSource?: "cricapi" | "espn" | "mixed";
 };
 
 export type TourDetailSnapshot = SnapshotMeta & TourDetail & {

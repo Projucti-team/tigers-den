@@ -1,7 +1,6 @@
 import { isBangladeshTeam } from "@/lib/cricket/constants";
 import {
   fetchUpcomingTours,
-  isCricApiBlocked,
   isCricApiConfigured,
 } from "@/lib/cricket/providers/cricapi";
 import { fetchEspnFutureTours } from "@/lib/cricket/providers/espn-fixtures";
@@ -53,7 +52,26 @@ async function mergeCuratedTours(tours: Tour[]): Promise<Tour[]> {
   });
 }
 
-/** Live CricAPI fetch — nightly sync only. Falls back to ESPNcricinfo when CricAPI is blocked. */
+/** ESPNcricinfo-only — used when CricAPI is blocked and there is no fresh CricAPI snapshot. */
+export async function buildFutureToursFromEspnOnly(options?: {
+  bangladeshOnly?: boolean;
+}): Promise<{
+  tours: Tour[];
+  warnings: string[];
+}> {
+  const warnings = ["CricAPI unavailable — using ESPNcricinfo for tours."];
+  const espn = await fetchEspnFutureTours();
+  warnings.push(...espn.warnings);
+
+  let tours = espn.tours;
+  if (options?.bangladeshOnly) {
+    tours = filterBangladeshTours(tours);
+  }
+
+  return { tours, warnings: [...new Set(warnings)] };
+}
+
+/** Live fetch — CricAPI first, ESPN supplements missing series. */
 export async function buildFutureToursLive(options?: {
   bangladeshOnly?: boolean;
   prefetchedMatches?: LiveMatchSummary[];
@@ -64,26 +82,18 @@ export async function buildFutureToursLive(options?: {
   const warnings: string[] = [];
   let tours: Tour[] = [];
 
-  if (isCricApiConfigured() && !isCricApiBlocked()) {
-    try {
-      const { tours: fetched, warnings: fetchWarnings } = await fetchUpcomingTours({
-        prefetchedMatches: options?.prefetchedMatches,
-      });
-      tours = fetched;
-      warnings.push(...fetchWarnings);
-    } catch (e) {
-      warnings.push(e instanceof Error ? e.message : "Failed to fetch tours.");
-    }
-  } else if (isCricApiBlocked()) {
-    warnings.push("CricAPI quota/rate-limited — using ESPNcricinfo for tours.");
-    const espn = await fetchEspnFutureTours();
-    tours = espn.tours;
-    warnings.push(...espn.warnings);
-  } else {
-    warnings.push("CricAPI not configured — using ESPNcricinfo for tours.");
-    const espn = await fetchEspnFutureTours();
-    tours = espn.tours;
-    warnings.push(...espn.warnings);
+  if (!isCricApiConfigured()) {
+    return buildFutureToursFromEspnOnly(options);
+  }
+
+  try {
+    const { tours: fetched, warnings: fetchWarnings } = await fetchUpcomingTours({
+      prefetchedMatches: options?.prefetchedMatches,
+    });
+    tours = fetched;
+    warnings.push(...fetchWarnings);
+  } catch (e) {
+    warnings.push(e instanceof Error ? e.message : "Failed to fetch tours from CricAPI.");
   }
 
   if (options?.bangladeshOnly) {
