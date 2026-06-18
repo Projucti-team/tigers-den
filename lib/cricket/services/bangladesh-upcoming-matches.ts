@@ -1,9 +1,8 @@
 import {
-  fetchCurrentMatches,
-  fetchMatchesList,
-  isCricApiConfigured,
-} from "@/lib/cricket/providers/cricapi";
-import { enrichUpcomingMatchFixtureTimes } from "@/lib/cricket/providers/espn-fixtures";
+  buildCuratedUpcomingBangladeshMatches,
+  enrichUpcomingMatchFixtureTimes,
+} from "@/lib/cricket/providers/espn-fixtures";
+import { fetchEspnUpcomingBangladeshMatchesFromEvents } from "@/lib/cricket/providers/espn-live";
 import {
   readBangladeshUpcomingMatches,
   writeBangladeshUpcomingMatches,
@@ -36,31 +35,32 @@ export function findUpcomingBangladeshMatches(
     .slice(0, limit);
 }
 
-export async function scrapeBangladeshUpcomingMatches(
-  prefetchedMatches?: LiveMatchSummary[],
-): Promise<BangladeshUpcomingMatchesSnapshot | null> {
-  if (!isCricApiConfigured()) {
-    throw new Error("CRICKET_DATA_API_KEY is not set.");
+async function fetchEspnUpcomingBangladeshMatches(
+  limit = UPCOMING_MERGED_LIMIT,
+): Promise<LiveMatchSummary[]> {
+  const [curated, events] = await Promise.all([
+    buildCuratedUpcomingBangladeshMatches(limit),
+    fetchEspnUpcomingBangladeshMatchesFromEvents(limit),
+  ]);
+
+  const byId = new Map<string, LiveMatchSummary>();
+  for (const match of [...events, ...curated]) {
+    if (match.id && !byId.has(match.id)) byId.set(match.id, match);
   }
 
-  let matches = prefetchedMatches;
-  if (!matches?.length) {
-    const [current, listed] = await Promise.all([
-      fetchCurrentMatches().catch(() => []),
-      fetchMatchesList(3).catch(() => []),
-    ]);
-    const byId = new Map<string, LiveMatchSummary>();
-    for (const m of [...current, ...listed]) {
-      if (m.id) byId.set(m.id, m);
-    }
-    matches = [...byId.values()];
-  }
+  return [...byId.values()]
+    .filter(isStillUpcoming)
+    .sort((a, b) => matchTime(a) - matchTime(b))
+    .slice(0, limit);
+}
+
+/** Refresh upcoming marquee cache from ESPNcricinfo. */
+export async function scrapeBangladeshUpcomingMatches(): Promise<BangladeshUpcomingMatchesSnapshot | null> {
   const upcoming = await enrichUpcomingMatchFixtureTimes(
-    findUpcomingBangladeshMatches(matches),
+    await fetchEspnUpcomingBangladeshMatches(UPCOMING_MERGED_LIMIT),
   );
 
-  // CricAPI's match list is flaky (quota, partial pages, mixed men's/women's
-  // fixtures) — merge with cached/seeded fixtures that are still in the future
+  // ESPN lists can be partial — merge with cached fixtures still in the future
   // so a bad scrape never wipes known upcoming matches.
   const [previousCached, previousFile] = await Promise.all([
     getCachedUpcomingBangladeshMatches().catch(() => []),
@@ -86,7 +86,7 @@ export async function scrapeBangladeshUpcomingMatches(
 
   const snapshot: BangladeshUpcomingMatchesSnapshot = {
     fetchedAt: new Date().toISOString(),
-    source: "cricapi",
+    source: "espn",
     matches: merged,
   };
 

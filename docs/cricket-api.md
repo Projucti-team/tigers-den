@@ -9,13 +9,20 @@ Internal REST API for The Tigers' Den. Aggregates live scores, tours, and ICC ra
 Add to `.env.local`:
 
 ```env
-# Required for tours, live scores, scorecards
+# Required for /tours (series index + tour detail fixtures)
 CRICKET_DATA_API_KEY=your_key_from_cricketdata.org
+# Optional — second and third cricketdata.org accounts (auto-rotated on quota)
+CRICKET_DATA_API_KEY_FALLBACK=
+CRICKET_DATA_API_KEY_FALLBACK_2=
 ```
+
+Live scores, last match, upcoming fixtures, and scorecards use **ESPNcricinfo** (free, no API key).
 
 | Key | Provider | Sign up |
 |-----|----------|---------|
-| `CRICKET_DATA_API_KEY` | [CricketData.org (CricAPI)](https://cricketdata.org/signup.aspx) | Free tier |
+| `CRICKET_DATA_API_KEY` | [CricketData.org (CricAPI)](https://cricketdata.org/signup.aspx) | Free tier (~100 req/day) — **tours only** |
+| `CRICKET_DATA_API_KEY_FALLBACK` | Same provider, second account | Optional |
+| `CRICKET_DATA_API_KEY_FALLBACK_2` | Same provider, third account | Optional |
 
 ICC rankings do **not** need an API key. They are fetched from the same JSON feed as [icc-cricket.com/rankings](https://www.icc-cricket.com/rankings) and cached in `data/icc-rankings.json`.
 
@@ -33,7 +40,7 @@ Refresh manually or on nightly sync:
 npm run scrape:espn-squads
 ```
 
-CricAPI is still used for **fixtures and live scores** only.
+CricAPI is still used for **tour series index and tour-detail fixture lists** when building `/tours`. Squads, live scores, last match, upcoming marquee, and scorecards come from ESPN.
 
 ### Nightly ICC rankings update
 
@@ -47,13 +54,13 @@ The site reads the cache first; if the file is missing it fetches live once as a
 
 ### Bangladesh last match (Match Centre)
 
-The home page and `/match-centre` always show Bangladesh's **most recent match result** from `data/bangladesh-last-match.json`. Live scores use one lightweight CricAPI call; the last result does not burn quota on every page load.
+The home page and `/match-centre` show Bangladesh's **most recent match result** from ESPNcricinfo (with a cached snapshot in `data/bangladesh-last-match.json`).
 
 ```bash
 npm run scrape:bangladesh-match
 ```
 
-Runs nightly at **3:30 AM BDT** via `.github/workflows/scrape-bangladesh-match.yml` (set `CRICKET_DATA_API_KEY` in GitHub secrets).
+Runs nightly at **3:30 AM BDT** via `.github/workflows/scrape-bangladesh-match.yml` (no CricAPI key required).
 
 ### Bangladesh cricket news feed (live, free tier)
 
@@ -92,9 +99,9 @@ Quick reference (Bangladesh time):
 |--------|------|-------------|
 | GET | `/api/cricket` | Full dashboard (all data) |
 | GET | `/api/cricket/tours` | Future tours (`?bangladeshOnly=true` default) |
-| GET | `/api/cricket/live` | Live matches + Bangladesh scorecard |
+| GET | `/api/cricket/live` | Live Bangladesh match + ESPN scorecard |
 | GET | `/api/cricket/rankings` | Men & women ICC rankings |
-| GET | `/api/cricket/scorecard/:matchId` | Ball-by-ball scorecard |
+| GET | `/api/cricket/scorecard/:matchId` | Ball-by-ball scorecard (`espn-*` match ids) |
 
 ## Rankings response shape
 

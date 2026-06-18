@@ -158,7 +158,7 @@ export async function syncCricketSnapshots(
 ): Promise<SyncCricketResult> {
   const jobsRun = resolveCricketSyncJobs(options?.jobs);
   const run = (job: CricketSyncJobId) => jobsRun.includes(job);
-  const needsCricApi = run("tours") || run("last-match") || run("upcoming");
+  const needsCricApi = run("tours");
 
   const warnings: string[] = [];
   const errors: string[] = [];
@@ -272,9 +272,9 @@ export async function syncCricketSnapshots(
     warnings.push(...getCricApiKeyWarnings());
   }
 
-  if (run("last-match") && !skipCricApi) {
+  if (run("last-match")) {
     try {
-      const lastMatch = await scrapeBangladeshLastMatch(prefetchedMatches);
+      const lastMatch = await scrapeBangladeshLastMatch();
       if (lastMatch) {
         await upsertCricketSnapshot(
           CRICKET_SNAPSHOT_KEYS.lastMatch,
@@ -287,9 +287,9 @@ export async function syncCricketSnapshots(
     }
   }
 
-  if (run("upcoming") && !skipCricApi) {
+  if (run("upcoming")) {
     try {
-      const upcoming = await scrapeBangladeshUpcomingMatches(prefetchedMatches);
+      const upcoming = await scrapeBangladeshUpcomingMatches();
       if (upcoming) {
         await upsertCricketSnapshot(
           CRICKET_SNAPSHOT_KEYS.upcomingMatches,

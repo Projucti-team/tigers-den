@@ -24,35 +24,59 @@ const cricApiKeyWarnings: string[] = [];
 
 const PRIMARY_KEY_EXHAUSTED = "API key exhausted.";
 const BACKUP_KEY_EXHAUSTED = "Backup API key exhausted.";
+const BACKUP_KEY_2_EXHAUSTED = "Backup API key 2 exhausted.";
 
-function primaryKeys(): string[] {
+type KeyPool = {
+  keys: string[];
+  exhaustedMessage: string;
+};
+
+function splitEnvKeys(value: string | undefined): string[] {
   return [
     ...new Set(
-      (process.env.CRICKET_DATA_API_KEY ?? "")
+      (value ?? "")
         .split(",")
         .map((k) => k.trim())
         .filter(Boolean),
     ),
   ];
+}
+
+function primaryKeys(): string[] {
+  return splitEnvKeys(process.env.CRICKET_DATA_API_KEY);
 }
 
 function fallbackKeys(): string[] {
+  return splitEnvKeys(process.env.CRICKET_DATA_API_KEY_FALLBACK);
+}
+
+function fallback2Keys(): string[] {
+  return splitEnvKeys(process.env.CRICKET_DATA_API_KEY_FALLBACK_2);
+}
+
+function keyPools(): KeyPool[] {
   return [
-    ...new Set(
-      (process.env.CRICKET_DATA_API_KEY_FALLBACK ?? "")
-        .split(",")
-        .map((k) => k.trim())
-        .filter(Boolean),
-    ),
-  ];
+    { keys: primaryKeys(), exhaustedMessage: PRIMARY_KEY_EXHAUSTED },
+    { keys: fallbackKeys(), exhaustedMessage: BACKUP_KEY_EXHAUSTED },
+    { keys: fallback2Keys(), exhaustedMessage: BACKUP_KEY_2_EXHAUSTED },
+  ].filter((pool) => pool.keys.length > 0);
 }
 
 /**
- * Primary + fallback keys. Supports comma-separated CRICKET_DATA_API_KEY and/or
- * CRICKET_DATA_API_KEY_FALLBACK from a second cricketdata.org account.
+ * Primary + fallback keys. Supports comma-separated keys per env var and up to three
+ * pools: CRICKET_DATA_API_KEY, CRICKET_DATA_API_KEY_FALLBACK, CRICKET_DATA_API_KEY_FALLBACK_2.
  */
 function apiKeys(): string[] {
-  return [...new Set([...primaryKeys(), ...fallbackKeys()])];
+  return [...new Set(keyPools().flatMap((pool) => pool.keys))];
+}
+
+function poolIndexForKeyIndex(keyIndex: number): number {
+  let offset = 0;
+  for (let i = 0; i < keyPools().length; i++) {
+    offset += keyPools()[i].keys.length;
+    if (keyIndex < offset) return i;
+  }
+  return Math.max(0, keyPools().length - 1);
 }
 
 function pushKeyWarning(message: string): void {
@@ -91,21 +115,16 @@ function isQuotaReason(reason: string): boolean {
 function handleCricApiFailure(reason: string): void {
   if (!isQuotaReason(reason)) return;
 
+  const pools = keyPools();
   const keys = apiKeys();
-  const primaryCount = primaryKeys().length;
-  const fallbackCount = fallbackKeys().length;
 
   if (activeKeyIndex < keys.length - 1) {
-    const nextIndex = activeKeyIndex + 1;
-    const leavingPrimary =
-      primaryCount > 0 &&
-      fallbackCount > 0 &&
-      activeKeyIndex < primaryCount &&
-      nextIndex >= primaryCount;
-    activeKeyIndex = nextIndex;
+    const oldPool = poolIndexForKeyIndex(activeKeyIndex);
+    activeKeyIndex += 1;
+    const newPool = poolIndexForKeyIndex(activeKeyIndex);
 
-    if (leavingPrimary) {
-      pushKeyWarning(PRIMARY_KEY_EXHAUSTED);
+    if (newPool > oldPool) {
+      pushKeyWarning(pools[oldPool].exhaustedMessage);
     }
 
     console.warn(
@@ -114,12 +133,7 @@ function handleCricApiFailure(reason: string): void {
     return;
   }
 
-  if (fallbackCount > 0 && primaryCount > 0 && activeKeyIndex >= primaryCount) {
-    pushKeyWarning(BACKUP_KEY_EXHAUSTED);
-  } else {
-    pushKeyWarning(PRIMARY_KEY_EXHAUSTED);
-  }
-
+  pushKeyWarning(pools[poolIndexForKeyIndex(activeKeyIndex)].exhaustedMessage);
   cricApiBlocked = true;
 }
 

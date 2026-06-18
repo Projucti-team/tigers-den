@@ -2,6 +2,8 @@ import { readFile } from "node:fs/promises";
 import path from "node:path";
 
 import { resolveMatchStartIso } from "@/lib/cricket/match-sort";
+import { isUpcomingBangladeshMatch } from "@/lib/cricket/services/marquee-format";
+import { matchTime } from "@/lib/cricket/services/match-highlight";
 import { isFutureSeries } from "@/lib/cricket/tour-dates";
 import { ordinalSuffix } from "@/lib/cricket/ordinal";
 import { readEspnTourSquads } from "@/lib/cricket/squads/store";
@@ -350,6 +352,57 @@ export async function buildMatchesFromEspnEvents(tour: Tour): Promise<LiveMatchS
   }
 
   return matches;
+}
+
+const UPCOMING_GRACE_MS = 15 * 60 * 1000;
+
+/** Confirmed future fixtures from curated JSON — used for the upcoming marquee. */
+export async function buildCuratedUpcomingBangladeshMatches(
+  limit = 8,
+): Promise<LiveMatchSummary[]> {
+  const curated = await readCuratedFixtureTimes();
+  const now = Date.now();
+  const matches: LiveMatchSummary[] = [];
+
+  for (const [seriesId, series] of Object.entries(curated.series)) {
+    if (!series.tourName || !series.fixtures?.length) continue;
+
+    const teams = teamsFromTourName(series.tourName) ?? ["Bangladesh"];
+    const tourId = String(series.cricinfoSeriesId ?? seriesId);
+    const counters = new Map<string, number>();
+
+    for (const fixture of [...series.fixtures].sort((a, b) => a.date.localeCompare(b.date))) {
+      const kickoff = new Date(fixture.dateTimeGMT).getTime();
+      if (Number.isNaN(kickoff) || kickoff <= now - UPCOMING_GRACE_MS) continue;
+
+      const mt = normalizeMatchType(fixture.matchType) || "match";
+      const n = (counters.get(mt) ?? 0) + 1;
+      counters.set(mt, n);
+      const label = matchTypeLabel(fixture.matchType);
+      const opponent = teams.find((t) => !/bangladesh/i.test(t)) ?? teams[0];
+
+      const match: LiveMatchSummary = {
+        id: `espn-curated-${tourId}-${fixture.date}-${mt}-${n}`,
+        name: `${n}${ordinalSuffix(n)} ${label}, ${teams[0]} vs ${opponent}, ${series.tourName}`,
+        matchType: fixture.matchType,
+        status: "Match not started",
+        date: fixture.date,
+        dateTimeGMT: fixture.dateTimeGMT,
+        teams,
+        isLive: false,
+        seriesId: tourId,
+        seriesName: series.tourName,
+      };
+
+      if (isUpcomingBangladeshMatch(match)) {
+        matches.push(match);
+      }
+    }
+  }
+
+  return matches
+    .sort((a, b) => matchTime(a) - matchTime(b))
+    .slice(0, limit);
 }
 
 async function readCuratedFixtureTimes(): Promise<CuratedFixtureTimesSnapshot> {

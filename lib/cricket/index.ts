@@ -10,6 +10,7 @@ export async function getCricketDashboard(): Promise<CricketDashboard> {
     const providers: string[] = [];
 
     if (process.env.CRICKET_DATA_API_KEY) providers.push("cricapi");
+    providers.push("espncricinfo");
     if (process.env.CRICKET_JUPITER_API_TOKEN) providers.push("sports-jupiter");
     providers.push("icc-sportz");
 

@@ -1,6 +1,6 @@
 /**
- * Updates data/bangladesh-last-match.json from CricAPI (one batch of requests).
- * Run nightly — not on every page load (saves API quota).
+ * Updates data/bangladesh-last-match.json and upcoming fixtures from ESPNcricinfo.
+ * Run nightly — not on every page load.
  *
  * Usage: npm run scrape:bangladesh-match
  */
@@ -11,7 +11,7 @@ import { scrapeBangladeshUpcomingMatches } from "../lib/cricket/services/banglad
 import { formatUpcomingMatchMarqueeLine } from "../lib/cricket/services/marquee-format";
 
 async function main() {
-  console.log("Fetching Bangladesh's last match from CricAPI…");
+  console.log("Fetching Bangladesh's last match from ESPNcricinfo…");
   const snapshot = await scrapeBangladeshLastMatch();
 
   if (!snapshot) {
@@ -23,7 +23,7 @@ async function main() {
     console.log(`  ${snapshot.highlight.scoreLine}`);
   }
 
-  console.log("\nFetching next Bangladesh fixtures from CricAPI…");
+  console.log("\nFetching next Bangladesh fixtures from ESPNcricinfo…");
   const upcoming = await scrapeBangladeshUpcomingMatches();
 
   if (!upcoming?.matches.length) {

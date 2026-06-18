@@ -1,5 +1,4 @@
 import { isBangladeshTeam } from "@/lib/cricket/constants";
-import { fetchScorecard, isCricApiConfigured } from "@/lib/cricket/providers/cricapi";
 import { fetchEspnMatchCentre } from "@/lib/cricket/providers/espn-match-centre";
 import { getCityWeather, type MatchWeather } from "@/lib/cricket/providers/weather";
 import { teamShortCode } from "@/lib/cricket/services/marquee-format";
@@ -210,15 +209,5 @@ export async function getMatchCentreData(): Promise<{
   }
 
   const weather = await getHighlightWeather(highlight);
-
-  if (!isCricApiConfigured() || highlight.matchId.startsWith("seed-")) {
-    return { highlight, scorecard: null, liveFeed: null, weather };
-  }
-
-  try {
-    const scorecard = await fetchScorecard(highlight.matchId);
-    return { highlight, scorecard, liveFeed: null, weather };
-  } catch {
-    return { highlight, scorecard: null, liveFeed: null, weather };
-  }
+  return { highlight, scorecard: null, liveFeed: null, weather };
 }

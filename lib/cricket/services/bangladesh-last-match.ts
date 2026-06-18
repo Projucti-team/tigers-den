@@ -1,10 +1,4 @@
 import {
-  fetchCurrentMatches,
-  fetchMatchesList,
-  isCricApiBlocked,
-  isCricApiConfigured,
-} from "@/lib/cricket/providers/cricapi";
-import {
   fetchEspnLiveBangladeshHighlight,
   fetchEspnRecentBangladeshHighlight,
 } from "@/lib/cricket/providers/espn-live";
@@ -16,50 +10,22 @@ import {
 import { CRICKET_SNAPSHOT_KEYS } from "@/lib/cricket/snapshot-keys";
 import { readCricketSnapshot, upsertCricketSnapshot } from "@/lib/cricket/snapshot-db";
 import { isPayloadConfigured } from "@/lib/payload";
-import type { LiveMatchSummary } from "@/lib/cricket/types";
-import {
-  findLastBangladeshMatch,
-  findLiveBangladeshMatch,
-  matchToHighlight,
-  type MatchHighlight,
-} from "@/lib/cricket/services/match-highlight";
+import type { MatchHighlight } from "@/lib/cricket/services/match-highlight";
 
-/** Refresh cache from CricAPI — run via npm script (not on every page view). */
-export async function scrapeBangladeshLastMatch(
-  prefetchedMatches?: LiveMatchSummary[],
-): Promise<BangladeshLastMatchSnapshot | null> {
-  if (!isCricApiConfigured()) {
-    throw new Error("CRICKET_DATA_API_KEY is not set.");
+/** Refresh cache from ESPNcricinfo — run via sync job (not on every page view). */
+export async function scrapeBangladeshLastMatch(): Promise<BangladeshLastMatchSnapshot | null> {
+  const recent = await fetchEspnRecentBangladeshHighlight().catch(() => null);
+
+  if (!recent) {
+    return readBangladeshLastMatch();
   }
 
-  let matches = prefetchedMatches;
-  if (!matches?.length) {
-    const [current, listed] = await Promise.all([
-      fetchCurrentMatches().catch(() => []),
-      fetchMatchesList(3).catch(() => []),
-    ]);
-    const byId = new Map<string, LiveMatchSummary>();
-    for (const m of [...current, ...listed]) {
-      if (m.id) byId.set(m.id, m);
-    }
-    matches = [...byId.values()];
-  }
-  const last = findLastBangladeshMatch(matches);
-
-  if (!last) {
-    const existing = await readBangladeshLastMatch();
-    return existing;
-  }
-
-  const snapshot: BangladeshLastMatchSnapshot = {
+  await persistBangladeshLastMatchHighlight(recent, "espn");
+  return {
     fetchedAt: new Date().toISOString(),
-    source: "cricapi",
-    highlight: matchToHighlight(last, "completed"),
-    raw: last,
+    source: "espn",
+    highlight: recent,
   };
-
-  await writeBangladeshLastMatch(snapshot);
-  return snapshot;
 }
 
 export async function getCachedBangladeshLastMatch(): Promise<MatchHighlight | null> {
@@ -74,7 +40,7 @@ export async function getCachedBangladeshLastMatch(): Promise<MatchHighlight | n
   return file?.highlight ?? null;
 }
 
-/** Persist a fresh last-match highlight (ESPN after full time, or CricAPI scrape). */
+/** Persist a fresh last-match highlight after full time. */
 export async function persistBangladeshLastMatchHighlight(
   highlight: MatchHighlight,
   source = "espn",
@@ -96,7 +62,7 @@ export async function persistBangladeshLastMatchHighlight(
   }
 }
 
-/** ESPN completed result first, then nightly CricAPI cache. */
+/** ESPN completed result first, then nightly cache. */
 export async function getRecentBangladeshMatchHighlight(): Promise<MatchHighlight | null> {
   const espnRecent = await fetchEspnRecentBangladeshHighlight().catch(() => null);
   const cached = await getCachedBangladeshLastMatch();
@@ -111,19 +77,7 @@ export async function getRecentBangladeshMatchHighlight(): Promise<MatchHighligh
   return cached;
 }
 
-/** Live scores — ESPNcricinfo first (free), then CricAPI when available. */
+/** Live scores from ESPNcricinfo only. */
 export async function getLiveBangladeshHighlight(): Promise<MatchHighlight | null> {
-  const espnLive = await fetchEspnLiveBangladeshHighlight().catch(() => null);
-  if (espnLive) return espnLive;
-
-  if (!isCricApiConfigured() || isCricApiBlocked()) return null;
-
-  try {
-    const current = await fetchCurrentMatches();
-    const live = findLiveBangladeshMatch(current);
-    if (live) return matchToHighlight(live, "live");
-    return null;
-  } catch {
-    return null;
-  }
+  return fetchEspnLiveBangladeshHighlight().catch(() => null);
 }

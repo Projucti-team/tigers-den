@@ -1,18 +1,7 @@
-import { isBangladeshTeam } from "@/lib/cricket/constants";
-import {
-  fetchCurrentMatches,
-  fetchScorecard,
-  isCricApiConfigured,
-} from "@/lib/cricket/providers/cricapi";
+import { fetchEspnMatchCentre } from "@/lib/cricket/providers/espn-match-centre";
+import { liveMatchSummaryFromHighlight } from "@/lib/cricket/providers/espn-live";
+import { getLiveBangladeshHighlight } from "@/lib/cricket/services/bangladesh-last-match";
 import type { LiveMatchSummary, Scorecard } from "@/lib/cricket/types";
-
-export function findBangladeshLiveMatch(matches: LiveMatchSummary[]) {
-  const bdMatches = matches.filter((m) => {
-    const teams = m.teams || m.teamInfo?.map((t) => t.name) || [];
-    return teams.some((t) => isBangladeshTeam(t));
-  });
-  return bdMatches.find((m) => m.isLive) ?? bdMatches[0] ?? null;
-}
 
 export async function getLiveCricketData(): Promise<{
   matches: LiveMatchSummary[];
@@ -21,21 +10,22 @@ export async function getLiveCricketData(): Promise<{
   warnings: string[];
 }> {
   const warnings: string[] = [];
+  const highlight = await getLiveBangladeshHighlight();
 
-  if (!isCricApiConfigured()) {
-    warnings.push("CRICKET_DATA_API_KEY is not set — live scores unavailable.");
+  if (!highlight) {
+    warnings.push("No live Bangladesh match on ESPNcricinfo right now.");
     return { matches: [], bangladeshMatch: null, scorecard: null, warnings };
   }
 
-  const matches = await fetchCurrentMatches();
-  const bangladeshMatch = findBangladeshLiveMatch(matches);
+  const bangladeshMatch = liveMatchSummaryFromHighlight(highlight);
+  const matches = [bangladeshMatch];
 
   let scorecard: Scorecard | null = null;
-  if (bangladeshMatch?.id) {
+  if (highlight.matchId.startsWith("espn-")) {
     try {
-      scorecard = await fetchScorecard(bangladeshMatch.id);
+      scorecard = (await fetchEspnMatchCentre(highlight.matchId))?.scorecard ?? null;
     } catch {
-      warnings.push("Could not load Bangladesh live scorecard.");
+      warnings.push("Could not load Bangladesh live scorecard from ESPNcricinfo.");
     }
   }
 

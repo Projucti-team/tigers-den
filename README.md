@@ -110,7 +110,7 @@ Copy `.env.example` → `.env.local` for development, or `.env.production.exampl
 | **CMS** | `PAYLOAD_SECRET`, `DATABASE_URI` (local) or `POSTGRES_URL` (prod) |
 | **Site** | `NEXT_PUBLIC_SITE_URL`, `NEXT_PUBLIC_SERVER_URL` |
 | **Members** | `AUTH_SECRET`, `GOOGLE_*`, `FACEBOOK_*` |
-| **Cricket** | `CRICKET_DATA_API_KEY`, `CRICKET_DATA_API_KEY_FALLBACK`, `CRON_SECRET` |
+| **Cricket** | `CRICKET_DATA_API_KEY`, `CRICKET_DATA_API_KEY_FALLBACK`, `CRICKET_DATA_API_KEY_FALLBACK_2`, `CRON_SECRET` |
 | **Chat** | `NEXT_PUBLIC_FIREBASE_*`, `FIREBASE_PROJECT_ID`, `FIREBASE_CLIENT_EMAIL`, `FIREBASE_PRIVATE_KEY` |
 
 ---

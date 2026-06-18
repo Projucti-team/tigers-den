@@ -94,10 +94,11 @@ Migrating off Neon: [migrate-neon-to-server-postgres.md](./migrate-neon-to-serve
 
 | Feature | Primary source | Fallback / cache |
 |---------|----------------|------------------|
-| Live scores & marquee | ESPN live API | CricAPI |
+| Live scores & marquee | ESPN live API | Cached snapshot |
 | Match centre scorecard | ESPN match centre | — |
+| Upcoming marquee | ESPN fixtures + curated JSON | Cached snapshot |
 | Venue weather + 6h forecast | met.no (via geocoding) | — |
-| Bangladesh last result | `data/bangladesh-last-match.json` | CricAPI scrape |
+| Bangladesh last result | ESPN live API | `data/bangladesh-last-match.json` |
 | Headlines (home) | ESPN RSS + Cricbuzz scrape | `data/bangladesh-cricket-news.json` |
 
 ### Pre-built (nightly cron → Postgres `cricket-snapshots`)
@@ -197,4 +198,4 @@ See [deploy-coolify.md](./deploy-coolify.md) and [jobs.md](./jobs.md).
 | Member APIs | NextAuth session |
 | Payload admin | Payload user login |
 | Firestore chat writes | Server-only (rules deny client create) |
-| CricAPI keys | `CRICKET_DATA_API_KEY` + optional `CRICKET_DATA_API_KEY_FALLBACK` |
+| CricAPI keys | `CRICKET_DATA_API_KEY` + optional `CRICKET_DATA_API_KEY_FALLBACK` + `_FALLBACK_2` |

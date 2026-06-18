@@ -145,8 +145,9 @@ Logged-in Payload admins can trigger sync from the admin panel (uses `/api/admin
 | Variable | Used by |
 |----------|---------|
 | `CRON_SECRET` | `/api/cron/cricket`, `/api/admin/bootstrap-db`, entrypoint |
-| `CRICKET_DATA_API_KEY` | CricAPI tours, live, bangladesh-match scrape |
+| `CRICKET_DATA_API_KEY` | CricAPI tours index + tour detail fixtures |
 | `CRICKET_DATA_API_KEY_FALLBACK` | Second CricAPI account when primary quota hit |
+| `CRICKET_DATA_API_KEY_FALLBACK_2` | Third CricAPI account when both prior keys are exhausted |
 | `CRICKET_SYNC_ON_START` | Docker entrypoint (`1`, `0`, `force`) |
 | `POSTGRES_URL` | Snapshot persistence (required in prod) |
 | `PAYLOAD_SECRET` | Payload DB access during sync |
@@ -159,7 +160,7 @@ Logged-in Payload admins can trigger sync from the admin panel (uses `/api/admin
 |---------|-----|
 | Empty `/tours` or `/rankings` | Set `CRICKET_DATA_API_KEY` + `CRON_SECRET`; run cron with `?force=1` |
 | `401` on cron | Check `Authorization: Bearer` matches `CRON_SECRET` in Coolify |
-| CricAPI quota exhausted | Add `CRICKET_DATA_API_KEY_FALLBACK`; wait for 24h guard or use `force` |
+| CricAPI quota exhausted | Add `CRICKET_DATA_API_KEY_FALLBACK` / `_FALLBACK_2`; wait for 24h guard or use `force` |
 | Stale ICC dates on rankings | Run sync — showcase uses per-table `rankUpdatedAt` (snapshot v4+) |
 | JSON caches old on prod | Nightly sync writes to `/app/data`; check volume mount |
 | `relation does not exist` | `POST /api/admin/bootstrap-db` with `CRON_SECRET` |

@@ -57,6 +57,9 @@ NEXT_PUBLIC_SITE_URL=https://tigersden.yourdomain.com
 NEXT_PUBLIC_SERVER_URL=https://tigersden.yourdomain.com
 DATABASE_URI=file:/app/data/tigersden.db
 CRICKET_DATA_API_KEY=your_cricapi_key_if_you_have_one
+# Optional second and third cricketdata.org accounts (auto-rotated on quota during tours sync)
+CRICKET_DATA_API_KEY_FALLBACK=
+CRICKET_DATA_API_KEY_FALLBACK_2=
 CRON_SECRET=<run: openssl rand -base64 32>
 CRICKET_SYNC_ON_START=1
 ```

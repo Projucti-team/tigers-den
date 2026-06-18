@@ -46,12 +46,12 @@ export const CRICKET_SYNC_JOBS: {
   {
     id: "last-match",
     label: "Last Bangladesh match",
-    description: "Update the Bangladesh last completed match snapshot.",
+    description: "Update the Bangladesh last completed match snapshot (ESPNcricinfo).",
   },
   {
     id: "upcoming",
     label: "Upcoming Bangladesh matches",
-    description: "Update the upcoming Bangladesh fixtures snapshot.",
+    description: "Update the upcoming Bangladesh fixtures snapshot (ESPNcricinfo).",
   },
   {
     id: "tours",

@@ -54,6 +54,8 @@ Set these in Coolify → **Environment Variables** (production):
 | `NEXT_PUBLIC_SERVER_URL` | Yes | Same as site URL |
 | `POSTGRES_URL` | Yes (prod) | Internal Coolify Postgres URL |
 | `CRICKET_DATA_API_KEY` | Yes for `/tours` | [cricketdata.org](https://cricketdata.org/signup.aspx) |
+| `CRICKET_DATA_API_KEY_FALLBACK` | No | Second account — auto-rotated when primary quota is hit |
+| `CRICKET_DATA_API_KEY_FALLBACK_2` | No | Third account — rotated after the second key is exhausted |
 | `CRON_SECRET` | Yes | `openssl rand -base64 32` — protects bootstrap + cron |
 | `CRICKET_SYNC_ON_START` | No | Default `1` — idempotent sync after deploy when stale |
 | `AUTH_SECRET` | If using member login | `openssl rand -base64 32` |
@@ -110,6 +112,7 @@ Then open `/tours`, `/rankings`, and Payload admin.
 | Issue | Fix |
 |-------|-----|
 | Tours empty after deploy | `CRICKET_DATA_API_KEY` + `CRON_SECRET`; run cron sync with `?force=1` |
+| CricAPI quota / rate limit | Add `CRICKET_DATA_API_KEY_FALLBACK` and/or `_FALLBACK_2` (separate cricketdata.org accounts); redeploy |
 | Still hitting Neon / wrong DB | Only `POSTGRES_URL` set — remove `DATABASE_URI=file:...` |
 | Missing tables | `POST /api/admin/bootstrap-db` with `CRON_SECRET` |
 | Admin sync **Unauthorized** | Log in at `/admin` first |

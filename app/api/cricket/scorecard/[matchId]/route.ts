@@ -1,24 +1,19 @@
-import { fetchScorecard, isCricApiConfigured } from "@/lib/cricket/providers/cricapi";
 import { cricketError, cricketJson } from "@/lib/cricket/api-response";
+import { fetchScorecardForMatch } from "@/lib/cricket/services/scorecard";
 
 export const dynamic = "force-dynamic";
 
-/** GET /api/cricket/scorecard/:matchId */
+/** GET /api/cricket/scorecard/:matchId — ESPNcricinfo ball-by-ball scorecard */
 export async function GET(
   _request: Request,
   { params }: { params: Promise<{ matchId: string }> },
 ) {
   try {
     const { matchId } = await params;
-
-    if (!isCricApiConfigured()) {
-      return cricketError("CRICKET_DATA_API_KEY is not set", 503);
-    }
-
-    const scorecard = await fetchScorecard(matchId);
+    const scorecard = await fetchScorecardForMatch(matchId);
     return cricketJson({
       data: { scorecard },
-      meta: { fetchedAt: new Date().toISOString() },
+      meta: { fetchedAt: new Date().toISOString(), source: "espn" },
     });
   } catch (e) {
     return cricketError(e instanceof Error ? e.message : "Failed to fetch scorecard", 500);
