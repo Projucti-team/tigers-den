@@ -98,22 +98,88 @@ function matchFormatHint(match: LiveMatchSummary): "test" | "odi" | "t20" | null
   return null;
 }
 
-function dedupeByNameAndFormat(tours: Tour[]): Tour[] {
-  const seen = new Set<string>();
-  const out: Tour[] = [];
+function mergeTourStats(base: Tour, group: Tour[]): Tour {
+  let test = 0;
+  let odi = 0;
+  let t20 = 0;
+  let matches = 0;
+  let startDate = base.startDate;
+  let endDate = base.endDate;
+  let teams = base.teams;
 
-  for (const tour of tours) {
-    const format = extractFormatHint(tour.name) ?? "multi";
-    const key = `${normalizeTourName(tour.name)}|${format}`;
-    if (seen.has(key)) continue;
-    seen.add(key);
-    out.push(tour);
+  for (const tour of group) {
+    test += tour.test ?? 0;
+    odi += tour.odi ?? 0;
+    t20 += tour.t20 ?? 0;
+    matches += tour.matches ?? 0;
+    if (tour.startDate && (!startDate || tour.startDate < startDate)) startDate = tour.startDate;
+    if (tour.endDate && (!endDate || tour.endDate > endDate)) endDate = tour.endDate;
+    if (tour.teams?.length) teams = tour.teams;
   }
 
-  return out;
+  return {
+    ...base,
+    startDate,
+    endDate,
+    test: test || base.test,
+    odi: odi || base.odi,
+    t20: t20 || base.t20,
+    matches: matches || base.matches,
+    teams,
+  };
 }
 
-/** Drop umbrella parents when format-specific children exist; dedupe ESPN + CricAPI doubles. */
+function pickTourId(group: Tour[]): string {
+  const umbrella = group.find((t) => isUmbrellaTourName(t.name));
+  if (umbrella?.id) return umbrella.id;
+  const numeric = group.find((t) => /^\d+$/.test(t.id));
+  return numeric?.id ?? group[0].id;
+}
+
+/** One nav row per bilateral tour — e.g. "Bangladesh Tour of Australia", not per format. */
+function inferUmbrellaNameFromGroup(group: Tour[]): string {
+  const existing = group.find((t) => isUmbrellaTourName(t.name));
+  if (existing) {
+    return existing.name.replace(/,?\s*\d{4}(-\d{2})?$/i, "").trim();
+  }
+
+  for (const tour of group) {
+    const stripped = tour.name.replace(/,?\s*\d{4}(-\d{2})?$/i, "").trim();
+
+    let m = stripped.match(/bangladesh(?:\s+women)?\s+tour of\s+(.+)$/i);
+    if (m) return stripped;
+
+    m = stripped.match(/bangladesh(?:\s+women)?\s+in\s+([^,]+?)(?:\s+(?:Test|ODI|T20)|,|$)/i);
+    if (m) {
+      const women = /women/i.test(stripped) ? " Women" : "";
+      return `Bangladesh${women} Tour of ${m[1].trim()}`;
+    }
+
+    m = stripped.match(/(.+?)\s+tour of\s+bangladesh(?:\s+women)?$/i);
+    if (m) return stripped;
+
+    m = stripped.match(/(.+?)\s+in\s+bangladesh(?:\s+women)?(?:\s+(?:Test|ODI|T20)|,|$)/i);
+    if (m) {
+      const women = /women/i.test(stripped) ? " Women" : "";
+      return `${m[1].trim()}${women} Tour of Bangladesh`;
+    }
+  }
+
+  return group[0].name.replace(/,?\s*\d{4}(-\d{2})?$/i, "").trim();
+}
+
+function collapseToUmbrellaTour(group: Tour[]): Tour {
+  const name = inferUmbrellaNameFromGroup(group);
+  const id = pickTourId(group);
+  const seed =
+    group.find((t) => normalizeTourName(t.name) === normalizeTourName(name)) ??
+    group.find((t) => isUmbrellaTourName(t.name)) ??
+    group[0];
+
+  return mergeTourStats({ ...seed, id, name }, group);
+}
+
+/** Collapse format-specific series into one umbrella tour per venue; dedupe ESPN + CricAPI doubles. */
 export function deduplicateTours(tours: Tour[]): Tour[] {
   const byVenue = new Map<string, Tour[]>();
 
@@ -124,27 +190,7 @@ export function deduplicateTours(tours: Tour[]): Tour[] {
     byVenue.set(key, list);
   }
 
-  const merged: Tour[] = [];
-
-  for (const group of byVenue.values()) {
-    const withFormat = group.filter((t) => extractFormatHint(t.name));
-    const withoutUmbrella = group.filter((t) => !isUmbrellaTourName(t.name));
-    const picked =
-      withFormat.length > 0
-        ? withFormat
-        : withoutUmbrella.length > 0
-          ? withoutUmbrella
-          : group;
-
-    picked.sort((a, b) => {
-      const aNum = /^\d+$/.test(a.id);
-      const bNum = /^\d+$/.test(b.id);
-      if (aNum !== bNum) return aNum ? -1 : 1;
-      return normalizeTourName(a.name).localeCompare(normalizeTourName(b.name));
-    });
-
-    merged.push(...dedupeByNameAndFormat(picked));
-  }
+  const merged = [...byVenue.values()].map(collapseToUmbrellaTour);
 
   return merged
     .filter((t) => isFutureSeries(t.startDate, t.endDate))
@@ -172,8 +218,10 @@ export function matchBelongsToTour(match: LiveMatchSummary, tour: Tour): boolean
   const opponent = extractOpponentNation(tour.name);
   if (opponent && !blob.includes(opponent)) return false;
 
+  const umbrella = isUmbrellaTourName(tour.name);
   const tourFormat = extractFormatHint(tour.name);
-  if (tourFormat) {
+
+  if (!umbrella && tourFormat) {
     const matchFormat = matchFormatHint(match);
     if (matchFormat && matchFormat !== tourFormat) return false;
   }
@@ -183,10 +231,12 @@ export function matchBelongsToTour(match: LiveMatchSummary, tour: Tour): boolean
     const tourNorm = normalizeTourName(tour.name);
     if (seriesNorm === tourNorm) return true;
     if (tourVenueKey(match.seriesName) === tourVenueKey(tour.name)) {
-      if (!tourFormat || !matchFormatHint(match)) return true;
+      if (umbrella || !tourFormat || !matchFormatHint(match)) return true;
       return matchFormatHint(match) === tourFormat;
     }
   }
+
+  if (umbrella && opponent && blob.includes(opponent)) return true;
 
   return false;
 }

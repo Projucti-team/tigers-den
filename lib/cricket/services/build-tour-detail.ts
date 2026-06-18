@@ -13,7 +13,7 @@ import { refreshEspnTourSquads, applyEspnTourSquads } from "@/lib/cricket/provid
 import { tourToCard } from "@/lib/cricket/services/tours-display";
 import type { TourDetailSnapshot } from "@/lib/cricket/snapshot-types";
 import type { TourDetail } from "@/lib/cricket/tour-detail-types";
-import { matchBelongsToTour } from "@/lib/cricket/tour-identity";
+import { matchBelongsToTour, isUmbrellaTourName } from "@/lib/cricket/tour-identity";
 import type { LiveMatchSummary, Tour } from "@/lib/cricket/types";
 import { sortMatchesByDate } from "@/lib/cricket/match-sort";
 import { uniqueVenuesFromMatches } from "@/lib/cricket/venues";
@@ -52,8 +52,14 @@ export async function buildTourDetailLive(
   const useCricApi = isCricApiConfigured() && !isCricApiBlocked();
 
   if (useCricApi) {
-    const info = await fetchSeriesInfo(tour.id).catch(() => ({ matches: [], squads: [] }));
-    matches = info.matches.filter((m) => matchBelongsToTour(m, tour));
+    if (isUmbrellaTourName(tour.name)) {
+      matches = await fallbackMatches(tour);
+    }
+
+    if (!matches.length) {
+      const info = await fetchSeriesInfo(tour.id).catch(() => ({ matches: [], squads: [] }));
+      matches = info.matches.filter((m) => matchBelongsToTour(m, tour));
+    }
 
     if (!matches.length) {
       matches = await fallbackMatches(tour);
