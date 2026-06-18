@@ -20,25 +20,62 @@ let lastCricApiCallAt = 0;
 let cricApiBlocked = false;
 /** Index into apiKeys() — advances when a key hits its daily quota. */
 let activeKeyIndex = 0;
+const cricApiKeyWarnings: string[] = [];
+
+const PRIMARY_KEY_EXHAUSTED = "API key exhausted.";
+const BACKUP_KEY_EXHAUSTED = "Backup API key exhausted.";
+
+function primaryKeys(): string[] {
+  return [
+    ...new Set(
+      (process.env.CRICKET_DATA_API_KEY ?? "")
+        .split(",")
+        .map((k) => k.trim())
+        .filter(Boolean),
+    ),
+  ];
+}
+
+function fallbackKeys(): string[] {
+  return [
+    ...new Set(
+      (process.env.CRICKET_DATA_API_KEY_FALLBACK ?? "")
+        .split(",")
+        .map((k) => k.trim())
+        .filter(Boolean),
+    ),
+  ];
+}
 
 /**
  * Primary + fallback keys. Supports comma-separated CRICKET_DATA_API_KEY and/or
  * CRICKET_DATA_API_KEY_FALLBACK from a second cricketdata.org account.
  */
 function apiKeys(): string[] {
-  const keys = [
-    ...(process.env.CRICKET_DATA_API_KEY ?? "").split(","),
-    ...(process.env.CRICKET_DATA_API_KEY_FALLBACK ?? "").split(","),
-  ]
-    .map((k) => k.trim())
-    .filter(Boolean);
-  return [...new Set(keys)];
+  return [...new Set([...primaryKeys(), ...fallbackKeys()])];
+}
+
+function pushKeyWarning(message: string): void {
+  if (!cricApiKeyWarnings.includes(message)) {
+    cricApiKeyWarnings.push(message);
+  }
+}
+
+export function getCricApiKeyWarnings(): readonly string[] {
+  return cricApiKeyWarnings;
+}
+
+function blockedUserWarnings(): string[] {
+  if (cricApiKeyWarnings.length) return [...cricApiKeyWarnings];
+  if (cricApiBlocked) return ["Blocked for 15 minutes"];
+  return [];
 }
 
 export function beginCricApiSyncSession(): void {
   lastCricApiCallAt = 0;
   cricApiBlocked = false;
   activeKeyIndex = 0;
+  cricApiKeyWarnings.length = 0;
 }
 
 export function isCricApiBlocked(): boolean {
@@ -54,12 +91,33 @@ function isQuotaReason(reason: string): boolean {
 function handleCricApiFailure(reason: string): void {
   if (!isQuotaReason(reason)) return;
 
-  if (activeKeyIndex < apiKeys().length - 1) {
-    activeKeyIndex += 1;
+  const keys = apiKeys();
+  const primaryCount = primaryKeys().length;
+  const fallbackCount = fallbackKeys().length;
+
+  if (activeKeyIndex < keys.length - 1) {
+    const nextIndex = activeKeyIndex + 1;
+    const leavingPrimary =
+      primaryCount > 0 &&
+      fallbackCount > 0 &&
+      activeKeyIndex < primaryCount &&
+      nextIndex >= primaryCount;
+    activeKeyIndex = nextIndex;
+
+    if (leavingPrimary) {
+      pushKeyWarning(PRIMARY_KEY_EXHAUSTED);
+    }
+
     console.warn(
-      `[cricapi] Key ${activeKeyIndex} quota/rate-limited — switching to fallback key ${activeKeyIndex + 1}/${apiKeys().length}.`,
+      `[cricapi] Key ${activeKeyIndex} quota/rate-limited — switching to fallback key ${activeKeyIndex + 1}/${keys.length}.`,
     );
     return;
+  }
+
+  if (fallbackCount > 0 && primaryCount > 0 && activeKeyIndex >= primaryCount) {
+    pushKeyWarning(BACKUP_KEY_EXHAUSTED);
+  } else {
+    pushKeyWarning(PRIMARY_KEY_EXHAUSTED);
   }
 
   cricApiBlocked = true;
@@ -333,7 +391,7 @@ async function deriveToursFromUpcomingMatches(
 
   if (!matches?.length) {
     if (cricApiBlocked) {
-      return { tours: [], warnings: ["Blocked for 15 minutes"] };
+      return { tours: [], warnings: blockedUserWarnings() };
     }
 
     const current = await fetchCurrentMatches().catch((e) => {
@@ -428,7 +486,7 @@ export async function fetchUpcomingTours(options?: {
       for (const raw of rows) addFutureTour(tours, seenIds, seenNames, raw);
     }
   } else {
-    warnings.push("Blocked for 15 minutes");
+    warnings.push(...blockedUserWarnings());
   }
 
   if (!cricApiBlocked) {

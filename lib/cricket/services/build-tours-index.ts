@@ -1,6 +1,6 @@
 import { buildFutureToursLive, buildFutureToursFromEspnOnly } from "@/lib/cricket/services/tours";
 import { inferToursSource } from "@/lib/cricket/services/tour-sync-policy";
-import { isCricApiBlocked } from "@/lib/cricket/providers/cricapi";
+import { getCricApiKeyWarnings, isCricApiBlocked } from "@/lib/cricket/providers/cricapi";
 import { shortenTitle, tourToCard } from "@/lib/cricket/services/tours-display";
 import type { ToursIndexSnapshot } from "@/lib/cricket/snapshot-types";
 import { tourPath } from "@/lib/cricket/tour-slug";
@@ -24,15 +24,17 @@ export async function buildToursIndexLive(options?: {
     href: tourPath(tour),
   }));
 
-  const cricApiBlocked = isCricApiBlocked() || warnings.some((w) => /blocked|quota|rate/i.test(w));
+  const mergedWarnings = [...new Set([...warnings, ...getCricApiKeyWarnings()])];
+  const cricApiBlocked =
+    isCricApiBlocked() || mergedWarnings.some((w) => /blocked|quota|rate|exhausted/i.test(w));
 
   return {
     fetchedAt: new Date().toISOString(),
     tours,
     cards,
     navLinks,
-    warnings,
-    toursSource: inferToursSource(warnings, cricApiBlocked, tours.length),
+    warnings: mergedWarnings,
+    toursSource: inferToursSource(mergedWarnings, cricApiBlocked, tours.length),
   };
 }
 

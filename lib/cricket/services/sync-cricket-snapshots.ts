@@ -13,6 +13,7 @@ import { buildTourDetailLive, toTourDetailSnapshot } from "@/lib/cricket/service
 import { applyEspnTourSquads, refreshEspnTourSquads } from "@/lib/cricket/providers/espn-squads";
 import {
   beginCricApiSyncSession,
+  getCricApiKeyWarnings,
   isCricApiBlocked,
   isCricApiConfigured,
   prefetchMatchesForSync,
@@ -268,6 +269,7 @@ export async function syncCricketSnapshots(
       const message = e instanceof Error ? e.message : "CricAPI prefetch failed";
       warnings.push(message);
     }
+    warnings.push(...getCricApiKeyWarnings());
   }
 
   if (run("last-match") && !skipCricApi) {

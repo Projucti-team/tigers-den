@@ -5,7 +5,7 @@ import { snapshotAgeHours } from "@/lib/cricket/snapshot-db";
 export const FRESH_CRICAPI_TOURS_MAX_AGE_HOURS = 24;
 
 export function isCricApiRateLimited(warnings: string[]): boolean {
-  return warnings.some((w) => /blocked|quota|rate|hits|limit|exceed|429/i.test(w));
+  return warnings.some((w) => /blocked|quota|rate|hits|limit|exceed|429|exhausted/i.test(w));
 }
 
 /** True when the stored index came from a successful CricAPI run within the freshness window. */
