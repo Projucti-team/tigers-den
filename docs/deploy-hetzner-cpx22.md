@@ -50,21 +50,24 @@ cp .env.production.example .env.production
 nano .env.production
 ```
 
-Minimum:
+Minimum (Postgres on server — recommended):
 
 ```env
 PAYLOAD_SECRET=<openssl rand -base64 32>
 NEXT_PUBLIC_SITE_URL=https://tigers-den.yourdomain.com
 NEXT_PUBLIC_SERVER_URL=https://tigers-den.yourdomain.com
-DATABASE_URI=file:/app/data/tigersden.db
+POSTGRES_URL=postgresql://user:pass@postgres:5432/tigersden
 CRICKET_DATA_API_KEY=<your key>
 CRON_SECRET=<openssl rand -base64 32>
 AUTH_SECRET=<openssl rand -base64 32>
 ```
 
-Optional: Google/Facebook OAuth vars from `.env.example`.
+Use Coolify Postgres or `docker compose -f docker-compose.yml -f docker-compose.postgres.yml up -d`.  
+Do **not** set `DATABASE_URI=file:...` when `POSTGRES_URL` is set.
 
-If you intentionally use hosted Postgres, set `POSTGRES_URL=...` and **remove** the `DATABASE_URI` line.
+Migrating from Neon: [migrate-neon-to-server-postgres.md](./migrate-neon-to-server-postgres.md).
+
+SQLite-only (legacy): `DATABASE_URI=file:/app/data/tigersden.db` and no `POSTGRES_URL`.
 
 ## 5. Build and start
 

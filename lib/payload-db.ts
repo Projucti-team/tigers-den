@@ -6,7 +6,7 @@ import { getPostgresConnectionString, isPostgresDatabase } from "@/lib/payload-p
 
 import { migrations } from "../migrations";
 
-/** Postgres (Neon) when configured; otherwise SQLite on local/persistent volume. */
+/** Postgres on-server (Coolify) when POSTGRES_URL is set; otherwise SQLite for local dev. */
 export function getPayloadDatabase(): DatabaseAdapterObj {
   const postgresUrl = getPostgresConnectionString();
 
@@ -28,7 +28,7 @@ export function getPayloadDatabase(): DatabaseAdapterObj {
   });
 }
 
-/** True when running against Postgres (Neon/Coolify-managed env). */
+/** True when running against Postgres (server or hosted). */
 export function isProductionDatabase(): boolean {
   return isPostgresDatabase();
 }

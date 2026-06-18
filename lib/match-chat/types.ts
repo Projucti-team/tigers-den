@@ -7,7 +7,7 @@ export const THE_ROAR_CHAT_ID = "the-roar";
 export const THE_ROAR_CHAT_TITLE = "Bangladesh fans, all day every day";
 
 export type MatchChatMessage = {
-  id: number;
+  id: string;
   body: string;
   createdAt: string;
   author: PublicMember;

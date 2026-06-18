@@ -18,6 +18,9 @@ export function matchChatApiError(err: unknown): NextResponse {
   if (message === "MESSAGE_TOO_LONG") {
     return NextResponse.json({ error: "Message is too long" }, { status: 400 });
   }
+  if (message === "FIREBASE_NOT_CONFIGURED") {
+    return NextResponse.json({ error: "Chat is not configured" }, { status: 503 });
+  }
 
   console.error("[match-chat-api]", err);
   return NextResponse.json({ error: "Something went wrong" }, { status: 500 });

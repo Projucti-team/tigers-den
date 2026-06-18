@@ -1,4 +1,4 @@
-/** Postgres connection string from env (Neon, Coolify, or DATABASE_URI=postgresql://…). */
+/** Postgres connection string from env (server Postgres, or legacy hosted URL). */
 export function getPostgresConnectionString(): string | null {
   const direct =
     process.env.POSTGRES_URL?.trim() || process.env.DATABASE_URL?.trim() || null;

@@ -2,6 +2,8 @@
 
 Use this when Coolify builds from your Git repo on each push (no manual `git pull` on the server).
 
+**Overview:** [README](../README.md) · **Architecture:** [architecture.md](./architecture.md) · **Jobs:** [jobs.md](./jobs.md)
+
 ## Coolify app settings
 
 | Setting | Value |
@@ -11,18 +13,35 @@ Use this when Coolify builds from your Git repo on each push (no manual `git pul
 | **Port** | `3000` |
 | **Health check** | `GET /` on port 3000 |
 
+## Database (recommended: Postgres on the server)
+
+Create a **PostgreSQL** resource in Coolify (same project/network as the app). Use the **internal** connection string in the app env as `POSTGRES_URL`.
+
+| Why Postgres on-server | |
+|------------------------|--|
+| Faster than remote Neon (no cross-cloud latency) | |
+| No Neon quota / billing | |
+| Cricket sync + CMS in one DB; chat is separate (Firestore) | |
+| Player registry, snapshots, CMS in one DB | |
+
+**Do not** set `DATABASE_URI=file:...` when `POSTGRES_URL` is set.
+
+Migrating from Neon: [migrate-neon-to-server-postgres.md](./migrate-neon-to-server-postgres.md)
+
+### SQLite (legacy / minimal)
+
+Only if you intentionally skip Postgres: `DATABASE_URI=file:/app/data/tigersden.db` and no `POSTGRES_URL`. Not recommended for production (chat + sync contention).
+
 ## Persistent storage (required)
 
-Mount volumes so the SQLite DB and uploads survive redeploys:
+Mount volumes so JSON caches and uploads survive redeploys:
 
 | Container path | Purpose |
 |----------------|---------|
-| `/app/data` | SQLite DB (`tigersden.db`) + `data/*.json` cricket caches |
+| `/app/data` | `data/*.json` cricket scrape caches (not the CMS DB when using Postgres) |
 | `/app/media` | CMS uploads (hero images, etc.) |
 
 In Coolify: **Storages** → add two volumes bound to those paths.
-
-Without `/app/data`, every deploy wipes tours and admin content.
 
 ## Environment variables
 
@@ -30,55 +49,51 @@ Set these in Coolify → **Environment Variables** (production):
 
 | Variable | Required | Notes |
 |----------|----------|--------|
-| `PAYLOAD_SECRET` | Yes | `openssl rand -base64 32` |
+| `PAYLOAD_SECRET` | Yes | `openssl rand -base64 32` — keep the same value across DB migration |
 | `NEXT_PUBLIC_SITE_URL` | Yes | `https://your-domain.com` |
 | `NEXT_PUBLIC_SERVER_URL` | Yes | Same as site URL |
-| `DATABASE_URI` | Yes | `file:/app/data/tigersden.db` |
+| `POSTGRES_URL` | Yes (prod) | Internal Coolify Postgres URL |
 | `CRICKET_DATA_API_KEY` | Yes for `/tours` | [cricketdata.org](https://cricketdata.org/signup.aspx) |
 | `CRON_SECRET` | Yes | `openssl rand -base64 32` — protects bootstrap + cron |
-| `CRICKET_SYNC_ON_START` | No | Default `1` — runs idempotent sync after each deploy when tours are missing/stale |
+| `CRICKET_SYNC_ON_START` | No | Default `1` — idempotent sync after deploy when stale |
 | `AUTH_SECRET` | If using member login | `openssl rand -base64 32` |
+| `NEXT_PUBLIC_FIREBASE_*` + `FIREBASE_*` | For live chat | [firebase-chat.md](./firebase-chat.md) |
 
-Do **not** set `POSTGRES_URL` unless you intentionally use Neon/Postgres instead of SQLite.
+Chat uses Firestore (not Postgres) for real-time messages.
 
-### Database schema (tours, stand, match chat)
+### Schema migrations
 
-Coolify uses **SQLite** on `/app/data` — do **not** run `npm run deploy:migrate` inside the production container (`tsx` is not installed there).
+Postgres migrations run automatically on app boot via `getPayloadClient()` → `ensurePayloadSchema()`.
 
-Schema updates run automatically when the app boots:
-
-1. **Container entrypoint** → `POST /api/admin/bootstrap-db` (when `CRON_SECRET` + `CRICKET_DATA_API_KEY` are set).
-2. **First chat load** → creates `match_chat_*` tables if missing.
-
-To apply schema manually after a deploy:
+To apply manually after deploy:
 
 ```bash
 curl -fsS -X POST "https://your-domain.com/api/admin/bootstrap-db" \
   -H "Authorization: Bearer YOUR_CRON_SECRET"
 ```
 
-If admin sync still errors about a missing table, add temporarily `PAYLOAD_SQLITE_PUSH_SCHEMA=1`, redeploy once, then remove it.
+### Backups
+
+Schedule daily `scripts/backup-postgres.sh` on the server (see migration doc). Keep `/app/media` volume backups too.
 
 ## What runs automatically on each deploy
 
 1. **Coolify pipeline** builds the Docker image (`npm run build` — uses committed `app/(payload)/admin/importMap.js`).
 2. **Container starts** → `deploy/docker-entrypoint.sh`:
    - Seeds `data/*.json` into the volume if missing.
-   - Calls `POST /api/admin/bootstrap-db` when `CRICKET_DATA_API_KEY` + `CRON_SECRET` are set (skips if tours already synced).
-3. **Admin button** → `POST /api/cricket-snapshots/sync` (manual full refresh while logged in).
-
-Build time does **not** run tours sync — the database only exists on the persistent volume at runtime.
+   - Calls `POST /api/admin/bootstrap-db` when `CRON_SECRET` is set.
+3. **Admin button** → cricket sync while logged in.
 
 ## Nightly full refresh (Coolify)
 
-Add a **Scheduled Task** in Coolify (or server cron) hitting your public URL:
+Add a **Scheduled Task** in Coolify (or server cron). Full schedule and troubleshooting: [jobs.md](./jobs.md).
 
 ```bash
 curl -fsS -X POST "https://your-domain.com/api/cron/cricket" \
   -H "Authorization: Bearer YOUR_CRON_SECRET"
 ```
 
-Schedule: `0 21 * * *` (21:00 UTC ≈ 3:00 AM Bangladesh). GitHub Actions for JSON caches run at 3:15–3:45 AM BDT — see `docs/cricket-api.md`.
+Cron (UTC): `0 21 * * *` (= 3:00 AM BDT).
 
 ## After pushing to `main`
 
@@ -88,16 +103,17 @@ Coolify redeploys automatically. Check **Deployment logs** for:
 [entrypoint] cricket bootstrap/sync finished
 ```
 
-Then open `/tours` and Payload admin → Cricket Snapshots → confirm rows exist.
+Then open `/tours`, `/rankings`, and Payload admin.
 
 ## Troubleshooting
 
 | Issue | Fix |
 |-------|-----|
-| Tours empty after deploy | Confirm `/app/data` volume + `CRICKET_DATA_API_KEY` + `CRON_SECRET` in Coolify env |
-| Admin sync **Unauthorized** | Log out/in at `/admin`; use latest image with `/api/cricket-snapshots/sync` |
-| Sync runs every deploy but you want to skip | Set `CRICKET_SYNC_ON_START=0` |
-| Force full sync after deploy | Set `CRICKET_SYNC_ON_START=force` for one deploy, then back to `1` |
-| Hero images broken | `NEXT_PUBLIC_SERVER_URL` must match your public HTTPS URL; persist `/app/media` |
+| Tours empty after deploy | `CRICKET_DATA_API_KEY` + `CRON_SECRET`; run cron sync with `?force=1` |
+| Still hitting Neon / wrong DB | Only `POSTGRES_URL` set — remove `DATABASE_URI=file:...` |
+| Missing tables | `POST /api/admin/bootstrap-db` with `CRON_SECRET` |
+| Admin sync **Unauthorized** | Log in at `/admin` first |
+| Force full sync | `CRICKET_SYNC_ON_START=force` for one deploy |
+| Hero images broken | `NEXT_PUBLIC_SERVER_URL` = public HTTPS URL; persist `/app/media` |
 
-See also [deploy-production.md](./deploy-production.md) for generic Docker details.
+See also [deploy-production.md](./deploy-production.md), [migrate-neon-to-server-postgres.md](./migrate-neon-to-server-postgres.md).

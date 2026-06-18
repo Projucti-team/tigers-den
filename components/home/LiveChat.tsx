@@ -2,46 +2,26 @@
 
 import Link from "next/link";
 import { useSession } from "next-auth/react";
-import { useCallback, useEffect, useRef, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 
 import { ChatEmojiPicker } from "@/components/match-chat/ChatEmojiPicker";
 import { formatPostTime } from "@/components/profile/format-time";
 import { MemberAvatar } from "@/components/profile/MemberAvatar";
 import { MATCH_CHAT_MESSAGE_MAX, THE_ROAR_CHAT_TITLE } from "@/lib/match-chat/types";
+import { useRoarChat } from "@/lib/match-chat/useRoarChat";
 import { formatMemberDisplayName } from "@/lib/members/display";
-import type { MatchChatMessage, MatchChatSnapshot } from "@/lib/match-chat/types";
 import { profilePath, JOIN_PAGE_PATH } from "@/lib/site-content";
-
-const POLL_MS = 20_000;
 
 export function LiveChat() {
   const { status } = useSession();
   const isLoggedIn = status === "authenticated";
-  const [messages, setMessages] = useState<MatchChatMessage[]>([]);
+  const { messages, loading, error } = useRoarChat();
   const [message, setMessage] = useState("");
   const [posting, setPosting] = useState(false);
   const [postError, setPostError] = useState<string | null>(null);
-  const [loading, setLoading] = useState(true);
   const scrollRef = useRef<HTMLDivElement>(null);
   const inputRef = useRef<HTMLInputElement>(null);
   const stickToBottom = useRef(true);
-
-  const refresh = useCallback(async () => {
-    try {
-      const res = await fetch("/api/match-chat", { cache: "no-store" });
-      if (!res.ok) return;
-      const data = (await res.json()) as MatchChatSnapshot;
-      setMessages(data.messages);
-    } finally {
-      setLoading(false);
-    }
-  }, []);
-
-  useEffect(() => {
-    void refresh();
-    const timer = window.setInterval(() => void refresh(), POLL_MS);
-    return () => window.clearInterval(timer);
-  }, [refresh]);
 
   useEffect(() => {
     if (!stickToBottom.current || !scrollRef.current) return;
@@ -89,17 +69,13 @@ export function LiveChat() {
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ message }),
       });
-      const data = (await res.json()) as { message?: MatchChatMessage; error?: string };
+      const data = (await res.json()) as { error?: string };
       if (!res.ok) {
         setPostError(data.error ?? "Could not send message. Try again.");
         return;
       }
-      const posted = data.message;
-      if (!posted) return;
-      setMessages((prev) => [...prev, posted]);
       setMessage("");
       stickToBottom.current = true;
-      void refresh();
     } finally {
       setPosting(false);
     }
@@ -123,6 +99,8 @@ export function LiveChat() {
       >
         {loading && !messages.length ? (
           <p className="text-center text-sm text-charcoal/60">Loading The Roar…</p>
+        ) : error ? (
+          <p className="text-center text-sm font-semibold text-crimson">{error}</p>
         ) : messages.length === 0 ? (
           <p className="text-center text-sm text-charcoal/60">
             No messages yet — be the first to roar for Bangladesh.
@@ -190,7 +168,7 @@ export function LiveChat() {
             Type message
           </label>
           <div className="flex gap-2">
-            <ChatEmojiPicker onPick={insertEmoji} disabled={posting} />
+            <ChatEmojiPicker onPick={insertEmoji} disabled={posting || Boolean(error)} />
             <input
               ref={inputRef}
               id="chat-input"
@@ -202,11 +180,12 @@ export function LiveChat() {
               }}
               maxLength={MATCH_CHAT_MESSAGE_MAX}
               placeholder="🔥 Type your roar…"
-              className="min-w-0 flex-1 rounded-lg border-2 border-emerald bg-white px-3 py-2.5 text-sm font-semibold text-charcoal placeholder:text-charcoal/45 outline-none focus:border-crimson focus:ring-2 focus:ring-crimson/30"
+              disabled={Boolean(error)}
+              className="min-w-0 flex-1 rounded-lg border-2 border-emerald bg-white px-3 py-2.5 text-sm font-semibold text-charcoal placeholder:text-charcoal/45 outline-none focus:border-crimson focus:ring-2 focus:ring-crimson/30 disabled:cursor-not-allowed disabled:opacity-50"
             />
             <button
               type="submit"
-              disabled={posting || !message.trim()}
+              disabled={posting || !message.trim() || Boolean(error)}
               className="fan-btn-green shrink-0 rounded-lg px-4 py-2.5 text-xs hover:translate-y-0.5 disabled:cursor-not-allowed disabled:opacity-40"
             >
               {posting ? "…" : "Send"}

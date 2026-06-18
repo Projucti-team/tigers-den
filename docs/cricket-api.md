@@ -2,6 +2,8 @@
 
 Internal REST API for The Tigers' Den. Aggregates live scores, tours, and ICC rankings for **men's and women's** cricket.
 
+**Architecture & jobs:** [architecture.md](./architecture.md) · [jobs.md](./jobs.md)
+
 ## Setup
 
 Add to `.env.local`:
@@ -71,14 +73,18 @@ npm run scrape:bangladesh-news
 
 Runs nightly at **3:45 AM BDT** via `.github/workflows/scrape-bangladesh-news.yml`.
 
-### Nightly job schedule (all times Bangladesh)
+### Nightly job schedule
 
-| Time (BDT) | Job | Where |
-|------------|-----|--------|
-| 3:00 AM | **Cricket sync** — tours, squads, fixtures, rankings → DB | `POST /api/cron/cricket` (Coolify / server cron) |
-| 3:15 AM | ICC rankings + WTC → `data/*.json` | GitHub Action `scrape-icc-rankings` |
-| 3:30 AM | Bangladesh last/upcoming matches → `data/*.json` | GitHub Action `scrape-bangladesh-match` |
-| 3:45 AM | Bangladesh cricket news → `data/*.json` | GitHub Action `scrape-bangladesh-news` |
+All scheduled jobs (server cron, GitHub Actions, deploy bootstrap) are documented in **[jobs.md](./jobs.md)**.
+
+Quick reference (Bangladesh time):
+
+| Time (BDT) | Job |
+|------------|-----|
+| 3:00 AM | Cricket sync → Postgres snapshots (`POST /api/cron/cricket`) |
+| 3:15 AM | ICC rankings + WTC → `data/*.json` (GitHub Action) |
+| 3:30 AM | Bangladesh last match → `data/*.json` (GitHub Action) |
+| 3:45 AM | Bangladesh news → `data/*.json` (GitHub Action) |
 
 ## Endpoints
 
