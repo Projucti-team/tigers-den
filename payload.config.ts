@@ -20,6 +20,8 @@ import { StandComments } from "./collections/StandComments";
 import { StandDiscussions } from "./collections/StandDiscussions";
 import { StandReactions } from "./collections/StandReactions";
 import { Users } from "./collections/Users";
+import { PrivacyPolicy } from "./globals/PrivacyPolicy";
+import { TermsOfService } from "./globals/TermsOfService";
 import { getPayloadDatabase } from "./lib/payload-db";
 import { getPayloadPlugins } from "./lib/payload-plugins";
 import { getPayloadServerURL, getPayloadTrustedOrigins } from "./lib/payload-url";
@@ -64,6 +66,7 @@ export default buildConfig({
     Players,
     CricketSnapshots,
   ],
+  globals: [PrivacyPolicy, TermsOfService],
   editor: lexicalEditor(),
   secret: process.env.PAYLOAD_SECRET || "",
   typescript: {

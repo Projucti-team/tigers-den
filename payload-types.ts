@@ -147,3 +147,21 @@ export type CricketSnapshot = {
   updatedAt: string;
   createdAt: string;
 };
+
+export type PrivacyPolicy = {
+  id: number;
+  subtitle: string;
+  lastUpdated: string;
+  content: Record<string, unknown>;
+  updatedAt: string;
+  createdAt: string;
+};
+
+export type TermsOfService = {
+  id: number;
+  subtitle: string;
+  lastUpdated: string;
+  content: Record<string, unknown>;
+  updatedAt: string;
+  createdAt: string;
+};

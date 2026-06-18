@@ -6,6 +6,7 @@ import * as matchChat from "./20260610_000000_match_chat";
 import * as matchChatPayloadRels from "./20260611_000000_match_chat_payload_rels";
 import * as payloadLockedDocumentsRelsFull from "./20260612_000000_payload_locked_documents_rels_full";
 import * as cricketPlayers from "./20260616_000000_cricket_players";
+import * as legalGlobals from "./20260617_000000_legal_globals";
 
 type Migration = {
   name: string;
@@ -43,5 +44,10 @@ export const migrations: Migration[] = [
     name: "20260616_000000_cricket_players",
     up: cricketPlayers.up,
     down: cricketPlayers.down,
+  },
+  {
+    name: "20260617_000000_legal_globals",
+    up: legalGlobals.up,
+    down: legalGlobals.down,
   },
 ];

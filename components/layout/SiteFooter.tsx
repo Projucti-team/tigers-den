@@ -79,7 +79,11 @@ export function SiteFooter() {
           <Link href="/privacy" className="hover:text-white/80 hover:underline">
             Privacy
           </Link>{" "}
-          · Terms · Code of Conduct · Cookie Policy
+          ·{" "}
+          <Link href="/terms" className="hover:text-white/80 hover:underline">
+            Terms
+          </Link>{" "}
+          · Code of Conduct · Cookie Policy
         </p>
         <p className="mt-1">
           <Link href="/admin" className="hover:text-white/80">

@@ -167,12 +167,38 @@ export async function ensureSqliteCricketPlayersTables(): Promise<void> {
   sqlitePlayersReady = true;
 }
 
+let sqliteLegalGlobalsReady = false;
+
+/** Legal page globals for Privacy Policy and Terms of Service (SQLite). */
+export async function ensureSqliteLegalGlobalsTables(): Promise<void> {
+  if (sqliteLegalGlobalsReady) return;
+
+  const client = sqliteClient();
+  if (!client) return;
+
+  for (const table of ["privacy_policy", "terms_of_service"] as const) {
+    await client.execute(`
+      CREATE TABLE IF NOT EXISTS "${table}" (
+        "id" integer PRIMARY KEY NOT NULL,
+        "subtitle" text NOT NULL,
+        "last_updated" text NOT NULL,
+        "content" text NOT NULL,
+        "updated_at" text DEFAULT (strftime('%Y-%m-%dT%H:%M:%fZ', 'now')) NOT NULL,
+        "created_at" text DEFAULT (strftime('%Y-%m-%dT%H:%M:%fZ', 'now')) NOT NULL
+      );
+    `);
+  }
+
+  sqliteLegalGlobalsReady = true;
+}
+
 /** Idempotent SQLite schema patches for VPS/Docker deploys. */
 export async function ensureSqliteIncrementalSchema(): Promise<void> {
   await Promise.all([
     ensureSqliteCricketSnapshotsTable(),
     ensureSqliteMatchChatTables(),
     ensureSqliteCricketPlayersTables(),
+    ensureSqliteLegalGlobalsTables(),
     ensureSqlitePayloadLockedDocumentsRels(),
   ]);
 }

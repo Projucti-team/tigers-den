@@ -120,6 +120,19 @@ async function runPostgresPatches(): Promise<void> {
       CREATE UNIQUE INDEX IF NOT EXISTS "players_lookup_key_idx"
       ON "players" USING btree ("lookup_key");
     `);
+
+    for (const table of ["privacy_policy", "terms_of_service"] as const) {
+      await pool.query(`
+        CREATE TABLE IF NOT EXISTS "${table}" (
+          "id" serial PRIMARY KEY NOT NULL,
+          "subtitle" varchar NOT NULL,
+          "last_updated" timestamp(3) with time zone NOT NULL,
+          "content" jsonb NOT NULL,
+          "updated_at" timestamp(3) with time zone DEFAULT now() NOT NULL,
+          "created_at" timestamp(3) with time zone DEFAULT now() NOT NULL
+        );
+      `);
+    }
   } finally {
     await pool.end();
   }
