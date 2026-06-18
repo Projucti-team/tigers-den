@@ -16,6 +16,11 @@ import {
   type SeriesSquad,
   type SquadPlayer,
 } from "@/lib/cricket/squads/types";
+import {
+  extractFormatHint,
+  extractOpponentNation,
+  isUmbrellaTourName,
+} from "@/lib/cricket/tour-identity";
 import { tourSlug, tourStorageKey } from "@/lib/cricket/tour-slug";
 import type { Tour } from "@/lib/cricket/types";
 
@@ -132,10 +137,27 @@ function parsePlayerNames(block: string): SquadPlayer[] {
     .map((name) => ({ name }));
 }
 
+const OPPONENT_NATIONS = [
+  "australia",
+  "bangladesh",
+  "england",
+  "india",
+  "pakistan",
+  "sri lanka",
+  "new zealand",
+  "south africa",
+  "west indies",
+  "zimbabwe",
+];
+
 function normalizeSquadHeading(heading: string): string {
-  const h = heading.trim();
+  const h = heading.trim().replace(/\s+/g, " ");
+
+  // Keep full headlines like "Bangladesh squad for one-off Test vs Zimbabwe".
+  if (/\b(?:vs\.?|against|in)\s+(?:the\s+)?[a-z]/i.test(h)) return h;
+
   const nationMatch = h.match(
-    /^(bangladesh|australia|england|india|pakistan|sri lanka|new zealand|south africa|west indies)\b/i,
+    /^(bangladesh|australia|england|india|pakistan|sri lanka|new zealand|south africa|west indies|zimbabwe)\b/i,
   );
   if (!nationMatch) return h;
 
@@ -289,7 +311,7 @@ export async function fetchSquadsFromEspnCore(league: EspnLeagueRef): Promise<Se
     if (!eventId) continue;
 
     const competitors = await fetchCoreList(
-      `${CORE_BASE}/leagues/${league.cricinfoSeriesId}/events/${eventId}/competitions/${eventId}/competitors`,
+      `${CORE_BASE}/leagues/${league.espnLeagueId}/events/${eventId}/competitions/${eventId}/competitors`,
     );
 
     for (const compRef of competitors.items ?? []) {
@@ -414,6 +436,63 @@ function tourNamesMatch(a: string, b: string): boolean {
   return hits.length >= Math.min(2, tokens.length);
 }
 
+async function resolveEspnLeagueByCricinfoId(cricinfoSeriesId: number): Promise<number | null> {
+  for (let page = 1; page <= 8; page++) {
+    const list = await fetchCoreList(`${CORE_BASE}/leagues?page=${page}&pageSize=100`);
+    if (!list.items?.length) break;
+
+    for (const item of list.items) {
+      const league = await fetchCoreJson<CoreLeague>(item.$ref);
+      if (Number(league?.mappings?.cricinfo) === cricinfoSeriesId && league?.id) {
+        return Number(league.id);
+      }
+    }
+  }
+
+  return null;
+}
+
+async function normalizeLeagueRef(league: EspnLeagueRef): Promise<EspnLeagueRef> {
+  if (league.espnLeagueId !== league.cricinfoSeriesId) return league;
+
+  const espnLeagueId = await resolveEspnLeagueByCricinfoId(league.cricinfoSeriesId);
+  if (!espnLeagueId) return league;
+
+  return { ...league, espnLeagueId };
+}
+
+/** Route squads from combined announcement stories to the right bilateral tour. */
+function squadBelongsToTour(squad: SeriesSquad, tour: Tour): boolean {
+  const blob = `${squad.team} ${squad.source ?? ""}`.toLowerCase();
+  const opponent = extractOpponentNation(tour.name);
+
+  if (opponent && blob.includes(opponent)) return true;
+
+  if (opponent) {
+    for (const nation of OPPONENT_NATIONS) {
+      if (nation !== opponent && blob.includes(nation)) return false;
+    }
+  }
+
+  if (tourNamesMatch(tour.name, squad.team)) return true;
+
+  if (isUmbrellaTourName(tour.name) && opponent) {
+    const squadFormat = extractFormatHint(squad.team);
+    if (!squadFormat) return false;
+
+    const tourHasFormat =
+      squadFormat === "test"
+        ? (tour.test ?? 0) > 0
+        : squadFormat === "odi"
+          ? (tour.odi ?? 0) > 0
+          : (tour.t20 ?? 0) > 0;
+
+    if (tourHasFormat) return true;
+  }
+
+  return false;
+}
+
 /** Fast path — read squads from bundled seed + data/espn-tour-squads.json. */
 export async function loadEspnTourSquadsFromCache(tour: Tour): Promise<SeriesSquad[]> {
   const snapshot = await readEspnTourSquads();
@@ -443,15 +522,20 @@ export async function refreshEspnTourSquads(tour: Tour): Promise<{
   const snapshot = await readEspnTourSquads();
   const cached = lookupEspnTourSquads(snapshot, keys);
 
-  const league = leagueFromSnapshot(snapshot, keys) ?? (await resolveEspnLeagueForTour(tour.name));
+  const rawLeague = leagueFromSnapshot(snapshot, keys) ?? (await resolveEspnLeagueForTour(tour.name));
+  const league = rawLeague ? await normalizeLeagueRef(rawLeague) : null;
 
   const curatedStoryUrls = keys
     .map((key) => snapshot.entries[key]?.squadStoryUrls ?? [])
     .flat();
 
   const coreSquads = league ? await fetchSquadsFromEspnCore(league) : [];
-  const storySquads = await fetchSquadsFromEspnStories(tour.name);
-  const curatedSquads = await fetchSquadsFromStoryUrls(curatedStoryUrls);
+  const storySquads = (await fetchSquadsFromEspnStories(tour.name)).filter((s) =>
+    squadBelongsToTour(s, tour),
+  );
+  const curatedSquads = (await fetchSquadsFromStoryUrls(curatedStoryUrls)).filter((s) =>
+    squadBelongsToTour(s, tour),
+  );
   const merged = mergeSquads(cached, coreSquads, storySquads, curatedSquads);
   const squads: SeriesSquad[] = [];
 

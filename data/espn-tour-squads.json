@@ -281,9 +281,34 @@
     "bangladesh-tour-of-zimbabwe": {
       "tourName": "Bangladesh tour of Zimbabwe, 2026",
       "cricinfoSeriesId": 1538288,
-      "espnLeagueId": 1538288,
-      "fetchedAt": "2026-05-31T00:00:00.000Z",
-      "squads": []
+      "espnLeagueId": 24420,
+      "squadStoryUrls": [
+        "https://www.espncricinfo.com/story/ban-vs-aus-taskin-ahmed-and-nahid-rana-return-for-t20is-against-australia-1540473"
+      ],
+      "fetchedAt": "2026-06-13T00:00:00.000Z",
+      "squads": [
+        {
+          "team": "Bangladesh squad for one-off Test vs Zimbabwe",
+          "source": "https://www.espncricinfo.com/story/ban-vs-aus-taskin-ahmed-and-nahid-rana-return-for-t20is-against-australia-1540473",
+          "players": [
+            { "name": "Najmul Hossain Shanto (capt)" },
+            { "name": "Shadman Islam" },
+            { "name": "Mahmudul Hasan Joy" },
+            { "name": "Tanzid Hasan" },
+            { "name": "Mominul Haque" },
+            { "name": "Mushfiqur Rahim" },
+            { "name": "Litton Das (wk)" },
+            { "name": "Taijul Islam" },
+            { "name": "Nayeem Hasan" },
+            { "name": "Khaled Ahmed" },
+            { "name": "Ebadot Hossain" },
+            { "name": "Hasan Mahmud" },
+            { "name": "Tawhid Hridoy" },
+            { "name": "Amite Hasan" },
+            { "name": "Robiul Haque" }
+          ]
+        }
+      ]
     }
   }
 }
