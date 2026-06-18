@@ -82,6 +82,12 @@ export async function buildFutureToursLive(options?: {
     }
   }
 
+  tours = await mergeCuratedTours(tours);
+
+  if (options?.bangladeshOnly) {
+    tours = filterBangladeshTours(tours);
+  }
+
   return { tours, warnings: [...new Set(warnings)] };
 }
 
@@ -102,7 +108,7 @@ export async function getFutureTours(options?: { bangladeshOnly?: boolean }): Pr
     if (stale) warnings.push(stale);
   }
 
-  let tours = cached?.tours ?? [];
+  let tours = deduplicateTours(cached?.tours ?? []);
   if (options?.bangladeshOnly) {
     tours = filterBangladeshTours(tours);
   }

@@ -23,7 +23,7 @@ import { TopBar } from "@/components/layout/TopBar";
 import { AuthSessionProvider } from "@/components/providers/AuthSessionProvider";
 import { ensureCricketSnapshotsFresh } from "@/lib/cricket/services/ensure-cricket-fresh";
 import { getMarqueeTickerSnapshot } from "@/lib/cricket/services/marquee-ticker";
-import { getToursIndexSnapshot } from "@/lib/cricket/services/tours";
+import { getTourNavLinks } from "@/lib/cricket/services/tours-display";
 
 const montserrat = Montserrat({
   subsets: ["latin"],
@@ -45,15 +45,13 @@ const robotoMono = Roboto_Mono({
 export default async function FrontendLayout({ children }: { children: ReactNode }) {
   await ensureCricketSnapshotsFresh();
 
-  const [marqueeSnapshot, toursSnapshot] = await Promise.all([
+  const [marqueeSnapshot, tourLinks] = await Promise.all([
     getMarqueeTickerSnapshot().catch(() => ({
       items: ["🐅 THE TIGERS' DEN", "🇧🇩 GREEN & RED ARMY", "🔥 ROAR FOR BANGLADESH"],
       isLive: false,
     })),
-    getToursIndexSnapshot(),
+    getTourNavLinks(),
   ]);
-
-  const tourLinks = toursSnapshot?.navLinks ?? [];
 
   return (
     <html lang="en">

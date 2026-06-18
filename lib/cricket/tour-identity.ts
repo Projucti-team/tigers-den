@@ -118,7 +118,6 @@ export function deduplicateTours(tours: Tour[]): Tour[] {
   const byVenue = new Map<string, Tour[]>();
 
   for (const tour of tours) {
-    if (!isFutureSeries(tour.startDate, tour.endDate)) continue;
     const key = tourVenueKey(tour.name);
     const list = byVenue.get(key) ?? [];
     list.push(tour);
@@ -128,8 +127,14 @@ export function deduplicateTours(tours: Tour[]): Tour[] {
   const merged: Tour[] = [];
 
   for (const group of byVenue.values()) {
-    const specific = group.filter((t) => !isUmbrellaTourName(t.name));
-    const picked = specific.length > 0 ? specific : group;
+    const withFormat = group.filter((t) => extractFormatHint(t.name));
+    const withoutUmbrella = group.filter((t) => !isUmbrellaTourName(t.name));
+    const picked =
+      withFormat.length > 0
+        ? withFormat
+        : withoutUmbrella.length > 0
+          ? withoutUmbrella
+          : group;
 
     picked.sort((a, b) => {
       const aNum = /^\d+$/.test(a.id);
@@ -141,11 +146,13 @@ export function deduplicateTours(tours: Tour[]): Tour[] {
     merged.push(...dedupeByNameAndFormat(picked));
   }
 
-  return merged.sort((a, b) => {
-    const da = a.startDate ? new Date(a.startDate).getTime() : 0;
-    const db = b.startDate ? new Date(b.startDate).getTime() : 0;
-    return da - db;
-  });
+  return merged
+    .filter((t) => isFutureSeries(t.startDate, t.endDate))
+    .sort((a, b) => {
+      const da = a.startDate ? new Date(a.startDate).getTime() : 0;
+      const db = b.startDate ? new Date(b.startDate).getTime() : 0;
+      return da - db;
+    });
 }
 
 export function matchBelongsToTour(match: LiveMatchSummary, tour: Tour): boolean {

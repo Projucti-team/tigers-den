@@ -104,3 +104,12 @@ export async function getTourCards(limit = 3): Promise<{
     warnings,
   };
 }
+
+/** Navbar TOURS dropdown — always deduped (not stale snapshot navLinks). */
+export async function getTourNavLinks(): Promise<{ label: string; href: string }[]> {
+  const { tours } = await getFutureTours({ bangladeshOnly: true });
+  return tours.map((tour) => ({
+    label: shortenTitle(tour.name),
+    href: tourPath(tour),
+  }));
+}
