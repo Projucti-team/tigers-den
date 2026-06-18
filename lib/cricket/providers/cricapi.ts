@@ -4,6 +4,7 @@ import { normalizeSquadPlayers } from "@/lib/cricket/curated-squads";
 import { isFutureSeries } from "@/lib/cricket/tour-dates";
 import { fetchEspnFutureTours } from "@/lib/cricket/providers/espn-fixtures";
 import { isUpcomingBangladeshMatch } from "@/lib/cricket/services/marquee-format";
+import { deduplicateTours } from "@/lib/cricket/tour-identity";
 import type { LiveMatchSummary, Scorecard, ScorecardInnings, Tour } from "@/lib/cricket/types";
 
 type CricApiResponse<T> = {
@@ -421,10 +422,9 @@ export async function fetchUpcomingTours(options?: {
   const seenNames = new Set<string>();
 
   if (!cricApiBlocked) {
-    const { rows, warning } = await fetchSeriesBatch({ offset: "0", search: "bangladesh" });
-    if (warning) {
-      warnings.push(warning);
-    } else {
+    for (const search of ["bangladesh", "bangladesh women"]) {
+      const { rows, warning } = await fetchSeriesBatch({ offset: "0", search });
+      if (warning) warnings.push(warning);
       for (const raw of rows) addFutureTour(tours, seenIds, seenNames, raw);
     }
   } else {
@@ -451,7 +451,7 @@ export async function fetchUpcomingTours(options?: {
     );
   }
 
-  return { tours: sortToursByStart(tours), warnings: [...new Set(warnings)] };
+  return { tours: deduplicateTours(tours), warnings: [...new Set(warnings)] };
 }
 
 export async function fetchCurrentMatches(): Promise<LiveMatchSummary[]> {

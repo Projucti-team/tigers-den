@@ -2,6 +2,7 @@ import type { CollectionConfig } from "payload";
 import { headersWithCors } from "payload";
 
 import { syncCricketSnapshots } from "@/lib/cricket/services/sync-cricket-snapshots";
+import { parseCricketSyncJobs } from "@/lib/cricket/sync-jobs";
 
 /** Nightly cricket data (rankings, tours, squads, venues) — written by cron, read on page load. */
 export const CricketSnapshots: CollectionConfig = {
@@ -27,10 +28,13 @@ export const CricketSnapshots: CollectionConfig = {
         }
 
         try {
-          // Manual admin sync always forces a full refresh unless explicitly disabled.
-          const forceParam = req.url ? new URL(req.url).searchParams.get("force") : null;
+          const url = req.url ? new URL(req.url) : null;
+          const forceParam = url?.searchParams.get("force");
           const force = forceParam !== "0";
-          const result = await syncCricketSnapshots({ force });
+          const jobsParam =
+            url?.searchParams.get("jobs") ?? url?.searchParams.get("job") ?? undefined;
+          const jobs = parseCricketSyncJobs(jobsParam);
+          const result = await syncCricketSnapshots({ force, jobs });
           return Response.json(result, {
             status: result.ok ? 200 : 207,
             headers: headersWithCors({ headers: new Headers(), req }),

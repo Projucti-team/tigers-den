@@ -13,28 +13,10 @@ import { refreshEspnTourSquads, applyEspnTourSquads } from "@/lib/cricket/provid
 import { tourToCard } from "@/lib/cricket/services/tours-display";
 import type { TourDetailSnapshot } from "@/lib/cricket/snapshot-types";
 import type { TourDetail } from "@/lib/cricket/tour-detail-types";
+import { matchBelongsToTour } from "@/lib/cricket/tour-identity";
 import type { LiveMatchSummary, Tour } from "@/lib/cricket/types";
 import { sortMatchesByDate } from "@/lib/cricket/match-sort";
 import { uniqueVenuesFromMatches } from "@/lib/cricket/venues";
-
-function tourKeywords(name: string): string[] {
-  const cleaned = name
-    .replace(/,?\s*\d{4}(-\d{2})?$/i, "")
-    .replace(/bangladesh tour of/i, "")
-    .replace(/tour of bangladesh/i, "")
-    .trim()
-    .toLowerCase();
-
-  const parts = cleaned.split(/\s+/).filter((w) => w.length > 2 && w !== "tour" && w !== "of");
-  return parts.length ? parts : [cleaned];
-}
-
-function matchBelongsToTour(match: LiveMatchSummary, tour: Tour): boolean {
-  const blob = `${match.name} ${match.teams?.join(" ") ?? ""}`.toLowerCase();
-  const keys = tourKeywords(tour.name);
-  const hits = keys.filter((k) => blob.includes(k));
-  return hits.length >= Math.min(2, keys.length) || blob.includes("bangladesh");
-}
 
 async function fallbackMatches(tour: Tour): Promise<LiveMatchSummary[]> {
   if (!isCricApiConfigured() || isCricApiBlocked()) return [];
@@ -71,7 +53,7 @@ export async function buildTourDetailLive(
 
   if (useCricApi) {
     const info = await fetchSeriesInfo(tour.id).catch(() => ({ matches: [], squads: [] }));
-    matches = info.matches;
+    matches = info.matches.filter((m) => matchBelongsToTour(m, tour));
 
     if (!matches.length) {
       matches = await fallbackMatches(tour);

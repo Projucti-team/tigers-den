@@ -2,6 +2,7 @@ import { revalidatePath } from "next/cache";
 import { NextResponse } from "next/server";
 
 import { syncCricketSnapshots } from "@/lib/cricket/services/sync-cricket-snapshots";
+import { parseCricketSyncJobs } from "@/lib/cricket/sync-jobs";
 import { getPayloadClient } from "@/lib/payload";
 
 export const runtime = "nodejs";
@@ -20,9 +21,12 @@ export async function POST(request: Request) {
       );
     }
 
-    const forceParam = new URL(request.url).searchParams.get("force");
+    const url = new URL(request.url);
+    const forceParam = url.searchParams.get("force");
     const force = forceParam !== "0";
-    const result = await syncCricketSnapshots({ force });
+    const jobsParam = url.searchParams.get("jobs") ?? url.searchParams.get("job") ?? undefined;
+    const jobs = parseCricketSyncJobs(jobsParam);
+    const result = await syncCricketSnapshots({ force, jobs });
 
     if (result.ok) {
       revalidatePath("/");

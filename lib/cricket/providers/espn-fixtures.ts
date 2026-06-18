@@ -9,6 +9,11 @@ import { tourSlug } from "@/lib/cricket/tour-slug";
 import type { LiveMatchSummary, Tour } from "@/lib/cricket/types";
 
 import { resolveEspnLeagueForTour } from "@/lib/cricket/providers/espn-squads";
+import {
+  deduplicateTours,
+  normalizeTourName,
+  tourMatchesCuratedSeries as tourMatchesCuratedSeriesIdentity,
+} from "@/lib/cricket/tour-identity";
 
 const CORE_BASE = "http://core.espnuk.org/v2/sports/cricket";
 const FIXTURE_TIMES_PATH = path.join(process.cwd(), "data", "espn-fixture-times.json");
@@ -50,12 +55,8 @@ type CoreLeague = {
   mappings?: { cricinfo?: number };
 };
 
-function normalizeTourName(name: string): string {
-  return name
-    .toLowerCase()
-    .replace(/,?\s*\d{4}(-\d{2})?$/i, "")
-    .replace(/\s+/g, " ")
-    .trim();
+function normalizeTourNameLocal(name: string): string {
+  return normalizeTourName(name);
 }
 
 function sortToursByStart(tours: Tour[]): Tour[] {
@@ -68,7 +69,8 @@ function sortToursByStart(tours: Tour[]): Tour[] {
 
 function leagueInvolvesBangladesh(league: CoreLeague): boolean {
   const blob = `${league.name ?? ""} ${league.shortName ?? ""}`.toLowerCase();
-  return blob.includes("bangladesh");
+  if (!blob.includes("bangladesh")) return false;
+  return true;
 }
 
 function tourFromFixtures(
@@ -168,28 +170,12 @@ function teamsFromTourName(name: string): string[] | undefined {
 }
 
 function tourMatchesCuratedSeries(tour: Tour, series: CuratedSeriesFixtures, seriesId: string): boolean {
-  const tourId = String(tour.id);
-  if (tourId === seriesId || tourId === String(series.cricinfoSeriesId ?? "")) return true;
-
-  const tourSlugKey = tourSlug(tour);
-  const curatedSlug = (series.tourName ?? "")
-    .toLowerCase()
-    .replace(/,?\s*\d{4}(-\d{2})?$/i, "")
-    .replace(/[^a-z0-9]+/g, "-")
-    .replace(/^-+|-+$/g, "");
-
-  if (curatedSlug && tourSlugKey.startsWith(curatedSlug)) return true;
-
-  const tourName = tour.name.toLowerCase();
-  const curatedName = (series.tourName ?? "").toLowerCase();
-  if (!curatedName) return false;
-
-  const tokens = curatedName
-    .replace(/[^a-z0-9]+/g, " ")
-    .split(/\s+/)
-    .filter((w) => w.length > 2);
-  const hits = tokens.filter((t) => tourName.includes(t));
-  return hits.length >= Math.min(3, tokens.length);
+  return tourMatchesCuratedSeriesIdentity(
+    tour,
+    series.tourName ?? "",
+    seriesId,
+    series.cricinfoSeriesId,
+  );
 }
 
 function matchTypeLabel(matchType?: string): string {
@@ -212,7 +198,7 @@ export async function fetchEspnFutureTours(): Promise<{ tours: Tour[]; warnings:
 
   function addTour(tour: Tour): void {
     if (!isFutureSeries(tour.startDate, tour.endDate)) return;
-    const nameKey = normalizeTourName(tour.name);
+    const nameKey = normalizeTourNameLocal(tour.name);
     if (seenIds.has(tour.id) || seenNames.has(nameKey)) return;
     seenIds.add(tour.id);
     seenNames.add(nameKey);
@@ -255,7 +241,7 @@ export async function fetchEspnFutureTours(): Promise<{ tours: Tour[]; warnings:
     warnings.push(`ESPNcricinfo: ${tours.length} future tour(s) available.`);
   }
 
-  return { tours: sortToursByStart(tours), warnings };
+  return { tours: deduplicateTours(sortToursByStart(tours)), warnings };
 }
 
 /** Confirmed future series from data/espn-fixture-times.json (not always in CricAPI yet). */

@@ -6,7 +6,7 @@ import {
 import { fetchEspnFutureTours } from "@/lib/cricket/providers/espn-fixtures";
 import { CRICKET_SNAPSHOT_KEYS } from "@/lib/cricket/snapshot-keys";
 import { readCricketSnapshot, staleSnapshotWarning } from "@/lib/cricket/snapshot-db";
-import { isFutureSeries } from "@/lib/cricket/tour-dates";
+import { deduplicateTours } from "@/lib/cricket/tour-identity";
 import type { ToursIndexSnapshot } from "@/lib/cricket/snapshot-types";
 import type { LiveMatchSummary, Tour } from "@/lib/cricket/types";
 
@@ -19,37 +19,11 @@ export function filterBangladeshTours(tours: Tour[]): Tour[] {
   });
 }
 
-function normalizeTourName(name: string): string {
-  return name
-    .toLowerCase()
-    .replace(/,?\s*\d{4}(-\d{2})?$/i, "")
-    .replace(/\s+/g, " ")
-    .trim();
-}
-
 /** Add confirmed ESPN schedules missing from the nightly CricAPI snapshot. */
 async function mergeCuratedTours(tours: Tour[]): Promise<Tour[]> {
   const { tours: curated } = await fetchEspnFutureTours();
-  if (!curated.length) return tours;
-
-  const seenIds = new Set(tours.map((t) => t.id));
-  const seenNames = new Set(tours.map((t) => normalizeTourName(t.name)));
-  const merged = [...tours];
-
-  for (const tour of curated) {
-    if (!isFutureSeries(tour.startDate, tour.endDate)) continue;
-    const nameKey = normalizeTourName(tour.name);
-    if (seenIds.has(tour.id) || seenNames.has(nameKey)) continue;
-    seenIds.add(tour.id);
-    seenNames.add(nameKey);
-    merged.push(tour);
-  }
-
-  return merged.sort((a, b) => {
-    const da = a.startDate ? new Date(a.startDate).getTime() : 0;
-    const db = b.startDate ? new Date(b.startDate).getTime() : 0;
-    return da - db;
-  });
+  if (!curated.length) return deduplicateTours(tours);
+  return deduplicateTours([...tours, ...curated]);
 }
 
 /** ESPNcricinfo-only — used when CricAPI is blocked and there is no fresh CricAPI snapshot. */
@@ -63,7 +37,7 @@ export async function buildFutureToursFromEspnOnly(options?: {
   const espn = await fetchEspnFutureTours();
   warnings.push(...espn.warnings);
 
-  let tours = espn.tours;
+  let tours = deduplicateTours(espn.tours);
   if (options?.bangladeshOnly) {
     tours = filterBangladeshTours(tours);
   }
@@ -95,6 +69,8 @@ export async function buildFutureToursLive(options?: {
   } catch (e) {
     warnings.push(e instanceof Error ? e.message : "Failed to fetch tours from CricAPI.");
   }
+
+  tours = deduplicateTours(tours);
 
   if (options?.bangladeshOnly) {
     const before = tours.length;

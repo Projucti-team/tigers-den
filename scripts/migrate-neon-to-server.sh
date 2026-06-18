@@ -29,14 +29,29 @@ fi
 command -v pg_dump >/dev/null || { echo "pg_dump not found. Install PostgreSQL client tools." >&2; exit 1; }
 command -v pg_restore >/dev/null || { echo "pg_restore not found." >&2; exit 1; }
 
+PG_DUMP="$(command -v pg_dump)"
+PG_RESTORE="$(command -v pg_restore)"
+PG_DUMP_VERSION="$("$PG_DUMP" --version | awk '{print $3}' | cut -d. -f1)"
+if [ "$PG_DUMP_VERSION" -lt 17 ] 2>/dev/null; then
+  for candidate in /opt/homebrew/opt/postgresql@17/bin /usr/local/opt/postgresql@17/bin; do
+    if [ -x "$candidate/pg_dump" ]; then
+      PG_DUMP="$candidate/pg_dump"
+      PG_RESTORE="$candidate/pg_restore"
+      break
+    fi
+  done
+fi
+
+echo "Using $PG_DUMP ($($PG_DUMP --version))"
+
 mkdir -p "$DUMP_DIR"
 
 echo "==> Dumping Neon → $DUMP"
-pg_dump "$NEON_URL" --format=custom --no-owner --no-acl --file="$DUMP"
+"$PG_DUMP" "$NEON_URL" --format=custom --no-owner --no-acl --file="$DUMP"
 echo "    Done ($(du -h "$DUMP" | cut -f1))"
 
 echo "==> Restoring into server Postgres"
-pg_restore --no-owner --no-acl --clean --if-exists --dbname="$SERVER_POSTGRES_URL" "$DUMP"
+"$PG_RESTORE" --no-owner --no-acl --clean --if-exists --dbname="$SERVER_POSTGRES_URL" "$DUMP"
 echo "    Done"
 
 echo ""

@@ -6,6 +6,43 @@ Production should use **Postgres on the same VPS as the app** (Coolify database 
 
 Local dev can stay on SQLite (`DATABASE_URI=file:./tigersden.db` in `.env.local`).
 
+**Quick script** (after step 1 below):
+
+```bash
+export NEON_URL='postgresql://...'          # Neon dashboard → Connection string
+export SERVER_POSTGRES_URL='postgresql://...'  # Coolify Postgres internal URL
+./scripts/migrate-neon-to-server.sh
+```
+
+---
+
+## Cutover checklist (tigersden.bd on Coolify)
+
+Do these in order. Expect **5–15 minutes** downtime while you swap `POSTGRES_URL` and redeploy.
+
+- [ ] **1.** Coolify → **+ New Resource** → **PostgreSQL 16** (same project/network as the app). Copy the **internal** URL.
+- [ ] **2.** Neon dashboard → **Connection string** → copy `NEON_URL`.
+- [ ] **3.** Run `./scripts/migrate-neon-to-server.sh` (from laptop if Neon is public; run restore on the server if DB is internal-only).
+- [ ] **4.** Coolify → **app** → **Environment**:
+  - Set `POSTGRES_URL` = internal Coolify Postgres URL
+  - **Remove** `DATABASE_URI` if it is `file:...`
+  - Keep `PAYLOAD_SECRET` **unchanged**
+- [ ] **5.** Confirm volumes: `/app/data`, `/app/media` (uploads are not in Postgres).
+- [ ] **6.** Add Firebase vars for live chat — [firebase-chat.md](./firebase-chat.md) (optional but recommended).
+- [ ] **7.** **Redeploy** the app (or wait for auto-deploy after `git push`).
+- [ ] **8.** Verify:
+
+```bash
+curl -fsS -X POST "https://tigersden.bd/api/admin/bootstrap-db" \
+  -H "Authorization: Bearer YOUR_CRON_SECRET"
+
+curl -fsS -X POST "https://tigersden.bd/api/cron/cricket?force=1" \
+  -H "Authorization: Bearer YOUR_CRON_SECRET"
+```
+
+- [ ] **9.** Open `/admin`, `/tours`, `/rankings`, `/match-centre` (chat).
+- [ ] **10.** After 24–48h stable: final Neon dump, pause/delete Neon project.
+
 ---
 
 ## 1. Create Postgres on Coolify
