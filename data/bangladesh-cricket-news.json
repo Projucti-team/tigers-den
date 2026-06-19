@@ -1,6 +1,40 @@
 {
-  "fetchedAt": "2026-06-18T23:23:57.694Z",
+  "fetchedAt": "2026-06-19T22:36:11.806Z",
   "items": [
+    {
+      "id": "dailystar-https://www.thedailystar.net/sports/cricket/news/we-were-progressing-emon-rues-momentum-shift-australia-win-t20i-series-4203141",
+      "title": "‘We were progressing’: Emon rues momentum shift as Australia win T20I series",
+      "summary": "Before the series, Bangladesh have been undergoing an upsurge in T20Is, losing just one of their last seven series and drawing another.",
+      "url": "https://www.thedailystar.net/sports/cricket/news/we-were-progressing-emon-rues-momentum-shift-australia-win-t20i-series-4203141",
+      "source": "dailystar",
+      "publishedAt": "2026-06-19T21:23:12.000Z"
+    },
+    {
+      "id": "espn-https://www.cricinfo.com/ci/content/story/1541811.html",
+      "title": "Australia bowlers close out T20I series after Renshaw stars with 89*",
+      "summary": "Bangladesh were well placed in the chase but couldn't quite get over the line as the visitors finished well with the ball",
+      "url": "https://www.cricinfo.com/story/australia-bowlers-close-out-t20i-series-over-bangladesh-after-matt-renshaw-stars-with-unbeaten-89-1541811",
+      "imageUrl": "https://p.imgci.com/db/PICTURES/CMS/418500/418566.5.jpg",
+      "source": "espncricinfo",
+      "publishedAt": "2026-06-19T13:09:22.000Z"
+    },
+    {
+      "id": "espn-https://www.cricinfo.com/ci/content/story/1541782.html",
+      "title": "Australia bat first and recall Hardie in bid to wrap up T20I series",
+      "summary": "Bangladesh have made two changes, bringing in Nahid Rana and left-arm spinner Nasum Ahmed",
+      "url": "https://www.cricinfo.com/story/ban-vs-aus-2nd-t20i-2026-australia-bat-first-and-recall-hardie-in-bid-to-wrap-up-t20i-series-1541782",
+      "imageUrl": "https://p.imgci.com/db/PICTURES/CMS/404300/404347.5.jpg",
+      "source": "espncricinfo",
+      "publishedAt": "2026-06-19T07:54:49.000Z"
+    },
+    {
+      "id": "dailystar-https://www.thedailystar.net/sports/cricket/news/renshaws-unbeaten-89-powers-australia-196-5-against-bangladesh-4202761",
+      "title": "Australia clinch T20I series against Bangladesh with seven-run victory",
+      "summary": "Australia clinched the three-match T20I series 2-0 following a seven-run win over Bangladesh in the second match in Chottagram on Friday.",
+      "url": "https://www.thedailystar.net/sports/cricket/news/renshaws-unbeaten-89-powers-australia-196-5-against-bangladesh-4202761",
+      "source": "dailystar",
+      "publishedAt": "2026-06-19T07:49:00.000Z"
+    },
     {
       "id": "espn-https://www.cricinfo.com/ci/content/story/1541688.html",
       "title": "Bangladesh face bowling conundrum as Australia look to seal series",
@@ -98,14 +132,6 @@
       "publishedAt": "2026-06-16T12:26:49.000Z"
     },
     {
-      "id": "dailystar-https://www.thedailystar.net/sports/cricket/news/soumya-drafted-bangladesh-monitor-littons-fitness-4200286",
-      "title": "Soumya drafted in as Bangladesh monitor Litton’s fitness",
-      "summary": "Bangladesh are sweating over the fitness of T20 captain Litton Das ahead of the opening match of the three-match T20I series against Australia, which begins tomorrow at the Bir Shrestha Shaheed Flight Lieutenant Matiur Rahman Cricket Stadium in Chattogram.",
-      "url": "https://www.thedailystar.net/sports/cricket/news/soumya-drafted-bangladesh-monitor-littons-fitness-4200286",
-      "source": "dailystar",
-      "publishedAt": "2026-06-16T10:33:23.000Z"
-    },
-    {
       "id": "espn-https://www.cricinfo.com/ci/content/story/1541352.html",
       "title": "Marsh boost for Australia as T20I rebuild begins in Bangladesh",
       "summary": "Bangladesh have retained the pace attack that caused problems in the ODIs but face a tricky selection call",
@@ -113,32 +139,6 @@
       "imageUrl": "https://p.imgci.com/db/PICTURES/CMS/413600/413681.6.jpg",
       "source": "espncricinfo",
       "publishedAt": "2026-06-16T08:48:43.000Z"
-    },
-    {
-      "id": "dailystar-https://www.thedailystar.net/sports/cricket/news/bangladesh-quick-hasan-delivers-world-class-9-101-county-debut-4199261",
-      "title": "Bangladesh quick Hasan delivers ‘world-class’ 9-101 on County debut",
-      "summary": "Hasan is next set to feature against Middlesex at home during the 174th Canterbury Cricket Week from June 19-22.",
-      "url": "https://www.thedailystar.net/sports/cricket/news/bangladesh-quick-hasan-delivers-world-class-9-101-county-debut-4199261",
-      "source": "dailystar",
-      "publishedAt": "2026-06-15T08:34:44.000Z"
-    },
-    {
-      "id": "espn-https://www.cricinfo.com/ci/content/story/1541246.html",
-      "title": "Connolly fights off cramps in innings of a lifetime",
-      "summary": "Left hander warded off cramps in Dhaka's searing heat to play one of the great ODI innings and lead Australia to a nervy one-wicket win over Bangladesh",
-      "url": "https://www.cricinfo.com/story/ban-v-aus-2026-cooper-connolly-fights-off-cramps-in-innings-of-a-lifetime-for-australia-1541246",
-      "imageUrl": "https://p.imgci.com/db/PICTURES/CMS/418300/418306.5.jpg",
-      "source": "espncricinfo",
-      "publishedAt": "2026-06-15T05:47:13.000Z"
-    },
-    {
-      "id": "espn-https://www.cricinfo.com/ci/content/story/1541169.html",
-      "title": "Ferdous, Sharmin take Bangladesh past Netherlands",
-      "summary": "Netherlands however put up a dazzling display on their T20 World Cup debut to give Bangladesh a scare",
-      "url": "https://www.cricinfo.com/story/ban-vs-ned-t20wc-ferdous-sharmin-take-bangladesh-past-netherlands-1541169",
-      "imageUrl": "https://p.imgci.com/db/PICTURES/CMS/407300/407391.5.jpg",
-      "source": "espncricinfo",
-      "publishedAt": "2026-06-14T18:04:40.000Z"
     }
   ]
 }
