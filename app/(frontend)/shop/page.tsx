@@ -10,6 +10,7 @@ export default function ShopPage() {
     <ComingSoonPage
       title="Shop"
       subtitle="Green & red kits, tour range, and member exclusives — the Tigers' Den store opens soon."
+      thirdUmpireAnimation
     />
   );
 }

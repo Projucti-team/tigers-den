@@ -338,3 +338,193 @@
   background-size: 200% 100%;
   animation: stripe-shimmer 3s linear infinite;
 }
+
+/* Third umpire “decision pending” — coming-soon pages */
+.third-umpire-monitor {
+  position: relative;
+  overflow: hidden;
+  border-radius: var(--radius-card);
+  border: 2px solid rgba(0, 106, 78, 0.65);
+  background:
+    radial-gradient(ellipse 80% 60% at 50% 0%, rgba(0, 106, 78, 0.35) 0%, transparent 70%),
+    linear-gradient(180deg, #0a1612 0%, #061410 45%, #0d1f18 100%);
+  box-shadow:
+    0 0 0 1px rgba(255, 184, 0, 0.15),
+    0 0 40px rgba(0, 106, 78, 0.25),
+    inset 0 1px 0 rgba(255, 255, 255, 0.06);
+}
+
+.third-umpire-monitor__scan {
+  pointer-events: none;
+  position: absolute;
+  inset: 0;
+  background: repeating-linear-gradient(
+    0deg,
+    transparent,
+    transparent 2px,
+    rgba(255, 255, 255, 0.02) 2px,
+    rgba(255, 255, 255, 0.02) 4px
+  );
+  animation: umpire-scan 6s linear infinite;
+}
+
+.third-umpire-live-dot {
+  display: inline-block;
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  background: var(--color-crimson-bright);
+  box-shadow: 0 0 8px var(--color-crimson);
+  animation: umpire-live-blink 1.2s ease-in-out infinite;
+}
+
+.third-umpire-stage {
+  position: relative;
+  width: 9rem;
+  height: 9rem;
+}
+
+.third-umpire-ring {
+  position: absolute;
+  inset: 0;
+  animation: umpire-orbit 2.8s linear infinite;
+}
+
+.third-umpire-ring-dot {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 0.5rem;
+  height: 0.5rem;
+  margin: -0.25rem;
+  border-radius: 50%;
+  background: var(--color-amber);
+  box-shadow: 0 0 10px rgba(255, 184, 0, 0.8);
+  transform: rotate(calc(var(--i) * 45deg)) translateY(-4.25rem);
+  opacity: calc(0.35 + (var(--i) / 8) * 0.65);
+}
+
+.third-umpire-headset {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--color-emerald-glow);
+  filter: drop-shadow(0 0 12px rgba(0, 230, 118, 0.35));
+  animation: umpire-headset-pulse 2s ease-in-out infinite;
+}
+
+.third-umpire-title {
+  color: var(--color-amber);
+  text-shadow:
+    0 0 20px rgba(255, 184, 0, 0.45),
+    0 0 40px rgba(255, 184, 0, 0.15);
+  animation: umpire-title-glow 2.2s ease-in-out infinite;
+}
+
+.third-umpire-ellipsis span {
+  animation: umpire-dot-bounce 1.2s ease-in-out infinite;
+}
+
+.third-umpire-ellipsis span:nth-child(2) {
+  animation-delay: 0.15s;
+}
+
+.third-umpire-ellipsis span:nth-child(3) {
+  animation-delay: 0.3s;
+}
+
+.third-umpire-progress {
+  height: 4px;
+  overflow: hidden;
+  border-radius: 999px;
+  background: rgba(255, 255, 255, 0.08);
+}
+
+.third-umpire-progress-bar {
+  height: 100%;
+  width: 40%;
+  border-radius: inherit;
+  background: linear-gradient(
+    90deg,
+    transparent 0%,
+    var(--color-amber) 35%,
+    var(--color-emerald-glow) 65%,
+    transparent 100%
+  );
+  animation: umpire-progress 1.8s ease-in-out infinite;
+}
+
+@keyframes umpire-orbit {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+@keyframes umpire-live-blink {
+  0%,
+  100% {
+    opacity: 1;
+    transform: scale(1);
+  }
+  50% {
+    opacity: 0.45;
+    transform: scale(0.85);
+  }
+}
+
+@keyframes umpire-headset-pulse {
+  0%,
+  100% {
+    transform: scale(1);
+    opacity: 0.92;
+  }
+  50% {
+    transform: scale(1.04);
+    opacity: 1;
+  }
+}
+
+@keyframes umpire-title-glow {
+  0%,
+  100% {
+    opacity: 1;
+    filter: brightness(1);
+  }
+  50% {
+    opacity: 0.88;
+    filter: brightness(1.15);
+  }
+}
+
+@keyframes umpire-dot-bounce {
+  0%,
+  60%,
+  100% {
+    opacity: 0.2;
+    transform: translateY(0);
+  }
+  30% {
+    opacity: 1;
+    transform: translateY(-2px);
+  }
+}
+
+@keyframes umpire-progress {
+  0% {
+    transform: translateX(-120%);
+  }
+  100% {
+    transform: translateX(320%);
+  }
+}
+
+@keyframes umpire-scan {
+  0% {
+    transform: translateY(-100%);
+  }
+  100% {
+    transform: translateY(100%);
+  }
+}

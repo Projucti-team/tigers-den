@@ -1,6 +1,7 @@
 import Link from "next/link";
 
 import { CountryFlag } from "@/components/CountryFlag";
+import { ComingSoonBadge } from "@/components/ui/ComingSoonBadge";
 import type { TourCard } from "@/lib/cricket/services/tours-display";
 import { BANGLADESH_FLAG_ISO } from "@/lib/cricket/tour-flags";
 import { experiences } from "@/lib/site-content";
@@ -104,6 +105,7 @@ export function ExperienceCards({
           {cards.map((exp) => {
             const styles = ACCENT_STYLES[exp.accent];
             const isLive = exp.id === "match" && hasLiveMatch;
+            const isComingSoon = exp.id === "tickets";
 
             return (
               <Link
@@ -144,6 +146,7 @@ export function ExperienceCards({
                           Live
                         </span>
                       ) : null}
+                      {isComingSoon ? <ComingSoonBadge compact /> : null}
                     </div>
                     <p className="mt-3 flex-1 text-sm leading-relaxed text-white/60">
                       {exp.subtitle}

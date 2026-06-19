@@ -1,3 +1,5 @@
+import Link from "next/link";
+
 import { ExperienceCards } from "@/components/home/ExperienceCards";
 import { HeroPromo } from "@/components/home/HeroPromo";
 import { HomeCommunitySection } from "@/components/home/HomeCommunitySection";
@@ -122,12 +124,12 @@ export default async function HomePage() {
             <span className="text-emerald-glow">this summer!</span>
           </h2>
           <p className="mx-auto mt-4 max-w-2xl text-base text-white/80 md:text-lg">
-            Secure cricket tickets for Bangladesh&apos;s 2026 internationals — Mirpur, Chattogram,
-            Sylhet and overseas tours with The Tigers&apos; Den.
+            Member priority tickets for Bangladesh&apos;s 2026 internationals — Mirpur, Chattogram,
+            Sylhet and away tours. Sales open soon with The Tigers&apos; Den.
           </p>
-          <a href="/tours" className="fan-btn-amber mt-8 inline-block rounded px-10 py-4 text-sm">
-            Bangladesh Cricket Tickets
-          </a>
+          <Link href="/tickets" className="fan-btn-amber mt-8 inline-block rounded px-10 py-4 text-sm">
+            Tickets — coming soon
+          </Link>
         </div>
       </section>
       <HomeCommunitySection threads={threads.length > 0 ? threads : undefined} />

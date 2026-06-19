@@ -23,9 +23,9 @@ export const experiences = [
     id: "tickets",
     title: "Match Tickets",
     subtitle:
-      "Members get priority access to Bangladesh home internationals at Mirpur, Chattogram & Sylhet.",
-    cta: "Buy Tickets",
-    href: "#tickets",
+      "Priority access for members at Mirpur, Chattogram and Sylhet — ticket sales open soon.",
+    cta: "Coming soon",
+    href: "/tickets",
     accent: "red" as const,
     emoji: "🎟️",
   },
@@ -111,7 +111,7 @@ export const merchCategories = [
   { name: "On Tour Range", emoji: "✈️", href: "/shop" },
 ];
 
-export type NavLink = { label: string; href: string };
+export type NavLink = { label: string; href: string; comingSoon?: boolean };
 
 export type NavItem =
   | NavLink
@@ -128,8 +128,8 @@ export const navItemsAfterTours: NavLink[] = [
   { label: "News", href: "/chants" },
   { label: "The Stand", href: "/the-stand" },
   { label: "Profile", href: PROFILE_PAGE_PATH },
-  { label: "Tickets", href: "/tickets" },
-  { label: "Shop", href: "/shop" },
+  { label: "Tickets", href: "/tickets", comingSoon: true },
+  { label: "Shop", href: "/shop", comingSoon: true },
   { label: "About", href: "/about" },
 ];
 

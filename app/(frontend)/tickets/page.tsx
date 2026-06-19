@@ -10,6 +10,7 @@ export default function TicketsPage() {
     <ComingSoonPage
       title="Match tickets"
       subtitle="Priority ticket access for members at Mirpur, Chattogram, Sylhet and away tours — launching soon."
+      thirdUmpireAnimation
     />
   );
 }

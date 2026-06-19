@@ -1,6 +1,7 @@
 import Link from "next/link";
 
 import { PROFILE_PAGE_PATH, socialLinks } from "@/lib/site-content";
+import { ComingSoonBadge } from "@/components/ui/ComingSoonBadge";
 
 const quickLinks = [
   { label: "About", href: "/about" },
@@ -8,7 +9,7 @@ const quickLinks = [
   { label: "Rankings", href: "/rankings" },
   { label: "Match Centre", href: "/match-centre" },
   { label: "News", href: "/chants" },
-  { label: "Shop", href: "/shop" },
+  { label: "Shop", href: "/shop", comingSoon: true },
   { label: "Profile", href: PROFILE_PAGE_PATH },
 ];
 
@@ -64,8 +65,9 @@ export function SiteFooter() {
           <ul className="mt-3 grid grid-cols-2 gap-2 text-sm">
             {quickLinks.map((link) => (
               <li key={link.label}>
-                <Link href={link.href} className="text-white/75 hover:text-white hover:underline">
+                <Link href={link.href} className="inline-flex items-center gap-1.5 text-white/75 hover:text-white hover:underline">
                   {link.label}
+                  {link.comingSoon ? <ComingSoonBadge compact /> : null}
                 </Link>
               </li>
             ))}

@@ -5,12 +5,22 @@ import { useSession } from "next-auth/react";
 import { useState } from "react";
 
 import { JOIN_PAGE_PATH, buildMainNav, type NavLink } from "@/lib/site-content";
+import { ComingSoonBadge } from "@/components/ui/ComingSoonBadge";
 import { useLiveMatchStatus } from "@/lib/hooks/useLiveMatchStatus";
 
 type NavbarProps = {
   tourLinks: NavLink[];
   initialIsLive?: boolean;
 };
+
+function NavLinkLabel({ item }: { item: NavLink }) {
+  return (
+    <>
+      {item.label}
+      {item.comingSoon ? <ComingSoonBadge compact className="ml-1.5 align-middle" /> : null}
+    </>
+  );
+}
 
 function MatchCentreNavLabel({ isLive }: { isLive: boolean }) {
   return (
@@ -95,9 +105,9 @@ export function Navbar({ tourLinks, initialIsLive = false }: NavbarProps) {
               <Link
                 key={item.label}
                 href={item.href}
-                className="px-3 py-2 text-sm font-bold uppercase tracking-wide text-charcoal transition-colors hover:text-crimson"
+                className="flex items-center px-3 py-2 text-sm font-bold uppercase tracking-wide text-charcoal transition-colors hover:text-crimson"
               >
-                {item.label}
+                <NavLinkLabel item={item} />
               </Link>
             ),
           )}
@@ -173,10 +183,10 @@ export function Navbar({ tourLinks, initialIsLive = false }: NavbarProps) {
               <Link
                 key={item.label}
                 href={item.href}
-                className="block border-b border-emerald/10 py-2.5 text-sm font-bold uppercase text-charcoal"
+                className="flex items-center border-b border-emerald/10 py-2.5 text-sm font-bold uppercase text-charcoal"
                 onClick={() => setMobileOpen(false)}
               >
-                {item.label}
+                <NavLinkLabel item={item} />
               </Link>
             ),
           )}
