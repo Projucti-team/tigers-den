@@ -6,7 +6,7 @@ import {
 } from "@/lib/cricket/services/build-rankings-showcase";
 import { readCricketSnapshot, staleSnapshotWarning, upsertCricketSnapshot } from "@/lib/cricket/snapshot-db";
 import type { RankingsShowcaseSnapshot } from "@/lib/cricket/snapshot-types";
-import { isPayloadConfigured } from "@/lib/payload";
+import { isPayloadConfigured } from "@/lib/payload-env";
 
 export type {
   FormatShowcase,

@@ -1,13 +1,12 @@
 import { getPayload } from "payload";
 
 import config from "@payload-config";
+import { isPayloadConfigured } from "@/lib/payload-env";
 import { ensurePostgresPayloadSchema } from "@/lib/payload-ensure-postgres-schema";
 import { ensurePayloadSchema } from "@/lib/payload-ensure-schema";
 import { isPostgresDatabase } from "@/lib/payload-postgres-url";
 
-export function isPayloadConfigured(): boolean {
-  return Boolean(process.env.PAYLOAD_SECRET?.trim());
-}
+export { isPayloadConfigured } from "@/lib/payload-env";
 
 let payloadReady: Promise<Awaited<ReturnType<typeof getPayload>>> | null = null;
 

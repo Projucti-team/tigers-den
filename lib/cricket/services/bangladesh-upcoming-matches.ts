@@ -10,7 +10,7 @@ import {
 } from "@/lib/cricket/upcoming-matches-store";
 import { CRICKET_SNAPSHOT_KEYS } from "@/lib/cricket/snapshot-keys";
 import { readCricketSnapshot } from "@/lib/cricket/snapshot-db";
-import { isPayloadConfigured } from "@/lib/payload";
+import { isPayloadConfigured } from "@/lib/payload-env";
 import { isUpcomingBangladeshMatch } from "@/lib/cricket/services/marquee-format";
 import { matchTime } from "@/lib/cricket/services/match-highlight";
 import type { LiveMatchSummary } from "@/lib/cricket/types";

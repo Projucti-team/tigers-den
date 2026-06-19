@@ -12,7 +12,7 @@ import {
 import { iccTeamNameToCountrySlug } from "@/lib/cricket/players/countries-seed";
 import type { IccRankingsSnapshot } from "@/lib/cricket/providers/icc-sportz";
 import type { RankedPlayer } from "@/lib/cricket/types";
-import { isPayloadConfigured } from "@/lib/payload";
+import { isPayloadConfigured } from "@/lib/payload-env";
 
 function sleep(ms: number): Promise<void> {
   return new Promise((resolve) => setTimeout(resolve, ms));

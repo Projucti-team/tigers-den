@@ -9,7 +9,7 @@ import {
 } from "@/lib/cricket/services/sync-cricket-snapshots";
 import { ensurePayloadSchema } from "@/lib/payload-ensure-schema";
 import { hasPersistedDatabase, isProductionDatabase } from "@/lib/payload-db";
-import { isPayloadConfigured } from "@/lib/payload";
+import { isPayloadConfigured } from "@/lib/payload-env";
 import config from "@payload-config";
 import { getPayload } from "payload";
 

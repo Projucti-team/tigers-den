@@ -38,7 +38,7 @@ import { tourSlug } from "@/lib/cricket/tour-slug";
 import type { WtcStandingsSnapshot } from "@/lib/cricket/types";
 import { hasPersistedDatabase } from "@/lib/payload-db";
 import { ensureSqliteCricketSnapshotsTable } from "@/lib/payload-ensure-sqlite-schema";
-import { isPayloadConfigured } from "@/lib/payload";
+import { isPayloadConfigured } from "@/lib/payload-env";
 import {
   resolveCricketSyncJobs,
   type CricketSyncJobId,

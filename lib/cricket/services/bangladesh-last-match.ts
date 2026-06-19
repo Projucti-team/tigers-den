@@ -9,7 +9,7 @@ import {
 } from "@/lib/cricket/bangladesh-match-store";
 import { CRICKET_SNAPSHOT_KEYS } from "@/lib/cricket/snapshot-keys";
 import { readCricketSnapshot, upsertCricketSnapshot } from "@/lib/cricket/snapshot-db";
-import { isPayloadConfigured } from "@/lib/payload";
+import { isPayloadConfigured } from "@/lib/payload-env";
 import type { MatchHighlight } from "@/lib/cricket/services/match-highlight";
 
 /** Refresh cache from ESPNcricinfo — run via sync job (not on every page view). */

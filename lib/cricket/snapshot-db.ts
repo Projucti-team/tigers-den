@@ -1,7 +1,8 @@
 import { CRICKET_SNAPSHOT_KEYS } from "@/lib/cricket/snapshot-keys";
 import { isNextProductionBuild } from "@/lib/next-build";
 import { hasPersistedDatabase } from "@/lib/payload-db";
-import { getPayloadClient, isPayloadConfigured } from "@/lib/payload";
+import { getPayloadClient } from "@/lib/payload";
+import { isPayloadConfigured } from "@/lib/payload-env";
 
 function isMissingRelationError(err: unknown): boolean {
   const message = err instanceof Error ? err.message : String(err);

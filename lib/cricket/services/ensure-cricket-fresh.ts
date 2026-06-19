@@ -9,7 +9,7 @@ import {
   upsertCricketSnapshot,
 } from "@/lib/cricket/snapshot-db";
 import { isNextProductionBuild } from "@/lib/next-build";
-import { isPayloadConfigured } from "@/lib/payload";
+import { isPayloadConfigured } from "@/lib/payload-env";
 
 const SYNC_LOCK_MAX_AGE_MINUTES = 15;
 

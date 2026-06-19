@@ -2,7 +2,7 @@ import { NextResponse } from "next/server";
 
 import { runDeployBootstrap } from "@/lib/deploy/bootstrap";
 import { hasPersistedDatabase } from "@/lib/payload-db";
-import { isPayloadConfigured } from "@/lib/payload";
+import { isPayloadConfigured } from "@/lib/payload-env";
 
 export const maxDuration = 300;
 export const runtime = "nodejs";

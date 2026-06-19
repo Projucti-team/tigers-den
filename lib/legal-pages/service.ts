@@ -1,6 +1,7 @@
 import type { SerializedEditorState } from "lexical";
 
-import { getPayloadClient, isPayloadConfigured } from "@/lib/payload";
+import { getPayloadClient } from "@/lib/payload";
+import { isPayloadConfigured } from "@/lib/payload-env";
 
 export type LegalPageSlug = "privacy-policy" | "terms-of-service";
 
