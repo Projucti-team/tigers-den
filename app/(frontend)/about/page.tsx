@@ -14,9 +14,9 @@ export default function AboutPage() {
       <PageHero label="About us" title="The Tigers' Den" subtitle={aboutCopy.headline} />
 
       <div className="mx-auto max-w-3xl px-4 py-12 md:px-8">
-        <p className="text-base leading-relaxed text-charcoal/80">{aboutCopy.intro}</p>
-        <p className="mt-4 text-base leading-relaxed text-charcoal/80">{aboutCopy.body}</p>
-        <p className="mt-6 font-display text-lg font-extrabold text-emerald">{aboutCopy.signoff}</p>
+        <p className="text-base leading-relaxed text-white/85">{aboutCopy.intro}</p>
+        <p className="mt-4 text-base leading-relaxed text-white/85">{aboutCopy.body}</p>
+        <p className="mt-6 font-display text-lg font-extrabold text-emerald-glow">{aboutCopy.signoff}</p>
 
         <section className="mt-10 rounded-lg border-4 border-emerald bg-white p-6 shadow-lg">
           <h2 className="font-display text-sm font-extrabold uppercase text-crimson">Follow us</h2>
@@ -43,7 +43,7 @@ export default function AboutPage() {
           <Link href="/join" className="fan-btn-red rounded px-6 py-3 text-sm">
             Join the Den
           </Link>
-          <Link href="/" className="rounded border-2 border-emerald px-6 py-3 text-sm font-bold uppercase text-emerald hover:bg-emerald/5">
+          <Link href="/" className="rounded border-2 border-emerald-glow/50 px-6 py-3 text-sm font-bold uppercase text-white hover:bg-emerald/20">
             Back to home
           </Link>
         </div>
