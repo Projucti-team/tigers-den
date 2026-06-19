@@ -171,3 +171,9 @@ export async function getTimelinePosts(limit = 50): Promise<SocialPost[]> {
 
   return (result.docs as MemberPost[]).map(toSocialPost);
 }
+
+/** Member posts that include at least one image — for The Stand photo wall. */
+export async function getTimelinePostsWithImages(limit = 48): Promise<SocialPost[]> {
+  const posts = await getTimelinePosts(Math.max(limit * 3, 60));
+  return posts.filter((post) => post.imageUrls.length > 0).slice(0, limit);
+}
