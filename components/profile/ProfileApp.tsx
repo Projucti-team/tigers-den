@@ -5,6 +5,7 @@ import { useRouter } from "next/navigation";
 import { useSession } from "next-auth/react";
 import { useCallback, useEffect, useState } from "react";
 
+import { AvatarCropModal } from "@/components/profile/AvatarCropModal";
 import { PostCard } from "@/components/profile/PostCard";
 import { PostComposer } from "@/components/profile/PostComposer";
 import { PostGrid } from "@/components/profile/PostGrid";
@@ -53,6 +54,7 @@ export function ProfileApp({ username, isOwnProfile }: ProfileAppProps) {
   const [followBusy, setFollowBusy] = useState<string | null>(null);
   const [avatarUploading, setAvatarUploading] = useState(false);
   const [avatarError, setAvatarError] = useState<string | null>(null);
+  const [avatarCropFile, setAvatarCropFile] = useState<File | null>(null);
   const [selectedPost, setSelectedPost] = useState<SocialPost | null>(null);
 
   const loadProfile = useCallback(async () => {
@@ -100,20 +102,7 @@ export function ProfileApp({ username, isOwnProfile }: ProfileAppProps) {
     return () => clearTimeout(timer);
   }, [searchQ, tab]);
 
-  async function handleAvatarPick(e: React.ChangeEvent<HTMLInputElement>) {
-    const file = e.target.files?.[0];
-    if (!file) return;
-
-    const isHeic =
-      /image\/hei[cf]/i.test(file.type) || /\.hei[cf]$/i.test(file.name);
-    if (isHeic) {
-      setAvatarError(
-        "iPhone HEIC photos cannot display in the browser. Save as JPEG or PNG, then upload again.",
-      );
-      e.target.value = "";
-      return;
-    }
-
+  async function uploadAvatar(file: File) {
     setAvatarUploading(true);
     setAvatarError(null);
     try {
@@ -129,10 +118,29 @@ export function ProfileApp({ username, isOwnProfile }: ProfileAppProps) {
       setProfile((prev) =>
         prev ? { ...prev, avatarUrl: `${data.avatarUrl}${bust}v=${Date.now()}` } : prev,
       );
+      setAvatarCropFile(null);
     } finally {
       setAvatarUploading(false);
-      e.target.value = "";
     }
+  }
+
+  function handleAvatarPick(e: React.ChangeEvent<HTMLInputElement>) {
+    const file = e.target.files?.[0];
+    if (!file) return;
+
+    const isHeic =
+      /image\/hei[cf]/i.test(file.type) || /\.hei[cf]$/i.test(file.name);
+    if (isHeic) {
+      setAvatarError(
+        "iPhone HEIC photos cannot display in the browser. Save as JPEG or PNG, then upload again.",
+      );
+      e.target.value = "";
+      return;
+    }
+
+    setAvatarError(null);
+    setAvatarCropFile(file);
+    e.target.value = "";
   }
 
   async function handleImagePick(e: React.ChangeEvent<HTMLInputElement>) {
@@ -423,6 +431,18 @@ export function ProfileApp({ username, isOwnProfile }: ProfileAppProps) {
         canManage={selectedPost ? canManagePost(selectedPost) : false}
         onDeleted={handlePostDeleted}
         onUpdated={handlePostUpdated}
+      />
+
+      <AvatarCropModal
+        file={avatarCropFile}
+        uploading={avatarUploading}
+        error={avatarError}
+        onClose={() => {
+          if (avatarUploading) return;
+          setAvatarCropFile(null);
+          setAvatarError(null);
+        }}
+        onConfirm={uploadAvatar}
       />
     </div>
   );

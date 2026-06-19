@@ -173,57 +173,57 @@ export function MemberJoinPanel({ authConfigured, enabledProviders }: MemberJoin
             </p>
 
             <form onSubmit={handleProfileSubmit} className="mt-6 space-y-4">
-            <p className="text-xs font-bold uppercase tracking-wide text-charcoal/60">
-              Optional — tell us a bit more
-            </p>
-            <div>
-              <label htmlFor="member-country" className="mb-1 block text-sm font-semibold text-charcoal">
-                Country you live in
-              </label>
-              <input
-                id="member-country"
-                type="text"
-                value={country}
-                onChange={(e) => setCountry(e.target.value)}
-                placeholder="e.g. Bangladesh, UK, USA"
-                className="w-full rounded border-2 border-emerald/40 bg-white px-4 py-3 text-sm text-charcoal placeholder:text-charcoal/45 outline-none focus:border-emerald"
-              />
-            </div>
-            <div>
-              <label
-                htmlFor="member-favorite-player"
-                className="mb-1 block text-sm font-semibold text-charcoal"
-              >
-                Favourite player
-              </label>
-              <input
-                id="member-favorite-player"
-                type="text"
-                value={favoritePlayer}
-                onChange={(e) => setFavoritePlayer(e.target.value)}
-                placeholder="e.g. Shakib Al Hasan"
-                className="w-full rounded border-2 border-emerald/40 bg-white px-4 py-3 text-sm text-charcoal placeholder:text-charcoal/45 outline-none focus:border-emerald"
-              />
-            </div>
+              <p className="text-xs font-bold uppercase tracking-wide text-charcoal/60">
+                Optional — tell us a bit more
+              </p>
+              <div>
+                <label htmlFor="member-country" className="mb-1 block text-sm font-semibold text-charcoal">
+                  Country you live in
+                </label>
+                <input
+                  id="member-country"
+                  type="text"
+                  value={country}
+                  onChange={(e) => setCountry(e.target.value)}
+                  placeholder="e.g. Bangladesh, UK, USA"
+                  className="w-full rounded border-2 border-emerald/40 bg-white px-4 py-3 text-sm text-charcoal placeholder:text-charcoal/45 outline-none focus:border-emerald"
+                />
+              </div>
+              <div>
+                <label
+                  htmlFor="member-favorite-player"
+                  className="mb-1 block text-sm font-semibold text-charcoal"
+                >
+                  Favourite Tiger
+                </label>
+                <input
+                  id="member-favorite-player"
+                  type="text"
+                  value={favoritePlayer}
+                  onChange={(e) => setFavoritePlayer(e.target.value)}
+                  placeholder="e.g. Nazmul Hossain Shanto"
+                  className="w-full rounded border-2 border-emerald/40 bg-white px-4 py-3 text-sm text-charcoal placeholder:text-charcoal/45 outline-none focus:border-emerald"
+                />
+              </div>
 
-            {error ? <p className="text-sm text-crimson">{error}</p> : null}
+              {error ? <p className="text-sm text-crimson">{error}</p> : null}
 
-            <div className="flex flex-col gap-3 sm:flex-row">
-              <button
-                type="submit"
-                disabled={saving}
-                className="fan-btn-green flex-1 rounded py-3 text-sm disabled:opacity-60"
-              >
-                {saving ? "Saving…" : "Save details"}
-              </button>
-              <button
-                type="button"
-                onClick={() => signOut({ callbackUrl: JOIN_PAGE_PATH })}
-                className="rounded border-2 border-charcoal/20 px-4 py-3 text-sm font-semibold text-charcoal/80 hover:border-crimson hover:text-crimson"
-              >
-                Sign out
-              </button>
-            </div>
+              <div className="flex flex-col gap-3 sm:flex-row">
+                <button
+                  type="submit"
+                  disabled={saving}
+                  className="fan-btn-green flex-1 rounded py-3 text-sm disabled:opacity-60"
+                >
+                  {saving ? "Saving…" : "Save details"}
+                </button>
+                <button
+                  type="button"
+                  onClick={() => signOut({ callbackUrl: JOIN_PAGE_PATH })}
+                  className="rounded border-2 border-charcoal/20 px-4 py-3 text-sm font-semibold text-charcoal/80 hover:border-crimson hover:text-crimson"
+                >
+                  Sign out
+                </button>
+              </div>
             </form>
           </>
         )}

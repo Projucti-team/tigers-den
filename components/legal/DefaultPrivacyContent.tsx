@@ -15,7 +15,7 @@ export function DefaultPrivacyContent() {
         and profile picture from Google. We store these to create and manage your member profile.
       </li>
       <li>
-        <strong>Profile details you add:</strong> optional fields such as country or favourite player
+        <strong>Profile details you add:</strong> optional fields such as country or favourite Tiger
         if you choose to fill them in.
       </li>
       <li>

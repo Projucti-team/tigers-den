@@ -43,28 +43,24 @@
 }
 
 @utility fan-gradient-bar {
-  background: linear-gradient(
-    90deg,
-    var(--color-emerald) 0%,
-    var(--color-emerald-bright) 14%,
-    var(--color-amber) 28%,
-    var(--color-crimson-bright) 42%,
-    var(--color-crimson) 50%,
-    var(--color-crimson-bright) 58%,
-    var(--color-amber) 72%,
-    var(--color-emerald-bright) 86%,
-    var(--color-emerald) 100%
-  );
+  background: linear-gradient(90deg,
+      var(--color-emerald) 0%,
+      var(--color-emerald-bright) 14%,
+      var(--color-amber) 28%,
+      var(--color-crimson-bright) 42%,
+      var(--color-crimson) 50%,
+      var(--color-crimson-bright) 58%,
+      var(--color-amber) 72%,
+      var(--color-emerald-bright) 86%,
+      var(--color-emerald) 100%);
 }
 
 @utility fan-gradient-text {
-  background: linear-gradient(
-    90deg,
-    var(--color-emerald-glow) 0%,
-    var(--color-emerald-bright) 40%,
-    var(--color-crimson-bright) 60%,
-    var(--color-crimson-glow) 100%
-  );
+  background: linear-gradient(90deg,
+      var(--color-emerald-glow) 0%,
+      var(--color-emerald-bright) 40%,
+      var(--color-crimson-bright) 60%,
+      var(--color-crimson-glow) 100%);
   -webkit-background-clip: text;
   background-clip: text;
   color: transparent;
@@ -82,35 +78,29 @@
 }
 
 @utility fan-card-header-green {
-  background: linear-gradient(
-    135deg,
-    var(--color-emerald) 0%,
-    var(--color-emerald-bright) 50%,
-    var(--color-emerald) 100%
-  );
+  background: linear-gradient(135deg,
+      var(--color-emerald) 0%,
+      var(--color-emerald-bright) 50%,
+      var(--color-emerald) 100%);
   color: white;
   text-shadow: 0 1px 2px rgba(0, 0, 0, 0.3);
 }
 
 @utility fan-card-header-red {
-  background: linear-gradient(
-    135deg,
-    var(--color-crimson) 0%,
-    var(--color-crimson-bright) 50%,
-    var(--color-crimson) 100%
-  );
+  background: linear-gradient(135deg,
+      var(--color-crimson) 0%,
+      var(--color-crimson-bright) 50%,
+      var(--color-crimson) 100%);
   color: white;
   text-shadow: 0 1px 2px rgba(0, 0, 0, 0.3);
 }
 
 @utility fan-card-header-split {
-  background: linear-gradient(
-    90deg,
-    var(--color-emerald) 0%,
-    var(--color-emerald-bright) 45%,
-    var(--color-crimson-bright) 55%,
-    var(--color-crimson) 100%
-  );
+  background: linear-gradient(90deg,
+      var(--color-emerald) 0%,
+      var(--color-emerald-bright) 45%,
+      var(--color-crimson-bright) 55%,
+      var(--color-crimson) 100%);
   color: white;
   text-shadow: 0 2px 4px rgba(0, 0, 0, 0.4);
 }
@@ -169,13 +159,11 @@
 @utility fan-section-cta {
   background-image:
     radial-gradient(ellipse 80% 120% at 50% 120%, rgba(255, 184, 0, 0.25) 0%, transparent 55%),
-    linear-gradient(
-      135deg,
+    linear-gradient(135deg,
       var(--color-emerald) 0%,
       var(--color-emerald-bright) 35%,
       var(--color-crimson-bright) 65%,
-      var(--color-crimson) 100%
-    );
+      var(--color-crimson) 100%);
   color: white;
 }
 
@@ -188,13 +176,11 @@
 }
 
 @utility fan-hero-stripes {
-  background-image: repeating-linear-gradient(
-    -12deg,
-    transparent,
-    transparent 40px,
-    rgba(255, 255, 255, 0.03) 40px,
-    rgba(255, 255, 255, 0.03) 42px
-  );
+  background-image: repeating-linear-gradient(-12deg,
+      transparent,
+      transparent 40px,
+      rgba(255, 255, 255, 0.03) 40px,
+      rgba(255, 255, 255, 0.03) 42px);
 }
 
 @utility fan-vibrant-card {
@@ -251,22 +237,26 @@
 }
 
 @keyframes live-pulse {
+
   0%,
   100% {
     box-shadow: 0 0 0 0 rgba(255, 23, 68, 0.7);
   }
+
   50% {
     box-shadow: 0 0 0 8px rgba(255, 23, 68, 0);
   }
 }
 
 @keyframes live-tab-glow {
+
   0%,
   100% {
     box-shadow:
       inset 0 -3px 0 var(--color-crimson),
       0 0 0 0 rgba(244, 42, 65, 0.35);
   }
+
   50% {
     box-shadow:
       inset 0 -3px 0 var(--color-crimson-bright),
@@ -275,12 +265,14 @@
 }
 
 @keyframes live-title-ring {
+
   0%,
   100% {
     box-shadow:
       0 0 0 0 rgba(255, 184, 0, 0.55),
       0 0 12px rgba(255, 255, 255, 0.15);
   }
+
   50% {
     box-shadow:
       0 0 0 3px rgba(255, 184, 0, 0.35),
@@ -292,6 +284,7 @@
   0% {
     transform: translateX(0);
   }
+
   100% {
     transform: translateX(-50%);
   }
@@ -301,6 +294,7 @@
   0% {
     background-position: 0% 50%;
   }
+
   100% {
     background-position: 100% 50%;
   }
@@ -321,10 +315,12 @@
 }
 
 @keyframes nav-live-glow {
+
   0%,
   100% {
     box-shadow: 0 0 0 0 rgba(244, 42, 65, 0.3);
   }
+
   50% {
     box-shadow: 0 0 10px 2px rgba(244, 42, 65, 0.45);
   }
@@ -336,12 +332,39 @@
 }
 
 .animate-marquee {
-  animation: marquee-scroll 55s linear infinite;
+  animation: marquee-scroll 80s linear infinite;
 }
 
 .animate-shimmer-bar {
   background-size: 300% 100%;
   animation: stripe-shimmer 14s linear infinite;
+}
+
+/* Soft fade at both ends of the moving gradient bars (top strip + match ticker). */
+.fan-moving-bar-bg {
+  mask-image: linear-gradient(to right,
+      transparent 0%,
+      #000 10%,
+      #000 90%,
+      transparent 100%);
+  -webkit-mask-image: linear-gradient(to right,
+      transparent 0%,
+      #000 10%,
+      #000 90%,
+      transparent 100%);
+}
+
+.fan-marquee-fade {
+  mask-image: linear-gradient(to right,
+      transparent 0%,
+      #000 8%,
+      #000 92%,
+      transparent 100%);
+  -webkit-mask-image: linear-gradient(to right,
+      transparent 0%,
+      #000 8%,
+      #000 92%,
+      transparent 100%);
 }
 
 /* Third umpire “decision pending” — coming-soon pages */
@@ -363,13 +386,11 @@
   pointer-events: none;
   position: absolute;
   inset: 0;
-  background: repeating-linear-gradient(
-    0deg,
-    transparent,
-    transparent 2px,
-    rgba(255, 255, 255, 0.02) 2px,
-    rgba(255, 255, 255, 0.02) 4px
-  );
+  background: repeating-linear-gradient(0deg,
+      transparent,
+      transparent 2px,
+      rgba(255, 255, 255, 0.02) 2px,
+      rgba(255, 255, 255, 0.02) 4px);
   animation: umpire-scan 6s linear infinite;
 }
 
@@ -451,13 +472,11 @@
   height: 100%;
   width: 40%;
   border-radius: inherit;
-  background: linear-gradient(
-    90deg,
-    transparent 0%,
-    var(--color-amber) 35%,
-    var(--color-emerald-glow) 65%,
-    transparent 100%
-  );
+  background: linear-gradient(90deg,
+      transparent 0%,
+      var(--color-amber) 35%,
+      var(--color-emerald-glow) 65%,
+      transparent 100%);
   animation: umpire-progress 1.8s ease-in-out infinite;
 }
 
@@ -468,11 +487,13 @@
 }
 
 @keyframes umpire-live-blink {
+
   0%,
   100% {
     opacity: 1;
     transform: scale(1);
   }
+
   50% {
     opacity: 0.45;
     transform: scale(0.85);
@@ -480,11 +501,13 @@
 }
 
 @keyframes umpire-headset-pulse {
+
   0%,
   100% {
     transform: scale(1);
     opacity: 0.92;
   }
+
   50% {
     transform: scale(1.04);
     opacity: 1;
@@ -492,11 +515,13 @@
 }
 
 @keyframes umpire-title-glow {
+
   0%,
   100% {
     opacity: 1;
     filter: brightness(1);
   }
+
   50% {
     opacity: 0.88;
     filter: brightness(1.15);
@@ -504,12 +529,14 @@
 }
 
 @keyframes umpire-dot-bounce {
+
   0%,
   60%,
   100% {
     opacity: 0.2;
     transform: translateY(0);
   }
+
   30% {
     opacity: 1;
     transform: translateY(-2px);
@@ -520,6 +547,7 @@
   0% {
     transform: translateX(-120%);
   }
+
   100% {
     transform: translateX(320%);
   }
@@ -529,6 +557,7 @@
   0% {
     transform: translateY(-100%);
   }
+
   100% {
     transform: translateY(100%);
   }

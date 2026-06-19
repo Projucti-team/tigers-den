@@ -45,7 +45,7 @@ export async function BecomeAMemberSection() {
         </div>
 
         <p className="mx-auto mt-8 max-w-xl text-center text-xs text-charcoal/55">
-          We store your email and name from your social account. Country and favourite player are
+          We store your email and name from your social account. Country and favourite Tiger are
           optional. Free to join — no payment required today.
         </p>
       </div>

@@ -1,6 +1,9 @@
 /** Dedicated membership / sign-in page */
 export const JOIN_PAGE_PATH = "/join";
 
+/** Top strip tagline (above main nav). */
+export const topBarTagline = "Roar Louder — Green & Red Army 🐅";
+
 /** Member profile & social hub */
 export const PROFILE_PAGE_PATH = "/profile";
 
@@ -127,7 +130,6 @@ export const navItemsAfterTours: NavLink[] = [
   { label: "Match Centre", href: "/match-centre" },
   { label: "News", href: "/chants" },
   { label: "The Stand", href: "/the-stand" },
-  { label: "Profile", href: PROFILE_PAGE_PATH },
   { label: "Tickets", href: "/tickets", comingSoon: true },
   { label: "Shop", href: "/shop", comingSoon: true },
   { label: "About", href: "/about" },

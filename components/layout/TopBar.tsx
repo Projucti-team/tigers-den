@@ -4,17 +4,22 @@ import Link from "next/link";
 import { useSession } from "next-auth/react";
 
 import { MemberAccountMenu } from "@/components/layout/MemberAccountMenu";
-import { JOIN_PAGE_PATH } from "@/lib/site-content";
+import { JOIN_PAGE_PATH, topBarTagline } from "@/lib/site-content";
 
 export function TopBar() {
   const { status } = useSession();
   const isLoggedIn = status === "authenticated";
 
   return (
-    <div className="fan-gradient-bar animate-shimmer-bar border-b-2 border-amber/80 text-white">
-      <div className="mx-auto flex max-w-[1440px] flex-wrap items-center justify-between gap-2 px-4 py-2 text-xs md:px-8">
+    <div className="relative z-[60] border-b-2 border-amber/80 text-white">
+      <div
+        className="fan-gradient-bar animate-shimmer-bar fan-moving-bar-bg pointer-events-none absolute inset-0"
+        aria-hidden
+      />
+
+      <div className="relative z-10 mx-auto flex max-w-[1440px] flex-wrap items-center justify-between gap-2 px-4 py-2 text-xs md:px-8">
         <p className="font-display font-bold uppercase tracking-wide drop-shadow-sm">
-          We are The Tigers&apos; Den
+          {topBarTagline}
         </p>
         <div className="flex flex-wrap items-center gap-3 md:gap-5">
           {isLoggedIn ? (

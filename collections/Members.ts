@@ -72,7 +72,7 @@ export const Members: CollectionConfig = {
     {
       name: "favoritePlayer",
       type: "text",
-      admin: { description: "Favourite Bangladesh player (optional)." },
+      admin: { description: "Favourite Tiger — Bangladesh player (optional)." },
     },
     {
       name: "joinedAt",
