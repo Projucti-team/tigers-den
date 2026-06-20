@@ -1,5 +1,5 @@
 {
-  "fetchedAt": "2026-06-19T22:14:50.766Z",
+  "fetchedAt": "2026-06-20T22:36:17.642Z",
   "source": "icc-sportz.io",
   "sourceUrl": "https://www.icc-cricket.com/rankings",
   "men": {
@@ -92,9 +92,9 @@
           "rank": 1,
           "name": "India",
           "abbreviation": "IND",
-          "rating": 120,
-          "points": 3482,
-          "matches": 29
+          "rating": 121,
+          "points": 3623,
+          "matches": 30
         },
         {
           "rank": 2,
@@ -140,9 +140,9 @@
           "rank": 7,
           "name": "Afghanistan",
           "abbreviation": "AFG",
-          "rating": 91,
-          "points": 2084,
-          "matches": 23
+          "rating": 90,
+          "points": 2154,
+          "matches": 24
         },
         {
           "rank": 8,
@@ -383,8 +383,8 @@
           "name": "Namibia",
           "abbreviation": "NAM",
           "rating": 178,
-          "points": 6051,
-          "matches": 34
+          "points": 6239,
+          "matches": 35
         },
         {
           "rank": 18,
@@ -534,12 +534,20 @@
           "rank": 36,
           "name": "Germany",
           "abbreviation": "GER",
-          "rating": 84,
-          "points": 1938,
-          "matches": 23
+          "rating": 82,
+          "points": 1964,
+          "matches": 24
         },
         {
           "rank": 37,
+          "name": "Denmark",
+          "abbreviation": "DEN",
+          "rating": 80,
+          "points": 1204,
+          "matches": 15
+        },
+        {
+          "rank": 38,
           "name": "Cayman Islands",
           "abbreviation": "CAY",
           "rating": 80,
@@ -547,20 +555,12 @@
           "matches": 24
         },
         {
-          "rank": 38,
+          "rank": 39,
           "name": "Nigeria",
           "abbreviation": "NGR",
           "rating": 78,
-          "points": 3196,
-          "matches": 41
-        },
-        {
-          "rank": 39,
-          "name": "Denmark",
-          "abbreviation": "DEN",
-          "rating": 76,
-          "points": 1070,
-          "matches": 14
+          "points": 3264,
+          "matches": 42
         },
         {
           "rank": 40,
@@ -622,9 +622,9 @@
           "rank": 47,
           "name": "Belgium",
           "abbreviation": "BEL",
-          "rating": 54,
-          "points": 1354,
-          "matches": 25
+          "rating": 57,
+          "points": 1535,
+          "matches": 27
         },
         {
           "rank": 48,
@@ -638,9 +638,9 @@
           "rank": 49,
           "name": "Switzerland",
           "abbreviation": "CHE",
-          "rating": 53,
-          "points": 1260,
-          "matches": 24
+          "rating": 51,
+          "points": 1265,
+          "matches": 25
         },
         {
           "rank": 50,
@@ -676,6 +676,14 @@
         },
         {
           "rank": 54,
+          "name": "Romania",
+          "abbreviation": "ROM",
+          "rating": 45,
+          "points": 1394,
+          "matches": 31
+        },
+        {
+          "rank": 55,
           "name": "Samoa",
           "abbreviation": "SAM",
           "rating": 44,
@@ -683,20 +691,12 @@
           "matches": 21
         },
         {
-          "rank": 55,
+          "rank": 56,
           "name": "Rwanda",
           "abbreviation": "RWA",
           "rating": 44,
           "points": 2504,
           "matches": 57
-        },
-        {
-          "rank": 56,
-          "name": "Romania",
-          "abbreviation": "ROM",
-          "rating": 44,
-          "points": 1315,
-          "matches": 30
         },
         {
           "rank": 57,
@@ -796,19 +796,19 @@
         },
         {
           "rank": 69,
-          "name": "Hungary",
-          "abbreviation": "HUN",
-          "rating": 29,
-          "points": 701,
-          "matches": 24
-        },
-        {
-          "rank": 70,
           "name": "Zambia",
           "abbreviation": "ZMB",
           "rating": 29,
           "points": 290,
           "matches": 10
+        },
+        {
+          "rank": 70,
+          "name": "Hungary",
+          "abbreviation": "HUN",
+          "rating": 27,
+          "points": 699,
+          "matches": 26
         },
         {
           "rank": 71,
@@ -10360,13 +10360,13 @@
         "allrounder": "2026-06-09"
       },
       "odi": {
-        "team": "2026-06-17",
+        "team": "2026-06-20",
         "bat": "2026-06-16",
         "bowl": "2026-06-16",
         "allrounder": "2026-06-16"
       },
       "t20": {
-        "team": "2026-06-19",
+        "team": "2026-06-20",
         "bat": "2026-06-16",
         "bowl": "2026-06-16",
         "allrounder": "2026-06-16"
@@ -10497,16 +10497,16 @@
           "name": "Australia",
           "abbreviation": "AUS",
           "rating": 288,
-          "points": 6616,
-          "matches": 23
+          "points": 6914,
+          "matches": 24
         },
         {
           "rank": 2,
           "name": "England",
           "abbreviation": "ENG",
           "rating": 276,
-          "points": 9092,
-          "matches": 33
+          "points": 9378,
+          "matches": 34
         },
         {
           "rank": 3,
@@ -10552,9 +10552,9 @@
           "rank": 8,
           "name": "Pakistan",
           "abbreviation": "PAK",
-          "rating": 213,
-          "points": 5960,
-          "matches": 28
+          "rating": 210,
+          "points": 6104,
+          "matches": 29
         },
         {
           "rank": 9,
@@ -10568,17 +10568,17 @@
           "rank": 10,
           "name": "Bangladesh",
           "abbreviation": "BAN",
-          "rating": 194,
-          "points": 6605,
-          "matches": 34
+          "rating": 196,
+          "points": 6868,
+          "matches": 35
         },
         {
           "rank": 11,
           "name": "Scotland",
           "abbreviation": "SCO",
-          "rating": 169,
-          "points": 5898,
-          "matches": 35
+          "rating": 168,
+          "points": 6057,
+          "matches": 36
         },
         {
           "rank": 12,
@@ -10600,9 +10600,9 @@
           "rank": 14,
           "name": "Netherlands",
           "abbreviation": "NED",
-          "rating": 141,
-          "points": 6464,
-          "matches": 46
+          "rating": 140,
+          "points": 6595,
+          "matches": 47
         },
         {
           "rank": 15,
@@ -10696,9 +10696,9 @@
           "rank": 26,
           "name": "Nigeria",
           "abbreviation": "NGR",
-          "rating": 73,
-          "points": 2571,
-          "matches": 35
+          "rating": 75,
+          "points": 2689,
+          "matches": 36
         },
         {
           "rank": 27,
@@ -10710,19 +10710,19 @@
         },
         {
           "rank": 28,
-          "name": "Brazil",
-          "abbreviation": "BRA",
-          "rating": 68,
-          "points": 2462,
-          "matches": 36
-        },
-        {
-          "rank": 29,
           "name": "Malaysia",
           "abbreviation": "MAS",
           "rating": 68,
           "points": 3458,
           "matches": 51
+        },
+        {
+          "rank": 29,
+          "name": "Brazil",
+          "abbreviation": "BRA",
+          "rating": 67,
+          "points": 2485,
+          "matches": 37
         },
         {
           "rank": 30,
@@ -10785,8 +10785,8 @@
           "name": "Cyprus",
           "abbreviation": "CYP",
           "rating": 49,
-          "points": 1020,
-          "matches": 21
+          "points": 1080,
+          "matches": 22
         },
         {
           "rank": 38,
@@ -11016,9 +11016,9 @@
           "rank": 66,
           "name": "Malta",
           "abbreviation": "MLT",
-          "rating": 10,
-          "points": 137,
-          "matches": 14
+          "rating": 9,
+          "points": 136,
+          "matches": 15
         },
         {
           "rank": 67,
@@ -11140,9 +11140,9 @@
         "rank": 10,
         "name": "Bangladesh",
         "abbreviation": "BAN",
-        "rating": 194,
-        "points": 6605,
-        "matches": 34
+        "rating": 196,
+        "points": 6868,
+        "matches": 35
       }
     },
     "players": {
@@ -17356,7 +17356,7 @@
         "allrounder": "2026-05-18"
       },
       "t20": {
-        "team": "2026-06-19",
+        "team": "2026-06-21",
         "bat": "2026-06-15",
         "bowl": "2026-06-15",
         "allrounder": "2026-06-15"
