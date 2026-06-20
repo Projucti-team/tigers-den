@@ -2,10 +2,24 @@ import { readFile } from "node:fs/promises";
 import path from "node:path";
 
 import { isBangladeshTeam } from "@/lib/cricket/constants";
+import {
+  matchCategoryFromText,
+  matchCategoryPriority,
+} from "@/lib/cricket/match-category";
 import { compactCricketScore } from "@/lib/cricket/score-format";
+import {
+  fetchEventTimestamp,
+  fetchLeagueEventRefs,
+} from "@/lib/cricket/providers/espn-league-events";
 import { teamShortCode } from "@/lib/cricket/services/marquee-format";
 import type { MatchHighlight } from "@/lib/cricket/services/match-highlight";
 import { readEspnTourSquads } from "@/lib/cricket/squads/store";
+import {
+  getTrackedPlayerLeagueEntries,
+  teamNameMatches,
+  trackedPlayerLeaguesToRefs,
+  type TrackedLeagueRef,
+} from "@/lib/cricket/tracked-player-leagues";
 import type { LiveMatchSummary } from "@/lib/cricket/types";
 
 const CORE_BASE = "http://core.espnuk.org/v2/sports/cricket";
@@ -49,12 +63,9 @@ type CoreTeam = {
   abbreviation?: string;
 };
 
-type LeagueRef = {
-  espnLeagueId: number;
-  cricinfoSeriesId?: number;
-};
+type LeagueRef = TrackedLeagueRef;
 
-let liveCache: { at: number; highlight: MatchHighlight | null } | null = null;
+let liveCache: { at: number; highlights: MatchHighlight[] } | null = null;
 let recentCache: { at: number; highlight: MatchHighlight | null } | null = null;
 
 async function fetchCoreJson<T>(url: string): Promise<T | null> {
@@ -88,6 +99,8 @@ async function trackedLeagues(): Promise<LeagueRef[]> {
       byId.set(entry.espnLeagueId, {
         espnLeagueId: entry.espnLeagueId,
         cricinfoSeriesId: entry.cricinfoSeriesId,
+        kind: "international",
+        tourName: entry.tourName,
       });
     }
   }
@@ -95,13 +108,26 @@ async function trackedLeagues(): Promise<LeagueRef[]> {
   try {
     const raw = await readFile(FIXTURE_TIMES_PATH, "utf8");
     const data = JSON.parse(raw) as {
-      series?: Record<string, { espnLeagueId?: number; cricinfoSeriesId?: number }>;
+      series?: Record<
+        string,
+        {
+          tourName?: string;
+          espnLeagueId?: number;
+          cricinfoSeriesId?: number;
+          seasonYear?: number;
+          useSeasonEvents?: boolean;
+        }
+      >;
     };
     for (const series of Object.values(data.series ?? {})) {
       if (series.espnLeagueId) {
         byId.set(series.espnLeagueId, {
           espnLeagueId: series.espnLeagueId,
           cricinfoSeriesId: series.cricinfoSeriesId,
+          seasonYear: series.seasonYear,
+          useSeasonEvents: series.useSeasonEvents !== false,
+          tourName: series.tourName,
+          kind: "international",
         });
       }
     }
@@ -109,8 +135,17 @@ async function trackedLeagues(): Promise<LeagueRef[]> {
     // optional file
   }
 
+  const playerEntries = await getTrackedPlayerLeagueEntries();
+  for (const ref of trackedPlayerLeaguesToRefs(playerEntries)) {
+    byId.set(ref.espnLeagueId, ref);
+  }
+
   if (!byId.size) {
-    byId.set(24324, { espnLeagueId: 24324, cricinfoSeriesId: 1532475 });
+    byId.set(24324, {
+      espnLeagueId: 24324,
+      cricinfoSeriesId: 1532475,
+      kind: "international",
+    });
   }
 
   return [...byId.values()];
@@ -192,14 +227,6 @@ export function liveMatchSummaryFromHighlight(highlight: MatchHighlight): LiveMa
   };
 }
 
-async function fetchEventTimestamp(leagueId: number, eventId: string): Promise<number> {
-  const event = await fetchCoreJson<{ date?: string }>(
-    `${CORE_BASE}/leagues/${leagueId}/events/${eventId}`,
-  );
-  const t = event?.date ? new Date(event.date).getTime() : 0;
-  return Number.isNaN(t) ? 0 : t;
-}
-
 async function fetchCompetitorScore(
   compRef: string,
 ): Promise<{ team: string; score: string } | null> {
@@ -222,10 +249,11 @@ async function fetchCompetitorScore(
 }
 
 async function buildHighlightFromEspnEvent(
-  leagueId: number,
+  league: LeagueRef,
   eventId: string,
   mode: "live" | "completed",
 ): Promise<MatchHighlight | null> {
+  const leagueId = league.espnLeagueId;
   const competition = await fetchCoreJson<CoreCompetition>(
     `${CORE_BASE}/leagues/${leagueId}/events/${eventId}/competitions/${eventId}`,
   );
@@ -255,18 +283,36 @@ async function buildHighlightFromEspnEvent(
 
   const innings = rows.filter((row) => row.score);
 
-  let involvesBd =
-    rows.some((row) => isBangladeshTeam(row.team)) ||
-    /bangladesh/i.test(competition.note ?? "");
+  const event = await fetchCoreJson<{ name?: string; shortName?: string }>(
+    `${CORE_BASE}/leagues/${leagueId}/events/${eventId}`,
+  );
+  const titleBlob = [
+    competition.shortDescription,
+    competition.description,
+    event?.name,
+    event?.shortName,
+    competition.note,
+    ...rows.map((r) => r.team),
+  ]
+    .filter(Boolean)
+    .join(" ");
 
-  if (!involvesBd) {
-    const event = await fetchCoreJson<{ name?: string; shortName?: string }>(
-      `${CORE_BASE}/leagues/${leagueId}/events/${eventId}`,
-    );
-    const blob = `${event?.name ?? ""} ${event?.shortName ?? ""}`.toLowerCase();
-    involvesBd = blob.includes("bangladesh") || /\bban\b/.test(blob);
+  if (league.kind === "domestic") {
+    const trackedTeam = league.trackedTeamName?.trim();
+    if (!trackedTeam || !rows.some((row) => teamNameMatches(row.team, trackedTeam))) {
+      return null;
+    }
+  } else {
+    let involvesBd =
+      rows.some((row) => isBangladeshTeam(row.team)) ||
+      /bangladesh/i.test(competition.note ?? "");
+
+    if (!involvesBd) {
+      const blob = `${event?.name ?? ""} ${event?.shortName ?? ""}`.toLowerCase();
+      involvesBd = blob.includes("bangladesh") || /\bban\b/.test(blob);
+    }
+    if (!involvesBd) return null;
   }
-  if (!involvesBd) return null;
 
   const scores = innings.map((inn) => {
     const chasing =
@@ -318,6 +364,12 @@ async function buildHighlightFromEspnEvent(
       }
     : undefined;
 
+  const category =
+    league.kind === "domestic"
+      ? "domestic"
+      : matchCategoryFromText(title, titleBlob, ...rows.map((r) => r.team));
+  const priority = matchCategoryPriority(category);
+
   return {
     mode,
     matchId: `espn-${eventId}`,
@@ -326,6 +378,14 @@ async function buildHighlightFromEspnEvent(
     detailLine,
     scores,
     venue,
+    category,
+    priority,
+    espnLeagueId: leagueId,
+    bannerTitle:
+      league.kind === "domestic" && league.trackedPlayerName && league.trackedTeamName
+        ? `${league.trackedPlayerName} is playing for ${league.trackedTeamName}`
+        : undefined,
+    leagueLabel: league.leagueDisplayName ?? league.tourName,
   };
 }
 
@@ -415,31 +475,21 @@ async function buildLiveMatchFromEspnEvent(
 async function scanEspnBangladeshMatches(
   mode: "live" | "completed" | "upcoming",
 ): Promise<{ match: LiveMatchSummary; eventAt: number }[]> {
-  const leagues = await trackedLeagues();
+  const leagues = (await trackedLeagues()).filter((league) => league.kind !== "domestic");
   const candidates: { match: LiveMatchSummary; eventAt: number }[] = [];
   const seenEvents = new Set<string>();
 
   for (const league of leagues) {
-    const leagueIds = [league.espnLeagueId, league.cricinfoSeriesId].filter(
-      (id): id is number => Number.isFinite(id),
-    );
+    const eventRefs = await fetchLeagueEventRefs(league);
+    for (const { eventId } of eventRefs) {
+      if (seenEvents.has(eventId)) continue;
+      seenEvents.add(eventId);
 
-    for (const leagueId of leagueIds) {
-      const events = await fetchCoreList(
-        `${CORE_BASE}/leagues/${leagueId}/events?pageSize=50`,
-      );
+      const match = await buildLiveMatchFromEspnEvent(league.espnLeagueId, eventId, mode);
+      if (!match) continue;
 
-      for (const item of events.items ?? []) {
-        const eventId = eventIdFromRef(item.$ref);
-        if (!eventId || seenEvents.has(eventId)) continue;
-        seenEvents.add(eventId);
-
-        const match = await buildLiveMatchFromEspnEvent(league.espnLeagueId, eventId, mode);
-        if (!match) continue;
-
-        const eventAt = await fetchEventTimestamp(league.espnLeagueId, eventId);
-        candidates.push({ match, eventAt });
-      }
+      const eventAt = await fetchEventTimestamp(league.espnLeagueId, eventId);
+      candidates.push({ match, eventAt });
     }
   }
 
@@ -448,50 +498,58 @@ async function scanEspnBangladeshMatches(
 
 async function scanEspnBangladeshHighlights(
   mode: "live" | "completed",
+  options?: { internationalOnly?: boolean },
 ): Promise<{ highlight: MatchHighlight; eventAt: number }[]> {
   const leagues = await trackedLeagues();
+  const scoped = options?.internationalOnly
+    ? leagues.filter((league) => league.kind !== "domestic")
+    : leagues;
   const candidates: { highlight: MatchHighlight; eventAt: number }[] = [];
   const seenEvents = new Set<string>();
 
-  for (const league of leagues) {
-    const leagueIds = [league.espnLeagueId, league.cricinfoSeriesId].filter(
-      (id): id is number => Number.isFinite(id),
-    );
+  for (const league of scoped) {
+    const eventRefs = await fetchLeagueEventRefs(league);
+    for (const { eventId } of eventRefs) {
+      if (seenEvents.has(eventId)) continue;
+      seenEvents.add(eventId);
 
-    for (const leagueId of leagueIds) {
-      const events = await fetchCoreList(
-        `${CORE_BASE}/leagues/${leagueId}/events?pageSize=50`,
-      );
+      const highlight = await buildHighlightFromEspnEvent(league, eventId, mode);
+      if (!highlight) continue;
 
-      for (const item of events.items ?? []) {
-        const eventId = eventIdFromRef(item.$ref);
-        if (!eventId || seenEvents.has(eventId)) continue;
-        seenEvents.add(eventId);
-
-        const highlight = await buildHighlightFromEspnEvent(league.espnLeagueId, eventId, mode);
-        if (!highlight) continue;
-
-        const eventAt = await fetchEventTimestamp(league.espnLeagueId, eventId);
-        candidates.push({ highlight, eventAt });
-      }
+      const eventAt = await fetchEventTimestamp(league.espnLeagueId, eventId);
+      candidates.push({ highlight, eventAt });
     }
   }
 
   return candidates;
 }
 
-/** Live Bangladesh internationals from ESPNcricinfo (no CricAPI quota). */
-export async function fetchEspnLiveBangladeshHighlight(): Promise<MatchHighlight | null> {
+/** All live Bangladesh internationals + admin-tracked domestic matches. */
+export async function fetchEspnLiveBangladeshHighlights(): Promise<MatchHighlight[]> {
   if (liveCache && Date.now() - liveCache.at < LIVE_CACHE_MS) {
-    return liveCache.highlight;
+    return liveCache.highlights;
   }
 
   const candidates = await scanEspnBangladeshHighlights("live");
-  const highlight =
-    candidates.sort((a, b) => b.eventAt - a.eventAt)[0]?.highlight ?? null;
+  const byMatchId = new Map<string, MatchHighlight>();
+  for (const row of candidates) {
+    byMatchId.set(row.highlight.matchId, row.highlight);
+  }
+  const highlights = [...byMatchId.values()].sort((a, b) => {
+    const pa = a.priority ?? matchCategoryPriority(a.category ?? "men");
+    const pb = b.priority ?? matchCategoryPriority(b.category ?? "men");
+    if (pa !== pb) return pa - pb;
+    return a.title.localeCompare(b.title);
+  });
 
-  liveCache = { at: Date.now(), highlight };
-  return highlight;
+  liveCache = { at: Date.now(), highlights };
+  return highlights;
+}
+
+/** Live Bangladesh internationals from ESPNcricinfo (no CricAPI quota). */
+export async function fetchEspnLiveBangladeshHighlight(): Promise<MatchHighlight | null> {
+  const highlights = await fetchEspnLiveBangladeshHighlights();
+  return highlights[0] ?? null;
 }
 
 /** Most recent completed Bangladesh match from ESPN — used when live play has ended. */
@@ -500,7 +558,9 @@ export async function fetchEspnRecentBangladeshHighlight(): Promise<MatchHighlig
     return recentCache.highlight;
   }
 
-  const candidates = await scanEspnBangladeshHighlights("completed");
+  const candidates = await scanEspnBangladeshHighlights("completed", {
+    internationalOnly: true,
+  });
   const highlight =
     candidates.sort((a, b) => b.eventAt - a.eventAt)[0]?.highlight ?? null;
 

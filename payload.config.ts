@@ -19,6 +19,7 @@ import { Players } from "./collections/Players";
 import { StandComments } from "./collections/StandComments";
 import { StandDiscussions } from "./collections/StandDiscussions";
 import { StandReactions } from "./collections/StandReactions";
+import { TrackedPlayerLeagues } from "./collections/TrackedPlayerLeagues";
 import { Users } from "./collections/Users";
 import { PrivacyPolicy } from "./globals/PrivacyPolicy";
 import { TermsOfService } from "./globals/TermsOfService";
@@ -64,6 +65,7 @@ export default buildConfig({
     HeroSlides,
     Countries,
     Players,
+    TrackedPlayerLeagues,
     CricketSnapshots,
   ],
   globals: [PrivacyPolicy, TermsOfService],

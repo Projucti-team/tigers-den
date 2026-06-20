@@ -1,10 +1,14 @@
 import { isBangladeshTeam } from "@/lib/cricket/constants";
+import {
+  matchCategoryFromText,
+  matchCategoryPriority,
+  type MatchCategory,
+} from "@/lib/cricket/match-category";
 import { fetchEspnMatchCentre } from "@/lib/cricket/providers/espn-match-centre";
 import { getCityWeather, type MatchWeather } from "@/lib/cricket/providers/weather";
 import { teamShortCode } from "@/lib/cricket/services/marquee-format";
 import type { LiveMatchFeed } from "@/lib/cricket/types";
 import {
-  getLiveBangladeshHighlight,
   getRecentBangladeshMatchHighlight,
 } from "@/lib/cricket/services/bangladesh-last-match";
 import type { LiveMatchSummary, Scorecard } from "@/lib/cricket/types";
@@ -17,13 +21,26 @@ export type MatchHighlight = {
   detailLine: string;
   scores: { label: string; value: string }[];
   venue?: { name?: string; city?: string; country?: string };
+  /** men / women / u19 / emerging / domestic — controls Match Centre ordering. */
+  category?: MatchCategory;
+  priority?: number;
+  espnLeagueId?: number;
+  /** Shown above the score for admin-tracked domestic players. */
+  bannerTitle?: string;
+  leagueLabel?: string;
 };
 
 export function involvesBangladesh(match: LiveMatchSummary): boolean {
   const teams = match.teams || match.teamInfo?.map((t) => t.name) || [];
   if (teams.some((t) => isBangladeshTeam(t))) return true;
   const blob = `${match.name} ${teams.join(" ")}`.toLowerCase();
-  return blob.includes("bangladesh") || blob.includes(" ban ") || blob.includes("ban vs");
+  return (
+    blob.includes("bangladesh") ||
+    blob.includes(" ban ") ||
+    blob.includes("ban vs") ||
+    /\bban[- ]?w\b/.test(blob) ||
+    /\bban[- ]?u19\b/.test(blob)
+  );
 }
 
 export function isActuallyLive(match: LiveMatchSummary): boolean {
@@ -135,10 +152,27 @@ export function findLastBangladeshMatch(matches: LiveMatchSummary[]): LiveMatchS
   return candidates[0] ?? null;
 }
 
+export function sortMatchHighlights(highlights: MatchHighlight[]): MatchHighlight[] {
+  return [...highlights].sort((a, b) => {
+    const pa = a.priority ?? matchCategoryPriority(a.category ?? "men");
+    const pb = b.priority ?? matchCategoryPriority(b.category ?? "men");
+    if (pa !== pb) return pa - pb;
+    return a.title.localeCompare(b.title);
+  });
+}
+
+/** Live from ESPN — all in-progress Bangladesh + tracked domestic matches, priority sorted. */
+export async function getLiveMatchHighlights(): Promise<MatchHighlight[]> {
+  const { fetchEspnLiveBangladeshHighlights } = await import(
+    "@/lib/cricket/providers/espn-live"
+  );
+  return sortMatchHighlights(await fetchEspnLiveBangladeshHighlights());
+}
+
 /** Live from ESPN/CricAPI; otherwise the most recent completed match (ESPN first). */
 export async function getMatchHighlight(): Promise<MatchHighlight | null> {
-  const live = await getLiveBangladeshHighlight();
-  if (live) return live;
+  const liveMatches = await getLiveMatchHighlights();
+  if (liveMatches.length) return liveMatches[0];
 
   return getRecentBangladeshMatchHighlight();
 }
@@ -183,25 +217,33 @@ export function enrichHighlightFromScorecard(
   return { ...highlight, scoreLine, scores };
 }
 
-export async function getMatchCentreData(): Promise<{
+export async function getMatchCentreData(selectedMatchId?: string): Promise<{
   highlight: MatchHighlight | null;
+  liveMatches: MatchHighlight[];
   scorecard: Scorecard | null;
   liveFeed: LiveMatchFeed | null;
   weather: MatchWeather | null;
 }> {
-  const highlight = await getMatchHighlight();
+  const liveMatches = await getLiveMatchHighlights();
+  const highlight = liveMatches.length
+    ? liveMatches.find((m) => m.matchId === selectedMatchId) ?? liveMatches[0]
+    : await getMatchHighlight();
+
   if (!highlight?.matchId) {
-    return { highlight: null, scorecard: null, liveFeed: null, weather: null };
+    return { highlight: null, liveMatches, scorecard: null, liveFeed: null, weather: null };
   }
+
+  const leagueId = highlight.espnLeagueId ?? 24324;
 
   if (highlight.matchId.startsWith("espn-")) {
     const [espn, weather] = await Promise.all([
-      fetchEspnMatchCentre(highlight.matchId).catch(() => null),
+      fetchEspnMatchCentre(highlight.matchId, leagueId).catch(() => null),
       getHighlightWeather(highlight),
     ]);
     const enriched = enrichHighlightFromScorecard(highlight, espn?.scorecard ?? null);
     return {
       highlight: enriched,
+      liveMatches,
       scorecard: espn?.scorecard ?? null,
       liveFeed: highlight.mode === "live" ? (espn?.liveFeed ?? null) : null,
       weather,
@@ -209,5 +251,5 @@ export async function getMatchCentreData(): Promise<{
   }
 
   const weather = await getHighlightWeather(highlight);
-  return { highlight, scorecard: null, liveFeed: null, weather };
+  return { highlight, liveMatches, scorecard: null, liveFeed: null, weather };
 }

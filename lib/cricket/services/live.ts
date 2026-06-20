@@ -1,6 +1,8 @@
 import { fetchEspnMatchCentre } from "@/lib/cricket/providers/espn-match-centre";
-import { liveMatchSummaryFromHighlight } from "@/lib/cricket/providers/espn-live";
-import { getLiveBangladeshHighlight } from "@/lib/cricket/services/bangladesh-last-match";
+import {
+  fetchEspnLiveBangladeshHighlights,
+  liveMatchSummaryFromHighlight,
+} from "@/lib/cricket/providers/espn-live";
 import type { LiveMatchSummary, Scorecard } from "@/lib/cricket/types";
 
 export async function getLiveCricketData(): Promise<{
@@ -10,20 +12,22 @@ export async function getLiveCricketData(): Promise<{
   warnings: string[];
 }> {
   const warnings: string[] = [];
-  const highlight = await getLiveBangladeshHighlight();
+  const highlights = await fetchEspnLiveBangladeshHighlights().catch(() => []);
 
-  if (!highlight) {
+  if (!highlights.length) {
     warnings.push("No live Bangladesh match on ESPNcricinfo right now.");
     return { matches: [], bangladeshMatch: null, scorecard: null, warnings };
   }
 
-  const bangladeshMatch = liveMatchSummaryFromHighlight(highlight);
-  const matches = [bangladeshMatch];
+  const matches = highlights.map(liveMatchSummaryFromHighlight);
+  const bangladeshMatch = matches[0] ?? null;
 
   let scorecard: Scorecard | null = null;
-  if (highlight.matchId.startsWith("espn-")) {
+  const primary = highlights[0];
+  if (primary?.matchId.startsWith("espn-")) {
     try {
-      scorecard = (await fetchEspnMatchCentre(highlight.matchId))?.scorecard ?? null;
+      scorecard =
+        (await fetchEspnMatchCentre(primary.matchId, primary.espnLeagueId))?.scorecard ?? null;
     } catch {
       warnings.push("Could not load Bangladesh live scorecard from ESPNcricinfo.");
     }

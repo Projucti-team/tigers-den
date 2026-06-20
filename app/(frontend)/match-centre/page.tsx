@@ -12,9 +12,18 @@ export const metadata = {
   description: "Live scores, fan chat, and ball-by-ball for Bangladesh cricket.",
 };
 
-export default async function MatchCentrePage() {
-  const { highlight, scorecard, liveFeed, weather } = await getMatchCentreData().catch(() => ({
+type PageProps = {
+  searchParams: Promise<{ match?: string; matchId?: string }>;
+};
+
+export default async function MatchCentrePage({ searchParams }: PageProps) {
+  const params = await searchParams;
+  const selectedMatchId = params.matchId ?? params.match ?? undefined;
+  const { highlight, liveMatches, scorecard, liveFeed, weather } = await getMatchCentreData(
+    selectedMatchId,
+  ).catch(() => ({
     highlight: null,
+    liveMatches: [],
     scorecard: null,
     liveFeed: null,
     weather: null,
@@ -40,9 +49,11 @@ export default async function MatchCentrePage() {
         <div className="grid gap-6 lg:grid-cols-[1fr_320px]">
           <LiveMatchCentre
             initialHighlight={highlight}
+            initialLiveMatches={liveMatches}
             initialScorecard={scorecard}
             initialLiveFeed={liveFeed}
             initialWeather={weather}
+            initialMatchId={selectedMatchId ?? highlight?.matchId ?? null}
           />
           <LiveChat />
         </div>

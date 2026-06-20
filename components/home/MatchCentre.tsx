@@ -1,12 +1,16 @@
 "use client";
 
 import { MatchCentreTabs } from "@/components/match-centre/MatchCentreTabs";
+import { MatchCentreMatchPicker } from "@/components/match-centre/MatchCentreMatchPicker";
 import type { MatchWeather } from "@/lib/cricket/providers/weather";
 import type { MatchHighlight } from "@/lib/cricket/services/match-highlight";
 import type { LiveMatchFeed, Scorecard } from "@/lib/cricket/types";
 
 type Props = {
   highlight: MatchHighlight | null;
+  liveMatches?: MatchHighlight[];
+  selectedMatchId?: string | null;
+  onSelectMatch?: (matchId: string) => void;
   scorecard?: Scorecard | null;
   liveFeed?: LiveMatchFeed | null;
   weather?: MatchWeather | null;
@@ -59,7 +63,15 @@ function VenueWeather({ weather }: { weather: MatchWeather }) {
   );
 }
 
-export function MatchCentre({ highlight, scorecard, liveFeed, weather }: Props) {
+export function MatchCentre({
+  highlight,
+  liveMatches = [],
+  selectedMatchId = null,
+  onSelectMatch,
+  scorecard,
+  liveFeed,
+  weather,
+}: Props) {
   if (!highlight) {
     return (
       <section id="match-centre" className="fan-card">
@@ -99,7 +111,26 @@ export function MatchCentre({ highlight, scorecard, liveFeed, weather }: Props) 
         )}
       </div>
 
+      {highlight.mode === "live" && liveMatches.length > 1 && onSelectMatch ? (
+        <MatchCentreMatchPicker
+          matches={liveMatches}
+          selectedMatchId={selectedMatchId ?? highlight.matchId}
+          onSelect={onSelectMatch}
+        />
+      ) : null}
+
       <div className="space-y-4 bg-gradient-to-b from-emerald/5 to-crimson/5 p-4 md:p-5">
+        {highlight.bannerTitle ? (
+          <p className="rounded-lg border-2 border-amber/50 bg-amber/15 px-4 py-3 text-center text-sm font-extrabold uppercase tracking-wide text-charcoal">
+            {highlight.bannerTitle}
+            {highlight.leagueLabel ? (
+              <span className="mt-1 block text-[11px] font-semibold normal-case text-charcoal/65">
+                {highlight.leagueLabel}
+              </span>
+            ) : null}
+          </p>
+        ) : null}
+
         <p className="rounded-lg border-l-4 border-crimson bg-crimson/10 px-3 py-2 text-sm font-bold text-charcoal">
           {highlight.title}
         </p>

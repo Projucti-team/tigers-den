@@ -6,6 +6,11 @@ export const BANGLADESH_NAMES = [
   "bd",
   "bangladesh women",
   "ban women",
+  "bangladesh u19",
+  "ban u19",
+  "bangladesh under-19",
+  "bangladesh emerging",
+  "bangladesh a",
 ];
 
 export const FORMATS: CricketFormat[] = ["test", "odi", "t20"];
@@ -26,11 +31,15 @@ export const SPORTS_JUPITER_BASE = "https://cricket.sportsjupiter.com/v1";
 export const CACHE_TTL_MS = 5 * 60 * 1000;
 
 export function isBangladeshTeam(name: string): boolean {
-  const n = name.toLowerCase();
+  const n = name.toLowerCase().trim();
+  if (!n) return false;
   if (n.includes("bangladesh")) return true;
-  if (/\bban\b/.test(n)) return true;
+  if (/\bban\b/.test(n) && !/\bbangalore\b/.test(n)) return true;
   if (/\bbd\b/.test(n)) return true;
   if (n.includes("bangladesh women") || n.includes("ban women")) return true;
+  if (/\bban[- ]?w\b/.test(n)) return true;
+  if (/bangladesh\s+u-?19|ban\s+u-?19|under[- ]?19/.test(n)) return true;
+  if (/bangladesh\s+emerging|bangladesh\s+a\b/.test(n)) return true;
   return false;
 }
 
