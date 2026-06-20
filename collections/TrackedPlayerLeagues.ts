@@ -9,6 +9,9 @@ export const TrackedPlayerLeagues: CollectionConfig = {
     description:
       "Track Bangladeshi players in overseas leagues (e.g. Hasan Mahmud for Kent in County Championship). " +
       "Match Centre shows live scores when their team is playing, with a banner above the score.",
+    components: {
+      beforeList: ["@/components/admin/TrackedPlayerLeaguesHelp"],
+    },
   },
   access: {
     read: () => true,

@@ -81,7 +81,24 @@ async function runPostgresPatches(): Promise<void> {
         ADD COLUMN IF NOT EXISTS "match_chat_rooms_id" integer,
         ADD COLUMN IF NOT EXISTS "match_chat_messages_id" integer,
         ADD COLUMN IF NOT EXISTS "countries_id" integer,
-        ADD COLUMN IF NOT EXISTS "players_id" integer;
+        ADD COLUMN IF NOT EXISTS "players_id" integer,
+        ADD COLUMN IF NOT EXISTS "tracked_player_leagues_id" integer;
+    `);
+
+    await pool.query(`
+      CREATE TABLE IF NOT EXISTS "tracked_player_leagues" (
+        "id" serial PRIMARY KEY NOT NULL,
+        "player_name" varchar NOT NULL,
+        "team_name" varchar NOT NULL,
+        "league_name" varchar NOT NULL,
+        "espn_league_id" numeric NOT NULL,
+        "cricinfo_series_id" numeric,
+        "season_year" numeric,
+        "use_season_events" boolean DEFAULT true,
+        "active" boolean DEFAULT true,
+        "updated_at" timestamp(3) with time zone DEFAULT now() NOT NULL,
+        "created_at" timestamp(3) with time zone DEFAULT now() NOT NULL
+      );
     `);
 
     await pool.query(`

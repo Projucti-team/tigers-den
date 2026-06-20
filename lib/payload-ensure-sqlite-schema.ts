@@ -94,6 +94,7 @@ const SQLITE_LOCKED_DOCS_REL_COLUMNS = [
   "cricket_snapshots_id",
   "countries_id",
   "players_id",
+  "tracked_player_leagues_id",
 ] as const;
 
 /** Payload locked-document rels need a column per collection (SQLite). */
@@ -167,6 +168,34 @@ export async function ensureSqliteCricketPlayersTables(): Promise<void> {
   sqlitePlayersReady = true;
 }
 
+let sqliteTrackedPlayerLeaguesReady = false;
+
+/** Tracked player leagues for Match Centre domestic tracking (SQLite). */
+export async function ensureSqliteTrackedPlayerLeaguesTable(): Promise<void> {
+  if (sqliteTrackedPlayerLeaguesReady) return;
+
+  const client = sqliteClient();
+  if (!client) return;
+
+  await client.execute(`
+    CREATE TABLE IF NOT EXISTS "tracked_player_leagues" (
+      "id" integer PRIMARY KEY NOT NULL,
+      "player_name" text NOT NULL,
+      "team_name" text NOT NULL,
+      "league_name" text NOT NULL,
+      "espn_league_id" numeric NOT NULL,
+      "cricinfo_series_id" numeric,
+      "season_year" numeric,
+      "use_season_events" integer DEFAULT 1,
+      "active" integer DEFAULT 1,
+      "updated_at" text DEFAULT (strftime('%Y-%m-%dT%H:%M:%fZ', 'now')) NOT NULL,
+      "created_at" text DEFAULT (strftime('%Y-%m-%dT%H:%M:%fZ', 'now')) NOT NULL
+    );
+  `);
+
+  sqliteTrackedPlayerLeaguesReady = true;
+}
+
 let sqliteLegalGlobalsReady = false;
 
 /** Legal page globals for Privacy Policy and Terms of Service (SQLite). */
@@ -198,6 +227,7 @@ export async function ensureSqliteIncrementalSchema(): Promise<void> {
     ensureSqliteCricketSnapshotsTable(),
     ensureSqliteMatchChatTables(),
     ensureSqliteCricketPlayersTables(),
+    ensureSqliteTrackedPlayerLeaguesTable(),
     ensureSqliteLegalGlobalsTables(),
     ensureSqlitePayloadLockedDocumentsRels(),
   ]);
