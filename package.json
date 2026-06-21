@@ -13,6 +13,9 @@
     "build:prod": "payload generate:importmap && next build",
     "start": "next start",
     "lint": "next lint",
+    "test": "npm run test:unit && npm run test:e2e",
+    "test:unit": "node --import tsx --test tests/unit/tour-detail.test.ts",
+    "test:e2e": "playwright test",
     "payload": "payload",
     "generate:types": "payload generate:types",
     "generate:importmap": "payload generate:importmap",
@@ -47,6 +50,7 @@
   },
   "devDependencies": {
     "@eslint/eslintrc": "^3.3.1",
+    "@playwright/test": "^1.61.0",
     "@tailwindcss/postcss": "^4.1.8",
     "@types/node": "^22.15.21",
     "@types/pg": "^8.15.6",

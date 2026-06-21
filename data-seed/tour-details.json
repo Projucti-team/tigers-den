@@ -1,0 +1,119 @@
+{
+  "fetchedAt": "2026-06-01T00:00:00.000Z",
+  "entries": {
+    "australia-tour-of-bangladesh-1532475": {
+      "fetchedAt": "2026-06-01T00:00:00.000Z",
+      "slug": "australia-tour-of-bangladesh-1532475",
+      "warnings": ["Fixtures and results from ESPNcricinfo."],
+      "tour": {
+        "id": "1532475",
+        "name": "Australia tour of Bangladesh, 2026",
+        "startDate": "2026-06-09",
+        "endDate": "2026-06-21",
+        "teams": ["Bangladesh", "Australia"]
+      },
+      "card": {
+        "title": "Australia tour of Bangladesh",
+        "description": "6 matches · Jun 2026",
+        "href": "/tours/australia-tour-of-bangladesh-1532475"
+      },
+      "matches": [
+        {
+          "id": "espn-1532480",
+          "name": "1st ODI,  at Dhaka",
+          "matchType": "odi",
+          "status": "Bangladesh won by 86 runs (DLS method)",
+          "venue": "Shere Bangla National Stadium, Mirpur, Dhaka",
+          "date": "2026-06-09",
+          "dateTimeGMT": "2026-06-09T05:00:00.000Z",
+          "teams": ["Bangladesh", "Australia"],
+          "isLive": false,
+          "seriesId": "1532475",
+          "seriesName": "Australia tour of Bangladesh, 2026"
+        },
+        {
+          "id": "espn-1532481",
+          "name": "2nd ODI,  at Dhaka",
+          "matchType": "odi",
+          "status": "Bangladesh won by 5 wickets (with 36 balls remaining) (DLS method)",
+          "venue": "Shere Bangla National Stadium, Mirpur, Dhaka",
+          "date": "2026-06-11",
+          "dateTimeGMT": "2026-06-11T05:00:00.000Z",
+          "teams": ["Bangladesh", "Australia"],
+          "isLive": false,
+          "seriesId": "1532475",
+          "seriesName": "Australia tour of Bangladesh, 2026"
+        },
+        {
+          "id": "espn-1532482",
+          "name": "3rd ODI,  at Dhaka",
+          "matchType": "odi",
+          "status": "Australia won by 1 wicket (with 3 balls remaining)",
+          "venue": "Shere Bangla National Stadium, Mirpur, Dhaka",
+          "date": "2026-06-14",
+          "dateTimeGMT": "2026-06-14T05:00:00.000Z",
+          "teams": ["Bangladesh", "Australia"],
+          "isLive": false,
+          "seriesId": "1532475",
+          "seriesName": "Australia tour of Bangladesh, 2026"
+        },
+        {
+          "id": "espn-1532483",
+          "name": "1st T20I,  at Chattogram",
+          "matchType": "t20",
+          "status": "Australia won by 4 wickets (with 10 balls remaining)",
+          "venue": "Bir Sreshtho Flight Lieutenant Matiur Rahman Stadium, Chattogram",
+          "date": "2026-06-17",
+          "dateTimeGMT": "2026-06-17T08:00:00.000Z",
+          "teams": ["Bangladesh", "Australia"],
+          "isLive": false,
+          "seriesId": "1532475",
+          "seriesName": "Australia tour of Bangladesh, 2026"
+        },
+        {
+          "id": "espn-1532484",
+          "name": "2nd T20I,  at Chattogram",
+          "matchType": "t20",
+          "status": "Australia won by 7 runs",
+          "venue": "Bir Sreshtho Flight Lieutenant Matiur Rahman Stadium, Chattogram",
+          "date": "2026-06-19",
+          "dateTimeGMT": "2026-06-19T08:00:00.000Z",
+          "teams": ["Bangladesh", "Australia"],
+          "isLive": false,
+          "seriesId": "1532475",
+          "seriesName": "Australia tour of Bangladesh, 2026"
+        },
+        {
+          "id": "espn-1532485",
+          "name": "3rd T20I,  at Chattogram",
+          "matchType": "t20",
+          "status": "Match scheduled to begin at 14:00 local time (08:00 GMT)",
+          "venue": "Bir Sreshtho Flight Lieutenant Matiur Rahman Stadium, Chattogram",
+          "date": "2026-06-21",
+          "dateTimeGMT": "2026-06-21T08:00:00.000Z",
+          "teams": ["Bangladesh", "Australia"],
+          "isLive": false,
+          "seriesId": "1532475",
+          "seriesName": "Australia tour of Bangladesh, 2026"
+        }
+      ],
+      "squads": [],
+      "venues": [
+        {
+          "venueName": "Shere Bangla National Stadium, Mirpur, Dhaka",
+          "city": "Dhaka",
+          "about": "The Shere Bangla National Stadium in Mirpur is Bangladesh's largest cricket ground — a roaring bowl of green and red when the Tigers play at home.",
+          "cityAbout": "Dhaka is a vibrant megacity on the Buriganga, famous for street food, rickshaws, and passionate cricket crowds that turn every international into a festival.",
+          "weather": "Typical match months are warm and humid (28–35°C) with occasional thunderstorms in monsoon season; dry winter evenings are pleasant for night games."
+        },
+        {
+          "venueName": "Bir Sreshtho Flight Lieutenant Matiur Rahman Stadium, Chattogram",
+          "city": "Chattogram",
+          "about": "Zahur Ahmed Chowdhury Stadium sits near the Karnaphuli — a compact ground where the atmosphere builds quickly and boundaries fly in the evening light.",
+          "cityAbout": "Chattogram is Bangladesh's port city, blending hills, beaches, and a laid-back coastal vibe — perfect for a tour stop between Dhaka and Sylhet.",
+          "weather": "Coastal humidity is noticeable year-round; expect 27–33°C with sea breeze, and heavier rain during the June–September monsoon."
+        }
+      ]
+    }
+  }
+}
