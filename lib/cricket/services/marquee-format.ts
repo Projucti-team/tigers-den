@@ -137,6 +137,30 @@ function fixtureOrdinalLabel(text: string): string | null {
   return text.match(/\d+(?:st|nd|rd|th)\s+(?:odi|t20i?|test)/i)?.[0]?.toLowerCase() ?? null;
 }
 
+function sameDayInDhaka(ms: number): boolean {
+  const opts: Intl.DateTimeFormatOptions = {
+    timeZone: "Asia/Dhaka",
+    year: "numeric",
+    month: "2-digit",
+    day: "2-digit",
+  };
+  const fmt = new Intl.DateTimeFormat("en-CA", opts);
+  return fmt.format(new Date(ms)) === fmt.format(new Date());
+}
+
+function sharesLiveOpponent(live: MatchHighlight, match: LiveMatchSummary): boolean {
+  const opp = opponentFromMatch(match);
+  if (!opp || opp === "TBC") return false;
+
+  const blob = `${live.title} ${live.scoreLine} ${live.scores.map((s) => s.label).join(" ")}`.toLowerCase();
+  const oppLower = opp.toLowerCase();
+  if (blob.includes(oppLower)) return true;
+
+  return live.scores.some(
+    (score) => !isBangladeshTeam(score.label) && teamShortCode(score.label) === opp,
+  );
+}
+
 /** Hide a cached upcoming row when that fixture is already live. */
 export function isUpcomingHiddenByLive(
   live: MatchHighlight,
@@ -150,6 +174,9 @@ export function isUpcomingHiddenByLive(
   const liveLabel = fixtureOrdinalLabel(`${live.title} ${live.scoreLine}`);
   const upcomingLabel = fixtureOrdinalLabel(match.name);
   if (liveLabel && upcomingLabel && liveLabel === upcomingLabel) return true;
+
+  // Same opponent on the same day — e.g. hide stale "1st T20" when the 3rd T20 is live.
+  if (kickoff > 0 && sameDayInDhaka(kickoff) && sharesLiveOpponent(live, match)) return true;
 
   return false;
 }

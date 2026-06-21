@@ -28,8 +28,8 @@ function isStillUpcoming(match: LiveMatchSummary): boolean {
 
 function upcomingSourceRank(match: LiveMatchSummary): number {
   const id = match.id ?? "";
-  if (id.startsWith("espn-") && !id.startsWith("espn-curated-")) return 3;
-  if (id.startsWith("espn-curated-")) return 2;
+  if (id.startsWith("espn-curated-")) return 3;
+  if (id.startsWith("espn-")) return 2;
   if (id.startsWith("seed-")) return 0;
   return 1;
 }
@@ -53,6 +53,31 @@ function dedupeUpcomingMatches(matches: LiveMatchSummary[]): LiveMatchSummary[] 
     }
   }
   return [...byKey.values()];
+}
+
+async function loadStoredUpcomingMatches(): Promise<LiveMatchSummary[]> {
+  if (isPayloadConfigured()) {
+    const cached = await readCricketSnapshot<BangladeshUpcomingMatchesSnapshot>(
+      CRICKET_SNAPSHOT_KEYS.upcomingMatches,
+    );
+    if (cached?.matches?.length) return cached.matches;
+  }
+
+  const file = await readBangladeshUpcomingMatches();
+  return file?.matches ?? [];
+}
+
+async function resolveUpcomingBangladeshMatches(): Promise<LiveMatchSummary[]> {
+  const [freshCurated, stored] = await Promise.all([
+    buildCuratedUpcomingBangladeshMatches(UPCOMING_MERGED_LIMIT).catch(() => []),
+    loadStoredUpcomingMatches(),
+  ]);
+
+  // Curated schedule has correct ordinals (3rd T20, not 1st) — always merge over stale cache.
+  const merged = dedupeUpcomingMatches([...freshCurated, ...stored]);
+  const upcoming = merged.filter(isStillUpcoming);
+  const enriched = await enrichUpcomingMatchFixtureTimes(upcoming);
+  return dedupeUpcomingMatches(enriched.filter(isStillUpcoming));
 }
 
 export function findUpcomingBangladeshMatches(
@@ -91,14 +116,11 @@ export async function scrapeBangladeshUpcomingMatches(): Promise<BangladeshUpcom
     await fetchEspnUpcomingBangladeshMatches(UPCOMING_MERGED_LIMIT),
   );
 
-  // ESPN lists can be partial — merge with cached fixtures still in the future
-  // so a bad scrape never wipes known upcoming matches.
-  const [previousCached, previousFile] = await Promise.all([
-    getCachedUpcomingBangladeshMatches().catch(() => []),
-    readBangladeshUpcomingMatches().catch(() => null),
-  ]);
+  // ESPN lists can be partial — only fall back to the JSON seed file, not Payload cache
+  // (re-reading cache would re-merge stale rows with wrong ordinals).
+  const previousFile = await readBangladeshUpcomingMatches().catch(() => null);
   const byId = new Map<string, LiveMatchSummary>();
-  for (const m of [...upcoming, ...previousCached, ...(previousFile?.matches ?? [])]) {
+  for (const m of [...upcoming, ...(previousFile?.matches ?? [])]) {
     if (m.id && !byId.has(m.id)) byId.set(m.id, m);
   }
   const merged = dedupeUpcomingMatches(
@@ -127,22 +149,5 @@ export async function scrapeBangladeshUpcomingMatches(): Promise<BangladeshUpcom
 }
 
 export async function getCachedUpcomingBangladeshMatches(): Promise<LiveMatchSummary[]> {
-  let matches: LiveMatchSummary[] = [];
-
-  if (isPayloadConfigured()) {
-    const cached = await readCricketSnapshot<BangladeshUpcomingMatchesSnapshot>(
-      CRICKET_SNAPSHOT_KEYS.upcomingMatches,
-    );
-    if (cached?.matches?.length) matches = cached.matches;
-  }
-
-  if (!matches.length) {
-    const file = await readBangladeshUpcomingMatches();
-    matches = file?.matches ?? [];
-  }
-
-  // Drop fixtures that have already started — the live/last-match line covers those.
-  const upcoming = matches.filter(isStillUpcoming);
-  const enriched = await enrichUpcomingMatchFixtureTimes(upcoming);
-  return dedupeUpcomingMatches(enriched.filter(isStillUpcoming));
+  return resolveUpcomingBangladeshMatches();
 }
