@@ -20,6 +20,7 @@ import {
   extractFormatHint,
   extractOpponentNation,
   isUmbrellaTourName,
+  squadBelongsToTour,
   tourNamesShareVenue,
 } from "@/lib/cricket/tour-identity";
 import { tourSlug, tourStorageKey } from "@/lib/cricket/tour-slug";
@@ -146,19 +147,6 @@ function parsePlayerNames(block: string): SquadPlayer[] {
     .filter((name) => name.length > 2 && !/^(and|the|for|with)$/i.test(name))
     .map((name) => ({ name }));
 }
-
-const OPPONENT_NATIONS = [
-  "australia",
-  "bangladesh",
-  "england",
-  "india",
-  "pakistan",
-  "sri lanka",
-  "new zealand",
-  "south africa",
-  "west indies",
-  "zimbabwe",
-];
 
 function normalizeSquadHeading(heading: string): string {
   const h = heading.trim().replace(/\s+/g, " ");
@@ -467,38 +455,6 @@ async function normalizeLeagueRef(league: EspnLeagueRef): Promise<EspnLeagueRef>
   return { ...league, espnLeagueId };
 }
 
-/** Route squads from combined announcement stories to the right bilateral tour. */
-function squadBelongsToTour(squad: SeriesSquad, tour: Tour): boolean {
-  const blob = `${squad.team} ${squad.source ?? ""}`.toLowerCase();
-  const opponent = extractOpponentNation(tour.name);
-
-  if (opponent && blob.includes(opponent)) return true;
-
-  if (opponent) {
-    for (const nation of OPPONENT_NATIONS) {
-      if (nation !== opponent && blob.includes(nation)) return false;
-    }
-  }
-
-  if (tourNamesMatch(tour.name, squad.team)) return true;
-
-  if (isUmbrellaTourName(tour.name) && opponent) {
-    const squadFormat = extractFormatHint(squad.team);
-    if (!squadFormat) return false;
-
-    const tourHasFormat =
-      squadFormat === "test"
-        ? (tour.test ?? 0) > 0
-        : squadFormat === "odi"
-          ? (tour.odi ?? 0) > 0
-          : (tour.t20 ?? 0) > 0;
-
-    if (tourHasFormat) return true;
-  }
-
-  return false;
-}
-
 /** Fast path — read squads from bundled seed + data/espn-tour-squads.json. */
 export async function loadEspnTourSquadsFromCache(tour: Tour): Promise<SeriesSquad[]> {
   const snapshot = await readEspnTourSquads();
@@ -508,11 +464,13 @@ export async function loadEspnTourSquadsFromCache(tour: Tour): Promise<SeriesSqu
 
   for (const entry of Object.values(snapshot.entries)) {
     if (tourNamesMatch(tour.name, entry.tourName)) {
-      lists.push(entry.squads);
+      lists.push(entry.squads.filter((squad) => squadBelongsToTour(squad, tour)));
     }
   }
 
-  return lists.length ? mergeSquads(...lists) : [];
+  return lists.length
+    ? mergeSquads(...lists).filter((squad) => squadBelongsToTour(squad, tour))
+    : [];
 }
 
 /**

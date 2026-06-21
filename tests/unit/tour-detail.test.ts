@@ -5,10 +5,12 @@ import { fileURLToPath } from "node:url";
 import test from "node:test";
 
 import { formatMatchStatus } from "../../lib/cricket/datetime-bd.ts";
+import { sanitizeTourSnapshotForRead } from "../../lib/cricket/tour-detail-sanitize.ts";
 import {
   filterMatchesForTour,
   matchVenueMatchesTourHost,
   parseTourTeamsFromName,
+  squadBelongsToTour,
   tourNamesShareVenue,
   tourVenueKey,
 } from "../../lib/cricket/tour-identity.ts";
@@ -72,6 +74,65 @@ test("filterMatchesForTour strips Australia-in-Bangladesh fixtures from other to
   assert.equal(filterMatchesForTour(australiaTour, ausInBdMatches).length, 1);
   assert.equal(filterMatchesForTour(bangladeshInAustraliaTour, ausInBdMatches).length, 0);
   assert.equal(filterMatchesForTour(womenInAustraliaTour, ausInBdMatches).length, 0);
+});
+
+test("sanitizeTourSnapshotForRead drops venues and squads when fixtures belong to another tour", () => {
+  const tour = {
+    id: "1527259",
+    name: "Bangladesh Tour of Australia",
+    test: 2,
+  } satisfies Tour;
+  const cached = {
+    fetchedAt: "2026-06-01T00:00:00.000Z",
+    slug: "bangladesh-tour-of-australia-1527259",
+    warnings: [],
+    tour,
+    card: { title: "Bangladesh Tour of Australia", description: "2 Tests", href: "/tours/x" },
+    matches: [
+      {
+        id: "espn-1532480",
+        name: "1st ODI,  at Dhaka",
+        status: "Bangladesh won by 86 runs",
+        venue: "Shere Bangla National Stadium, Mirpur, Dhaka",
+        date: "2026-06-09",
+        seriesId: "1527259",
+        teams: ["Bangladesh", "Australia"],
+        isLive: false,
+      },
+    ],
+    squads: [{ team: "Australia — ODI squad", players: [{ name: "Pat Cummins" }] }],
+    venues: [
+      {
+        venueName: "Shere Bangla National Stadium, Mirpur, Dhaka",
+        city: "Dhaka",
+        about: "x",
+        cityAbout: "y",
+        weather: "z",
+      },
+    ],
+  } satisfies TourDetailSnapshot;
+
+  const sanitized = sanitizeTourSnapshotForRead(tour, cached);
+  assert.equal(sanitized.matches.length, 0);
+  assert.equal(sanitized.squads.length, 0);
+  assert.equal(sanitized.venues.length, 0);
+});
+
+test("squadBelongsToTour rejects ODI squads on a Test-only away tour", () => {
+  const tour = {
+    id: "1527259",
+    name: "Bangladesh Tour of Australia",
+    test: 2,
+  } satisfies Tour;
+
+  assert.equal(
+    squadBelongsToTour({ team: "Australia — ODI squad", players: [{ name: "Pat Cummins" }] }, tour),
+    false,
+  );
+  assert.equal(
+    squadBelongsToTour({ team: "Australia — Test squad", players: [{ name: "Pat Cummins" }] }, tour),
+    true,
+  );
 });
 
 test("matchVenueMatchesTourHost rejects Bangladesh venues on Australia tour", () => {

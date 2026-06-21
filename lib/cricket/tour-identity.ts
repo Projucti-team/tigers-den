@@ -305,6 +305,47 @@ export function filterMatchesForTour(tour: Tour, matches: LiveMatchSummary[]): L
   );
 }
 
+const OPPONENT_NATIONS = [
+  "australia",
+  "bangladesh",
+  "england",
+  "india",
+  "pakistan",
+  "sri lanka",
+  "new zealand",
+  "south africa",
+  "west indies",
+  "zimbabwe",
+];
+
+/** Route squad announcement blocks to the correct bilateral tour. */
+export function squadBelongsToTour(
+  squad: { team: string; source?: string },
+  tour: Tour,
+): boolean {
+  const blob = `${squad.team} ${squad.source ?? ""}`.toLowerCase();
+
+  if (tourNamesShareVenue(tour.name, squad.team)) return true;
+
+  const opponent = extractOpponentNation(tour.name);
+  if (!opponent || !blob.includes(opponent)) return false;
+
+  for (const nation of OPPONENT_NATIONS) {
+    if (nation !== opponent && blob.includes(nation)) return false;
+  }
+
+  if (!isUmbrellaTourName(tour.name)) return false;
+
+  const squadFormat = extractFormatHint(squad.team);
+  if (!squadFormat) return false;
+
+  if (squadFormat === "test") return (tour.test ?? 0) > 0;
+  if (squadFormat === "odi") return (tour.odi ?? 0) > 0;
+  if (squadFormat === "t20") return (tour.t20 ?? 0) > 0;
+
+  return false;
+}
+
 export function tourMatchesCuratedSeries(
   tour: Tour,
   curatedName: string,

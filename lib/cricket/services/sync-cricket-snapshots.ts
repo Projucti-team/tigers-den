@@ -46,10 +46,8 @@ import {
   formatTourDetailAuditIssues,
   auditTourDetailSnapshot,
 } from "@/lib/cricket/tour-detail-audit";
-import {
-  isUmbrellaTourName,
-  filterMatchesForTour,
-} from "@/lib/cricket/tour-identity";
+import { filterMatchesForTour, isUmbrellaTourName, squadBelongsToTour } from "@/lib/cricket/tour-identity";
+import { sanitizeTourSnapshotForRead } from "@/lib/cricket/tour-detail-sanitize";
 import { tourSlug } from "@/lib/cricket/tour-slug";
 import {
   pruneTourDetailSnapshots,
@@ -104,8 +102,14 @@ async function refreshWtcSource(): Promise<WtcStandingsSnapshot> {
 }
 
 async function persistTourDetail(slug: string, tour: Tour, detail: TourDetailSnapshot): Promise<void> {
-  const matches = filterMatchesForTour(tour, detail.matches);
-  const detailForAudit = matches.length === detail.matches.length ? detail : { ...detail, matches };
+  const sanitized = sanitizeTourSnapshotForRead(tour, detail);
+  const squads = detail.squads.filter((squad) => squadBelongsToTour(squad, tour));
+  const detailForAudit: TourDetailSnapshot = {
+    ...detail,
+    matches: sanitized.matches,
+    venues: sanitized.venues,
+    squads,
+  };
 
   const auditIssues = auditTourDetailSnapshot(detailForAudit);
   const snapshot: TourDetailSnapshot = auditIssues.length
