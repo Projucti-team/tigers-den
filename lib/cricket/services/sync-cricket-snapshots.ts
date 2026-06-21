@@ -46,7 +46,10 @@ import {
   formatTourDetailAuditIssues,
   auditTourDetailSnapshot,
 } from "@/lib/cricket/tour-detail-audit";
-import { isUmbrellaTourName } from "@/lib/cricket/tour-identity";
+import {
+  isUmbrellaTourName,
+  filterMatchesForTour,
+} from "@/lib/cricket/tour-identity";
 import { tourSlug } from "@/lib/cricket/tour-slug";
 import {
   pruneTourDetailSnapshots,
@@ -101,16 +104,19 @@ async function refreshWtcSource(): Promise<WtcStandingsSnapshot> {
 }
 
 async function persistTourDetail(slug: string, tour: Tour, detail: TourDetailSnapshot): Promise<void> {
-  const auditIssues = auditTourDetailSnapshot(detail);
+  const matches = filterMatchesForTour(tour, detail.matches);
+  const detailForAudit = matches.length === detail.matches.length ? detail : { ...detail, matches };
+
+  const auditIssues = auditTourDetailSnapshot(detailForAudit);
   const snapshot: TourDetailSnapshot = auditIssues.length
     ? {
-        ...detail,
+        ...detailForAudit,
         warnings: [
-          ...detail.warnings,
+          ...detailForAudit.warnings,
           ...formatTourDetailAuditIssues(auditIssues).map((message) => `Audit: ${message}`),
         ],
       }
-    : detail;
+    : detailForAudit;
 
   await upsertCricketSnapshot(keyForTourDetail(slug), `Tour: ${tour.name}`, snapshot);
   await writeTourDetailSnapshot(slug, snapshot);
@@ -121,13 +127,14 @@ function keyForTourDetail(slug: string): string {
 }
 
 async function refreshUmbrellaTourMatches(tour: Tour, cached: TourDetailSnapshot): Promise<TourDetailSnapshot["matches"]> {
-  if (!isUmbrellaTourName(tour.name)) return cached.matches;
+  const validCached = filterMatchesForTour(tour, cached.matches);
+  if (!isUmbrellaTourName(tour.name)) return validCached;
 
   const league = await espnLeagueForTour(tour);
-  if (!league) return cached.matches;
+  if (!league) return validCached;
 
   const espnMatches = await buildTourMatchesFromEspnSeries(tour, league);
-  if (!espnMatches.length) return cached.matches;
+  if (!espnMatches.length) return validCached;
 
   return sortMatchesByDate(await enrichMatchFixtureTimes(espnMatches, { tour }));
 }

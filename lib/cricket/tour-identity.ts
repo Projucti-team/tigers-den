@@ -66,6 +66,48 @@ export function tourVenueKey(name: string): string {
   return `${gender}:other:${normalizeTourName(name)}`;
 }
 
+/** Same bilateral tour direction (e.g. BD in Australia ≠ Australia in BD). */
+export function tourNamesShareVenue(a: string, b: string): boolean {
+  if (tourGender(a) !== tourGender(b)) return false;
+  return tourVenueKey(a) === tourVenueKey(b);
+}
+
+/** Host nation slug from tour title — `bangladesh`, `australia`, etc. */
+export function tourHostNationSlug(name: string): string | null {
+  const key = tourVenueKey(name);
+  let m = key.match(/^(?:men|women):bd-at:([^:]+)$/);
+  if (m) return m[1];
+  m = key.match(/^(?:men|women):([^:]+)-at:bd$/);
+  if (m) return "bangladesh";
+  return null;
+}
+
+const HOST_VENUE_HINTS: Record<string, RegExp> = {
+  bangladesh: /dhaka|chattogram|chittagong|sylhet|mirpur|bangladesh/i,
+  australia: /melbourne|sydney|brisbane|adelaide|perth|hobart|canberra|australia/i,
+  zimbabwe: /harare|bulawayo|zimbabwe/i,
+  "newzealand": /auckland|wellington|christchurch|dunedin|new zealand/i,
+  "southafrica": /johannesburg|centurion|cape town|durban|south africa/i,
+  india: /mumbai|delhi|bangalore|chennai|kolkata|hyderabad|india/i,
+  pakistan: /karachi|lahore|islamabad|rawalpindi|pakistan/i,
+  england: /london|manchester|birmingham|leeds|england/i,
+  "srilanka": /colombo|kandy|galle|sri lanka/i,
+  "westindies": /barbados|jamaica|antigua|guyana|west indies/i,
+};
+
+export function matchVenueMatchesTourHost(match: LiveMatchSummary, tourName: string): boolean {
+  const host = tourHostNationSlug(tourName);
+  if (!host) return true;
+
+  const venueBlob = `${match.venue ?? ""} ${match.name}`.trim();
+  if (!venueBlob) return true;
+
+  const pattern = HOST_VENUE_HINTS[host];
+  if (!pattern) return venueBlob.toLowerCase().includes(host.replace(/([a-z])([A-Z])/g, "$1 $2"));
+
+  return pattern.test(venueBlob);
+}
+
 export function extractOpponentNation(name: string): string | null {
   let m = name.match(/bangladesh(?:\s+women)?\s+tour of\s+([^,]+)/i);
   if (m) return slugifyNation(m[1]);
@@ -211,7 +253,9 @@ export function deduplicateTours(tours: Tour[]): Tour[] {
 }
 
 export function matchBelongsToTour(match: LiveMatchSummary, tour: Tour): boolean {
-  if (match.seriesId && tour.id && match.seriesId === tour.id) return true;
+  if (match.seriesId && tour.id && match.seriesId === tour.id) {
+    return matchVenueMatchesTourHost(match, tour.name);
+  }
 
   const matchWomen = isWomenMatch(match);
   const tourWomen = tourGender(tour.name) === "women";
@@ -240,14 +284,25 @@ export function matchBelongsToTour(match: LiveMatchSummary, tour: Tour): boolean
     const tourNorm = normalizeTourName(tour.name);
     if (seriesNorm === tourNorm) return true;
     if (tourVenueKey(match.seriesName) === tourVenueKey(tour.name)) {
-      if (umbrella || !tourFormat || !matchFormatHint(match)) return true;
+      if (umbrella || !tourFormat || !matchFormatHint(match)) {
+        return matchVenueMatchesTourHost(match, tour.name);
+      }
       return matchFormatHint(match) === tourFormat;
     }
   }
 
-  if (umbrella && opponent && blob.includes(opponent)) return true;
+  if (umbrella && opponent && blob.includes(opponent)) {
+    return matchVenueMatchesTourHost(match, tour.name);
+  }
 
   return false;
+}
+
+/** Drop fixtures copied from the wrong bilateral tour or host country. */
+export function filterMatchesForTour(tour: Tour, matches: LiveMatchSummary[]): LiveMatchSummary[] {
+  return matches.filter(
+    (match) => matchBelongsToTour(match, tour) && matchVenueMatchesTourHost(match, tour.name),
+  );
 }
 
 export function tourMatchesCuratedSeries(

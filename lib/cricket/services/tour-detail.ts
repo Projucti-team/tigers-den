@@ -11,6 +11,7 @@ import { tourToCard } from "@/lib/cricket/services/tours-display";
 import type { TourDetailSnapshot } from "@/lib/cricket/snapshot-types";
 import { readTourDetailSnapshot } from "@/lib/cricket/tour-detail-store";
 import { findTourBySlug } from "@/lib/cricket/tour-slug";
+import { filterMatchesForTour } from "@/lib/cricket/tour-identity";
 import { sortMatchesByDate } from "@/lib/cricket/match-sort";
 
 export type { TourDetail } from "@/lib/cricket/tour-detail-types";
@@ -32,6 +33,21 @@ export async function getTourDetail(slug: string): Promise<TourDetailSnapshot | 
   const { tours } = await getFutureTours({ bangladeshOnly: true });
   const umbrella = findTourBySlug(tours, slug);
   const tour = umbrella ?? cached.tour;
+  const matches = filterMatchesForTour(tour, cached.matches);
+  const venues =
+    matches.length === 0
+      ? []
+      : matches.length === cached.matches.length
+        ? cached.venues
+        : cached.venues.filter((guide) =>
+            matches.some((match) => {
+              const venue = match.venue?.toLowerCase() ?? "";
+              return (
+                venue.includes(guide.city.toLowerCase()) ||
+                venue.includes(guide.venueName.toLowerCase().slice(0, 24))
+              );
+            }),
+          );
 
   const espnSquads = await loadEspnTourSquadsFromCache(tour);
   const mergedSquads = mergeSquads(cached.squads, espnSquads);
@@ -47,7 +63,8 @@ export async function getTourDetail(slug: string): Promise<TourDetailSnapshot | 
       ...cached,
       tour,
       card: tourToCard(tour, 0),
-      matches: sortMatchesByDate(cached.matches),
+      matches: sortMatchesByDate(matches),
+      venues,
     },
     squads,
   );

@@ -20,6 +20,7 @@ import {
   trackedPlayerLeaguesToRefs,
   type TrackedLeagueRef,
 } from "@/lib/cricket/tracked-player-leagues";
+import { filterMatchesForTour } from "@/lib/cricket/tour-identity";
 import type { LiveMatchSummary, Tour } from "@/lib/cricket/types";
 
 const CORE_BASE = "http://core.espnuk.org/v2/sports/cricket";
@@ -496,6 +497,10 @@ export async function buildTourMatchesFromEspnSeries(
   tour: Tour,
   league: EspnTourLeagueRef,
 ): Promise<LiveMatchSummary[]> {
+  if (/^\d+$/.test(tour.id) && String(league.cricinfoSeriesId) !== tour.id) {
+    return [];
+  }
+
   const seasonYear =
     league.seasonYear ??
     (tour.startDate ? new Date(tour.startDate).getFullYear() : undefined);
@@ -518,11 +523,14 @@ export async function buildTourMatchesFromEspnSeries(
     });
   }
 
-  return matches.sort((a, b) => {
-    const ta = a.dateTimeGMT ? new Date(a.dateTimeGMT).getTime() : 0;
-    const tb = b.dateTimeGMT ? new Date(b.dateTimeGMT).getTime() : 0;
-    return ta - tb;
-  });
+  return filterMatchesForTour(
+    tour,
+    matches.sort((a, b) => {
+      const ta = a.dateTimeGMT ? new Date(a.dateTimeGMT).getTime() : 0;
+      const tb = b.dateTimeGMT ? new Date(b.dateTimeGMT).getTime() : 0;
+      return ta - tb;
+    }),
+  );
 }
 
 async function scanEspnBangladeshMatches(

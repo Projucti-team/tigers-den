@@ -5,7 +5,14 @@ import { fileURLToPath } from "node:url";
 import test from "node:test";
 
 import { formatMatchStatus } from "../../lib/cricket/datetime-bd.ts";
-import { parseTourTeamsFromName } from "../../lib/cricket/tour-identity.ts";
+import {
+  filterMatchesForTour,
+  matchVenueMatchesTourHost,
+  parseTourTeamsFromName,
+  tourNamesShareVenue,
+  tourVenueKey,
+} from "../../lib/cricket/tour-identity.ts";
+import type { Tour } from "../../lib/cricket/types.ts";
 import {
   auditTourDetailSnapshot,
   formatTourDetailAuditIssues,
@@ -24,6 +31,61 @@ test("parseTourTeamsFromName lists Bangladesh first for home tours", () => {
     "Bangladesh",
     "Zimbabwe",
   ]);
+});
+
+test("tourNamesShareVenue distinguishes home vs away bilateral tours", () => {
+  const australiaInBd = "Australia tour of Bangladesh, 2026";
+  const bangladeshInAu = "Bangladesh Tour of Australia";
+
+  assert.notEqual(tourVenueKey(australiaInBd), tourVenueKey(bangladeshInAu));
+  assert.equal(tourNamesShareVenue(australiaInBd, "Australia in Bangladesh ODI Series"), true);
+  assert.equal(tourNamesShareVenue(bangladeshInAu, australiaInBd), false);
+});
+
+test("filterMatchesForTour strips Australia-in-Bangladesh fixtures from other tours", () => {
+  const ausInBdMatches = [
+    {
+      id: "espn-1532480",
+      name: "1st ODI,  at Dhaka",
+      status: "Bangladesh won by 86 runs",
+      venue: "Shere Bangla National Stadium, Mirpur, Dhaka",
+      date: "2026-06-09",
+      seriesId: "1527259",
+      teams: ["Bangladesh", "Australia"],
+      isLive: false,
+    },
+  ] satisfies LiveMatchSummary[];
+
+  const australiaTour = {
+    id: "1532475",
+    name: "Australia tour of Bangladesh, 2026",
+  } satisfies Tour;
+  const bangladeshInAustraliaTour = {
+    id: "1527259",
+    name: "Bangladesh Tour of Australia",
+  } satisfies Tour;
+  const womenInAustraliaTour = {
+    id: "4d3b12d1-2699-4b19-873f-144719dc9bc7",
+    name: "Bangladesh Women tour of Australia",
+  } satisfies Tour;
+
+  assert.equal(filterMatchesForTour(australiaTour, ausInBdMatches).length, 1);
+  assert.equal(filterMatchesForTour(bangladeshInAustraliaTour, ausInBdMatches).length, 0);
+  assert.equal(filterMatchesForTour(womenInAustraliaTour, ausInBdMatches).length, 0);
+});
+
+test("matchVenueMatchesTourHost rejects Bangladesh venues on Australia tour", () => {
+  const match = {
+    id: "espn-1532480",
+    name: "1st ODI,  at Dhaka",
+    status: "Bangladesh won by 86 runs",
+    venue: "Shere Bangla National Stadium, Mirpur, Dhaka",
+    date: "2026-06-09",
+    isLive: false,
+  } satisfies LiveMatchSummary;
+
+  assert.equal(matchVenueMatchesTourHost(match, "Australia tour of Bangladesh, 2026"), true);
+  assert.equal(matchVenueMatchesTourHost(match, "Bangladesh Tour of Australia"), false);
 });
 
 test("formatMatchStatus keeps completed result text", () => {
@@ -131,7 +193,7 @@ test("job-written tour snapshots do not attach the wrong ESPN series to a tour",
   for (const [slug, detail] of Object.entries(file.entries ?? {})) {
     const issues = auditTourDetailSnapshot(detail, {
       referenceDate: new Date("2026-06-20T12:00:00.000Z"),
-    }).filter((issue) => issue.code === "series-id-mismatch");
+    }).filter((issue) => issue.code === "series-id-mismatch" || issue.code === "host-venue-mismatch");
 
     assert.deepEqual(
       issues,

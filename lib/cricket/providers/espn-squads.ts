@@ -20,6 +20,7 @@ import {
   extractFormatHint,
   extractOpponentNation,
   isUmbrellaTourName,
+  tourNamesShareVenue,
 } from "@/lib/cricket/tour-identity";
 import { tourSlug, tourStorageKey } from "@/lib/cricket/tour-slug";
 import type { Tour } from "@/lib/cricket/types";
@@ -92,15 +93,18 @@ function tourTokens(name: string): string[] {
 }
 
 function leagueMatchesTour(league: CoreLeague, tourName: string): boolean {
-  const blob = `${league.name ?? ""} ${league.shortName ?? ""}`.toLowerCase();
-  const tokens = tourTokens(tourName);
-  if (!tokens.length) return false;
-  const hits = tokens.filter((t) => blob.includes(t));
-  return hits.length >= Math.min(2, tokens.length);
+  const leagueName = `${league.name ?? ""} ${league.shortName ?? ""}`.trim();
+  if (!leagueName) return false;
+  return tourNamesShareVenue(tourName, leagueName);
 }
 
 /** Resolve ESPN core league + Cricinfo series id from tour title. */
-export async function resolveEspnLeagueForTour(tourName: string): Promise<EspnLeagueRef | null> {
+export async function resolveEspnLeagueForTour(
+  tourName: string,
+  tourId?: string,
+): Promise<EspnLeagueRef | null> {
+  let fallback: EspnLeagueRef | null = null;
+
   for (let page = 1; page <= 8; page++) {
     const list = await fetchCoreList(`${CORE_BASE}/leagues?page=${page}&pageSize=100`);
     if (!list.items?.length) break;
@@ -112,14 +116,20 @@ export async function resolveEspnLeagueForTour(tourName: string): Promise<EspnLe
       const cricinfoSeriesId = Number(league.mappings?.cricinfo);
       if (!Number.isFinite(cricinfoSeriesId)) continue;
 
-      return {
+      const ref: EspnLeagueRef = {
         espnLeagueId: Number(league.id),
         cricinfoSeriesId,
       };
+
+      if (tourId && /^\d+$/.test(tourId) && tourId === String(cricinfoSeriesId)) {
+        return ref;
+      }
+
+      if (!fallback) fallback = ref;
     }
   }
 
-  return null;
+  return fallback;
 }
 
 function parsePlayerNames(block: string): SquadPlayer[] {
@@ -429,11 +439,7 @@ function leagueFromSnapshot(
 }
 
 function tourNamesMatch(a: string, b: string): boolean {
-  const tokens = tourTokens(a);
-  const blob = b.toLowerCase();
-  if (!tokens.length) return false;
-  const hits = tokens.filter((t) => blob.includes(t));
-  return hits.length >= Math.min(2, tokens.length);
+  return tourNamesShareVenue(a, b);
 }
 
 async function resolveEspnLeagueByCricinfoId(cricinfoSeriesId: number): Promise<number | null> {
@@ -522,7 +528,7 @@ export async function refreshEspnTourSquads(tour: Tour): Promise<{
   const snapshot = await readEspnTourSquads();
   const cached = lookupEspnTourSquads(snapshot, keys);
 
-  const rawLeague = leagueFromSnapshot(snapshot, keys) ?? (await resolveEspnLeagueForTour(tour.name));
+  const rawLeague = leagueFromSnapshot(snapshot, keys) ?? (await resolveEspnLeagueForTour(tour.name, tour.id));
   const league = rawLeague ? await normalizeLeagueRef(rawLeague) : null;
 
   const curatedStoryUrls = keys

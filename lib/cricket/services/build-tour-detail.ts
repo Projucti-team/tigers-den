@@ -15,7 +15,7 @@ import { refreshEspnTourSquads, applyEspnTourSquads } from "@/lib/cricket/provid
 import { tourToCard } from "@/lib/cricket/services/tours-display";
 import type { TourDetailSnapshot } from "@/lib/cricket/snapshot-types";
 import type { TourDetail } from "@/lib/cricket/tour-detail-types";
-import { matchBelongsToTour, isUmbrellaTourName } from "@/lib/cricket/tour-identity";
+import { matchBelongsToTour, isUmbrellaTourName, filterMatchesForTour } from "@/lib/cricket/tour-identity";
 import type { LiveMatchSummary, Tour } from "@/lib/cricket/types";
 import { sortMatchesByDate } from "@/lib/cricket/match-sort";
 import { resolveTourVenues } from "@/lib/cricket/venues";
@@ -101,7 +101,7 @@ export async function buildTourDetailLive(
   warnings.push(...squadWarnings);
 
   const timedMatches = await enrichMatchFixtureTimes(matches, { tour });
-  const sortedMatches = sortMatchesByDate(timedMatches);
+  const sortedMatches = sortMatchesByDate(filterMatchesForTour(tour, timedMatches));
   const venues = await resolveTourVenues(sortedMatches, { persist: true });
 
   return applyEspnTourSquads(

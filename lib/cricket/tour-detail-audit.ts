@@ -1,4 +1,5 @@
 import type { TourDetailSnapshot } from "@/lib/cricket/snapshot-types";
+import { matchVenueMatchesTourHost } from "@/lib/cricket/tour-identity";
 
 export type TourDetailAuditIssue = {
   code: string;
@@ -34,13 +35,21 @@ export function auditTourDetailSnapshot(
       }
     }
 
-    if (!match.date) continue;
     if (match.seriesId && detail.tour.id && match.seriesId !== detail.tour.id) {
       issues.push({
         code: "series-id-mismatch",
         message: `Match ${match.id} is tagged to series ${match.seriesId}, expected tour ${detail.tour.id}`,
       });
     }
+
+    if (!matchVenueMatchesTourHost(match, detail.tour.name)) {
+      issues.push({
+        code: "host-venue-mismatch",
+        message: `Match ${match.id} venue "${match.venue ?? match.name}" does not match host nation for "${detail.tour.name}"`,
+      });
+    }
+
+    if (!match.date) continue;
 
     const matchEnd = endOfUtcDay(match.date);
     if (matchEnd >= referenceDate) continue;

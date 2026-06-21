@@ -16,6 +16,7 @@ import {
   normalizeTourName,
   parseTourTeamsFromName,
   tourMatchesCuratedSeries as tourMatchesCuratedSeriesIdentity,
+  tourNamesShareVenue,
 } from "@/lib/cricket/tour-identity";
 
 const CORE_BASE = "http://core.espnuk.org/v2/sports/cricket";
@@ -426,6 +427,22 @@ async function leagueForTour(tour: Tour): Promise<{
   useSeasonEvents?: boolean;
 } | null> {
   const curated = await readCuratedFixtureTimes();
+
+  if (/^\d+$/.test(tour.id)) {
+    for (const [seriesId, series] of Object.entries(curated.series)) {
+      const curatedId = String(series.cricinfoSeriesId ?? seriesId);
+      if (curatedId !== tour.id) continue;
+      if (series.cricinfoSeriesId && series.espnLeagueId) {
+        return {
+          cricinfoSeriesId: series.cricinfoSeriesId,
+          espnLeagueId: series.espnLeagueId,
+          seasonYear: series.seasonYear,
+          useSeasonEvents: series.useSeasonEvents,
+        };
+      }
+    }
+  }
+
   for (const [seriesId, series] of Object.entries(curated.series)) {
     if (!tourMatchesCuratedSeries(tour, series, seriesId)) continue;
     if (series.cricinfoSeriesId && series.espnLeagueId) {
@@ -452,14 +469,8 @@ async function leagueForTour(tour: Tour): Promise<{
   }
 
   for (const entry of Object.values(snapshot.entries)) {
-    const blob = tour.name.toLowerCase();
-    const tokens = entry.tourName
-      .toLowerCase()
-      .replace(/[^a-z0-9]+/g, " ")
-      .split(/\s+/)
-      .filter((w) => w.length > 2);
-    const hits = tokens.filter((t) => blob.includes(t));
-    if (hits.length >= Math.min(2, tokens.length) && entry.cricinfoSeriesId && entry.espnLeagueId) {
+    if (!tourNamesShareVenue(tour.name, entry.tourName)) continue;
+    if (entry.cricinfoSeriesId && entry.espnLeagueId) {
       return {
         cricinfoSeriesId: entry.cricinfoSeriesId,
         espnLeagueId: entry.espnLeagueId,
@@ -467,7 +478,7 @@ async function leagueForTour(tour: Tour): Promise<{
     }
   }
 
-  const resolved = await resolveEspnLeagueForTour(tour.name);
+  const resolved = await resolveEspnLeagueForTour(tour.name, tour.id);
   if (!resolved) return null;
   return {
     cricinfoSeriesId: resolved.cricinfoSeriesId,
