@@ -49,3 +49,5 @@ jobs:
         run: npm run test:e2e
         env:
           CI: "true"
+          AUTH_SECRET: playwright-test-auth-secret-minimum-32-chars
+          PAYLOAD_SECRET: playwright-test-secret-minimum-32-characters

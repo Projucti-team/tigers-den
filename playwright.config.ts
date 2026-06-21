@@ -22,7 +22,7 @@ export default defineConfig({
     },
   ],
   webServer: {
-    command: `rm -f .playwright-test.db .playwright-test.db-journal && npm run build && PORT=${PORT} npm run start`,
+    command: `bash scripts/playwright-web-server.sh ${PORT}`,
     url: baseURL,
     reuseExistingServer: !process.env.CI,
     timeout: 360_000,
@@ -31,11 +31,12 @@ export default defineConfig({
       PORT,
       PAYLOAD_SECRET:
         process.env.PAYLOAD_SECRET ?? "playwright-test-secret-minimum-32-characters",
+      AUTH_SECRET:
+        process.env.AUTH_SECRET ?? "playwright-test-auth-secret-minimum-32-chars",
       DATABASE_URI: process.env.DATABASE_URI ?? "file:./.playwright-test.db",
       PAYLOAD_SQLITE_PUSH_SCHEMA: "1",
       NEXT_PUBLIC_SITE_URL: baseURL,
       NEXT_PUBLIC_SERVER_URL: baseURL,
-      NODE_ENV: "production",
     },
   },
 });
