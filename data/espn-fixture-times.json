@@ -5,41 +5,48 @@
       "tourName": "Australia tour of Bangladesh, 2026",
       "cricinfoSeriesId": 1532475,
       "espnLeagueId": 24324,
+      "seasonYear": 2026,
       "fixtures": [
         {
           "date": "2026-06-09",
           "matchType": "odi",
           "dateTimeGMT": "2026-06-09T05:00:00.000Z",
+          "venue": "Shere Bangla National Stadium, Mirpur, Dhaka",
           "source": "espncricinfo"
         },
         {
           "date": "2026-06-11",
           "matchType": "odi",
           "dateTimeGMT": "2026-06-11T05:00:00.000Z",
+          "venue": "Shere Bangla National Stadium, Mirpur, Dhaka",
           "source": "espncricinfo"
         },
         {
           "date": "2026-06-14",
           "matchType": "odi",
           "dateTimeGMT": "2026-06-14T05:00:00.000Z",
+          "venue": "Shere Bangla National Stadium, Mirpur, Dhaka",
           "source": "espncricinfo"
         },
         {
           "date": "2026-06-17",
           "matchType": "t20",
           "dateTimeGMT": "2026-06-17T08:00:00.000Z",
+          "venue": "Bir Sreshtho Flight Lieutenant Matiur Rahman Stadium, Chattogram",
           "source": "espncricinfo"
         },
         {
           "date": "2026-06-19",
           "matchType": "t20",
           "dateTimeGMT": "2026-06-19T08:00:00.000Z",
+          "venue": "Bir Sreshtho Flight Lieutenant Matiur Rahman Stadium, Chattogram",
           "source": "espncricinfo"
         },
         {
           "date": "2026-06-21",
           "matchType": "t20",
           "dateTimeGMT": "2026-06-21T08:00:00.000Z",
+          "venue": "Bir Sreshtho Flight Lieutenant Matiur Rahman Stadium, Chattogram",
           "source": "espncricinfo"
         }
       ]

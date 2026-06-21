@@ -82,6 +82,15 @@ export function extractOpponentNation(name: string): string | null {
   return null;
 }
 
+/** Home/away tour team order for fixture labels — Bangladesh first on home tours. */
+export function parseTourTeamsFromName(name: string): string[] | undefined {
+  const away = name.match(/bangladesh tour of ([^,]+)/i);
+  if (away) return ["Bangladesh", away[1].trim()];
+  const home = name.match(/([^,]+) tour of bangladesh/i);
+  if (home) return ["Bangladesh", home[1].trim()];
+  return undefined;
+}
+
 export function extractFormatHint(name: string): "test" | "odi" | "t20" | null {
   const n = name.toLowerCase();
   if (/\btest\b/.test(n)) return "test";

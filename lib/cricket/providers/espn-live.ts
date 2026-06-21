@@ -20,7 +20,7 @@ import {
   trackedPlayerLeaguesToRefs,
   type TrackedLeagueRef,
 } from "@/lib/cricket/tracked-player-leagues";
-import type { LiveMatchSummary } from "@/lib/cricket/types";
+import type { LiveMatchSummary, Tour } from "@/lib/cricket/types";
 
 const CORE_BASE = "http://core.espnuk.org/v2/sports/cricket";
 const FIXTURE_TIMES_PATH = path.join(process.cwd(), "data", "espn-fixture-times.json");
@@ -35,6 +35,7 @@ type CoreList = { items?: { $ref: string }[] };
 
 type CoreCompetition = {
   id?: string;
+  date?: string;
   liveAvailable?: boolean;
   note?: string;
   description?: string;
@@ -392,7 +393,7 @@ async function buildHighlightFromEspnEvent(
 async function buildLiveMatchFromEspnEvent(
   leagueId: number,
   eventId: string,
-  mode: "live" | "completed" | "upcoming",
+  mode: "live" | "completed" | "upcoming" | "any",
 ): Promise<LiveMatchSummary | null> {
   const competition = await fetchCoreJson<CoreCompetition>(
     `${CORE_BASE}/leagues/${leagueId}/events/${eventId}/competitions/${eventId}`,
@@ -403,12 +404,14 @@ async function buildLiveMatchFromEspnEvent(
     ? await fetchCoreJson<CoreStatus>(competition.status.$ref)
     : null;
 
-  if (mode === "live") {
-    if (!isLiveStatus(status, competition)) return null;
-  } else if (mode === "completed") {
-    if (!isCompletedStatus(status, competition)) return null;
-  } else if (!isUpcomingStatus(status, competition)) {
-    return null;
+  if (mode !== "any") {
+    if (mode === "live") {
+      if (!isLiveStatus(status, competition)) return null;
+    } else if (mode === "completed") {
+      if (!isCompletedStatus(status, competition)) return null;
+    } else if (!isUpcomingStatus(status, competition)) {
+      return null;
+    }
   }
 
   const competitors = await fetchCoreList(
@@ -440,13 +443,22 @@ async function buildLiveMatchFromEspnEvent(
     competition.description?.trim() ||
     event?.name?.trim() ||
     `Bangladesh match · Event ${eventId}`;
+  const live = isLiveStatus(status, competition);
+  const completed = isCompletedStatus(status, competition);
   const statusText =
     status?.longSummary ??
     status?.summary ??
     competition.note ??
-    (mode === "upcoming" ? "Match not started" : mode === "live" ? "Live" : "Completed");
+    (mode === "upcoming" || (!live && !completed)
+      ? "Match not started"
+      : live
+        ? "Live"
+        : "Completed");
   const eventAt = await fetchEventTimestamp(leagueId, eventId);
-  const iso = event?.date ?? (eventAt > 0 ? new Date(eventAt).toISOString() : undefined);
+  const iso =
+    competition.date ??
+    event?.date ??
+    (eventAt > 0 ? new Date(eventAt).toISOString() : undefined);
   const dateTimeGMT = iso
     ? iso.endsWith("Z")
       ? iso.replace(/(\.\d{3})?Z$/, ".000Z")
@@ -468,8 +480,49 @@ async function buildLiveMatchFromEspnEvent(
     date: dateTimeGMT?.slice(0, 10),
     dateTimeGMT,
     teams: teams.length ? teams : undefined,
-    isLive: mode === "live",
+    isLive: mode === "live" || (mode === "any" && live),
   };
+}
+
+export type EspnTourLeagueRef = {
+  espnLeagueId: number;
+  cricinfoSeriesId?: number;
+  seasonYear?: number;
+  useSeasonEvents?: boolean;
+};
+
+/** Full fixture list for a tour — results, venues, and upcoming times from ESPN season events. */
+export async function buildTourMatchesFromEspnSeries(
+  tour: Tour,
+  league: EspnTourLeagueRef,
+): Promise<LiveMatchSummary[]> {
+  const seasonYear =
+    league.seasonYear ??
+    (tour.startDate ? new Date(tour.startDate).getFullYear() : undefined);
+
+  const eventRefs = await fetchLeagueEventRefs({
+    espnLeagueId: league.espnLeagueId,
+    cricinfoSeriesId: league.cricinfoSeriesId,
+    seasonYear,
+    useSeasonEvents: league.useSeasonEvents !== false,
+  });
+
+  const matches: LiveMatchSummary[] = [];
+  for (const { eventId, leagueId } of eventRefs) {
+    const match = await buildLiveMatchFromEspnEvent(leagueId, eventId, "any");
+    if (!match) continue;
+    matches.push({
+      ...match,
+      seriesId: tour.id,
+      seriesName: tour.name,
+    });
+  }
+
+  return matches.sort((a, b) => {
+    const ta = a.dateTimeGMT ? new Date(a.dateTimeGMT).getTime() : 0;
+    const tb = b.dateTimeGMT ? new Date(b.dateTimeGMT).getTime() : 0;
+    return ta - tb;
+  });
 }
 
 async function scanEspnBangladeshMatches(

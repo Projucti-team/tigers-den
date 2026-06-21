@@ -10,7 +10,7 @@ All **Bangladesh times** below assume **UTC+6** (no DST). Cron expressions use *
 
 | Time (BDT) | Time (UTC) | Job | Runner |
 |------------|------------|-----|--------|
-| **3:00 AM** | 21:00 | **Cricket sync** — CricAPI tours/fixtures, ESPN squads, ICC → DB snapshots, player registry | Server: `POST /api/cron/cricket` |
+| **3:00 AM** | 21:00 | **Cricket sync** — tours index, tour detail snapshots, venue guides, ESPN squads/fixtures, ICC → DB + JSON | Server: `POST /api/cron/cricket` |
 | **3:15 AM** | 21:15 | **ICC rankings + WTC** → `data/icc-rankings.json`, `data/wtc-standings.json` | GitHub Action `scrape-icc-rankings` |
 | **3:30 AM** | 21:30 | **Bangladesh last match** → `data/bangladesh-last-match.json` | GitHub Action `scrape-bangladesh-match` |
 | **3:45 AM** | 21:45 | **Bangladesh cricket news** → `data/bangladesh-cricket-news.json` | GitHub Action `scrape-bangladesh-news` |
@@ -31,12 +31,14 @@ The server cricket sync also refreshes ICC/WTC JSON and runs ESPN squad scrape *
 
 1. Refresh ICC rankings (Sportz) + WTC (ESPN) → JSON files + DB showcase.
 2. Unless CricAPI snapshot is fresh (&lt; ~24h) and not `force`:
-   - Fetch tours, fixtures, matches from CricketData.org.
-   - Build per-tour detail snapshots → `cricket-snapshots` in Postgres.
-3. Merge ESPN confirmed schedules when CricAPI is missing or rate-limited.
-4. Refresh ESPN tour squads → `data/espn-tour-squads.json` + tour snapshots.
-5. Scrape Bangladesh last/upcoming matches → JSON.
-6. Seed/repair player registry (`countries`, `players`).
+   - Fetch upcoming tours from CricketData.org → `tours-index` snapshot.
+   - Build per-tour detail pages (`buildTourDetailLive`) → `tour-detail:{slug}` in DB **and** `data/tour-details.json`.
+3. For umbrella tours, fixtures/results/venues come from **ESPN season events** (CricAPI is fallback when ESPN has no data).
+4. Venue & city copy is resolved once per ground → `venue-guides` snapshot + `data/venue-guides.json` (reused across series).
+5. Refresh ESPN tour squads → `data/espn-tour-squads.json` + tour snapshots.
+6. Scrape Bangladesh last/upcoming matches → JSON + DB.
+7. Seed/repair player registry (`countries`, `players`).
+8. Prune finished series from `tour-detail:*` snapshots and `data/tour-details.json`.
 
 ### Coolify scheduled task
 
@@ -94,6 +96,20 @@ curl -fsS -X POST "https://your-domain.com/api/admin/bootstrap-db" \
 
 Workflows in `.github/workflows/` commit updated JSON to `data/` on schedule. Useful for local dev and redundancy; production reads from the **server volume** (seeded from image + nightly sync).
 
+### JSON written by server cricket sync (3:00 AM BDT)
+
+These are updated by `POST /api/cron/cricket`, not GitHub Actions:
+
+| File | Snapshot key | Contents |
+|------|--------------|----------|
+| `data/tour-details.json` | `tour-detail:{slug}` | Per-series fixtures, results, squads, venues |
+| `data/venue-guides.json` | `venue-guides` | Ground & host city copy (once per venue) |
+| `data/espn-tour-squads.json` | (merged into tour snapshots) | ESPN squad cache |
+| `data/bangladesh-last-match.json` | `bangladesh-last-match` | Last completed BD match |
+| `data/bangladesh-upcoming-matches.json` | `bangladesh-upcoming-matches` | Upcoming marquee fixtures |
+
+### JSON written by GitHub Actions
+
 | Workflow | Schedule (UTC) | npm command | Output files |
 |----------|----------------|-------------|--------------|
 | `scrape-icc-rankings.yml` | `15 21 * * *` | `scrape:icc-rankings` + `scrape:wtc-standings` | `icc-rankings.json`, `wtc-standings.json` |
@@ -134,6 +150,7 @@ Logged-in Payload admins can trigger sync from the admin panel (uses `/api/admin
 | `scripts/scrape-bangladesh-news.ts` | `npm run scrape:bangladesh-news` | News backup JSON |
 | `scripts/scrape-espn-squads.ts` | `npm run scrape:espn-squads` | Tour squad cache |
 | `scripts/rebuild-rankings-showcase.ts` | `npm run rebuild:rankings` | Rebuild rankings snapshot in DB |
+| `scripts/rebuild-tour-details.ts` | `npm run rebuild:tour-details` | Rebuild tour detail JSON + DB (prefer `sync:cricket` on deploy) |
 | `scripts/backup-postgres.sh` | (cron on server) | Daily DB backup |
 | `scripts/hetzner-bootstrap.sh` | manual | VPS bootstrap + first sync |
 | `deploy/docker-entrypoint.sh` | automatic on deploy | Volume seed + bootstrap |
@@ -145,12 +162,32 @@ Logged-in Payload admins can trigger sync from the admin panel (uses `/api/admin
 | Variable | Used by |
 |----------|---------|
 | `CRON_SECRET` | `/api/cron/cricket`, `/api/admin/bootstrap-db`, entrypoint |
-| `CRICKET_DATA_API_KEY` | CricAPI tours index + tour detail fixtures |
+| `CRICKET_DATA_API_KEY` | CricAPI upcoming tours index (tour detail fixtures come from ESPN during sync) |
 | `CRICKET_DATA_API_KEY_FALLBACK` | Second CricAPI account when primary quota hit |
 | `CRICKET_DATA_API_KEY_FALLBACK_2` | Third CricAPI account when both prior keys are exhausted |
 | `CRICKET_SYNC_ON_START` | Docker entrypoint (`1`, `0`, `force`) |
 | `POSTGRES_URL` | Snapshot persistence (required in prod) |
 | `PAYLOAD_SECRET` | Payload DB access during sync |
+
+---
+
+## Tests (CI + local)
+
+GitHub Actions workflow `.github/workflows/ci.yml` runs on every push/PR:
+
+| Job | Command | What it guards |
+|-----|---------|----------------|
+| Unit | `npm run test:unit` | Tour team labels, match status formatting, snapshot audit rules, no live ESPN reads on tour pages |
+| E2E | `npm run test:e2e` | `/tours/[slug]` renders match results, venue guides, and host cities from cached JSON |
+
+Canonical fixture data lives in `data-seed/tour-details.json`. The nightly sync writes job output to `data/tour-details.json`; unit tests audit that file for series ID mismatches and stale “Match starts” copy on past games.
+
+Local:
+
+```bash
+npm run test:unit
+npm run test:e2e   # builds app + starts test server (needs Playwright browser once: npx playwright install chromium)
+```
 
 ---
 
@@ -161,6 +198,8 @@ Logged-in Payload admins can trigger sync from the admin panel (uses `/api/admin
 | Empty `/tours` or `/rankings` | Set `CRICKET_DATA_API_KEY` + `CRON_SECRET`; run cron with `?force=1` |
 | `401` on cron | Check `Authorization: Bearer` matches `CRON_SECRET` in Coolify |
 | CricAPI quota exhausted | Add `CRICKET_DATA_API_KEY_FALLBACK` / `_FALLBACK_2`; wait for 24h guard or use `force` |
+| Stale tour fixtures / missing results on `/tours/[slug]` | Run cricket sync with `?force=1` — tour pages read from `tour-detail:{slug}` snapshot, not live ESPN |
+| Venue section empty on tour page | Sync must have run after venues were confirmed; check `data/venue-guides.json` and tour snapshot |
 | Stale ICC dates on rankings | Run sync — showcase uses per-table `rankUpdatedAt` (snapshot v4+) |
 | JSON caches old on prod | Nightly sync writes to `/app/data`; check volume mount |
 | `relation does not exist` | `POST /api/admin/bootstrap-db` with `CRON_SECRET` |

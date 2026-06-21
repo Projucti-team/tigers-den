@@ -1,0 +1,33 @@
+{
+  "fetchedAt": "2026-06-01T00:00:00.000Z",
+  "entries": {
+    "shere bangla national stadium, mirpur, dhaka": {
+      "venueName": "Shere Bangla National Stadium, Mirpur, Dhaka",
+      "city": "Dhaka",
+      "about": "The Shere Bangla National Stadium in Mirpur is Bangladesh's largest cricket ground — a roaring bowl of green and red when the Tigers play at home.",
+      "cityAbout": "Dhaka is a vibrant megacity on the Buriganga, famous for street food, rickshaws, and passionate cricket crowds that turn every international into a festival.",
+      "weather": "Typical match months are warm and humid (28–35°C) with occasional thunderstorms in monsoon season; dry winter evenings are pleasant for night games."
+    },
+    "bir sreshtho flight lieutenant matiur rahman stadium, chattogram": {
+      "venueName": "Bir Sreshtho Flight Lieutenant Matiur Rahman Stadium, Chattogram",
+      "city": "Chattogram",
+      "about": "Zahur Ahmed Chowdhury Stadium sits near the Karnaphuli — a compact ground where the atmosphere builds quickly and boundaries fly in the evening light.",
+      "cityAbout": "Chattogram is Bangladesh's port city, blending hills, beaches, and a laid-back coastal vibe — perfect for a tour stop between Dhaka and Sylhet.",
+      "weather": "Coastal humidity is noticeable year-round; expect 27–33°C with sea breeze, and heavier rain during the June–September monsoon."
+    },
+    "zahur ahmed chowdhury stadium, chattogram": {
+      "venueName": "Zahur Ahmed Chowdhury Stadium, Chattogram",
+      "city": "Chattogram",
+      "about": "Zahur Ahmed Chowdhury Stadium sits near the Karnaphuli — a compact ground where the atmosphere builds quickly and boundaries fly in the evening light.",
+      "cityAbout": "Chattogram is Bangladesh's port city, blending hills, beaches, and a laid-back coastal vibe — perfect for a tour stop between Dhaka and Sylhet.",
+      "weather": "Coastal humidity is noticeable year-round; expect 27–33°C with sea breeze, and heavier rain during the June–September monsoon."
+    },
+    "sylhet international cricket stadium, sylhet": {
+      "venueName": "Sylhet International Cricket Stadium, Sylhet",
+      "city": "Sylhet",
+      "about": "Sylhet International Cricket Stadium is one of the newer jewels in Bangladesh cricket — scenic, modern, and loved for T20 fireworks under lights.",
+      "cityAbout": "Sylhet is the tea-country capital of Bangladesh, surrounded by rolling hills and lush estates — a cooler, greener escape for players and fans.",
+      "weather": "Slightly cooler than the lowlands (24–32°C); monsoon brings lush rain while winter months are mild and comfortable for evening cricket."
+    }
+  }
+}

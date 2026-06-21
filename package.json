@@ -24,6 +24,7 @@
     "sync:cricket": "tsx scripts/sync-cricket-nightly.ts",
     "sync:cricket:prod": "bash scripts/prod-cricket-sync.sh",
     "rebuild:rankings": "tsx scripts/rebuild-rankings-showcase.ts",
+    "rebuild:tour-details": "tsx scripts/rebuild-tour-details.ts",
     "generate:logo": "python3 scripts/process-tigers-den-logo.py"
   },
   "dependencies": {

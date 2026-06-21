@@ -10,7 +10,15 @@ import {
   logRankingsShowcaseStats,
 } from "@/lib/cricket/services/build-rankings-showcase";
 import { buildTourDetailLive, toTourDetailSnapshot } from "@/lib/cricket/services/build-tour-detail";
-import { applyEspnTourSquads, refreshEspnTourSquads } from "@/lib/cricket/providers/espn-squads";
+import {
+  applyEspnTourSquads,
+  refreshEspnTourSquads,
+} from "@/lib/cricket/providers/espn-squads";
+import {
+  enrichMatchFixtureTimes,
+  espnLeagueForTour,
+} from "@/lib/cricket/providers/espn-fixtures";
+import { buildTourMatchesFromEspnSeries } from "@/lib/cricket/providers/espn-live";
 import {
   beginCricApiSyncSession,
   getCricApiKeyWarnings,
@@ -34,7 +42,18 @@ import {
   upsertCricketSnapshot,
 } from "@/lib/cricket/snapshot-db";
 import type { LiveMatchSummary, Tour } from "@/lib/cricket/types";
+import {
+  formatTourDetailAuditIssues,
+  auditTourDetailSnapshot,
+} from "@/lib/cricket/tour-detail-audit";
+import { isUmbrellaTourName } from "@/lib/cricket/tour-identity";
 import { tourSlug } from "@/lib/cricket/tour-slug";
+import {
+  pruneTourDetailSnapshots,
+  writeTourDetailSnapshot,
+} from "@/lib/cricket/tour-detail-store";
+import { resolveTourVenues } from "@/lib/cricket/venues";
+import { sortMatchesByDate } from "@/lib/cricket/match-sort";
 import type { WtcStandingsSnapshot } from "@/lib/cricket/types";
 import { hasPersistedDatabase } from "@/lib/payload-db";
 import { ensureSqliteCricketSnapshotsTable } from "@/lib/payload-ensure-sqlite-schema";
@@ -81,28 +100,71 @@ async function refreshWtcSource(): Promise<WtcStandingsSnapshot> {
   return snapshot;
 }
 
+async function persistTourDetail(slug: string, tour: Tour, detail: TourDetailSnapshot): Promise<void> {
+  const auditIssues = auditTourDetailSnapshot(detail);
+  const snapshot: TourDetailSnapshot = auditIssues.length
+    ? {
+        ...detail,
+        warnings: [
+          ...detail.warnings,
+          ...formatTourDetailAuditIssues(auditIssues).map((message) => `Audit: ${message}`),
+        ],
+      }
+    : detail;
+
+  await upsertCricketSnapshot(keyForTourDetail(slug), `Tour: ${tour.name}`, snapshot);
+  await writeTourDetailSnapshot(slug, snapshot);
+}
+
+function keyForTourDetail(slug: string): string {
+  return CRICKET_SNAPSHOT_KEYS.tourDetail(slug);
+}
+
+async function refreshUmbrellaTourMatches(tour: Tour, cached: TourDetailSnapshot): Promise<TourDetailSnapshot["matches"]> {
+  if (!isUmbrellaTourName(tour.name)) return cached.matches;
+
+  const league = await espnLeagueForTour(tour);
+  if (!league) return cached.matches;
+
+  const espnMatches = await buildTourMatchesFromEspnSeries(tour, league);
+  if (!espnMatches.length) return cached.matches;
+
+  return sortMatchesByDate(await enrichMatchFixtureTimes(espnMatches, { tour }));
+}
+
 async function refreshTourSquadsOnly(
   tour: Tour,
   keysToKeep: Set<string>,
 ): Promise<boolean> {
   const slug = tourSlug(tour);
-  const key = CRICKET_SNAPSHOT_KEYS.tourDetail(slug);
+  const key = keyForTourDetail(slug);
   keysToKeep.add(key);
 
   const cachedDetail = await readCricketSnapshot<TourDetailSnapshot>(key);
   if (!cachedDetail) return false;
 
+  const matches = await refreshUmbrellaTourMatches(tour, cachedDetail);
+  const venues = await resolveTourVenues(matches, {
+    cached: cachedDetail.venues,
+    persist: true,
+  });
   const { squads, warnings: squadWarnings } = await refreshEspnTourSquads(tour);
-  const withFreshSquads = applyEspnTourSquads(cachedDetail, squads, squadWarnings);
-  await upsertCricketSnapshot(
-    key,
-    `Tour: ${tour.name}`,
+  const withFreshSquads = applyEspnTourSquads(
     {
-      ...withFreshSquads,
-      slug,
-      fetchedAt: new Date().toISOString(),
-    } satisfies TourDetailSnapshot,
+      ...cachedDetail,
+      matches,
+      venues,
+    },
+    squads,
+    squadWarnings,
   );
+  const snapshot = {
+    ...withFreshSquads,
+    slug,
+    fetchedAt: new Date().toISOString(),
+  } satisfies TourDetailSnapshot;
+
+  await persistTourDetail(slug, tour, snapshot);
   return true;
 }
 
@@ -117,30 +179,22 @@ async function syncTourDetails(
 
   for (const tour of tours) {
     const slug = tourSlug(tour);
-    const key = CRICKET_SNAPSHOT_KEYS.tourDetail(slug);
+    const key = keyForTourDetail(slug);
     keysToKeep.add(key);
 
     try {
       if (options.squadsOnly) {
         const refreshed = await refreshTourSquadsOnly(tour, keysToKeep);
         if (!refreshed) {
-          const detail = await buildTourDetailLive(tour, tourWarnings);
-          await upsertCricketSnapshot(
-            key,
-            `Tour: ${tour.name}`,
-            toTourDetailSnapshot(detail, slug),
-          );
+          const detail = toTourDetailSnapshot(await buildTourDetailLive(tour, tourWarnings), slug);
+          await persistTourDetail(slug, tour, detail);
         }
         built += 1;
         continue;
       }
 
-      const detail = await buildTourDetailLive(tour, tourWarnings);
-      await upsertCricketSnapshot(
-        key,
-        `Tour: ${tour.name}`,
-        toTourDetailSnapshot(detail, slug),
-      );
+      const detail = toTourDetailSnapshot(await buildTourDetailLive(tour, tourWarnings), slug);
+      await persistTourDetail(slug, tour, detail);
       built += 1;
     } catch (e) {
       detailErrors.push(`Tour ${slug}: ${e instanceof Error ? e.message : "failed"}`);
@@ -407,7 +461,14 @@ export async function syncCricketSnapshots(
     }
 
     if (toursCount > 0) {
-      const pruned = await deleteCricketSnapshotsExcept(keysToKeep);
+      const prunedDb = await deleteCricketSnapshotsExcept(keysToKeep);
+      const slugsToKeep = new Set(
+        [...keysToKeep]
+          .map((key) => (key.startsWith("tour-detail:") ? key.slice("tour-detail:".length) : null))
+          .filter((slug): slug is string => Boolean(slug)),
+      );
+      const prunedJson = await pruneTourDetailSnapshots(slugsToKeep);
+      const pruned = prunedDb + prunedJson;
       if (pruned > 0) {
         warnings.push(`Removed ${pruned} outdated tour snapshot(s).`);
       }

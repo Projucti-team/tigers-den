@@ -20,7 +20,7 @@ const VENUE_ENTRIES: VenueEntry[] = [
       "Typical match months are warm and humid (28–35°C) with occasional thunderstorms in monsoon season; dry winter evenings are pleasant for night games.",
   },
   {
-    patterns: [/zahur ahmed|chattogram|chittagong/i],
+    patterns: [/zahur ahmed|chattogram|chittagong|matiur rahman/i],
     city: "Chattogram",
     about:
       "Zahur Ahmed Chowdhury Stadium sits near the Karnaphuli — a compact ground where the atmosphere builds quickly and boundaries fly in the evening light.",
@@ -145,6 +145,59 @@ export function uniqueVenuesFromMatches(
     if (seen.has(key)) continue;
     seen.add(key);
     guides.push(lookupVenueGuide(m.venue, m.date));
+  }
+
+  return guides;
+}
+
+type ResolveTourVenuesOptions = {
+  /** Guides already saved on this tour — reused instead of regenerating. */
+  cached?: VenueGuide[];
+  /** Save newly generated guides to the venue-guides store (sync jobs only). */
+  persist?: boolean;
+};
+
+/** Resolve venue guides from tour cache, DB/JSON store, or templates — generate at most once per ground. */
+export async function resolveTourVenues(
+  matches: { venue?: string; date?: string }[],
+  options: ResolveTourVenuesOptions = {},
+): Promise<VenueGuide[]> {
+  const { readVenueGuidesSnapshot, upsertVenueGuides, venueGuideKey } = await import(
+    "@/lib/cricket/venue-guides-store"
+  );
+
+  const store = await readVenueGuidesSnapshot();
+  const cachedByKey = new Map(
+    (options.cached ?? []).map((guide) => [venueGuideKey(guide.venueName), guide]),
+  );
+  const seen = new Set<string>();
+  const guides: VenueGuide[] = [];
+  const toPersist: VenueGuide[] = [];
+
+  for (const match of matches) {
+    if (!match.venue) continue;
+    const key = venueGuideKey(match.venue);
+    if (seen.has(key)) continue;
+    seen.add(key);
+
+    const cached = cachedByKey.get(key);
+    const stored = store.entries[key];
+    let guide = cached ?? stored ?? lookupVenueGuide(match.venue, match.date);
+
+    const venueName = match.venue.trim();
+    if (guide.venueName !== venueName) {
+      guide = { ...guide, venueName };
+    }
+
+    guides.push(guide);
+
+    if (!stored && options.persist) {
+      toPersist.push(guide);
+    }
+  }
+
+  if (options.persist && toPersist.length) {
+    await upsertVenueGuides(toPersist);
   }
 
   return guides;

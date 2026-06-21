@@ -14,6 +14,7 @@ import { resolveEspnLeagueForTour } from "@/lib/cricket/providers/espn-squads";
 import {
   deduplicateTours,
   normalizeTourName,
+  parseTourTeamsFromName,
   tourMatchesCuratedSeries as tourMatchesCuratedSeriesIdentity,
 } from "@/lib/cricket/tour-identity";
 
@@ -27,12 +28,15 @@ type FixtureTimeEntry = {
   date: string;
   matchType?: string;
   dateTimeGMT: string;
+  venue?: string;
 };
 
 type CuratedSeriesFixtures = {
   tourName?: string;
   cricinfoSeriesId?: number;
   espnLeagueId?: number;
+  seasonYear?: number;
+  useSeasonEvents?: boolean;
   fixtures: FixtureTimeEntry[];
 };
 
@@ -164,11 +168,11 @@ function addFixtureToLookup(
 }
 
 function teamsFromTourName(name: string): string[] | undefined {
-  const away = name.match(/bangladesh tour of ([^,]+)/i);
-  if (away) return ["Bangladesh", away[1].trim()];
-  const home = name.match(/([^,]+) tour of bangladesh/i);
-  if (home) return [home[1].trim(), "Bangladesh"];
-  return undefined;
+  return parseTourTeamsFromName(name);
+}
+
+function tourOpponent(teams: string[]): string {
+  return teams.find((t) => !/bangladesh/i.test(t)) ?? teams[1] ?? teams[0] ?? "TBC";
 }
 
 function tourMatchesCuratedSeries(tour: Tour, series: CuratedSeriesFixtures, seriesId: string): boolean {
@@ -297,15 +301,16 @@ export async function buildMatchesFromCuratedFixtures(tour: Tour): Promise<LiveM
       const n = (counters.get(mt) ?? 0) + 1;
       counters.set(mt, n);
       const label = matchTypeLabel(fixture.matchType);
-      const opponent = teams.find((t) => !/bangladesh/i.test(t)) ?? teams[0];
+      const opponent = tourOpponent(teams);
 
       matches.push({
         id: `curated-${tour.id}-${fixture.date}-${mt}-${n}`,
-        name: `${n}${ordinalSuffix(n)} ${label}, ${teams[0]} vs ${opponent}, ${series.tourName ?? tour.name}`,
+        name: `${n}${ordinalSuffix(n)} ${label}, Bangladesh vs ${opponent}, ${series.tourName ?? tour.name}`,
         matchType: fixture.matchType,
         status: "Match not started",
         date: fixture.date,
         dateTimeGMT: fixture.dateTimeGMT,
+        venue: fixture.venue,
         teams,
         isLive: false,
         seriesId: tour.id,
@@ -335,11 +340,11 @@ export async function buildMatchesFromEspnEvents(tour: Tour): Promise<LiveMatchS
     const n = (counters.get(mt) ?? 0) + 1;
     counters.set(mt, n);
     const label = matchTypeLabel(fixture.matchType);
-    const opponent = teams.find((t) => !/bangladesh/i.test(t)) ?? teams[0];
+    const opponent = tourOpponent(teams);
 
     matches.push({
       id: `espn-${tour.id}-${fixture.date}-${mt}-${n}`,
-      name: `${n}${ordinalSuffix(n)} ${label}, ${teams[0]} vs ${opponent}, ${tour.name}`,
+      name: `${n}${ordinalSuffix(n)} ${label}, Bangladesh vs ${opponent}, ${tour.name}`,
       matchType: fixture.matchType,
       status: "Match not started",
       date: fixture.date,
@@ -417,7 +422,22 @@ async function readCuratedFixtureTimes(): Promise<CuratedFixtureTimesSnapshot> {
 async function leagueForTour(tour: Tour): Promise<{
   cricinfoSeriesId: number;
   espnLeagueId: number;
+  seasonYear?: number;
+  useSeasonEvents?: boolean;
 } | null> {
+  const curated = await readCuratedFixtureTimes();
+  for (const [seriesId, series] of Object.entries(curated.series)) {
+    if (!tourMatchesCuratedSeries(tour, series, seriesId)) continue;
+    if (series.cricinfoSeriesId && series.espnLeagueId) {
+      return {
+        cricinfoSeriesId: series.cricinfoSeriesId,
+        espnLeagueId: series.espnLeagueId,
+        seasonYear: series.seasonYear,
+        useSeasonEvents: series.useSeasonEvents,
+      };
+    }
+  }
+
   const snapshot = await readEspnTourSquads();
   const keys = [tourSlug(tour), tour.id, tour.name.toLowerCase().replace(/[^a-z0-9]+/g, "-")];
 
@@ -453,6 +473,10 @@ async function leagueForTour(tour: Tour): Promise<{
     cricinfoSeriesId: resolved.cricinfoSeriesId,
     espnLeagueId: resolved.espnLeagueId,
   };
+}
+
+export async function espnLeagueForTour(tour: Tour) {
+  return leagueForTour(tour);
 }
 
 async function fetchLiveEspnFixtureTimes(league: {

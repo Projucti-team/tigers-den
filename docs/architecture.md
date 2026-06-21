@@ -74,7 +74,7 @@ We split data by access pattern — relational CMS/social in Postgres, hot JSON 
 |-------|----------|-----------|------------|
 | **Postgres** | Members, posts, stand, player registry, cricket snapshots (tours/rankings pages), CMS | Optional | **Yes** — Coolify Postgres on same server (`POSTGRES_URL`) |
 | **SQLite** | Same as Postgres when no `POSTGRES_URL` | **Yes** (`DATABASE_URI=file:./tigersden.db`) | Legacy only — not recommended |
-| **JSON files** (`data/*.json`) | ICC rankings, WTC, Bangladesh last match, news backup, ESPN squads | Repo + local reads | `/app/data` persistent volume |
+| **JSON files** (`data/*.json`) | ICC rankings, WTC, Bangladesh last match, news backup, ESPN squads, **tour detail snapshots**, **venue guides**, fixture times | Repo + local reads | `/app/data` persistent volume |
 | **Firestore** | The Roar live chat messages only | Optional (needs Firebase env) | **Yes** — `roar_messages` collection |
 | **Media volume** | CMS uploads (hero, post images) | `./media` | `/app/media` persistent volume |
 
@@ -101,15 +101,18 @@ Migrating off Neon: [migrate-neon-to-server-postgres.md](./migrate-neon-to-serve
 | Bangladesh last result | ESPN live API | `data/bangladesh-last-match.json` |
 | Headlines (home) | ESPN RSS + Cricbuzz scrape | `data/bangladesh-cricket-news.json` |
 
-### Pre-built (nightly cron → Postgres `cricket-snapshots`)
+### Pre-built (nightly cron → Postgres `cricket-snapshots` + JSON volume)
 
-| Page | Built by | Read by |
-|------|----------|---------|
-| `/tours` index | `syncCricketSnapshots` | `lib/cricket/services/tours.ts` |
-| `/tours/[slug]` | per-tour detail snapshots | `lib/cricket/services/tour-detail.ts` |
-| `/rankings` showcase | rankings showcase snapshot | `lib/cricket/services/rankings-display.ts` |
+| Page / data | Built by | Stored in | Read by |
+|-------------|----------|-----------|---------|
+| `/tours` index | `syncCricketSnapshots` | `tours-index` snapshot | `lib/cricket/services/tours.ts` |
+| `/tours/[slug]` | `buildTourDetailLive` per series | `tour-detail:{slug}` + `data/tour-details.json` | `lib/cricket/services/tour-detail.ts` |
+| Venue & city guides | `resolveTourVenues` during sync | `venue-guides` + `data/venue-guides.json` | Embedded in each tour snapshot |
+| `/rankings` showcase | rankings showcase snapshot | `rankings-showcase` | `lib/cricket/services/rankings-display.ts` |
 
-CricAPI is skipped if the tours snapshot is **&lt; ~24h** old (unless `?force=1`). On quota failure, previous snapshots are kept and ESPN schedules fill gaps.
+Tour detail pages are **never** built at request time. The sync job fetches ESPN season events (fixtures, results, venues), resolves venue copy once per ground, and writes snapshots. Finished series are pruned when they leave the upcoming tours index.
+
+CricAPI is skipped if the tours snapshot is **&lt; ~24h** old (unless `?force=1`). On quota failure, previous snapshots are kept and ESPN schedules fill gaps for both the index and tour detail builds.
 
 ICC rankings on the rankings page use the **Sportz JSON feed** (same data as icc-cricket.com) with per-table `rankUpdatedAt` (team, bat, bowl, allrounder).
 

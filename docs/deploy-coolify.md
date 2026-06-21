@@ -38,7 +38,7 @@ Mount volumes so JSON caches and uploads survive redeploys:
 
 | Container path | Purpose |
 |----------------|---------|
-| `/app/data` | `data/*.json` cricket scrape caches (not the CMS DB when using Postgres) |
+| `/app/data` | `data/*.json` cricket caches — tour details, venue guides, ICC, squads, fixture times |
 | `/app/media` | CMS uploads (hero images, etc.) |
 
 In Coolify: **Storages** → add two volumes bound to those paths.
@@ -112,6 +112,8 @@ Then open `/tours`, `/rankings`, and Payload admin.
 | Issue | Fix |
 |-------|-----|
 | Tours empty after deploy | `CRICKET_DATA_API_KEY` + `CRON_SECRET`; run cron sync with `?force=1` |
+| Tour page shows “Match starts” for played games | Stale snapshot — run cricket sync; fixtures come from ESPN during sync, not live on page load |
+| Venues & host cities missing | Check `data/venue-guides.json` and `tour-detail:{slug}` snapshot after sync |
 | CricAPI quota / rate limit | Add `CRICKET_DATA_API_KEY_FALLBACK` and/or `_FALLBACK_2` (separate cricketdata.org accounts); redeploy |
 | Still hitting Neon / wrong DB | Only `POSTGRES_URL` set — remove `DATABASE_URI=file:...` |
 | Missing tables | `POST /api/admin/bootstrap-db` with `CRON_SECRET` |

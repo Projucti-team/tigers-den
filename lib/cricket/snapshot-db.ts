@@ -6,7 +6,7 @@ import { isPayloadConfigured } from "@/lib/payload-env";
 
 function isMissingRelationError(err: unknown): boolean {
   const message = err instanceof Error ? err.message : String(err);
-  return /relation .* does not exist/i.test(message);
+  return /relation .* does not exist/i.test(message) || /no such table/i.test(message);
 }
 
 const MAX_SNAPSHOT_AGE_HOURS = 36;

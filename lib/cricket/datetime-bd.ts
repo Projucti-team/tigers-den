@@ -43,7 +43,7 @@ export function formatMatchStatus(match: LiveMatchSummary): string {
   const iso = resolveMatchStartIso(match);
   const status = match.status?.trim() ?? "";
 
-  if (iso && /not started|upcoming|scheduled|fixture|match starts|toss/i.test(status)) {
+  if (iso && /not started|upcoming|scheduled|fixture|match starts|scheduled to begin|toss/i.test(status)) {
     const date = formatBangladeshDate(iso);
     const time = formatBangladeshTime(iso);
     if (date && time) {

@@ -3,6 +3,7 @@ export const CRICKET_SNAPSHOT_KEYS = {
   toursIndex: "tours-index",
   lastMatch: "bangladesh-last-match",
   upcomingMatches: "bangladesh-upcoming-matches",
+  venueGuides: "venue-guides",
   syncLock: "cricket-sync-lock",
   tourDetail: (slug: string) => `tour-detail:${slug}`,
 } as const;

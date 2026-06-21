@@ -72,7 +72,7 @@ lib/
   match-chat/          # The Roar (Firestore-backed)
   social/              # Members, posts, follow graph
   stand/               # Reactions, comments
-data/                  # JSON caches (ICC, WTC, news, last match) — committed + volume on prod
+data/                  # JSON caches (ICC, WTC, news, tours, venues, squads) — committed + volume on prod
 deploy/                # Docker entrypoint, production helpers
 docs/                  # Architecture, deploy, jobs
 scripts/               # Scrapers, sync helpers, backups
@@ -96,6 +96,9 @@ payload.config.ts
 | `npm run scrape:bangladesh-match` | Refresh `data/bangladesh-last-match.json` |
 | `npm run scrape:bangladesh-news` | Refresh `data/bangladesh-cricket-news.json` |
 | `npm run scrape:espn-squads` | Refresh `data/espn-tour-squads.json` |
+| `npm run test` | Unit + Playwright E2E tests |
+| `npm run test:unit` | Tour snapshot audit + cricket logic tests |
+| `npm run test:e2e` | Playwright UI tests (tour fixtures, venues, results) |
 
 Full job schedule and server cron setup: [docs/jobs.md](docs/jobs.md).
 
@@ -141,6 +144,6 @@ Editors manage content at `/admin`:
 | **Users** | Admin / moderator accounts |
 | **Members**, **MemberPosts**, **Stand\*** | Social graph (mostly API-driven) |
 | **Players**, **Countries** | Player registry for rankings / profiles |
-| **CricketSnapshots** | Pre-built tour & ranking pages (written by cron) |
+| **CricketSnapshots** | Pre-built tour & ranking pages, venue guides (written by cron) |
 
 Member-facing auth is **NextAuth** (OAuth), not Payload Users.

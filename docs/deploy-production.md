@@ -111,7 +111,17 @@ Caddy obtains and renews Let's Encrypt certificates automatically.
 
 ## 6. Tours and cricket snapshots (required for `/tours`)
 
-Tours are **not** read from `data/*.json` — they are synced from CricAPI into the Payload `cricket-snapshots` table in SQLite.
+The **tours index** and **each series page** are pre-built by the nightly cricket sync into Payload `cricket-snapshots` **and** job-written JSON on the `/app/data` volume:
+
+| File / snapshot key | Contents |
+|---------------------|----------|
+| `tours-index` | Upcoming Bangladesh series list |
+| `tour-detail:{slug}` + `data/tour-details.json` | Fixtures, results, squads, venues per series |
+| `venue-guides` + `data/venue-guides.json` | Ground & host city copy (reused across tours) |
+| `data/espn-fixture-times.json` | Confirmed BDT start times (curated) |
+| `data/espn-tour-squads.json` | ESPN squad cache |
+
+Tour pages do **not** call CricAPI or ESPN at request time.
 
 **After first deploy**, run once:
 
@@ -169,6 +179,8 @@ sudo ufw enable
 | Admin blank / broken styles | Rebuild image (`docker compose build --no-cache`) |
 | Images 404 | Check `NEXT_PUBLIC_SERVER_URL` matches public URL |
 | Empty tours / `/tours` blank | Set `CRICKET_DATA_API_KEY`, run `./scripts/prod-cricket-sync.sh` |
+| Tour page stale / no match results | Run cricket sync — `/tours/[slug]` reads `tour-detail:{slug}` snapshot, not live APIs |
+| Venues section empty | Run sync after fixtures confirmed; check `data/venue-guides.json` on volume |
 | Empty rankings on home | Run `npm run scrape:icc-rankings` or wait for GitHub Action + `git pull` |
 | Empty cricket news | Ensure `data/*.json` is in the image or volume; run scrapers |
 | Out of memory on build | Use swap or build on CI and pull image |
