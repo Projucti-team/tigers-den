@@ -97,15 +97,15 @@ export function MatchCentre({
             isLive ? "match-centre-live-title -mx-1 px-2 py-1" : ""
           }`}
         >
-          {isLive ? "🔴 Live Now — Match Centre" : "📋 Last Result — Match Centre"}
+          {isLive ? "Live Now — Match Centre" : "Last Result — Match Centre"}
         </h2>
         {isLive ? (
-          <span className="animate-live-pulse flex items-center gap-2 rounded-full border-2 border-white bg-crimson px-3 py-1.5 text-xs font-extrabold uppercase">
+          <span className="animate-live-pulse flex shrink-0 items-center gap-2 rounded-full border-2 border-white bg-emerald px-3 py-1.5 text-xs font-extrabold uppercase text-white shadow-md">
             <span className="h-2.5 w-2.5 animate-pulse rounded-full bg-white" aria-hidden />
             LIVE
           </span>
         ) : (
-          <span className="rounded-full border-2 border-charcoal/20 bg-charcoal/10 px-3 py-1.5 text-xs font-extrabold uppercase text-charcoal">
+          <span className="shrink-0 rounded-full border-2 border-white bg-emerald px-3 py-1.5 text-xs font-extrabold uppercase text-white shadow-md">
             Full Time
           </span>
         )}

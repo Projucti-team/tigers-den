@@ -334,8 +334,17 @@ export function WtcStandingsTable({
             <th className="px-4 py-3 font-display text-xs font-extrabold uppercase tracking-wide text-crimson">
               Team
             </th>
-            <th className="hidden px-4 py-3 text-right font-display text-xs font-extrabold uppercase tracking-wide text-crimson md:table-cell">
-              Record
+            <th className="hidden px-3 py-3 text-right font-display text-xs font-extrabold uppercase tracking-wide text-crimson sm:table-cell">
+              Played
+            </th>
+            <th className="hidden px-3 py-3 text-right font-display text-xs font-extrabold uppercase tracking-wide text-crimson sm:table-cell">
+              Won
+            </th>
+            <th className="hidden px-3 py-3 text-right font-display text-xs font-extrabold uppercase tracking-wide text-crimson sm:table-cell">
+              Lost
+            </th>
+            <th className="hidden px-3 py-3 text-right font-display text-xs font-extrabold uppercase tracking-wide text-crimson sm:table-cell">
+              Drawn
             </th>
             <th className="px-4 py-3 text-right font-display text-xs font-extrabold uppercase tracking-wide text-crimson">
               PCT
@@ -364,8 +373,17 @@ export function WtcStandingsTable({
                     </span>
                   ) : null}
                 </td>
-                <td className="hidden px-4 py-2.5 text-right font-mono text-xs text-charcoal/70 md:table-cell">
-                  {team.won}W · {team.lost}L{team.drawn > 0 ? ` · ${team.drawn}D` : ""} · {team.played}P
+                <td className="hidden px-3 py-2.5 text-right font-mono text-charcoal/80 sm:table-cell">
+                  {team.played}
+                </td>
+                <td className="hidden px-3 py-2.5 text-right font-mono text-charcoal/80 sm:table-cell">
+                  {team.won}
+                </td>
+                <td className="hidden px-3 py-2.5 text-right font-mono text-charcoal/80 sm:table-cell">
+                  {team.lost}
+                </td>
+                <td className="hidden px-3 py-2.5 text-right font-mono text-charcoal/80 sm:table-cell">
+                  {team.drawn}
                 </td>
                 <td className="px-4 py-2.5 text-right font-mono font-bold text-crimson">{team.pct}%</td>
                 <td className="hidden px-4 py-2.5 text-right font-mono text-charcoal/70 sm:table-cell">

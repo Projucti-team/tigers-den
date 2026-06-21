@@ -1,5 +1,6 @@
 import type { ReactNode } from "react";
 
+import { MatchCentreScorecardHighlights } from "@/components/match-centre/MatchCentreScorecardHighlights";
 import type { Scorecard, ScorecardPlayer } from "@/lib/cricket/types";
 
 type Props = {
@@ -165,6 +166,7 @@ export function MatchCentreScorecardTab({ scorecard }: Props) {
       {scorecard.venue ? (
         <p className="text-sm font-semibold text-charcoal/60">{scorecard.venue}</p>
       ) : null}
+      {scorecard.extras ? <MatchCentreScorecardHighlights extras={scorecard.extras} /> : null}
       {scorecard.innings.map((inn) => (
         <InningsBlock key={inn.inning} inning={inn} />
       ))}

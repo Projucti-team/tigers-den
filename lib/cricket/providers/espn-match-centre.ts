@@ -1,5 +1,9 @@
 import { isBangladeshTeam } from "@/lib/cricket/constants";
 import { formatShortDismissal, parseEspnDismissalText } from "@/lib/cricket/dismissal-format";
+import {
+  cricinfoSeriesIdFromEventRef,
+  fetchCricinfoScorecardExtras,
+} from "@/lib/cricket/providers/cricinfo-match-extras";
 import type { LiveBall, LiveMatchFeed, LiveOverBalls, Scorecard, ScorecardPlayer } from "@/lib/cricket/types";
 import {
   ESPN_CORE_BASE,
@@ -624,13 +628,21 @@ export async function fetchEspnMatchCentre(
   }
 
   const compBase = `${ESPN_CORE_BASE}/leagues/${leagueId}/events/${eventId}/competitions/${eventId}`;
+  const eventUrl = `${ESPN_CORE_BASE}/leagues/${leagueId}/events/${eventId}`;
 
-  const [competition, matchcards, recentBalls, teamSummaries] = await Promise.all([
+  const [event, competition, matchcards, recentBalls, teamSummaries] = await Promise.all([
+    fetchEspnCoreJson<{ $ref?: string }>(eventUrl),
     fetchEspnCoreJson<CoreCompetition>(compBase),
     fetchEspnCoreJson<MatchcardsResponse>(`${compBase}/matchcards?pageSize=50`),
     fetchRecentBalls(compBase),
     fetchTeamSummaries(compBase),
   ]);
+
+  const seriesId = cricinfoSeriesIdFromEventRef(event?.$ref);
+  const extras =
+    seriesId != null
+      ? await fetchCricinfoScorecardExtras(seriesId, eventId).catch(() => null)
+      : null;
 
   if (!competition && !matchcards?.items?.length) return null;
 
@@ -718,6 +730,7 @@ export async function fetchEspnMatchCentre(
     venue: competition?.venue?.fullName,
     teams: orderedTeams.map((t) => t.team),
     innings,
+    extras: extras ?? undefined,
   };
 
   const liveFeed: LiveMatchFeed = {

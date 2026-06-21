@@ -372,12 +372,12 @@ export async function buildCuratedUpcomingBangladeshMatches(
     const counters = new Map<string, number>();
 
     for (const fixture of [...series.fixtures].sort((a, b) => a.date.localeCompare(b.date))) {
-      const kickoff = new Date(fixture.dateTimeGMT).getTime();
-      if (Number.isNaN(kickoff) || kickoff <= now - UPCOMING_GRACE_MS) continue;
-
       const mt = normalizeMatchType(fixture.matchType) || "match";
       const n = (counters.get(mt) ?? 0) + 1;
       counters.set(mt, n);
+
+      const kickoff = new Date(fixture.dateTimeGMT).getTime();
+      if (Number.isNaN(kickoff) || kickoff <= now - UPCOMING_GRACE_MS) continue;
       const label = matchTypeLabel(fixture.matchType);
       const opponent = teams.find((t) => !/bangladesh/i.test(t)) ?? teams[0];
 

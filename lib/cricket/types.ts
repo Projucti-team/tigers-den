@@ -59,6 +59,33 @@ export type ScorecardInnings = {
   bowling: ScorecardPlayer[];
 };
 
+export type ScorecardAward = {
+  name: string;
+  team?: string;
+  summary?: string;
+};
+
+export type ScorecardImpactPlayer = {
+  name: string;
+  team?: string;
+  impactPoints: number;
+  battingImpact?: number;
+  bowlingImpact?: number;
+};
+
+export type ScorecardRecordNote = {
+  text: string;
+  player?: string;
+};
+
+/** Man of the Match, milestones, and Cricinfo impact leaders for a fixture. */
+export type ScorecardExtras = {
+  manOfTheMatch?: ScorecardAward;
+  mvp?: ScorecardImpactPlayer;
+  records: ScorecardRecordNote[];
+  topBangladeshPlayer?: ScorecardImpactPlayer;
+};
+
 export type Scorecard = {
   id: string;
   name: string;
@@ -66,6 +93,7 @@ export type Scorecard = {
   venue?: string;
   teams?: string[];
   innings: ScorecardInnings[];
+  extras?: ScorecardExtras;
 };
 
 export type LiveBall = {

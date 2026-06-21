@@ -1,21 +1,30 @@
 {
-  "fetchedAt": "2026-06-09T20:27:19.822Z",
+  "fetchedAt": "2026-06-21T01:22:43.633Z",
   "source": "espn",
   "highlight": {
     "mode": "completed",
-    "matchId": "espn-1532480",
-    "title": "1st ODI,  at Dhaka",
-    "scoreLine": "Ban 284/8 (50) · Aus 191/9 (42)",
-    "detailLine": "Bangladesh won by 86 runs (DLS method)",
+    "matchId": "espn-1490691",
+    "title": "15th Match, Group 1,  at Southampton",
+    "scoreLine": "Ban 123/6 · Pak 100/8 (20)",
+    "detailLine": "BAN Women won by 23 runs",
     "scores": [
       {
-        "label": "Bangladesh",
-        "value": "284/8 (50)"
+        "label": "Bangladesh Women",
+        "value": "123/6"
       },
       {
-        "label": "Australia",
-        "value": "191/9 (42)"
+        "label": "Pakistan Women",
+        "value": "100/8 (20)"
       }
-    ]
+    ],
+    "venue": {
+      "name": "The Rose Bowl, Southampton",
+      "city": "Southampton",
+      "country": "England"
+    },
+    "category": "women",
+    "priority": 2,
+    "espnLeagueId": 1483859,
+    "leagueLabel": "ICC Women's T20 World Cup, 2026"
   }
 }

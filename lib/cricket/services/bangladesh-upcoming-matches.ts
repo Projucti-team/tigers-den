@@ -1,6 +1,7 @@
 import {
   buildCuratedUpcomingBangladeshMatches,
   enrichUpcomingMatchFixtureTimes,
+  matchDateKey,
 } from "@/lib/cricket/providers/espn-fixtures";
 import { fetchEspnUpcomingBangladeshMatchesFromEvents } from "@/lib/cricket/providers/espn-live";
 import {
@@ -23,6 +24,35 @@ const UPCOMING_GRACE_MS = 15 * 60 * 1000;
 
 function isStillUpcoming(match: LiveMatchSummary): boolean {
   return matchTime(match) > Date.now() - UPCOMING_GRACE_MS;
+}
+
+function upcomingSourceRank(match: LiveMatchSummary): number {
+  const id = match.id ?? "";
+  if (id.startsWith("espn-") && !id.startsWith("espn-curated-")) return 3;
+  if (id.startsWith("espn-curated-")) return 2;
+  if (id.startsWith("seed-")) return 0;
+  return 1;
+}
+
+function upcomingDedupeKey(match: LiveMatchSummary): string {
+  const date = matchDateKey(match);
+  const mt = (match.matchType ?? "").toLowerCase().replace(/[^a-z0-9]/g, "");
+  const series = match.seriesId ?? match.seriesName ?? "";
+  const teams = [...(match.teams ?? [])].sort().join("|");
+  return `${series}|${date}|${mt}|${teams}`;
+}
+
+/** One row per fixture — prefer ESPN/curated over stale seed cache. */
+function dedupeUpcomingMatches(matches: LiveMatchSummary[]): LiveMatchSummary[] {
+  const byKey = new Map<string, LiveMatchSummary>();
+  for (const match of matches) {
+    const key = upcomingDedupeKey(match);
+    const existing = byKey.get(key);
+    if (!existing || upcomingSourceRank(match) > upcomingSourceRank(existing)) {
+      byKey.set(key, match);
+    }
+  }
+  return [...byKey.values()];
 }
 
 export function findUpcomingBangladeshMatches(
@@ -48,10 +78,11 @@ async function fetchEspnUpcomingBangladeshMatches(
     if (match.id && !byId.has(match.id)) byId.set(match.id, match);
   }
 
-  return [...byId.values()]
-    .filter(isStillUpcoming)
-    .sort((a, b) => matchTime(a) - matchTime(b))
-    .slice(0, limit);
+  return dedupeUpcomingMatches(
+    [...byId.values()]
+      .filter(isStillUpcoming)
+      .sort((a, b) => matchTime(a) - matchTime(b)),
+  ).slice(0, limit);
 }
 
 /** Refresh upcoming marquee cache from ESPNcricinfo. */
@@ -70,10 +101,11 @@ export async function scrapeBangladeshUpcomingMatches(): Promise<BangladeshUpcom
   for (const m of [...upcoming, ...previousCached, ...(previousFile?.matches ?? [])]) {
     if (m.id && !byId.has(m.id)) byId.set(m.id, m);
   }
-  const merged = [...byId.values()]
-    .filter(isStillUpcoming)
-    .sort((a, b) => matchTime(a) - matchTime(b))
-    .slice(0, UPCOMING_MERGED_LIMIT);
+  const merged = dedupeUpcomingMatches(
+    [...byId.values()]
+      .filter(isStillUpcoming)
+      .sort((a, b) => matchTime(a) - matchTime(b)),
+  ).slice(0, UPCOMING_MERGED_LIMIT);
 
   if (!merged.length) {
     const fallback = await readBangladeshUpcomingMatches();
@@ -110,5 +142,7 @@ export async function getCachedUpcomingBangladeshMatches(): Promise<LiveMatchSum
   }
 
   // Drop fixtures that have already started — the live/last-match line covers those.
-  return enrichUpcomingMatchFixtureTimes(matches.filter(isStillUpcoming));
+  const upcoming = matches.filter(isStillUpcoming);
+  const enriched = await enrichUpcomingMatchFixtureTimes(upcoming);
+  return dedupeUpcomingMatches(enriched.filter(isStillUpcoming));
 }
