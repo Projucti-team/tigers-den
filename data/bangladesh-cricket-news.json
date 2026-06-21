@@ -1,6 +1,67 @@
 {
-  "fetchedAt": "2026-06-20T22:48:04.487Z",
+  "fetchedAt": "2026-06-21T22:47:49.399Z",
   "items": [
+    {
+      "id": "dailystar-https://www.thedailystar.net/sports/cricket/news/litton-ruled-out-zimbabwe-test-4204601",
+      "title": "Litton ruled out of Zimbabwe Test",
+      "summary": "Bangladesh wicketkeeper-batter Litton Das has been ruled out of the one-off Test against Zimbabwe, scheduled to begin on June 28 in Harare, the Bangladesh Cricket Board (BCB) announced in a press release on Sunday.",
+      "url": "https://www.thedailystar.net/sports/cricket/news/litton-ruled-out-zimbabwe-test-4204601",
+      "source": "dailystar",
+      "publishedAt": "2026-06-21T17:44:32.000Z"
+    },
+    {
+      "id": "cricbuzz-139264",
+      "title": "Litton ruled out of Zimbabwe Test with calf injury",
+      "summary": "The keeper-batter, who also missed the recently concluded three-match T20I series against Australia in Chattogram, has been replaced in the squad by Mahidul Islam Bhuiyan",
+      "url": "https://www.cricbuzz.com/cricket-news/139264/litton-ruled-out-of-zimbabwe-test-with-calf-injury",
+      "imageUrl": "https://static.cricbuzz.com/a/img/v1/540x303/i1/c1015764/litton-also-missed-the-recently-concluded-three-match-t20i-series-against-australia.jpg",
+      "source": "cricbuzz",
+      "publishedAt": "2026-06-21T16:58:59.000Z"
+    },
+    {
+      "id": "espn-https://www.cricinfo.com/ci/content/story/1542243.html",
+      "title": "Mahidul Islam replaces injured Litton Das for Zimbabwe Test",
+      "summary": "Litton Das hasn't sufficiently recovered from the calf strain",
+      "url": "https://www.cricinfo.com/story/mahidul-islam-replaces-injured-litton-das-for-zimbabwe-test-1542243",
+      "imageUrl": "https://p.imgci.com/db/PICTURES/CMS/417100/417172.5.jpg",
+      "source": "espncricinfo",
+      "publishedAt": "2026-06-21T16:42:28.000Z"
+    },
+    {
+      "id": "cricbuzz-139262",
+      "title": "Simmons 'disappointed' by Australia whitewash",
+      "summary": "The Bangladesh head coach said that the batting unit let the side down in the 3-0 series defeat",
+      "url": "https://www.cricbuzz.com/cricket-news/139262/simmons-disappointed-by-australia-whitewash",
+      "imageUrl": "https://static.cricbuzz.com/a/img/v1/540x303/i1/c879559/the-bangladesh-head-coach-said-that-the-batting-unit-let-the-side-down-in-the-3-0-series-defeat.jpg",
+      "source": "cricbuzz",
+      "publishedAt": "2026-06-21T13:32:47.000Z"
+    },
+    {
+      "id": "cricbuzz-139257",
+      "title": "Bowlers, Marsh help Australia complete T20I series sweep over Bangladesh",
+      "summary": "Towhid Hridoy's unbeaten 61 proved insufficient as Mitchell Marsh's 28-ball 60 powered Australia to a seven-wicket win and 3-0 sweep",
+      "url": "https://www.cricbuzz.com/cricket-news/139257/bowlers-marsh-help-australia-complete-t20i-series-sweep-over-bangladesh",
+      "imageUrl": "https://static.cricbuzz.com/a/img/v1/540x303/i1/c1015497/chasing-110-marsh-scored-60-off-28.jpg",
+      "source": "cricbuzz",
+      "publishedAt": "2026-06-21T11:12:47.000Z"
+    },
+    {
+      "id": "espn-https://www.cricinfo.com/ci/content/story/1542143.html",
+      "title": "Bangladesh bat first, make three changes in search of consolation win",
+      "summary": "Australia named an unchanged side as they look to whitewash the T20 series",
+      "url": "https://www.cricinfo.com/story/bangladesh-bat-first-make-three-changes-in-search-of-consolation-win-1542143",
+      "imageUrl": "https://p.imgci.com/db/PICTURES/CMS/418000/418075.5.jpg",
+      "source": "espncricinfo",
+      "publishedAt": "2026-06-21T08:04:37.000Z"
+    },
+    {
+      "id": "dailystar-https://www.thedailystar.net/sports/cricket/news/hridoy-hits-fifty-tigers-limp-1098-third-t20i-4204171",
+      "title": "Australia romp to 3-0 series whitewash",
+      "summary": "Captain Mitchell Marsh stroked a 28-ball 60 as Australia romped to a 3-0 series victory over Bangladesh with a seven-wicket thrashing in the third and final T20I in Chattogram on Sunday.",
+      "url": "https://www.thedailystar.net/sports/cricket/news/hridoy-hits-fifty-tigers-limp-1098-third-t20i-4204171",
+      "source": "dailystar",
+      "publishedAt": "2026-06-21T07:30:00.000Z"
+    },
     {
       "id": "espn-https://www.cricinfo.com/ci/content/story/1542108.html",
       "title": "Pakistan 'defeated ourselves' against Bangladesh - Wahab",
@@ -18,15 +79,6 @@
       "imageUrl": "https://p.imgci.com/db/PICTURES/CMS/418600/418688.5.jpg",
       "source": "espncricinfo",
       "publishedAt": "2026-06-20T20:07:33.000Z"
-    },
-    {
-      "id": "cricbuzz-139244",
-      "title": "Nahida, Shorna shine as Bangladesh knock Pakistan out",
-      "summary": "Pakistan succumbed to their third loss in three matches at this T20 World Cup",
-      "url": "https://www.cricbuzz.com/cricket-news/139244/nahida-shorna-shine-as-bangladesh-knock-pakistan-out",
-      "imageUrl": "https://static.cricbuzz.com/a/img/v1/540x303/i1/c1014363/shorna-scored-an-unbeaten-39-off-22.jpg",
-      "source": "cricbuzz",
-      "publishedAt": "2026-06-20T17:20:04.000Z"
     },
     {
       "id": "dailystar-https://www.thedailystar.net/sports/cricket/news/tigresses-beat-pakistan-keep-semifinal-hopes-alive-4203661",
@@ -89,14 +141,6 @@
       "publishedAt": "2026-06-19T07:54:49.000Z"
     },
     {
-      "id": "dailystar-https://www.thedailystar.net/sports/cricket/news/renshaws-unbeaten-89-powers-australia-196-5-against-bangladesh-4202761",
-      "title": "Australia clinch T20I series against Bangladesh with seven-run victory",
-      "summary": "Australia clinched the three-match T20I series 2-0 following a seven-run win over Bangladesh in the second match in Chottagram on Friday.",
-      "url": "https://www.thedailystar.net/sports/cricket/news/renshaws-unbeaten-89-powers-australia-196-5-against-bangladesh-4202761",
-      "source": "dailystar",
-      "publishedAt": "2026-06-19T07:49:00.000Z"
-    },
-    {
       "id": "espn-https://www.cricinfo.com/ci/content/story/1541688.html",
       "title": "Bangladesh face bowling conundrum as Australia look to seal series",
       "summary": "Bangladesh also have questions regarding their middle order as they look to stay alive in the series",
@@ -106,14 +150,6 @@
       "publishedAt": "2026-06-18T13:06:30.000Z"
     },
     {
-      "id": "dailystar-https://www.thedailystar.net/sports/cricket/news/tigers-fall-australias-wind-trap-and-lacklustre-approach-4201856",
-      "title": "Tigers fall to Australia’s wind ‘trap’ and lacklustre approach",
-      "summary": "Bangladesh pace-bowling coach Talha Jubair admitted that a failure to build middle-order partnerships after quick wickets left them short of a competitive total, resulting in a four-wicket defeat to Australia in the first T20I at the Bir Sreshtho Flight Lieutenant Matiur Rahman Stadium in Chattogram on Wednesday.",
-      "url": "https://www.thedailystar.net/sports/cricket/news/tigers-fall-australias-wind-trap-and-lacklustre-approach-4201856",
-      "source": "dailystar",
-      "publishedAt": "2026-06-18T06:57:30.000Z"
-    },
-    {
       "id": "espn-https://www.cricinfo.com/ci/content/story/1541571.html",
       "title": "Debutant Davies lives his dream on banner day for Australia's spinners",
       "summary": "Joel Davies took 3 for 17 as Australia's spinners sank Bangladesh in the first T20I in Chattogram",
@@ -121,42 +157,6 @@
       "imageUrl": "https://p.imgci.com/db/PICTURES/CMS/418400/418425.5.jpg",
       "source": "espncricinfo",
       "publishedAt": "2026-06-18T00:10:26.000Z"
-    },
-    {
-      "id": "espn-https://www.cricinfo.com/ci/content/story/1541560.html",
-      "title": "Bowlers, Voll power Australia to huge win over Bangladesh",
-      "summary": "Garth, Molineux and Perry shared six wickets between them to restrict Bangladesh to 77 for 8 before Australia raced home with more than 10 overs to spare",
-      "url": "https://www.cricinfo.com/story/womens-t20-world-cup-2026-bowlers-georgia-voll-power-australia-to-huge-win-over-bangladesh-1541560",
-      "imageUrl": "https://p.imgci.com/db/PICTURES/CMS/418400/418440.5.jpg",
-      "source": "espncricinfo",
-      "publishedAt": "2026-06-17T13:19:31.000Z"
-    },
-    {
-      "id": "espn-https://www.cricinfo.com/ci/content/story/1541540.html",
-      "title": "Australia's spinners dominate to hand visitors 1-0 series lead",
-      "summary": "Zampa and Davies, on debut, took three wickets each to bowl Bangladesh out for 131, before Connolly smashed 47 in the chase",
-      "url": "https://www.cricinfo.com/story/australias-spinners-dominate-to-hand-visitors-1-0-series-lead-1541540",
-      "imageUrl": "https://p.imgci.com/db/PICTURES/CMS/418400/418436.5.jpg",
-      "source": "espncricinfo",
-      "publishedAt": "2026-06-17T11:54:45.000Z"
-    },
-    {
-      "id": "espn-https://www.cricinfo.com/ci/content/story/1541519.html",
-      "title": "Bangladesh bat against Australia; Litchfield and Gardner out with injuries",
-      "summary": "Phoebe Litchfield has a quad injury, while Gardner has a sprained ankle; Grace Harris and Megan Schutt have replaced them, while Bangladesh have brought in Nahida Akter and Sultana Khatun",
-      "url": "https://www.cricinfo.com/story/womens-t20-world-cup-bangladesh-bat-against-australia-phoebe-litchfield-and-ash-gardner-out-with-injuries-1541519",
-      "imageUrl": "https://p.imgci.com/db/PICTURES/CMS/418400/418437.6.jpg",
-      "source": "espncricinfo",
-      "publishedAt": "2026-06-17T09:58:05.000Z"
-    },
-    {
-      "id": "espn-https://www.cricinfo.com/ci/content/story/1541496.html",
-      "title": "Bangladesh bat with Litton ruled out; Chaudhary and Davies debut for Australia",
-      "summary": "Towhid Hridoy is leading Bangladesh in Litton Das' absence, and they have handed a debut to Abdul Gaffar Saqlain, the quick bowler",
-      "url": "https://www.cricinfo.com/story/ban-vs-aus-1st-t20i-bangladesh-bat-with-litton-das-ruled-out-nikhil-chaudhary-and-joel-davies-debut-for-australia-1541496",
-      "imageUrl": "https://p.imgci.com/db/PICTURES/CMS/418400/418425.6.jpg",
-      "source": "espncricinfo",
-      "publishedAt": "2026-06-17T08:18:36.000Z"
     }
   ]
 }
