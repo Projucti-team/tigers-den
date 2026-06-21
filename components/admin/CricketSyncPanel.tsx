@@ -23,9 +23,6 @@ export default function CricketSyncPanel() {
   async function runSync(job: CricketSyncJobSelection) {
     setState({ status: "running", job });
 
-    const controller = new AbortController();
-    const timeout = window.setTimeout(() => controller.abort(), 5 * 60 * 1000);
-
     const params = new URLSearchParams({ force: "1" });
     if (job !== "all") {
       params.set("job", job);
@@ -36,11 +33,27 @@ export default function CricketSyncPanel() {
         method: "POST",
         credentials: "include",
         headers: { Accept: "application/json" },
-        signal: controller.signal,
       });
       const body = (await res.json().catch(() => ({}))) as SyncCricketResult & {
         error?: string;
+        status?: string;
+        message?: string;
       };
+
+      if (res.status === 202 || body.status === "started" || body.status === "running") {
+        const result = await pollSyncStatus();
+        if (result) {
+          setState({ status: "done", job, result });
+          router.refresh();
+          return;
+        }
+        setState({
+          status: "error",
+          job,
+          message: "Sync did not finish — check server logs or run ./scripts/prod-cricket-sync.sh on the VPS.",
+        });
+        return;
+      }
 
       if (!res.ok) {
         const detail =
@@ -59,16 +72,35 @@ export default function CricketSyncPanel() {
       setState({ status: "done", job, result: body });
       router.refresh();
     } catch (err) {
-      const message =
-        err instanceof Error && err.name === "AbortError"
-          ? "Sync timed out after 5 minutes — try again or use ./scripts/prod-cricket-sync.sh on the server."
-          : err instanceof Error
-            ? err.message
-            : "Sync failed";
+      const message = err instanceof Error ? err.message : "Sync failed";
       setState({ status: "error", job, message });
-    } finally {
-      window.clearTimeout(timeout);
     }
+  }
+
+  async function pollSyncStatus(): Promise<SyncCricketResult | null> {
+    const deadline = Date.now() + 10 * 60 * 1000;
+
+    while (Date.now() < deadline) {
+      await new Promise((resolve) => setTimeout(resolve, 5000));
+
+      const res = await fetch("/api/cricket-snapshots/sync/status", {
+        credentials: "include",
+        headers: { Accept: "application/json" },
+      });
+      const lock = (await res.json().catch(() => ({}))) as {
+        inProgress?: boolean;
+        lastResult?: SyncCricketResult;
+        lastError?: string | null;
+      };
+
+      if (lock.inProgress) continue;
+      if (lock.lastResult) return lock.lastResult;
+      if (lock.lastError) {
+        throw new Error(lock.lastError);
+      }
+    }
+
+    return null;
   }
 
   const runningJob = state.status === "running" ? state.job : null;

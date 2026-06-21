@@ -1,13 +1,41 @@
 import type { CollectionConfig } from "payload";
 import { headersWithCors } from "payload";
 
+import {
+  readSyncLock,
+  runCricketSyncInBackground,
+} from "@/lib/cricket/services/sync-lock";
 import { syncCricketSnapshots } from "@/lib/cricket/services/sync-cricket-snapshots";
-import { parseCricketSyncJobs } from "@/lib/cricket/sync-jobs";
+import { parseCricketSyncJobs, resolveCricketSyncJobs } from "@/lib/cricket/sync-jobs";
 
 /** Nightly cricket data (rankings, tours, squads, venues) — written by cron, read on page load. */
 export const CricketSnapshots: CollectionConfig = {
   slug: "cricket-snapshots",
   endpoints: [
+    {
+      path: "/sync/status",
+      method: "get",
+      handler: async (req) => {
+        const { user } = req.user
+          ? { user: req.user }
+          : await req.payload.auth({ headers: req.headers });
+
+        if (!user) {
+          return Response.json(
+            { error: "Unauthorized — sign in to Payload admin first." },
+            {
+              status: 401,
+              headers: headersWithCors({ headers: new Headers(), req }),
+            },
+          );
+        }
+
+        const lock = await readSyncLock();
+        return Response.json(lock ?? { inProgress: false }, {
+          headers: headersWithCors({ headers: new Headers(), req }),
+        });
+      },
+    },
     {
       path: "/sync",
       method: "post",
@@ -34,11 +62,42 @@ export const CricketSnapshots: CollectionConfig = {
           const jobsParam =
             url?.searchParams.get("jobs") ?? url?.searchParams.get("job") ?? undefined;
           const jobs = parseCricketSyncJobs(jobsParam);
-          const result = await syncCricketSnapshots({ force, jobs });
-          return Response.json(result, {
-            status: result.ok ? 200 : 207,
-            headers: headersWithCors({ headers: new Headers(), req }),
-          });
+          const wait = url?.searchParams.get("wait") === "1";
+
+          if (wait) {
+            const result = await syncCricketSnapshots({ force, jobs });
+            return Response.json(result, {
+              status: result.ok ? 200 : 207,
+              headers: headersWithCors({ headers: new Headers(), req }),
+            });
+          }
+
+          const background = await runCricketSyncInBackground({ force, jobs });
+          if (background.alreadyRunning) {
+            return Response.json(
+              {
+                status: "running",
+                message: "Cricket sync already in progress.",
+                jobs: resolveCricketSyncJobs(jobs),
+              },
+              {
+                status: 202,
+                headers: headersWithCors({ headers: new Headers(), req }),
+              },
+            );
+          }
+
+          return Response.json(
+            {
+              status: "started",
+              message: "Cricket sync running in background. Poll /api/cricket-snapshots/sync/status.",
+              jobs: resolveCricketSyncJobs(jobs),
+            },
+            {
+              status: 202,
+              headers: headersWithCors({ headers: new Headers(), req }),
+            },
+          );
         } catch (err) {
           const message = err instanceof Error ? err.message : "Sync failed";
           return Response.json(

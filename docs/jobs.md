@@ -23,7 +23,7 @@ The server cricket sync also refreshes ICC/WTC JSON and runs ESPN squad scrape *
 
 **Endpoint:** `POST` or `GET` `/api/cron/cricket`  
 **Auth:** `Authorization: Bearer YOUR_CRON_SECRET` (or `?secret=` in dev only)  
-**Duration:** up to 5 minutes (`maxDuration = 300`)
+**Duration:** up to 5 minutes on the server (`maxDuration = 300`). The HTTP response returns **immediately** (HTTP 202) so Cloudflare does not time out with **524** — poll `GET ?status=1` until `inProgress` is false.
 
 ### What it does
 
@@ -54,7 +54,13 @@ Cron expression (UTC): `0 21 * * *`
 ```bash
 curl -fsS -X POST "https://your-domain.com/api/cron/cricket?force=1" \
   -H "Authorization: Bearer YOUR_CRON_SECRET"
+
+# Poll until finished (avoids Cloudflare 524 timeout):
+curl -fsS "https://your-domain.com/api/cron/cricket?status=1" \
+  -H "Authorization: Bearer YOUR_CRON_SECRET"
 ```
+
+On the VPS, prefer `./scripts/prod-cricket-sync.sh --force` (hits localhost inside Docker when available).
 
 ### Local / manual
 
