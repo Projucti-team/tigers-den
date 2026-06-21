@@ -158,16 +158,19 @@ function formatMilestone(entry: unknown): ScorecardRecordNote | null {
 function debutNotes(debuts?: DebutPlayerRow[], format?: string): ScorecardRecordNote[] {
   if (!debuts?.length) return [];
 
-  return debuts
-    .map((row) => {
-      const name = playerName(row.player);
-      if (!name) return null;
-      const formatLabel = CLASS_LABEL[row.classId ?? -1] ?? format?.toUpperCase() ?? "International";
-      const team = teamLabel(row.team);
-      const text = team ? `${name} (${team}) — ${formatLabel} debut` : `${name} — ${formatLabel} debut`;
-      return { text, player: name };
-    })
-    .filter((row): row is ScorecardRecordNote => Boolean(row));
+  const notes: ScorecardRecordNote[] = [];
+
+  for (const row of debuts) {
+    const name = playerName(row.player);
+    if (!name) continue;
+
+    const formatLabel = CLASS_LABEL[row.classId ?? -1] ?? format?.toUpperCase() ?? "International";
+    const team = teamLabel(row.team);
+    const text = team ? `${name} (${team}) — ${formatLabel} debut` : `${name} — ${formatLabel} debut`;
+    notes.push({ text, player: name });
+  }
+
+  return notes;
 }
 
 function topBangladeshImpact(players?: SmartScorecardPlayer[]): ScorecardImpactPlayer | undefined {
