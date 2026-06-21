@@ -32,14 +32,14 @@ CricAPI builds the **upcoming tours index** (`/tours`). Each **series detail pag
 
 | Data | Source during sync | Stored in | Read on page load |
 |------|-------------------|-----------|-------------------|
-| Fixtures & match results | ESPNcricinfo first; CricAPI when ESPN has no schedule | `cricket-snapshots` (`tour-detail:{slug}`) + `data/tour-details.json` | DB → JSON fallback |
+| Fixtures & match results | ESPNcricinfo first; CricAPI when ESPN schedule is missing or incomplete | `cricket-snapshots` (`tour-detail:{slug}`) + `data/tour-details.json` | DB → JSON fallback |
 | Squads | ESPN core API + story RSS | Tour snapshot + `data/espn-tour-squads.json` | Cached snapshot |
 | Venue & city guides | Template lookup once per ground | `venue-guides` snapshot + `data/venue-guides.json` + tour snapshot | Tour snapshot only |
 | Confirmed start times | Curated schedule | `data/espn-fixture-times.json` | Merged during sync only |
 
 Tour pages **do not** call ESPN or CricAPI at request time. When a series ends and leaves the upcoming index, its `tour-detail:{slug}` snapshot is pruned from DB and `data/tour-details.json`.
 
-During sync, fixtures always try ESPNcricinfo first (season events, curated schedule, live events). If ESPN returns nothing, CricAPI `series_info` / match list is used as fallback. Squads are always from ESPN only.
+During sync, fixtures always try ESPNcricinfo first (season events, curated schedule, live events). If ESPN returns nothing or fewer fixtures than the tour's published match count, CricAPI `series_info` / match list is used as fallback (merging ESPN results into the fuller CricAPI list when both exist). Squads are always from ESPN only.
 
 Manual tour snapshot rebuild (prefer `npm run sync:cricket` on deploy):
 

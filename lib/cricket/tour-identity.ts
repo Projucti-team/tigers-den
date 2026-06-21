@@ -1,4 +1,6 @@
 import { isFutureSeries } from "@/lib/cricket/tour-dates";
+import { resolveMatchStartIso } from "@/lib/cricket/match-sort";
+import { squadPrimaryNation } from "@/lib/cricket/squads/types";
 import type { LiveMatchSummary, Tour } from "@/lib/cricket/types";
 
 export type TourGender = "men" | "women";
@@ -149,20 +151,79 @@ function matchFormatHint(match: LiveMatchSummary): "test" | "odi" | "t20" | null
   return null;
 }
 
-function mergeTourStats(base: Tour, group: Tour[]): Tour {
+function parseTourEndTime(endDate: string | undefined, startDate?: string): number | null {
+  if (!endDate) return null;
+  const trimmed = endDate.trim();
+  if (/^\d{4}-\d{2}-\d{2}/.test(trimmed)) {
+    const end = new Date(trimmed).getTime();
+    return Number.isNaN(end) ? null : end;
+  }
+  const year = startDate ? new Date(startDate).getFullYear() : new Date().getFullYear();
+  const end = new Date(`${trimmed} ${year}`).getTime();
+  return Number.isNaN(end) ? null : end;
+}
+
+/** Keep fixtures inside the tour window — blocks historical matches from loose name matching. */
+export function matchWithinTourWindow(match: LiveMatchSummary, tour: Tour): boolean {
+  if (!tour.startDate) return true;
+
+  const matchIso = resolveMatchStartIso(match);
+  if (!matchIso) return true;
+
+  const matchTime = new Date(matchIso).getTime();
+  const startTime = new Date(tour.startDate).getTime() - 14 * 86_400_000;
+  const parsedEnd = parseTourEndTime(tour.endDate, tour.startDate);
+  const endTime =
+    parsedEnd !== null ? parsedEnd + 14 * 86_400_000 : startTime + 150 * 86_400_000;
+
+  return matchTime >= startTime && matchTime <= endTime;
+}
+
+export function countTourFormatsFromMatches(
+  matches: LiveMatchSummary[],
+): { test: number; odi: number; t20: number } {
   let test = 0;
   let odi = 0;
   let t20 = 0;
-  let matches = 0;
+
+  for (const match of matches) {
+    const format = matchFormatHint(match);
+    if (format === "test") test += 1;
+    else if (format === "odi") odi += 1;
+    else if (format === "t20") t20 += 1;
+  }
+
+  return { test, odi, t20 };
+}
+
+export function applyFormatCountsFromMatches(tour: Tour, matches: LiveMatchSummary[]): Tour {
+  const { test, odi, t20 } = countTourFormatsFromMatches(matches);
+  const total = test + odi + t20;
+  if (total === 0) return tour;
+
+  return {
+    ...tour,
+    test: test || undefined,
+    odi: odi || undefined,
+    t20: t20 || undefined,
+    matches: total,
+  };
+}
+
+function mergeTourStats(base: Tour, group: Tour[]): Tour {
+  let test = base.test ?? 0;
+  let odi = base.odi ?? 0;
+  let t20 = base.t20 ?? 0;
+  let matches = base.matches ?? 0;
   let startDate = base.startDate;
   let endDate = base.endDate;
   let teams = base.teams;
 
   for (const tour of group) {
-    test += tour.test ?? 0;
-    odi += tour.odi ?? 0;
-    t20 += tour.t20 ?? 0;
-    matches += tour.matches ?? 0;
+    test = Math.max(test, tour.test ?? 0);
+    odi = Math.max(odi, tour.odi ?? 0);
+    t20 = Math.max(t20, tour.t20 ?? 0);
+    matches = Math.max(matches, tour.matches ?? 0);
     if (tour.startDate && (!startDate || tour.startDate < startDate)) startDate = tour.startDate;
     if (tour.endDate && (!endDate || tour.endDate > endDate)) endDate = tour.endDate;
     if (tour.teams?.length) teams = tour.teams;
@@ -172,10 +233,10 @@ function mergeTourStats(base: Tour, group: Tour[]): Tour {
     ...base,
     startDate,
     endDate,
-    test: test || base.test,
-    odi: odi || base.odi,
-    t20: t20 || base.t20,
-    matches: matches || base.matches,
+    test: test || undefined,
+    odi: odi || undefined,
+    t20: t20 || undefined,
+    matches: matches || undefined,
     teams,
   };
 }
@@ -230,18 +291,25 @@ function collapseToUmbrellaTour(group: Tour[]): Tour {
   return mergeTourStats({ ...seed, id, name }, group);
 }
 
+/** Same bilateral tour in the same season — avoids merging 2024 and 2026 rows. */
+export function tourSeasonKey(tour: Pick<Tour, "name" | "startDate">): string {
+  const base = tourVenueKey(tour.name);
+  const year = tour.startDate ? new Date(tour.startDate).getFullYear() : 0;
+  return year > 0 ? `${base}:${year}` : base;
+}
+
 /** Collapse format-specific series into one umbrella tour per venue; dedupe ESPN + CricAPI doubles. */
 export function deduplicateTours(tours: Tour[]): Tour[] {
-  const byVenue = new Map<string, Tour[]>();
+  const bySeason = new Map<string, Tour[]>();
 
   for (const tour of tours) {
-    const key = tourVenueKey(tour.name);
-    const list = byVenue.get(key) ?? [];
+    const key = tourSeasonKey(tour);
+    const list = bySeason.get(key) ?? [];
     list.push(tour);
-    byVenue.set(key, list);
+    bySeason.set(key, list);
   }
 
-  const merged = [...byVenue.values()].map(collapseToUmbrellaTour);
+  const merged = [...bySeason.values()].map(collapseToUmbrellaTour);
 
   return merged
     .filter((t) => isFutureSeries(t.startDate, t.endDate))
@@ -254,7 +322,7 @@ export function deduplicateTours(tours: Tour[]): Tour[] {
 
 export function matchBelongsToTour(match: LiveMatchSummary, tour: Tour): boolean {
   if (match.seriesId && tour.id && match.seriesId === tour.id) {
-    return matchVenueMatchesTourHost(match, tour.name);
+    return matchVenueMatchesTourHost(match, tour.name) && matchWithinTourWindow(match, tour);
   }
 
   const matchWomen = isWomenMatch(match);
@@ -282,20 +350,53 @@ export function matchBelongsToTour(match: LiveMatchSummary, tour: Tour): boolean
   if (match.seriesName) {
     const seriesNorm = normalizeTourName(match.seriesName);
     const tourNorm = normalizeTourName(tour.name);
-    if (seriesNorm === tourNorm) return true;
+    if (seriesNorm === tourNorm) {
+      return matchVenueMatchesTourHost(match, tour.name) && matchWithinTourWindow(match, tour);
+    }
     if (tourVenueKey(match.seriesName) === tourVenueKey(tour.name)) {
-      if (umbrella || !tourFormat || !matchFormatHint(match)) {
-        return matchVenueMatchesTourHost(match, tour.name);
+      if (tourSeasonKey({ name: tour.name, startDate: tour.startDate }) !== tourSeasonKey({ name: match.seriesName, startDate: match.date ?? match.dateTimeGMT })) {
+        return false;
       }
-      return matchFormatHint(match) === tourFormat;
+      if (umbrella || !tourFormat || !matchFormatHint(match)) {
+        return matchVenueMatchesTourHost(match, tour.name) && matchWithinTourWindow(match, tour);
+      }
+      return (
+        matchFormatHint(match) === tourFormat &&
+        matchVenueMatchesTourHost(match, tour.name) &&
+        matchWithinTourWindow(match, tour)
+      );
     }
   }
 
   if (umbrella && opponent && blob.includes(opponent)) {
-    return matchVenueMatchesTourHost(match, tour.name);
+    return matchVenueMatchesTourHost(match, tour.name) && matchWithinTourWindow(match, tour);
   }
 
   return false;
+}
+
+/** Expected fixtures from tour metadata (format counts or total matches). */
+export function expectedTourFixtureCount(tour: Tour): number {
+  const fromFormats = (tour.test ?? 0) + (tour.odi ?? 0) + (tour.t20 ?? 0);
+  if (fromFormats > 0) return fromFormats;
+  return tour.matches ?? 0;
+}
+
+/** True when ESPN returned enough fixtures for the tour's published match count. */
+export function espnFixturesLookComplete(tour: Tour, matches: LiveMatchSummary[]): boolean {
+  if (!matches.length) return false;
+
+  const { test, odi, t20 } = countTourFormatsFromMatches(matches);
+  const labelledFixtures = test + odi + t20;
+  const metaExpected = expectedTourFixtureCount(tour);
+
+  if (labelledFixtures > 0 && labelledFixtures === matches.length) {
+    if (labelledFixtures >= metaExpected) return true;
+    // Metadata duplicated across merged index rows — trust a real multi-match ESPN list.
+    if (labelledFixtures >= 3 && metaExpected > labelledFixtures * 2) return true;
+  }
+
+  return matches.length >= metaExpected;
 }
 
 /** Drop fixtures copied from the wrong bilateral tour or host country. */
@@ -318,26 +419,47 @@ const OPPONENT_NATIONS = [
   "zimbabwe",
 ];
 
+function normalizeNationSlug(value: string): string {
+  return value.toLowerCase().replace(/[^a-z0-9]+/g, "");
+}
+
+/** Both teams in a bilateral tour — used to route ESPN squad blocks. */
+export function tourParticipantSlugs(tourName: string): Set<string> {
+  const participants = new Set<string>();
+  for (const value of [extractOpponentNation(tourName), tourHostNationSlug(tourName), "bangladesh"]) {
+    if (value) participants.add(normalizeNationSlug(value));
+  }
+  return participants;
+}
+
 /** Route squad announcement blocks to the correct bilateral tour. */
 export function squadBelongsToTour(
   squad: { team: string; source?: string },
   tour: Tour,
 ): boolean {
-  const blob = `${squad.team} ${squad.source ?? ""}`.toLowerCase();
-
   if (tourNamesShareVenue(tour.name, squad.team)) return true;
 
-  const opponent = extractOpponentNation(tour.name);
-  if (!opponent || !blob.includes(opponent)) return false;
+  const blob = `${squad.team} ${squad.source ?? ""}`.toLowerCase();
+  const tourWomen = tourGender(tour.name) === "women";
+  if (/women/i.test(blob) !== tourWomen) return false;
+
+  const participants = tourParticipantSlugs(tour.name);
+  const squadNation = normalizeNationSlug(squadPrimaryNation(squad.team));
+  if (!participants.has(squadNation)) return false;
 
   for (const nation of OPPONENT_NATIONS) {
-    if (nation !== opponent && blob.includes(nation)) return false;
+    const slug = normalizeNationSlug(nation);
+    if (participants.has(slug)) continue;
+    if (blob.includes(nation)) return false;
   }
 
   if (!isUmbrellaTourName(tour.name)) return false;
 
   const squadFormat = extractFormatHint(squad.team);
-  if (!squadFormat) return false;
+  if (!squadFormat) return true;
+
+  const hasFormatCounts = (tour.test ?? 0) + (tour.odi ?? 0) + (tour.t20 ?? 0) > 0;
+  if (!hasFormatCounts) return true;
 
   if (squadFormat === "test") return (tour.test ?? 0) > 0;
   if (squadFormat === "odi") return (tour.odi ?? 0) > 0;

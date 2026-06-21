@@ -16,10 +16,27 @@ import { tourToCard } from "@/lib/cricket/services/tours-display";
 import type { TourDetailSnapshot } from "@/lib/cricket/snapshot-types";
 import { readTourDetailSnapshot } from "@/lib/cricket/tour-detail-store";
 import { findTourBySlug } from "@/lib/cricket/tour-slug";
-import { squadBelongsToTour } from "@/lib/cricket/tour-identity";
+import { applyFormatCountsFromMatches, squadBelongsToTour } from "@/lib/cricket/tour-identity";
+import type { Tour } from "@/lib/cricket/types";
 import { sortMatchesByDate } from "@/lib/cricket/match-sort";
 
 export type { TourDetail } from "@/lib/cricket/tour-detail-types";
+
+function mergeTourMetadata(cached: Tour, umbrella?: Tour): Tour {
+  if (!umbrella) return cached;
+  return {
+    ...cached,
+    ...umbrella,
+    id: cached.id || umbrella.id,
+    name: cached.name || umbrella.name,
+    startDate: cached.startDate ?? umbrella.startDate,
+    endDate: cached.endDate ?? umbrella.endDate,
+    test: cached.test ?? umbrella.test,
+    odi: cached.odi ?? umbrella.odi,
+    t20: cached.t20 ?? umbrella.t20,
+    matches: cached.matches ?? umbrella.matches,
+  };
+}
 
 async function readStoredTourDetail(slug: string): Promise<TourDetailSnapshot | null> {
   const fromDb = await readCricketSnapshot<TourDetailSnapshot>(
@@ -45,8 +62,10 @@ export async function getTourDetail(slug: string): Promise<TourDetailSnapshot | 
 
   const { tours } = await getFutureTours({ bangladeshOnly: true });
   const umbrella = findTourBySlug(tours, slug);
-  const tour = umbrella ?? cached.tour;
-  const { matches, venues, squads: snapshotSquads } = sanitizeTourSnapshotForRead(tour, cached);
+  const tourBase = mergeTourMetadata(cached.tour, umbrella);
+  const { matches, venues, squads: snapshotSquads } = sanitizeTourSnapshotForRead(tourBase, cached);
+  const sortedMatches = sortMatchesByDate(matches);
+  const tour = applyFormatCountsFromMatches(tourBase, sortedMatches);
 
   const espnSquads = await loadEspnTourSquadsFromCache(tour);
   const mergedSquads = mergeSquads(snapshotSquads, espnSquads).filter((squad) =>
@@ -76,7 +95,7 @@ export async function getTourDetail(slug: string): Promise<TourDetailSnapshot | 
       ...cached,
       tour,
       card: tourToCard(tour, 0),
-      matches: sortMatchesByDate(matches),
+      matches: sortedMatches,
       venues,
     },
     squads,

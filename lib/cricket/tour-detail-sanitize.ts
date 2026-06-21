@@ -11,7 +11,7 @@ export function sanitizeTourSnapshotForRead(
   const snapshotMismatch = matches.length !== cached.matches.length;
 
   if (snapshotMismatch) {
-    return { matches, venues: [], squads: [] };
+    return { matches, venues: [], squads: cached.squads };
   }
 
   if (matches.length === 0) {
