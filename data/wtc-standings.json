@@ -1,5 +1,5 @@
 {
-  "fetchedAt": "2026-06-21T02:57:56.694Z",
+  "fetchedAt": "2026-06-21T22:37:20.483Z",
   "source": "espn-cricinfo-core",
   "cycleLabel": "2025–2027",
   "standings": [
@@ -31,19 +31,32 @@
     },
     {
       "rank": 3,
-      "team": "England",
-      "abbreviation": "ENG",
-      "played": 11,
-      "won": 4,
-      "lost": 6,
+      "team": "New Zealand",
+      "abbreviation": "NZ",
+      "played": 5,
+      "won": 3,
+      "lost": 1,
       "drawn": 1,
       "tied": 0,
       "noResult": 0,
-      "points": 50,
-      "pct": 37.88
+      "points": 40,
+      "pct": 66.67
     },
     {
       "rank": 4,
+      "team": "England",
+      "abbreviation": "ENG",
+      "played": 12,
+      "won": 4,
+      "lost": 7,
+      "drawn": 1,
+      "tied": 0,
+      "noResult": 0,
+      "points": 38,
+      "pct": 26.39
+    },
+    {
+      "rank": 5,
       "team": "South Africa",
       "abbreviation": "SA",
       "played": 4,
@@ -56,7 +69,7 @@
       "pct": 75
     },
     {
-      "rank": 5,
+      "rank": 6,
       "team": "Bangladesh",
       "abbreviation": "BAN",
       "played": 4,
@@ -69,22 +82,9 @@
       "pct": 58.33
     },
     {
-      "rank": 6,
-      "team": "New Zealand",
-      "abbreviation": "NZ",
-      "played": 4,
-      "won": 2,
-      "lost": 1,
-      "drawn": 1,
-      "tied": 0,
-      "noResult": 0,
-      "points": 28,
-      "pct": 58.33
-    },
-    {
       "rank": 7,
-      "team": "Unknown",
-      "abbreviation": "",
+      "team": "Sri Lanka",
+      "abbreviation": "SL",
       "played": 2,
       "won": 1,
       "lost": 0,
