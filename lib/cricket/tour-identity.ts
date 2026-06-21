@@ -382,6 +382,14 @@ export function expectedTourFixtureCount(tour: Tour): number {
   return tour.matches ?? 0;
 }
 
+export function fixturesCoverTourFormats(tour: Tour, matches: LiveMatchSummary[]): boolean {
+  const counts = countTourFormatsFromMatches(matches);
+  if ((tour.test ?? 0) > 0 && counts.test < (tour.test ?? 0)) return false;
+  if ((tour.odi ?? 0) > 0 && counts.odi < (tour.odi ?? 0)) return false;
+  if ((tour.t20 ?? 0) > 0 && counts.t20 < (tour.t20 ?? 0)) return false;
+  return true;
+}
+
 /** True when ESPN returned enough fixtures for the tour's published match count. */
 export function espnFixturesLookComplete(tour: Tour, matches: LiveMatchSummary[]): boolean {
   if (!matches.length) return false;
@@ -389,11 +397,16 @@ export function espnFixturesLookComplete(tour: Tour, matches: LiveMatchSummary[]
   const { test, odi, t20 } = countTourFormatsFromMatches(matches);
   const labelledFixtures = test + odi + t20;
   const metaExpected = expectedTourFixtureCount(tour);
+  const metadataInflated =
+    metaExpected > 0 && labelledFixtures >= 3 && metaExpected > labelledFixtures * 2;
+
+  if (metaExpected > 0 && !metadataInflated && !fixturesCoverTourFormats(tour, matches)) {
+    return false;
+  }
 
   if (labelledFixtures > 0 && labelledFixtures === matches.length) {
     if (labelledFixtures >= metaExpected) return true;
-    // Metadata duplicated across merged index rows — trust a real multi-match ESPN list.
-    if (labelledFixtures >= 3 && metaExpected > labelledFixtures * 2) return true;
+    if (metadataInflated) return true;
   }
 
   return matches.length >= metaExpected;
@@ -447,10 +460,11 @@ export function squadBelongsToTour(
   const squadNation = normalizeNationSlug(squadPrimaryNation(squad.team));
   if (!participants.has(squadNation)) return false;
 
+  const teamBlob = squad.team.toLowerCase();
   for (const nation of OPPONENT_NATIONS) {
     const slug = normalizeNationSlug(nation);
     if (participants.has(slug)) continue;
-    if (blob.includes(nation)) return false;
+    if (teamBlob.includes(nation)) return false;
   }
 
   if (!isUmbrellaTourName(tour.name)) return false;

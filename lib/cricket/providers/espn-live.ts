@@ -20,7 +20,7 @@ import {
   trackedPlayerLeaguesToRefs,
   type TrackedLeagueRef,
 } from "@/lib/cricket/tracked-player-leagues";
-import { filterMatchesForTour } from "@/lib/cricket/tour-identity";
+import { filterMatchesForTour, isUmbrellaTourName } from "@/lib/cricket/tour-identity";
 import type { LiveMatchSummary, Tour } from "@/lib/cricket/types";
 
 const CORE_BASE = "http://core.espnuk.org/v2/sports/cricket";
@@ -497,7 +497,11 @@ export async function buildTourMatchesFromEspnSeries(
   tour: Tour,
   league: EspnTourLeagueRef,
 ): Promise<LiveMatchSummary[]> {
-  if (/^\d+$/.test(tour.id) && String(league.cricinfoSeriesId) !== tour.id) {
+  if (
+    !isUmbrellaTourName(tour.name) &&
+    /^\d+$/.test(tour.id) &&
+    String(league.cricinfoSeriesId) !== tour.id
+  ) {
     return [];
   }
 

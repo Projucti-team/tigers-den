@@ -10,7 +10,7 @@ import { readEspnTourSquads } from "@/lib/cricket/squads/store";
 import { tourSlug } from "@/lib/cricket/tour-slug";
 import type { LiveMatchSummary, Tour } from "@/lib/cricket/types";
 
-import { resolveEspnLeagueForTour } from "@/lib/cricket/providers/espn-squads";
+import { resolveAllEspnLeaguesForTour, resolveEspnLeagueForTour } from "@/lib/cricket/providers/espn-squads";
 import {
   deduplicateTours,
   normalizeTourName,
@@ -483,7 +483,48 @@ async function leagueForTour(tour: Tour): Promise<{
   return {
     cricinfoSeriesId: resolved.cricinfoSeriesId,
     espnLeagueId: resolved.espnLeagueId,
+    seasonYear: tour.startDate ? new Date(tour.startDate).getFullYear() : undefined,
   };
+}
+
+export async function espnLeaguesForTour(tour: Tour) {
+  const fromCurated = await leaguesForTourFromCurated(tour);
+  const fromScan = await resolveAllEspnLeaguesForTour(tour.name, tour.id, tour.startDate);
+  const byId = new Map<number, Awaited<ReturnType<typeof leagueForTour>> & object>();
+
+  for (const ref of [...fromCurated, ...fromScan]) {
+    byId.set(ref.cricinfoSeriesId, {
+      cricinfoSeriesId: ref.cricinfoSeriesId,
+      espnLeagueId: ref.espnLeagueId,
+      seasonYear: ref.seasonYear ?? (tour.startDate ? new Date(tour.startDate).getFullYear() : undefined),
+      useSeasonEvents: ref.useSeasonEvents,
+    });
+  }
+
+  return [...byId.values()];
+}
+
+async function leaguesForTourFromCurated(tour: Tour) {
+  const curated = await readCuratedFixtureTimes();
+  const refs: {
+    cricinfoSeriesId: number;
+    espnLeagueId: number;
+    seasonYear?: number;
+    useSeasonEvents?: boolean;
+  }[] = [];
+
+  for (const [seriesId, series] of Object.entries(curated.series)) {
+    if (!tourMatchesCuratedSeries(tour, series, seriesId)) continue;
+    if (!series.cricinfoSeriesId || !series.espnLeagueId) continue;
+    refs.push({
+      cricinfoSeriesId: series.cricinfoSeriesId,
+      espnLeagueId: series.espnLeagueId,
+      seasonYear: series.seasonYear,
+      useSeasonEvents: series.useSeasonEvents,
+    });
+  }
+
+  return refs;
 }
 
 export async function espnLeagueForTour(tour: Tour) {

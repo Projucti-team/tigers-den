@@ -282,14 +282,11 @@
       "tourName": "Bangladesh tour of Zimbabwe, 2026",
       "cricinfoSeriesId": 1538288,
       "espnLeagueId": 24420,
-      "squadStoryUrls": [
-        "https://www.espncricinfo.com/story/ban-vs-aus-taskin-ahmed-and-nahid-rana-return-for-t20is-against-australia-1540473"
-      ],
+      "squadStoryUrls": [],
       "fetchedAt": "2026-06-13T00:00:00.000Z",
       "squads": [
         {
           "team": "Bangladesh squad for one-off Test vs Zimbabwe",
-          "source": "https://www.espncricinfo.com/story/ban-vs-aus-taskin-ahmed-and-nahid-rana-return-for-t20is-against-australia-1540473",
           "players": [
             { "name": "Najmul Hossain Shanto (capt)" },
             { "name": "Shadman Islam" },

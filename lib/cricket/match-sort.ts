@@ -20,3 +20,16 @@ function matchStartTime(match: LiveMatchSummary): number {
 export function sortMatchesByDate(matches: LiveMatchSummary[]): LiveMatchSummary[] {
   return [...matches].sort((a, b) => matchStartTime(a) - matchStartTime(b));
 }
+
+export function mergeMatchLists(...lists: LiveMatchSummary[][]): LiveMatchSummary[] {
+  const byKey = new Map<string, LiveMatchSummary>();
+
+  for (const list of lists) {
+    for (const match of list) {
+      const key = match.id || `${match.date ?? match.dateTimeGMT ?? ""}|${match.name}`;
+      byKey.set(key, match);
+    }
+  }
+
+  return sortMatchesByDate([...byKey.values()]);
+}

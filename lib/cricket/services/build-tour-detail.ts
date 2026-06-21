@@ -7,9 +7,10 @@ import {
   buildMatchesFromCuratedFixtures,
   buildMatchesFromEspnEvents,
   enrichMatchFixtureTimes,
-  espnLeagueForTour,
+  espnLeaguesForTour,
 } from "@/lib/cricket/providers/espn-fixtures";
 import { buildTourMatchesFromEspnSeries } from "@/lib/cricket/providers/espn-live";
+import { resolveAllEspnLeaguesForTour } from "@/lib/cricket/providers/espn-squads";
 import { refreshEspnTourSquads, applyEspnTourSquads } from "@/lib/cricket/providers/espn-squads";
 import { mergeTourFixtures } from "@/lib/cricket/services/merge-tour-fixtures";
 import { tourToCard } from "@/lib/cricket/services/tours-display";
@@ -22,14 +23,20 @@ import {
   matchBelongsToTour,
 } from "@/lib/cricket/tour-identity";
 import type { LiveMatchSummary, Tour } from "@/lib/cricket/types";
-import { sortMatchesByDate } from "@/lib/cricket/match-sort";
+import { mergeMatchLists, sortMatchesByDate } from "@/lib/cricket/match-sort";
 import { resolveTourVenues } from "@/lib/cricket/venues";
 
 async function fetchFixturesFromEspn(tour: Tour): Promise<LiveMatchSummary[]> {
-  const league = await espnLeagueForTour(tour);
-  if (league) {
+  const leagues = await espnLeaguesForTour(tour);
+  const batches: LiveMatchSummary[][] = [];
+
+  for (const league of leagues) {
     const espnMatches = await buildTourMatchesFromEspnSeries(tour, league);
-    if (espnMatches.length) return espnMatches;
+    if (espnMatches.length) batches.push(espnMatches);
+  }
+
+  if (batches.length) {
+    return mergeMatchLists(...batches);
   }
 
   const curated = await buildMatchesFromCuratedFixtures(tour);
@@ -39,10 +46,28 @@ async function fetchFixturesFromEspn(tour: Tour): Promise<LiveMatchSummary[]> {
 }
 
 async function fetchFixturesFromCricApi(tour: Tour, warnings: string[]): Promise<LiveMatchSummary[]> {
-  if (!isCricApiConfigured() || isCricApiBlocked() || !/^\d+$/.test(tour.id)) return [];
+  if (!isCricApiConfigured() || isCricApiBlocked()) return [];
 
-  const info = await fetchSeriesInfo(tour.id).catch(() => ({ matches: [], squads: [] }));
-  const matches = info.matches.filter((m) => matchBelongsToTour(m, tour));
+  const seriesIds = new Set<string>();
+  if (/^\d+$/.test(tour.id)) seriesIds.add(tour.id);
+
+  const leagues = await resolveAllEspnLeaguesForTour(tour.name, tour.id, tour.startDate);
+  for (const league of leagues) {
+    seriesIds.add(String(league.cricinfoSeriesId));
+  }
+
+  const matches: LiveMatchSummary[] = [];
+  const seen = new Set<string>();
+
+  for (const seriesId of seriesIds) {
+    const info = await fetchSeriesInfo(seriesId).catch(() => ({ matches: [], squads: [] }));
+    for (const match of info.matches.filter((m) => matchBelongsToTour(m, tour))) {
+      const key = match.id || `${match.date}|${match.name}`;
+      if (seen.has(key)) continue;
+      seen.add(key);
+      matches.push(match);
+    }
+  }
 
   if (matches.length) {
     warnings.push("Fixtures from CricAPI series schedule.");

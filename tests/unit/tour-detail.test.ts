@@ -11,6 +11,7 @@ import {
   deduplicateTours,
   espnFixturesLookComplete,
   expectedTourFixtureCount,
+  fixturesCoverTourFormats,
   filterMatchesForTour,
   matchVenueMatchesTourHost,
   matchWithinTourWindow,
@@ -167,6 +168,46 @@ test("squadBelongsToTour accepts ESPN squads without tour format counts", () => 
     squadBelongsToTour({ team: "Bangladesh — T20I squad", players: [{ name: "Litton Das" }] }, tour),
     true,
   );
+});
+
+test("squadBelongsToTour keeps Zimbabwe Test squad when story URL mentions another tour", () => {
+  const tour = {
+    id: "1538288",
+    name: "Bangladesh tour of Zimbabwe, 2026",
+    test: 1,
+  } satisfies Tour;
+
+  assert.equal(
+    squadBelongsToTour(
+      {
+        team: "Bangladesh squad for one-off Test vs Zimbabwe",
+        source:
+          "https://www.espncricinfo.com/story/ban-vs-aus-taskin-ahmed-and-nahid-rana-return-for-t20is-against-australia-1540473",
+      },
+      tour,
+    ),
+    true,
+  );
+});
+
+test("fixturesCoverTourFormats detects missing formats in a partial schedule", () => {
+  const tour = {
+    id: "1",
+    name: "Bangladesh tour of South Africa, 2026",
+    test: 2,
+    odi: 3,
+    t20: 3,
+  } satisfies Tour;
+
+  assert.equal(
+    fixturesCoverTourFormats(tour, [
+      { id: "1", name: "3rd T20I", matchType: "t20", status: "upcoming", isLive: false },
+    ]),
+    false,
+  );
+  assert.equal(espnFixturesLookComplete(tour, [
+    { id: "1", name: "3rd T20I", matchType: "t20", status: "upcoming", isLive: false },
+  ]), false);
 });
 
 test("squadBelongsToTour rejects ODI squads on a Test-only away tour", () => {

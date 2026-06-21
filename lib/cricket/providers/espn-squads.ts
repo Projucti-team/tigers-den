@@ -104,6 +104,40 @@ export async function resolveEspnLeagueForTour(
   tourName: string,
   tourId?: string,
 ): Promise<EspnLeagueRef | null> {
+  const all = await resolveAllEspnLeaguesForTour(tourName, tourId);
+  if (!all.length) return null;
+
+  if (tourId && /^\d+$/.test(tourId)) {
+    const exact = all.find((ref) => String(ref.cricinfoSeriesId) === tourId);
+    if (exact) return exact;
+  }
+
+  return all[0] ?? null;
+}
+
+/** All format-specific ESPN leagues for an umbrella bilateral tour (Test, ODI, T20). */
+export async function resolveAllEspnLeaguesForTour(
+  tourName: string,
+  tourId?: string,
+  startDate?: string,
+): Promise<EspnLeagueRef[]> {
+  const refs: EspnLeagueRef[] = [];
+  const seen = new Set<number>();
+
+  function add(ref: EspnLeagueRef): void {
+    if (seen.has(ref.cricinfoSeriesId)) return;
+    seen.add(ref.cricinfoSeriesId);
+    refs.push(ref);
+  }
+
+  const snapshot = await readEspnTourSquads();
+  for (const entry of Object.values(snapshot.entries)) {
+    if (!tourNamesShareVenue(tourName, entry.tourName)) continue;
+    if (entry.cricinfoSeriesId && entry.espnLeagueId) {
+      add({ cricinfoSeriesId: entry.cricinfoSeriesId, espnLeagueId: entry.espnLeagueId });
+    }
+  }
+
   let fallback: EspnLeagueRef | null = null;
 
   for (let page = 1; page <= 8; page++) {
@@ -120,17 +154,28 @@ export async function resolveEspnLeagueForTour(
       const ref: EspnLeagueRef = {
         espnLeagueId: Number(league.id),
         cricinfoSeriesId,
+        seasonYear: startDate ? new Date(startDate).getFullYear() : undefined,
       };
 
       if (tourId && /^\d+$/.test(tourId) && tourId === String(cricinfoSeriesId)) {
-        return ref;
+        add(ref);
+        continue;
+      }
+
+      if (isUmbrellaTourName(tourName)) {
+        add(ref);
+        continue;
       }
 
       if (!fallback) fallback = ref;
     }
   }
 
-  return fallback;
+  if (fallback && !refs.length) {
+    add(fallback);
+  }
+
+  return refs;
 }
 
 function parsePlayerNames(block: string): SquadPlayer[] {
