@@ -1,5 +1,5 @@
 {
-  "fetchedAt": "2026-06-21T22:37:18.197Z",
+  "fetchedAt": "2026-06-22T22:56:27.728Z",
   "source": "icc-sportz.io",
   "sourceUrl": "https://www.icc-cricket.com/rankings",
   "men": {
@@ -382,9 +382,9 @@
           "rank": 17,
           "name": "Namibia",
           "abbreviation": "NAM",
-          "rating": 178,
-          "points": 6239,
-          "matches": 35
+          "rating": 179,
+          "points": 6427,
+          "matches": 36
         },
         {
           "rank": 18,
@@ -438,9 +438,9 @@
           "rank": 24,
           "name": "Hong Kong",
           "abbreviation": "HK",
-          "rating": 130,
-          "points": 6095,
-          "matches": 47
+          "rating": 129,
+          "points": 6215,
+          "matches": 48
         },
         {
           "rank": 25,
@@ -494,9 +494,9 @@
           "rank": 31,
           "name": "Bermuda",
           "abbreviation": "BDA",
-          "rating": 113,
-          "points": 1924,
-          "matches": 17
+          "rating": 114,
+          "points": 2047,
+          "matches": 18
         },
         {
           "rank": 32,
@@ -583,8 +583,8 @@
           "name": "Singapore",
           "abbreviation": "SIN",
           "rating": 69,
-          "points": 1865,
-          "matches": 27
+          "points": 1944,
+          "matches": 28
         },
         {
           "rank": 43,
@@ -820,6 +820,14 @@
         },
         {
           "rank": 72,
+          "name": "Panama",
+          "abbreviation": "PAN",
+          "rating": 24,
+          "points": 218,
+          "matches": 9
+        },
+        {
+          "rank": 73,
           "name": "Cameroon",
           "abbreviation": "CMR",
           "rating": 21,
@@ -827,20 +835,12 @@
           "matches": 10
         },
         {
-          "rank": 73,
+          "rank": 74,
           "name": "Mexico",
           "abbreviation": "MEX",
           "rating": 21,
           "points": 454,
           "matches": 22
-        },
-        {
-          "rank": 74,
-          "name": "Belize",
-          "abbreviation": "BIZ",
-          "rating": 21,
-          "points": 82,
-          "matches": 4
         },
         {
           "rank": 75,
@@ -852,11 +852,11 @@
         },
         {
           "rank": 76,
-          "name": "Panama",
-          "abbreviation": "PAN",
-          "rating": 20,
-          "points": 156,
-          "matches": 8
+          "name": "Belize",
+          "abbreviation": "BIZ",
+          "rating": 19,
+          "points": 93,
+          "matches": 5
         },
         {
           "rank": 77,
@@ -900,19 +900,19 @@
         },
         {
           "rank": 82,
-          "name": "Brazil",
-          "abbreviation": "BRA",
-          "rating": 12,
-          "points": 152,
-          "matches": 13
-        },
-        {
-          "rank": 83,
           "name": "Sierra Leone",
           "abbreviation": "SRL",
           "rating": 11,
           "points": 295,
           "matches": 27
+        },
+        {
+          "rank": 83,
+          "name": "Brazil",
+          "abbreviation": "BRA",
+          "rating": 9,
+          "points": 122,
+          "matches": 14
         },
         {
           "rank": 84,
@@ -10366,7 +10366,7 @@
         "allrounder": "2026-06-16"
       },
       "t20": {
-        "team": "2026-06-21",
+        "team": "2026-06-23",
         "bat": "2026-06-16",
         "bowl": "2026-06-16",
         "allrounder": "2026-06-16"
