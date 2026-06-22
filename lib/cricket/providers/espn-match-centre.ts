@@ -442,6 +442,193 @@ function ordinalInnings(n: number): string {
   return labels[n - 1] ?? `${n}th`;
 }
 
+/** Which team batted in a given period, given the current batting side. */
+export function teamForPeriod(
+  teams: string[],
+  battingTeam: string,
+  currentPeriod: number,
+  period: number,
+): string {
+  if (!teams.length) return battingTeam || "Team";
+  const norm = (value: string) => value.toLowerCase().replace(/[^a-z0-9]+/g, "");
+  const battingNorm = norm(battingTeam);
+  let currentIdx = teams.findIndex(
+    (team) => norm(team) === battingNorm || battingNorm.includes(norm(team)),
+  );
+  if (currentIdx < 0) currentIdx = 0;
+  const idx = ((currentIdx - (currentPeriod - period)) % 2 + 2) % 2;
+  return teams[idx] ?? teams[0];
+}
+
+export function isMultiInningsMatch(
+  currentPeriod: number,
+  battingCards: Matchcard[],
+  note?: string,
+): boolean {
+  if (/test|first.class|\bfc\b|multi-day/i.test(note ?? "")) return currentPeriod > 1;
+  if (currentPeriod > 2) return true;
+  const periods = new Set(battingCards.map((c) => Number(c.inningsNumber ?? 1)));
+  return periods.size > 1;
+}
+
+function maxOversFromBowling(bowling: ScorecardPlayer[]): number {
+  return bowling.reduce((max, row) => {
+    const overs = Number.parseFloat(String(row.overs ?? 0));
+    return Number.isFinite(overs) ? Math.max(max, overs) : max;
+  }, 0);
+}
+
+function battingCardsForPeriod(cards: Matchcard[], period: number): Matchcard | undefined {
+  return cards.find((c) => c.typeID === "11" && Number(c.inningsNumber ?? 1) === period);
+}
+
+function bowlingCardsForPeriod(cards: Matchcard[], period: number): Matchcard | undefined {
+  return cards.find((c) => c.typeID === "12" && Number(c.inningsNumber ?? 1) === period);
+}
+
+async function buildLimitedOversInnings(options: {
+  teamSummaries: TeamInningsSummary[];
+  battingTeam: string;
+  batting: ScorecardPlayer[];
+  bowling: ScorecardPlayer[];
+  currentTotals: { runs: number; wickets: number; overs: number };
+  compBase: string;
+  leagueId: number;
+  currentPeriod: number;
+}): Promise<Scorecard["innings"]> {
+  const orderedTeams = [
+    ...options.teamSummaries.filter((t) => isBangladeshTeam(t.team)),
+    ...options.teamSummaries.filter((t) => !isBangladeshTeam(t.team)),
+  ];
+
+  const innings: Scorecard["innings"] = orderedTeams.map((summary, index) => {
+    const isCurrentBatting = summary.team === options.battingTeam;
+    return {
+      inning: `${summary.team} ${ordinalInnings(index + 1)} Innings`,
+      runs: isCurrentBatting ? options.currentTotals.runs || summary.runs : summary.runs,
+      wickets: isCurrentBatting ? options.currentTotals.wickets || summary.wickets : summary.wickets,
+      overs: isCurrentBatting ? options.currentTotals.overs || summary.overs : summary.overs,
+      batting: isCurrentBatting ? options.batting : [],
+      bowling: isCurrentBatting ? options.bowling : [],
+    };
+  });
+
+  if (innings.length === 2 && options.battingTeam) {
+    const chaseIdx = innings.findIndex((inn) => inn.inning.startsWith(options.battingTeam));
+    if (chaseIdx >= 0) {
+      innings[chaseIdx] = {
+        ...innings[chaseIdx],
+        batting: options.batting,
+        bowling: options.bowling,
+        runs: options.currentTotals.runs || innings[chaseIdx].runs,
+        wickets: options.currentTotals.wickets || innings[chaseIdx].wickets,
+        overs: options.currentTotals.overs || innings[chaseIdx].overs,
+      };
+    }
+  }
+
+  if (!innings.length && options.battingTeam) {
+    innings.push({
+      inning: `${options.battingTeam} Innings`,
+      runs: options.currentTotals.runs,
+      wickets: options.currentTotals.wickets,
+      overs: options.currentTotals.overs,
+      batting: options.batting,
+      bowling: options.bowling,
+    });
+  }
+
+  if (options.currentPeriod > 1 && innings[0] && !innings[0].batting.length) {
+    try {
+      const firstInnings = await aggregateInningsFromDetails(options.compBase, options.leagueId, 1);
+      innings[0] = {
+        ...innings[0],
+        batting: firstInnings.batting,
+        bowling: firstInnings.bowling,
+      };
+    } catch {
+      // keep innings total only
+    }
+  }
+
+  return innings;
+}
+
+async function buildMultiInningsScorecard(options: {
+  cards: Matchcard[];
+  compBase: string;
+  leagueId: number;
+  teamSummaries: TeamInningsSummary[];
+  battingTeam: string;
+  currentPeriod: number;
+  batting: ScorecardPlayer[];
+  bowling: ScorecardPlayer[];
+  currentTotals: { runs: number; wickets: number; overs: number };
+}): Promise<Scorecard["innings"]> {
+  const battingCards = options.cards.filter((c) => c.typeID === "11");
+  const teams = options.teamSummaries.map((t) => t.team);
+  const periods = new Set<number>();
+
+  for (let period = 1; period <= options.currentPeriod; period += 1) {
+    periods.add(period);
+  }
+  for (const card of battingCards) {
+    periods.add(Number(card.inningsNumber ?? 1));
+  }
+
+  const innings: Scorecard["innings"] = [];
+
+  for (const period of [...periods].sort((a, b) => a - b)) {
+    const batCard = battingCardsForPeriod(options.cards, period);
+    const bowlCard = bowlingCardsForPeriod(options.cards, period);
+    const team =
+      batCard?.teamName ||
+      teamForPeriod(teams, options.battingTeam, options.currentPeriod, period);
+    let totals = batCard
+      ? parseInningsTotal(batCard.total, batCard.runs)
+      : { runs: 0, wickets: 0, overs: 0 };
+
+    let batting: ScorecardPlayer[] = [];
+    let bowling: ScorecardPlayer[] = [];
+
+    if (period === options.currentPeriod) {
+      batting = options.batting;
+      bowling = options.bowling;
+      if (!totals.runs) totals = { ...options.currentTotals };
+    } else if (batCard?.playerDetails?.length) {
+      const dismissalMap = await getDismissalMap(options.compBase, period).catch(
+        () => new Map<string, string>(),
+      );
+      batting = mapBattingPlayers(batCard.playerDetails, dismissalMap);
+      bowling = mapBowlingPlayers(bowlCard?.playerDetails ?? []);
+    } else {
+      const aggregated = await aggregateInningsFromDetails(options.compBase, options.leagueId, period);
+      batting = aggregated.batting;
+      bowling = aggregated.bowling;
+      if (!totals.runs && batting.length) {
+        totals = {
+          runs: batting.reduce((sum, row) => sum + (row.runs ?? 0), 0),
+          wickets: batting.filter(
+            (row) => row.dismissed && !/not out/i.test(row.dismissed ?? ""),
+          ).length,
+          overs: maxOversFromBowling(bowling),
+        };
+      }
+    }
+
+    innings.push({
+      inning: `${team} Innings`,
+      runs: totals.runs,
+      wickets: totals.wickets,
+      overs: totals.overs,
+      batting,
+      bowling,
+    });
+  }
+
+  return innings;
+}
+
 function athleteIdFromRef(ref?: string): string | null {
   return ref?.split("/athletes/")[1]?.replace(/\/$/, "") ?? null;
 }
@@ -647,13 +834,24 @@ export async function fetchEspnMatchCentre(
   if (!competition && !matchcards?.items?.length) return null;
 
   const cards = matchcards?.items ?? [];
-  const battingCard = cards.find((c) => c.typeID === "11");
-  const bowlingCard = cards.find((c) => c.typeID === "12");
+  const battingCards = cards.filter((c) => c.typeID === "11");
+  const bowlingCards = cards.filter((c) => c.typeID === "12");
   const partnershipCard = cards.find((c) => c.typeID === "13");
+
+  const currentPeriod = Math.max(
+    Number(recentBalls.at(-1)?.period ?? 1),
+    ...battingCards.map((c) => Number(c.inningsNumber ?? 1)),
+    1,
+  );
+  const battingCard =
+    battingCards.find((c) => Number(c.inningsNumber ?? 1) === currentPeriod) ??
+    battingCards[battingCards.length - 1];
+  const bowlingCard =
+    bowlingCards.find((c) => Number(c.inningsNumber ?? 1) === currentPeriod) ??
+    bowlingCards[bowlingCards.length - 1];
 
   const battingTeam = battingCard?.teamName ?? "";
   const currentTotals = parseInningsTotal(battingCard?.total, battingCard?.runs);
-  const currentPeriod = Number(battingCard?.inningsNumber ?? recentBalls.at(-1)?.period ?? 1);
   const dismissalMap = await getDismissalMap(compBase, currentPeriod).catch(
     () => new Map<string, string>(),
   );
@@ -667,62 +865,34 @@ export async function fetchEspnMatchCentre(
     liveBatters = await battersFromRecentBalls(leagueId, periodBalls);
   }
 
+  const competitionNote = competition?.note ?? competition?.shortDescription ?? "";
+  const innings = isMultiInningsMatch(currentPeriod, battingCards, competitionNote)
+    ? await buildMultiInningsScorecard({
+        cards,
+        compBase,
+        leagueId,
+        teamSummaries,
+        battingTeam,
+        currentPeriod,
+        batting,
+        bowling,
+        currentTotals,
+      })
+    : await buildLimitedOversInnings({
+        teamSummaries,
+        battingTeam,
+        batting,
+        bowling,
+        currentTotals,
+        compBase,
+        leagueId,
+        currentPeriod,
+      });
+
   const orderedTeams = [
     ...teamSummaries.filter((t) => isBangladeshTeam(t.team)),
     ...teamSummaries.filter((t) => !isBangladeshTeam(t.team)),
   ];
-
-  const innings: Scorecard["innings"] = orderedTeams.map((summary, index) => {
-    const isCurrentBatting = summary.team === battingTeam;
-    return {
-      inning: `${summary.team} ${ordinalInnings(index + 1)} Innings`,
-      runs: isCurrentBatting ? currentTotals.runs || summary.runs : summary.runs,
-      wickets: isCurrentBatting ? currentTotals.wickets || summary.wickets : summary.wickets,
-      overs: isCurrentBatting ? currentTotals.overs || summary.overs : summary.overs,
-      batting: isCurrentBatting ? batting : [],
-      // The ESPN bowling card lists the side bowling at the current batting team,
-      // so it belongs to the in-progress innings.
-      bowling: isCurrentBatting ? bowling : [],
-    };
-  });
-
-  if (innings.length === 2 && battingTeam) {
-    const chaseIdx = innings.findIndex((inn) => inn.inning.startsWith(battingTeam));
-    if (chaseIdx >= 0) {
-      innings[chaseIdx] = {
-        ...innings[chaseIdx],
-        batting,
-        bowling,
-        runs: currentTotals.runs || innings[chaseIdx].runs,
-        wickets: currentTotals.wickets || innings[chaseIdx].wickets,
-        overs: currentTotals.overs || innings[chaseIdx].overs,
-      };
-    }
-  }
-
-  if (!innings.length && battingCard) {
-    innings.push({
-      inning: `${battingTeam || "Team"} Innings`,
-      runs: currentTotals.runs,
-      wickets: currentTotals.wickets,
-      overs: currentTotals.overs,
-      batting,
-      bowling,
-    });
-  }
-
-  if (currentPeriod > 1 && innings[0] && !innings[0].batting.length) {
-    try {
-      const firstInnings = await aggregateInningsFromDetails(compBase, leagueId, 1);
-      innings[0] = {
-        ...innings[0],
-        batting: firstInnings.batting,
-        bowling: firstInnings.bowling,
-      };
-    } catch {
-      // keep innings total only
-    }
-  }
   const scorecard: Scorecard = {
     id: matchId,
     name: competition?.shortDescription ?? competition?.description ?? "Bangladesh match",
