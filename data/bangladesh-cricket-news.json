@@ -1,6 +1,31 @@
 {
-  "fetchedAt": "2026-06-21T22:47:49.399Z",
+  "fetchedAt": "2026-06-22T23:06:21.280Z",
   "items": [
+    {
+      "id": "cricbuzz-139283",
+      "title": "Hannan Sarkar appointed Bangladesh U-19 head coach",
+      "summary": "Mahmudullah has been confirmed as mentor for the youth side, while the BCB also unveiled an AI-backed analytics laboratory",
+      "url": "https://www.cricbuzz.com/cricket-news/139283/hannan-sarkar-appointed-bangladesh-u-19-head-coach",
+      "imageUrl": "https://static.cricbuzz.com/a/img/v1/540x303/i1/c1016552/hannan-sarkar-has-been-appointed-as-the-head-coach-of-the-bangladesh-under-19-team.jpg",
+      "source": "cricbuzz",
+      "publishedAt": "2026-06-22T16:21:36.000Z"
+    },
+    {
+      "id": "dailystar-https://www.thedailystar.net/sports/cricket/news/mushfiqur-wins-icc-player-the-month-award-may-4205491",
+      "title": "Mushfiqur wins ICC Player of the Month award for May",
+      "summary": "Mushfiqur was instrumental in Bangladesh’s 2-0 Test series victory, earning the Player of the Series award after scoring 235 runs at an average of 63.25. The 39-year-old struck a crucial 71 in the first innings of the opening Test in Dhaka before producing a match-defining 137 in the second Test in Sylhet.",
+      "url": "https://www.thedailystar.net/sports/cricket/news/mushfiqur-wins-icc-player-the-month-award-may-4205491",
+      "source": "dailystar",
+      "publishedAt": "2026-06-22T15:20:59.000Z"
+    },
+    {
+      "id": "dailystar-https://www.thedailystar.net/sports/cricket/news/calculative-risk-pays-tigresses-chase-something-more-significant-4205036",
+      "title": "Calculative risks pay off as Tigresses chase something more significant",
+      "summary": "Buoyed by their win against Pakistan, Bangladesh women’s cricket team travelled to Manchester yesterday hoping to further their hopes of making it to the semifinals of the T20 World Cup.",
+      "url": "https://www.thedailystar.net/sports/cricket/news/calculative-risk-pays-tigresses-chase-something-more-significant-4205036",
+      "source": "dailystar",
+      "publishedAt": "2026-06-22T03:53:22.000Z"
+    },
     {
       "id": "dailystar-https://www.thedailystar.net/sports/cricket/news/litton-ruled-out-zimbabwe-test-4204601",
       "title": "Litton ruled out of Zimbabwe Test",
@@ -10,15 +35,6 @@
       "publishedAt": "2026-06-21T17:44:32.000Z"
     },
     {
-      "id": "cricbuzz-139264",
-      "title": "Litton ruled out of Zimbabwe Test with calf injury",
-      "summary": "The keeper-batter, who also missed the recently concluded three-match T20I series against Australia in Chattogram, has been replaced in the squad by Mahidul Islam Bhuiyan",
-      "url": "https://www.cricbuzz.com/cricket-news/139264/litton-ruled-out-of-zimbabwe-test-with-calf-injury",
-      "imageUrl": "https://static.cricbuzz.com/a/img/v1/540x303/i1/c1015764/litton-also-missed-the-recently-concluded-three-match-t20i-series-against-australia.jpg",
-      "source": "cricbuzz",
-      "publishedAt": "2026-06-21T16:58:59.000Z"
-    },
-    {
       "id": "espn-https://www.cricinfo.com/ci/content/story/1542243.html",
       "title": "Mahidul Islam replaces injured Litton Das for Zimbabwe Test",
       "summary": "Litton Das hasn't sufficiently recovered from the calf strain",
@@ -26,24 +42,6 @@
       "imageUrl": "https://p.imgci.com/db/PICTURES/CMS/417100/417172.5.jpg",
       "source": "espncricinfo",
       "publishedAt": "2026-06-21T16:42:28.000Z"
-    },
-    {
-      "id": "cricbuzz-139262",
-      "title": "Simmons 'disappointed' by Australia whitewash",
-      "summary": "The Bangladesh head coach said that the batting unit let the side down in the 3-0 series defeat",
-      "url": "https://www.cricbuzz.com/cricket-news/139262/simmons-disappointed-by-australia-whitewash",
-      "imageUrl": "https://static.cricbuzz.com/a/img/v1/540x303/i1/c879559/the-bangladesh-head-coach-said-that-the-batting-unit-let-the-side-down-in-the-3-0-series-defeat.jpg",
-      "source": "cricbuzz",
-      "publishedAt": "2026-06-21T13:32:47.000Z"
-    },
-    {
-      "id": "cricbuzz-139257",
-      "title": "Bowlers, Marsh help Australia complete T20I series sweep over Bangladesh",
-      "summary": "Towhid Hridoy's unbeaten 61 proved insufficient as Mitchell Marsh's 28-ball 60 powered Australia to a seven-wicket win and 3-0 sweep",
-      "url": "https://www.cricbuzz.com/cricket-news/139257/bowlers-marsh-help-australia-complete-t20i-series-sweep-over-bangladesh",
-      "imageUrl": "https://static.cricbuzz.com/a/img/v1/540x303/i1/c1015497/chasing-110-marsh-scored-60-off-28.jpg",
-      "source": "cricbuzz",
-      "publishedAt": "2026-06-21T11:12:47.000Z"
     },
     {
       "id": "espn-https://www.cricinfo.com/ci/content/story/1542143.html",
@@ -107,22 +105,6 @@
       "publishedAt": "2026-06-20T11:17:33.000Z"
     },
     {
-      "id": "dailystar-https://www.thedailystar.net/sports/more-sports/news/tigresses-eye-winning-return-against-pakistan-4203311",
-      "title": "Tigresses eye winning return against Pakistan",
-      "summary": "Bangladesh will draw confidence from their recent success against Pakistan in white-ball cricket when they face their South Asian rivals in a crucial Women's T20 World Cup on Saturday.",
-      "url": "https://www.thedailystar.net/sports/more-sports/news/tigresses-eye-winning-return-against-pakistan-4203311",
-      "source": "dailystar",
-      "publishedAt": "2026-06-20T06:37:21.000Z"
-    },
-    {
-      "id": "dailystar-https://www.thedailystar.net/sports/cricket/news/we-were-progressing-emon-rues-momentum-shift-australia-win-t20i-series-4203141",
-      "title": "‘We were progressing’: Emon rues momentum shift as Australia win T20I series",
-      "summary": "Before the series, Bangladesh have been undergoing an upsurge in T20Is, losing just one of their last seven series and drawing another.",
-      "url": "https://www.thedailystar.net/sports/cricket/news/we-were-progressing-emon-rues-momentum-shift-australia-win-t20i-series-4203141",
-      "source": "dailystar",
-      "publishedAt": "2026-06-19T21:23:12.000Z"
-    },
-    {
       "id": "espn-https://www.cricinfo.com/ci/content/story/1541811.html",
       "title": "Australia bowlers close out T20I series after Renshaw stars with 89*",
       "summary": "Bangladesh were well placed in the chase but couldn't quite get over the line as the visitors finished well with the ball",
@@ -139,24 +121,6 @@
       "imageUrl": "https://p.imgci.com/db/PICTURES/CMS/404300/404347.5.jpg",
       "source": "espncricinfo",
       "publishedAt": "2026-06-19T07:54:49.000Z"
-    },
-    {
-      "id": "espn-https://www.cricinfo.com/ci/content/story/1541688.html",
-      "title": "Bangladesh face bowling conundrum as Australia look to seal series",
-      "summary": "Bangladesh also have questions regarding their middle order as they look to stay alive in the series",
-      "url": "https://www.cricinfo.com/story/ban-vs-aus-t20is-bangladesh-face-fast-bowling-conundrum-as-australia-look-to-seal-series-1541688",
-      "imageUrl": "https://p.imgci.com/db/PICTURES/CMS/418400/418449.5.jpg",
-      "source": "espncricinfo",
-      "publishedAt": "2026-06-18T13:06:30.000Z"
-    },
-    {
-      "id": "espn-https://www.cricinfo.com/ci/content/story/1541571.html",
-      "title": "Debutant Davies lives his dream on banner day for Australia's spinners",
-      "summary": "Joel Davies took 3 for 17 as Australia's spinners sank Bangladesh in the first T20I in Chattogram",
-      "url": "https://www.cricinfo.com/story/debutant-joel-davies-lives-his-dream-on-banner-day-for-australian-spinners-in-chattogram-1541571",
-      "imageUrl": "https://p.imgci.com/db/PICTURES/CMS/418400/418425.5.jpg",
-      "source": "espncricinfo",
-      "publishedAt": "2026-06-18T00:10:26.000Z"
     }
   ]
 }
