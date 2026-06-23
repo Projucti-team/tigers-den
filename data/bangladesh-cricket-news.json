@@ -1,14 +1,23 @@
 {
-  "fetchedAt": "2026-06-22T23:06:21.280Z",
+  "fetchedAt": "2026-06-23T22:51:20.120Z",
   "items": [
     {
-      "id": "cricbuzz-139283",
-      "title": "Hannan Sarkar appointed Bangladesh U-19 head coach",
-      "summary": "Mahmudullah has been confirmed as mentor for the youth side, while the BCB also unveiled an AI-backed analytics laboratory",
-      "url": "https://www.cricbuzz.com/cricket-news/139283/hannan-sarkar-appointed-bangladesh-u-19-head-coach",
-      "imageUrl": "https://static.cricbuzz.com/a/img/v1/540x303/i1/c1016552/hannan-sarkar-has-been-appointed-as-the-head-coach-of-the-bangladesh-under-19-team.jpg",
+      "id": "espn-https://www.cricinfo.com/ci/content/story/1542616.html",
+      "title": "Sikandar Raza to miss Zimbabwe's Test against Bangladesh",
+      "summary": "Richard Ngarava set for captaincy debut in the one-off Test between Zimbabwe and Bangladesh in Harare from June 28",
+      "url": "https://www.cricinfo.com/story/sikandar-raza-to-miss-zimbabwes-test-against-bangladesh-1542616",
+      "imageUrl": "https://p.imgci.com/db/PICTURES/CMS/408200/408245.5.jpg",
+      "source": "espncricinfo",
+      "publishedAt": "2026-06-23T14:30:17.000Z"
+    },
+    {
+      "id": "cricbuzz-139289",
+      "title": "Ngarava to lead Zimbabwe in one-off Test against Bangladesh",
+      "summary": "Innocent Kaia and Graeme Cremer are among five players who have earned a Test recall",
+      "url": "https://www.cricbuzz.com/cricket-news/139289/ngarava-to-lead-zimbabwe-in-one-off-test-against-bangladesh",
+      "imageUrl": "https://static.cricbuzz.com/a/img/v1/540x303/i1/c1016668/this-will-be-ngaravas-first-match-at-the-helm-of-zimbabwe-after-his-appointment-as-test-and-odi-skipper-in-december-2025.jpg",
       "source": "cricbuzz",
-      "publishedAt": "2026-06-22T16:21:36.000Z"
+      "publishedAt": "2026-06-23T13:58:36.000Z"
     },
     {
       "id": "dailystar-https://www.thedailystar.net/sports/cricket/news/mushfiqur-wins-icc-player-the-month-award-may-4205491",
@@ -79,14 +88,6 @@
       "publishedAt": "2026-06-20T20:07:33.000Z"
     },
     {
-      "id": "dailystar-https://www.thedailystar.net/sports/cricket/news/tigresses-beat-pakistan-keep-semifinal-hopes-alive-4203661",
-      "title": "Tigresses beat Pakistan to keep semifinal hopes alive",
-      "summary": "Shorna Akter played a brilliant late cameo before spinners Nahida Akter and Shanjida Akter Meghla claimed three wickets apiece as Bangladesh secured a crucial 23-run victory over Pakistan in their third Group A match of the ICC Women's T20 World Cup at The Rose Bowl in Southampton on Saturday.",
-      "url": "https://www.thedailystar.net/sports/cricket/news/tigresses-beat-pakistan-keep-semifinal-hopes-alive-4203661",
-      "source": "dailystar",
-      "publishedAt": "2026-06-20T17:18:09.000Z"
-    },
-    {
       "id": "espn-https://www.cricinfo.com/ci/content/story/1542026.html",
       "title": "Bangladesh bat; Pakistan bring back Rubab, Jabeen",
       "summary": "Pakistan are in must-win territory after losing to India and South Africa",
@@ -103,24 +104,6 @@
       "imageUrl": "https://p.imgci.com/db/PICTURES/CMS/418500/418561.6.jpg",
       "source": "espncricinfo",
       "publishedAt": "2026-06-20T11:17:33.000Z"
-    },
-    {
-      "id": "espn-https://www.cricinfo.com/ci/content/story/1541811.html",
-      "title": "Australia bowlers close out T20I series after Renshaw stars with 89*",
-      "summary": "Bangladesh were well placed in the chase but couldn't quite get over the line as the visitors finished well with the ball",
-      "url": "https://www.cricinfo.com/story/australia-bowlers-close-out-t20i-series-over-bangladesh-after-matt-renshaw-stars-with-unbeaten-89-1541811",
-      "imageUrl": "https://p.imgci.com/db/PICTURES/CMS/418500/418566.5.jpg",
-      "source": "espncricinfo",
-      "publishedAt": "2026-06-19T13:09:22.000Z"
-    },
-    {
-      "id": "espn-https://www.cricinfo.com/ci/content/story/1541782.html",
-      "title": "Australia bat first and recall Hardie in bid to wrap up T20I series",
-      "summary": "Bangladesh have made two changes, bringing in Nahid Rana and left-arm spinner Nasum Ahmed",
-      "url": "https://www.cricinfo.com/story/ban-vs-aus-2nd-t20i-2026-australia-bat-first-and-recall-hardie-in-bid-to-wrap-up-t20i-series-1541782",
-      "imageUrl": "https://p.imgci.com/db/PICTURES/CMS/404300/404347.5.jpg",
-      "source": "espncricinfo",
-      "publishedAt": "2026-06-19T07:54:49.000Z"
     }
   ]
 }
