@@ -1,6 +1,33 @@
 {
-  "fetchedAt": "2026-06-23T22:51:20.120Z",
+  "fetchedAt": "2026-06-24T22:51:33.340Z",
   "items": [
+    {
+      "id": "espn-https://www.cricinfo.com/ci/content/story/1542730.html",
+      "title": "India, South Africa eye NRR boost in close Group 1 race",
+      "summary": "South Africa won the only T20I they played against Netherlands in 2010, while India hold a 20-3 head-to-head record against Bangladesh",
+      "url": "https://www.cricinfo.com/story/womens-t20-world-cup-india-south-africa-eye-nrr-boost-in-close-group-1-race-1542730",
+      "imageUrl": "https://p.imgci.com/db/PICTURES/CMS/418500/418522.5.jpg",
+      "source": "espncricinfo",
+      "publishedAt": "2026-06-24T17:38:53.000Z"
+    },
+    {
+      "id": "cricbuzz-139301",
+      "title": "Unsettled India look to keep campaign alive in Manchester",
+      "summary": "Harmanpreet Kaur's side return to Old Trafford looking to kickstart another World Cup comeback, knowing another slip-up against Bangladesh could prove costly",
+      "url": "https://www.cricbuzz.com/cricket-news/139301/unsettled-india-look-to-keep-campaign-alive-in-manchester",
+      "imageUrl": "https://static.cricbuzz.com/a/img/v1/540x303/i1/c1016856/harmanpreet-kaurs-side-return-to-old-trafford-looking-to-kickstart-another-world-cup-comeback-knowing-another-slip-up-against-bangladesh-could-prove-costly.jpg",
+      "source": "cricbuzz",
+      "publishedAt": "2026-06-24T14:55:16.000Z"
+    },
+    {
+      "id": "cricbuzz-139298",
+      "title": "Mushfiqur credits former trainer Karppinen for transforming his work ethic",
+      "summary": "Heaping praise on Karppinen, the Bangladesh legend said that \"nobody like him ever came\", admitting that he still follows his advice",
+      "url": "https://www.cricbuzz.com/cricket-news/139298/mushfiqur-credits-former-trainer-karppinen-for-transforming-his-work-ethic",
+      "imageUrl": "https://static.cricbuzz.com/a/img/v1/540x303/i1/c1016824/even-at-39-mushfiqur-rahim-is-able-to-match-youngsters-with-his-work-ethic.jpg",
+      "source": "cricbuzz",
+      "publishedAt": "2026-06-24T01:44:52.000Z"
+    },
     {
       "id": "espn-https://www.cricinfo.com/ci/content/story/1542616.html",
       "title": "Sikandar Raza to miss Zimbabwe's Test against Bangladesh",
@@ -9,15 +36,6 @@
       "imageUrl": "https://p.imgci.com/db/PICTURES/CMS/408200/408245.5.jpg",
       "source": "espncricinfo",
       "publishedAt": "2026-06-23T14:30:17.000Z"
-    },
-    {
-      "id": "cricbuzz-139289",
-      "title": "Ngarava to lead Zimbabwe in one-off Test against Bangladesh",
-      "summary": "Innocent Kaia and Graeme Cremer are among five players who have earned a Test recall",
-      "url": "https://www.cricbuzz.com/cricket-news/139289/ngarava-to-lead-zimbabwe-in-one-off-test-against-bangladesh",
-      "imageUrl": "https://static.cricbuzz.com/a/img/v1/540x303/i1/c1016668/this-will-be-ngaravas-first-match-at-the-helm-of-zimbabwe-after-his-appointment-as-test-and-odi-skipper-in-december-2025.jpg",
-      "source": "cricbuzz",
-      "publishedAt": "2026-06-23T13:58:36.000Z"
     },
     {
       "id": "dailystar-https://www.thedailystar.net/sports/cricket/news/mushfiqur-wins-icc-player-the-month-award-may-4205491",
@@ -62,14 +80,6 @@
       "publishedAt": "2026-06-21T08:04:37.000Z"
     },
     {
-      "id": "dailystar-https://www.thedailystar.net/sports/cricket/news/hridoy-hits-fifty-tigers-limp-1098-third-t20i-4204171",
-      "title": "Australia romp to 3-0 series whitewash",
-      "summary": "Captain Mitchell Marsh stroked a 28-ball 60 as Australia romped to a 3-0 series victory over Bangladesh with a seven-wicket thrashing in the third and final T20I in Chattogram on Sunday.",
-      "url": "https://www.thedailystar.net/sports/cricket/news/hridoy-hits-fifty-tigers-limp-1098-third-t20i-4204171",
-      "source": "dailystar",
-      "publishedAt": "2026-06-21T07:30:00.000Z"
-    },
-    {
       "id": "espn-https://www.cricinfo.com/ci/content/story/1542108.html",
       "title": "Pakistan 'defeated ourselves' against Bangladesh - Wahab",
       "summary": "Team mentor laments disastrous batting collapse after being 70 for 2 chasing 124",
@@ -86,24 +96,6 @@
       "imageUrl": "https://p.imgci.com/db/PICTURES/CMS/418600/418688.5.jpg",
       "source": "espncricinfo",
       "publishedAt": "2026-06-20T20:07:33.000Z"
-    },
-    {
-      "id": "espn-https://www.cricinfo.com/ci/content/story/1542026.html",
-      "title": "Bangladesh bat; Pakistan bring back Rubab, Jabeen",
-      "summary": "Pakistan are in must-win territory after losing to India and South Africa",
-      "url": "https://www.cricinfo.com/story/t20-world-cup-2026-bangladesh-bat-pakistan-bring-back-rubab-jabeen-1542026",
-      "imageUrl": "https://p.imgci.com/db/PICTURES/CMS/418600/418665.5.jpg",
-      "source": "espncricinfo",
-      "publishedAt": "2026-06-20T13:48:50.000Z"
-    },
-    {
-      "id": "espn-https://www.cricinfo.com/ci/content/story/1541987.html",
-      "title": "Misfiring Bangladesh look for lift as Australia eye series sweep",
-      "summary": "Taskin Ahmed could replace the off-colour Rishad Hossain for the final game of the series, while Australia might be tempted to give Josh Philippe and Matt Kuhnemann a game",
-      "url": "https://www.cricinfo.com/story/ban-vs-aus-3rd-t20i-misfiring-bangladesh-look-for-lift-as-australia-eye-series-sweep-1541987",
-      "imageUrl": "https://p.imgci.com/db/PICTURES/CMS/418500/418561.6.jpg",
-      "source": "espncricinfo",
-      "publishedAt": "2026-06-20T11:17:33.000Z"
     }
   ]
 }
