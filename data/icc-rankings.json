@@ -1,5 +1,5 @@
 {
-  "fetchedAt": "2026-06-24T22:41:12.074Z",
+  "fetchedAt": "2026-06-25T22:48:01.583Z",
   "source": "icc-sportz.io",
   "sourceUrl": "https://www.icc-cricket.com/rankings",
   "men": {
@@ -495,8 +495,8 @@
           "name": "Bermuda",
           "abbreviation": "BDA",
           "rating": 114,
-          "points": 2047,
-          "matches": 18
+          "points": 2171,
+          "matches": 19
         },
         {
           "rank": 32,
@@ -582,9 +582,9 @@
           "rank": 42,
           "name": "Singapore",
           "abbreviation": "SIN",
-          "rating": 70,
-          "points": 2034,
-          "matches": 29
+          "rating": 71,
+          "points": 2121,
+          "matches": 30
         },
         {
           "rank": 43,
@@ -719,8 +719,8 @@
           "name": "Thailand",
           "abbreviation": "THA",
           "rating": 40,
-          "points": 1306,
-          "matches": 33
+          "points": 1356,
+          "matches": 34
         },
         {
           "rank": 60,
@@ -732,27 +732,27 @@
         },
         {
           "rank": 61,
-          "name": "Indonesia",
-          "abbreviation": "INA",
+          "name": "Bahamas",
+          "abbreviation": "BAH",
           "rating": 37,
-          "points": 2982,
-          "matches": 81
+          "points": 629,
+          "matches": 17
         },
         {
           "rank": 62,
+          "name": "Indonesia",
+          "abbreviation": "INA",
+          "rating": 37,
+          "points": 3002,
+          "matches": 82
+        },
+        {
+          "rank": 63,
           "name": "Czechia",
           "abbreviation": "CZE",
           "rating": 37,
           "points": 438,
           "matches": 12
-        },
-        {
-          "rank": 63,
-          "name": "Bahamas",
-          "abbreviation": "BAH",
-          "rating": 36,
-          "points": 573,
-          "matches": 16
         },
         {
           "rank": 64,
@@ -798,9 +798,9 @@
           "rank": 69,
           "name": "Panama",
           "abbreviation": "PAN",
-          "rating": 31,
-          "points": 308,
-          "matches": 10
+          "rating": 30,
+          "points": 329,
+          "matches": 11
         },
         {
           "rank": 70,
@@ -948,18 +948,18 @@
         },
         {
           "rank": 88,
-          "name": "Brazil",
-          "abbreviation": "BRA",
-          "rating": 6,
-          "points": 91,
-          "matches": 15
-        },
-        {
-          "rank": 89,
           "name": "Lesotho",
           "abbreviation": "LES",
           "rating": 5,
           "points": 85,
+          "matches": 16
+        },
+        {
+          "rank": 89,
+          "name": "Brazil",
+          "abbreviation": "BRA",
+          "rating": 5,
+          "points": 77,
           "matches": 16
         },
         {
@@ -10515,9 +10515,9 @@
           "rank": 3,
           "name": "India",
           "abbreviation": "IND",
-          "rating": 262,
-          "points": 10233,
-          "matches": 39
+          "rating": 263,
+          "points": 10505,
+          "matches": 40
         },
         {
           "rank": 4,
@@ -10532,8 +10532,8 @@
           "name": "South Africa",
           "abbreviation": "SA",
           "rating": 245,
-          "points": 8573,
-          "matches": 35
+          "points": 8828,
+          "matches": 36
         },
         {
           "rank": 6,
@@ -10572,8 +10572,8 @@
           "name": "Bangladesh",
           "abbreviation": "BAN",
           "rating": 196,
-          "points": 6868,
-          "matches": 35
+          "points": 7054,
+          "matches": 36
         },
         {
           "rank": 11,
@@ -10604,8 +10604,8 @@
           "name": "Netherlands",
           "abbreviation": "NED",
           "rating": 140,
-          "points": 6595,
-          "matches": 47
+          "points": 6725,
+          "matches": 48
         },
         {
           "rank": 15,
@@ -11144,8 +11144,8 @@
         "name": "Bangladesh",
         "abbreviation": "BAN",
         "rating": 196,
-        "points": 6868,
-        "matches": 35
+        "points": 7054,
+        "matches": 36
       }
     },
     "players": {
@@ -17356,7 +17356,7 @@
         "allrounder": "2026-05-18"
       },
       "t20": {
-        "team": "2026-06-25",
+        "team": "2026-06-26",
         "bat": "2026-06-22",
         "bowl": "2026-06-22",
         "allrounder": "2026-06-22"
