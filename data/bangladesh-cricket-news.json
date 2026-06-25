@@ -1,5 +1,5 @@
 {
-  "fetchedAt": "2026-06-24T22:51:33.340Z",
+  "fetchedAt": "2026-06-25T23:02:22.968Z",
   "items": [
     {
       "id": "espn-https://www.cricinfo.com/ci/content/story/1542730.html",
@@ -8,25 +8,67 @@
       "url": "https://www.cricinfo.com/story/womens-t20-world-cup-india-south-africa-eye-nrr-boost-in-close-group-1-race-1542730",
       "imageUrl": "https://p.imgci.com/db/PICTURES/CMS/418500/418522.5.jpg",
       "source": "espncricinfo",
-      "publishedAt": "2026-06-24T17:38:53.000Z"
+      "publishedAt": "2026-06-25T21:11:29.000Z"
     },
     {
-      "id": "cricbuzz-139301",
-      "title": "Unsettled India look to keep campaign alive in Manchester",
-      "summary": "Harmanpreet Kaur's side return to Old Trafford looking to kickstart another World Cup comeback, knowing another slip-up against Bangladesh could prove costly",
-      "url": "https://www.cricbuzz.com/cricket-news/139301/unsettled-india-look-to-keep-campaign-alive-in-manchester",
-      "imageUrl": "https://static.cricbuzz.com/a/img/v1/540x303/i1/c1016856/harmanpreet-kaurs-side-return-to-old-trafford-looking-to-kickstart-another-world-cup-comeback-knowing-another-slip-up-against-bangladesh-could-prove-costly.jpg",
-      "source": "cricbuzz",
-      "publishedAt": "2026-06-24T14:55:16.000Z"
+      "id": "dailystar-https://www.thedailystar.net/sports/cricket/news/tigresses-semifinal-hopes-extinguished-after-five-wicket-loss-india-4208446",
+      "title": "Tigresses’ semifinal hopes extinguished after five-wicket loss to India",
+      "summary": "Bangladesh, with four points, have one remaining match against South Africa",
+      "url": "https://www.thedailystar.net/sports/cricket/news/tigresses-semifinal-hopes-extinguished-after-five-wicket-loss-india-4208446",
+      "source": "dailystar",
+      "publishedAt": "2026-06-25T17:11:54.000Z"
     },
     {
-      "id": "cricbuzz-139298",
-      "title": "Mushfiqur credits former trainer Karppinen for transforming his work ethic",
-      "summary": "Heaping praise on Karppinen, the Bangladesh legend said that \"nobody like him ever came\", admitting that he still follows his advice",
-      "url": "https://www.cricbuzz.com/cricket-news/139298/mushfiqur-credits-former-trainer-karppinen-for-transforming-his-work-ethic",
-      "imageUrl": "https://static.cricbuzz.com/a/img/v1/540x303/i1/c1016824/even-at-39-mushfiqur-rahim-is-able-to-match-youngsters-with-his-work-ethic.jpg",
+      "id": "cricbuzz-139320",
+      "title": "Sloppy India stave off spirited Bangladesh",
+      "summary": "Radha Yadav's three-fer and Shafali Verma's half-century saw India bag two crucial points against Bangladesh despite an ordinary fielding display",
+      "url": "https://www.cricbuzz.com/cricket-news/139320/sloppy-india-stave-off-spirited-bangladesh",
+      "imageUrl": "https://static.cricbuzz.com/a/img/v1/540x303/i1/c1017590/shafali-verma-struck-53-off-34-to-launch-indias-chase.jpg",
       "source": "cricbuzz",
-      "publishedAt": "2026-06-24T01:44:52.000Z"
+      "publishedAt": "2026-06-25T17:06:31.000Z"
+    },
+    {
+      "id": "cricbuzz-139317",
+      "title": "Fit-again Litton returns for Bangladesh's ODI series against Zimbabwe",
+      "summary": "The wicketkeeper-batter has recovered from the calf injury that ruled him out of the one-off Test, providing Bangladesh a timely boost ahead of the three-match series",
+      "url": "https://www.cricbuzz.com/cricket-news/139317/fit-again-litton-returns-for-bangladeshs-odi-series-against-zimbabwe",
+      "imageUrl": "https://static.cricbuzz.com/a/img/v1/540x303/i1/c1011717/the-wicketkeeper-batter-has-recovered-from-the-calf-injury-that-ruled-him-out-of-the-one-off-test-vs-zimbabwe.jpg",
+      "source": "cricbuzz",
+      "publishedAt": "2026-06-25T15:32:12.000Z"
+    },
+    {
+      "id": "espn-https://www.cricinfo.com/ci/content/story/1542868.html",
+      "title": "Fit again Litton Das joins Bangladesh ODI squad for Zimbabwe tour",
+      "summary": "Mehidy Hasan captains a side full of confidence after beating Australia 2-1 recently",
+      "url": "https://www.cricinfo.com/story/fit-again-litton-das-joins-bangladesh-odi-squad-for-zimbabwe-tour-1542868",
+      "imageUrl": "https://p.imgci.com/db/PICTURES/CMS/418200/418286.5.jpg",
+      "source": "espncricinfo",
+      "publishedAt": "2026-06-25T15:18:17.000Z"
+    },
+    {
+      "id": "dailystar-https://www.thedailystar.net/sports/cricket/news/tigers-name-unchanged-odi-squad-zimbabwe-tour-4208326",
+      "title": "Tigers name unchanged ODI squad for Zimbabwe tour",
+      "summary": "The three ODIs are slated for July 6, 9 and 11 respectively at Harare Sports Club.",
+      "url": "https://www.thedailystar.net/sports/cricket/news/tigers-name-unchanged-odi-squad-zimbabwe-tour-4208326",
+      "source": "dailystar",
+      "publishedAt": "2026-06-25T14:45:55.000Z"
+    },
+    {
+      "id": "espn-https://www.cricinfo.com/ci/content/story/1542847.html",
+      "title": "Bangladesh bat, India bring in Radha and Renuka",
+      "summary": "While a loss wouldn't be tournament-ending, it will make qualifying much tougher",
+      "url": "https://www.cricinfo.com/story/wwc-2026-bangladesh-bat-india-bring-in-radha-and-renuka-1542847",
+      "imageUrl": "https://p.imgci.com/db/PICTURES/CMS/408400/408481.5.jpg",
+      "source": "espncricinfo",
+      "publishedAt": "2026-06-25T13:43:39.000Z"
+    },
+    {
+      "id": "dailystar-https://www.thedailystar.net/sports/cricket/news/bangladesh-face-india-womens-t20-world-cup-survival-battle-4207971",
+      "title": "Bangladesh face India in Women's T20 World Cup survival battle",
+      "summary": "Three teams are currently vying for the second qualifying position in Group 1, with India, South Africa, and Bangladesh sitting second, third, and fourth in the standings respectively",
+      "url": "https://www.thedailystar.net/sports/cricket/news/bangladesh-face-india-womens-t20-world-cup-survival-battle-4207971",
+      "source": "dailystar",
+      "publishedAt": "2026-06-25T07:28:21.000Z"
     },
     {
       "id": "espn-https://www.cricinfo.com/ci/content/story/1542616.html",
@@ -54,14 +96,6 @@
       "publishedAt": "2026-06-22T03:53:22.000Z"
     },
     {
-      "id": "dailystar-https://www.thedailystar.net/sports/cricket/news/litton-ruled-out-zimbabwe-test-4204601",
-      "title": "Litton ruled out of Zimbabwe Test",
-      "summary": "Bangladesh wicketkeeper-batter Litton Das has been ruled out of the one-off Test against Zimbabwe, scheduled to begin on June 28 in Harare, the Bangladesh Cricket Board (BCB) announced in a press release on Sunday.",
-      "url": "https://www.thedailystar.net/sports/cricket/news/litton-ruled-out-zimbabwe-test-4204601",
-      "source": "dailystar",
-      "publishedAt": "2026-06-21T17:44:32.000Z"
-    },
-    {
       "id": "espn-https://www.cricinfo.com/ci/content/story/1542243.html",
       "title": "Mahidul Islam replaces injured Litton Das for Zimbabwe Test",
       "summary": "Litton Das hasn't sufficiently recovered from the calf strain",
@@ -69,33 +103,6 @@
       "imageUrl": "https://p.imgci.com/db/PICTURES/CMS/417100/417172.5.jpg",
       "source": "espncricinfo",
       "publishedAt": "2026-06-21T16:42:28.000Z"
-    },
-    {
-      "id": "espn-https://www.cricinfo.com/ci/content/story/1542143.html",
-      "title": "Bangladesh bat first, make three changes in search of consolation win",
-      "summary": "Australia named an unchanged side as they look to whitewash the T20 series",
-      "url": "https://www.cricinfo.com/story/bangladesh-bat-first-make-three-changes-in-search-of-consolation-win-1542143",
-      "imageUrl": "https://p.imgci.com/db/PICTURES/CMS/418000/418075.5.jpg",
-      "source": "espncricinfo",
-      "publishedAt": "2026-06-21T08:04:37.000Z"
-    },
-    {
-      "id": "espn-https://www.cricinfo.com/ci/content/story/1542108.html",
-      "title": "Pakistan 'defeated ourselves' against Bangladesh - Wahab",
-      "summary": "Team mentor laments disastrous batting collapse after being 70 for 2 chasing 124",
-      "url": "https://www.cricinfo.com/story/womens-t20-world-cup-2026-pakistan-defeated-ourselves-against-bangladesh-wahab-1542108",
-      "imageUrl": "https://p.imgci.com/db/PICTURES/CMS/418600/418688.5.jpg",
-      "source": "espncricinfo",
-      "publishedAt": "2026-06-20T21:27:23.000Z"
-    },
-    {
-      "id": "espn-https://www.cricinfo.com/ci/content/story/1542087.html",
-      "title": "Shorna, spinners eliminate Pakistan from 2026 T20 World Cup",
-      "summary": "After Shorna's cameo propelled Bangladesh, Nahida and Meghla took three wickets to help defend 123",
-      "url": "https://www.cricinfo.com/story/womens-t20-world-cup-2026-shorna-akter-spinners-eliminate-pakistan-1542087",
-      "imageUrl": "https://p.imgci.com/db/PICTURES/CMS/418600/418688.5.jpg",
-      "source": "espncricinfo",
-      "publishedAt": "2026-06-20T20:07:33.000Z"
     }
   ]
 }
