@@ -1,5 +1,5 @@
 {
-  "fetchedAt": "2026-06-25T23:02:22.968Z",
+  "fetchedAt": "2026-06-26T22:49:21.843Z",
   "items": [
     {
       "id": "espn-https://www.cricinfo.com/ci/content/story/1542730.html",
@@ -17,24 +17,6 @@
       "url": "https://www.thedailystar.net/sports/cricket/news/tigresses-semifinal-hopes-extinguished-after-five-wicket-loss-india-4208446",
       "source": "dailystar",
       "publishedAt": "2026-06-25T17:11:54.000Z"
-    },
-    {
-      "id": "cricbuzz-139320",
-      "title": "Sloppy India stave off spirited Bangladesh",
-      "summary": "Radha Yadav's three-fer and Shafali Verma's half-century saw India bag two crucial points against Bangladesh despite an ordinary fielding display",
-      "url": "https://www.cricbuzz.com/cricket-news/139320/sloppy-india-stave-off-spirited-bangladesh",
-      "imageUrl": "https://static.cricbuzz.com/a/img/v1/540x303/i1/c1017590/shafali-verma-struck-53-off-34-to-launch-indias-chase.jpg",
-      "source": "cricbuzz",
-      "publishedAt": "2026-06-25T17:06:31.000Z"
-    },
-    {
-      "id": "cricbuzz-139317",
-      "title": "Fit-again Litton returns for Bangladesh's ODI series against Zimbabwe",
-      "summary": "The wicketkeeper-batter has recovered from the calf injury that ruled him out of the one-off Test, providing Bangladesh a timely boost ahead of the three-match series",
-      "url": "https://www.cricbuzz.com/cricket-news/139317/fit-again-litton-returns-for-bangladeshs-odi-series-against-zimbabwe",
-      "imageUrl": "https://static.cricbuzz.com/a/img/v1/540x303/i1/c1011717/the-wicketkeeper-batter-has-recovered-from-the-calf-injury-that-ruled-him-out-of-the-one-off-test-vs-zimbabwe.jpg",
-      "source": "cricbuzz",
-      "publishedAt": "2026-06-25T15:32:12.000Z"
     },
     {
       "id": "espn-https://www.cricinfo.com/ci/content/story/1542868.html",
@@ -86,23 +68,6 @@
       "url": "https://www.thedailystar.net/sports/cricket/news/mushfiqur-wins-icc-player-the-month-award-may-4205491",
       "source": "dailystar",
       "publishedAt": "2026-06-22T15:20:59.000Z"
-    },
-    {
-      "id": "dailystar-https://www.thedailystar.net/sports/cricket/news/calculative-risk-pays-tigresses-chase-something-more-significant-4205036",
-      "title": "Calculative risks pay off as Tigresses chase something more significant",
-      "summary": "Buoyed by their win against Pakistan, Bangladesh women’s cricket team travelled to Manchester yesterday hoping to further their hopes of making it to the semifinals of the T20 World Cup.",
-      "url": "https://www.thedailystar.net/sports/cricket/news/calculative-risk-pays-tigresses-chase-something-more-significant-4205036",
-      "source": "dailystar",
-      "publishedAt": "2026-06-22T03:53:22.000Z"
-    },
-    {
-      "id": "espn-https://www.cricinfo.com/ci/content/story/1542243.html",
-      "title": "Mahidul Islam replaces injured Litton Das for Zimbabwe Test",
-      "summary": "Litton Das hasn't sufficiently recovered from the calf strain",
-      "url": "https://www.cricinfo.com/story/mahidul-islam-replaces-injured-litton-das-for-zimbabwe-test-1542243",
-      "imageUrl": "https://p.imgci.com/db/PICTURES/CMS/417100/417172.5.jpg",
-      "source": "espncricinfo",
-      "publishedAt": "2026-06-21T16:42:28.000Z"
     }
   ]
 }
