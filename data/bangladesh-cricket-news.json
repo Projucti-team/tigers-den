@@ -1,6 +1,49 @@
 {
-  "fetchedAt": "2026-06-26T22:49:21.843Z",
+  "fetchedAt": "2026-06-27T22:42:39.721Z",
   "items": [
+    {
+      "id": "dailystar-https://www.thedailystar.net/sports/cricket/news/joty-and-co-aim-finish-strong-lords-4209586",
+      "title": "Joty and Co aim to finish strong at Lord’s",
+      "summary": "The match is set to begin at 3:30pm (Bangladesh time).",
+      "url": "https://www.thedailystar.net/sports/cricket/news/joty-and-co-aim-finish-strong-lords-4209586",
+      "source": "dailystar",
+      "publishedAt": "2026-06-27T19:00:00.000Z"
+    },
+    {
+      "id": "espn-https://www.cricinfo.com/ci/content/story/1543235.html",
+      "title": "Australia hold the key as India, South Africa chase semi-final spots",
+      "summary": "South Africa are the favourites to beat Bangladesh, but their poor net run rate means their chances hinge on Australia beating India",
+      "url": "https://www.cricinfo.com/story/womens-t20-world-cup-2026-australia-hold-the-key-as-india-south-africa-chase-semi-final-spots-1543235",
+      "imageUrl": "https://p.imgci.com/db/PICTURES/CMS/418300/418313.5.jpg",
+      "source": "espncricinfo",
+      "publishedAt": "2026-06-27T17:16:27.000Z"
+    },
+    {
+      "id": "dailystar-https://www.thedailystar.net/sports/cricket/news/tigers-out-hit-top-form-one-zimbabwe-test-4209556",
+      "title": "Tigers out to hit top form in one-off Zimbabwe Test",
+      "summary": "Zimbabwe also arrive with confidence after beating Afghanistan in a one-off Test in October last year.",
+      "url": "https://www.thedailystar.net/sports/cricket/news/tigers-out-hit-top-form-one-zimbabwe-test-4209556",
+      "source": "dailystar",
+      "publishedAt": "2026-06-27T16:30:00.000Z"
+    },
+    {
+      "id": "cricbuzz-139348",
+      "title": "Habibul backs Amite to seize Test opportunity",
+      "summary": "The Bangladesh chief selector believes Amite Hasan has the technique to thrive in Test cricket and wants him to play without the burden of expectations",
+      "url": "https://www.cricbuzz.com/cricket-news/139348/habibul-backs-amite-to-seize-test-opportunity",
+      "imageUrl": "https://static.cricbuzz.com/a/img/v1/540x303/i1/c1020367/amite-hasan-is-expected-to-replace-the-injured-litton-kumar-das-for-the-one-off-test-against-zimbabwe.jpg",
+      "source": "cricbuzz",
+      "publishedAt": "2026-06-27T16:18:34.000Z"
+    },
+    {
+      "id": "cricbuzz-139347",
+      "title": "Bangladesh moves to criminalise match-fixing, spot-fixing",
+      "summary": "The proposed Gambling Prevention Bill prescribes up to seven years' imprisonment for fixing offences, with the BCB also seeking greater legal powers for its integrity unit",
+      "url": "https://www.cricbuzz.com/cricket-news/139347/bangladesh-moves-to-criminalise-match-fixing-spot-fixing",
+      "imageUrl": "https://static.cricbuzz.com/a/img/v1/540x303/i1/c1020356/alex-marshall-head-of-bcb-integrity-unit-having-a-discussion-with-cid.jpg",
+      "source": "cricbuzz",
+      "publishedAt": "2026-06-27T15:36:47.000Z"
+    },
     {
       "id": "espn-https://www.cricinfo.com/ci/content/story/1542730.html",
       "title": "India, South Africa eye NRR boost in close Group 1 race",
@@ -8,7 +51,16 @@
       "url": "https://www.cricinfo.com/story/womens-t20-world-cup-india-south-africa-eye-nrr-boost-in-close-group-1-race-1542730",
       "imageUrl": "https://p.imgci.com/db/PICTURES/CMS/418500/418522.5.jpg",
       "source": "espncricinfo",
-      "publishedAt": "2026-06-25T21:11:29.000Z"
+      "publishedAt": "2026-06-27T14:33:02.000Z"
+    },
+    {
+      "id": "espn-https://www.cricinfo.com/ci/content/story/1543215.html",
+      "title": "Zimbabwe look to build on rare Test momentum against Bangladesh",
+      "summary": "Ngarava begins his captaincy stint as Zimbabwe seek to back up last year's Sylhet win over a confident Bangladesh",
+      "url": "https://www.cricinfo.com/story/zim-vs-ban-only-test-zimbabwe-look-to-build-on-rare-test-momentum-against-bangladesh-1543215",
+      "imageUrl": "https://p.imgci.com/db/PICTURES/CMS/408200/408245.5.jpg",
+      "source": "espncricinfo",
+      "publishedAt": "2026-06-27T12:12:01.000Z"
     },
     {
       "id": "dailystar-https://www.thedailystar.net/sports/cricket/news/tigresses-semifinal-hopes-extinguished-after-five-wicket-loss-india-4208446",
@@ -60,14 +112,6 @@
       "imageUrl": "https://p.imgci.com/db/PICTURES/CMS/408200/408245.5.jpg",
       "source": "espncricinfo",
       "publishedAt": "2026-06-23T14:30:17.000Z"
-    },
-    {
-      "id": "dailystar-https://www.thedailystar.net/sports/cricket/news/mushfiqur-wins-icc-player-the-month-award-may-4205491",
-      "title": "Mushfiqur wins ICC Player of the Month award for May",
-      "summary": "Mushfiqur was instrumental in Bangladesh’s 2-0 Test series victory, earning the Player of the Series award after scoring 235 runs at an average of 63.25. The 39-year-old struck a crucial 71 in the first innings of the opening Test in Dhaka before producing a match-defining 137 in the second Test in Sylhet.",
-      "url": "https://www.thedailystar.net/sports/cricket/news/mushfiqur-wins-icc-player-the-month-award-may-4205491",
-      "source": "dailystar",
-      "publishedAt": "2026-06-22T15:20:59.000Z"
     }
   ]
 }
