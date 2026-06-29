@@ -1,5 +1,5 @@
 {
-  "fetchedAt": "2026-06-28T22:16:27.000Z",
+  "fetchedAt": "2026-06-29T22:32:56.496Z",
   "source": "espn-cricinfo-core",
   "cycleLabel": "2025–2027",
   "standings": [
@@ -33,27 +33,27 @@
       "rank": 3,
       "team": "New Zealand",
       "abbreviation": "NZ",
-      "played": 5,
-      "won": 3,
+      "played": 6,
+      "won": 4,
       "lost": 1,
       "drawn": 1,
       "tied": 0,
       "noResult": 0,
-      "points": 40,
-      "pct": 66.67
+      "points": 52,
+      "pct": 72.22
     },
     {
       "rank": 4,
       "team": "England",
       "abbreviation": "ENG",
-      "played": 12,
+      "played": 13,
       "won": 4,
-      "lost": 7,
+      "lost": 8,
       "drawn": 1,
       "tied": 0,
       "noResult": 0,
       "points": 38,
-      "pct": 26.39
+      "pct": 24.36
     },
     {
       "rank": 5,

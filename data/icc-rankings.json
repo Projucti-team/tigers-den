@@ -1,5 +1,5 @@
 {
-  "fetchedAt": "2026-06-28T22:16:25.062Z",
+  "fetchedAt": "2026-06-29T22:32:52.683Z",
   "source": "icc-sportz.io",
   "sourceUrl": "https://www.icc-cricket.com/rankings",
   "men": {
@@ -24,6 +24,14 @@
         },
         {
           "rank": 3,
+          "name": "New Zealand",
+          "abbreviation": "NZ",
+          "rating": 106,
+          "points": 2336,
+          "matches": 22
+        },
+        {
+          "rank": 4,
           "name": "India",
           "abbreviation": "IND",
           "rating": 104,
@@ -31,20 +39,12 @@
           "matches": 26
         },
         {
-          "rank": 4,
+          "rank": 5,
           "name": "England",
           "abbreviation": "ENG",
-          "rating": 102,
-          "points": 2850,
-          "matches": 28
-        },
-        {
-          "rank": 5,
-          "name": "New Zealand",
-          "abbreviation": "NZ",
-          "rating": 102,
-          "points": 1828,
-          "matches": 18
+          "rating": 99,
+          "points": 3158,
+          "matches": 32
         },
         {
           "rank": 6,
@@ -10357,7 +10357,7 @@
     },
     "rankUpdatedAt": {
       "test": {
-        "team": "2026-06-08",
+        "team": "2026-06-29",
         "bat": "2026-06-23",
         "bowl": "2026-06-23",
         "allrounder": "2026-06-23"
