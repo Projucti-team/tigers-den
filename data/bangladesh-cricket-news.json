@@ -1,6 +1,58 @@
 {
-  "fetchedAt": "2026-06-29T22:40:48.964Z",
+  "fetchedAt": "2026-06-30T22:55:40.195Z",
   "items": [
+    {
+      "id": "espn-https://www.cricinfo.com/ci/content/story/1543745.html",
+      "title": "Ngarava: 'I walked into this Test match thinking about making history'",
+      "summary": "The left-arm quick captained Zimbabwe to their biggest Test win - by an innings and 85 runs against Bangladesh",
+      "url": "https://www.cricinfo.com/story/zimbabwe-captain-richard-ngarava-i-walked-into-this-test-match-thinking-about-making-history-1543745",
+      "imageUrl": "https://p.imgci.com/db/PICTURES/CMS/419200/419230.5.jpg",
+      "source": "espncricinfo",
+      "publishedAt": "2026-06-30T18:05:45.000Z"
+    },
+    {
+      "id": "dailystar-https://www.thedailystar.net/sports/cricket/news/more-learn-after-zimbabwe-drubbing-4212526",
+      "title": "'More to learn' after Zimbabwe drubbing",
+      "summary": "The defeat, Zimbabwe's biggest-ever victory in Test cricket, came as Bangladesh failed to recover from a batting collapse that saw them bundled out for 140 in the first innings before being dismissed for 185 in just 45 overs in the second, unable to make the hosts bat again.",
+      "url": "https://www.thedailystar.net/sports/cricket/news/more-learn-after-zimbabwe-drubbing-4212526",
+      "source": "dailystar",
+      "publishedAt": "2026-06-30T16:09:00.000Z"
+    },
+    {
+      "id": "cricbuzz-139397",
+      "title": "Bangladesh won't lose confidence despite Harare drubbing, says Simmons",
+      "summary": "Bangladesh suffered a crushing innings-and-85-run defeat to Zimbabwe in the one-off Test in Harare",
+      "url": "https://www.cricbuzz.com/cricket-news/139397/bangladesh-wont-lose-confidence-despite-harare-drubbing-says-simmons",
+      "imageUrl": "https://static.cricbuzz.com/a/img/v1/540x303/i1/c1023509/bangladesh-head-coach-phil-simmons-insisted-the-teams-confidence-remains-intact-despite-the-crushing-loss.jpg",
+      "source": "cricbuzz",
+      "publishedAt": "2026-06-30T14:26:39.000Z"
+    },
+    {
+      "id": "espn-https://www.cricinfo.com/ci/content/story/1543694.html",
+      "title": "Seamers, Kaia lead Zimbabwe to their biggest Test win",
+      "summary": "Muzarabani picked up 4 for 65 in the second innings as Zimbabwe thrashed Bangladesh by an innings and 85 runs",
+      "url": "https://www.cricinfo.com/story/zim-vs-ban-blessing-muzarabani-richard-ngarava-innocent-kaia-lead-zimbabwe-to-their-biggest-test-win-1543694",
+      "imageUrl": "https://p.imgci.com/db/PICTURES/CMS/419200/419207.5.jpg",
+      "source": "espncricinfo",
+      "publishedAt": "2026-06-30T13:36:53.000Z"
+    },
+    {
+      "id": "cricbuzz-139396",
+      "title": "Zimbabwe crush Bangladesh by innings and 85 runs to seal biggest-ever Test win",
+      "summary": "Bangladesh ended up being bowled out for 185 in their second innings after starting the day at 40/1",
+      "url": "https://www.cricbuzz.com/cricket-news/139396/zimbabwe-crush-bangladesh-by-innings-and-85-runs-to-seal-biggest-ever-test-win",
+      "imageUrl": "https://static.cricbuzz.com/a/img/v1/540x303/i1/c1023492/ngarava-file-pic-and-muzarabani-claimed-seven-wickets-between-them-in-bangladeshs-second-innings.jpg",
+      "source": "cricbuzz",
+      "publishedAt": "2026-06-30T12:01:48.000Z"
+    },
+    {
+      "id": "dailystar-https://www.thedailystar.net/sports/cricket/news/zimbabwe-embarrass-tigers-biggest-ever-test-win-4212256",
+      "title": "Zimbabwe embarrass Tigers with innings and 85-run victory",
+      "summary": "Zimbabwe put Bangladesh through an embarrassing one-off Test in Harare, registering their biggest victory in Test cricket by thumping the visitors by an innings and 85 runs on Day 3 on Tuesday.",
+      "url": "https://www.thedailystar.net/sports/cricket/news/zimbabwe-embarrass-tigers-biggest-ever-test-win-4212256",
+      "source": "dailystar",
+      "publishedAt": "2026-06-30T11:51:50.000Z"
+    },
     {
       "id": "cricbuzz-139392",
       "title": "Taijul hopeful improving wicket can spark Bangladesh comeback",
@@ -18,15 +70,6 @@
       "imageUrl": "https://p.imgci.com/db/PICTURES/CMS/419100/419189.5.jpg",
       "source": "espncricinfo",
       "publishedAt": "2026-06-29T16:20:45.000Z"
-    },
-    {
-      "id": "cricbuzz-139390",
-      "title": "Kaia ton leads Zimbabwe charge as hosts tighten grip on Day 2",
-      "summary": "Half-centuries from Bennett, Ervine and Madhevere helped Zimbabwe secure a 270-run lead despite Taijul Islam's 7-fer",
-      "url": "https://www.cricbuzz.com/cricket-news/139390/kaia-ton-leads-zimbabwe-charge-as-hosts-tighten-grip-on-day-2",
-      "imageUrl": "https://static.cricbuzz.com/a/img/v1/540x303/i1/c1023437/taijul-file-pic-picked-a-seven-wicket-haul.jpg",
-      "source": "cricbuzz",
-      "publishedAt": "2026-06-29T16:04:07.000Z"
     },
     {
       "id": "dailystar-https://www.thedailystar.net/sports/cricket/news/taijul-shines-zimbabwe-the-drivers-seat-4211481",
@@ -53,22 +96,6 @@
       "imageUrl": "https://p.imgci.com/db/PICTURES/CMS/419100/419138.5.jpg",
       "source": "espncricinfo",
       "publishedAt": "2026-06-28T16:22:31.000Z"
-    },
-    {
-      "id": "dailystar-https://www.thedailystar.net/sports/cricket/news/tamim-inducted-mcc-honorary-life-member-4210561",
-      "title": "Tamim inducted as MCC honorary life member",
-      "summary": "New Zealand women's cricket greats Suzie Bates and Sophie Devine, Australia's Mel Jones and India's Cheteshwar Pujara have also been awarded the honour.",
-      "url": "https://www.thedailystar.net/sports/cricket/news/tamim-inducted-mcc-honorary-life-member-4210561",
-      "source": "dailystar",
-      "publishedAt": "2026-06-28T16:02:05.000Z"
-    },
-    {
-      "id": "dailystar-https://www.thedailystar.net/sports/womens-sports/news/tigresses-sign-defeat-secure-direct-qualification-2028-4210536",
-      "title": "Tigresses sign off with defeat, secure direct qualification for 2028",
-      "summary": "Despite a spirited bowling effort while defending a below-par total, Bangladesh suffered a four-wicket defeat to South Africa in their final Group A match, ending their ICC Women's T20 World Cup campaign on a losing note at Lord's on Sunday.",
-      "url": "https://www.thedailystar.net/sports/womens-sports/news/tigresses-sign-defeat-secure-direct-qualification-2028-4210536",
-      "source": "dailystar",
-      "publishedAt": "2026-06-28T15:44:49.000Z"
     },
     {
       "id": "espn-https://www.cricinfo.com/ci/content/story/1543432.html",
