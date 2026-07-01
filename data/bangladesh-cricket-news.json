@@ -1,6 +1,32 @@
 {
-  "fetchedAt": "2026-06-30T22:55:40.195Z",
+  "fetchedAt": "2026-07-01T22:51:16.039Z",
   "items": [
+    {
+      "id": "dailystar-https://www.thedailystar.net/sports/cricket/news/bangladesh-name-t20-squad-without-litton-mosaddek-yasir-return-4213391",
+      "title": "Bangladesh name T20 squad without Litton; Mosaddek, Yasir return",
+      "summary": "The Bangladesh Cricket Board (BCB) on Wednesday didn’t include regular captain Litton Das in their 15-member squad for the upcoming three-match T20I series against Zimbabwe after granting the wicketkeeper-batter a No Objection Certificate (NOC) to participate in the upcoming Lanka Premier League (LPL), scheduled from July 17 to August 8.",
+      "url": "https://www.thedailystar.net/sports/cricket/news/bangladesh-name-t20-squad-without-litton-mosaddek-yasir-return-4213391",
+      "source": "dailystar",
+      "publishedAt": "2026-07-01T14:56:40.000Z"
+    },
+    {
+      "id": "cricbuzz-139410",
+      "title": "Hridoy handed Bangladesh captaincy for Zimbabwe T20Is",
+      "summary": "In-form Mosaddek returns as Litton and Taskin miss the series due to LPL commitments",
+      "url": "https://www.cricbuzz.com/cricket-news/139410/hridoy-handed-bangladesh-captaincy-for-zimbabwe-t20is",
+      "imageUrl": "https://static.cricbuzz.com/a/img/v1/540x303/i1/c1023673/towhid-hridoy-will-captain-bangladesh-in-the-upcoming-three-match-t20i-series-against-zimbabwe.jpg",
+      "source": "cricbuzz",
+      "publishedAt": "2026-07-01T14:13:20.000Z"
+    },
+    {
+      "id": "espn-https://www.cricinfo.com/ci/content/story/1543799.html",
+      "title": "Hridoy to lead Bangladesh in Zimbabwe T20Is; Saifuddin makes comeback",
+      "summary": "Litton Das, Mehidy Hasan Miraz, Taskin Ahmed and Hasan Mahmud will be playing in the Lanka Premier League, which overlaps with the T20I series",
+      "url": "https://www.cricinfo.com/story/towhid-hridoy-to-lead-bangladesh-in-t20is-in-zimbabwe-saifuddin-makes-a-comeback-1543799",
+      "imageUrl": "https://p.imgci.com/db/PICTURES/CMS/418700/418722.5.jpg",
+      "source": "espncricinfo",
+      "publishedAt": "2026-07-01T13:40:39.000Z"
+    },
     {
       "id": "espn-https://www.cricinfo.com/ci/content/story/1543745.html",
       "title": "Ngarava: 'I walked into this Test match thinking about making history'",
@@ -19,15 +45,6 @@
       "publishedAt": "2026-06-30T16:09:00.000Z"
     },
     {
-      "id": "cricbuzz-139397",
-      "title": "Bangladesh won't lose confidence despite Harare drubbing, says Simmons",
-      "summary": "Bangladesh suffered a crushing innings-and-85-run defeat to Zimbabwe in the one-off Test in Harare",
-      "url": "https://www.cricbuzz.com/cricket-news/139397/bangladesh-wont-lose-confidence-despite-harare-drubbing-says-simmons",
-      "imageUrl": "https://static.cricbuzz.com/a/img/v1/540x303/i1/c1023509/bangladesh-head-coach-phil-simmons-insisted-the-teams-confidence-remains-intact-despite-the-crushing-loss.jpg",
-      "source": "cricbuzz",
-      "publishedAt": "2026-06-30T14:26:39.000Z"
-    },
-    {
       "id": "espn-https://www.cricinfo.com/ci/content/story/1543694.html",
       "title": "Seamers, Kaia lead Zimbabwe to their biggest Test win",
       "summary": "Muzarabani picked up 4 for 65 in the second innings as Zimbabwe thrashed Bangladesh by an innings and 85 runs",
@@ -37,30 +54,12 @@
       "publishedAt": "2026-06-30T13:36:53.000Z"
     },
     {
-      "id": "cricbuzz-139396",
-      "title": "Zimbabwe crush Bangladesh by innings and 85 runs to seal biggest-ever Test win",
-      "summary": "Bangladesh ended up being bowled out for 185 in their second innings after starting the day at 40/1",
-      "url": "https://www.cricbuzz.com/cricket-news/139396/zimbabwe-crush-bangladesh-by-innings-and-85-runs-to-seal-biggest-ever-test-win",
-      "imageUrl": "https://static.cricbuzz.com/a/img/v1/540x303/i1/c1023492/ngarava-file-pic-and-muzarabani-claimed-seven-wickets-between-them-in-bangladeshs-second-innings.jpg",
-      "source": "cricbuzz",
-      "publishedAt": "2026-06-30T12:01:48.000Z"
-    },
-    {
       "id": "dailystar-https://www.thedailystar.net/sports/cricket/news/zimbabwe-embarrass-tigers-biggest-ever-test-win-4212256",
       "title": "Zimbabwe embarrass Tigers with innings and 85-run victory",
       "summary": "Zimbabwe put Bangladesh through an embarrassing one-off Test in Harare, registering their biggest victory in Test cricket by thumping the visitors by an innings and 85 runs on Day 3 on Tuesday.",
       "url": "https://www.thedailystar.net/sports/cricket/news/zimbabwe-embarrass-tigers-biggest-ever-test-win-4212256",
       "source": "dailystar",
       "publishedAt": "2026-06-30T11:51:50.000Z"
-    },
-    {
-      "id": "cricbuzz-139392",
-      "title": "Taijul hopeful improving wicket can spark Bangladesh comeback",
-      "summary": "Innocent Kaia's maiden Test century put Zimbabwe firmly in control, despite Taijul Islam returning a record-equalling seven-wicket haul.",
-      "url": "https://www.cricbuzz.com/cricket-news/139392/taijul-hopeful-improving-wicket-can-spark-bangladesh-comeback",
-      "imageUrl": "https://static.cricbuzz.com/a/img/v1/540x303/i1/c1023458/taijuls-19th-five-wicket-haul-in-tests-saw-him-draw-level-with-shakib-al-hasan-for-the-most-five-fors-by-a-bangladeshi-in-the-format.jpg",
-      "source": "cricbuzz",
-      "publishedAt": "2026-06-29T17:28:16.000Z"
     },
     {
       "id": "espn-https://www.cricinfo.com/ci/content/story/1543616.html",
