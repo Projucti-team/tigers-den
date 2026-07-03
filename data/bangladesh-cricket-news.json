@@ -1,6 +1,33 @@
 {
-  "fetchedAt": "2026-07-02T22:45:17.605Z",
+  "fetchedAt": "2026-07-03T22:40:11.449Z",
   "items": [
+    {
+      "id": "cricbuzz-139436",
+      "title": "BCB keen to offer Mushfiqur coaching role ",
+      "summary": "The BCB also plans to assess the performance of local coaches and overhaul stagnant salaries ",
+      "url": "https://www.cricbuzz.com/cricket-news/139436/bcb-keen-to-offer-mushfiqur-coaching-role",
+      "imageUrl": "https://static.cricbuzz.com/a/img/v1/540x303/i1/c1024991/mushfiqur-only-remains-active-in-test-cricket.jpg",
+      "source": "cricbuzz",
+      "publishedAt": "2026-07-03T17:43:36.000Z"
+    },
+    {
+      "id": "cricbuzz-139435",
+      "title": "Ngarava to lead 15-member ODI squad against Bangladesh ",
+      "summary": "This will be the fast bowler's first stint as captain of Zimbabwe's ODI team",
+      "url": "https://www.cricbuzz.com/cricket-news/139435/ngarava-to-lead-15-member-odi-squad-against-bangladesh",
+      "imageUrl": "https://static.cricbuzz.com/a/img/v1/540x303/i1/c1024990/ngarava-recently-led-zimbabwe-to-a-test-win-over-bangladesh.jpg",
+      "source": "cricbuzz",
+      "publishedAt": "2026-07-03T17:23:23.000Z"
+    },
+    {
+      "id": "espn-https://www.cricinfo.com/ci/content/story/1544220.html",
+      "title": "Kaia, Burl, Marumani, Masakadza back in ODI side for Bangladesh series",
+      "summary": "This will be Ngarava's first ODI series as captain, having recently led them to the one-off Test win against Bangladesh",
+      "url": "https://www.cricinfo.com/story/zimbabwe-squad-innocent-kaia-ryan-burl-tadiwanashe-marumani-masakadza-back-in-odi-side-for-bangladesh-series-1544220",
+      "imageUrl": "https://p.imgci.com/db/PICTURES/CMS/343600/343695.5.jpg",
+      "source": "espncricinfo",
+      "publishedAt": "2026-07-03T16:52:06.000Z"
+    },
     {
       "id": "dailystar-https://www.thedailystar.net/sports/cricket/news/bangladesh-name-t20-squad-without-litton-mosaddek-yasir-return-4213391",
       "title": "Bangladesh name T20 squad without Litton; Mosaddek, Yasir return",
@@ -95,42 +122,6 @@
       "imageUrl": "https://p.imgci.com/db/PICTURES/CMS/419100/419104.5.jpg",
       "source": "espncricinfo",
       "publishedAt": "2026-06-28T15:34:18.000Z"
-    },
-    {
-      "id": "espn-https://www.cricinfo.com/ci/content/story/1543392.html",
-      "title": "Bangladesh opt to bat, SA unchanged in high-stakes game",
-      "summary": "Bangladesh brought in Taj Nehar for Dilara Akter at the top of the order",
-      "url": "https://www.cricinfo.com/story/womens-world-cup-2026-bangladesh-opt-to-bat-sa-unchanged-in-high-stakes-game-1543392",
-      "imageUrl": "https://p.imgci.com/db/PICTURES/CMS/418700/418751.5.jpg",
-      "source": "espncricinfo",
-      "publishedAt": "2026-06-28T09:44:38.000Z"
-    },
-    {
-      "id": "espn-https://www.cricinfo.com/ci/content/story/1543235.html",
-      "title": "Australia hold the key as India, South Africa chase semi-final spots",
-      "summary": "South Africa are the favourites to beat Bangladesh, but their poor net run rate means their chances hinge on Australia beating India",
-      "url": "https://www.cricinfo.com/story/womens-t20-world-cup-2026-australia-hold-the-key-as-india-south-africa-chase-semi-final-spots-1543235",
-      "imageUrl": "https://p.imgci.com/db/PICTURES/CMS/418300/418313.5.jpg",
-      "source": "espncricinfo",
-      "publishedAt": "2026-06-28T09:35:59.000Z"
-    },
-    {
-      "id": "espn-https://www.cricinfo.com/ci/content/story/1543380.html",
-      "title": "Zimbabwe opt to bowl; Bangladesh hand debuts to Amite Hasan and Towhid Hridoy",
-      "summary": "For Zimbabwe, Wessly Madhevere took the spot of Sikandar Raza but there was no room for Graeme Cremer",
-      "url": "https://www.cricinfo.com/story/zimbabwe-opt-to-bowl-bangladesh-pick-amite-hasan-over-mahidul-islam-ankon-1543380",
-      "imageUrl": "https://p.imgci.com/db/PICTURES/CMS/400900/400925.5.jpg",
-      "source": "espncricinfo",
-      "publishedAt": "2026-06-28T08:02:21.000Z"
-    },
-    {
-      "id": "espn-https://www.cricinfo.com/ci/content/story/1543215.html",
-      "title": "Zimbabwe look to build on rare Test momentum against Bangladesh",
-      "summary": "Ngarava begins his captaincy stint as Zimbabwe seek to back up last year's Sylhet win over a confident Bangladesh",
-      "url": "https://www.cricinfo.com/story/zim-vs-ban-only-test-zimbabwe-look-to-build-on-rare-test-momentum-against-bangladesh-1543215",
-      "imageUrl": "https://p.imgci.com/db/PICTURES/CMS/408200/408245.5.jpg",
-      "source": "espncricinfo",
-      "publishedAt": "2026-06-28T03:22:11.000Z"
     }
   ]
 }
