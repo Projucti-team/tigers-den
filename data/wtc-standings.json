@@ -1,5 +1,5 @@
 {
-  "fetchedAt": "2026-07-02T22:20:25.064Z",
+  "fetchedAt": "2026-07-03T22:17:13.485Z",
   "source": "espn-cricinfo-core",
   "cycleLabel": "2025–2027",
   "standings": [
@@ -70,8 +70,8 @@
     },
     {
       "rank": 6,
-      "team": "Bangladesh",
-      "abbreviation": "BAN",
+      "team": "Unknown",
+      "abbreviation": "",
       "played": 4,
       "won": 2,
       "lost": 1,
@@ -83,8 +83,8 @@
     },
     {
       "rank": 7,
-      "team": "Sri Lanka",
-      "abbreviation": "SL",
+      "team": "Unknown",
+      "abbreviation": "",
       "played": 3,
       "won": 1,
       "lost": 1,
@@ -109,8 +109,8 @@
     },
     {
       "rank": 9,
-      "team": "Pakistan",
-      "abbreviation": "PAK",
+      "team": "Unknown",
+      "abbreviation": "",
       "played": 4,
       "won": 1,
       "lost": 3,

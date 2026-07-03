@@ -1,5 +1,5 @@
 {
-  "fetchedAt": "2026-07-02T22:20:23.018Z",
+  "fetchedAt": "2026-07-03T22:17:09.591Z",
   "source": "icc-sportz.io",
   "sourceUrl": "https://www.icc-cricket.com/rankings",
   "men": {
@@ -532,19 +532,19 @@
         },
         {
           "rank": 36,
+          "name": "Portugal",
+          "abbreviation": "POR",
+          "rating": 83,
+          "points": 1820,
+          "matches": 22
+        },
+        {
+          "rank": 37,
           "name": "Germany",
           "abbreviation": "GER",
           "rating": 82,
           "points": 1964,
           "matches": 24
-        },
-        {
-          "rank": 37,
-          "name": "Portugal",
-          "abbreviation": "POR",
-          "rating": 81,
-          "points": 1710,
-          "matches": 21
         },
         {
           "rank": 38,
@@ -604,19 +604,19 @@
         },
         {
           "rank": 45,
-          "name": "Finland",
-          "abbreviation": "FIN",
-          "rating": 60,
-          "points": 1313,
-          "matches": 22
-        },
-        {
-          "rank": 46,
           "name": "Belgium",
           "abbreviation": "BEL",
           "rating": 59,
           "points": 1709,
           "matches": 29
+        },
+        {
+          "rank": 46,
+          "name": "Finland",
+          "abbreviation": "FIN",
+          "rating": 58,
+          "points": 1344,
+          "matches": 23
         },
         {
           "rank": 47,
@@ -10372,7 +10372,7 @@
         "allrounder": "2026-06-23"
       },
       "t20": {
-        "team": "2026-07-02",
+        "team": "2026-07-03",
         "bat": "2026-06-30",
         "bowl": "2026-06-30",
         "allrounder": "2026-06-30"
