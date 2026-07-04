@@ -1,5 +1,5 @@
 {
-  "fetchedAt": "2026-07-03T22:17:09.591Z",
+  "fetchedAt": "2026-07-04T22:12:56.785Z",
   "source": "icc-sportz.io",
   "sourceUrl": "https://www.icc-cricket.com/rankings",
   "men": {
@@ -254,17 +254,17 @@
           "rank": 1,
           "name": "India",
           "abbreviation": "IND",
-          "rating": 272,
-          "points": 14674,
-          "matches": 54
+          "rating": 271,
+          "points": 14886,
+          "matches": 55
         },
         {
           "rank": 2,
           "name": "England",
           "abbreviation": "ENG",
-          "rating": 262,
-          "points": 8904,
-          "matches": 34
+          "rating": 264,
+          "points": 9226,
+          "matches": 35
         },
         {
           "rank": 3,
@@ -534,9 +534,9 @@
           "rank": 36,
           "name": "Portugal",
           "abbreviation": "POR",
-          "rating": 83,
-          "points": 1820,
-          "matches": 22
+          "rating": 84,
+          "points": 1928,
+          "matches": 23
         },
         {
           "rank": 37,
@@ -612,19 +612,19 @@
         },
         {
           "rank": 46,
-          "name": "Finland",
-          "abbreviation": "FIN",
-          "rating": 58,
-          "points": 1344,
-          "matches": 23
-        },
-        {
-          "rank": 47,
           "name": "Norway",
           "abbreviation": "NOR",
           "rating": 58,
           "points": 1792,
           "matches": 31
+        },
+        {
+          "rank": 47,
+          "name": "Finland",
+          "abbreviation": "FIN",
+          "rating": 57,
+          "points": 1377,
+          "matches": 24
         },
         {
           "rank": 48,
@@ -10372,7 +10372,7 @@
         "allrounder": "2026-06-23"
       },
       "t20": {
-        "team": "2026-07-03",
+        "team": "2026-07-04",
         "bat": "2026-06-30",
         "bowl": "2026-06-30",
         "allrounder": "2026-06-30"
