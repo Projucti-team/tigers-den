@@ -69,6 +69,7 @@ import {
   updateTourFormatStatus,
   markFinishedTours,
 } from "@/lib/cricket/services/update-tour-sync-state";
+import { refreshSquadsForActiveTours } from "@/lib/cricket/services/refresh-squads-for-active-tours";
 
 export type SyncCricketResult = {
   ok: boolean;
@@ -279,6 +280,35 @@ export async function syncRankings(options?: SyncCricketOptions): Promise<SyncCr
     warnings,
     errors,
     jobsRun: ["icc", "wtc", "rankings"],
+  };
+}
+
+/**
+ * Refresh squads for active tours with upcoming match types.
+ */
+export async function syncSquads(options?: SyncCricketOptions): Promise<SyncCricketResult> {
+  if (!isPayloadConfigured()) {
+    return {
+      ok: false,
+      fetchedAt: new Date().toISOString(),
+      toursCount: 0,
+      tourDetailsCount: 0,
+      warnings: [],
+      errors: ["PAYLOAD_SECRET is not set"],
+      jobsRun: [],
+    };
+  }
+
+  const result = await refreshSquadsForActiveTours();
+
+  return {
+    ok: result.ok,
+    fetchedAt: new Date().toISOString(),
+    toursCount: 0,
+    tourDetailsCount: result.toursProcessed,
+    warnings: result.warnings,
+    errors: result.errors,
+    jobsRun: [],
   };
 }
 
