@@ -24,15 +24,15 @@ export async function up({ db }: MigrateUpArgs): Promise<void> {
   `);
 
   await db.execute(sql`
-    CREATE INDEX "idx_tour_sync_state_status" ON "tour_sync_state" ("current_status");
+    CREATE INDEX IF NOT EXISTS "idx_tour_sync_state_status" ON "tour_sync_state" ("current_status");
   `);
 
   await db.execute(sql`
-    CREATE INDEX "idx_tour_sync_state_updated_at" ON "tour_sync_state" ("updated_at");
+    CREATE INDEX IF NOT EXISTS "idx_tour_sync_state_updated_at" ON "tour_sync_state" ("updated_at");
   `);
 
   await db.execute(sql`
-    CREATE INDEX "idx_tour_sync_state_tour_id" ON "tour_sync_state" ("tour_id");
+    CREATE INDEX IF NOT EXISTS "idx_tour_sync_state_tour_id" ON "tour_sync_state" ("tour_id");
   `);
 
   await db.execute(sql`
