@@ -216,15 +216,9 @@ async function syncTourDetails(
 }
 
 /**
- * Nightly job (3:00 AM BDT via Coolify/server cron): refresh sources, build page snapshots, save to DB.
+ * Sync ICC rankings + WTC standings, build rankings showcase snapshot.
  */
-export async function syncCricketSnapshots(
-  options?: SyncCricketOptions,
-): Promise<SyncCricketResult> {
-  const jobsRun = resolveCricketSyncJobs(options?.jobs);
-  const run = (job: CricketSyncJobId) => jobsRun.includes(job);
-  const needsCricApi = run("tours");
-
+export async function syncRankings(options?: SyncCricketOptions): Promise<SyncCricketResult> {
   const warnings: string[] = [];
   const errors: string[] = [];
 
@@ -235,10 +229,128 @@ export async function syncCricketSnapshots(
       toursCount: 0,
       tourDetailsCount: 0,
       warnings: [],
-      errors: [
-        "PAYLOAD_SECRET is not set — add it in production environment variables and redeploy.",
-      ],
-      jobsRun,
+      errors: ["PAYLOAD_SECRET is not set"],
+      jobsRun: ["icc", "wtc", "rankings"],
+    };
+  }
+
+  let iccSnapshot: IccRankingsSnapshot | null = null;
+  let wtcSnapshot: WtcStandingsSnapshot | null = null;
+
+  try {
+    iccSnapshot = await refreshIccRankingsSource();
+  } catch (e) {
+    errors.push(`ICC rankings: ${e instanceof Error ? e.message : "failed"}`);
+  }
+
+  try {
+    wtcSnapshot = await refreshWtcSource();
+  } catch (e) {
+    errors.push(`WTC standings: ${e instanceof Error ? e.message : "failed"}`);
+  }
+
+  try {
+    const rankings = await buildRankingsShowcaseLive({
+      icc: iccSnapshot,
+      wtc: wtcSnapshot,
+    });
+    await upsertCricketSnapshot(
+      CRICKET_SNAPSHOT_KEYS.rankingsShowcase,
+      "ICC rankings showcase",
+      rankings,
+    );
+    console.log("[cricket] rankings showcase saved:");
+    logRankingsShowcaseStats(rankings);
+    warnings.push(...rankings.warnings);
+  } catch (e) {
+    errors.push(`Rankings showcase: ${e instanceof Error ? e.message : "failed"}`);
+  }
+
+  return {
+    ok: errors.length === 0,
+    fetchedAt: new Date().toISOString(),
+    toursCount: 0,
+    tourDetailsCount: 0,
+    warnings,
+    errors,
+    jobsRun: ["icc", "wtc", "rankings"],
+  };
+}
+
+/**
+ * Sync Bangladesh last completed match and upcoming matches.
+ */
+export async function syncBangladeshLive(options?: SyncCricketOptions): Promise<SyncCricketResult> {
+  const warnings: string[] = [];
+  const errors: string[] = [];
+
+  if (!isPayloadConfigured()) {
+    return {
+      ok: false,
+      fetchedAt: new Date().toISOString(),
+      toursCount: 0,
+      tourDetailsCount: 0,
+      warnings: [],
+      errors: ["PAYLOAD_SECRET is not set"],
+      jobsRun: ["last-match", "upcoming"],
+    };
+  }
+
+  try {
+    const lastMatch = await scrapeBangladeshLastMatch();
+    if (lastMatch) {
+      await upsertCricketSnapshot(
+        CRICKET_SNAPSHOT_KEYS.lastMatch,
+        "Bangladesh last completed match",
+        lastMatch,
+      );
+    }
+  } catch (e) {
+    errors.push(`Last match: ${e instanceof Error ? e.message : "failed"}`);
+  }
+
+  try {
+    const upcoming = await scrapeBangladeshUpcomingMatches();
+    if (upcoming) {
+      await upsertCricketSnapshot(
+        CRICKET_SNAPSHOT_KEYS.upcomingMatches,
+        "Bangladesh upcoming matches",
+        upcoming,
+      );
+    }
+  } catch (e) {
+    errors.push(`Upcoming matches: ${e instanceof Error ? e.message : "failed"}`);
+  }
+
+  return {
+    ok: errors.length === 0,
+    fetchedAt: new Date().toISOString(),
+    toursCount: 0,
+    tourDetailsCount: 0,
+    warnings,
+    errors,
+    jobsRun: ["last-match", "upcoming"],
+  };
+}
+
+/**
+ * Sync tours index from CricAPI, build per-tour detail snapshots.
+ */
+export async function syncToursIndex(options?: SyncCricketOptions): Promise<SyncCricketResult> {
+  const warnings: string[] = [];
+  const errors: string[] = [];
+  let toursCount = 0;
+  let tourDetailsCount = 0;
+
+  if (!isPayloadConfigured()) {
+    return {
+      ok: false,
+      fetchedAt: new Date().toISOString(),
+      toursCount: 0,
+      tourDetailsCount: 0,
+      warnings: [],
+      errors: ["PAYLOAD_SECRET is not set"],
+      jobsRun: ["tours"],
     };
   }
 
@@ -249,23 +361,13 @@ export async function syncCricketSnapshots(
       toursCount: 0,
       tourDetailsCount: 0,
       warnings: [],
-      errors: [
-        "No database configured — set DATABASE_URI (or POSTGRES_URL/DATABASE_URL if using Postgres).",
-      ],
-      jobsRun,
+      errors: ["No database configured"],
+      jobsRun: ["tours"],
     };
   }
 
   try {
     await ensureSqliteCricketSnapshotsTable();
-
-    if (run("players")) {
-      await ensureCountriesSeeded();
-      const repairedPlayers = await repairInvalidPlayerProfiles();
-      if (repairedPlayers > 0) {
-        warnings.push(`Cleared ${repairedPlayers} invalid cached player profile or headshot URLs.`);
-      }
-    }
   } catch (e) {
     return {
       ok: false,
@@ -273,10 +375,8 @@ export async function syncCricketSnapshots(
       toursCount: 0,
       tourDetailsCount: 0,
       warnings: [],
-      errors: [
-        `Database schema: ${e instanceof Error ? e.message : "could not ensure cricket_snapshots table"}`,
-      ],
-      jobsRun,
+      errors: [`Database schema: ${e instanceof Error ? e.message : "error"}`],
+      jobsRun: ["tours"],
     };
   }
 
@@ -293,41 +393,19 @@ export async function syncCricketSnapshots(
   const previousToursAgeHours = previousTours?.fetchedAt
     ? snapshotAgeHours(previousTours.fetchedAt)
     : Number.POSITIVE_INFINITY;
+
   const skipCricApi =
-    needsCricApi &&
     !options?.force &&
     (previousTours?.tours?.length ?? 0) > 0 &&
-    previousToursAgeHours < CRICAPI_FRESH_MAX_AGE_HOURS &&
-    !run("last-match") &&
-    !run("upcoming") &&
-    run("tours");
+    previousToursAgeHours < CRICAPI_FRESH_MAX_AGE_HOURS;
 
-  let iccSnapshot: IccRankingsSnapshot | null = null;
-  let wtcSnapshot: WtcStandingsSnapshot | null = null;
-
-  if (run("icc") || run("rankings")) {
-    try {
-      iccSnapshot = await refreshIccRankingsSource();
-    } catch (e) {
-      errors.push(`ICC rankings: ${e instanceof Error ? e.message : "failed"}`);
-    }
-  }
-
-  if (run("wtc") || run("rankings")) {
-    try {
-      wtcSnapshot = await refreshWtcSource();
-    } catch (e) {
-      errors.push(`WTC standings: ${e instanceof Error ? e.message : "failed"}`);
-    }
-  }
-
-  if (needsCricApi && !skipCricApi && isCricApiConfigured()) {
+  if (!skipCricApi && isCricApiConfigured()) {
     beginCricApiSyncSession();
   }
 
   let prefetchedMatches: LiveMatchSummary[] = [];
 
-  if (needsCricApi && !skipCricApi && isCricApiConfigured()) {
+  if (!skipCricApi && isCricApiConfigured()) {
     try {
       prefetchedMatches = await prefetchMatchesForSync();
     } catch (e) {
@@ -337,139 +415,56 @@ export async function syncCricketSnapshots(
     warnings.push(...getCricApiKeyWarnings());
   }
 
-  if (run("last-match")) {
-    try {
-      const lastMatch = await scrapeBangladeshLastMatch();
-      if (lastMatch) {
-        await upsertCricketSnapshot(
-          CRICKET_SNAPSHOT_KEYS.lastMatch,
-          "Bangladesh last completed match",
-          lastMatch,
-        );
-      }
-    } catch (e) {
-      errors.push(`Last match: ${e instanceof Error ? e.message : "failed"}`);
-    }
-  }
+  try {
+    const toursIndex = await buildToursIndexLive({ prefetchedMatches });
+    warnings.push(...toursIndex.warnings);
 
-  if (run("upcoming")) {
-    try {
-      const upcoming = await scrapeBangladeshUpcomingMatches();
-      if (upcoming) {
-        await upsertCricketSnapshot(
-          CRICKET_SNAPSHOT_KEYS.upcomingMatches,
-          "Bangladesh upcoming matches",
-          upcoming,
-        );
-      }
-    } catch (e) {
-      errors.push(`Upcoming matches: ${e instanceof Error ? e.message : "failed"}`);
-    }
-  }
+    const cricApiBlocked = isCricApiBlocked() || isCricApiRateLimited(toursIndex.warnings);
+    const keepPrevious = shouldKeepPreviousToursSnapshot(previousTours, toursIndex, cricApiBlocked);
 
-  if (run("rankings")) {
-    try {
-      const rankings = await buildRankingsShowcaseLive({
-        icc: iccSnapshot,
-        wtc: wtcSnapshot,
-      });
-      await upsertCricketSnapshot(
-        CRICKET_SNAPSHOT_KEYS.rankingsShowcase,
-        "ICC rankings showcase",
-        rankings,
-      );
-      console.log("[cricket] rankings showcase saved:");
-      logRankingsShowcaseStats(rankings);
-      warnings.push(...rankings.warnings);
-    } catch (e) {
-      errors.push(`Rankings showcase: ${e instanceof Error ? e.message : "failed"}`);
-    }
-  }
+    let toursToProcess = toursIndex;
+    let squadsOnly = false;
 
-  let toursCount = 0;
-  let tourDetailsCount = 0;
-
-  if (run("tours")) {
-    if (skipCricApi && previousTours) {
+    if (keepPrevious && previousTours) {
+      toursToProcess = previousTours;
+      squadsOnly = true;
       toursCount = previousTours.tours.length;
       warnings.push(
-        `Tours snapshot is ${previousToursAgeHours.toFixed(1)}h old — skipped CricAPI, refreshed squads from ESPN.`,
+        `CricAPI quota/rate-limited — kept ${previousTours.tours.length} tour(s) from the last full sync (${previousToursAgeHours.toFixed(1)}h ago).`,
       );
-
-      const detailResult = await syncTourDetails(previousTours.tours, previousTours.warnings, keysToKeep, {
-        squadsOnly: true,
-      });
-      tourDetailsCount = detailResult.built;
-      errors.push(...detailResult.errors);
-    } else {
-      try {
-        const toursIndex = await buildToursIndexLive({ prefetchedMatches });
-        warnings.push(...toursIndex.warnings);
-
-        const cricApiBlocked =
-          isCricApiBlocked() || isCricApiRateLimited(toursIndex.warnings);
-        const keepPrevious = shouldKeepPreviousToursSnapshot(
-          previousTours,
-          toursIndex,
-          cricApiBlocked,
-        );
-
-        let toursToProcess = toursIndex;
-        let squadsOnly = false;
-
-        if (keepPrevious && previousTours) {
-          toursToProcess = previousTours;
-          squadsOnly = true;
-          toursCount = previousTours.tours.length;
-          warnings.push(
-            `CricAPI quota/rate-limited — kept ${previousTours.tours.length} tour(s) from the last full sync (${previousToursAgeHours.toFixed(1)}h ago). Refreshed squads from ESPN.`,
-          );
-        } else if (toursIndex.tours.length === 0) {
-          if (previousTours?.tours?.length) {
-            toursToProcess = previousTours;
-            squadsOnly = true;
-            toursCount = previousTours.tours.length;
-            warnings.push("CricAPI returned no tours — kept the previous tours snapshot.");
-          } else if (cricApiBlocked) {
-            const espnIndex = await buildToursIndexLive({ espnOnly: true });
-            if (espnIndex.tours.length > 0) {
-              toursToProcess = espnIndex;
-              await upsertCricketSnapshot(
-                CRICKET_SNAPSHOT_KEYS.toursIndex,
-                "Upcoming tours index",
-                espnIndex,
-              );
-              toursCount = espnIndex.tours.length;
-              warnings.push(
-                `Built tours index from ESPNcricinfo (${espnIndex.tours.length} tour(s)) — no CricAPI data available.`,
-              );
-            } else {
-              errors.push(
-                "Tours index: CricAPI blocked and ESPNcricinfo returned no tours.",
-              );
-            }
-          }
-        } else {
+    } else if (toursIndex.tours.length === 0) {
+      if (previousTours?.tours?.length) {
+        toursToProcess = previousTours;
+        squadsOnly = true;
+        toursCount = previousTours.tours.length;
+        warnings.push("CricAPI returned no tours — kept the previous tours snapshot.");
+      } else if (cricApiBlocked) {
+        const espnIndex = await buildToursIndexLive({ espnOnly: true });
+        if (espnIndex.tours.length > 0) {
+          toursToProcess = espnIndex;
           await upsertCricketSnapshot(
             CRICKET_SNAPSHOT_KEYS.toursIndex,
             "Upcoming tours index",
-            toursIndex,
+            espnIndex,
           );
-          toursCount = toursIndex.tours.length;
+          toursCount = espnIndex.tours.length;
+          warnings.push(
+            `Built tours index from ESPNcricinfo (${espnIndex.tours.length} tour(s)) — no CricAPI data available.`,
+          );
+        } else {
+          errors.push("Tours index: CricAPI blocked and ESPNcricinfo returned no tours.");
         }
-
-        const detailResult = await syncTourDetails(
-          toursToProcess.tours,
-          toursToProcess.warnings,
-          keysToKeep,
-          { squadsOnly },
-        );
-        tourDetailsCount = detailResult.built;
-        errors.push(...detailResult.errors);
-      } catch (e) {
-        errors.push(`Tours index: ${e instanceof Error ? e.message : "failed"}`);
       }
+    } else {
+      await upsertCricketSnapshot(CRICKET_SNAPSHOT_KEYS.toursIndex, "Upcoming tours index", toursIndex);
+      toursCount = toursIndex.tours.length;
     }
+
+    const detailResult = await syncTourDetails(toursToProcess.tours, toursToProcess.warnings, keysToKeep, {
+      squadsOnly,
+    });
+    tourDetailsCount = detailResult.built;
+    errors.push(...detailResult.errors);
 
     if (toursCount > 0) {
       const prunedDb = await deleteCricketSnapshotsExcept(keysToKeep);
@@ -484,6 +479,8 @@ export async function syncCricketSnapshots(
         warnings.push(`Removed ${pruned} outdated tour snapshot(s).`);
       }
     }
+  } catch (e) {
+    errors.push(`Tours index: ${e instanceof Error ? e.message : "failed"}`);
   }
 
   return {
@@ -493,8 +490,77 @@ export async function syncCricketSnapshots(
     tourDetailsCount,
     warnings: [...new Set(warnings)],
     errors,
+    jobsRun: ["tours"],
+  };
+}
+
+/**
+ * Coordinator: dispatch to individual modular jobs based on selection.
+ * Aggregates results from all jobs run.
+ */
+export async function syncCricketSnapshots(options?: SyncCricketOptions): Promise<SyncCricketResult> {
+  const jobsRun = resolveCricketSyncJobs(options?.jobs);
+  const run = (job: CricketSyncJobId) => jobsRun.includes(job);
+
+  const results: SyncCricketResult[] = [];
+
+  if (!isPayloadConfigured() || !hasPersistedDatabase()) {
+    return {
+      ok: false,
+      fetchedAt: new Date().toISOString(),
+      toursCount: 0,
+      tourDetailsCount: 0,
+      warnings: [],
+      errors: ["PAYLOAD_SECRET or database not configured"],
+      jobsRun,
+    };
+  }
+
+  try {
+    await ensureSqliteCricketSnapshotsTable();
+
+    if (run("players")) {
+      await ensureCountriesSeeded();
+      const repairedPlayers = await repairInvalidPlayerProfiles();
+      if (repairedPlayers > 0) {
+        console.log(`[cricket] Cleared ${repairedPlayers} invalid player profile URLs`);
+      }
+    }
+  } catch (e) {
+    return {
+      ok: false,
+      fetchedAt: new Date().toISOString(),
+      toursCount: 0,
+      tourDetailsCount: 0,
+      warnings: [],
+      errors: [`Database schema: ${e instanceof Error ? e.message : "error"}`],
+      jobsRun,
+    };
+  }
+
+  if (run("icc") || run("wtc") || run("rankings")) {
+    results.push(await syncRankings(options));
+  }
+
+  if (run("last-match") || run("upcoming")) {
+    results.push(await syncBangladeshLive(options));
+  }
+
+  if (run("tours")) {
+    results.push(await syncToursIndex(options));
+  }
+
+  const aggregated: SyncCricketResult = {
+    ok: results.every((r) => r.ok),
+    fetchedAt: new Date().toISOString(),
+    toursCount: results.reduce((sum, r) => sum + r.toursCount, 0),
+    tourDetailsCount: results.reduce((sum, r) => sum + r.tourDetailsCount, 0),
+    warnings: [...new Set(results.flatMap((r) => r.warnings))],
+    errors: results.flatMap((r) => r.errors),
     jobsRun,
   };
+
+  return aggregated;
 }
 
 /** Log summary for CLI / cron. */
