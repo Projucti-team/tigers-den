@@ -25,11 +25,11 @@ export default function CricketSyncPanel() {
 
     const params = new URLSearchParams({ force: "1" });
     if (job !== "all") {
-      params.set("job", job);
+      params.set("jobs", job);
     }
 
     try {
-      const res = await fetch(`/api/cricket-snapshots/sync?${params.toString()}`, {
+      const res = await fetch(`/api/admin/cricket-sync?${params.toString()}`, {
         method: "POST",
         credentials: "include",
         headers: { Accept: "application/json" },
@@ -83,7 +83,7 @@ export default function CricketSyncPanel() {
     while (Date.now() < deadline) {
       await new Promise((resolve) => setTimeout(resolve, 5000));
 
-      const res = await fetch("/api/cricket-snapshots/sync/status", {
+      const res = await fetch("/api/cron/cricket?status=1", {
         credentials: "include",
         headers: { Accept: "application/json" },
       });
