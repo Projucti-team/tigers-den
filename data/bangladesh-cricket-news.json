@@ -1,14 +1,31 @@
 {
-  "fetchedAt": "2026-07-04T22:37:26.269Z",
+  "fetchedAt": "2026-07-05T22:37:48.830Z",
   "items": [
     {
-      "id": "cricbuzz-139445",
-      "title": "Mustafizur Rahman gets NOC for full Hundred 2026 season",
-      "summary": "Meanwhile, Parvez Hossain Emon got the NOC for the Global Super League and Hasan Mahmud will join Kent for the Vitality Blast",
-      "url": "https://www.cricbuzz.com/cricket-news/139445/mustafizur-rahman-gets-noc-for-full-hundred-2026-season",
-      "imageUrl": "https://static.cricbuzz.com/a/img/v1/540x303/i1/c1026022/mustafizur-is-set-to-become-the-first-bangladesh-player-to-feature-in-englands-franchise-league.jpg",
+      "id": "dailystar-https://www.thedailystar.net/sports/cricket/news/tigers-bank-pacers-after-test-setback-4216626",
+      "title": "Tigers bank on pacers after Test setback",
+      "summary": "Bangladesh will head into the first of the three-match ODI series against Zimbabwe on Monday in Harare, hoping to put the disappointment of their innings-and-85-run defeat in the one-off Test behind them.",
+      "url": "https://www.thedailystar.net/sports/cricket/news/tigers-bank-pacers-after-test-setback-4216626",
+      "source": "dailystar",
+      "publishedAt": "2026-07-05T18:00:00.000Z"
+    },
+    {
+      "id": "cricbuzz-139455",
+      "title": "Mehidy eyes World Cup gains from Zimbabwe ODIs after Test setback",
+      "summary": "Bangladesh's ODI captain said the innings defeat in the one-off Test is \"in the past\" as the visitors turn their attention to the three-match ODI series in Harare",
+      "url": "https://www.cricbuzz.com/cricket-news/139455/mehidy-eyes-world-cup-gains-from-zimbabwe-odis-after-test-setback",
+      "imageUrl": "https://static.cricbuzz.com/a/img/v1/540x303/i1/c1027195/bangladesh-odi-captain-mehidy-hasan-miraz-said-they-have-put-the-humiliation-of-the-one-off-test-defeat-behind-them.jpg",
       "source": "cricbuzz",
-      "publishedAt": "2026-07-04T15:46:58.000Z"
+      "publishedAt": "2026-07-05T15:03:54.000Z"
+    },
+    {
+      "id": "espn-https://www.cricinfo.com/ci/content/story/1544391.html",
+      "title": "Bangladesh's big guns return for ODI battle against Zimbabwe",
+      "summary": "Both teams will want to gain knowledge about their personnel in conditions where the 2027 World Cup will be played",
+      "url": "https://www.cricinfo.com/story/bangladeshs-big-guns-return-for-odi-battle-against-zimbabwe-1544391",
+      "imageUrl": "https://p.imgci.com/db/PICTURES/CMS/380800/380802.5.jpg",
+      "source": "espncricinfo",
+      "publishedAt": "2026-07-05T12:16:16.000Z"
     },
     {
       "id": "espn-https://www.cricinfo.com/ci/content/story/1544220.html",
@@ -46,14 +63,6 @@
       "publishedAt": "2026-06-30T18:05:45.000Z"
     },
     {
-      "id": "dailystar-https://www.thedailystar.net/sports/cricket/news/more-learn-after-zimbabwe-drubbing-4212526",
-      "title": "'More to learn' after Zimbabwe drubbing",
-      "summary": "The defeat, Zimbabwe's biggest-ever victory in Test cricket, came as Bangladesh failed to recover from a batting collapse that saw them bundled out for 140 in the first innings before being dismissed for 185 in just 45 overs in the second, unable to make the hosts bat again.",
-      "url": "https://www.thedailystar.net/sports/cricket/news/more-learn-after-zimbabwe-drubbing-4212526",
-      "source": "dailystar",
-      "publishedAt": "2026-06-30T16:09:00.000Z"
-    },
-    {
       "id": "espn-https://www.cricinfo.com/ci/content/story/1543694.html",
       "title": "Seamers, Kaia lead Zimbabwe to their biggest Test win",
       "summary": "Muzarabani picked up 4 for 65 in the second innings as Zimbabwe thrashed Bangladesh by an innings and 85 runs",
@@ -63,14 +72,6 @@
       "publishedAt": "2026-06-30T13:36:53.000Z"
     },
     {
-      "id": "dailystar-https://www.thedailystar.net/sports/cricket/news/zimbabwe-embarrass-tigers-biggest-ever-test-win-4212256",
-      "title": "Zimbabwe embarrass Tigers with innings and 85-run victory",
-      "summary": "Zimbabwe put Bangladesh through an embarrassing one-off Test in Harare, registering their biggest victory in Test cricket by thumping the visitors by an innings and 85 runs on Day 3 on Tuesday.",
-      "url": "https://www.thedailystar.net/sports/cricket/news/zimbabwe-embarrass-tigers-biggest-ever-test-win-4212256",
-      "source": "dailystar",
-      "publishedAt": "2026-06-30T11:51:50.000Z"
-    },
-    {
       "id": "espn-https://www.cricinfo.com/ci/content/story/1543616.html",
       "title": "Kaia's maiden ton, Madhevere and Ervine's fifties extend Zimbabwe's dominance",
       "summary": "After Zimbabwe were bowled out for 410, with Taijul picking up a seven-for, Bangladesh lost Shadman in the second innings",
@@ -78,23 +79,6 @@
       "imageUrl": "https://p.imgci.com/db/PICTURES/CMS/419100/419189.5.jpg",
       "source": "espncricinfo",
       "publishedAt": "2026-06-29T16:20:45.000Z"
-    },
-    {
-      "id": "dailystar-https://www.thedailystar.net/sports/cricket/news/taijul-shines-zimbabwe-the-drivers-seat-4211481",
-      "title": "Taijul shines but Zimbabwe in the driver's seat",
-      "summary": "With three days remaining, Bangladesh still trail by 230 runs and face a daunting task to save the Test.",
-      "url": "https://www.thedailystar.net/sports/cricket/news/taijul-shines-zimbabwe-the-drivers-seat-4211481",
-      "source": "dailystar",
-      "publishedAt": "2026-06-29T15:27:10.000Z"
-    },
-    {
-      "id": "espn-https://www.cricinfo.com/ci/content/story/1543567.html",
-      "title": "Litton likely to return for second ODI in Zimbabwe",
-      "summary": "Litton is expected to recover from his calf injury in time for the second and third ODIs in Zimbabwe and play \"if he can meet all the parameters of our fitness test\"",
-      "url": "https://www.cricinfo.com/story/zim-vs-ban-litton-das-likely-to-return-for-second-odi-in-zimbabwe-1543567",
-      "imageUrl": "https://p.imgci.com/db/PICTURES/CMS/403300/403358.6.jpg",
-      "source": "espncricinfo",
-      "publishedAt": "2026-06-29T07:21:23.000Z"
     }
   ]
 }
