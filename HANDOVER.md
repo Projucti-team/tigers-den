@@ -18,6 +18,27 @@ Current problem: Jobs run daily regardless of state. Squads fetched for finished
 
 ## Completed Tasks
 
+### ✅ Task #3: Implement `updateTourSyncState()` to track active tours and series formats
+
+**Files created:**
+- `lib/cricket/services/update-tour-sync-state.ts` (~165 lines, 3 functions)
+
+**New functions:**
+- `initializeTourSyncState(toursIndex)` — Create tour_sync_state entries for new tours from index
+- `updateTourFormatStatus(tour, detail)` — Update format statuses (test/odi/t20) from match details, return formats needing squads
+- `markFinishedTours(toursIndex)` — Mark tours no longer in index as finished
+
+**Logic:**
+- Determines tour active status: active if matches in next 30 days, else finished
+- For each format (test/odi/t20): determines status (upcoming/active/finished) from match dates
+- Returns list of (tour, matchTypes) pairs needing squad refresh
+
+**Integrated into:** `syncToursIndex()` — called after building tours index
+
+**Not yet used:** `updateTourFormatStatus()` will be called from refreshSquadsForActiveTours() in Task #4 after each squad fetch
+
+---
+
 ### ✅ Task #2: Refactor `syncCricketSnapshots` into modular jobs
 
 **Files changed:**
@@ -70,23 +91,6 @@ tour_sync_state (
 
 ## In Progress / Upcoming
 
-### Task #3: Implement `updateTourSyncState()`
-
-**Goal:** After CricAPI fetch, update tour state table.
-
-**Responsibilities:**
-- Read tours index from DB (after new fetch)
-- For each tour, determine:
-  - `current_status`: active if matches in next 30 days, else finished
-  - Per-format status (upcoming/active/finished) based on match dates
-  - When all squads for a format are loaded, set `squad_import_complete_{type} = true`
-- Write changes to `tour_sync_state`
-- Return list of (tour_id, format) pairs needing squad refresh
-
-**When called:** After `syncToursIndex()` completes
-
----
-
 ### Task #4: Implement `refreshSquadsForActiveTours()`
 
 **Goal:** Selective squad fetch — only for active tours with upcoming formats.
@@ -135,8 +139,9 @@ tour_sync_state (
 ### Database
 - `lib/cricket/services/tour-sync-state-db.ts` — CRUD operations
 
-### Sync Logic (will refactor)
-- `lib/cricket/services/sync-cricket-snapshots.ts` — **Main file to split** (~500 lines)
+### Sync Logic
+- `lib/cricket/services/sync-cricket-snapshots.ts` — Modular job functions (~700 lines total)
+- `lib/cricket/services/update-tour-sync-state.ts` — Tour state tracking
 - `lib/cricket/sync-jobs.ts` — Job registry + parser
 - `lib/cricket/services/sync-lock.ts` — Prevents concurrent syncs
 
@@ -174,9 +179,9 @@ SELECT * FROM tour_sync_state;
 ## Common Tasks
 
 ### Add a new tour to sync
-1. Run `syncToursIndex()` (CricAPI fetch)
-2. `updateTourSyncState()` creates entry in `tour_sync_state` with `current_status = 'active'`
-3. `refreshSquadsForActiveTours()` picks it up next run, fetches squads per format
+1. Run `syncToursIndex()` (CricAPI fetch) → calls `initializeTourSyncState()`, `updateTourFormatStatus()`, `markFinishedTours()`
+2. Tour entry created in `tour_sync_state` with `current_status = 'active'`, formats tracked
+3. `refreshSquadsForActiveTours()` picks it up next run, fetches squads for upcoming formats
 
 ### Mark a tour finished
 1. Update `current_status = 'finished'` in `tour_sync_state`
