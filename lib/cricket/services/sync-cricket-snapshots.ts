@@ -64,6 +64,11 @@ import {
   type CricketSyncJobId,
   type CricketSyncJobSelection,
 } from "@/lib/cricket/sync-jobs";
+import {
+  initializeTourSyncState,
+  updateTourFormatStatus,
+  markFinishedTours,
+} from "@/lib/cricket/services/update-tour-sync-state";
 
 export type SyncCricketResult = {
   ok: boolean;
@@ -458,6 +463,23 @@ export async function syncToursIndex(options?: SyncCricketOptions): Promise<Sync
     } else {
       await upsertCricketSnapshot(CRICKET_SNAPSHOT_KEYS.toursIndex, "Upcoming tours index", toursIndex);
       toursCount = toursIndex.tours.length;
+    }
+
+    if (!skipCricApi) {
+      try {
+        await initializeTourSyncState(toursToProcess);
+        console.log("[cricket] Initialized tour_sync_state for new tours");
+      } catch (e) {
+        warnings.push(`tour_sync_state init: ${e instanceof Error ? e.message : "failed"}`);
+      }
+    }
+
+    if (toursCount > 0) {
+      try {
+        await markFinishedTours(toursToProcess);
+      } catch (e) {
+        warnings.push(`marking finished tours: ${e instanceof Error ? e.message : "failed"}`);
+      }
     }
 
     const detailResult = await syncTourDetails(toursToProcess.tours, toursToProcess.warnings, keysToKeep, {
