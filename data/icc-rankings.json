@@ -1,5 +1,5 @@
 {
-  "fetchedAt": "2026-07-04T22:12:56.785Z",
+  "fetchedAt": "2026-07-05T22:14:46.071Z",
   "source": "icc-sportz.io",
   "sourceUrl": "https://www.icc-cricket.com/rankings",
   "men": {
@@ -10502,17 +10502,17 @@
           "rank": 1,
           "name": "Australia",
           "abbreviation": "AUS",
-          "rating": 290,
-          "points": 7824,
-          "matches": 27
+          "rating": 291,
+          "points": 8151,
+          "matches": 28
         },
         {
           "rank": 2,
           "name": "England",
           "abbreviation": "ENG",
-          "rating": 277,
-          "points": 10264,
-          "matches": 37
+          "rating": 276,
+          "points": 10504,
+          "matches": 38
         },
         {
           "rank": 3,
@@ -17359,7 +17359,7 @@
         "allrounder": "2026-05-18"
       },
       "t20": {
-        "team": "2026-07-03",
+        "team": "2026-07-05",
         "bat": "2026-06-29",
         "bowl": "2026-06-29",
         "allrounder": "2026-06-29"
