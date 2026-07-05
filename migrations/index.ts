@@ -8,6 +8,7 @@ import * as payloadLockedDocumentsRelsFull from "./20260612_000000_payload_locke
 import * as cricketPlayers from "./20260616_000000_cricket_players";
 import * as legalGlobals from "./20260617_000000_legal_globals";
 import * as trackedPlayerLeagues from "./20260618_000000_tracked_player_leagues";
+import * as tourSyncState from "./20260705_000000_tour_sync_state";
 
 type Migration = {
   name: string;
@@ -55,5 +56,10 @@ export const migrations: Migration[] = [
     name: "20260618_000000_tracked_player_leagues",
     up: trackedPlayerLeagues.up,
     down: trackedPlayerLeagues.down,
+  },
+  {
+    name: "20260705_000000_tour_sync_state",
+    up: tourSyncState.up,
+    down: tourSyncState.down,
   },
 ];

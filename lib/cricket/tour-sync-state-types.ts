@@ -1,0 +1,45 @@
+export type SeriesStatus = "upcoming" | "active" | "finished";
+export type TourStatus = "active" | "finished";
+
+export interface TourSyncState {
+  id: number;
+  tour_id: string;
+  tour_slug: string;
+  current_status: TourStatus;
+  test_series_status?: SeriesStatus | null;
+  odi_series_status?: SeriesStatus | null;
+  t20_series_status?: SeriesStatus | null;
+  last_index_sync?: string | null;
+  last_squad_sync_test?: string | null;
+  last_squad_sync_odi?: string | null;
+  last_squad_sync_t20?: string | null;
+  squad_import_complete_test: boolean;
+  squad_import_complete_odi: boolean;
+  squad_import_complete_t20: boolean;
+  created_at: string;
+  updated_at: string;
+}
+
+export type MatchType = "test" | "odi" | "t20";
+
+export interface TourSyncStateUpdate {
+  tour_id: string;
+  tour_slug: string;
+  current_status?: TourStatus;
+  test_series_status?: SeriesStatus | null;
+  odi_series_status?: SeriesStatus | null;
+  t20_series_status?: SeriesStatus | null;
+  last_index_sync?: string;
+  last_squad_sync_test?: string;
+  last_squad_sync_odi?: string;
+  last_squad_sync_t20?: string;
+  squad_import_complete_test?: boolean;
+  squad_import_complete_odi?: boolean;
+  squad_import_complete_t20?: boolean;
+}
+
+export interface SquadRefreshTarget {
+  tour_id: string;
+  tour_slug: string;
+  matchTypes: MatchType[];
+}
