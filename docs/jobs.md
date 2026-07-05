@@ -8,14 +8,16 @@ All **Bangladesh times** below assume **UTC+6** (no DST). Cron expressions use *
 
 ## Nightly schedule (Bangladesh time)
 
-| Time (BDT) | Time (UTC) | Job | Runner |
+| Time (BDT) | Time (UTC) | Job | Source |
 |------------|------------|-----|--------|
-| **3:00 AM** | 21:00 | **Cricket sync** — tours index, tour detail snapshots, venue guides, ESPN squads/fixtures, ICC → DB + JSON | Server: `POST /api/cron/cricket` |
-| **3:15 AM** | 21:15 | **ICC rankings + WTC** → `data/icc-rankings.json`, `data/wtc-standings.json` | GitHub Action `scrape-icc-rankings` |
-| **3:30 AM** | 21:30 | **Bangladesh last match** → `data/bangladesh-last-match.json` | GitHub Action `scrape-bangladesh-match` |
-| **3:45 AM** | 21:45 | **Bangladesh cricket news** → `data/bangladesh-cricket-news.json` | GitHub Action `scrape-bangladesh-news` |
+| **3:00 AM** | 21:00 | **Tours index + state** — CricAPI tours → DB, initialize `tour_sync_state` | Server: `POST /api/cron/cricket?jobs=tours` |
+| **3:15 AM** | 21:15 | **Squad refresh** — ESPN squads for active tours, upcoming formats only | Server: `POST /api/cron/cricket?jobs=squads` |
+| **3:30 AM** | 21:30 | **Rankings** — ICC + WTC → JSON + DB showcase | Server: `POST /api/cron/cricket?jobs=rankings` |
+| **3:45 AM** | 21:45 | **Bangladesh live** — Last/upcoming BD matches → JSON + DB | Server: `POST /api/cron/cricket?jobs=last-match,upcoming` |
+| **12:00 PM** | 06:00 | **Squad refresh** (repeat) — ESPN squads for active tours | Server: `POST /api/cron/cricket?jobs=squads` |
+| **6:00 PM** | 12:00 | **Squad refresh** (repeat) — ESPN squads for active tours | Server: `POST /api/cron/cricket?jobs=squads` |
 
-The server cricket sync also refreshes ICC/WTC JSON and runs ESPN squad scrape **inside the app** when the nightly cron fires — GitHub Actions keep the repo caches updated for dev and as a backup between deploys.
+GitHub Actions keep repo caches updated for dev and as backup between deploys (jobs.md docs: old schedule — may be deprecated).
 
 ---
 
@@ -25,48 +27,144 @@ The server cricket sync also refreshes ICC/WTC JSON and runs ESPN squad scrape *
 **Auth:** `Authorization: Bearer YOUR_CRON_SECRET` (or `?secret=` in dev only)  
 **Duration:** up to 5 minutes on the server (`maxDuration = 300`). The HTTP response returns **immediately** (HTTP 202) so Cloudflare does not time out with **524** — poll `GET ?status=1` until `inProgress` is false.
 
-### What it does
+### Modular job architecture
 
-`lib/cricket/services/sync-cricket-snapshots.ts`:
+The sync is now split into **independent jobs** that can run on different schedules. Select jobs via `?jobs=` parameter (comma-separated).
 
-1. Refresh ICC rankings (Sportz) + WTC (ESPN) → JSON files + DB showcase.
-2. Unless CricAPI snapshot is fresh (&lt; ~24h) and not `force`:
-   - Fetch upcoming tours from CricketData.org → `tours-index` snapshot.
-   - Build per-tour detail pages (`buildTourDetailLive`) → `tour-detail:{slug}` in DB **and** `data/tour-details.json`.
-3. For umbrella tours, fixtures/results/venues come from **ESPN season events** (CricAPI is fallback when ESPN has no data).
-4. Venue & city copy is resolved once per ground → `venue-guides` snapshot + `data/venue-guides.json` (reused across series).
-5. Refresh ESPN tour squads → `data/espn-tour-squads.json` + tour snapshots.
-6. Scrape Bangladesh last/upcoming matches → JSON + DB.
-7. Seed/repair player registry (`countries`, `players`).
-8. Prune finished series from `tour-detail:*` snapshots and `data/tour-details.json`.
+#### Tours index job (`?jobs=tours`)
 
-### Coolify scheduled task
+`lib/cricket/services/sync-cricket-snapshots.ts::syncToursIndex()`:
 
+1. Fetch upcoming tours from CricAPI (unless snapshot is fresh &lt; 24h)
+2. Build per-tour detail pages → `tour-detail:{slug}` DB snapshots + `data/tour-details.json`
+3. Initialize/update `tour_sync_state` table (tracks active tours, series format status)
+4. Mark finished tours as done (no squad refresh wasted)
+5. For umbrella tours: fixtures/results from ESPN (CricAPI fallback if missing)
+6. Resolve venues once per ground → `venue-guides` snapshot + JSON
+7. Prune old tour snapshots
+
+#### Squad refresh job (`?jobs=squads`)
+
+`lib/cricket/services/sync-cricket-snapshots.ts::syncSquads()`:
+
+1. Query `tour_sync_state` for active tours with **upcoming** formats (Test/ODI/T20)
+2. Skip tours where squads already imported for that format
+3. Fetch squads from **ESPN only** (lightweight, no CricAPI quota)
+4. Merge squads into existing tour-detail snapshots
+5. Mark format complete, update last-sync timestamp
+
+**Key feature:** Lightweight, selective. Can run 2–3× daily without quota pressure. Only fetches for:
+- Active tours (matches in next 30 days)
+- Upcoming formats (not past, not finished)
+- Not yet imported (first time per format)
+
+#### Rankings job (`?jobs=rankings` or `?jobs=icc,wtc`)
+
+`lib/cricket/services/sync-cricket-snapshots.ts::syncRankings()`:
+
+1. Refresh ICC rankings (Sportz) → `data/icc-rankings.json`
+2. Refresh WTC standings (ESPN) → `data/wtc-standings.json`
+3. Build rankings showcase → DB + JSON
+
+#### Bangladesh live job (`?jobs=last-match,upcoming`)
+
+`lib/cricket/services/sync-cricket-snapshots.ts::syncBangladeshLive()`:
+
+1. Scrape last completed Bangladesh match → `bangladesh-last-match.json`
+2. Scrape upcoming Bangladesh fixtures → `bangladesh-upcoming-matches.json`
+
+#### Player registry job (`?jobs=players`)
+
+`lib/cricket/services/sync-cricket-snapshots.ts::syncCricketSnapshots()`:
+
+1. Seed country data in `countries` table
+2. Repair broken player profile/headshot URLs in `players` table
+
+### Coolify scheduled tasks
+
+Set up separate Coolify tasks for each job on its own schedule:
+
+**3:00 AM BDT (21:00 UTC) — Tours index:**
 ```bash
-curl -fsS -X POST "https://your-domain.com/api/cron/cricket" \
+curl -fsS -X POST "https://your-domain.com/api/cron/cricket?jobs=tours" \
   -H "Authorization: Bearer YOUR_CRON_SECRET"
 ```
+Cron: `0 21 * * *`
 
-Cron expression (UTC): `0 21 * * *`
+**3:15 AM BDT (21:15 UTC) — Squad refresh:**
+```bash
+curl -fsS -X POST "https://your-domain.com/api/cron/cricket?jobs=squads" \
+  -H "Authorization: Bearer YOUR_CRON_SECRET"
+```
+Cron: `15 21 * * *`
+
+**12:00 PM BDT (06:00 UTC) — Squad refresh (repeat):**
+```bash
+curl -fsS -X POST "https://your-domain.com/api/cron/cricket?jobs=squads" \
+  -H "Authorization: Bearer YOUR_CRON_SECRET"
+```
+Cron: `0 6 * * *`
+
+**6:00 PM BDT (12:00 UTC) — Squad refresh (repeat):**
+```bash
+curl -fsS -X POST "https://your-domain.com/api/cron/cricket?jobs=squads" \
+  -H "Authorization: Bearer YOUR_CRON_SECRET"
+```
+Cron: `0 12 * * *`
+
+**3:30 AM BDT (21:30 UTC) — Rankings:**
+```bash
+curl -fsS -X POST "https://your-domain.com/api/cron/cricket?jobs=rankings" \
+  -H "Authorization: Bearer YOUR_CRON_SECRET"
+```
+Cron: `30 21 * * *`
+
+**3:45 AM BDT (21:45 UTC) — Bangladesh live:**
+```bash
+curl -fsS -X POST "https://your-domain.com/api/cron/cricket?jobs=last-match,upcoming" \
+  -H "Authorization: Bearer YOUR_CRON_SECRET"
+```
+Cron: `45 21 * * *`
+
+### Query parameters
+
+- `?jobs=tours` — Tours index only
+- `?jobs=squads` — Squad refresh only
+- `?jobs=rankings` — Rankings (ICC + WTC) only
+- `?jobs=last-match,upcoming` — Bangladesh matches only
+- `?jobs=tours,squads` — Multiple jobs (comma-separated)
+- `?force=1` — Force full CricAPI refresh on tours job (ignore 24h freshness check)
+- `?wait=1` — Wait synchronously (default: background 202 response + poll `?status=1`)
+- `?status=1` — Check sync progress (returns `{inProgress: bool, ...}`)
 
 ### Force full CricAPI refresh
 
 ```bash
-curl -fsS -X POST "https://your-domain.com/api/cron/cricket?force=1" \
+# Bypass freshness check, re-fetch tours from CricAPI
+curl -fsS -X POST "https://your-domain.com/api/cron/cricket?jobs=tours&force=1&wait=1" \
   -H "Authorization: Bearer YOUR_CRON_SECRET"
 
-# Poll until finished (avoids Cloudflare 524 timeout):
+# Or poll asynchronously (returns 202 immediately):
+curl -fsS -X POST "https://your-domain.com/api/cron/cricket?jobs=tours&force=1" \
+  -H "Authorization: Bearer YOUR_CRON_SECRET"
+
+# Poll until finished:
 curl -fsS "https://your-domain.com/api/cron/cricket?status=1" \
   -H "Authorization: Bearer YOUR_CRON_SECRET"
 ```
 
-On the VPS, prefer `./scripts/prod-cricket-sync.sh --force` (hits localhost inside Docker when available).
+On the VPS, prefer `./scripts/prod-cricket-sync.sh --force` (hits localhost inside Docker).
 
 ### Local / manual
 
 ```bash
 # Dev server must be running; CRON_SECRET optional in NODE_ENV=development
+
+# Run all jobs (full sync)
 npm run sync:cricket
+
+# Run specific job(s)
+npm run sync:cricket -- --jobs=squads
 
 # Against production URL (reads .env.production)
 npm run sync:cricket:prod
@@ -145,21 +243,29 @@ Logged-in Payload admins can trigger sync from the admin panel (uses `/api/admin
 
 ## Script reference
 
+### Main sync entry point (use `--jobs` for selective runs)
+
+| Command | Purpose |
+|---------|---------|
+| `npm run sync:cricket` | Trigger all jobs against localhost dev server |
+| `npm run sync:cricket -- --jobs=squads` | Trigger squad refresh only |
+| `npm run sync:cricket -- --jobs=tours` | Trigger tours index only |
+| `npm run sync:cricket:prod` | Hit production cron URL with all jobs |
+| `npm run sync:cricket:prod -- --jobs=squads` | Hit production cron with squad refresh only |
+
+### Standalone scripts (for specific use cases)
+
 | Script | Command | When to use |
 |--------|---------|-------------|
-| `scripts/sync-cricket-nightly.ts` | `npm run sync:cricket` | Local trigger of `/api/cron/cricket` |
-| `scripts/prod-cricket-sync.sh` | `npm run sync:cricket:prod` | Hit production cron URL |
-| `scripts/run-deploy-cricket-sync.ts` | `npm run deploy:cricket-sync` | Post-deploy sync helper |
-| `scripts/scrape-icc-rankings.ts` | `npm run scrape:icc-rankings` | Refresh ICC JSON only |
-| `scripts/scrape-wtc-standings.ts` | `npm run scrape:wtc-standings` | Refresh WTC JSON only |
-| `scripts/scrape-bangladesh-match.ts` | `npm run scrape:bangladesh-match` | Last BD match JSON |
-| `scripts/scrape-bangladesh-news.ts` | `npm run scrape:bangladesh-news` | News backup JSON |
-| `scripts/scrape-espn-squads.ts` | `npm run scrape:espn-squads` | Tour squad cache |
-| `scripts/rebuild-rankings-showcase.ts` | `npm run rebuild:rankings` | Rebuild rankings snapshot in DB |
-| `scripts/rebuild-tour-details.ts` | `npm run rebuild:tour-details` | Rebuild tour detail JSON + DB (prefer `sync:cricket` on deploy) |
+| `scripts/sync-cricket-nightly.ts` | `npm run sync:cricket` | Local dev trigger |
+| `scripts/prod-cricket-sync.sh` | `npm run sync:cricket:prod` | Production cron URL (shell wrapper) |
+| `scripts/run-deploy-cricket-sync.ts` | `npm run deploy:cricket-sync` | Post-deploy bootstrap |
+| `scripts/scrape-icc-rankings.ts` | `npm run scrape:icc-rankings` | Backup ICC JSON (alternative to job) |
+| `scripts/scrape-wtc-standings.ts` | `npm run scrape:wtc-standings` | Backup WTC JSON (alternative to job) |
+| `scripts/scrape-bangladesh-match.ts` | `npm run scrape:bangladesh-match` | Backup BD last match (alternative to job) |
 | `scripts/backup-postgres.sh` | (cron on server) | Daily DB backup |
-| `scripts/hetzner-bootstrap.sh` | manual | VPS bootstrap + first sync |
-| `deploy/docker-entrypoint.sh` | automatic on deploy | Volume seed + bootstrap |
+| `scripts/hetzner-bootstrap.sh` | manual | VPS bootstrap + first full sync |
+| `deploy/docker-entrypoint.sh` | automatic on deploy | Volume seed + bootstrap on container start |
 
 ---
 
