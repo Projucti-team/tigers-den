@@ -18,6 +18,29 @@ Current problem: Jobs run daily regardless of state. Squads fetched for finished
 
 ## Completed Tasks
 
+### ✅ Task #4: Implement `refreshSquadsForActiveTours()` — selective squad fetch
+
+**Files:**
+- `lib/cricket/services/refresh-squads-for-active-tours.ts` — Main logic (~120 lines)
+- Updated `lib/cricket/services/sync-cricket-snapshots.ts` — New `syncSquads()` job
+- Updated `lib/cricket/sync-jobs.ts` — Register "squads" job
+
+**How it works:**
+1. Queries `tour_sync_state` for active tours with upcoming formats
+2. Skips tours where `squad_import_complete_{type} = true`
+3. Fetches squads from ESPN only (lightweight, no CricAPI)
+4. Merges squads into existing tour-detail snapshots
+5. Updates `last_squad_sync_{type}` and `squad_import_complete_{type}`
+
+**Key feature:** Selective refresh. Only fetches squads for:
+- Active tours (matches in next 30 days)
+- Upcoming match types (not past, not finished)
+- Not yet imported (first time for that format)
+
+Can run 2–3× daily without quota pressure. Old tours ignored.
+
+---
+
 ### ✅ Task #3: Implement `updateTourSyncState()` to track active tours and series formats
 
 **Files created:**
@@ -91,21 +114,6 @@ tour_sync_state (
 
 ## In Progress / Upcoming
 
-### Task #4: Implement `refreshSquadsForActiveTours()`
-
-**Goal:** Selective squad fetch — only for active tours with upcoming formats.
-
-**Behavior:**
-- Read `tour_sync_state`: find active tours with `{type}_series_status = 'upcoming'`
-- Skip tours where `squad_import_complete_{type} = true`
-- Fetch squads from ESPN only (not CricAPI)
-- Upsert to existing tour-detail snapshots
-- Update `last_squad_sync_{type}` and `squad_import_complete_{type}`
-
-**Cron:** Run 2–3× daily (e.g., 3:15 AM, 12 PM, 6 PM BDT)
-
----
-
 ### Task #5: Update cron endpoints & admin UI
 
 **Goal:** Route requests to individual modular jobs instead of one monolithic sync.
@@ -140,8 +148,9 @@ tour_sync_state (
 - `lib/cricket/services/tour-sync-state-db.ts` — CRUD operations
 
 ### Sync Logic
-- `lib/cricket/services/sync-cricket-snapshots.ts` — Modular job functions (~700 lines total)
-- `lib/cricket/services/update-tour-sync-state.ts` — Tour state tracking
+- `lib/cricket/services/sync-cricket-snapshots.ts` — Modular job functions (~800 lines total)
+- `lib/cricket/services/update-tour-sync-state.ts` — Tour state tracking (~165 lines)
+- `lib/cricket/services/refresh-squads-for-active-tours.ts` — Selective squad sync (~120 lines)
 - `lib/cricket/sync-jobs.ts` — Job registry + parser
 - `lib/cricket/services/sync-lock.ts` — Prevents concurrent syncs
 
@@ -197,6 +206,11 @@ curl -X POST http://localhost:3000/api/cron/cricket?force=1&wait=1
 ```bash
 curl -X POST http://localhost:3000/api/cron/cricket?jobs=squads&wait=1
 ```
+
+**This is the key efficiency win:** Squads can refresh 2–3 times daily without hitting CricAPI. Only fetches for:
+- Active tours (matches coming in next 30 days)
+- Upcoming formats (not past or finished)
+- Not yet imported (first time only per format)
 
 ---
 
