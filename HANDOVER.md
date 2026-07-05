@@ -116,22 +116,20 @@ tour_sync_state (
 
 ### ✅ Task #5: Update cron endpoints & admin UI
 
-**Status:** Both endpoints already wired up! The existing code already:
-- Parses `?jobs=` parameter via `parseCricketSyncJobs()`
-- Passes jobs to `syncCricketSnapshots({ force, jobs })`
-- Dispatches to individual job functions
+**Status:** Both endpoints wired up! Both cron and admin support `?jobs=` parameter.
 
 **Changes made:**
-- Updated `docs/jobs.md` with new modular architecture (150+ line overhaul)
-- Documented recommended cron schedule (separate tasks per job)
-- Added examples: `?jobs=squads`, `?jobs=tours`, `?jobs=tours,squads`, etc.
-- Clarified query parameters: `?force=1`, `?wait=1`, `?status=1`
+1. Updated `docs/jobs.md` (150+ lines) — new modular architecture
+2. Fixed `CricketSyncPanel.tsx` — admin UI now calls correct endpoints:
+   - Changed: `/api/cricket-snapshots/sync` → `/api/admin/cricket-sync`
+   - Changed: `/api/cricket-snapshots/sync/status` → `/api/cron/cricket?status=1`
+   - Updated: `?job=` → `?jobs=` parameter name
 
 **Live features:**
-- `POST /api/cron/cricket?jobs=squads` — Squad refresh only
-- `POST /api/cron/cricket?jobs=tours&force=1` — Force tours index
-- `POST /api/cron/cricket?jobs=rankings,last-match` — Multiple jobs
-- Admin endpoint also supports `?jobs=` parameter
+- Admin panel shows buttons for each job: All, Players, ICC, WTC, Rankings, Last Match, Upcoming, Tours, Squads
+- Click any button to run that job (or "Run all" for full sync)
+- Results show tour count, details built, warnings, errors
+- Cron endpoint: `POST /api/cron/cricket?jobs=squads` (or any job combination)
 
 ---
 
