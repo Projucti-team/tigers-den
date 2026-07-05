@@ -7,6 +7,7 @@ export const CRICKET_SYNC_JOB_IDS = [
   "last-match",
   "upcoming",
   "tours",
+  "squads",
 ] as const;
 
 export type CricketSyncJobId = (typeof CRICKET_SYNC_JOB_IDS)[number];
@@ -57,6 +58,11 @@ export const CRICKET_SYNC_JOBS: {
     id: "tours",
     label: "Tours & fixtures",
     description: "Rebuild /tours index and per-tour detail pages (CricAPI + ESPN).",
+  },
+  {
+    id: "squads",
+    label: "Tour squads",
+    description: "Refresh squads for active tours with upcoming match types (ESPN only, selective).",
   },
 ];
 

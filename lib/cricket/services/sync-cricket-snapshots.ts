@@ -602,6 +602,10 @@ export async function syncCricketSnapshots(options?: SyncCricketOptions): Promis
     results.push(await syncToursIndex(options));
   }
 
+  if (run("squads")) {
+    results.push(await syncSquads(options));
+  }
+
   const aggregated: SyncCricketResult = {
     ok: results.every((r) => r.ok),
     fetchedAt: new Date().toISOString(),
