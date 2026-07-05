@@ -65,6 +65,8 @@ type CoreRoster = {
 type EspnLeagueRef = {
   espnLeagueId: number;
   cricinfoSeriesId: number;
+  seasonYear?: number;
+  useSeasonEvents?: boolean;
 };
 
 async function fetchCoreJson<T>(url: string): Promise<T | null> {
