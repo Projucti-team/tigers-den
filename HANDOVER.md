@@ -38,13 +38,13 @@ API token stored in secure environment (GitHub blocks token commit). Last update
 **Fix:** Convert File to Buffer before passing to Payload: `Buffer.from(await file.arrayBuffer())` with mimetype and name.  
 **Impact:** Feedback image uploads now work correctly in production build.
 
-### Database Foreign Key Constraints
-**Issue:** Feedback migration added feedback_id to payload_locked_documents_rels but missing foreign key constraint, causing schema validation errors on sync.  
-**Fix:** Added proper foreign key constraints:
+### Database Relationship Management
+**Issue:** Manually adding feedback_id to payload_locked_documents_rels conflicted with Payload's auto-migration.  
+**Fix:** Removed manual column/constraint management. Payload CMS automatically handles relationship columns for collections.  
+**Foreign Keys:** Kept in feedback table definition:
   - `feedback.image_id` → `media.id` (ON DELETE SET NULL)
   - `feedback.user_id` → `users.id` (ON DELETE SET NULL)
-  - `payload_locked_documents_rels.feedback_id` → `feedback.id` (ON DELETE CASCADE)
-**Impact:** Database schema syncs without errors. Referential integrity maintained.
+**Impact:** Database schema syncs without conflicts. Payload manages rels table automatically.
 
 ---
 
