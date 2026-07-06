@@ -9,7 +9,6 @@ interface FeedbackFormData {
   category: "bug" | "feature" | "other";
   email: string;
   name: string;
-  imageFile?: File;
 }
 
 export function FeedbackModal({ onClose }: { onClose: () => void }) {
@@ -21,13 +20,11 @@ export function FeedbackModal({ onClose }: { onClose: () => void }) {
     email: session?.user?.email || "",
     name: session?.user?.name || "",
   });
-  const [imagePreview, setImagePreview] = useState<string>("");
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [submitStatus, setSubmitStatus] = useState<{
     type: "success" | "error";
     message: string;
   } | null>(null);
-  const fileInputRef = useRef<HTMLInputElement>(null);
   const modalRef = useRef<HTMLDivElement>(null);
 
   const pageUrl = typeof window !== "undefined" ? window.location.href : "";
@@ -39,18 +36,6 @@ export function FeedbackModal({ onClose }: { onClose: () => void }) {
     window.addEventListener("keydown", handleEscape);
     return () => window.removeEventListener("keydown", handleEscape);
   }, [onClose]);
-
-  const handleImageSelect = (e: React.ChangeEvent<HTMLInputElement>) => {
-    const file = e.target.files?.[0];
-    if (file && file.type.startsWith("image/")) {
-      setFormData((prev) => ({ ...prev, imageFile: file }));
-      const reader = new FileReader();
-      reader.onload = (event) => {
-        setImagePreview(event.target?.result as string);
-      };
-      reader.readAsDataURL(file);
-    }
-  };
 
   const handleSubmit = useCallback(
     async (e: React.FormEvent) => {
@@ -75,23 +60,18 @@ export function FeedbackModal({ onClose }: { onClose: () => void }) {
       setSubmitStatus(null);
 
       try {
-        const submitForm = new FormData();
-        submitForm.append("title", formData.title);
-        submitForm.append("description", formData.description);
-        submitForm.append("category", formData.category);
-        submitForm.append("email", formData.email);
-        submitForm.append("name", formData.name);
-        submitForm.append("pageUrl", pageUrl);
-        if (session?.user?.id) {
-          submitForm.append("userId", session.user.id);
-        }
-        if (formData.imageFile) {
-          submitForm.append("image", formData.imageFile);
-        }
-
         const response = await fetch("/api/feedback", {
           method: "POST",
-          body: submitForm,
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify({
+            title: formData.title,
+            description: formData.description,
+            category: formData.category,
+            email: formData.email,
+            name: formData.name,
+            pageUrl,
+            ...(session?.user?.id && { userId: session.user.id }),
+          }),
         });
 
         if (!response.ok) {
@@ -252,49 +232,6 @@ export function FeedbackModal({ onClose }: { onClose: () => void }) {
               Submitting as {session.user.name} ({session.user.email})
             </div>
           )}
-
-          {/* Image Upload */}
-          <div>
-            <label className="block text-sm font-medium text-gray-700 mb-2">
-              Screenshot or Image (optional)
-            </label>
-            <div className="flex gap-4">
-              <input
-                ref={fileInputRef}
-                type="file"
-                accept="image/*"
-                onChange={handleImageSelect}
-                className="hidden"
-              />
-              <button
-                type="button"
-                onClick={() => fileInputRef.current?.click()}
-                className="px-4 py-2 border border-gray-300 rounded-md text-sm font-medium text-gray-700 hover:bg-gray-50"
-              >
-                {formData.imageFile ? "Change image" : "Add image"}
-              </button>
-              {imagePreview && (
-                <div className="relative w-20 h-20">
-                  <img
-                    src={imagePreview}
-                    alt="Preview"
-                    className="w-full h-full object-cover rounded-md border border-gray-300"
-                  />
-                  <button
-                    type="button"
-                    onClick={() => {
-                      setFormData((prev) => ({ ...prev, imageFile: undefined }));
-                      setImagePreview("");
-                      if (fileInputRef.current) fileInputRef.current.value = "";
-                    }}
-                    className="absolute -top-2 -right-2 bg-red-500 text-white rounded-full w-5 h-5 flex items-center justify-center text-xs"
-                  >
-                    ✕
-                  </button>
-                </div>
-              )}
-            </div>
-          </div>
 
           {/* Page URL Info */}
           <div className="bg-gray-50 border border-gray-200 rounded-md p-3 text-xs text-gray-600">

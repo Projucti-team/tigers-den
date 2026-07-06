@@ -4,16 +4,15 @@ import config from "@/payload.config";
 export async function POST(request: Request) {
   try {
     const payload = await getPayload({ config });
-    const formData = await request.formData();
+    const body = await request.json();
 
-    const title = formData.get("title") as string;
-    const description = formData.get("description") as string;
-    const category = formData.get("category") as "bug" | "feature" | "other";
-    const email = formData.get("email") as string;
-    const name = formData.get("name") as string;
-    const pageUrl = formData.get("pageUrl") as string;
-    const userId = formData.get("userId") as string | null;
-    const imageFile = formData.get("image") as File | null;
+    const title = body.title as string;
+    const description = body.description as string;
+    const category = body.category as "bug" | "feature" | "other";
+    const email = body.email as string;
+    const name = body.name as string;
+    const pageUrl = body.pageUrl as string;
+    const userId = body.userId as string | null;
 
     // Validate required fields
     if (!title?.trim() || !description?.trim()) {
@@ -28,29 +27,6 @@ export async function POST(request: Request) {
         { message: "Email and name are required" },
         { status: 400 },
       );
-    }
-
-    // Handle image upload if provided
-    let imageId: number | null = null;
-    if (imageFile && imageFile.size > 0) {
-      try {
-        const buffer = await imageFile.arrayBuffer();
-        const mediaPayload = await payload.create({
-          collection: "media",
-          data: {
-            alt: `Feedback image for: ${title}`,
-          },
-          file: {
-            data: Buffer.from(buffer),
-            mimetype: imageFile.type,
-            name: imageFile.name,
-          },
-        });
-        imageId = mediaPayload.id as number;
-      } catch (error) {
-        console.error("Failed to upload image:", error);
-        // Continue without image if upload fails
-      }
     }
 
     // Create status timeline entry
@@ -75,7 +51,6 @@ export async function POST(request: Request) {
         pageUrl,
         status: "new",
         statusTimeline,
-        ...(imageId && { image: imageId }),
         ...(userId && { user: userId }),
       },
     });
