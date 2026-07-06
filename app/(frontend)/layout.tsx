@@ -21,6 +21,7 @@ import { Navbar } from "@/components/layout/Navbar";
 import { SiteFooter } from "@/components/layout/SiteFooter";
 import { TopBar } from "@/components/layout/TopBar";
 import { AuthSessionProvider } from "@/components/providers/AuthSessionProvider";
+import { FeedbackButton } from "@/components/FeedbackButton";
 import { ensureCricketSnapshotsFresh } from "@/lib/cricket/services/ensure-cricket-fresh";
 import { getMarqueeTickerSnapshot } from "@/lib/cricket/services/marquee-ticker";
 import { getTourNavLinks } from "@/lib/cricket/services/tours-display";
@@ -65,6 +66,7 @@ export default async function FrontendLayout({ children }: { children: ReactNode
             <LiveMarquee initialItems={marqueeSnapshot.items} />
             <main>{children}</main>
             <SiteFooter />
+            <FeedbackButton />
           </div>
         </AuthSessionProvider>
       </body>

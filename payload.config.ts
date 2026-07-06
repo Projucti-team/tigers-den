@@ -7,6 +7,7 @@ import { fileURLToPath } from "url";
 import { Chants } from "./collections/Chants";
 import { Countries } from "./collections/Countries";
 import { CricketSnapshots } from "./collections/CricketSnapshots";
+import { Feedback } from "./collections/Feedback";
 import { HeroSlides } from "./collections/HeroSlides";
 import { MatchChatMessages } from "./collections/MatchChatMessages";
 import { MatchChatRooms } from "./collections/MatchChatRooms";
@@ -67,6 +68,7 @@ export default buildConfig({
     Players,
     TrackedPlayerLeagues,
     CricketSnapshots,
+    Feedback,
   ],
   globals: [PrivacyPolicy, TermsOfService],
   editor: lexicalEditor(),
