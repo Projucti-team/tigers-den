@@ -187,19 +187,19 @@ export async function getSquadRefreshTargets(): Promise<SquadRefreshTarget[]> {
     const matchTypes: Array<"test" | "odi" | "t20"> = [];
 
     if (
-      tour.test_series_status === "upcoming" &&
+      (tour.test_series_status === "upcoming" || tour.test_series_status === "active") &&
       !tour.squad_import_complete_test
     ) {
       matchTypes.push("test");
     }
     if (
-      tour.odi_series_status === "upcoming" &&
+      (tour.odi_series_status === "upcoming" || tour.odi_series_status === "active") &&
       !tour.squad_import_complete_odi
     ) {
       matchTypes.push("odi");
     }
     if (
-      tour.t20_series_status === "upcoming" &&
+      (tour.t20_series_status === "upcoming" || tour.t20_series_status === "active") &&
       !tour.squad_import_complete_t20
     ) {
       matchTypes.push("t20");
