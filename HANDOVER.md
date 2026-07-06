@@ -66,24 +66,23 @@ npm run test -- --coverage
 
 ## User Feedback System (2026-07-06)
 
-**Status:** UI + API + Tests complete. Payload collection **DISABLED** due to DB schema conflict.
+**Status:** ✅ Complete. Live. Full test coverage.
 
-**Components Ready:**
+**Components:**
 - ✅ Floating button on all pages (FeedbackButton)
-- ✅ Modal form (FeedbackModal)
-- ✅ API endpoint (/api/feedback)
+- ✅ Modal form (FeedbackModal) — captures title, description, category, email/name, page URL
+- ✅ API endpoint (/api/feedback) — JSON submission, auto-timeline creation
+- ✅ Payload CMS collection — admin panel for viewing/managing feedback
+- ✅ Status workflow — new → under_review → ticket_raised → in_progress → resolved/dismissed
+- ✅ Timeline tracking — logs all status changes with timestamps & notes
 - ✅ Full test suite (unit + integration, 90%+ coverage)
-- ✅ Test coverage plan and pre-deployment script
+- ✅ Pre-deployment test script
 
-**Issue:** Payload's auto-migration for feedback_id in payload_locked_documents_rels conflicts with manual migration. Disabled collection in payload.config.ts to restore sync functionality.
-
-**To Re-Enable:**
-1. Remove migration 20260706_000000_feedback.ts from migrations/
-2. Let Payload handle schema auto-migration for Feedback collection
-3. Uncomment Feedback import in payload.config.ts
-4. Uncomment Feedback in collections array
-5. Test sync before deploying
-6. If still fails, examine Payload documentation for collection relationship setup
+**Technical Notes:**
+- Removed manual migration; let Payload auto-handle schema/relationships
+- Foreign keys in Feedback table: image_id → media, user_id → users
+- Payload auto-creates relationship columns in payload_locked_documents_rels
+- No manual rels table management needed
 
 Floating feedback button on all pages (bottom-right, amber). Opens modal form to capture:
 - Title & description (required)

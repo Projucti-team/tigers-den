@@ -7,7 +7,7 @@ import { fileURLToPath } from "url";
 import { Chants } from "./collections/Chants";
 import { Countries } from "./collections/Countries";
 import { CricketSnapshots } from "./collections/CricketSnapshots";
-// import { Feedback } from "./collections/Feedback"; // DISABLED: DB schema conflict, debug separately
+import { Feedback } from "./collections/Feedback";
 import { HeroSlides } from "./collections/HeroSlides";
 import { MatchChatMessages } from "./collections/MatchChatMessages";
 import { MatchChatRooms } from "./collections/MatchChatRooms";
@@ -68,7 +68,7 @@ export default buildConfig({
     Players,
     TrackedPlayerLeagues,
     CricketSnapshots,
-    // Feedback, // DISABLED: Payload auto-migration conflict, re-enable after fixing DB schema
+    Feedback,
   ],
   globals: [PrivacyPolicy, TermsOfService],
   editor: lexicalEditor(),
