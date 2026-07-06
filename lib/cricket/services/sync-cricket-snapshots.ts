@@ -518,6 +518,23 @@ export async function syncToursIndex(options?: SyncCricketOptions): Promise<Sync
     tourDetailsCount = detailResult.built;
     errors.push(...detailResult.errors);
 
+    // Update format statuses for all tours after building details
+    if (!skipCricApi && toursCount > 0) {
+      try {
+        for (const tour of toursToProcess.tours) {
+          const slug = tourSlug(tour);
+          const key = CRICKET_SNAPSHOT_KEYS.tourDetail(slug);
+          const tourDetail = await readCricketSnapshot<TourDetailSnapshot>(key);
+          if (tourDetail) {
+            await updateTourFormatStatus(tour, tourDetail);
+          }
+        }
+        console.log("[cricket] Updated tour format statuses");
+      } catch (e) {
+        warnings.push(`update format status: ${e instanceof Error ? e.message : "failed"}`);
+      }
+    }
+
     if (toursCount > 0) {
       const prunedDb = await deleteCricketSnapshotsExcept(keysToKeep);
       const slugsToKeep = new Set(
