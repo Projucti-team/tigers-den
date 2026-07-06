@@ -7,7 +7,26 @@
 **Logs Table ID:** `tblUH5FCiJD7KNIVm`  
 **Projects Table ID:** `tbln6JK343jcS21mp`  
 
-Use Airtable API token (stored separately in secure environment) to log work updates. Last update: Record ID `reccbQUvXC68AVfjH` (ID 19, 2026-07-06) — Cricket Sync Jobs Refactor complete.
+API token stored in secure environment (GitHub blocks token commit). Last update: Record ID `reccbQUvXC68AVfjH` (ID 19, 2026-07-06) — Cricket Sync Jobs Refactor complete.
+
+---
+
+## Post-Deployment Fixes (2026-07-06)
+
+### Format Status Update Fix
+**Issue:** Squad refresh job found no tours because format statuses (test/odi/t20) were never populated in `tour_sync_state`.  
+**Root cause:** `initializeTourSyncState()` only set tour status, not series format statuses. Format statuses require match data from built tour details.  
+**Fix:** After `syncTourDetails()` builds snapshots, call `updateTourFormatStatus()` for each tour to populate series statuses.  
+**Impact:** Squad refresh will now find active tours with upcoming formats and fetch squads.
+
+### Smart Squad Sync
+**Issue:** Squads fetched repeatedly even when unchanged.  
+**Improvement:** Added intelligent squad comparison:
+- Fetch available squads from ESPNcricinfo
+- Compare with existing squads in DB  
+- Only sync if squads missing/changed
+- Skip if squads match (no API waste)  
+**Impact:** More efficient, especially for 2-3× daily runs.
 
 ---
 
