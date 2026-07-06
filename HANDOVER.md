@@ -66,7 +66,24 @@ npm run test -- --coverage
 
 ## User Feedback System (2026-07-06)
 
-**Status:** Complete. UI + API + Admin panel. Full test coverage.
+**Status:** UI + API + Tests complete. Payload collection **DISABLED** due to DB schema conflict.
+
+**Components Ready:**
+- ✅ Floating button on all pages (FeedbackButton)
+- ✅ Modal form (FeedbackModal)
+- ✅ API endpoint (/api/feedback)
+- ✅ Full test suite (unit + integration, 90%+ coverage)
+- ✅ Test coverage plan and pre-deployment script
+
+**Issue:** Payload's auto-migration for feedback_id in payload_locked_documents_rels conflicts with manual migration. Disabled collection in payload.config.ts to restore sync functionality.
+
+**To Re-Enable:**
+1. Remove migration 20260706_000000_feedback.ts from migrations/
+2. Let Payload handle schema auto-migration for Feedback collection
+3. Uncomment Feedback import in payload.config.ts
+4. Uncomment Feedback in collections array
+5. Test sync before deploying
+6. If still fails, examine Payload documentation for collection relationship setup
 
 Floating feedback button on all pages (bottom-right, amber). Opens modal form to capture:
 - Title & description (required)
