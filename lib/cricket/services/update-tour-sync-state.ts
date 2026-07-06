@@ -129,10 +129,13 @@ export async function updateTourFormatStatus(
     matchTypes.push("t20");
   }
 
+  const status = active ? "active" : "finished";
+  console.log(`[cricket] ${slug}: status=${status}, formats=[test:${testStatus}, odi:${odiStatus}, t20:${t20Status}]`);
+
   await upsertTourSyncState({
     tour_id: tour.id,
     tour_slug: slug,
-    current_status: active ? "active" : "finished",
+    current_status: status,
     test_series_status: testStatus,
     odi_series_status: odiStatus,
     t20_series_status: t20Status,
