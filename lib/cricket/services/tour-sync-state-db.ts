@@ -181,6 +181,8 @@ export async function deleteTourSyncState(tour_id: string): Promise<boolean> {
 
 export async function getSquadRefreshTargets(): Promise<SquadRefreshTarget[]> {
   const activeTours = await readActiveTourSyncStates();
+  console.log(`[cricket] getSquadRefreshTargets: found ${activeTours.length} active tour(s)`);
+
   const targets: SquadRefreshTarget[] = [];
 
   for (const tour of activeTours) {
@@ -206,6 +208,7 @@ export async function getSquadRefreshTargets(): Promise<SquadRefreshTarget[]> {
     }
 
     if (matchTypes.length > 0) {
+      console.log(`[cricket] ${tour.tour_slug}: needs refresh for ${matchTypes.join(", ")}`);
       targets.push({
         tour_id: tour.tour_id,
         tour_slug: tour.tour_slug,

@@ -35,13 +35,14 @@ export async function refreshSquadsForActiveTours(): Promise<RefreshSquadsResult
 
   try {
     const targets = await getSquadRefreshTargets();
+    console.log(`[cricket] Squad refresh: checking ${targets.length} tour(s) for active/upcoming formats`);
 
     if (targets.length === 0) {
-      console.log("[cricket] No tours need squad refresh");
+      console.log("[cricket] No active/upcoming formats found needing squad refresh");
       return { ok: true, toursProcessed: 0, formatsUpdated: 0, warnings, errors };
     }
 
-    console.log(`[cricket] Checking squads for ${targets.length} tour(s)`);
+    console.log(`[cricket] Found ${targets.length} tour(s) needing squad refresh`);
 
     for (const target of targets) {
       try {
