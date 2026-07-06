@@ -1,4 +1,361 @@
 {
-  "fetchedAt": "2026-06-21T12:00:00.000Z",
-  "entries": {}
+  "fetchedAt": "2026-07-06T09:42:06.798Z",
+  "entries": {
+    "bangladesh-tour-of-zimbabwe-0780a9a5-dbab-4c33-8235-40b694ec994e": {
+      "tour": {
+        "id": "0780a9a5-dbab-4c33-8235-40b694ec994e",
+        "name": "Bangladesh tour of Zimbabwe",
+        "startDate": "2026-06-28",
+        "endDate": "Jul 19",
+        "odi": 3,
+        "t20": 3,
+        "test": 1,
+        "matches": 7,
+        "teams": [
+          "Bangladesh",
+          "Zimbabwe"
+        ]
+      },
+      "card": {
+        "id": "0780a9a5-dbab-4c33-8235-40b694ec994e",
+        "slug": "bangladesh-tour-of-zimbabwe-0780a9a5-dbab-4c33-8235-40b694ec994e",
+        "href": "/tours/bangladesh-tour-of-zimbabwe-0780a9a5-dbab-4c33-8235-40b694ec994e",
+        "title": "Bangladesh Tour of Zimbabwe",
+        "description": "1 Test · 3 ODIs · 3 T20Is",
+        "dateRange": "28 Jun 2026 – 19 Jul 2026",
+        "headerFlagIso": "zw",
+        "accent": "red",
+        "isHomeSeries": false
+      },
+      "matches": [
+        {
+          "id": "espn-1538297",
+          "name": "Only Test,  at Harare",
+          "matchType": "test",
+          "status": "Zimbabwe won by an innings and 85 runs",
+          "venue": "Harare Sports Club",
+          "date": "2026-06-28",
+          "dateTimeGMT": "2026-06-28T07:30:00.000Z",
+          "teams": [
+            "Zimbabwe",
+            "Bangladesh"
+          ],
+          "isLive": false,
+          "seriesId": "0780a9a5-dbab-4c33-8235-40b694ec994e",
+          "seriesName": "Bangladesh tour of Zimbabwe"
+        },
+        {
+          "id": "espn-1538298",
+          "name": "1st ODI,  at Harare",
+          "matchType": "odi",
+          "status": "Bangladesh won the toss and elected to field",
+          "venue": "Harare Sports Club",
+          "date": "2026-07-06",
+          "dateTimeGMT": "2026-07-06T07:30.000Z",
+          "teams": [
+            "Zimbabwe",
+            "Bangladesh"
+          ],
+          "isLive": true,
+          "seriesId": "0780a9a5-dbab-4c33-8235-40b694ec994e",
+          "seriesName": "Bangladesh tour of Zimbabwe"
+        },
+        {
+          "id": "espn-1538299",
+          "name": "2nd ODI,  at Harare",
+          "matchType": "odi",
+          "status": "Match scheduled to begin at 09:30 local time (07:30 GMT)",
+          "venue": "Harare Sports Club",
+          "date": "2026-07-09",
+          "dateTimeGMT": "2026-07-09T07:30:00.000Z",
+          "teams": [
+            "Zimbabwe",
+            "Bangladesh"
+          ],
+          "isLive": false,
+          "seriesId": "0780a9a5-dbab-4c33-8235-40b694ec994e",
+          "seriesName": "Bangladesh tour of Zimbabwe"
+        },
+        {
+          "id": "espn-1538300",
+          "name": "3rd ODI,  at Harare",
+          "matchType": "odi",
+          "status": "Match scheduled to begin at 09:30 local time (07:30 GMT)",
+          "venue": "Harare Sports Club",
+          "date": "2026-07-11",
+          "dateTimeGMT": "2026-07-11T07:30:00.000Z",
+          "teams": [
+            "Zimbabwe",
+            "Bangladesh"
+          ],
+          "isLive": false,
+          "seriesId": "0780a9a5-dbab-4c33-8235-40b694ec994e",
+          "seriesName": "Bangladesh tour of Zimbabwe"
+        },
+        {
+          "id": "espn-1538301",
+          "name": "1st T20I,  at Bulawayo",
+          "matchType": "t20",
+          "status": "Match scheduled to begin at 12:30 local time (10:30 GMT)",
+          "venue": "Queens Sports Club, Bulawayo",
+          "date": "2026-07-15",
+          "dateTimeGMT": "2026-07-15T10:30:00.000Z",
+          "teams": [
+            "Zimbabwe",
+            "Bangladesh"
+          ],
+          "isLive": false,
+          "seriesId": "0780a9a5-dbab-4c33-8235-40b694ec994e",
+          "seriesName": "Bangladesh tour of Zimbabwe"
+        },
+        {
+          "id": "espn-1538302",
+          "name": "2nd T20I,  at Bulawayo",
+          "matchType": "t20",
+          "status": "Match scheduled to begin at 12:30 local time (10:30 GMT)",
+          "venue": "Queens Sports Club, Bulawayo",
+          "date": "2026-07-17",
+          "dateTimeGMT": "2026-07-17T10:30:00.000Z",
+          "teams": [
+            "Zimbabwe",
+            "Bangladesh"
+          ],
+          "isLive": false,
+          "seriesId": "0780a9a5-dbab-4c33-8235-40b694ec994e",
+          "seriesName": "Bangladesh tour of Zimbabwe"
+        },
+        {
+          "id": "espn-1538303",
+          "name": "3rd T20I,  at Bulawayo",
+          "matchType": "t20",
+          "status": "Match scheduled to begin at 12:30 local time (10:30 GMT)",
+          "venue": "Queens Sports Club, Bulawayo",
+          "date": "2026-07-19",
+          "dateTimeGMT": "2026-07-19T10:30:00.000Z",
+          "teams": [
+            "Zimbabwe",
+            "Bangladesh"
+          ],
+          "isLive": false,
+          "seriesId": "0780a9a5-dbab-4c33-8235-40b694ec994e",
+          "seriesName": "Bangladesh tour of Zimbabwe"
+        }
+      ],
+      "squads": [
+        {
+          "team": "Bangladesh squad for one-off Test vs Zimbabwe",
+          "source": "https://www.espncricinfo.com/story/ban-vs-aus-taskin-ahmed-and-nahid-rana-return-for-t20is-against-australia-1540473",
+          "players": [
+            {
+              "name": "Najmul Hossain Shanto (capt)",
+              "profileUrl": "https://www.espncricinfo.com/cricketers/najmul-hossain-shanto-629058",
+              "imageUrl": null
+            },
+            {
+              "name": "Shadman Islam",
+              "profileUrl": "https://www.espncricinfo.com/cricketers/shadman-islam-anik-629057",
+              "imageUrl": null
+            },
+            {
+              "name": "Mahmudul Hasan Joy",
+              "profileUrl": null,
+              "imageUrl": null
+            },
+            {
+              "name": "Tanzid Hasan",
+              "profileUrl": "https://www.espncricinfo.com/cricketers/tanzid-hasan-tamim-990023",
+              "imageUrl": null
+            },
+            {
+              "name": "Mominul Haque",
+              "profileUrl": "https://www.espncricinfo.com/cricketers/mominul-haque-373696",
+              "imageUrl": "https://a.espncdn.com/i/headshots/cricket/players/full/373696.png"
+            },
+            {
+              "name": "Mushfiqur Rahim",
+              "profileUrl": "https://www.espncricinfo.com/cricketers/mohammad-mushfiqur-rahim-56029",
+              "imageUrl": "https://a.espncdn.com/i/headshots/cricket/players/full/56029.png"
+            },
+            {
+              "name": "Litton Das (wk)",
+              "profileUrl": "https://www.espncricinfo.com/cricketers/litton-kumer-das-536936",
+              "imageUrl": null
+            },
+            {
+              "name": "Taijul Islam",
+              "profileUrl": "https://www.espncricinfo.com/cricketers/taijul-islam-401057",
+              "imageUrl": "https://a.espncdn.com/i/headshots/cricket/players/full/401057.png"
+            },
+            {
+              "name": "Nayeem Hasan",
+              "profileUrl": "https://www.espncricinfo.com/cricketers/mohammad-nayeem-hasan-932635",
+              "imageUrl": null
+            },
+            {
+              "name": "Khaled Ahmed",
+              "profileUrl": "https://www.espncricinfo.com/cricketers/syed-khaled-ahmed-927619",
+              "imageUrl": null
+            },
+            {
+              "name": "Ebadot Hossain",
+              "profileUrl": null,
+              "imageUrl": null
+            },
+            {
+              "name": "Hasan Mahmud",
+              "profileUrl": "https://www.espncricinfo.com/cricketers/hasan-mahmud-926629",
+              "imageUrl": null
+            },
+            {
+              "name": "Tawhid Hridoy",
+              "profileUrl": null,
+              "imageUrl": null
+            },
+            {
+              "name": "Amite Hasan",
+              "profileUrl": null,
+              "imageUrl": null
+            },
+            {
+              "name": "Robiul Haque",
+              "profileUrl": null,
+              "imageUrl": null
+            }
+          ]
+        },
+        {
+          "team": "Zimbabwe",
+          "players": [
+            {
+              "name": "Brian John Bennett",
+              "profileUrl": "https://www.espncricinfo.com/cricketers/brian-john-bennett-1071484",
+              "imageUrl": null
+            },
+            {
+              "name": "Benjamin Jack Curran",
+              "profileUrl": "https://www.espncricinfo.com/cricketers/benjamin-jack-curran-910695",
+              "imageUrl": null
+            },
+            {
+              "name": "Innocent Kaia",
+              "profileUrl": "https://www.espncricinfo.com/cricketers/innocent-kaia-465327",
+              "imageUrl": null
+            },
+            {
+              "name": "Craig Richard Ervine",
+              "profileUrl": "https://www.espncricinfo.com/cricketers/craig-richard-ervine-55412",
+              "imageUrl": "https://a.espncdn.com/i/headshots/cricket/players/full/55412.png"
+            },
+            {
+              "name": "Sikandar Raza Butt",
+              "profileUrl": "https://www.espncricinfo.com/cricketers/sikandar-raza-butt-299572",
+              "imageUrl": "https://a.espncdn.com/i/headshots/cricket/players/full/299572.png"
+            },
+            {
+              "name": "Wessly Nyasha Madhevere",
+              "profileUrl": "https://www.espncricinfo.com/cricketers/wessly-nyasha-madhevere-938959",
+              "imageUrl": null
+            },
+            {
+              "name": "Clive Madande",
+              "profileUrl": "https://www.espncricinfo.com/cricketers/clive-madande-1045883",
+              "imageUrl": null
+            },
+            {
+              "name": "Brad Evans",
+              "profileUrl": "https://www.espncricinfo.com/cricketers/brad-evans-696127",
+              "imageUrl": null
+            },
+            {
+              "name": "Newman Takudzwa Nyamhuri",
+              "profileUrl": "https://www.espncricinfo.com/cricketers/newman-takudzwa-nyamhuri-1409283",
+              "imageUrl": null
+            },
+            {
+              "name": "Richard Ngarava",
+              "profileUrl": "https://www.espncricinfo.com/cricketers/richard-ngarava-806241",
+              "imageUrl": null
+            },
+            {
+              "name": "Blessing Muzarabani",
+              "profileUrl": "https://www.espncricinfo.com/cricketers/blessing-muzarabani-827051",
+              "imageUrl": "https://a.espncdn.com/i/headshots/cricket/players/full/827051.png"
+            }
+          ],
+          "source": "https://www.espncricinfo.com/series/_/id/1538288"
+        }
+      ],
+      "venues": [
+        {
+          "venueName": "Harare Sports Club",
+          "city": "Harare Sports Club",
+          "about": "Harare Sports Club hosts this fixture — check local travel advice and arrive early on match day for the best Tigers' Den atmosphere.",
+          "cityAbout": "Explore Harare Sports Club around match day — local fans, food, and culture make every away series memorable.",
+          "weather": "Monsoon-influenced conditions are possible in South Asia — warm, humid, and watch for rain interruptions."
+        },
+        {
+          "venueName": "Queens Sports Club, Bulawayo",
+          "city": "Queens Sports Club",
+          "about": "Queens Sports Club, Bulawayo hosts this fixture — check local travel advice and arrive early on match day for the best Tigers' Den atmosphere.",
+          "cityAbout": "Explore Queens Sports Club around match day — local fans, food, and culture make every away series memorable.",
+          "weather": "Monsoon-influenced conditions are possible in South Asia — warm, humid, and watch for rain interruptions."
+        }
+      ],
+      "warnings": [
+        "Discovered 9 future Bangladesh series from ESPNcricinfo.",
+        "ESPNcricinfo: 10 future tour(s) available.",
+        "Fixtures and results from ESPNcricinfo."
+      ],
+      "slug": "bangladesh-tour-of-zimbabwe-0780a9a5-dbab-4c33-8235-40b694ec994e",
+      "fetchedAt": "2026-07-06T09:40:51.264Z"
+    },
+    "bangladesh-tour-of-australia-f85a6390-cbf2-4f07-bc5e-891df17ff179": {
+      "tour": {
+        "id": "f85a6390-cbf2-4f07-bc5e-891df17ff179",
+        "name": "Bangladesh tour of Australia",
+        "startDate": "2026-08-13",
+        "endDate": "Aug 26",
+        "test": 1,
+        "matches": 1
+      },
+      "card": {
+        "id": "f85a6390-cbf2-4f07-bc5e-891df17ff179",
+        "slug": "bangladesh-tour-of-australia-f85a6390-cbf2-4f07-bc5e-891df17ff179",
+        "href": "/tours/bangladesh-tour-of-australia-f85a6390-cbf2-4f07-bc5e-891df17ff179",
+        "title": "Bangladesh Tour of Australia",
+        "description": "1 Test",
+        "dateRange": "13 Aug 2026 – 26 Aug 2026",
+        "headerFlagIso": "au",
+        "accent": "red",
+        "isHomeSeries": false
+      },
+      "matches": [
+        {
+          "id": "espn-f85a6390-cbf2-4f07-bc5e-891df17ff179-2026-08-13-test-1",
+          "name": "1st Test, Bangladesh vs Australia, Bangladesh tour of Australia",
+          "matchType": "test",
+          "status": "Match not started",
+          "date": "2026-08-13",
+          "dateTimeGMT": "2026-08-13T00:30.000Z",
+          "teams": [
+            "Bangladesh",
+            "Australia"
+          ],
+          "isLive": false,
+          "seriesId": "f85a6390-cbf2-4f07-bc5e-891df17ff179",
+          "seriesName": "Bangladesh tour of Australia"
+        }
+      ],
+      "squads": [],
+      "venues": [],
+      "warnings": [
+        "Discovered 9 future Bangladesh series from ESPNcricinfo.",
+        "ESPNcricinfo: 10 future tour(s) available.",
+        "Fixtures and results from ESPNcricinfo.",
+        "Squads not published on ESPNcricinfo yet — check back closer to the first match."
+      ],
+      "slug": "bangladesh-tour-of-australia-f85a6390-cbf2-4f07-bc5e-891df17ff179",
+      "fetchedAt": "2026-07-06T09:42:06.792Z"
+    }
+  }
 }

@@ -1,5 +1,5 @@
 {
-  "fetchedAt": "2026-06-08T00:00:00.000Z",
+  "fetchedAt": "2026-07-06T09:40:51.116Z",
   "entries": {
     "australia-tour-of-bangladesh": {
       "tourName": "Australia tour of Bangladesh, 2026",
@@ -13,7 +13,7 @@
       "fetchedAt": "2026-06-08T00:00:00.000Z",
       "squads": [
         {
-          "team": "Bangladesh \u2014 ODI squad",
+          "team": "Bangladesh — ODI squad",
           "source": "https://www.espncricinfo.com/story/bangladesh-recall-mosaddek-after-four-years-for-odis-against-australia-1539528",
           "players": [
             {
@@ -79,7 +79,7 @@
           ]
         },
         {
-          "team": "Bangladesh \u2014 T20I squad",
+          "team": "Bangladesh — T20I squad",
           "source": "https://www.espncricinfo.com/story/ban-vs-aus-taskin-ahmed-and-nahid-rana-return-for-t20is-against-australia-1540473",
           "players": [
             {
@@ -145,7 +145,7 @@
           ]
         },
         {
-          "team": "Australia \u2014 ODI squad",
+          "team": "Australia — ODI squad",
           "source": "https://www.espncricinfo.com/story/travis-head-out-of-bangladesh-tour-mitchell-marsh-to-miss-odis-todd-murphy-called-up-1539607",
           "players": [
             {
@@ -211,7 +211,7 @@
           ]
         },
         {
-          "team": "Australia \u2014 T20I squad",
+          "team": "Australia — T20I squad",
           "source": "https://www.espncricinfo.com/story/travis-head-out-of-bangladesh-tour-mitchell-marsh-to-miss-odis-todd-murphy-called-up-1539607",
           "players": [
             {
@@ -279,36 +279,157 @@
       ]
     },
     "bangladesh-tour-of-zimbabwe": {
-      "tourName": "Bangladesh tour of Zimbabwe, 2026",
-      "cricinfoSeriesId": 1538288,
+      "tourName": "Bangladesh tour of Zimbabwe",
       "espnLeagueId": 24420,
+      "cricinfoSeriesId": 1538288,
       "squadStoryUrls": [
         "https://www.espncricinfo.com/story/ban-vs-aus-taskin-ahmed-and-nahid-rana-return-for-t20is-against-australia-1540473"
       ],
-      "fetchedAt": "2026-06-13T00:00:00.000Z",
       "squads": [
         {
           "team": "Bangladesh squad for one-off Test vs Zimbabwe",
           "source": "https://www.espncricinfo.com/story/ban-vs-aus-taskin-ahmed-and-nahid-rana-return-for-t20is-against-australia-1540473",
           "players": [
-            { "name": "Najmul Hossain Shanto (capt)" },
-            { "name": "Shadman Islam" },
-            { "name": "Mahmudul Hasan Joy" },
-            { "name": "Tanzid Hasan" },
-            { "name": "Mominul Haque" },
-            { "name": "Mushfiqur Rahim" },
-            { "name": "Litton Das (wk)" },
-            { "name": "Taijul Islam" },
-            { "name": "Nayeem Hasan" },
-            { "name": "Khaled Ahmed" },
-            { "name": "Ebadot Hossain" },
-            { "name": "Hasan Mahmud" },
-            { "name": "Tawhid Hridoy" },
-            { "name": "Amite Hasan" },
-            { "name": "Robiul Haque" }
+            {
+              "name": "Najmul Hossain Shanto (capt)",
+              "profileUrl": "https://www.espncricinfo.com/cricketers/najmul-hossain-shanto-629058",
+              "imageUrl": null
+            },
+            {
+              "name": "Shadman Islam",
+              "profileUrl": "https://www.espncricinfo.com/cricketers/shadman-islam-anik-629057",
+              "imageUrl": null
+            },
+            {
+              "name": "Mahmudul Hasan Joy",
+              "profileUrl": null,
+              "imageUrl": null
+            },
+            {
+              "name": "Tanzid Hasan",
+              "profileUrl": "https://www.espncricinfo.com/cricketers/tanzid-hasan-tamim-990023",
+              "imageUrl": null
+            },
+            {
+              "name": "Mominul Haque",
+              "profileUrl": "https://www.espncricinfo.com/cricketers/mominul-haque-373696",
+              "imageUrl": "https://a.espncdn.com/i/headshots/cricket/players/full/373696.png"
+            },
+            {
+              "name": "Mushfiqur Rahim",
+              "profileUrl": "https://www.espncricinfo.com/cricketers/mohammad-mushfiqur-rahim-56029",
+              "imageUrl": "https://a.espncdn.com/i/headshots/cricket/players/full/56029.png"
+            },
+            {
+              "name": "Litton Das (wk)",
+              "profileUrl": "https://www.espncricinfo.com/cricketers/litton-kumer-das-536936",
+              "imageUrl": null
+            },
+            {
+              "name": "Taijul Islam",
+              "profileUrl": "https://www.espncricinfo.com/cricketers/taijul-islam-401057",
+              "imageUrl": "https://a.espncdn.com/i/headshots/cricket/players/full/401057.png"
+            },
+            {
+              "name": "Nayeem Hasan",
+              "profileUrl": "https://www.espncricinfo.com/cricketers/mohammad-nayeem-hasan-932635",
+              "imageUrl": null
+            },
+            {
+              "name": "Khaled Ahmed",
+              "profileUrl": "https://www.espncricinfo.com/cricketers/syed-khaled-ahmed-927619",
+              "imageUrl": null
+            },
+            {
+              "name": "Ebadot Hossain",
+              "profileUrl": null,
+              "imageUrl": null
+            },
+            {
+              "name": "Hasan Mahmud",
+              "profileUrl": "https://www.espncricinfo.com/cricketers/hasan-mahmud-926629",
+              "imageUrl": null
+            },
+            {
+              "name": "Tawhid Hridoy",
+              "profileUrl": null,
+              "imageUrl": null
+            },
+            {
+              "name": "Amite Hasan",
+              "profileUrl": null,
+              "imageUrl": null
+            },
+            {
+              "name": "Robiul Haque",
+              "profileUrl": null,
+              "imageUrl": null
+            }
           ]
+        },
+        {
+          "team": "Zimbabwe",
+          "players": [
+            {
+              "name": "Brian John Bennett",
+              "profileUrl": "https://www.espncricinfo.com/cricketers/brian-john-bennett-1071484",
+              "imageUrl": null
+            },
+            {
+              "name": "Benjamin Jack Curran",
+              "profileUrl": "https://www.espncricinfo.com/cricketers/benjamin-jack-curran-910695",
+              "imageUrl": null
+            },
+            {
+              "name": "Innocent Kaia",
+              "profileUrl": "https://www.espncricinfo.com/cricketers/innocent-kaia-465327",
+              "imageUrl": null
+            },
+            {
+              "name": "Craig Richard Ervine",
+              "profileUrl": "https://www.espncricinfo.com/cricketers/craig-richard-ervine-55412",
+              "imageUrl": "https://a.espncdn.com/i/headshots/cricket/players/full/55412.png"
+            },
+            {
+              "name": "Sikandar Raza Butt",
+              "profileUrl": "https://www.espncricinfo.com/cricketers/sikandar-raza-butt-299572",
+              "imageUrl": "https://a.espncdn.com/i/headshots/cricket/players/full/299572.png"
+            },
+            {
+              "name": "Wessly Nyasha Madhevere",
+              "profileUrl": "https://www.espncricinfo.com/cricketers/wessly-nyasha-madhevere-938959",
+              "imageUrl": null
+            },
+            {
+              "name": "Clive Madande",
+              "profileUrl": "https://www.espncricinfo.com/cricketers/clive-madande-1045883",
+              "imageUrl": null
+            },
+            {
+              "name": "Brad Evans",
+              "profileUrl": "https://www.espncricinfo.com/cricketers/brad-evans-696127",
+              "imageUrl": null
+            },
+            {
+              "name": "Newman Takudzwa Nyamhuri",
+              "profileUrl": "https://www.espncricinfo.com/cricketers/newman-takudzwa-nyamhuri-1409283",
+              "imageUrl": null
+            },
+            {
+              "name": "Richard Ngarava",
+              "profileUrl": "https://www.espncricinfo.com/cricketers/richard-ngarava-806241",
+              "imageUrl": null
+            },
+            {
+              "name": "Blessing Muzarabani",
+              "profileUrl": "https://www.espncricinfo.com/cricketers/blessing-muzarabani-827051",
+              "imageUrl": "https://a.espncdn.com/i/headshots/cricket/players/full/827051.png"
+            }
+          ],
+          "source": "https://www.espncricinfo.com/series/_/id/1538288"
         }
-      ]
+      ],
+      "fetchedAt": "2026-07-06T09:40:51.116Z"
     }
   }
 }

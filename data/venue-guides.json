@@ -1,5 +1,5 @@
 {
-  "fetchedAt": "2026-06-01T00:00:00.000Z",
+  "fetchedAt": "2026-07-06T09:40:51.260Z",
   "entries": {
     "shere bangla national stadium, mirpur, dhaka": {
       "venueName": "Shere Bangla National Stadium, Mirpur, Dhaka",
@@ -28,6 +28,20 @@
       "about": "Sylhet International Cricket Stadium is one of the newer jewels in Bangladesh cricket — scenic, modern, and loved for T20 fireworks under lights.",
       "cityAbout": "Sylhet is the tea-country capital of Bangladesh, surrounded by rolling hills and lush estates — a cooler, greener escape for players and fans.",
       "weather": "Slightly cooler than the lowlands (24–32°C); monsoon brings lush rain while winter months are mild and comfortable for evening cricket."
+    },
+    "harare sports club": {
+      "venueName": "Harare Sports Club",
+      "city": "Harare Sports Club",
+      "about": "Harare Sports Club hosts this fixture — check local travel advice and arrive early on match day for the best Tigers' Den atmosphere.",
+      "cityAbout": "Explore Harare Sports Club around match day — local fans, food, and culture make every away series memorable.",
+      "weather": "Monsoon-influenced conditions are possible in South Asia — warm, humid, and watch for rain interruptions."
+    },
+    "queens sports club, bulawayo": {
+      "venueName": "Queens Sports Club, Bulawayo",
+      "city": "Queens Sports Club",
+      "about": "Queens Sports Club, Bulawayo hosts this fixture — check local travel advice and arrive early on match day for the best Tigers' Den atmosphere.",
+      "cityAbout": "Explore Queens Sports Club around match day — local fans, food, and culture make every away series memorable.",
+      "weather": "Monsoon-influenced conditions are possible in South Asia — warm, humid, and watch for rain interruptions."
     }
   }
 }
