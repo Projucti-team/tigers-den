@@ -23,8 +23,9 @@ export type RefreshSquadsResult = {
 };
 
 /**
- * Fetch ESPN squads only for active tours with upcoming match types.
- * Updates tour_sync_state with completion status per format.
+ * Fetch ESPN squads only when missing or changed.
+ * Compare available squads from ESPN with what we have.
+ * Skip sync if squads match.
  */
 export async function refreshSquadsForActiveTours(): Promise<RefreshSquadsResult> {
   const warnings: string[] = [];
@@ -40,7 +41,7 @@ export async function refreshSquadsForActiveTours(): Promise<RefreshSquadsResult
       return { ok: true, toursProcessed: 0, formatsUpdated: 0, warnings, errors };
     }
 
-    console.log(`[cricket] Refreshing squads for ${targets.length} tour(s)`);
+    console.log(`[cricket] Checking squads for ${targets.length} tour(s)`);
 
     for (const target of targets) {
       try {
@@ -63,11 +64,34 @@ export async function refreshSquadsForActiveTours(): Promise<RefreshSquadsResult
           continue;
         }
 
+        // Fetch squads from ESPN
         const { squads: newSquads, warnings: squadWarnings } = await refreshEspnTourSquads(tour);
         if (squadWarnings.length > 0) {
           warnings.push(...squadWarnings);
         }
 
+        // Check if squads match existing ones
+        const existingSquads = tourDetail.squads.filter((squad) => squadBelongsToTour(squad, tour));
+        const squadsMatch = squadsAreEqual(existingSquads, newSquads);
+
+        if (squadsMatch) {
+          console.log(`[cricket] Squads unchanged for ${target.tour_slug}, skipping sync`);
+          // Still mark as complete since we verified they match
+          const stateUpdates: Record<string, boolean | string> = {
+            tour_id: target.tour_id,
+            tour_slug: target.tour_slug,
+          };
+          for (const matchType of target.matchTypes) {
+            const completeKey = `squad_import_complete_${matchType}`;
+            stateUpdates[completeKey] = true;
+          }
+          await upsertTourSyncState(stateUpdates as any);
+          toursProcessed += 1;
+          continue;
+        }
+
+        // Squads changed or missing - update
+        console.log(`[cricket] Squads changed for ${target.tour_slug}, syncing...`);
         const withFreshSquads = applyEspnTourSquads(tourDetail, newSquads, squadWarnings);
         const updatedDetail: TourDetailSnapshot = {
           ...withFreshSquads,
@@ -100,7 +124,6 @@ export async function refreshSquadsForActiveTours(): Promise<RefreshSquadsResult
         }
 
         await upsertTourSyncState(stateUpdates as any);
-
         toursProcessed += 1;
       } catch (e) {
         errors.push(
@@ -129,4 +152,17 @@ export async function refreshSquadsForActiveTours(): Promise<RefreshSquadsResult
     warnings,
     errors,
   };
+}
+
+/**
+ * Check if two squad lists are equivalent.
+ * Compares squad names and team composition.
+ */
+function squadsAreEqual(existing: any[], fetched: any[]): boolean {
+  if (existing.length !== fetched.length) return false;
+
+  const existingKeys = existing.map((s) => `${s.team || s.name}`).sort();
+  const fetchedKeys = fetched.map((s) => `${s.team || s.name}`).sort();
+
+  return existingKeys.join(",") === fetchedKeys.join(",");
 }
