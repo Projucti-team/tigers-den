@@ -1,25 +1,25 @@
 {
-  "fetchedAt": "2026-06-21T02:58:05.881Z",
+  "fetchedAt": "2026-07-06T09:39:11.368Z",
   "source": "espn",
   "highlight": {
     "mode": "completed",
-    "matchId": "espn-1490691",
-    "title": "15th Match, Group 1,  at Southampton",
-    "scoreLine": "Ban 123/6 · Pak 100/8 (20)",
-    "detailLine": "BAN Women won by 23 runs",
+    "matchId": "espn-1490705",
+    "title": "29th Match, Group 1,  at London",
+    "scoreLine": "Ban 117/5 · SA 118/6 (19)",
+    "detailLine": "SA Women won by 4 wickets (with 4 balls remaining)",
     "scores": [
       {
         "label": "Bangladesh Women",
-        "value": "123/6"
+        "value": "117/5"
       },
       {
-        "label": "Pakistan Women",
-        "value": "100/8 (20)"
+        "label": "South Africa Women",
+        "value": "118/6 (19)"
       }
     ],
     "venue": {
-      "name": "The Rose Bowl, Southampton",
-      "city": "Southampton",
+      "name": "Lord's, London",
+      "city": "London",
       "country": "England"
     },
     "category": "women",

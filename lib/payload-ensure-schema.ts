@@ -22,16 +22,12 @@ export function ensurePayloadSchema(payload: Payload): Promise<void> {
 async function runSchemaEnsure(payload: Payload): Promise<void> {
   if (isProductionDatabase()) {
     await ensurePostgresPayloadSchema();
-    if (migrations.length === 0) return;
-    const adapter = payload.db as {
-      migrate: (args: { migrations: typeof migrations }) => Promise<void>;
-    };
-    await adapter.migrate({ migrations });
-    return;
   }
 
-  const uri = process.env.DATABASE_URI?.trim();
-  if (uri?.startsWith("file:")) {
-    await ensureSqliteIncrementalSchema();
-  }
+  // Run migrations for both Postgres and SQLite
+  if (migrations.length === 0) return;
+  const adapter = payload.db as {
+    migrate: (args: { migrations: typeof migrations }) => Promise<void>;
+  };
+  await adapter.migrate({ migrations });
 }

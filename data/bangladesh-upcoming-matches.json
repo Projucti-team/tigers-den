@@ -1,52 +1,7 @@
 {
-  "fetchedAt": "2026-06-21T02:58:32.730Z",
+  "fetchedAt": "2026-07-06T09:39:18.450Z",
   "source": "espn",
   "matches": [
-    {
-      "id": "espn-curated-1532475-2026-06-21-t20-3",
-      "name": "3rd T20I, Bangladesh vs Australia, Australia tour of Bangladesh, 2026",
-      "matchType": "t20",
-      "status": "Match not started",
-      "date": "2026-06-21",
-      "dateTimeGMT": "2026-06-21T08:00:00.000Z",
-      "teams": [
-        "Bangladesh",
-        "Australia"
-      ],
-      "isLive": false,
-      "seriesId": "1532475",
-      "seriesName": "Australia tour of Bangladesh, 2026"
-    },
-    {
-      "id": "espn-curated-1538288-2026-06-28-test-1",
-      "name": "1st Test, Bangladesh vs Zimbabwe, Bangladesh tour of Zimbabwe, 2026",
-      "matchType": "test",
-      "status": "Match not started",
-      "date": "2026-06-28",
-      "dateTimeGMT": "2026-06-28T07:30:00.000Z",
-      "teams": [
-        "Bangladesh",
-        "Zimbabwe"
-      ],
-      "isLive": false,
-      "seriesId": "1538288",
-      "seriesName": "Bangladesh tour of Zimbabwe, 2026"
-    },
-    {
-      "id": "espn-curated-1538288-2026-07-06-odi-1",
-      "name": "1st ODI, Bangladesh vs Zimbabwe, Bangladesh tour of Zimbabwe, 2026",
-      "matchType": "odi",
-      "status": "Match not started",
-      "date": "2026-07-06",
-      "dateTimeGMT": "2026-07-06T07:30:00.000Z",
-      "teams": [
-        "Bangladesh",
-        "Zimbabwe"
-      ],
-      "isLive": false,
-      "seriesId": "1538288",
-      "seriesName": "Bangladesh tour of Zimbabwe, 2026"
-    },
     {
       "id": "espn-curated-1538288-2026-07-09-odi-2",
       "name": "2nd ODI, Bangladesh vs Zimbabwe, Bangladesh tour of Zimbabwe, 2026",
