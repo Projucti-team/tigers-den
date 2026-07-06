@@ -33,6 +33,11 @@ API token stored in secure environment (GitHub blocks token commit). Last update
 **Fix:** Updated `getSquadRefreshTargets()` to include both "upcoming" and "active" formats (not "finished").  
 **Impact:** Squads now refresh during active matches, resolving missing squad displays.
 
+### File Upload Type Fix
+**Issue:** TypeScript build error in feedback API — Payload media collection expects `{data, mimetype, name}` format, not raw File object.  
+**Fix:** Convert File to Buffer before passing to Payload: `Buffer.from(await file.arrayBuffer())` with mimetype and name.  
+**Impact:** Feedback image uploads now work correctly in production build.
+
 ---
 
 ## User Feedback System (2026-07-06)
