@@ -6,11 +6,11 @@
 set -e
 
 echo "🐘 Starting Postgres via Docker Compose..."
-docker compose -f docker-compose.postgres.yml up -d postgres
+docker compose -f docker-compose.yml -f docker-compose.postgres.yml up -d postgres
 
 echo "⏳ Waiting for Postgres to be healthy..."
 for i in {1..30}; do
-  if docker compose -f docker-compose.postgres.yml exec -T postgres pg_isready -U tigersden -d tigersden > /dev/null 2>&1; then
+  if docker compose -f docker-compose.yml -f docker-compose.postgres.yml exec -T postgres pg_isready -U tigersden -d tigersden > /dev/null 2>&1; then
     echo "✅ Postgres ready"
     break
   fi
@@ -37,7 +37,7 @@ curl -X POST http://localhost:8083/api/admin/bootstrap-db
 echo "✅ Setup complete!"
 echo "   Admin panel: http://localhost:8083/admin"
 echo "   Database: PostgreSQL (matches production)"
-echo "   Stop with: docker compose -f docker-compose.postgres.yml down"
+echo "   Stop with: docker compose -f docker-compose.yml -f docker-compose.postgres.yml down"
 echo ""
 
 wait $DEV_PID
