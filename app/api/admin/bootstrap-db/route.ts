@@ -7,12 +7,17 @@ import { isPayloadConfigured } from "@/lib/payload-env";
 export const maxDuration = 300;
 export const runtime = "nodejs";
 
-/** Migrations + cricket snapshot seed (protected by CRON_SECRET). */
+/** Migrations + cricket snapshot seed (protected by CRON_SECRET, dev mode bypass). */
 export async function POST(request: Request) {
-  const secret = process.env.CRON_SECRET?.trim();
-  const auth = request.headers.get("authorization");
-  if (!secret || auth !== `Bearer ${secret}`) {
-    return NextResponse.json({ error: "Unauthorized" }, { status: 401 });
+  // Allow unauthenticated access in development for easier local setup
+  const isDev = process.env.NODE_ENV === "development";
+
+  if (!isDev) {
+    const secret = process.env.CRON_SECRET?.trim();
+    const auth = request.headers.get("authorization");
+    if (!secret || auth !== `Bearer ${secret}`) {
+      return NextResponse.json({ error: "Unauthorized" }, { status: 401 });
+    }
   }
 
   if (!isPayloadConfigured() || !hasPersistedDatabase()) {
