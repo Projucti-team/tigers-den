@@ -5,7 +5,7 @@ const addStatusTimelineEntry = async ({
   originalDoc,
 }: {
   data: any;
-  originalDoc: any;
+  originalDoc?: any;
 }) => {
   // Only update timeline if status changed
   if (
