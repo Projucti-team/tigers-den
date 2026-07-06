@@ -372,12 +372,14 @@ export async function syncBangladeshLive(options?: SyncCricketOptions): Promise<
  * Sync tours index from CricAPI, build per-tour detail snapshots.
  */
 export async function syncToursIndex(options?: SyncCricketOptions): Promise<SyncCricketResult> {
+  console.log("[cricket] syncToursIndex: starting");
   const warnings: string[] = [];
   const errors: string[] = [];
   let toursCount = 0;
   let tourDetailsCount = 0;
 
   if (!isPayloadConfigured()) {
+    console.log("[cricket] syncToursIndex: Payload not configured, returning early");
     return {
       ok: false,
       fetchedAt: new Date().toISOString(),
