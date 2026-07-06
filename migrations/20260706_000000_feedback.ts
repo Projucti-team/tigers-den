@@ -31,25 +31,8 @@ export async function up({ db }: MigrateUpArgs): Promise<void> {
   await db.execute(sql`
     CREATE INDEX IF NOT EXISTS "idx_feedback_user_id" ON "feedback" ("user_id");
   `);
-
-  await db.execute(sql`
-    ALTER TABLE "payload_locked_documents_rels"
-      ADD COLUMN IF NOT EXISTS "feedback_id" integer;
-  `);
-
-  await db.execute(sql`
-    ALTER TABLE "payload_locked_documents_rels"
-      ADD CONSTRAINT "fk_feedback_id"
-        FOREIGN KEY ("feedback_id")
-        REFERENCES "feedback"("id")
-        ON DELETE CASCADE;
-  `);
 }
 
 export async function down({ db }: MigrateDownArgs): Promise<void> {
-  await db.execute(sql`
-    ALTER TABLE "payload_locked_documents_rels"
-      DROP COLUMN IF EXISTS "feedback_id";
-  `);
   await db.execute(sql`DROP TABLE IF EXISTS "feedback"`);
 }
