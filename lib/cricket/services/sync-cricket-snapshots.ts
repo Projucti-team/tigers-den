@@ -517,6 +517,7 @@ export async function syncToursIndex(options?: SyncCricketOptions): Promise<Sync
     });
     tourDetailsCount = detailResult.built;
     errors.push(...detailResult.errors);
+    console.log(`[cricket] Tour details built: ${tourDetailsCount} of ${toursCount} tours`);
 
     // Update format statuses for all tours after building details
     // Run regardless of skipCricApi - format status depends on match data, not tour index freshness
