@@ -1,6 +1,57 @@
 {
-  "fetchedAt": "2026-07-05T22:37:48.830Z",
+  "fetchedAt": "2026-07-06T22:47:46.743Z",
   "items": [
+    {
+      "id": "dailystar-https://www.thedailystar.net/sports/cricket/news/little-disappointed-our-batting-unit-miraz-rues-tigers-odi-opener-defeat-against-zimbabwe-4217721",
+      "title": "'Little disappointed in our batting unit': Miraz rues Tigers' ODI opener defeat against Zimbabwe",
+      "summary": "Bangladesh captain Mehidy Hasan Miraz admitted he was \"a little disappointed\" with his side's batting after the Tigers slipped to a 25-run defeat in the first ODI against Zimbabwe in Harare on Monday, squandering a record-breaking bowling performance from Nahid Rana.",
+      "url": "https://www.thedailystar.net/sports/cricket/news/little-disappointed-our-batting-unit-miraz-rues-tigers-odi-opener-defeat-against-zimbabwe-4217721",
+      "source": "dailystar",
+      "publishedAt": "2026-07-06T18:32:00.000Z"
+    },
+    {
+      "id": "dailystar-https://www.thedailystar.net/sports/cricket/news/batting-woes-waste-ranas-record-breaking-performance-4217471",
+      "title": "Batting woes waste Rana’s record-breaking performance",
+      "summary": "A woeful batting display overshadowed a record-breaking bowling performance from Nahid Rana as Bangladesh suffered a 25-run defeat to Zimbabwe in the low-scoring first ODI of the three-match series at the Harare Sports Club on Monday.",
+      "url": "https://www.thedailystar.net/sports/cricket/news/batting-woes-waste-ranas-record-breaking-performance-4217471",
+      "source": "dailystar",
+      "publishedAt": "2026-07-06T16:09:50.000Z"
+    },
+    {
+      "id": "espn-https://www.cricinfo.com/ci/content/story/1544558.html",
+      "title": "Nyamhuri and Ngarava stun Bangladesh by defending 141",
+      "summary": "Nahid Rana's 6 for 21, the best figures by a Bangladeshi in ODIs, went in vain",
+      "url": "https://www.cricinfo.com/story/zim-vs-ban-newman-nyamhuri-and-richard-ngarava-stun-bangladesh-by-defending-141-1544558",
+      "imageUrl": "https://p.imgci.com/db/PICTURES/CMS/419400/419495.5.jpg",
+      "source": "espncricinfo",
+      "publishedAt": "2026-07-06T15:04:26.000Z"
+    },
+    {
+      "id": "cricbuzz-139465",
+      "title": "Pacers set up Zimbabwe's stunning defence of 141",
+      "summary": "Nahid Rana's 6/21, the best ODI figures by a Bangladeshi bowler, vent in vain as Zimbabwe's pace quartet blew the visitors away for a famous win",
+      "url": "https://www.cricbuzz.com/cricket-news/139465/pacers-set-up-zimbabwes-stunning-defence-of-141",
+      "imageUrl": "https://static.cricbuzz.com/a/img/v1/540x303/i1/c1028061/a-collective-bowling-performance-helped-zimbabwe-prevail-in-a-low-scoring-first-odi-in-harare.jpg",
+      "source": "cricbuzz",
+      "publishedAt": "2026-07-06T14:27:18.000Z"
+    },
+    {
+      "id": "espn-https://www.cricinfo.com/ci/content/story/1544539.html",
+      "title": "Bangladesh bowl against Zimbabwe under slightly overcast skies",
+      "summary": "Taskin Ahmed and Nahid Rana were back in Bangladesh's side while Raza returned to XI for Zimbabwe",
+      "url": "https://www.cricinfo.com/story/bangladesh-bowl-against-zimbabwe-under-slightly-overcast-skies-1544539",
+      "imageUrl": "https://p.imgci.com/db/PICTURES/CMS/403300/403374.5.jpg",
+      "source": "espncricinfo",
+      "publishedAt": "2026-07-06T08:18:57.000Z"
+    },
+    {
+      "id": "dailystar-https://www.thedailystar.net/sports/cricket/news/bangladesh-opt-bowl-zimbabwe-odi-opener-4217121",
+      "title": "Rana's five-for rocks Zimbabwe",
+      "summary": "The Tigers enter the match looking to bounce back from their innings-and-85-run defeat in the one-off Test",
+      "url": "https://www.thedailystar.net/sports/cricket/news/bangladesh-opt-bowl-zimbabwe-odi-opener-4217121",
+      "source": "dailystar",
+      "publishedAt": "2026-07-06T07:15:23.000Z"
+    },
     {
       "id": "dailystar-https://www.thedailystar.net/sports/cricket/news/tigers-bank-pacers-after-test-setback-4216626",
       "title": "Tigers bank on pacers after Test setback",
@@ -8,15 +59,6 @@
       "url": "https://www.thedailystar.net/sports/cricket/news/tigers-bank-pacers-after-test-setback-4216626",
       "source": "dailystar",
       "publishedAt": "2026-07-05T18:00:00.000Z"
-    },
-    {
-      "id": "cricbuzz-139455",
-      "title": "Mehidy eyes World Cup gains from Zimbabwe ODIs after Test setback",
-      "summary": "Bangladesh's ODI captain said the innings defeat in the one-off Test is \"in the past\" as the visitors turn their attention to the three-match ODI series in Harare",
-      "url": "https://www.cricbuzz.com/cricket-news/139455/mehidy-eyes-world-cup-gains-from-zimbabwe-odis-after-test-setback",
-      "imageUrl": "https://static.cricbuzz.com/a/img/v1/540x303/i1/c1027195/bangladesh-odi-captain-mehidy-hasan-miraz-said-they-have-put-the-humiliation-of-the-one-off-test-defeat-behind-them.jpg",
-      "source": "cricbuzz",
-      "publishedAt": "2026-07-05T15:03:54.000Z"
     },
     {
       "id": "espn-https://www.cricinfo.com/ci/content/story/1544391.html",
@@ -37,14 +79,6 @@
       "publishedAt": "2026-07-03T16:52:06.000Z"
     },
     {
-      "id": "dailystar-https://www.thedailystar.net/sports/cricket/news/bangladesh-name-t20-squad-without-litton-mosaddek-yasir-return-4213391",
-      "title": "Bangladesh name T20 squad without Litton; Mosaddek, Yasir return",
-      "summary": "The Bangladesh Cricket Board (BCB) on Wednesday didn’t include regular captain Litton Das in their 15-member squad for the upcoming three-match T20I series against Zimbabwe after granting the wicketkeeper-batter a No Objection Certificate (NOC) to participate in the upcoming Lanka Premier League (LPL), scheduled from July 17 to August 8.",
-      "url": "https://www.thedailystar.net/sports/cricket/news/bangladesh-name-t20-squad-without-litton-mosaddek-yasir-return-4213391",
-      "source": "dailystar",
-      "publishedAt": "2026-07-01T14:56:40.000Z"
-    },
-    {
       "id": "espn-https://www.cricinfo.com/ci/content/story/1543799.html",
       "title": "Hridoy to lead Bangladesh in Zimbabwe T20Is; Saifuddin makes comeback",
       "summary": "Litton Das, Mehidy Hasan Miraz, Taskin Ahmed and Hasan Mahmud will be playing in the Lanka Premier League, which overlaps with the T20I series",
@@ -52,33 +86,6 @@
       "imageUrl": "https://p.imgci.com/db/PICTURES/CMS/418700/418722.5.jpg",
       "source": "espncricinfo",
       "publishedAt": "2026-07-01T13:40:39.000Z"
-    },
-    {
-      "id": "espn-https://www.cricinfo.com/ci/content/story/1543745.html",
-      "title": "Ngarava: 'I walked into this Test match thinking about making history'",
-      "summary": "The left-arm quick captained Zimbabwe to their biggest Test win - by an innings and 85 runs against Bangladesh",
-      "url": "https://www.cricinfo.com/story/zimbabwe-captain-richard-ngarava-i-walked-into-this-test-match-thinking-about-making-history-1543745",
-      "imageUrl": "https://p.imgci.com/db/PICTURES/CMS/419200/419230.5.jpg",
-      "source": "espncricinfo",
-      "publishedAt": "2026-06-30T18:05:45.000Z"
-    },
-    {
-      "id": "espn-https://www.cricinfo.com/ci/content/story/1543694.html",
-      "title": "Seamers, Kaia lead Zimbabwe to their biggest Test win",
-      "summary": "Muzarabani picked up 4 for 65 in the second innings as Zimbabwe thrashed Bangladesh by an innings and 85 runs",
-      "url": "https://www.cricinfo.com/story/zim-vs-ban-blessing-muzarabani-richard-ngarava-innocent-kaia-lead-zimbabwe-to-their-biggest-test-win-1543694",
-      "imageUrl": "https://p.imgci.com/db/PICTURES/CMS/419200/419207.5.jpg",
-      "source": "espncricinfo",
-      "publishedAt": "2026-06-30T13:36:53.000Z"
-    },
-    {
-      "id": "espn-https://www.cricinfo.com/ci/content/story/1543616.html",
-      "title": "Kaia's maiden ton, Madhevere and Ervine's fifties extend Zimbabwe's dominance",
-      "summary": "After Zimbabwe were bowled out for 410, with Taijul picking up a seven-for, Bangladesh lost Shadman in the second innings",
-      "url": "https://www.cricinfo.com/story/zim-vs-ban-innocent-kaia-maiden-ton-madhevere-and-ervine-fifties-extend-zimbabwes-dominance-1543616",
-      "imageUrl": "https://p.imgci.com/db/PICTURES/CMS/419100/419189.5.jpg",
-      "source": "espncricinfo",
-      "publishedAt": "2026-06-29T16:20:45.000Z"
     }
   ]
 }
