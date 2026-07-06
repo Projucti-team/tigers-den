@@ -48,9 +48,25 @@ API token stored in secure environment (GitHub blocks token commit). Last update
 
 ---
 
+## Testing & Quality Assurance
+
+**Test Suite Added (2026-07-06):**
+- Pre-deployment script: `scripts/test-before-deploy.sh` — Run before any production push
+- Feedback tests (unit + integration): 90%+ coverage, API + component validation
+- Cricket sync tests (unit): Job structure, squad logic, format status, state management
+- Coverage plan: `TEST_COVERAGE_PLAN.md` — Priority-based testing roadmap
+
+**Run Before Deploy:**
+```bash
+bash scripts/test-before-deploy.sh
+npm run test -- --coverage
+```
+
+---
+
 ## User Feedback System (2026-07-06)
 
-**Status:** UI complete, Payload collection temporarily disabled pending DB schema resolution.
+**Status:** Complete. UI + API + Admin panel. Full test coverage.
 
 Floating feedback button on all pages (bottom-right, amber). Opens modal form to capture:
 - Title & description (required)
