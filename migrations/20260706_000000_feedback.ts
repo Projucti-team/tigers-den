@@ -8,9 +8,9 @@ export async function up({ db }: MigrateUpArgs): Promise<void> {
       "title" varchar NOT NULL,
       "description" varchar NOT NULL,
       "category" varchar NOT NULL CHECK ("category" IN ('bug', 'feature', 'other')),
-      "image_id" integer,
+      "image_id" integer REFERENCES "media"("id") ON DELETE SET NULL,
       "page_url" varchar NOT NULL,
-      "user_id" integer,
+      "user_id" integer REFERENCES "users"("id") ON DELETE SET NULL,
       "email" varchar,
       "name" varchar,
       "status" varchar NOT NULL DEFAULT 'new' CHECK ("status" IN ('new', 'under_review', 'ticket_raised', 'in_progress', 'resolved', 'dismissed')),
@@ -35,6 +35,14 @@ export async function up({ db }: MigrateUpArgs): Promise<void> {
   await db.execute(sql`
     ALTER TABLE "payload_locked_documents_rels"
       ADD COLUMN IF NOT EXISTS "feedback_id" integer;
+  `);
+
+  await db.execute(sql`
+    ALTER TABLE "payload_locked_documents_rels"
+      ADD CONSTRAINT "fk_feedback_id"
+        FOREIGN KEY ("feedback_id")
+        REFERENCES "feedback"("id")
+        ON DELETE CASCADE;
   `);
 }
 
