@@ -50,24 +50,32 @@ API token stored in secure environment (GitHub blocks token commit). Last update
 
 ## User Feedback System (2026-07-06)
 
+**Status:** UI complete, Payload collection temporarily disabled pending DB schema resolution.
+
 Floating feedback button on all pages (bottom-right, amber). Opens modal form to capture:
 - Title & description (required)
 - Category: bug/feature/other
 - Page URL (auto-captured)
 - User contact (auto-filled if logged in, requested if not)
 
-**Admin Panel:**
+**Admin Panel (Ready, needs DB):**
 - View all feedback with filters by status/category
 - Change status: new → under_review → ticket_raised → in_progress → resolved/dismissed
 - Timeline tracks all status changes with optional notes
 - Image field available for manual admin upload if needed
 
 **Technical:**
-- Payload CMS collection with hooks for timeline auto-update
+- Payload CMS collection with hooks for timeline auto-update (DISABLED in config — see TODO)
 - `/api/feedback` endpoint accepts JSON payload
 - JSON request: title, description, category, email, name, pageUrl, userId
 - `FeedbackButton` floating on all frontend pages
 - No server-side image upload (admin can add manually in Payload panel)
+
+**TODO — Database Schema:**
+Payload trying to add feedback_id to payload_locked_documents_rels but auto-migration conflicts. Need to:
+1. Check if migration ran and column exists
+2. Verify Payload's auto-migration behavior with new collections
+3. Re-enable Feedback collection in payload.config.ts once resolved
 
 ---
 
