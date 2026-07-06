@@ -1,8 +1,11 @@
-import type { CollectionConfig, BeforeChangeHook } from "payload";
+import type { CollectionConfig } from "payload";
 
-const addStatusTimelineEntry: BeforeChangeHook = async ({
+const addStatusTimelineEntry = async ({
   data,
   originalDoc,
+}: {
+  data: any;
+  originalDoc: any;
 }) => {
   // Only update timeline if status changed
   if (
