@@ -1,5 +1,16 @@
 # Cricket Sync Jobs Refactor — Handover Guide
 
+## Airtable Work Log
+
+**Project:** Tigers Den  
+**Base ID:** `appe8oeguzTq8XzY5`  
+**Logs Table ID:** `tblUH5FCiJD7KNIVm`  
+**Projects Table ID:** `tbln6JK343jcS21mp`  
+
+Use Airtable API token (stored separately in secure environment) to log work updates. Last update: Record ID `reccbQUvXC68AVfjH` (ID 19, 2026-07-06) — Cricket Sync Jobs Refactor complete.
+
+---
+
 ## Vision
 
 Replace blind daily cricket sync with **intelligent, source-aware, state-driven job scheduling**. Instead of one monolithic job trying to do everything every night, split into specialized jobs that run when needed, on their own cadence.
