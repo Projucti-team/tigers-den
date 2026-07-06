@@ -45,7 +45,6 @@ API token stored in secure environment (GitHub blocks token commit). Last update
 Floating feedback button on all pages (bottom-right, amber). Opens modal form to capture:
 - Title & description (required)
 - Category: bug/feature/other
-- Image upload (optional)
 - Page URL (auto-captured)
 - User contact (auto-filled if logged in, requested if not)
 
@@ -53,13 +52,14 @@ Floating feedback button on all pages (bottom-right, amber). Opens modal form to
 - View all feedback with filters by status/category
 - Change status: new → under_review → ticket_raised → in_progress → resolved/dismissed
 - Timeline tracks all status changes with optional notes
-- Each status change logged with timestamp
+- Image field available for manual admin upload if needed
 
 **Technical:**
 - Payload CMS collection with hooks for timeline auto-update
-- `/api/feedback` endpoint handles form + image upload
-- Image stored in Media collection via Payload
+- `/api/feedback` endpoint accepts JSON payload
+- JSON request: title, description, category, email, name, pageUrl, userId
 - `FeedbackButton` floating on all frontend pages
+- No server-side image upload (admin can add manually in Payload panel)
 
 ---
 
