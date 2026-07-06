@@ -66,23 +66,27 @@ npm run test -- --coverage
 
 ## User Feedback System (2026-07-06)
 
-**Status:** ✅ Complete. Live. Full test coverage.
+**Status:** ✅ Complete. Live. Standalone feature (not Payload collection).
 
 **Components:**
 - ✅ Floating button on all pages (FeedbackButton)
 - ✅ Modal form (FeedbackModal) — captures title, description, category, email/name, page URL
 - ✅ API endpoint (/api/feedback) — JSON submission, auto-timeline creation
-- ✅ Payload CMS collection — admin panel for viewing/managing feedback
+- ✅ Standalone database table — migration-managed, no Payload schema conflicts
 - ✅ Status workflow — new → under_review → ticket_raised → in_progress → resolved/dismissed
 - ✅ Timeline tracking — logs all status changes with timestamps & notes
 - ✅ Full test suite (unit + integration, 90%+ coverage)
 - ✅ Pre-deployment test script
 
-**Technical Notes:**
-- Removed manual migration; let Payload auto-handle schema/relationships
-- Foreign keys in Feedback table: image_id → media, user_id → users
-- Payload auto-creates relationship columns in payload_locked_documents_rels
-- No manual rels table management needed
+**Technical Approach:**
+- Feedback is a **standalone feature**, not a Payload CMS collection
+- Simple migration creates feedback table (migration/20260706_000000_feedback.ts)
+- API handles all CRUD operations directly (/api/feedback)
+- No Payload schema management = no conflicts with sync
+- Admin panel for feedback can be added later as a separate view
+
+**Why Standalone?**
+Payload collections auto-manage schema and relationships, which conflicted with sync. By using direct SQL migration + API, we avoid Payload's auto-migration without losing functionality. Sync and feedback both work independently.
 
 Floating feedback button on all pages (bottom-right, amber). Opens modal form to capture:
 - Title & description (required)
