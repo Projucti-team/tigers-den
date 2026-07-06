@@ -34,12 +34,17 @@ export async function POST(request: Request) {
     let imageId: number | null = null;
     if (imageFile && imageFile.size > 0) {
       try {
+        const buffer = await imageFile.arrayBuffer();
         const mediaPayload = await payload.create({
           collection: "media",
           data: {
             alt: `Feedback image for: ${title}`,
           },
-          file: imageFile,
+          file: {
+            data: Buffer.from(buffer),
+            mimetype: imageFile.type,
+            name: imageFile.name,
+          },
         });
         imageId = mediaPayload.id as number;
       } catch (error) {
