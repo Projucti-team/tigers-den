@@ -28,6 +28,11 @@ API token stored in secure environment (GitHub blocks token commit). Last update
 - Skip if squads match (no API waste)  
 **Impact:** More efficient, especially for 2-3× daily runs.
 
+### Squad Refresh Target Logic Fix
+**Issue:** Squad refresh only worked for "upcoming" formats, not "active" ones. Tours with active matches (e.g., Bangladesh-Zimbabwe ODI/T20) had status "active", so squads never refreshed.  
+**Fix:** Updated `getSquadRefreshTargets()` to include both "upcoming" and "active" formats (not "finished").  
+**Impact:** Squads now refresh during active matches, resolving missing squad displays.
+
 ---
 
 ## Vision
