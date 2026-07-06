@@ -1,5 +1,5 @@
 {
-  "fetchedAt": "2026-07-06T09:38:19.935Z",
+  "fetchedAt": "2026-07-06T22:39:38.088Z",
   "source": "icc-sportz.io",
   "sourceUrl": "https://www.icc-cricket.com/rankings",
   "men": {
@@ -156,9 +156,9 @@
           "rank": 9,
           "name": "Bangladesh",
           "abbreviation": "BAN",
-          "rating": 87,
-          "points": 3123,
-          "matches": 36
+          "rating": 84,
+          "points": 3126,
+          "matches": 37
         },
         {
           "rank": 10,
@@ -170,18 +170,18 @@
         },
         {
           "rank": 11,
+          "name": "Zimbabwe",
+          "abbreviation": "ZIM",
+          "rating": 60,
+          "points": 774,
+          "matches": 13
+        },
+        {
+          "rank": 12,
           "name": "Ireland",
           "abbreviation": "IRE",
           "rating": 54,
           "points": 653,
-          "matches": 12
-        },
-        {
-          "rank": 12,
-          "name": "Zimbabwe",
-          "abbreviation": "ZIM",
-          "rating": 53,
-          "points": 637,
           "matches": 12
         },
         {
@@ -1065,9 +1065,9 @@
         "rank": 9,
         "name": "Bangladesh",
         "abbreviation": "BAN",
-        "rating": 87,
-        "points": 3123,
-        "matches": 36
+        "rating": 84,
+        "points": 3126,
+        "matches": 37
       },
       "t20": {
         "rank": 8,
@@ -10366,7 +10366,7 @@
         "allrounder": "2026-06-30"
       },
       "odi": {
-        "team": "2026-06-20",
+        "team": "2026-07-06",
         "bat": "2026-06-23",
         "bowl": "2026-06-23",
         "allrounder": "2026-06-23"
