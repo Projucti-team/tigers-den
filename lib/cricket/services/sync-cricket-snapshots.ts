@@ -519,7 +519,8 @@ export async function syncToursIndex(options?: SyncCricketOptions): Promise<Sync
     errors.push(...detailResult.errors);
 
     // Update format statuses for all tours after building details
-    if (!skipCricApi && toursCount > 0) {
+    // Run regardless of skipCricApi - format status depends on match data, not tour index freshness
+    if (toursCount > 0) {
       try {
         for (const tour of toursToProcess.tours) {
           const slug = tourSlug(tour);

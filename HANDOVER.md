@@ -33,6 +33,12 @@ API token stored in secure environment (GitHub blocks token commit). Last update
 **Fix:** Updated `getSquadRefreshTargets()` to include both "upcoming" and "active" formats (not "finished").  
 **Impact:** Squads now refresh during active matches, resolving missing squad displays.
 
+### Format Status Update Condition Fix
+**Issue:** Format status update only ran when CricAPI wasn't skipped (`!skipCricApi`). On subsequent syncs with fresh tour data cached, CricAPI was skipped, so format statuses never updated, and squad refresh found no tours.  
+**Root cause:** Format status update was conditional on `!skipCricApi && toursCount > 0`, but format statuses depend on match data in tour details, not on whether we re-fetched the tour index.  
+**Fix:** Always update format statuses if `toursCount > 0`, regardless of skipCricApi.  
+**Impact:** Format statuses populate every sync, enabling squad refresh to work on every run.
+
 ### File Upload Type Fix
 **Issue:** TypeScript build error in feedback API — Payload media collection expects `{data, mimetype, name}` format, not raw File object.  
 **Fix:** Convert File to Buffer before passing to Payload: `Buffer.from(await file.arrayBuffer())` with mimetype and name.  
