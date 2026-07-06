@@ -35,6 +35,29 @@ API token stored in secure environment (GitHub blocks token commit). Last update
 
 ---
 
+## User Feedback System (2026-07-06)
+
+Floating feedback button on all pages (bottom-right, amber). Opens modal form to capture:
+- Title & description (required)
+- Category: bug/feature/other
+- Image upload (optional)
+- Page URL (auto-captured)
+- User contact (auto-filled if logged in, requested if not)
+
+**Admin Panel:**
+- View all feedback with filters by status/category
+- Change status: new → under_review → ticket_raised → in_progress → resolved/dismissed
+- Timeline tracks all status changes with optional notes
+- Each status change logged with timestamp
+
+**Technical:**
+- Payload CMS collection with hooks for timeline auto-update
+- `/api/feedback` endpoint handles form + image upload
+- Image stored in Media collection via Payload
+- `FeedbackButton` floating on all frontend pages
+
+---
+
 ## Vision
 
 Replace blind daily cricket sync with **intelligent, source-aware, state-driven job scheduling**. Instead of one monolithic job trying to do everything every night, split into specialized jobs that run when needed, on their own cadence.
