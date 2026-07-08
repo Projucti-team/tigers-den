@@ -1,6 +1,60 @@
 {
-  "fetchedAt": "2026-07-07T22:43:06.017Z",
+  "fetchedAt": "2026-07-08T22:41:12.003Z",
   "items": [
+    {
+      "id": "espn-https://www.cricinfo.com/ci/content/story/1544918.html",
+      "title": "Bangladesh look to overturn batting woes as Zimbabwe eye series win",
+      "summary": "Bangladesh's tour has been marred by collapses so far and they can't afford another one",
+      "url": "https://www.cricinfo.com/story/zim-vs-ban-2nd-odi-bangladesh-look-to-overturn-batting-woes-as-zimbabwe-eye-series-win-1544918",
+      "imageUrl": "https://p.imgci.com/db/PICTURES/CMS/419400/419492.5.jpg",
+      "source": "espncricinfo",
+      "publishedAt": "2026-07-08T17:48:11.000Z"
+    },
+    {
+      "id": "cricbuzz-139488",
+      "title": "Litton ruled out of remaining Zimbabwe ODIs with hamstring injury",
+      "summary": "Parvez Hossain Emon has been named as his replacement for the final two matches, with Litton set to return to Dhaka for rehabilitation before joining the Lanka Premier League",
+      "url": "https://www.cricbuzz.com/cricket-news/139488/litton-ruled-out-of-remaining-zimbabwe-odis-with-hamstring-injury",
+      "imageUrl": "https://static.cricbuzz.com/a/img/v1/540x303/i1/c1008404/litton-will-return-to-dhaka-to-continue-his-rehabilitation.jpg",
+      "source": "cricbuzz",
+      "publishedAt": "2026-07-08T17:47:48.000Z"
+    },
+    {
+      "id": "espn-https://www.cricinfo.com/ci/content/story/1544933.html",
+      "title": "Litton Das ruled out of ODI series against Zimbabwe with hamstring injury",
+      "summary": "Parvez Hossain Emon has been named Litton's replacement for the second and third ODIs",
+      "url": "https://www.cricinfo.com/story/litton-das-ruled-out-of-odi-series-against-zimbabwe-with-hamstring-injury-1544933",
+      "imageUrl": "https://p.imgci.com/db/PICTURES/CMS/405600/405673.5.jpg",
+      "source": "espncricinfo",
+      "publishedAt": "2026-07-08T17:41:46.000Z"
+    },
+    {
+      "id": "cricbuzz-139486",
+      "title": "Nyamhuri, Shumba named in Zimbabwe squad for Bangladesh T20Is",
+      "summary": "Zimbabwe have retained the core that made it to the Super 8 stages of the 2026 T20 World Cup",
+      "url": "https://www.cricbuzz.com/cricket-news/139486/nyamhuri-shumba-named-in-zimbabwe-squad-for-bangladesh-t20is",
+      "imageUrl": "https://static.cricbuzz.com/a/img/v1/540x303/i1/c1029456/newman-nyamhuri-has-been-included-in-the-15-man-zimbabwe-squad-for-the-t20i-series-against-bangladesh.jpg",
+      "source": "cricbuzz",
+      "publishedAt": "2026-07-08T15:48:57.000Z"
+    },
+    {
+      "id": "cricbuzz-139485",
+      "title": "Bangladesh struggling to adapt to Zimbabwe's bounce, admits Ashraful",
+      "summary": "The Bangladesh batting coach said Zimbabwe's tall fast bowlers are extracting extra bounce from the surfaces, making it difficult for his batters to adjust",
+      "url": "https://www.cricbuzz.com/cricket-news/139485/bangladesh-struggling-to-adapt-to-zimbabwes-bounce-admits-ashraful",
+      "imageUrl": "https://static.cricbuzz.com/a/img/v1/540x303/i1/c1029451/ashraful-was-full-of-praise-for-zimbabwes-pace-attack-saying-their-height-has-made-life-difficult-for-bangladeshs-batters.jpg",
+      "source": "cricbuzz",
+      "publishedAt": "2026-07-08T15:39:10.000Z"
+    },
+    {
+      "id": "espn-https://www.cricinfo.com/ci/content/story/1544919.html",
+      "title": "Nyamhuri, Shumba in Zimbabwe T20I squad against Bangladesh",
+      "summary": "Cremer was ruled out with a left-arm fracture, while Taylor and Tony Munyonga are the other changes from the World Cup squad",
+      "url": "https://www.cricinfo.com/story/zim-vs-ban-nyamhuri-shumba-named-in-zimbabwe-t20i-squad-against-bangladesh-1544919",
+      "imageUrl": "https://p.imgci.com/db/PICTURES/CMS/374800/374823.5.jpg",
+      "source": "espncricinfo",
+      "publishedAt": "2026-07-08T15:09:40.000Z"
+    },
     {
       "id": "dailystar-https://www.thedailystar.net/sports/cricket/news/little-disappointed-our-batting-unit-miraz-rues-tigers-odi-opener-defeat-against-zimbabwe-4217721",
       "title": "'Little disappointed in our batting unit': Miraz rues Tigers' ODI opener defeat against Zimbabwe",
@@ -25,15 +79,6 @@
       "imageUrl": "https://p.imgci.com/db/PICTURES/CMS/419400/419495.5.jpg",
       "source": "espncricinfo",
       "publishedAt": "2026-07-06T15:04:26.000Z"
-    },
-    {
-      "id": "cricbuzz-139465",
-      "title": "Pacers set up Zimbabwe's stunning defence of 141",
-      "summary": "Nahid Rana's 6/21, the best ODI figures by a Bangladeshi bowler, vent in vain as Zimbabwe's pace quartet blew the visitors away for a famous win",
-      "url": "https://www.cricbuzz.com/cricket-news/139465/pacers-set-up-zimbabwes-stunning-defence-of-141",
-      "imageUrl": "https://static.cricbuzz.com/a/img/v1/540x303/i1/c1028061/a-collective-bowling-performance-helped-zimbabwe-prevail-in-a-low-scoring-first-odi-in-harare.jpg",
-      "source": "cricbuzz",
-      "publishedAt": "2026-07-06T14:27:18.000Z"
     },
     {
       "id": "espn-https://www.cricinfo.com/ci/content/story/1544539.html",
