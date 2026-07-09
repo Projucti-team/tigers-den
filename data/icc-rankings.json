@@ -1,5 +1,5 @@
 {
-  "fetchedAt": "2026-07-08T22:18:24.429Z",
+  "fetchedAt": "2026-07-09T22:44:32.276Z",
   "source": "icc-sportz.io",
   "sourceUrl": "https://www.icc-cricket.com/rankings",
   "men": {
@@ -156,9 +156,9 @@
           "rank": 9,
           "name": "Bangladesh",
           "abbreviation": "BAN",
-          "rating": 84,
-          "points": 3126,
-          "matches": 37
+          "rating": 83,
+          "points": 3136,
+          "matches": 38
         },
         {
           "rank": 10,
@@ -172,9 +172,9 @@
           "rank": 11,
           "name": "Zimbabwe",
           "abbreviation": "ZIM",
-          "rating": 60,
-          "points": 774,
-          "matches": 13
+          "rating": 65,
+          "points": 908,
+          "matches": 14
         },
         {
           "rank": 12,
@@ -254,17 +254,17 @@
           "rank": 1,
           "name": "India",
           "abbreviation": "IND",
-          "rating": 270,
-          "points": 15100,
-          "matches": 56
+          "rating": 269,
+          "points": 15315,
+          "matches": 57
         },
         {
           "rank": 2,
           "name": "England",
           "abbreviation": "ENG",
-          "rating": 265,
-          "points": 9547,
-          "matches": 36
+          "rating": 267,
+          "points": 9867,
+          "matches": 37
         },
         {
           "rank": 3,
@@ -551,8 +551,8 @@
           "name": "Denmark",
           "abbreviation": "DEN",
           "rating": 81,
-          "points": 1294,
-          "matches": 16
+          "points": 1385,
+          "matches": 17
         },
         {
           "rank": 39,
@@ -622,9 +622,9 @@
           "rank": 47,
           "name": "Norway",
           "abbreviation": "NOR",
-          "rating": 55,
-          "points": 1767,
-          "matches": 32
+          "rating": 56,
+          "points": 1842,
+          "matches": 33
         },
         {
           "rank": 48,
@@ -822,9 +822,9 @@
           "rank": 72,
           "name": "Estonia",
           "abbreviation": "EST",
-          "rating": 25,
-          "points": 425,
-          "matches": 17
+          "rating": 24,
+          "points": 430,
+          "matches": 18
         },
         {
           "rank": 73,
@@ -966,9 +966,9 @@
           "rank": 90,
           "name": "Turkiye",
           "abbreviation": "TUR",
-          "rating": 4,
-          "points": 28,
-          "matches": 8
+          "rating": 2,
+          "points": 22,
+          "matches": 9
         },
         {
           "rank": 91,
@@ -1065,9 +1065,9 @@
         "rank": 9,
         "name": "Bangladesh",
         "abbreviation": "BAN",
-        "rating": 84,
-        "points": 3126,
-        "matches": 37
+        "rating": 83,
+        "points": 3136,
+        "matches": 38
       },
       "t20": {
         "rank": 8,
@@ -10370,13 +10370,13 @@
         "allrounder": "2026-07-07"
       },
       "odi": {
-        "team": "2026-07-06",
+        "team": "2026-07-09",
         "bat": "2026-07-07",
         "bowl": "2026-07-07",
         "allrounder": "2026-07-07"
       },
       "t20": {
-        "team": "2026-07-08",
+        "team": "2026-07-10",
         "bat": "2026-07-07",
         "bowl": "2026-07-07",
         "allrounder": "2026-07-07"
