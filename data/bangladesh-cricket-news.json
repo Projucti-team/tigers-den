@@ -1,6 +1,50 @@
 {
-  "fetchedAt": "2026-07-08T22:41:12.003Z",
+  "fetchedAt": "2026-07-09T22:53:53.608Z",
   "items": [
+    {
+      "id": "cricbuzz-139499",
+      "title": "Mustafizur ruled out of Zimbabwe tour, set to miss start of the Hundred",
+      "summary": "The Bangladesh bowler sustained the hamstring injury in the opening ODI against Zimbabwe ",
+      "url": "https://www.cricbuzz.com/cricket-news/139499/mustafizur-ruled-out-of-zimbabwe-tour-set-to-miss-start-of-the-hundred",
+      "imageUrl": "https://static.cricbuzz.com/a/img/v1/540x303/i1/c803120/the-bangladesh-bowler-sustained-the-hamstring-injury-in-the-opening-odi-against-zimbabwe.jpg",
+      "source": "cricbuzz",
+      "publishedAt": "2026-07-09T18:18:14.000Z"
+    },
+    {
+      "id": "espn-https://www.cricinfo.com/ci/content/story/1544980.html",
+      "title": "Curran and Ngarava seal Zimbabwe's stunning series win",
+      "summary": "Bangladesh lost 7 for 65 in the chase of 248 to lose the second ODI and the series",
+      "url": "https://www.cricinfo.com/story/zim-v-ban-2nd-odi-ben-curran-and-richard-ngarava-seal-zimbabwes-stunning-series-win-1544980",
+      "imageUrl": "https://p.imgci.com/db/PICTURES/CMS/419500/419578.5.jpg",
+      "source": "espncricinfo",
+      "publishedAt": "2026-07-09T18:14:11.000Z"
+    },
+    {
+      "id": "cricbuzz-139497",
+      "title": "Ben Curran, Brad Evans star as Zimbabwe seal ODI series against Bangladesh",
+      "summary": "Bangladesh slumped from 207/5 to 234 all out as Ben Curran's unbeaten century and Brad Evans' all-round display secured Zimbabwe's unassailable 2-0 series lead",
+      "url": "https://www.cricbuzz.com/cricket-news/139497/ben-curran-brad-evans-star-as-zimbabwe-seal-odi-series-against-bangladesh",
+      "imageUrl": "https://static.cricbuzz.com/a/img/v1/540x303/i1/c1029757/bangladesh-slumped-from-2075-to-234-all-out.jpg",
+      "source": "cricbuzz",
+      "publishedAt": "2026-07-09T16:50:27.000Z"
+    },
+    {
+      "id": "dailystar-https://www.thedailystar.net/sports/cricket/news/bangladesh-suffer-13-run-defeat-concede-odi-series-zimbabwe-4220101",
+      "title": "Bangladesh suffer 13-run defeat to concede ODI series to Zimbabwe",
+      "summary": "The visitors lost their last four wickets for just 15 runs and were bowled out for 234 in 48.1 overs.",
+      "url": "https://www.thedailystar.net/sports/cricket/news/bangladesh-suffer-13-run-defeat-concede-odi-series-zimbabwe-4220101",
+      "source": "dailystar",
+      "publishedAt": "2026-07-09T16:25:13.000Z"
+    },
+    {
+      "id": "espn-https://www.cricinfo.com/ci/content/story/1544933.html",
+      "title": "Litton Das ruled out of ODI series against Zimbabwe with calf injury",
+      "summary": "Parvez Hossain Emon has been named Litton's replacement for the second and third ODIs",
+      "url": "https://www.cricinfo.com/story/litton-das-ruled-out-of-odi-series-against-zimbabwe-with-hamstring-injury-1544933",
+      "imageUrl": "https://p.imgci.com/db/PICTURES/CMS/405600/405673.5.jpg",
+      "source": "espncricinfo",
+      "publishedAt": "2026-07-09T08:15:05.000Z"
+    },
     {
       "id": "espn-https://www.cricinfo.com/ci/content/story/1544918.html",
       "title": "Bangladesh look to overturn batting woes as Zimbabwe eye series win",
@@ -8,43 +52,24 @@
       "url": "https://www.cricinfo.com/story/zim-vs-ban-2nd-odi-bangladesh-look-to-overturn-batting-woes-as-zimbabwe-eye-series-win-1544918",
       "imageUrl": "https://p.imgci.com/db/PICTURES/CMS/419400/419492.5.jpg",
       "source": "espncricinfo",
-      "publishedAt": "2026-07-08T17:48:11.000Z"
+      "publishedAt": "2026-07-09T08:14:11.000Z"
     },
     {
-      "id": "cricbuzz-139488",
-      "title": "Litton ruled out of remaining Zimbabwe ODIs with hamstring injury",
-      "summary": "Parvez Hossain Emon has been named as his replacement for the final two matches, with Litton set to return to Dhaka for rehabilitation before joining the Lanka Premier League",
-      "url": "https://www.cricbuzz.com/cricket-news/139488/litton-ruled-out-of-remaining-zimbabwe-odis-with-hamstring-injury",
-      "imageUrl": "https://static.cricbuzz.com/a/img/v1/540x303/i1/c1008404/litton-will-return-to-dhaka-to-continue-his-rehabilitation.jpg",
-      "source": "cricbuzz",
-      "publishedAt": "2026-07-08T17:47:48.000Z"
-    },
-    {
-      "id": "espn-https://www.cricinfo.com/ci/content/story/1544933.html",
-      "title": "Litton Das ruled out of ODI series against Zimbabwe with hamstring injury",
-      "summary": "Parvez Hossain Emon has been named Litton's replacement for the second and third ODIs",
-      "url": "https://www.cricinfo.com/story/litton-das-ruled-out-of-odi-series-against-zimbabwe-with-hamstring-injury-1544933",
-      "imageUrl": "https://p.imgci.com/db/PICTURES/CMS/405600/405673.5.jpg",
+      "id": "espn-https://www.cricinfo.com/ci/content/story/1544964.html",
+      "title": "Shoriful returns as Bangladesh bowl against unchanged Zimbabwe",
+      "summary": "Visitors need a victory to level the series while hosts eye a series win today",
+      "url": "https://www.cricinfo.com/story/2nd-odi-zim-vs-ban-shoriful-returns-as-bangladesh-bowl-against-unchanged-zimbabwe-1544964",
+      "imageUrl": "https://p.imgci.com/db/PICTURES/CMS/419400/419490.5.jpg",
       "source": "espncricinfo",
-      "publishedAt": "2026-07-08T17:41:46.000Z"
+      "publishedAt": "2026-07-09T07:54:40.000Z"
     },
     {
-      "id": "cricbuzz-139486",
-      "title": "Nyamhuri, Shumba named in Zimbabwe squad for Bangladesh T20Is",
-      "summary": "Zimbabwe have retained the core that made it to the Super 8 stages of the 2026 T20 World Cup",
-      "url": "https://www.cricbuzz.com/cricket-news/139486/nyamhuri-shumba-named-in-zimbabwe-squad-for-bangladesh-t20is",
-      "imageUrl": "https://static.cricbuzz.com/a/img/v1/540x303/i1/c1029456/newman-nyamhuri-has-been-included-in-the-15-man-zimbabwe-squad-for-the-t20i-series-against-bangladesh.jpg",
-      "source": "cricbuzz",
-      "publishedAt": "2026-07-08T15:48:57.000Z"
-    },
-    {
-      "id": "cricbuzz-139485",
-      "title": "Bangladesh struggling to adapt to Zimbabwe's bounce, admits Ashraful",
-      "summary": "The Bangladesh batting coach said Zimbabwe's tall fast bowlers are extracting extra bounce from the surfaces, making it difficult for his batters to adjust",
-      "url": "https://www.cricbuzz.com/cricket-news/139485/bangladesh-struggling-to-adapt-to-zimbabwes-bounce-admits-ashraful",
-      "imageUrl": "https://static.cricbuzz.com/a/img/v1/540x303/i1/c1029451/ashraful-was-full-of-praise-for-zimbabwes-pace-attack-saying-their-height-has-made-life-difficult-for-bangladeshs-batters.jpg",
-      "source": "cricbuzz",
-      "publishedAt": "2026-07-08T15:39:10.000Z"
+      "id": "dailystar-https://www.thedailystar.net/sports/cricket/news/bangladesh-opt-field-must-win-second-odi-against-zimbabwe-4219716",
+      "title": "Bangladesh opt to field in must-win second ODI against Zimbabwe",
+      "summary": "Bangladesh won the toss and opted to field first in the second of their three-match ODI series against hosts Zimbabwe in Harare today.",
+      "url": "https://www.thedailystar.net/sports/cricket/news/bangladesh-opt-field-must-win-second-odi-against-zimbabwe-4219716",
+      "source": "dailystar",
+      "publishedAt": "2026-07-09T07:05:52.000Z"
     },
     {
       "id": "espn-https://www.cricinfo.com/ci/content/story/1544919.html",
@@ -113,15 +138,6 @@
       "imageUrl": "https://p.imgci.com/db/PICTURES/CMS/380800/380802.5.jpg",
       "source": "espncricinfo",
       "publishedAt": "2026-07-05T12:16:16.000Z"
-    },
-    {
-      "id": "espn-https://www.cricinfo.com/ci/content/story/1544220.html",
-      "title": "Kaia, Burl, Marumani, Masakadza back in ODI side for Bangladesh series",
-      "summary": "This will be Ngarava's first ODI series as captain, having recently led them to the one-off Test win against Bangladesh",
-      "url": "https://www.cricinfo.com/story/zimbabwe-squad-innocent-kaia-ryan-burl-tadiwanashe-marumani-masakadza-back-in-odi-side-for-bangladesh-series-1544220",
-      "imageUrl": "https://p.imgci.com/db/PICTURES/CMS/343600/343695.5.jpg",
-      "source": "espncricinfo",
-      "publishedAt": "2026-07-03T16:52:06.000Z"
     }
   ]
 }
