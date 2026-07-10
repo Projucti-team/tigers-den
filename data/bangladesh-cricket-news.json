@@ -1,14 +1,49 @@
 {
-  "fetchedAt": "2026-07-09T22:53:53.608Z",
+  "fetchedAt": "2026-07-10T22:38:43.510Z",
   "items": [
     {
-      "id": "cricbuzz-139499",
-      "title": "Mustafizur ruled out of Zimbabwe tour, set to miss start of the Hundred",
-      "summary": "The Bangladesh bowler sustained the hamstring injury in the opening ODI against Zimbabwe ",
-      "url": "https://www.cricbuzz.com/cricket-news/139499/mustafizur-ruled-out-of-zimbabwe-tour-set-to-miss-start-of-the-hundred",
-      "imageUrl": "https://static.cricbuzz.com/a/img/v1/540x303/i1/c803120/the-bangladesh-bowler-sustained-the-hamstring-injury-in-the-opening-odi-against-zimbabwe.jpg",
+      "id": "espn-https://www.cricinfo.com/ci/content/story/1545065.html",
+      "title": "Mustafizur Rahman ruled out for four weeks with hamstring and knee injuries",
+      "summary": "Seamer will travel to Birmingham for rehabilitation after being ruled out of Zimbabwe tour",
+      "url": "https://www.cricinfo.com/story/zim-vs-ban-mustafizur-rahman-ruled-out-for-four-weeks-with-hamstring-and-knee-injuries-1545065",
+      "imageUrl": "https://p.imgci.com/db/PICTURES/CMS/416000/416062.5.jpg",
+      "source": "espncricinfo",
+      "publishedAt": "2026-07-10T18:29:28.000Z"
+    },
+    {
+      "id": "espn-https://www.cricinfo.com/ci/content/story/1545100.html",
+      "title": "Zimbabwe eye 3-0 sweep as Bangladesh seek consolation",
+      "summary": "Zimbabwe haven't completed a clean sweep of Bangladesh in any format since 2001",
+      "url": "https://www.cricinfo.com/story/zimbabwe-eye-3-0-sweep-as-bangladesh-seek-consolation-1545100",
+      "imageUrl": "https://p.imgci.com/db/PICTURES/CMS/419500/419593.5.jpg",
+      "source": "espncricinfo",
+      "publishedAt": "2026-07-10T12:22:45.000Z"
+    },
+    {
+      "id": "cricbuzz-139508",
+      "title": "Taskin's LPL stint delayed after SOS callup to Bangladesh's T20I squad",
+      "summary": "The pacer, who was initially granted an NOC to play the entire tournament, will now join after the T20I series against Zimbabwe",
+      "url": "https://www.cricbuzz.com/cricket-news/139508/taskins-lpl-stint-delayed-after-sos-callup-to-bangladeshs-t20i-squad",
+      "imageUrl": "https://static.cricbuzz.com/a/img/v1/540x303/i1/c1030884/taskin-ahmed-has-replaced-mustafizur-rahman-for-the-t20is-against-zimbabwe.jpg",
       "source": "cricbuzz",
-      "publishedAt": "2026-07-09T18:18:14.000Z"
+      "publishedAt": "2026-07-10T10:16:08.000Z"
+    },
+    {
+      "id": "dailystar-https://www.thedailystar.net/sports/cricket/news/tigers-hit-new-low-zimbabwe-amid-world-cup-fever-4220601",
+      "title": "Tigers hit new low in Zimbabwe amid World Cup fever",
+      "summary": "\"I am not fully sure whether they were a bit complacent after going there following wins against some formidable opponents. Another important factor, I think, was that the conditions were a bit challenging and they could not figure out how to adjust to them,\" chief selector Habibul Bashar explained.",
+      "url": "https://www.thedailystar.net/sports/cricket/news/tigers-hit-new-low-zimbabwe-amid-world-cup-fever-4220601",
+      "source": "dailystar",
+      "publishedAt": "2026-07-10T09:43:00.000Z"
+    },
+    {
+      "id": "cricbuzz-139504",
+      "title": "Tanzid rues failure to bat deep after Bangladesh concede ODI series",
+      "summary": "Bangladesh batter said that Ben Curran's unbeaten century was the difference",
+      "url": "https://www.cricbuzz.com/cricket-news/139504/tanzid-rues-failure-to-bat-deep-after-bangladesh-concede-odi-series",
+      "imageUrl": "https://static.cricbuzz.com/a/img/v1/540x303/i1/c1030685/file-photo-tanzid-hasan-scored-57-but-couldnt-kick-on-to-make-a-big-score.jpg",
+      "source": "cricbuzz",
+      "publishedAt": "2026-07-10T02:47:04.000Z"
     },
     {
       "id": "espn-https://www.cricinfo.com/ci/content/story/1544980.html",
@@ -18,15 +53,6 @@
       "imageUrl": "https://p.imgci.com/db/PICTURES/CMS/419500/419578.5.jpg",
       "source": "espncricinfo",
       "publishedAt": "2026-07-09T18:14:11.000Z"
-    },
-    {
-      "id": "cricbuzz-139497",
-      "title": "Ben Curran, Brad Evans star as Zimbabwe seal ODI series against Bangladesh",
-      "summary": "Bangladesh slumped from 207/5 to 234 all out as Ben Curran's unbeaten century and Brad Evans' all-round display secured Zimbabwe's unassailable 2-0 series lead",
-      "url": "https://www.cricbuzz.com/cricket-news/139497/ben-curran-brad-evans-star-as-zimbabwe-seal-odi-series-against-bangladesh",
-      "imageUrl": "https://static.cricbuzz.com/a/img/v1/540x303/i1/c1029757/bangladesh-slumped-from-2075-to-234-all-out.jpg",
-      "source": "cricbuzz",
-      "publishedAt": "2026-07-09T16:50:27.000Z"
     },
     {
       "id": "dailystar-https://www.thedailystar.net/sports/cricket/news/bangladesh-suffer-13-run-defeat-concede-odi-series-zimbabwe-4220101",
@@ -121,23 +147,6 @@
       "url": "https://www.thedailystar.net/sports/cricket/news/bangladesh-opt-bowl-zimbabwe-odi-opener-4217121",
       "source": "dailystar",
       "publishedAt": "2026-07-06T07:15:23.000Z"
-    },
-    {
-      "id": "dailystar-https://www.thedailystar.net/sports/cricket/news/tigers-bank-pacers-after-test-setback-4216626",
-      "title": "Tigers bank on pacers after Test setback",
-      "summary": "Bangladesh will head into the first of the three-match ODI series against Zimbabwe on Monday in Harare, hoping to put the disappointment of their innings-and-85-run defeat in the one-off Test behind them.",
-      "url": "https://www.thedailystar.net/sports/cricket/news/tigers-bank-pacers-after-test-setback-4216626",
-      "source": "dailystar",
-      "publishedAt": "2026-07-05T18:00:00.000Z"
-    },
-    {
-      "id": "espn-https://www.cricinfo.com/ci/content/story/1544391.html",
-      "title": "Bangladesh's big guns return for ODI battle against Zimbabwe",
-      "summary": "Both teams will want to gain knowledge about their personnel in conditions where the 2027 World Cup will be played",
-      "url": "https://www.cricinfo.com/story/bangladeshs-big-guns-return-for-odi-battle-against-zimbabwe-1544391",
-      "imageUrl": "https://p.imgci.com/db/PICTURES/CMS/380800/380802.5.jpg",
-      "source": "espncricinfo",
-      "publishedAt": "2026-07-05T12:16:16.000Z"
     }
   ]
 }
