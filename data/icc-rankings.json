@@ -1,5 +1,5 @@
 {
-  "fetchedAt": "2026-07-10T22:18:14.736Z",
+  "fetchedAt": "2026-07-11T22:09:16.162Z",
   "source": "icc-sportz.io",
   "sourceUrl": "https://www.icc-cricket.com/rankings",
   "men": {
@@ -157,8 +157,8 @@
           "name": "Bangladesh",
           "abbreviation": "BAN",
           "rating": 83,
-          "points": 3136,
-          "matches": 38
+          "points": 3251,
+          "matches": 39
         },
         {
           "rank": 10,
@@ -172,9 +172,9 @@
           "rank": 11,
           "name": "Zimbabwe",
           "abbreviation": "ZIM",
-          "rating": 65,
-          "points": 908,
-          "matches": 14
+          "rating": 63,
+          "points": 941,
+          "matches": 15
         },
         {
           "rank": 12,
@@ -252,19 +252,19 @@
       "t20": [
         {
           "rank": 1,
-          "name": "India",
-          "abbreviation": "IND",
-          "rating": 269,
-          "points": 15315,
-          "matches": 57
+          "name": "England",
+          "abbreviation": "ENG",
+          "rating": 268,
+          "points": 10186,
+          "matches": 38
         },
         {
           "rank": 2,
-          "name": "England",
-          "abbreviation": "ENG",
-          "rating": 267,
-          "points": 9867,
-          "matches": 37
+          "name": "India",
+          "abbreviation": "IND",
+          "rating": 268,
+          "points": 15532,
+          "matches": 58
         },
         {
           "rank": 3,
@@ -1066,8 +1066,8 @@
         "name": "Bangladesh",
         "abbreviation": "BAN",
         "rating": 83,
-        "points": 3136,
-        "matches": 38
+        "points": 3251,
+        "matches": 39
       },
       "t20": {
         "rank": 8,
@@ -10370,13 +10370,13 @@
         "allrounder": "2026-07-07"
       },
       "odi": {
-        "team": "2026-07-09",
+        "team": "2026-07-11",
         "bat": "2026-07-07",
         "bowl": "2026-07-07",
         "allrounder": "2026-07-07"
       },
       "t20": {
-        "team": "2026-07-10",
+        "team": "2026-07-11",
         "bat": "2026-07-07",
         "bowl": "2026-07-07",
         "allrounder": "2026-07-07"
@@ -10714,9 +10714,9 @@
           "rank": 27,
           "name": "Germany",
           "abbreviation": "GER-W",
-          "rating": 69,
-          "points": 1852,
-          "matches": 27
+          "rating": 71,
+          "points": 2054,
+          "matches": 29
         },
         {
           "rank": 28,
@@ -10784,19 +10784,19 @@
         },
         {
           "rank": 36,
-          "name": "Switzerland",
-          "abbreviation": "CHE-W",
-          "rating": 52,
-          "points": 937,
-          "matches": 18
-        },
-        {
-          "rank": 37,
           "name": "Cyprus",
           "abbreviation": "CYP-W",
           "rating": 49,
           "points": 1080,
           "matches": 22
+        },
+        {
+          "rank": 37,
+          "name": "Switzerland",
+          "abbreviation": "CHE-W",
+          "rating": 49,
+          "points": 976,
+          "matches": 20
         },
         {
           "rank": 38,
@@ -17362,7 +17362,7 @@
         "allrounder": "2026-05-18"
       },
       "t20": {
-        "team": "2026-07-10",
+        "team": "2026-07-11",
         "bat": "2026-07-06",
         "bowl": "2026-07-06",
         "allrounder": "2026-07-06"
