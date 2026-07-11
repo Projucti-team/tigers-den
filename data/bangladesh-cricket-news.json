@@ -1,6 +1,67 @@
 {
-  "fetchedAt": "2026-07-10T22:38:43.510Z",
+  "fetchedAt": "2026-07-11T22:29:48.158Z",
   "items": [
+    {
+      "id": "espn-https://www.cricinfo.com/ci/content/story/1545190.html",
+      "title": "Shoriful four-for, Tanzid 94 guide Bangladesh to consolation win",
+      "summary": "A 151-run partnership between Tanzid Hasan and Soumya Sarkar sealed an easy chase against a second-choice Zimbabwe bowling attack",
+      "url": "https://www.cricinfo.com/story/zim-vs-ban-3rd-odi-shoriful-four-for-tanzid-94-guide-bangladesh-to-consolation-win-1545190",
+      "imageUrl": "https://p.imgci.com/db/PICTURES/CMS/418000/418057.5.jpg",
+      "source": "espncricinfo",
+      "publishedAt": "2026-07-11T15:51:38.000Z"
+    },
+    {
+      "id": "dailystar-https://www.thedailystar.net/sports/cricket/news/shoriful-openers-shine-tigers-earn-consolation-victory-4221376",
+      "title": "Shoriful, openers shine as Tigers earn consolation victory",
+      "summary": "Having already conceded the series after losing the opening two matches, the visitors produced a clinical all-round display to finish the series on a positive note.",
+      "url": "https://www.thedailystar.net/sports/cricket/news/shoriful-openers-shine-tigers-earn-consolation-victory-4221376",
+      "source": "dailystar",
+      "publishedAt": "2026-07-11T14:46:43.000Z"
+    },
+    {
+      "id": "cricbuzz-139516",
+      "title": "Shoriful, Tanzid script consolation win for Bangladesh",
+      "summary": "Shoriful Islam's four-fer restricted Zimbabwe to 199, before Tanzid Hasan Tamim's 94 helped Bangladesh complete a facile win",
+      "url": "https://www.cricbuzz.com/cricket-news/139516/shoriful-tanzid-script-consolation-win-for-bangladesh",
+      "imageUrl": "https://static.cricbuzz.com/a/img/v1/540x303/i1/c1031914/tanzid-hasan-tamim-file-image-shared-151-for-the-opening-wicket-with-soumya-sarkar.jpg",
+      "source": "cricbuzz",
+      "publishedAt": "2026-07-11T14:42:53.000Z"
+    },
+    {
+      "id": "cricbuzz-139515",
+      "title": "Birmingham Phoenix to assess Mustafizur's fitness ahead of 2026 season",
+      "summary": "The Bangladesh pacer has already been ruled out of the ongoing series in Zimbabwe",
+      "url": "https://www.cricbuzz.com/cricket-news/139515/birmingham-phoenix-to-assess-mustafizurs-fitness-ahead-of-2026-season",
+      "imageUrl": "https://static.cricbuzz.com/a/img/v1/540x303/i1/c1031781/mustafizur-has-been-ruled-out-of-the-ongoing-zimbabwe-series.jpg",
+      "source": "cricbuzz",
+      "publishedAt": "2026-07-11T14:09:34.000Z"
+    },
+    {
+      "id": "espn-https://www.cricinfo.com/ci/content/story/1545177.html",
+      "title": "West Indies desperate for ODI upswing with World Cup qualification on the line",
+      "summary": "For New Zealand, meanwhile, this series offers a chance to get back to winning ways after a defeat to Bangladesh in their last ODI assignment",
+      "url": "https://www.cricinfo.com/story/west-indies-desperate-for-odi-upswing-against-new-zealand-with-world-cup-qualification-on-the-line-1545177",
+      "imageUrl": "https://p.imgci.com/db/PICTURES/CMS/404900/404981.5.jpg",
+      "source": "espncricinfo",
+      "publishedAt": "2026-07-11T09:07:02.000Z"
+    },
+    {
+      "id": "espn-https://www.cricinfo.com/ci/content/story/1545176.html",
+      "title": "Bangladesh bowl; Raza leads Zimbabwe in Ngarava's absence",
+      "summary": "Bangladesh left out fast bowler Nahid Rana and legspinner Rishad Hossain while Zimbabwe rested Blessing Muzarabani and Newman Nyamhuri",
+      "url": "https://www.cricinfo.com/story/bangladesh-bowl-raza-leads-zimbabwe-in-ngaravas-absence-1545176",
+      "imageUrl": "https://p.imgci.com/db/PICTURES/CMS/414200/414269.5.jpg",
+      "source": "espncricinfo",
+      "publishedAt": "2026-07-11T07:55:23.000Z"
+    },
+    {
+      "id": "dailystar-https://www.thedailystar.net/sports/cricket/news/bangladesh-bowl-two-changes-3rd-odi-4221176",
+      "title": "Bangladesh bowl with two changes in 3rd ODI",
+      "summary": "Bangladesh will bowl first in the third and final ODI against Zimbabwe in Harare today after making two changes to their playing XI for the dead rubber.",
+      "url": "https://www.thedailystar.net/sports/cricket/news/bangladesh-bowl-two-changes-3rd-odi-4221176",
+      "source": "dailystar",
+      "publishedAt": "2026-07-11T07:25:36.000Z"
+    },
     {
       "id": "espn-https://www.cricinfo.com/ci/content/story/1545065.html",
       "title": "Mustafizur Rahman ruled out for four weeks with hamstring and knee injuries",
@@ -20,30 +81,12 @@
       "publishedAt": "2026-07-10T12:22:45.000Z"
     },
     {
-      "id": "cricbuzz-139508",
-      "title": "Taskin's LPL stint delayed after SOS callup to Bangladesh's T20I squad",
-      "summary": "The pacer, who was initially granted an NOC to play the entire tournament, will now join after the T20I series against Zimbabwe",
-      "url": "https://www.cricbuzz.com/cricket-news/139508/taskins-lpl-stint-delayed-after-sos-callup-to-bangladeshs-t20i-squad",
-      "imageUrl": "https://static.cricbuzz.com/a/img/v1/540x303/i1/c1030884/taskin-ahmed-has-replaced-mustafizur-rahman-for-the-t20is-against-zimbabwe.jpg",
-      "source": "cricbuzz",
-      "publishedAt": "2026-07-10T10:16:08.000Z"
-    },
-    {
       "id": "dailystar-https://www.thedailystar.net/sports/cricket/news/tigers-hit-new-low-zimbabwe-amid-world-cup-fever-4220601",
       "title": "Tigers hit new low in Zimbabwe amid World Cup fever",
       "summary": "\"I am not fully sure whether they were a bit complacent after going there following wins against some formidable opponents. Another important factor, I think, was that the conditions were a bit challenging and they could not figure out how to adjust to them,\" chief selector Habibul Bashar explained.",
       "url": "https://www.thedailystar.net/sports/cricket/news/tigers-hit-new-low-zimbabwe-amid-world-cup-fever-4220601",
       "source": "dailystar",
       "publishedAt": "2026-07-10T09:43:00.000Z"
-    },
-    {
-      "id": "cricbuzz-139504",
-      "title": "Tanzid rues failure to bat deep after Bangladesh concede ODI series",
-      "summary": "Bangladesh batter said that Ben Curran's unbeaten century was the difference",
-      "url": "https://www.cricbuzz.com/cricket-news/139504/tanzid-rues-failure-to-bat-deep-after-bangladesh-concede-odi-series",
-      "imageUrl": "https://static.cricbuzz.com/a/img/v1/540x303/i1/c1030685/file-photo-tanzid-hasan-scored-57-but-couldnt-kick-on-to-make-a-big-score.jpg",
-      "source": "cricbuzz",
-      "publishedAt": "2026-07-10T02:47:04.000Z"
     },
     {
       "id": "espn-https://www.cricinfo.com/ci/content/story/1544980.html",
@@ -105,48 +148,6 @@
       "imageUrl": "https://p.imgci.com/db/PICTURES/CMS/374800/374823.5.jpg",
       "source": "espncricinfo",
       "publishedAt": "2026-07-08T15:09:40.000Z"
-    },
-    {
-      "id": "dailystar-https://www.thedailystar.net/sports/cricket/news/little-disappointed-our-batting-unit-miraz-rues-tigers-odi-opener-defeat-against-zimbabwe-4217721",
-      "title": "'Little disappointed in our batting unit': Miraz rues Tigers' ODI opener defeat against Zimbabwe",
-      "summary": "Bangladesh captain Mehidy Hasan Miraz admitted he was \"a little disappointed\" with his side's batting after the Tigers slipped to a 25-run defeat in the first ODI against Zimbabwe in Harare on Monday, squandering a record-breaking bowling performance from Nahid Rana.",
-      "url": "https://www.thedailystar.net/sports/cricket/news/little-disappointed-our-batting-unit-miraz-rues-tigers-odi-opener-defeat-against-zimbabwe-4217721",
-      "source": "dailystar",
-      "publishedAt": "2026-07-06T18:32:00.000Z"
-    },
-    {
-      "id": "dailystar-https://www.thedailystar.net/sports/cricket/news/batting-woes-waste-ranas-record-breaking-performance-4217471",
-      "title": "Batting woes waste Rana’s record-breaking performance",
-      "summary": "A woeful batting display overshadowed a record-breaking bowling performance from Nahid Rana as Bangladesh suffered a 25-run defeat to Zimbabwe in the low-scoring first ODI of the three-match series at the Harare Sports Club on Monday.",
-      "url": "https://www.thedailystar.net/sports/cricket/news/batting-woes-waste-ranas-record-breaking-performance-4217471",
-      "source": "dailystar",
-      "publishedAt": "2026-07-06T16:09:50.000Z"
-    },
-    {
-      "id": "espn-https://www.cricinfo.com/ci/content/story/1544558.html",
-      "title": "Nyamhuri and Ngarava stun Bangladesh by defending 141",
-      "summary": "Nahid Rana's 6 for 21, the best figures by a Bangladeshi in ODIs, went in vain",
-      "url": "https://www.cricinfo.com/story/zim-vs-ban-newman-nyamhuri-and-richard-ngarava-stun-bangladesh-by-defending-141-1544558",
-      "imageUrl": "https://p.imgci.com/db/PICTURES/CMS/419400/419495.5.jpg",
-      "source": "espncricinfo",
-      "publishedAt": "2026-07-06T15:04:26.000Z"
-    },
-    {
-      "id": "espn-https://www.cricinfo.com/ci/content/story/1544539.html",
-      "title": "Bangladesh bowl against Zimbabwe under slightly overcast skies",
-      "summary": "Taskin Ahmed and Nahid Rana were back in Bangladesh's side while Raza returned to XI for Zimbabwe",
-      "url": "https://www.cricinfo.com/story/bangladesh-bowl-against-zimbabwe-under-slightly-overcast-skies-1544539",
-      "imageUrl": "https://p.imgci.com/db/PICTURES/CMS/403300/403374.5.jpg",
-      "source": "espncricinfo",
-      "publishedAt": "2026-07-06T08:18:57.000Z"
-    },
-    {
-      "id": "dailystar-https://www.thedailystar.net/sports/cricket/news/bangladesh-opt-bowl-zimbabwe-odi-opener-4217121",
-      "title": "Rana's five-for rocks Zimbabwe",
-      "summary": "The Tigers enter the match looking to bounce back from their innings-and-85-run defeat in the one-off Test",
-      "url": "https://www.thedailystar.net/sports/cricket/news/bangladesh-opt-bowl-zimbabwe-odi-opener-4217121",
-      "source": "dailystar",
-      "publishedAt": "2026-07-06T07:15:23.000Z"
     }
   ]
 }
