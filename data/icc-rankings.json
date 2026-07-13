@@ -1,5 +1,5 @@
 {
-  "fetchedAt": "2026-07-12T22:09:22.662Z",
+  "fetchedAt": "2026-07-13T22:11:57.526Z",
   "source": "icc-sportz.io",
   "sourceUrl": "https://www.icc-cricket.com/rankings",
   "men": {
@@ -543,8 +543,8 @@
           "name": "Denmark",
           "abbreviation": "DEN",
           "rating": 83,
-          "points": 1491,
-          "matches": 18
+          "points": 1584,
+          "matches": 19
         },
         {
           "rank": 38,
@@ -807,8 +807,8 @@
           "name": "Hungary",
           "abbreviation": "HUN",
           "rating": 30,
-          "points": 986,
-          "matches": 33
+          "points": 1006,
+          "matches": 34
         },
         {
           "rank": 71,
@@ -820,19 +820,19 @@
         },
         {
           "rank": 72,
+          "name": "Estonia",
+          "abbreviation": "EST",
+          "rating": 23,
+          "points": 458,
+          "matches": 20
+        },
+        {
+          "rank": 73,
           "name": "Luxembourg",
           "abbreviation": "LUX",
           "rating": 23,
           "points": 451,
           "matches": 20
-        },
-        {
-          "rank": 73,
-          "name": "Estonia",
-          "abbreviation": "EST",
-          "rating": 21,
-          "points": 408,
-          "matches": 19
         },
         {
           "rank": 74,
@@ -1008,7 +1008,7 @@
           "abbreviation": "TUR",
           "rating": 0,
           "points": 0,
-          "matches": 11
+          "matches": 12
         },
         {
           "rank": 93,
@@ -10376,7 +10376,7 @@
         "allrounder": "2026-07-07"
       },
       "t20": {
-        "team": "2026-07-12",
+        "team": "2026-07-13",
         "bat": "2026-07-07",
         "bowl": "2026-07-07",
         "allrounder": "2026-07-07"
