@@ -1,5 +1,5 @@
 {
-  "fetchedAt": "2026-07-12T22:29:30.796Z",
+  "fetchedAt": "2026-07-13T22:34:01.663Z",
   "items": [
     {
       "id": "espn-https://www.cricinfo.com/ci/content/story/1545190.html",
@@ -121,15 +121,6 @@
       "url": "https://www.thedailystar.net/sports/cricket/news/bangladesh-opt-field-must-win-second-odi-against-zimbabwe-4219716",
       "source": "dailystar",
       "publishedAt": "2026-07-09T07:05:52.000Z"
-    },
-    {
-      "id": "espn-https://www.cricinfo.com/ci/content/story/1544919.html",
-      "title": "Nyamhuri, Shumba in Zimbabwe T20I squad against Bangladesh",
-      "summary": "Cremer was ruled out with a left-arm fracture, while Taylor and Tony Munyonga are the other changes from the World Cup squad",
-      "url": "https://www.cricinfo.com/story/zim-vs-ban-nyamhuri-shumba-named-in-zimbabwe-t20i-squad-against-bangladesh-1544919",
-      "imageUrl": "https://p.imgci.com/db/PICTURES/CMS/374800/374823.5.jpg",
-      "source": "espncricinfo",
-      "publishedAt": "2026-07-08T15:09:40.000Z"
     }
   ]
 }
