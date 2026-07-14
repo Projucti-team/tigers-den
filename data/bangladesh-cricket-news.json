@@ -1,6 +1,41 @@
 {
-  "fetchedAt": "2026-07-13T22:34:01.663Z",
+  "fetchedAt": "2026-07-14T22:37:38.025Z",
   "items": [
+    {
+      "id": "dailystar-https://www.thedailystar.net/sports/cricket/news/tigers-look-turn-the-tide-t20is-4224106",
+      "title": "Tigers look to turn the tide in T20Is",
+      "summary": "With the likes of Nahid Rana, Shoriful Islam and Taskin in the bowling attack, Hridoy said Bangladesh are aware of their strengths and are determined to bounce back.",
+      "url": "https://www.thedailystar.net/sports/cricket/news/tigers-look-turn-the-tide-t20is-4224106",
+      "source": "dailystar",
+      "publishedAt": "2026-07-14T19:05:04.000Z"
+    },
+    {
+      "id": "cricbuzz-139549",
+      "title": "Hridoy hopes for a fresh start in T20Is after disappointing tour",
+      "summary": "Bangladesh lost the one-off Test and the ODI series so far to the home side",
+      "url": "https://www.cricbuzz.com/cricket-news/139549/hridoy-hopes-for-a-fresh-start-in-t20is-after-disappointing-tour",
+      "imageUrl": "https://static.cricbuzz.com/a/img/v1/540x303/i1/c1035602/hridoy-will-lead-bangladesh-in-the-t20is.jpg",
+      "source": "cricbuzz",
+      "publishedAt": "2026-07-14T15:51:31.000Z"
+    },
+    {
+      "id": "espn-https://www.cricinfo.com/ci/content/story/1545592.html",
+      "title": "High-flying Zimbabwe meet under-strength Bangladesh in T20I series opener",
+      "summary": "Already without Litton, Mehidy, Taskin and Mahmud, Bangladesh will also miss the injured Mustafizur",
+      "url": "https://www.cricinfo.com/story/zim-vs-ban-high-flying-zimbabwe-meet-under-strength-bangladesh-in-t20i-series-opener-1545592",
+      "imageUrl": "https://p.imgci.com/db/PICTURES/CMS/419400/419498.5.jpg",
+      "source": "espncricinfo",
+      "publishedAt": "2026-07-14T14:19:32.000Z"
+    },
+    {
+      "id": "cricbuzz-139546",
+      "title": "Fresh doubts emerge over India's Bangladesh tour",
+      "summary": "Less than two weeks after signs emerged that India's white-ball tour of Bangladesh would go ahead, fresh uncertainty has surfaced, with the BCB putting its media-rights process on hold",
+      "url": "https://www.cricbuzz.com/cricket-news/139546/fresh-doubts-emerge-over-indias-bangladesh-tour",
+      "imageUrl": "https://static.cricbuzz.com/a/img/v1/540x303/i1/c1034988/the-series-is-supposed-to-consist-six-white-ball-games.jpg",
+      "source": "cricbuzz",
+      "publishedAt": "2026-07-14T11:33:09.000Z"
+    },
     {
       "id": "espn-https://www.cricinfo.com/ci/content/story/1545190.html",
       "title": "Shoriful four-for, Tanzid 94 guide Bangladesh to consolation win",
@@ -80,32 +115,6 @@
       "publishedAt": "2026-07-09T18:14:11.000Z"
     },
     {
-      "id": "dailystar-https://www.thedailystar.net/sports/cricket/news/bangladesh-suffer-13-run-defeat-concede-odi-series-zimbabwe-4220101",
-      "title": "Bangladesh suffer 13-run defeat to concede ODI series to Zimbabwe",
-      "summary": "The visitors lost their last four wickets for just 15 runs and were bowled out for 234 in 48.1 overs.",
-      "url": "https://www.thedailystar.net/sports/cricket/news/bangladesh-suffer-13-run-defeat-concede-odi-series-zimbabwe-4220101",
-      "source": "dailystar",
-      "publishedAt": "2026-07-09T16:25:13.000Z"
-    },
-    {
-      "id": "espn-https://www.cricinfo.com/ci/content/story/1544933.html",
-      "title": "Litton Das ruled out of ODI series against Zimbabwe with calf injury",
-      "summary": "Parvez Hossain Emon has been named Litton's replacement for the second and third ODIs",
-      "url": "https://www.cricinfo.com/story/litton-das-ruled-out-of-odi-series-against-zimbabwe-with-hamstring-injury-1544933",
-      "imageUrl": "https://p.imgci.com/db/PICTURES/CMS/405600/405673.5.jpg",
-      "source": "espncricinfo",
-      "publishedAt": "2026-07-09T08:15:05.000Z"
-    },
-    {
-      "id": "espn-https://www.cricinfo.com/ci/content/story/1544918.html",
-      "title": "Bangladesh look to overturn batting woes as Zimbabwe eye series win",
-      "summary": "Bangladesh's tour has been marred by collapses so far and they can't afford another one",
-      "url": "https://www.cricinfo.com/story/zim-vs-ban-2nd-odi-bangladesh-look-to-overturn-batting-woes-as-zimbabwe-eye-series-win-1544918",
-      "imageUrl": "https://p.imgci.com/db/PICTURES/CMS/419400/419492.5.jpg",
-      "source": "espncricinfo",
-      "publishedAt": "2026-07-09T08:14:11.000Z"
-    },
-    {
       "id": "espn-https://www.cricinfo.com/ci/content/story/1544964.html",
       "title": "Shoriful returns as Bangladesh bowl against unchanged Zimbabwe",
       "summary": "Visitors need a victory to level the series while hosts eye a series win today",
@@ -113,14 +122,6 @@
       "imageUrl": "https://p.imgci.com/db/PICTURES/CMS/419400/419490.5.jpg",
       "source": "espncricinfo",
       "publishedAt": "2026-07-09T07:54:40.000Z"
-    },
-    {
-      "id": "dailystar-https://www.thedailystar.net/sports/cricket/news/bangladesh-opt-field-must-win-second-odi-against-zimbabwe-4219716",
-      "title": "Bangladesh opt to field in must-win second ODI against Zimbabwe",
-      "summary": "Bangladesh won the toss and opted to field first in the second of their three-match ODI series against hosts Zimbabwe in Harare today.",
-      "url": "https://www.thedailystar.net/sports/cricket/news/bangladesh-opt-field-must-win-second-odi-against-zimbabwe-4219716",
-      "source": "dailystar",
-      "publishedAt": "2026-07-09T07:05:52.000Z"
     }
   ]
 }
