@@ -1,6 +1,68 @@
 {
-  "fetchedAt": "2026-07-14T22:37:38.025Z",
+  "fetchedAt": "2026-07-15T22:38:26.027Z",
   "items": [
+    {
+      "id": "cricbuzz-139558",
+      "title": "Picked eight batters to be more fearless: Sikandar Raza",
+      "summary": "Zimbabwe put on a show in the opening T20I against Bangladesh to take an early series lead",
+      "url": "https://www.cricbuzz.com/cricket-news/139558/picked-eight-batters-to-be-more-fearless-sikandar-raza",
+      "imageUrl": "https://static.cricbuzz.com/a/img/v1/540x303/i1/c1036103/raza-wants-to-ensure-zimbabwe-dont-fall-behind.jpg",
+      "source": "cricbuzz",
+      "publishedAt": "2026-07-15T17:49:19.000Z"
+    },
+    {
+      "id": "cricbuzz-139556",
+      "title": "Naved Nawaz backs Bangladesh's own biomechanics lab to aid player development",
+      "summary": "Newly appointed coach educator and Under-23 coach Naved Nawaz discusses Bangladesh's plans for a localised coaching curriculum, the need for biomechanics education and how the new Under-23 programme can strengthen the national team's talent pipeline",
+      "url": "https://www.cricbuzz.com/cricket-news/139556/naved-nawaz-backs-bangladeshs-own-biomechanics-lab-to-aid-player-development",
+      "imageUrl": "https://static.cricbuzz.com/a/img/v1/540x303/i1/c1036086/nawaz-is-handling-a-dual-role-now-with-the-bcb.jpg",
+      "source": "cricbuzz",
+      "publishedAt": "2026-07-15T16:29:38.000Z"
+    },
+    {
+      "id": "dailystar-https://www.thedailystar.net/sports/cricket/news/ngarava-muzarabani-sink-bangladesh-t20i-opener-4224796",
+      "title": "Ngarava, Muzarabani sink Bangladesh in T20I opener",
+      "summary": "Chasing 171, Bangladesh suffered an early collapse, losing Saif Hassan (12), Tanzid Hasan Tamim (16) and Parvez Hossain Emon (5) inside the powerplay to slump to 34 for three.",
+      "url": "https://www.thedailystar.net/sports/cricket/news/ngarava-muzarabani-sink-bangladesh-t20i-opener-4224796",
+      "source": "dailystar",
+      "publishedAt": "2026-07-15T15:47:46.000Z"
+    },
+    {
+      "id": "cricbuzz-139554",
+      "title": "Muzarabani, Ngarava give Zimbabwe early series lead",
+      "summary": "Bangladesh suffered their fourth loss in five games on this tour",
+      "url": "https://www.cricbuzz.com/cricket-news/139554/muzarabani-ngarava-give-zimbabwe-early-series-lead",
+      "imageUrl": "https://static.cricbuzz.com/a/img/v1/540x303/i1/c1036083/ngarava-and-muzarabani-shared-eight-wickets-between-them.jpg",
+      "source": "cricbuzz",
+      "publishedAt": "2026-07-15T14:45:00.000Z"
+    },
+    {
+      "id": "espn-https://www.cricinfo.com/ci/content/story/1545739.html",
+      "title": "Muzarabani and Ngarava overwhelm Bangladesh again",
+      "summary": "The two Zimbabwe quicks picked up four wickets each to defend a total of 170",
+      "url": "https://www.cricinfo.com/story/zim-vs-ban-1st-t20i-blessing-muzarabani-and-richard-ngarava-overwhelm-bangladesh-again-1545739",
+      "imageUrl": "https://p.imgci.com/db/PICTURES/CMS/419800/419827.5.jpg",
+      "source": "espncricinfo",
+      "publishedAt": "2026-07-15T14:43:45.000Z"
+    },
+    {
+      "id": "espn-https://www.cricinfo.com/ci/content/story/1545708.html",
+      "title": "Bangladesh get Taskin Ahmed boost as they bowl in Bulawayo",
+      "summary": "Taskin was not part of Bangladesh's squad, but got called up after an injury to Mustafizur Rahman",
+      "url": "https://www.cricinfo.com/story/bangladesh-get-taskin-ahmed-boost-as-they-bowl-in-bulawayo-1545708",
+      "imageUrl": "https://p.imgci.com/db/PICTURES/CMS/418000/418075.5.jpg",
+      "source": "espncricinfo",
+      "publishedAt": "2026-07-15T11:04:21.000Z"
+    },
+    {
+      "id": "espn-https://www.cricinfo.com/ci/content/story/1545695.html",
+      "title": "Australia internationals unlikely to play much WNCL",
+      "summary": "Australia's series against Bangladesh, New Zealand and the women's Champions Trophy, as well as the WPL likely to keep their best away from domestic cricket",
+      "url": "https://www.cricinfo.com/story/australia-internationals-unlikely-to-play-much-wncl-1545695",
+      "imageUrl": "https://p.imgci.com/db/PICTURES/CMS/414800/414814.5.jpg",
+      "source": "espncricinfo",
+      "publishedAt": "2026-07-15T05:14:59.000Z"
+    },
     {
       "id": "dailystar-https://www.thedailystar.net/sports/cricket/news/tigers-look-turn-the-tide-t20is-4224106",
       "title": "Tigers look to turn the tide in T20Is",
@@ -10,15 +72,6 @@
       "publishedAt": "2026-07-14T19:05:04.000Z"
     },
     {
-      "id": "cricbuzz-139549",
-      "title": "Hridoy hopes for a fresh start in T20Is after disappointing tour",
-      "summary": "Bangladesh lost the one-off Test and the ODI series so far to the home side",
-      "url": "https://www.cricbuzz.com/cricket-news/139549/hridoy-hopes-for-a-fresh-start-in-t20is-after-disappointing-tour",
-      "imageUrl": "https://static.cricbuzz.com/a/img/v1/540x303/i1/c1035602/hridoy-will-lead-bangladesh-in-the-t20is.jpg",
-      "source": "cricbuzz",
-      "publishedAt": "2026-07-14T15:51:31.000Z"
-    },
-    {
       "id": "espn-https://www.cricinfo.com/ci/content/story/1545592.html",
       "title": "High-flying Zimbabwe meet under-strength Bangladesh in T20I series opener",
       "summary": "Already without Litton, Mehidy, Taskin and Mahmud, Bangladesh will also miss the injured Mustafizur",
@@ -26,15 +79,6 @@
       "imageUrl": "https://p.imgci.com/db/PICTURES/CMS/419400/419498.5.jpg",
       "source": "espncricinfo",
       "publishedAt": "2026-07-14T14:19:32.000Z"
-    },
-    {
-      "id": "cricbuzz-139546",
-      "title": "Fresh doubts emerge over India's Bangladesh tour",
-      "summary": "Less than two weeks after signs emerged that India's white-ball tour of Bangladesh would go ahead, fresh uncertainty has surfaced, with the BCB putting its media-rights process on hold",
-      "url": "https://www.cricbuzz.com/cricket-news/139546/fresh-doubts-emerge-over-indias-bangladesh-tour",
-      "imageUrl": "https://static.cricbuzz.com/a/img/v1/540x303/i1/c1034988/the-series-is-supposed-to-consist-six-white-ball-games.jpg",
-      "source": "cricbuzz",
-      "publishedAt": "2026-07-14T11:33:09.000Z"
     },
     {
       "id": "espn-https://www.cricinfo.com/ci/content/story/1545190.html",
@@ -96,32 +140,6 @@
       "imageUrl": "https://p.imgci.com/db/PICTURES/CMS/419500/419593.5.jpg",
       "source": "espncricinfo",
       "publishedAt": "2026-07-10T12:22:45.000Z"
-    },
-    {
-      "id": "dailystar-https://www.thedailystar.net/sports/cricket/news/tigers-hit-new-low-zimbabwe-amid-world-cup-fever-4220601",
-      "title": "Tigers hit new low in Zimbabwe amid World Cup fever",
-      "summary": "\"I am not fully sure whether they were a bit complacent after going there following wins against some formidable opponents. Another important factor, I think, was that the conditions were a bit challenging and they could not figure out how to adjust to them,\" chief selector Habibul Bashar explained.",
-      "url": "https://www.thedailystar.net/sports/cricket/news/tigers-hit-new-low-zimbabwe-amid-world-cup-fever-4220601",
-      "source": "dailystar",
-      "publishedAt": "2026-07-10T09:43:00.000Z"
-    },
-    {
-      "id": "espn-https://www.cricinfo.com/ci/content/story/1544980.html",
-      "title": "Curran and Ngarava seal Zimbabwe's stunning series win",
-      "summary": "Bangladesh lost 7 for 65 in the chase of 248 to lose the second ODI and the series",
-      "url": "https://www.cricinfo.com/story/zim-v-ban-2nd-odi-ben-curran-and-richard-ngarava-seal-zimbabwes-stunning-series-win-1544980",
-      "imageUrl": "https://p.imgci.com/db/PICTURES/CMS/419500/419578.5.jpg",
-      "source": "espncricinfo",
-      "publishedAt": "2026-07-09T18:14:11.000Z"
-    },
-    {
-      "id": "espn-https://www.cricinfo.com/ci/content/story/1544964.html",
-      "title": "Shoriful returns as Bangladesh bowl against unchanged Zimbabwe",
-      "summary": "Visitors need a victory to level the series while hosts eye a series win today",
-      "url": "https://www.cricinfo.com/story/2nd-odi-zim-vs-ban-shoriful-returns-as-bangladesh-bowl-against-unchanged-zimbabwe-1544964",
-      "imageUrl": "https://p.imgci.com/db/PICTURES/CMS/419400/419490.5.jpg",
-      "source": "espncricinfo",
-      "publishedAt": "2026-07-09T07:54:40.000Z"
     }
   ]
 }
