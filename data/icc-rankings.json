@@ -1,5 +1,5 @@
 {
-  "fetchedAt": "2026-07-15T22:14:53.579Z",
+  "fetchedAt": "2026-07-16T22:16:21.750Z",
   "source": "icc-sportz.io",
   "sourceUrl": "https://www.icc-cricket.com/rankings",
   "men": {
@@ -92,9 +92,9 @@
           "rank": 1,
           "name": "India",
           "abbreviation": "IND",
-          "rating": 121,
-          "points": 3762,
-          "matches": 31
+          "rating": 119,
+          "points": 3800,
+          "matches": 32
         },
         {
           "rank": 2,
@@ -138,19 +138,19 @@
         },
         {
           "rank": 7,
+          "name": "England",
+          "abbreviation": "ENG",
+          "rating": 91,
+          "points": 2729,
+          "matches": 30
+        },
+        {
+          "rank": 8,
           "name": "Afghanistan",
           "abbreviation": "AFG",
           "rating": 90,
           "points": 2154,
           "matches": 24
-        },
-        {
-          "rank": 8,
-          "name": "England",
-          "abbreviation": "ENG",
-          "rating": 88,
-          "points": 2558,
-          "matches": 29
         },
         {
           "rank": 9,
@@ -10361,7 +10361,7 @@
         "allrounder": "2026-07-07"
       },
       "odi": {
-        "team": "2026-07-14",
+        "team": "2026-07-16",
         "bat": "2026-07-14",
         "bowl": "2026-07-14",
         "allrounder": "2026-07-14"
