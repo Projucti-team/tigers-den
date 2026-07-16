@@ -1,6 +1,24 @@
 {
-  "fetchedAt": "2026-07-15T22:38:26.027Z",
+  "fetchedAt": "2026-07-16T22:35:46.366Z",
   "items": [
+    {
+      "id": "espn-https://www.cricinfo.com/ci/content/story/1545888.html",
+      "title": "Buoyant Zimbabwe eye series win against depleted Bangladesh",
+      "summary": "Bangladesh have now lost their last five T20Is and need their top order to fire",
+      "url": "https://www.cricinfo.com/story/buoyant-zimbabwe-eye-series-win-against-depleted-bangladesh-1545888",
+      "imageUrl": "https://p.imgci.com/db/PICTURES/CMS/419800/419824.5.jpg",
+      "source": "espncricinfo",
+      "publishedAt": "2026-07-16T14:38:16.000Z"
+    },
+    {
+      "id": "espn-https://www.cricinfo.com/ci/content/story/1545695.html",
+      "title": "Australia internationals unlikely to play much WNCL",
+      "summary": "Australia's series against Bangladesh, New Zealand and the women's Champions Trophy, as well as the WPL likely to keep their best away from domestic cricket",
+      "url": "https://www.cricinfo.com/story/australia-internationals-unlikely-to-play-much-wncl-1545695",
+      "imageUrl": "https://p.imgci.com/db/PICTURES/CMS/414800/414814.5.jpg",
+      "source": "espncricinfo",
+      "publishedAt": "2026-07-15T23:55:09.000Z"
+    },
     {
       "id": "cricbuzz-139558",
       "title": "Picked eight batters to be more fearless: Sikandar Raza",
@@ -28,15 +46,6 @@
       "publishedAt": "2026-07-15T15:47:46.000Z"
     },
     {
-      "id": "cricbuzz-139554",
-      "title": "Muzarabani, Ngarava give Zimbabwe early series lead",
-      "summary": "Bangladesh suffered their fourth loss in five games on this tour",
-      "url": "https://www.cricbuzz.com/cricket-news/139554/muzarabani-ngarava-give-zimbabwe-early-series-lead",
-      "imageUrl": "https://static.cricbuzz.com/a/img/v1/540x303/i1/c1036083/ngarava-and-muzarabani-shared-eight-wickets-between-them.jpg",
-      "source": "cricbuzz",
-      "publishedAt": "2026-07-15T14:45:00.000Z"
-    },
-    {
       "id": "espn-https://www.cricinfo.com/ci/content/story/1545739.html",
       "title": "Muzarabani and Ngarava overwhelm Bangladesh again",
       "summary": "The two Zimbabwe quicks picked up four wickets each to defend a total of 170",
@@ -53,15 +62,6 @@
       "imageUrl": "https://p.imgci.com/db/PICTURES/CMS/418000/418075.5.jpg",
       "source": "espncricinfo",
       "publishedAt": "2026-07-15T11:04:21.000Z"
-    },
-    {
-      "id": "espn-https://www.cricinfo.com/ci/content/story/1545695.html",
-      "title": "Australia internationals unlikely to play much WNCL",
-      "summary": "Australia's series against Bangladesh, New Zealand and the women's Champions Trophy, as well as the WPL likely to keep their best away from domestic cricket",
-      "url": "https://www.cricinfo.com/story/australia-internationals-unlikely-to-play-much-wncl-1545695",
-      "imageUrl": "https://p.imgci.com/db/PICTURES/CMS/414800/414814.5.jpg",
-      "source": "espncricinfo",
-      "publishedAt": "2026-07-15T05:14:59.000Z"
     },
     {
       "id": "dailystar-https://www.thedailystar.net/sports/cricket/news/tigers-look-turn-the-tide-t20is-4224106",
@@ -122,24 +122,6 @@
       "url": "https://www.thedailystar.net/sports/cricket/news/bangladesh-bowl-two-changes-3rd-odi-4221176",
       "source": "dailystar",
       "publishedAt": "2026-07-11T07:25:36.000Z"
-    },
-    {
-      "id": "espn-https://www.cricinfo.com/ci/content/story/1545065.html",
-      "title": "Mustafizur Rahman ruled out for four weeks with hamstring and knee injuries",
-      "summary": "Seamer will travel to Birmingham for rehabilitation after being ruled out of Zimbabwe tour",
-      "url": "https://www.cricinfo.com/story/zim-vs-ban-mustafizur-rahman-ruled-out-for-four-weeks-with-hamstring-and-knee-injuries-1545065",
-      "imageUrl": "https://p.imgci.com/db/PICTURES/CMS/416000/416062.5.jpg",
-      "source": "espncricinfo",
-      "publishedAt": "2026-07-10T18:29:28.000Z"
-    },
-    {
-      "id": "espn-https://www.cricinfo.com/ci/content/story/1545100.html",
-      "title": "Zimbabwe eye 3-0 sweep as Bangladesh seek consolation",
-      "summary": "Zimbabwe haven't completed a clean sweep of Bangladesh in any format since 2001",
-      "url": "https://www.cricinfo.com/story/zimbabwe-eye-3-0-sweep-as-bangladesh-seek-consolation-1545100",
-      "imageUrl": "https://p.imgci.com/db/PICTURES/CMS/419500/419593.5.jpg",
-      "source": "espncricinfo",
-      "publishedAt": "2026-07-10T12:22:45.000Z"
     }
   ]
 }
