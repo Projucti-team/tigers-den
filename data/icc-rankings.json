@@ -1,5 +1,5 @@
 {
-  "fetchedAt": "2026-07-16T22:16:21.750Z",
+  "fetchedAt": "2026-07-17T22:07:36.075Z",
   "source": "icc-sportz.io",
   "sourceUrl": "https://www.icc-cricket.com/rankings",
   "men": {
@@ -100,9 +100,9 @@
           "rank": 2,
           "name": "New Zealand",
           "abbreviation": "NZ",
-          "rating": 110,
-          "points": 3533,
-          "matches": 32
+          "rating": 111,
+          "points": 3659,
+          "matches": 33
         },
         {
           "rank": 3,
@@ -164,9 +164,9 @@
           "rank": 10,
           "name": "West Indies",
           "abbreviation": "WI",
-          "rating": 76,
-          "points": 2342,
-          "matches": 31
+          "rating": 75,
+          "points": 2402,
+          "matches": 32
         },
         {
           "rank": 11,
@@ -311,8 +311,8 @@
           "name": "Bangladesh",
           "abbreviation": "BAN",
           "rating": 223,
-          "points": 11354,
-          "matches": 51
+          "points": 11607,
+          "matches": 52
         },
         {
           "rank": 9,
@@ -343,8 +343,8 @@
           "name": "Zimbabwe",
           "abbreviation": "ZIM",
           "rating": 203,
-          "points": 9953,
-          "matches": 49
+          "points": 10126,
+          "matches": 50
         },
         {
           "rank": 13,
@@ -1074,8 +1074,8 @@
         "name": "Bangladesh",
         "abbreviation": "BAN",
         "rating": 223,
-        "points": 11354,
-        "matches": 51
+        "points": 11607,
+        "matches": 52
       }
     },
     "players": {
@@ -10361,13 +10361,13 @@
         "allrounder": "2026-07-07"
       },
       "odi": {
-        "team": "2026-07-16",
+        "team": "2026-07-17",
         "bat": "2026-07-14",
         "bowl": "2026-07-14",
         "allrounder": "2026-07-14"
       },
       "t20": {
-        "team": "2026-07-15",
+        "team": "2026-07-17",
         "bat": "2026-07-14",
         "bowl": "2026-07-14",
         "allrounder": "2026-07-14"
