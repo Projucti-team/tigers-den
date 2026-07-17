@@ -1,6 +1,58 @@
 {
-  "fetchedAt": "2026-07-16T22:35:46.366Z",
+  "fetchedAt": "2026-07-17T22:29:30.943Z",
   "items": [
+    {
+      "id": "cricbuzz-139580",
+      "title": "Saifuddin credits better adaptation as Bangladesh level T20I series",
+      "summary": "After levelling the T20I series against Zimbabwe, Mohammad Saifuddin revealed how team discussions helped Bangladesh adapt to the conditions, even as Nahid Rana picked up a side strain",
+      "url": "https://www.cricbuzz.com/cricket-news/139580/saifuddin-credits-better-adaptation-as-bangladesh-level-t20i-series",
+      "imageUrl": "https://static.cricbuzz.com/a/img/v1/540x303/i1/c1038395/bangladesh-levelled-the-series-by-winning-the-second-t20i.jpg",
+      "source": "cricbuzz",
+      "publishedAt": "2026-07-17T16:25:16.000Z"
+    },
+    {
+      "id": "cricbuzz-139578",
+      "title": "All-round Bangladesh level series in Bulawayo",
+      "summary": "Rishad Hossain and Mahedi Hasan shared seven wickets as Zimbabwe were bowled out for 152 chasing a 187-run target",
+      "url": "https://www.cricbuzz.com/cricket-news/139578/all-round-bangladesh-level-series-in-bulawayo",
+      "imageUrl": "https://static.cricbuzz.com/a/img/v1/540x303/i1/c1038392/zimbabwe-were-bowled-out-for-152-chasing-a-187-run-target.jpg",
+      "source": "cricbuzz",
+      "publishedAt": "2026-07-17T15:26:54.000Z"
+    },
+    {
+      "id": "espn-https://www.cricinfo.com/ci/content/story/1546026.html",
+      "title": "Openers, Mahedi and Rishad help Bangladesh keep series alive",
+      "summary": "Zimbabwe were sloppy in the field and lost wickets in clusters with the bat",
+      "url": "https://www.cricinfo.com/story/mahedi-hasan-and-rishad-hossain-help-bangladesh-keep-series-alive-1546026",
+      "imageUrl": "https://p.imgci.com/db/PICTURES/CMS/419900/419913.5.jpg",
+      "source": "espncricinfo",
+      "publishedAt": "2026-07-17T14:59:10.000Z"
+    },
+    {
+      "id": "dailystar-https://www.thedailystar.net/sports/cricket/news/saifuddin-fireworks-rishad-four-keep-tigers-alive-4226216",
+      "title": "Saifuddin fireworks, Rishad four-fer keep Tigers alive",
+      "summary": "Half-centuries from openers Saif Hassan and Tanzid Tamim, followed by a blistering late cameo from Mohammad Saifuddin and a four-wicket haul from Rishad Hossain, powered Bangladesh to a 34-run victory over Zimbabwe in the second T20I of the three-match series in Bulawayo on Friday.",
+      "url": "https://www.thedailystar.net/sports/cricket/news/saifuddin-fireworks-rishad-four-keep-tigers-alive-4226216",
+      "source": "dailystar",
+      "publishedAt": "2026-07-17T14:43:55.000Z"
+    },
+    {
+      "id": "espn-https://www.cricinfo.com/ci/content/story/1545990.html",
+      "title": "Unchanged Zimbabwe put Bangladesh in to bat",
+      "summary": "Bangladesh brought in Rishad Hossain for Nasum Ahmed",
+      "url": "https://www.cricinfo.com/story/unchanged-zimbabwe-put-bangladesh-in-to-bat-1545990",
+      "imageUrl": "https://p.imgci.com/db/PICTURES/CMS/397100/397168.5.jpg",
+      "source": "espncricinfo",
+      "publishedAt": "2026-07-17T10:35:21.000Z"
+    },
+    {
+      "id": "dailystar-https://www.thedailystar.net/sports/cricket/news/pakistan-cricketer-handed-three-month-ban-over-positive-drugs-test-4226111",
+      "title": "Pakistan cricketer handed three-month ban over positive drugs test",
+      "summary": "Mohammad Nawaz has been sanctioned by the International Cricket Council (ICC) after testing positive for a cannabis-related substance, the governing body said on Friday, with the Pakistan all-rounder being handed a three-month ban that can be reduced upon completion of a rehabilitation programme.",
+      "url": "https://www.thedailystar.net/sports/cricket/news/pakistan-cricketer-handed-three-month-ban-over-positive-drugs-test-4226111",
+      "source": "dailystar",
+      "publishedAt": "2026-07-17T10:00:00.000Z"
+    },
     {
       "id": "espn-https://www.cricinfo.com/ci/content/story/1545888.html",
       "title": "Buoyant Zimbabwe eye series win against depleted Bangladesh",
@@ -18,24 +70,6 @@
       "imageUrl": "https://p.imgci.com/db/PICTURES/CMS/414800/414814.5.jpg",
       "source": "espncricinfo",
       "publishedAt": "2026-07-15T23:55:09.000Z"
-    },
-    {
-      "id": "cricbuzz-139558",
-      "title": "Picked eight batters to be more fearless: Sikandar Raza",
-      "summary": "Zimbabwe put on a show in the opening T20I against Bangladesh to take an early series lead",
-      "url": "https://www.cricbuzz.com/cricket-news/139558/picked-eight-batters-to-be-more-fearless-sikandar-raza",
-      "imageUrl": "https://static.cricbuzz.com/a/img/v1/540x303/i1/c1036103/raza-wants-to-ensure-zimbabwe-dont-fall-behind.jpg",
-      "source": "cricbuzz",
-      "publishedAt": "2026-07-15T17:49:19.000Z"
-    },
-    {
-      "id": "cricbuzz-139556",
-      "title": "Naved Nawaz backs Bangladesh's own biomechanics lab to aid player development",
-      "summary": "Newly appointed coach educator and Under-23 coach Naved Nawaz discusses Bangladesh's plans for a localised coaching curriculum, the need for biomechanics education and how the new Under-23 programme can strengthen the national team's talent pipeline",
-      "url": "https://www.cricbuzz.com/cricket-news/139556/naved-nawaz-backs-bangladeshs-own-biomechanics-lab-to-aid-player-development",
-      "imageUrl": "https://static.cricbuzz.com/a/img/v1/540x303/i1/c1036086/nawaz-is-handling-a-dual-role-now-with-the-bcb.jpg",
-      "source": "cricbuzz",
-      "publishedAt": "2026-07-15T16:29:38.000Z"
     },
     {
       "id": "dailystar-https://www.thedailystar.net/sports/cricket/news/ngarava-muzarabani-sink-bangladesh-t20i-opener-4224796",
@@ -79,49 +113,6 @@
       "imageUrl": "https://p.imgci.com/db/PICTURES/CMS/419400/419498.5.jpg",
       "source": "espncricinfo",
       "publishedAt": "2026-07-14T14:19:32.000Z"
-    },
-    {
-      "id": "espn-https://www.cricinfo.com/ci/content/story/1545190.html",
-      "title": "Shoriful four-for, Tanzid 94 guide Bangladesh to consolation win",
-      "summary": "A 151-run partnership between Tanzid Hasan and Soumya Sarkar sealed an easy chase against a second-choice Zimbabwe bowling attack",
-      "url": "https://www.cricinfo.com/story/zim-vs-ban-3rd-odi-shoriful-four-for-tanzid-94-guide-bangladesh-to-consolation-win-1545190",
-      "imageUrl": "https://p.imgci.com/db/PICTURES/CMS/418000/418057.5.jpg",
-      "source": "espncricinfo",
-      "publishedAt": "2026-07-11T15:51:38.000Z"
-    },
-    {
-      "id": "dailystar-https://www.thedailystar.net/sports/cricket/news/shoriful-openers-shine-tigers-earn-consolation-victory-4221376",
-      "title": "Shoriful, openers shine as Tigers earn consolation victory",
-      "summary": "Having already conceded the series after losing the opening two matches, the visitors produced a clinical all-round display to finish the series on a positive note.",
-      "url": "https://www.thedailystar.net/sports/cricket/news/shoriful-openers-shine-tigers-earn-consolation-victory-4221376",
-      "source": "dailystar",
-      "publishedAt": "2026-07-11T14:46:43.000Z"
-    },
-    {
-      "id": "espn-https://www.cricinfo.com/ci/content/story/1545177.html",
-      "title": "West Indies desperate for ODI upswing with World Cup qualification on the line",
-      "summary": "For New Zealand, meanwhile, this series offers a chance to get back to winning ways after a defeat to Bangladesh in their last ODI assignment",
-      "url": "https://www.cricinfo.com/story/west-indies-desperate-for-odi-upswing-against-new-zealand-with-world-cup-qualification-on-the-line-1545177",
-      "imageUrl": "https://p.imgci.com/db/PICTURES/CMS/404900/404981.5.jpg",
-      "source": "espncricinfo",
-      "publishedAt": "2026-07-11T09:07:02.000Z"
-    },
-    {
-      "id": "espn-https://www.cricinfo.com/ci/content/story/1545176.html",
-      "title": "Bangladesh bowl; Raza leads Zimbabwe in Ngarava's absence",
-      "summary": "Bangladesh left out fast bowler Nahid Rana and legspinner Rishad Hossain while Zimbabwe rested Blessing Muzarabani and Newman Nyamhuri",
-      "url": "https://www.cricinfo.com/story/bangladesh-bowl-raza-leads-zimbabwe-in-ngaravas-absence-1545176",
-      "imageUrl": "https://p.imgci.com/db/PICTURES/CMS/414200/414269.5.jpg",
-      "source": "espncricinfo",
-      "publishedAt": "2026-07-11T07:55:23.000Z"
-    },
-    {
-      "id": "dailystar-https://www.thedailystar.net/sports/cricket/news/bangladesh-bowl-two-changes-3rd-odi-4221176",
-      "title": "Bangladesh bowl with two changes in 3rd ODI",
-      "summary": "Bangladesh will bowl first in the third and final ODI against Zimbabwe in Harare today after making two changes to their playing XI for the dead rubber.",
-      "url": "https://www.thedailystar.net/sports/cricket/news/bangladesh-bowl-two-changes-3rd-odi-4221176",
-      "source": "dailystar",
-      "publishedAt": "2026-07-11T07:25:36.000Z"
     }
   ]
 }
