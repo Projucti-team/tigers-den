@@ -1,5 +1,5 @@
 {
-  "fetchedAt": "2026-07-18T22:08:46.812Z",
+  "fetchedAt": "2026-07-19T22:10:48.645Z",
   "source": "icc-sportz.io",
   "sourceUrl": "https://www.icc-cricket.com/rankings",
   "men": {
@@ -92,9 +92,9 @@
           "rank": 1,
           "name": "India",
           "abbreviation": "IND",
-          "rating": 119,
-          "points": 3800,
-          "matches": 32
+          "rating": 116,
+          "points": 3841,
+          "matches": 33
         },
         {
           "rank": 2,
@@ -140,9 +140,9 @@
           "rank": 7,
           "name": "England",
           "abbreviation": "ENG",
-          "rating": 91,
-          "points": 2729,
-          "matches": 30
+          "rating": 93,
+          "points": 2898,
+          "matches": 31
         },
         {
           "rank": 8,
@@ -310,9 +310,9 @@
           "rank": 8,
           "name": "Bangladesh",
           "abbreviation": "BAN",
-          "rating": 223,
-          "points": 11607,
-          "matches": 52
+          "rating": 224,
+          "points": 11860,
+          "matches": 53
         },
         {
           "rank": 9,
@@ -342,9 +342,9 @@
           "rank": 12,
           "name": "Zimbabwe",
           "abbreviation": "ZIM",
-          "rating": 203,
-          "points": 10126,
-          "matches": 50
+          "rating": 202,
+          "points": 10299,
+          "matches": 51
         },
         {
           "rank": 13,
@@ -1073,9 +1073,9 @@
         "rank": 8,
         "name": "Bangladesh",
         "abbreviation": "BAN",
-        "rating": 223,
-        "points": 11607,
-        "matches": 52
+        "rating": 224,
+        "points": 11860,
+        "matches": 53
       }
     },
     "players": {
@@ -10361,13 +10361,13 @@
         "allrounder": "2026-07-07"
       },
       "odi": {
-        "team": "2026-07-17",
+        "team": "2026-07-19",
         "bat": "2026-07-14",
         "bowl": "2026-07-14",
         "allrounder": "2026-07-14"
       },
       "t20": {
-        "team": "2026-07-17",
+        "team": "2026-07-19",
         "bat": "2026-07-14",
         "bowl": "2026-07-14",
         "allrounder": "2026-07-14"
