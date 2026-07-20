@@ -1,5 +1,5 @@
 {
-  "fetchedAt": "2026-07-19T22:10:48.645Z",
+  "fetchedAt": "2026-07-20T22:14:18.258Z",
   "source": "icc-sportz.io",
   "sourceUrl": "https://www.icc-cricket.com/rankings",
   "men": {
@@ -101,8 +101,8 @@
           "name": "New Zealand",
           "abbreviation": "NZ",
           "rating": 111,
-          "points": 3659,
-          "matches": 33
+          "points": 3784,
+          "matches": 34
         },
         {
           "rank": 3,
@@ -165,8 +165,8 @@
           "name": "West Indies",
           "abbreviation": "WI",
           "rating": 75,
-          "points": 2402,
-          "matches": 32
+          "points": 2463,
+          "matches": 33
         },
         {
           "rank": 11,
@@ -10361,7 +10361,7 @@
         "allrounder": "2026-07-07"
       },
       "odi": {
-        "team": "2026-07-19",
+        "team": "2026-07-20",
         "bat": "2026-07-14",
         "bowl": "2026-07-14",
         "allrounder": "2026-07-14"
