@@ -1,6 +1,31 @@
 {
-  "fetchedAt": "2026-07-20T22:36:03.009Z",
+  "fetchedAt": "2026-07-21T22:33:40.780Z",
   "items": [
+    {
+      "id": "dailystar-https://www.thedailystar.net/sports/cricket/news/aminul-hopeful-improved-sports-diplomacy-through-india-series-4229161",
+      "title": "Aminul hopeful of improved sports diplomacy through India series",
+      "summary": "India last toured Bangladesh in 2022 for a three-match ODI series and a two-match Test series.",
+      "url": "https://www.thedailystar.net/sports/cricket/news/aminul-hopeful-improved-sports-diplomacy-through-india-series-4229161",
+      "source": "dailystar",
+      "publishedAt": "2026-07-21T14:30:31.000Z"
+    },
+    {
+      "id": "espn-https://www.cricinfo.com/ci/content/story/1546407.html",
+      "title": "Cummins, Hazlewood, Lyon return to face Bangladesh",
+      "summary": "Australia's veterans named in a 13-man squad with Cameron Green and Beau Webster both included",
+      "url": "https://www.cricinfo.com/story/pat-cummins-josh-hazlewood-nathan-lyon-return-to-face-bangladesh-1546407",
+      "imageUrl": "https://p.imgci.com/db/PICTURES/CMS/350000/350026.5.jpg",
+      "source": "espncricinfo",
+      "publishedAt": "2026-07-21T13:41:22.000Z"
+    },
+    {
+      "id": "dailystar-https://www.thedailystar.net/sports/cricket/news/australias-cummins-hazlewood-lyon-back-bangladesh-test-series-4228836",
+      "title": "Australia's Cummins, Hazlewood, Lyon back for Bangladesh Test series",
+      "summary": "Ashes pace hero Michael Neser was left out of the 13-man party for the two-match series in Darwin and Mackay beginning on August 13, with Scott Boland named as the fourth seamer.",
+      "url": "https://www.thedailystar.net/sports/cricket/news/australias-cummins-hazlewood-lyon-back-bangladesh-test-series-4228836",
+      "source": "dailystar",
+      "publishedAt": "2026-07-21T02:17:45.000Z"
+    },
     {
       "id": "espn-https://www.cricinfo.com/ci/content/story/1546320.html",
       "title": "Hridoy pleased with T20I series win despite 'injuries and limited options'",
@@ -72,14 +97,6 @@
       "publishedAt": "2026-07-17T10:35:21.000Z"
     },
     {
-      "id": "dailystar-https://www.thedailystar.net/sports/cricket/news/pakistan-cricketer-handed-three-month-ban-over-positive-drugs-test-4226111",
-      "title": "Pakistan cricketer handed three-month ban over positive drugs test",
-      "summary": "Mohammad Nawaz has been sanctioned by the International Cricket Council (ICC) after testing positive for a cannabis-related substance, the governing body said on Friday, with the Pakistan all-rounder being handed a three-month ban that can be reduced upon completion of a rehabilitation programme.",
-      "url": "https://www.thedailystar.net/sports/cricket/news/pakistan-cricketer-handed-three-month-ban-over-positive-drugs-test-4226111",
-      "source": "dailystar",
-      "publishedAt": "2026-07-17T10:00:00.000Z"
-    },
-    {
       "id": "espn-https://www.cricinfo.com/ci/content/story/1545888.html",
       "title": "Buoyant Zimbabwe eye series win against depleted Bangladesh",
       "summary": "Bangladesh have now lost their last five T20Is and need their top order to fire",
@@ -105,24 +122,6 @@
       "imageUrl": "https://p.imgci.com/db/PICTURES/CMS/419800/419827.5.jpg",
       "source": "espncricinfo",
       "publishedAt": "2026-07-15T14:43:45.000Z"
-    },
-    {
-      "id": "espn-https://www.cricinfo.com/ci/content/story/1545708.html",
-      "title": "Bangladesh get Taskin Ahmed boost as they bowl in Bulawayo",
-      "summary": "Taskin was not part of Bangladesh's squad, but got called up after an injury to Mustafizur Rahman",
-      "url": "https://www.cricinfo.com/story/bangladesh-get-taskin-ahmed-boost-as-they-bowl-in-bulawayo-1545708",
-      "imageUrl": "https://p.imgci.com/db/PICTURES/CMS/418000/418075.5.jpg",
-      "source": "espncricinfo",
-      "publishedAt": "2026-07-15T11:04:21.000Z"
-    },
-    {
-      "id": "espn-https://www.cricinfo.com/ci/content/story/1545592.html",
-      "title": "High-flying Zimbabwe meet under-strength Bangladesh in T20I series opener",
-      "summary": "Already without Litton, Mehidy, Taskin and Mahmud, Bangladesh will also miss the injured Mustafizur",
-      "url": "https://www.cricinfo.com/story/zim-vs-ban-high-flying-zimbabwe-meet-under-strength-bangladesh-in-t20i-series-opener-1545592",
-      "imageUrl": "https://p.imgci.com/db/PICTURES/CMS/419400/419498.5.jpg",
-      "source": "espncricinfo",
-      "publishedAt": "2026-07-14T14:19:32.000Z"
     }
   ]
 }
