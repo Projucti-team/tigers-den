@@ -1,6 +1,30 @@
 {
-  "fetchedAt": "2026-07-21T22:33:40.780Z",
+  "fetchedAt": "2026-07-22T22:39:36.585Z",
   "items": [
+    {
+      "id": "dailystar-https://www.thedailystar.net/sports/cricket/news/mahedi-set-face-sanction-after-disciplinary-hearing-4230081",
+      "title": "Mahedi set to face sanction after disciplinary hearing",
+      "summary": "Bangladesh Cricket Board's (BCB) disciplinary committee summoned all-rounder Mahedi Hasan for a hearing over his criticism of the team management during last month's T20I series against Australia. The all-rounder submitted his statement to the committee and is set to be sanctioned for breaching his contract.",
+      "url": "https://www.thedailystar.net/sports/cricket/news/mahedi-set-face-sanction-after-disciplinary-hearing-4230081",
+      "source": "dailystar",
+      "publishedAt": "2026-07-22T16:06:33.000Z"
+    },
+    {
+      "id": "dailystar-https://www.thedailystar.net/sports/cricket/news/can-tigers-batting-pass-the-australian-test-4230056",
+      "title": "Can Tigers’ batting pass the Australian test?",
+      "summary": "Since March 2024, both Bangladesh and Australia’s pacers have averaged over 140kph, establishing them as the two fastest pace attacks in the current game.",
+      "url": "https://www.thedailystar.net/sports/cricket/news/can-tigers-batting-pass-the-australian-test-4230056",
+      "source": "dailystar",
+      "publishedAt": "2026-07-22T15:18:26.000Z"
+    },
+    {
+      "id": "dailystar-https://www.thedailystar.net/sports/cricket/news/lack-practice-matches-behind-batting-debacle-zim-says-ashraful-4229841",
+      "title": "Lack of practice matches behind batting debacle in Zim, says Ashraful",
+      "summary": "Bangladesh batting coach Mohammad Ashraful believes the absence of practice matches before the Zimbabwe tour left the batters struggling to adapt to the conditions, contributing to the team's disappointing performances.",
+      "url": "https://www.thedailystar.net/sports/cricket/news/lack-practice-matches-behind-batting-debacle-zim-says-ashraful-4229841",
+      "source": "dailystar",
+      "publishedAt": "2026-07-22T10:30:00.000Z"
+    },
     {
       "id": "dailystar-https://www.thedailystar.net/sports/cricket/news/aminul-hopeful-improved-sports-diplomacy-through-india-series-4229161",
       "title": "Aminul hopeful of improved sports diplomacy through India series",
@@ -80,14 +104,6 @@
       "publishedAt": "2026-07-17T14:59:10.000Z"
     },
     {
-      "id": "dailystar-https://www.thedailystar.net/sports/cricket/news/saifuddin-fireworks-rishad-four-keep-tigers-alive-4226216",
-      "title": "Saifuddin fireworks, Rishad four-fer keep Tigers alive",
-      "summary": "Half-centuries from openers Saif Hassan and Tanzid Tamim, followed by a blistering late cameo from Mohammad Saifuddin and a four-wicket haul from Rishad Hossain, powered Bangladesh to a 34-run victory over Zimbabwe in the second T20I of the three-match series in Bulawayo on Friday.",
-      "url": "https://www.thedailystar.net/sports/cricket/news/saifuddin-fireworks-rishad-four-keep-tigers-alive-4226216",
-      "source": "dailystar",
-      "publishedAt": "2026-07-17T14:43:55.000Z"
-    },
-    {
       "id": "espn-https://www.cricinfo.com/ci/content/story/1545990.html",
       "title": "Unchanged Zimbabwe put Bangladesh in to bat",
       "summary": "Bangladesh brought in Rishad Hossain for Nasum Ahmed",
@@ -95,33 +111,6 @@
       "imageUrl": "https://p.imgci.com/db/PICTURES/CMS/397100/397168.5.jpg",
       "source": "espncricinfo",
       "publishedAt": "2026-07-17T10:35:21.000Z"
-    },
-    {
-      "id": "espn-https://www.cricinfo.com/ci/content/story/1545888.html",
-      "title": "Buoyant Zimbabwe eye series win against depleted Bangladesh",
-      "summary": "Bangladesh have now lost their last five T20Is and need their top order to fire",
-      "url": "https://www.cricinfo.com/story/buoyant-zimbabwe-eye-series-win-against-depleted-bangladesh-1545888",
-      "imageUrl": "https://p.imgci.com/db/PICTURES/CMS/419800/419824.5.jpg",
-      "source": "espncricinfo",
-      "publishedAt": "2026-07-16T14:38:16.000Z"
-    },
-    {
-      "id": "espn-https://www.cricinfo.com/ci/content/story/1545695.html",
-      "title": "Australia internationals unlikely to play much WNCL",
-      "summary": "Australia's series against Bangladesh, New Zealand and the women's Champions Trophy, as well as the WPL likely to keep their best away from domestic cricket",
-      "url": "https://www.cricinfo.com/story/australia-internationals-unlikely-to-play-much-wncl-1545695",
-      "imageUrl": "https://p.imgci.com/db/PICTURES/CMS/414800/414814.5.jpg",
-      "source": "espncricinfo",
-      "publishedAt": "2026-07-15T23:55:09.000Z"
-    },
-    {
-      "id": "espn-https://www.cricinfo.com/ci/content/story/1545739.html",
-      "title": "Muzarabani and Ngarava overwhelm Bangladesh again",
-      "summary": "The two Zimbabwe quicks picked up four wickets each to defend a total of 170",
-      "url": "https://www.cricinfo.com/story/zim-vs-ban-1st-t20i-blessing-muzarabani-and-richard-ngarava-overwhelm-bangladesh-again-1545739",
-      "imageUrl": "https://p.imgci.com/db/PICTURES/CMS/419800/419827.5.jpg",
-      "source": "espncricinfo",
-      "publishedAt": "2026-07-15T14:43:45.000Z"
     }
   ]
 }
