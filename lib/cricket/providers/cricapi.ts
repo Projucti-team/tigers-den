@@ -3,8 +3,9 @@ import type { SeriesSquad, SquadPlayer } from "@/lib/cricket/curated-squads";
 import { normalizeSquadPlayers } from "@/lib/cricket/curated-squads";
 import { isFutureSeries } from "@/lib/cricket/tour-dates";
 import { fetchEspnFutureTours } from "@/lib/cricket/providers/espn-fixtures";
+import { resolveAllEspnLeaguesForTour } from "@/lib/cricket/providers/espn-squads";
 import { isUpcomingBangladeshMatch } from "@/lib/cricket/services/marquee-format";
-import { deduplicateTours } from "@/lib/cricket/tour-identity";
+import { deduplicateTours, squadBelongsToTour } from "@/lib/cricket/tour-identity";
 import type { LiveMatchSummary, Scorecard, ScorecardInnings, Tour } from "@/lib/cricket/types";
 
 type CricApiResponse<T> = {
@@ -315,6 +316,46 @@ export async function fetchSeriesInfo(seriesId: string): Promise<{
   }
 
   return { matches, squads };
+}
+
+/**
+ * Fallback squad source when ESPNcricinfo hasn't published a squad/story yet.
+ * Only used once ESPN comes up empty — ESPN's data is preferred when both have it.
+ */
+export async function fetchCricApiTourSquads(tour: Tour): Promise<{
+  squads: SeriesSquad[];
+  warnings: string[];
+}> {
+  const warnings: string[] = [];
+  if (!isCricApiConfigured() || cricApiBlocked) return { squads: [], warnings };
+
+  const seriesIds = new Set<string>();
+  if (/^\d+$/.test(tour.id)) seriesIds.add(tour.id);
+
+  const leagues = await resolveAllEspnLeaguesForTour(tour.name, tour.id, tour.startDate);
+  for (const league of leagues) {
+    seriesIds.add(String(league.cricinfoSeriesId));
+  }
+
+  const squads: SeriesSquad[] = [];
+  const seenTeams = new Set<string>();
+
+  for (const seriesId of seriesIds) {
+    const info = await fetchSeriesInfo(seriesId).catch(() => ({ matches: [], squads: [] }));
+    for (const squad of info.squads) {
+      if (!squadBelongsToTour(squad, tour)) continue;
+      const key = squad.team.toLowerCase();
+      if (seenTeams.has(key)) continue;
+      seenTeams.add(key);
+      squads.push({ ...squad, source: squad.source ?? `cricketdata.org series ${seriesId}` });
+    }
+  }
+
+  if (!squads.length) {
+    warnings.push("CricAPI has no squads for this series either.");
+  }
+
+  return { squads, warnings };
 }
 
 export async function fetchSeriesSquads(seriesId: string): Promise<SeriesSquad[]> {

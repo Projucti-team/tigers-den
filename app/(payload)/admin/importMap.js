@@ -23,6 +23,7 @@ import { BoldFeatureClient as BoldFeatureClient_e70f5e05f09f93e00b997edb1ef0c864
 import { ItalicFeatureClient as ItalicFeatureClient_e70f5e05f09f93e00b997edb1ef0c864 } from '@payloadcms/richtext-lexical/client'
 import { default as default_09d48889b71fa36cb7c55d9a58eacdca } from '@/components/admin/TrackedPlayerLeaguesHelp'
 import { default as default_328c31efcd322983ce0f456493c2642f } from '@/components/admin/CricketSyncPanel'
+import { default as default_7a1c9e5d2b6f4830a1e6c2d9f0b3a5e7 } from '@/components/admin/TourSeriesOverridePanel'
 import { default as default_03852dcda313ea71c49ef97adea308f7 } from '@/components/admin/AdminLogoutButton'
 import { CollectionCards as CollectionCards_f9c02e79a4aed9a3924487c0cd4cafb1 } from '@payloadcms/next/rsc'
 
@@ -53,6 +54,7 @@ export const importMap = {
   "@payloadcms/richtext-lexical/client#ItalicFeatureClient": ItalicFeatureClient_e70f5e05f09f93e00b997edb1ef0c864,
   "@/components/admin/TrackedPlayerLeaguesHelp#default": default_09d48889b71fa36cb7c55d9a58eacdca,
   "@/components/admin/CricketSyncPanel#default": default_328c31efcd322983ce0f456493c2642f,
+  "@/components/admin/TourSeriesOverridePanel#default": default_7a1c9e5d2b6f4830a1e6c2d9f0b3a5e7,
   "@/components/admin/AdminLogoutButton#default": default_03852dcda313ea71c49ef97adea308f7,
   "@payloadcms/next/rsc#CollectionCards": CollectionCards_f9c02e79a4aed9a3924487c0cd4cafb1
 }

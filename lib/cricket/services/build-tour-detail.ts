@@ -11,14 +11,14 @@ import {
 } from "@/lib/cricket/providers/espn-fixtures";
 import { buildTourMatchesFromEspnSeries } from "@/lib/cricket/providers/espn-live";
 import { resolveAllEspnLeaguesForTour } from "@/lib/cricket/providers/espn-squads";
-import { refreshEspnTourSquads, applyEspnTourSquads } from "@/lib/cricket/providers/espn-squads";
+import { applyEspnTourSquads } from "@/lib/cricket/providers/espn-squads";
 import { mergeTourFixtures } from "@/lib/cricket/services/merge-tour-fixtures";
+import { refreshTourSquads } from "@/lib/cricket/services/refresh-tour-squads";
 import { tourToCard } from "@/lib/cricket/services/tours-display";
 import type { TourDetailSnapshot } from "@/lib/cricket/snapshot-types";
 import type { TourDetail } from "@/lib/cricket/tour-detail-types";
 import {
   applyFormatCountsFromMatches,
-  espnFixturesLookComplete,
   filterMatchesForTour,
   matchBelongsToTour,
 } from "@/lib/cricket/tour-identity";
@@ -76,43 +76,36 @@ async function fetchFixturesFromCricApi(tour: Tour, warnings: string[]): Promise
   return sortMatchesByDate(matches);
 }
 
+/**
+ * CricAPI usually has the full future schedule earliest; ESPNcricinfo usually has the
+ * most accurate/most current venue, time, and result data. Always fetch and merge both —
+ * trusting either source alone as "complete" is what let undercounted schedules (e.g. a
+ * 2-Test series showing only 1) go unnoticed.
+ */
 async function resolveTourFixtures(
   tour: Tour,
   warnings: string[],
 ): Promise<LiveMatchSummary[]> {
   const espnMatches = await fetchFixturesFromEspn(tour);
-
-  if (espnFixturesLookComplete(tour, espnMatches)) {
-    if (espnMatches.length) {
-      warnings.push("Fixtures and results from ESPNcricinfo.");
-    }
-    return espnMatches;
-  }
-
   const cricapiMatches = await fetchFixturesFromCricApi(tour, warnings);
-
-  if (cricapiMatches.length > espnMatches.length) {
-    warnings.push("Fixtures from CricAPI (ESPNcricinfo schedule incomplete).");
-    return mergeTourFixtures(espnMatches, cricapiMatches);
-  }
 
   if (espnMatches.length) {
     warnings.push("Fixtures and results from ESPNcricinfo.");
-    return espnMatches;
   }
 
-  if (cricapiMatches.length) {
-    warnings.push("Fixtures from CricAPI (ESPNcricinfo had no schedule for this tour).");
-    return cricapiMatches;
+  if (!espnMatches.length && !cricapiMatches.length) {
+    if (isCricApiBlocked()) {
+      warnings.push("CricAPI quota/rate-limited — no fixture fallback available.");
+    } else if (!isCricApiConfigured()) {
+      warnings.push("CricAPI not configured — no fixture fallback available.");
+    }
+    return [];
   }
 
-  if (isCricApiBlocked()) {
-    warnings.push("CricAPI quota/rate-limited — no fixture fallback available.");
-  } else if (!isCricApiConfigured()) {
-    warnings.push("CricAPI not configured — no fixture fallback available.");
-  }
+  if (!espnMatches.length) return cricapiMatches;
+  if (!cricapiMatches.length) return espnMatches;
 
-  return [];
+  return mergeTourFixtures(espnMatches, cricapiMatches);
 }
 
 /** Live build — only used by the nightly sync job. */
@@ -123,7 +116,7 @@ export async function buildTourDetailLive(
   const warnings = [...tourWarnings];
   const matches = await resolveTourFixtures(tour, warnings);
 
-  const { squads, warnings: squadWarnings } = await refreshEspnTourSquads(tour);
+  const { squads, warnings: squadWarnings } = await refreshTourSquads(tour);
   warnings.push(...squadWarnings);
 
   const timedMatches = await enrichMatchFixtureTimes(matches, { tour });

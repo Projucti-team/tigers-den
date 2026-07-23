@@ -16,6 +16,12 @@ export interface TourSyncState {
   squad_import_complete_test: boolean;
   squad_import_complete_odi: boolean;
   squad_import_complete_t20: boolean;
+  /** Cricinfo series id the last sync actually resolved fixtures/squads from (informational). */
+  espn_cricinfo_series_id?: number | null;
+  /** ESPN core league id paired with espn_cricinfo_series_id. */
+  espn_league_id?: number | null;
+  /** Admin-pinned cricinfo series id — takes priority over auto-discovery when set. */
+  espn_series_override?: number | null;
   created_at: string;
   updated_at: string;
 }
@@ -36,6 +42,9 @@ export interface TourSyncStateUpdate {
   squad_import_complete_test?: boolean;
   squad_import_complete_odi?: boolean;
   squad_import_complete_t20?: boolean;
+  espn_cricinfo_series_id?: number | null;
+  espn_league_id?: number | null;
+  espn_series_override?: number | null;
 }
 
 export interface SquadRefreshTarget {

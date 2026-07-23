@@ -9,6 +9,7 @@ import * as cricketPlayers from "./20260616_000000_cricket_players";
 import * as legalGlobals from "./20260617_000000_legal_globals";
 import * as trackedPlayerLeagues from "./20260618_000000_tracked_player_leagues";
 import * as tourSyncState from "./20260705_000000_tour_sync_state";
+import * as tourSeriesOverride from "./20260723_000000_tour_series_override";
 
 type Migration = {
   name: string;
@@ -61,5 +62,10 @@ export const migrations: Migration[] = [
     name: "20260705_000000_tour_sync_state",
     up: tourSyncState.up,
     down: tourSyncState.down,
+  },
+  {
+    name: "20260723_000000_tour_series_override",
+    up: tourSeriesOverride.up,
+    down: tourSeriesOverride.down,
   },
 ];

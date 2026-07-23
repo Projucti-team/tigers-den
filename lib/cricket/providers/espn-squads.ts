@@ -25,6 +25,35 @@ import {
 } from "@/lib/cricket/tour-identity";
 import { tourSlug, tourStorageKey } from "@/lib/cricket/tour-slug";
 import type { Tour } from "@/lib/cricket/types";
+import {
+  getTourSeriesOverride,
+  recordResolvedTourSeries,
+} from "@/lib/cricket/services/tour-sync-state-db";
+import { isPostgresDatabase } from "@/lib/payload-postgres-url";
+
+/** Best-effort — tour_sync_state may not exist yet (fresh tour) or DB may be SQLite in dev. */
+async function getTourSeriesOverrideSafe(tourId: string): Promise<number | null> {
+  if (!isPostgresDatabase()) return null;
+  try {
+    return await getTourSeriesOverride(tourId);
+  } catch {
+    return null;
+  }
+}
+
+/** Best-effort — records which series a sync resolved to, for the admin panel. Never throws. */
+async function recordResolvedTourSeriesSafe(
+  tourId: string,
+  cricinfoSeriesId: number,
+  espnLeagueId: number,
+): Promise<void> {
+  if (!isPostgresDatabase()) return;
+  try {
+    await recordResolvedTourSeries(tourId, cricinfoSeriesId, espnLeagueId);
+  } catch {
+    // tour_sync_state row may not exist yet — safe to ignore.
+  }
+}
 
 const CORE_BASE = "http://core.espnuk.org/v2/sports/cricket";
 const ESPN_RSS_URL = "https://www.espncricinfo.com/rss/content/story/feeds/0.xml";
@@ -132,6 +161,23 @@ export async function resolveAllEspnLeaguesForTour(
     refs.push(ref);
   }
 
+  // Admin-pinned series wins outright — skip auto-discovery entirely when set.
+  if (tourId) {
+    const override = await getTourSeriesOverrideSafe(tourId);
+    if (override) {
+      const espnLeagueId = await resolveEspnLeagueByCricinfoId(override);
+      if (espnLeagueId) {
+        add({
+          cricinfoSeriesId: override,
+          espnLeagueId,
+          seasonYear: startDate ? new Date(startDate).getFullYear() : undefined,
+        });
+        await recordResolvedTourSeriesSafe(tourId, override, espnLeagueId);
+        return refs;
+      }
+    }
+  }
+
   const snapshot = await readEspnTourSquads();
   for (const entry of Object.values(snapshot.entries)) {
     if (!tourNamesShareVenue(tourName, entry.tourName)) continue;
@@ -175,6 +221,10 @@ export async function resolveAllEspnLeaguesForTour(
 
   if (fallback && !refs.length) {
     add(fallback);
+  }
+
+  if (tourId && refs.length) {
+    await recordResolvedTourSeriesSafe(tourId, refs[0].cricinfoSeriesId, refs[0].espnLeagueId);
   }
 
   return refs;
@@ -593,9 +643,7 @@ export function applyEspnTourSquads<T extends { tour: Tour; squads: SeriesSquad[
     ...detail.warnings.filter(
       (w) =>
         !w.startsWith("Squads not published") &&
-        !w.includes("CricAPI") &&
-        !w.includes("Australia squads sourced") &&
-        !w.includes("Could not match this series on ESPNcricinfo"),
+        !w.startsWith("Could not match this series on ESPNcricinfo"),
     ),
     ...freshWarnings,
   ];

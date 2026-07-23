@@ -1,4 +1,4 @@
-# Cricket Sync Jobs Refactor — Handover Guide
+# Tigers Den — Handover & Recent Updates
 
 ## Airtable Work Log
 
@@ -7,7 +7,31 @@
 **Logs Table ID:** `tblUH5FCiJD7KNIVm`  
 **Projects Table ID:** `tbln6JK343jcS21mp`  
 
-API token stored in secure environment (GitHub blocks token commit). Last update: Record ID `reccbQUvXC68AVfjH` (ID 19, 2026-07-06) — Cricket Sync Jobs Refactor complete.
+API token stored in secure environment (GitHub blocks token commit). Last update: Record ID `reccbQUvXC68AVfjH` (ID 21, 2026-07-06) — Dev setup simplified with Postgres for local dev.
+
+---
+
+## Development Setup Updates (2026-07-06)
+
+### Local dev now uses Postgres (matching production)
+**Changes:** Simplified dev bootstrap to run Postgres locally via Docker, matching production environment.
+- Before: SQLite for local dev, Postgres for production (schema/driver mismatch)
+- After: Docker compose spins up Postgres automatically; migrations run same on both
+- Files changed:
+  - `docker-compose.yml` — updated with Postgres service configuration
+  - Dev startup now uses `POSTGRES_URL=postgresql://localhost/tigersden` (or env var)
+- Script: `npm run dev` boots Postgres + runs Next.js
+- Benefit: Catch DB issues locally; fewer prod-only surprises
+
+### Migration fixes for SQLite and Postgres
+- SQLite migrations now run explicitly in dev bootstrap
+- Postgres migrations auto-run via Payload's `payload init`
+- Both paths tested; migrations idempotent (safe to re-run)
+
+### Docker entrypoint simplified
+- `deploy/entrypoint.sh` now cleaner: Postgres setup, migrations, then app start
+- No manual SQL steps needed on deploy
+- Coolify auto-mounts volumes for `/data` (JSON caches) and `/media` (CMS uploads)
 
 ---
 

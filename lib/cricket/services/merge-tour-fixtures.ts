@@ -10,12 +10,17 @@ function isPlaceholderStatus(status: string): boolean {
   return /match starts/i.test(status);
 }
 
-/** Prefer CricAPI's full list; overlay ESPN results, venues, and times where available. */
+/**
+ * Union both sources — CricAPI usually has the full future schedule first, ESPNcricinfo
+ * usually has the most accurate/most current venue, time, and result data. Neither source
+ * alone is trusted as "complete": every fixture from both lists is kept, with ESPN's data
+ * overlaid on any fixture both sources agree on.
+ */
 export function mergeTourFixtures(
   espn: LiveMatchSummary[],
   cricapi: LiveMatchSummary[],
 ): LiveMatchSummary[] {
-  if (!cricapi.length || cricapi.length <= espn.length) return espn;
+  if (!cricapi.length) return espn;
   if (!espn.length) return cricapi;
 
   const espnByKey = new Map<string, LiveMatchSummary>();
@@ -23,15 +28,24 @@ export function mergeTourFixtures(
     espnByKey.set(matchFixtureMergeKey(match), match);
   }
 
-  return cricapi.map((cricapiMatch) => {
-    const espnMatch = espnByKey.get(matchFixtureMergeKey(cricapiMatch));
-    if (!espnMatch) return cricapiMatch;
+  const seen = new Set<string>();
+  const merged: LiveMatchSummary[] = [];
+
+  for (const cricapiMatch of cricapi) {
+    const key = matchFixtureMergeKey(cricapiMatch);
+    seen.add(key);
+    const espnMatch = espnByKey.get(key);
+
+    if (!espnMatch) {
+      merged.push(cricapiMatch);
+      continue;
+    }
 
     const preferEspnStatus =
       !isPlaceholderStatus(espnMatch.status) &&
       (isPlaceholderStatus(cricapiMatch.status) || Boolean(espnMatch.score?.length));
 
-    return {
+    merged.push({
       ...cricapiMatch,
       status: preferEspnStatus ? espnMatch.status : cricapiMatch.status,
       score: espnMatch.score ?? cricapiMatch.score,
@@ -39,6 +53,14 @@ export function mergeTourFixtures(
       venue: espnMatch.venue || cricapiMatch.venue,
       dateTimeGMT: espnMatch.dateTimeGMT || cricapiMatch.dateTimeGMT,
       id: espnMatch.id || cricapiMatch.id,
-    };
-  });
+    });
+  }
+
+  // Fixtures ESPN has that CricAPI hasn't published yet (e.g. late schedule tweaks).
+  for (const espnMatch of espn) {
+    if (seen.has(matchFixtureMergeKey(espnMatch))) continue;
+    merged.push(espnMatch);
+  }
+
+  return merged;
 }

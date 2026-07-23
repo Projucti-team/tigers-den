@@ -117,7 +117,10 @@ export const CricketSnapshots: CollectionConfig = {
     description:
       "Pre-built cricket pages data (tours, rankings, venue guides). Refreshed nightly 3:00–4:00 AM Bangladesh time, or use Run cricket sync on the dashboard.",
     components: {
-      beforeList: ["@/components/admin/CricketSyncPanel"],
+      beforeList: [
+        "@/components/admin/CricketSyncPanel",
+        "@/components/admin/TourSeriesOverridePanel",
+      ],
     },
   },
   access: {

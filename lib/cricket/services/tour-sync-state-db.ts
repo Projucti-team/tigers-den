@@ -124,6 +124,18 @@ export async function upsertTourSyncState(
         setClauses.push(`"squad_import_complete_t20" = $${paramIndex++}`);
         values.push(update.squad_import_complete_t20);
       }
+      if (update.espn_cricinfo_series_id !== undefined) {
+        setClauses.push(`"espn_cricinfo_series_id" = $${paramIndex++}`);
+        values.push(update.espn_cricinfo_series_id);
+      }
+      if (update.espn_league_id !== undefined) {
+        setClauses.push(`"espn_league_id" = $${paramIndex++}`);
+        values.push(update.espn_league_id);
+      }
+      if (update.espn_series_override !== undefined) {
+        setClauses.push(`"espn_series_override" = $${paramIndex++}`);
+        values.push(update.espn_series_override);
+      }
 
       setClauses.push(`"updated_at" = NOW()`);
       values.push(update.tour_id);
@@ -164,6 +176,56 @@ export async function upsertTourSyncState(
 
     if (!result.rows.length) throw new Error(`Failed to insert tour_sync_state for ${update.tour_id}`);
     return result.rows[0] as TourSyncState;
+  } finally {
+    await pool.end();
+  }
+}
+
+/** Admin-pinned series id for a tour, if one has been set. */
+export async function getTourSeriesOverride(tour_id: string): Promise<number | null> {
+  const pool = await getDbPool();
+  try {
+    const result = await pool.query(
+      `SELECT "espn_series_override" FROM "tour_sync_state" WHERE "tour_id" = $1`,
+      [tour_id],
+    );
+    const value = result.rows[0]?.espn_series_override;
+    return typeof value === "number" ? value : null;
+  } finally {
+    await pool.end();
+  }
+}
+
+/** Set (or clear with null) the admin-pinned cricinfo series id for a tour. */
+export async function setTourSeriesOverride(
+  tour_id: string,
+  cricinfoSeriesId: number | null,
+): Promise<void> {
+  const pool = await getDbPool();
+  try {
+    await pool.query(
+      `UPDATE "tour_sync_state" SET "espn_series_override" = $2, "updated_at" = NOW() WHERE "tour_id" = $1`,
+      [tour_id, cricinfoSeriesId],
+    );
+  } finally {
+    await pool.end();
+  }
+}
+
+/** Record which series a sync actually resolved fixtures/squads from — informational, overwritten every run. */
+export async function recordResolvedTourSeries(
+  tour_id: string,
+  cricinfoSeriesId: number,
+  espnLeagueId: number,
+): Promise<void> {
+  const pool = await getDbPool();
+  try {
+    await pool.query(
+      `UPDATE "tour_sync_state"
+       SET "espn_cricinfo_series_id" = $2, "espn_league_id" = $3, "updated_at" = NOW()
+       WHERE "tour_id" = $1`,
+      [tour_id, cricinfoSeriesId, espnLeagueId],
+    );
   } finally {
     await pool.end();
   }

@@ -55,6 +55,23 @@ type CoreEvent = {
   competitions?: { date?: string; description?: string; class?: { eventType?: string } }[];
 };
 
+type CoreCompetitionDetail = {
+  venue?: {
+    fullName?: string;
+    address?: { city?: string; country?: string };
+  };
+};
+
+function formatEspnVenue(venue?: CoreCompetitionDetail["venue"]): string | undefined {
+  const fullName = venue?.fullName?.trim();
+  if (!fullName) return undefined;
+  const city = venue?.address?.city?.trim();
+  if (city && !fullName.toLowerCase().includes(city.toLowerCase())) {
+    return `${fullName}, ${city}`;
+  }
+  return fullName;
+}
+
 type CoreLeague = {
   id?: string;
   name?: string;
@@ -350,6 +367,7 @@ export async function buildMatchesFromEspnEvents(tour: Tour): Promise<LiveMatchS
       status: "Match not started",
       date: fixture.date,
       dateTimeGMT: fixture.dateTimeGMT,
+      venue: fixture.venue,
       teams,
       isLive: false,
       seriesId: tour.id,
@@ -551,10 +569,17 @@ async function fetchLiveEspnFixtureTimes(league: {
       if (!iso) continue;
 
       const date = iso.slice(0, 10);
+      // Venue lives on the competition detail resource, not the event summary — fetch it
+      // so this fallback fixture source carries a venue like the primary ESPN path does.
+      const competition = await fetchCoreJson<CoreCompetitionDetail>(
+        `${CORE_BASE}/leagues/${leagueId}/events/${eventId}/competitions/${eventId}`,
+      );
+
       fixtures.push({
         date,
         matchType: eventMatchType(event ?? {}),
         dateTimeGMT: iso.endsWith("Z") ? iso.replace(/(\.\d{3})?Z$/, ".000Z") : `${iso}Z`,
+        venue: formatEspnVenue(competition?.venue),
       });
     }
   }
