@@ -1,6 +1,23 @@
 {
-  "fetchedAt": "2026-07-22T22:39:36.585Z",
+  "fetchedAt": "2026-07-23T22:36:14.880Z",
   "items": [
+    {
+      "id": "dailystar-https://www.thedailystar.net/sports/cricket/news/bangladesh-play-one-lords-test-against-england-2027-4230671",
+      "title": "Bangladesh to play one-off Lord's Test against England in 2027",
+      "summary": "Bangladesh will return to the Home of Cricket for the first time in 17 years when they play a one-off Test against England at Lord's from May 28 to June 1 next year, with the England and Wales Cricket Board (ECB) confirming the full itinerary for Bangladesh men's and women's tours in its 2027 international schedule announced on Thursday.",
+      "url": "https://www.thedailystar.net/sports/cricket/news/bangladesh-play-one-lords-test-against-england-2027-4230671",
+      "source": "dailystar",
+      "publishedAt": "2026-07-23T09:54:59.000Z"
+    },
+    {
+      "id": "espn-https://www.cricinfo.com/ci/content/story/1547129.html",
+      "title": "Konstas, Kellaway, Patterson named in CA XI to face Bangladesh",
+      "summary": "Rocchiccioli, Philippe, Doran also included for the three-day tour game",
+      "url": "https://www.cricinfo.com/story/sam-konstas-campbell-kellaway-kurtis-patterson-named-in-ca-xi-to-face-bangladesh-1547129",
+      "imageUrl": "https://p.imgci.com/db/PICTURES/CMS/406300/406350.5.jpg",
+      "source": "espncricinfo",
+      "publishedAt": "2026-07-23T00:34:23.000Z"
+    },
     {
       "id": "dailystar-https://www.thedailystar.net/sports/cricket/news/mahedi-set-face-sanction-after-disciplinary-hearing-4230081",
       "title": "Mahedi set to face sanction after disciplinary hearing",
@@ -43,14 +60,6 @@
       "publishedAt": "2026-07-21T13:41:22.000Z"
     },
     {
-      "id": "dailystar-https://www.thedailystar.net/sports/cricket/news/australias-cummins-hazlewood-lyon-back-bangladesh-test-series-4228836",
-      "title": "Australia's Cummins, Hazlewood, Lyon back for Bangladesh Test series",
-      "summary": "Ashes pace hero Michael Neser was left out of the 13-man party for the two-match series in Darwin and Mackay beginning on August 13, with Scott Boland named as the fourth seamer.",
-      "url": "https://www.thedailystar.net/sports/cricket/news/australias-cummins-hazlewood-lyon-back-bangladesh-test-series-4228836",
-      "source": "dailystar",
-      "publishedAt": "2026-07-21T02:17:45.000Z"
-    },
-    {
       "id": "espn-https://www.cricinfo.com/ci/content/story/1546320.html",
       "title": "Hridoy pleased with T20I series win despite 'injuries and limited options'",
       "summary": "Bangladesh were without Mustafizur Rahman and Shoriful Islam for the entire series, and lost Nahid Rana for the decider, which they won by four wickets",
@@ -69,14 +78,6 @@
       "publishedAt": "2026-07-19T15:28:05.000Z"
     },
     {
-      "id": "dailystar-https://www.thedailystar.net/sports/cricket/news/tanzid-hits-fifty-tigers-clinch-series-dramatic-win-third-zimbabwe-t20i-4227611",
-      "title": "Tanzid hits fifty as Tigers clinch series with dramatic win in third Zimbabwe T20I",
-      "summary": "Bangladesh completed a series comeback as opener Tanzid Tamim struck an unbeaten half-century to guide the Tigers to a four-wicket win over Zimbabwe in the third and final T20I in Bulawayo on Sunday, sealing the three-match series 2-1.",
-      "url": "https://www.thedailystar.net/sports/cricket/news/tanzid-hits-fifty-tigers-clinch-series-dramatic-win-third-zimbabwe-t20i-4227611",
-      "source": "dailystar",
-      "publishedAt": "2026-07-19T14:39:08.000Z"
-    },
-    {
       "id": "espn-https://www.cricinfo.com/ci/content/story/1546207.html",
       "title": "Zimbabwe opt to bat in series decider",
       "summary": "Bangladesh were without Nahid Rana, who suffered a side strain on Friday",
@@ -93,24 +94,6 @@
       "imageUrl": "https://p.imgci.com/db/PICTURES/CMS/419800/419820.5.jpg",
       "source": "espncricinfo",
       "publishedAt": "2026-07-18T10:55:50.000Z"
-    },
-    {
-      "id": "espn-https://www.cricinfo.com/ci/content/story/1546026.html",
-      "title": "Openers, Mahedi and Rishad help Bangladesh keep series alive",
-      "summary": "Zimbabwe were sloppy in the field and lost wickets in clusters with the bat",
-      "url": "https://www.cricinfo.com/story/mahedi-hasan-and-rishad-hossain-help-bangladesh-keep-series-alive-1546026",
-      "imageUrl": "https://p.imgci.com/db/PICTURES/CMS/419900/419913.5.jpg",
-      "source": "espncricinfo",
-      "publishedAt": "2026-07-17T14:59:10.000Z"
-    },
-    {
-      "id": "espn-https://www.cricinfo.com/ci/content/story/1545990.html",
-      "title": "Unchanged Zimbabwe put Bangladesh in to bat",
-      "summary": "Bangladesh brought in Rishad Hossain for Nasum Ahmed",
-      "url": "https://www.cricinfo.com/story/unchanged-zimbabwe-put-bangladesh-in-to-bat-1545990",
-      "imageUrl": "https://p.imgci.com/db/PICTURES/CMS/397100/397168.5.jpg",
-      "source": "espncricinfo",
-      "publishedAt": "2026-07-17T10:35:21.000Z"
     }
   ]
 }
