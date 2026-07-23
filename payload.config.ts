@@ -44,6 +44,10 @@ export default buildConfig({
         Button: "@/components/admin/AdminLogoutButton",
       },
       actions: ["@/components/admin/AdminLogoutButton"],
+      graphics: {
+        Icon: "@/components/admin/BrandIcon",
+        Logo: "@/components/admin/BrandLogo",
+      },
     },
     meta: {
       titleSuffix: "— The Tigers' Den",

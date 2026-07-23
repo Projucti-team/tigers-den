@@ -45,3 +45,64 @@
   width: 100%;
   margin-top: 0.5rem;
 }
+
+/* --- Tigers' Den crest in the nav header --- */
+.step-nav__home {
+  display: flex;
+  align-items: center;
+}
+
+.step-nav__home img {
+  border: 2px solid #00b368;
+  box-shadow: 0 0 0 2px rgba(244, 42, 65, 0.35);
+}
+
+/* --- Dashboard collection cards: brand accent + a little life --- */
+.card {
+  position: relative;
+  border-radius: 10px;
+  border: 1px solid var(--theme-elevation-150);
+  background: linear-gradient(180deg, var(--theme-elevation-100) 0%, var(--theme-elevation-50) 100%);
+  overflow: hidden;
+  transition: transform 0.15s ease, border-color 0.15s ease, box-shadow 0.15s ease;
+}
+
+.card::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 3px;
+  background: linear-gradient(90deg, #006a4e 0%, #00b368 50%, #f42a41 100%);
+  opacity: 0.85;
+}
+
+.card:hover {
+  transform: translateY(-2px);
+  border-color: #00b368;
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.35), 0 0 0 1px rgba(0, 179, 104, 0.25);
+}
+
+.card__title {
+  font-weight: 600;
+  letter-spacing: 0.01em;
+}
+
+/* --- Sidebar nav groups: clearer section labels --- */
+.nav-group__toggle {
+  font-size: 0.7rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  opacity: 0.65;
+}
+
+.nav-group__indicator {
+  color: #00b368;
+}
+
+/* --- Login screen: give the crest some breathing room --- */
+.login__brand {
+  margin-bottom: 1.5rem;
+}

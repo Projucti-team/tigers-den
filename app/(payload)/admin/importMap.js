@@ -25,6 +25,8 @@ import { default as default_09d48889b71fa36cb7c55d9a58eacdca } from '@/component
 import { default as default_328c31efcd322983ce0f456493c2642f } from '@/components/admin/CricketSyncPanel'
 import { default as default_7a1c9e5d2b6f4830a1e6c2d9f0b3a5e7 } from '@/components/admin/TourSeriesOverridePanel'
 import { default as default_03852dcda313ea71c49ef97adea308f7 } from '@/components/admin/AdminLogoutButton'
+import { default as default_b4e8f1a2c5d6479ba0e3f7c1d8a29b6f } from '@/components/admin/BrandIcon'
+import { default as default_c9d2a6b3e7f14805a1c4d8e2f9b03a7d } from '@/components/admin/BrandLogo'
 import { CollectionCards as CollectionCards_f9c02e79a4aed9a3924487c0cd4cafb1 } from '@payloadcms/next/rsc'
 
 /** @type import('payload').ImportMap */
@@ -56,5 +58,7 @@ export const importMap = {
   "@/components/admin/CricketSyncPanel#default": default_328c31efcd322983ce0f456493c2642f,
   "@/components/admin/TourSeriesOverridePanel#default": default_7a1c9e5d2b6f4830a1e6c2d9f0b3a5e7,
   "@/components/admin/AdminLogoutButton#default": default_03852dcda313ea71c49ef97adea308f7,
+  "@/components/admin/BrandIcon#default": default_b4e8f1a2c5d6479ba0e3f7c1d8a29b6f,
+  "@/components/admin/BrandLogo#default": default_c9d2a6b3e7f14805a1c4d8e2f9b03a7d,
   "@payloadcms/next/rsc#CollectionCards": CollectionCards_f9c02e79a4aed9a3924487c0cd4cafb1
 }
