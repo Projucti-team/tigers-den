@@ -193,16 +193,20 @@ export async function resolveAllEspnLeaguesForTour(
   if (tourId) {
     const override = await getTourSeriesOverrideSafe(tourId);
     if (override) {
-      const espnLeagueId = await resolveEspnLeagueByCricinfoId(override);
-      if (espnLeagueId) {
-        add({
-          cricinfoSeriesId: override,
-          espnLeagueId,
-          seasonYear: startDate ? new Date(startDate).getFullYear() : undefined,
-        });
-        await recordResolvedTourSeriesSafe(tourId, override, espnLeagueId);
-        return refs;
-      }
+      // CricAPI fixture/squad lookups only ever use cricinfoSeriesId, not espnLeagueId — so
+      // even when we can't map the override to a distinct ESPN league id, still honor it with
+      // a placeholder (cricinfoSeriesId itself, the same sentinel normalizeLeagueRef already
+      // treats as "unresolved, try to correct me"). Failing to resolve an ESPN-side id must
+      // never mean silently falling back to the auto-discovery scan that mismatched in the
+      // first place.
+      const espnLeagueId = (await resolveEspnLeagueByCricinfoId(override)) ?? override;
+      add({
+        cricinfoSeriesId: override,
+        espnLeagueId,
+        seasonYear: startDate ? new Date(startDate).getFullYear() : undefined,
+      });
+      await recordResolvedTourSeriesSafe(tourId, override, espnLeagueId);
+      return refs;
     }
   }
 

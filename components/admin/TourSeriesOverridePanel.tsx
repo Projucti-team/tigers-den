@@ -21,6 +21,7 @@ export default function TourSeriesOverridePanel() {
   const [rows, setRows] = useState<TourSeriesRow[] | null>(null);
   const [drafts, setDrafts] = useState<Record<string, string>>({});
   const [savingId, setSavingId] = useState<string | null>(null);
+  const [savedId, setSavedId] = useState<string | null>(null);
   const [error, setError] = useState<string | null>(null);
 
   async function load() {
@@ -58,6 +59,8 @@ export default function TourSeriesOverridePanel() {
       const body = (await res.json().catch(() => ({}))) as { error?: string };
       if (!res.ok) throw new Error(body.error ?? `Save failed (HTTP ${res.status})`);
       await load();
+      setSavedId(tourId);
+      setTimeout(() => setSavedId((current) => (current === tourId ? null : current)), 6000);
     } catch (err) {
       setError(err instanceof Error ? err.message : "Save failed");
     } finally {
@@ -147,6 +150,12 @@ export default function TourSeriesOverridePanel() {
                     >
                       {savingId === row.tour_id ? "Saving…" : "Save"}
                     </Button>
+                    {savedId === row.tour_id ? (
+                      <div style={{ marginTop: "0.35rem", fontSize: "0.75rem", color: "#00b368" }}>
+                        Saved. Run cricket sync (above) to apply — this doesn&rsquo;t re-resolve until
+                        the next sync.
+                      </div>
+                    ) : null}
                   </td>
                 </tr>
               );
