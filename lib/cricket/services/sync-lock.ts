@@ -1,3 +1,5 @@
+import { revalidatePath } from "next/cache";
+
 import { CRICKET_SNAPSHOT_KEYS } from "@/lib/cricket/snapshot-keys";
 import {
   readCricketSnapshot,
@@ -68,6 +70,18 @@ export async function runCricketSyncInBackground(
     try {
       const result = await syncCricketSnapshots(options);
       await releaseSyncLock(result);
+      // Background syncs (the nightly cron default, and now the admin panel button too) never
+      // ran this before — pages could keep serving stale cached data indefinitely after a sync
+      // that only ever ran in the background.
+      if (result.ok) {
+        try {
+          revalidatePath("/");
+          revalidatePath("/rankings");
+          revalidatePath("/tours", "layout");
+        } catch (revalidateErr) {
+          console.warn("[cricket] revalidatePath after background sync failed:", revalidateErr);
+        }
+      }
       console.log("[cricket] background sync finished:", {
         ok: result.ok,
         tours: result.toursCount,

@@ -29,7 +29,11 @@ export default function CricketSyncPanel() {
     }
 
     try {
-      const res = await fetch(`/api/admin/cricket-sync?${params.toString()}`, {
+      // Payload's own /cricket-snapshots/sync endpoint (session-cookie authed) — starts the
+      // sync in the background and returns 202 immediately, avoiding proxy timeouts on longer
+      // syncs. /api/admin/cricket-sync waits for full completion, which can exceed the reverse
+      // proxy's timeout even though the sync itself succeeds.
+      const res = await fetch(`/api/cricket-snapshots/sync?${params.toString()}`, {
         method: "POST",
         credentials: "include",
         headers: { Accept: "application/json" },
@@ -83,7 +87,7 @@ export default function CricketSyncPanel() {
     while (Date.now() < deadline) {
       await new Promise((resolve) => setTimeout(resolve, 5000));
 
-      const res = await fetch("/api/cron/cricket?status=1", {
+      const res = await fetch("/api/cricket-snapshots/sync/status", {
         credentials: "include",
         headers: { Accept: "application/json" },
       });

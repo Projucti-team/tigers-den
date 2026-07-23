@@ -31,11 +31,28 @@ import {
 } from "@/lib/cricket/services/tour-sync-state-db";
 import { isPostgresDatabase } from "@/lib/payload-postgres-url";
 
+/**
+ * resolveAllEspnLeaguesForTour is called several times per tour per sync (fixtures, squads,
+ * CricAPI squad fallback). Without caching that meant a fresh Postgres pool spun up + torn
+ * down for every single one of those calls, across every active tour, every sync run —
+ * unnecessary DB churn on a small instance. Cache both directions in-process for a few
+ * minutes, which comfortably covers one sync pass.
+ */
+const OVERRIDE_CACHE_TTL_MS = 5 * 60 * 1000;
+const overrideCache = new Map<string, { value: number | null; expiresAt: number }>();
+const resolvedCache = new Map<string, string>();
+
 /** Best-effort — tour_sync_state may not exist yet (fresh tour) or DB may be SQLite in dev. */
 async function getTourSeriesOverrideSafe(tourId: string): Promise<number | null> {
   if (!isPostgresDatabase()) return null;
+
+  const cached = overrideCache.get(tourId);
+  if (cached && cached.expiresAt > Date.now()) return cached.value;
+
   try {
-    return await getTourSeriesOverride(tourId);
+    const value = await getTourSeriesOverride(tourId);
+    overrideCache.set(tourId, { value, expiresAt: Date.now() + OVERRIDE_CACHE_TTL_MS });
+    return value;
   } catch {
     return null;
   }
@@ -48,8 +65,13 @@ async function recordResolvedTourSeriesSafe(
   espnLeagueId: number,
 ): Promise<void> {
   if (!isPostgresDatabase()) return;
+
+  const key = `${cricinfoSeriesId}:${espnLeagueId}`;
+  if (resolvedCache.get(tourId) === key) return;
+
   try {
     await recordResolvedTourSeries(tourId, cricinfoSeriesId, espnLeagueId);
+    resolvedCache.set(tourId, key);
   } catch {
     // tour_sync_state row may not exist yet — safe to ignore.
   }
