@@ -452,7 +452,7 @@ export function filterMatchesForTour(tour: Tour, matches: LiveMatchSummary[]): L
   );
 }
 
-const OPPONENT_NATIONS = [
+export const OPPONENT_NATIONS = [
   "australia",
   "bangladesh",
   "england",

@@ -31,6 +31,7 @@ import {
   recordResolvedTourSeries,
 } from "@/lib/cricket/services/tour-sync-state-db";
 import { isPostgresDatabase } from "@/lib/payload-postgres-url";
+import { fetchSquadsViaHeadlessBrowser } from "@/lib/cricket/providers/espn-squads-browser";
 
 /**
  * resolveAllEspnLeaguesForTour is called several times per tour per sync (fixtures, squads,
@@ -563,6 +564,7 @@ async function fetchSquadsFromLegacySeriesSquadsPage(
   cricinfoSeriesId: number,
 ): Promise<SeriesSquad[]> {
   const url = `https://www.espncricinfo.com/ci/content/squad/index.html?object=${cricinfoSeriesId}`;
+
   try {
     const html = await fetchText(url, {
       cache: "no-store",
@@ -572,10 +574,17 @@ async function fetchSquadsFromLegacySeriesSquadsPage(
         Referer: "https://www.espncricinfo.com/",
       },
     });
-    return parseSquadsFromStoryHtml(html, url);
+    const staticSquads = parseSquadsFromStoryHtml(html, url);
+    if (staticSquads.length) return staticSquads;
   } catch {
-    return [];
+    // fall through to the headless render below
   }
+
+  // The page is client-rendered on ESPN's modern site, so a plain fetch usually returns an
+  // empty shell -- render it with a real (headless) browser and parse the visible text
+  // instead. See espn-squads-browser.ts for why, and its own fallback-to-empty behaviour if
+  // no Chromium binary is available in this environment.
+  return fetchSquadsViaHeadlessBrowser(url);
 }
 
 async function fetchSquadsFromStoryUrls(urls: string[]): Promise<SeriesSquad[]> {
