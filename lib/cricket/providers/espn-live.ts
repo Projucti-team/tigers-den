@@ -502,6 +502,9 @@ export async function buildTourMatchesFromEspnSeries(
     /^\d+$/.test(tour.id) &&
     String(league.cricinfoSeriesId) !== tour.id
   ) {
+    console.log(
+      `[cricket] buildTourMatchesFromEspnSeries: skipped — "${tour.name}" is not an umbrella tour and league cricinfo=${league.cricinfoSeriesId} != tour.id=${tour.id}`,
+    );
     return [];
   }
 
@@ -515,11 +518,17 @@ export async function buildTourMatchesFromEspnSeries(
     seasonYear,
     useSeasonEvents: league.useSeasonEvents !== false,
   });
+  console.log(
+    `[cricket] buildTourMatchesFromEspnSeries: league espn=${league.espnLeagueId} cricinfo=${league.cricinfoSeriesId} seasonYear=${seasonYear} useSeasonEvents=${league.useSeasonEvents !== false} → ${eventRefs.length} event ref(s): [${eventRefs.map((r) => `${r.eventId}@league${r.leagueId}`).join(", ")}]`,
+  );
 
   const matches: LiveMatchSummary[] = [];
   for (const { eventId, leagueId } of eventRefs) {
     const match = await buildLiveMatchFromEspnEvent(leagueId, eventId, "any");
-    if (!match) continue;
+    if (!match) {
+      console.log(`[cricket] buildTourMatchesFromEspnSeries: event ${eventId}@league${leagueId} → dropped (buildLiveMatchFromEspnEvent returned null)`);
+      continue;
+    }
     matches.push({
       ...match,
       seriesId: tour.id,
@@ -527,7 +536,7 @@ export async function buildTourMatchesFromEspnSeries(
     });
   }
 
-  return filterMatchesForTour(
+  const filtered = filterMatchesForTour(
     tour,
     matches.sort((a, b) => {
       const ta = a.dateTimeGMT ? new Date(a.dateTimeGMT).getTime() : 0;
@@ -535,6 +544,10 @@ export async function buildTourMatchesFromEspnSeries(
       return ta - tb;
     }),
   );
+  console.log(
+    `[cricket] buildTourMatchesFromEspnSeries: ${matches.length} match(es) built → ${filtered.length} after filterMatchesForTour`,
+  );
+  return filtered;
 }
 
 async function scanEspnBangladeshMatches(

@@ -364,25 +364,32 @@ test("tour detail read path does not import live ESPN series builder", () => {
 });
 
 test("deduplicateTours keeps max format counts instead of summing duplicate API rows", () => {
+  // Dates are relative to "now" (not hardcoded) so this test doesn't rot as real time
+  // passes isFutureSeries()'s window — it previously hardcoded 2026-06-09/06-21, which
+  // silently started failing once the real clock passed that date.
+  const toIso = (daysFromNow: number) =>
+    new Date(Date.now() + daysFromNow * 86_400_000).toISOString().slice(0, 10);
+  const year = new Date().getFullYear();
+
   const merged = deduplicateTours([
     {
       id: "1",
-      name: "Australia tour of Bangladesh, 2026",
-      startDate: "2026-06-09",
-      endDate: "2026-06-21",
+      name: `Australia tour of Bangladesh, ${year}`,
+      startDate: toIso(10),
+      endDate: toIso(22),
       odi: 3,
       t20: 3,
     },
     {
       id: "2",
       name: "Australia in Bangladesh ODI Series",
-      startDate: "2026-06-09",
+      startDate: toIso(10),
       odi: 3,
     },
     {
       id: "3",
       name: "Australia in Bangladesh T20I Series",
-      startDate: "2026-06-17",
+      startDate: toIso(18),
       t20: 3,
     },
   ]);

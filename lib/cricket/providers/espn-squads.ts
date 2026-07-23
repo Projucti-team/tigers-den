@@ -27,6 +27,7 @@ import { tourSlug, tourStorageKey } from "@/lib/cricket/tour-slug";
 import type { Tour } from "@/lib/cricket/types";
 import {
   getTourSeriesOverride,
+  getTourSquadStoryUrl,
   recordResolvedTourSeries,
 } from "@/lib/cricket/services/tour-sync-state-db";
 import { isPostgresDatabase } from "@/lib/payload-postgres-url";
@@ -41,11 +42,13 @@ import { isPostgresDatabase } from "@/lib/payload-postgres-url";
 const OVERRIDE_CACHE_TTL_MS = 5 * 60 * 1000;
 const overrideCache = new Map<string, { value: number | null; expiresAt: number }>();
 const resolvedCache = new Map<string, string>();
+const squadStoryUrlCache = new Map<string, { value: string | null; expiresAt: number }>();
 
 /** Call after an admin sets/clears an override so the next sync doesn't read a stale cached value. */
 export function invalidateTourSeriesOverrideCache(tourId: string): void {
   overrideCache.delete(tourId);
   resolvedCache.delete(tourId);
+  squadStoryUrlCache.delete(tourId);
 }
 
 /** Best-effort — tour_sync_state may not exist yet (fresh tour) or DB may be SQLite in dev. */
@@ -62,6 +65,31 @@ async function getTourSeriesOverrideSafe(tourId: string): Promise<number | null>
   } catch {
     return null;
   }
+}
+
+/** Best-effort — admin-pinned squad story URL(s) for a tour, split into a clean array. */
+async function getTourSquadStoryUrlsSafe(tourId: string): Promise<string[]> {
+  if (!isPostgresDatabase()) return [];
+
+  const cached = squadStoryUrlCache.get(tourId);
+  const raw =
+    cached && cached.expiresAt > Date.now()
+      ? cached.value
+      : await (async () => {
+          try {
+            const value = await getTourSquadStoryUrl(tourId);
+            squadStoryUrlCache.set(tourId, { value, expiresAt: Date.now() + OVERRIDE_CACHE_TTL_MS });
+            return value;
+          } catch {
+            return null;
+          }
+        })();
+
+  if (!raw) return [];
+  return raw
+    .split(/[\n,]+/)
+    .map((u) => u.trim())
+    .filter(Boolean);
 }
 
 /** Best-effort — records which series a sync resolved to, for the admin panel. Never throws. */
@@ -204,6 +232,7 @@ export async function resolveAllEspnLeaguesForTour(
         cricinfoSeriesId: override,
         espnLeagueId,
         seasonYear: startDate ? new Date(startDate).getFullYear() : undefined,
+        useSeasonEvents: true,
       });
       await recordResolvedTourSeriesSafe(tourId, override, espnLeagueId);
       return refs;
@@ -466,6 +495,21 @@ function storyMatchesTour(title: string, tourName: string): boolean {
   // ESPN often titles announcements without "squad", e.g. "X return for T20Is against Australia".
   if (/\bt20/i.test(blob)) return true;
 
+  // Test-series squad announcements often skip "squad"/"t20" entirely, e.g.
+  // "Pat Cummins, Josh Hazlewood, Nathan Lyon return to face Bangladesh" or
+  // "Sam Konstas, Campbell Kellaway named in CA XI to face Bangladesh". These
+  // still name specific players and reference the opponent, so require an
+  // opponent-name hit plus one of these squad-announcement verb phrases.
+  // parseSquadsFromStoryHtml requires 8+ parsed names before accepting a
+  // squad list, so a loose match here just costs a wasted fetch, not bad data.
+  if (
+    /\b(return|recall|named|name(?:s|d)?|call(?:ed)? up|included?|announce[sd]?|unveil(?:s|ed)?|join(?:s|ed)?)\b/i.test(
+      blob,
+    )
+  ) {
+    return true;
+  }
+
   return false;
 }
 
@@ -501,6 +545,37 @@ export async function fetchSquadsFromEspnStories(tourName: string): Promise<Seri
   }
 
   return squads;
+}
+
+/**
+ * ESPNcricinfo's squad listings (e.g. the "Squads" tab on a series page) are served from
+ * their own legacy content system, not the shared ESPN Core Sports API — that's why
+ * fetchSquadsFromEspnCore() (Core API team athletes + match rosters) can come back
+ * completely empty even once a series has a fully public, populated squads page. The
+ * Core API league object still links to this legacy URL under rel:"squads", so it's a
+ * stable, deterministic source keyed only by the cricinfo series id — no RSS/heuristic
+ * discovery needed. It's a lower-priority legacy page format compared to modern story
+ * pages, so this is a best-effort scrape: if ESPN has since retired/redesigned it, this
+ * silently returns nothing and the other sources (Core API, RSS stories, admin-pinned
+ * story URL) still apply.
+ */
+async function fetchSquadsFromLegacySeriesSquadsPage(
+  cricinfoSeriesId: number,
+): Promise<SeriesSquad[]> {
+  const url = `https://www.espncricinfo.com/ci/content/squad/index.html?object=${cricinfoSeriesId}`;
+  try {
+    const html = await fetchText(url, {
+      cache: "no-store",
+      headers: {
+        "User-Agent": BROWSER_USER_AGENT,
+        Accept: "text/html",
+        Referer: "https://www.espncricinfo.com/",
+      },
+    });
+    return parseSquadsFromStoryHtml(html, url);
+  } catch {
+    return [];
+  }
 }
 
 async function fetchSquadsFromStoryUrls(urls: string[]): Promise<SeriesSquad[]> {
@@ -629,18 +704,29 @@ export async function refreshEspnTourSquads(tour: Tour): Promise<{
   const rawLeague = leagueFromSnapshot(snapshot, keys) ?? (await resolveEspnLeagueForTour(tour.name, tour.id));
   const league = rawLeague ? await normalizeLeagueRef(rawLeague) : null;
 
-  const curatedStoryUrls = keys
-    .map((key) => snapshot.entries[key]?.squadStoryUrls ?? [])
-    .flat();
+  const adminStoryUrls = await getTourSquadStoryUrlsSafe(tour.id);
+  const curatedStoryUrls = [
+    ...adminStoryUrls,
+    ...keys.map((key) => snapshot.entries[key]?.squadStoryUrls ?? []).flat(),
+  ];
 
   const coreSquads = league ? await fetchSquadsFromEspnCore(league) : [];
+  const legacySquads = league
+    ? (await fetchSquadsFromLegacySeriesSquadsPage(league.cricinfoSeriesId)).filter((s) =>
+        squadBelongsToTour(s, tour),
+      )
+    : [];
   const storySquads = (await fetchSquadsFromEspnStories(tour.name)).filter((s) =>
     squadBelongsToTour(s, tour),
   );
   const curatedSquads = (await fetchSquadsFromStoryUrls(curatedStoryUrls)).filter((s) =>
     squadBelongsToTour(s, tour),
   );
-  const merged = mergeSquads(cached, coreSquads, storySquads, curatedSquads);
+  console.log(
+    `[cricket] ${tourSlug(tour)}: squad sources — core=${coreSquads.length} legacy-squads-page=${legacySquads.length} story(rss)=${storySquads.length} story(curated/admin)=${curatedSquads.length} cached=${cached.length}` +
+      (adminStoryUrls.length ? ` | admin-pinned URLs: ${adminStoryUrls.join(", ")}` : ""),
+  );
+  const merged = mergeSquads(cached, coreSquads, legacySquads, storySquads, curatedSquads);
   const squads: SeriesSquad[] = [];
 
   for (const squad of merged) {

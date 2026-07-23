@@ -22,6 +22,8 @@ export interface TourSyncState {
   espn_league_id?: number | null;
   /** Admin-pinned cricinfo series id — takes priority over auto-discovery when set. */
   espn_series_override?: number | null;
+  /** Admin-pinned ESPNcricinfo story URL(s) (newline-separated) to scrape for squads when auto-discovery misses them. */
+  squad_story_url?: string | null;
   created_at: string;
   updated_at: string;
 }
@@ -45,6 +47,7 @@ export interface TourSyncStateUpdate {
   espn_cricinfo_series_id?: number | null;
   espn_league_id?: number | null;
   espn_series_override?: number | null;
+  squad_story_url?: string | null;
 }
 
 export interface SquadRefreshTarget {

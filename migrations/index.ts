@@ -10,6 +10,7 @@ import * as legalGlobals from "./20260617_000000_legal_globals";
 import * as trackedPlayerLeagues from "./20260618_000000_tracked_player_leagues";
 import * as tourSyncState from "./20260705_000000_tour_sync_state";
 import * as tourSeriesOverride from "./20260723_000000_tour_series_override";
+import * as tourSquadStoryUrl from "./20260723_000001_tour_squad_story_url";
 
 type Migration = {
   name: string;
@@ -67,5 +68,10 @@ export const migrations: Migration[] = [
     name: "20260723_000000_tour_series_override",
     up: tourSeriesOverride.up,
     down: tourSeriesOverride.down,
+  },
+  {
+    name: "20260723_000001_tour_squad_story_url",
+    up: tourSquadStoryUrl.up,
+    down: tourSquadStoryUrl.down,
   },
 ];

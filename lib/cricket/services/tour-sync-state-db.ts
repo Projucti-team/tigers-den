@@ -136,6 +136,10 @@ export async function upsertTourSyncState(
         setClauses.push(`"espn_series_override" = $${paramIndex++}`);
         values.push(update.espn_series_override);
       }
+      if (update.squad_story_url !== undefined) {
+        setClauses.push(`"squad_story_url" = $${paramIndex++}`);
+        values.push(update.squad_story_url);
+      }
 
       setClauses.push(`"updated_at" = NOW()`);
       values.push(update.tour_id);
@@ -225,6 +229,37 @@ export async function recordResolvedTourSeries(
        SET "espn_cricinfo_series_id" = $2, "espn_league_id" = $3, "updated_at" = NOW()
        WHERE "tour_id" = $1`,
       [tour_id, cricinfoSeriesId, espnLeagueId],
+    );
+  } finally {
+    await pool.end();
+  }
+}
+
+/** Admin-pinned squad story URL(s) for a tour, if set (newline-separated raw text). */
+export async function getTourSquadStoryUrl(tour_id: string): Promise<string | null> {
+  const pool = await getDbPool();
+  try {
+    const result = await pool.query(
+      `SELECT "squad_story_url" FROM "tour_sync_state" WHERE "tour_id" = $1`,
+      [tour_id],
+    );
+    const value = result.rows[0]?.squad_story_url;
+    return typeof value === "string" && value.trim() ? value : null;
+  } finally {
+    await pool.end();
+  }
+}
+
+/** Set (or clear with null) the admin-pinned squad story URL(s) for a tour. */
+export async function setTourSquadStoryUrl(
+  tour_id: string,
+  squadStoryUrl: string | null,
+): Promise<void> {
+  const pool = await getDbPool();
+  try {
+    await pool.query(
+      `UPDATE "tour_sync_state" SET "squad_story_url" = $2, "updated_at" = NOW() WHERE "tour_id" = $1`,
+      [tour_id, squadStoryUrl],
     );
   } finally {
     await pool.end();

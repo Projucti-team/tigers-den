@@ -75,6 +75,7 @@ export async function fetchLeagueEventRefs(
 
   for (const url of urls) {
     const list = await fetchCoreList(url);
+    console.log(`[cricket] fetchLeagueEventRefs: GET ${url} → ${list.items?.length ?? 0} item(s)`);
     for (const item of list.items ?? []) {
       const eventId = eventIdFromRef(item.$ref);
       if (!eventId || seen.has(eventId)) continue;

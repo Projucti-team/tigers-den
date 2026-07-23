@@ -1,7 +1,7 @@
 "use client";
 
 import { Button } from "@payloadcms/ui";
-import { useEffect, useState } from "react";
+import { Fragment, useEffect, useState } from "react";
 
 type TourSeriesRow = {
   tour_id: string;
@@ -10,6 +10,7 @@ type TourSeriesRow = {
   espn_cricinfo_series_id: number | null;
   espn_league_id: number | null;
   espn_series_override: number | null;
+  squad_story_url: string | null;
   updated_at: string;
 };
 
@@ -22,6 +23,9 @@ export default function TourSeriesOverridePanel() {
   const [drafts, setDrafts] = useState<Record<string, string>>({});
   const [savingId, setSavingId] = useState<string | null>(null);
   const [savedId, setSavedId] = useState<string | null>(null);
+  const [squadDrafts, setSquadDrafts] = useState<Record<string, string>>({});
+  const [savingSquadId, setSavingSquadId] = useState<string | null>(null);
+  const [savedSquadId, setSavedSquadId] = useState<string | null>(null);
   const [error, setError] = useState<string | null>(null);
 
   async function load() {
@@ -68,6 +72,29 @@ export default function TourSeriesOverridePanel() {
     }
   }
 
+  async function saveSquadStoryUrl(tourId: string, raw: string) {
+    setSavingSquadId(tourId);
+    setError(null);
+
+    try {
+      const res = await fetch("/api/admin/tour-series", {
+        method: "POST",
+        credentials: "include",
+        headers: { "Content-Type": "application/json", Accept: "application/json" },
+        body: JSON.stringify({ tour_id: tourId, squadStoryUrl: raw }),
+      });
+      const body = (await res.json().catch(() => ({}))) as { error?: string };
+      if (!res.ok) throw new Error(body.error ?? `Save failed (HTTP ${res.status})`);
+      await load();
+      setSavedSquadId(tourId);
+      setTimeout(() => setSavedSquadId((current) => (current === tourId ? null : current)), 6000);
+    } catch (err) {
+      setError(err instanceof Error ? err.message : "Save failed");
+    } finally {
+      setSavingSquadId(null);
+    }
+  }
+
   if (!rows) {
     return null;
   }
@@ -111,59 +138,105 @@ export default function TourSeriesOverridePanel() {
           <tbody>
             {active.map((row) => {
               const draft = drafts[row.tour_id] ?? String(row.espn_series_override ?? "");
+              const squadDraft = squadDrafts[row.tour_id] ?? row.squad_story_url ?? "";
               return (
-                <tr key={row.tour_id} style={{ borderBottom: "1px solid var(--theme-elevation-100)" }}>
-                  <td style={{ padding: "0.5rem 0.5rem 0.5rem 0" }}>{row.tour_slug}</td>
-                  <td style={{ padding: "0.5rem" }}>
-                    {row.espn_cricinfo_series_id ? (
-                      <a href={espnSeriesUrl(row.espn_cricinfo_series_id)} target="_blank" rel="noreferrer">
-                        {row.espn_cricinfo_series_id}
-                      </a>
-                    ) : (
-                      <span style={{ opacity: 0.6 }}>not resolved yet</span>
-                    )}
-                    {row.espn_league_id ? (
-                      <div style={{ fontSize: "0.7rem", opacity: 0.6, marginTop: "0.15rem" }}>
-                        league id: {row.espn_league_id}
-                        {row.espn_league_id === row.espn_cricinfo_series_id ? " (unresolved — placeholder, ESPN calls likely returning nothing)" : ""}
+                <Fragment key={row.tour_id}>
+                  <tr style={{ borderBottom: "1px solid var(--theme-elevation-100)" }}>
+                    <td style={{ padding: "0.5rem 0.5rem 0.5rem 0" }}>{row.tour_slug}</td>
+                    <td style={{ padding: "0.5rem" }}>
+                      {row.espn_cricinfo_series_id ? (
+                        <a href={espnSeriesUrl(row.espn_cricinfo_series_id)} target="_blank" rel="noreferrer">
+                          {row.espn_cricinfo_series_id}
+                        </a>
+                      ) : (
+                        <span style={{ opacity: 0.6 }}>not resolved yet</span>
+                      )}
+                      {row.espn_league_id ? (
+                        <div style={{ fontSize: "0.7rem", opacity: 0.6, marginTop: "0.15rem" }}>
+                          league id: {row.espn_league_id}
+                          {row.espn_league_id === row.espn_cricinfo_series_id ? " (unresolved — placeholder, ESPN calls likely returning nothing)" : ""}
+                        </div>
+                      ) : null}
+                    </td>
+                    <td style={{ padding: "0.5rem" }}>
+                      <input
+                        type="text"
+                        inputMode="numeric"
+                        placeholder="cricinfo series id"
+                        value={draft}
+                        onChange={(e) =>
+                          setDrafts((prev) => ({ ...prev, [row.tour_id]: e.target.value }))
+                        }
+                        style={{
+                          width: "9rem",
+                          padding: "0.3rem 0.5rem",
+                          borderRadius: "4px",
+                          border: "1px solid var(--theme-elevation-150)",
+                          background: "var(--theme-input-bg, transparent)",
+                        }}
+                      />
+                    </td>
+                    <td style={{ padding: "0.5rem" }}>
+                      <Button
+                        buttonStyle="secondary"
+                        size="small"
+                        disabled={savingId === row.tour_id}
+                        onClick={() => void save(row.tour_id, draft)}
+                      >
+                        {savingId === row.tour_id ? "Saving…" : "Save"}
+                      </Button>
+                      {savedId === row.tour_id ? (
+                        <div style={{ marginTop: "0.35rem", fontSize: "0.75rem", color: "#00b368" }}>
+                          Saved. Run cricket sync (above) to apply — this doesn&rsquo;t re-resolve until
+                          the next sync.
+                        </div>
+                      ) : null}
+                    </td>
+                  </tr>
+                  <tr style={{ borderBottom: "1px solid var(--theme-elevation-150)" }}>
+                    <td colSpan={4} style={{ padding: "0 0.5rem 0.75rem 0" }}>
+                      <div style={{ fontSize: "0.75rem", opacity: 0.7, marginBottom: "0.3rem" }}>
+                        Squad not showing? If ESPN hasn&rsquo;t published structured roster data yet
+                        but has a squad-announcement article, paste the story URL(s) here (one per
+                        line) and we&rsquo;ll scrape it directly on the next sync.
                       </div>
-                    ) : null}
-                  </td>
-                  <td style={{ padding: "0.5rem" }}>
-                    <input
-                      type="text"
-                      inputMode="numeric"
-                      placeholder="cricinfo series id"
-                      value={draft}
-                      onChange={(e) =>
-                        setDrafts((prev) => ({ ...prev, [row.tour_id]: e.target.value }))
-                      }
-                      style={{
-                        width: "9rem",
-                        padding: "0.3rem 0.5rem",
-                        borderRadius: "4px",
-                        border: "1px solid var(--theme-elevation-150)",
-                        background: "var(--theme-input-bg, transparent)",
-                      }}
-                    />
-                  </td>
-                  <td style={{ padding: "0.5rem" }}>
-                    <Button
-                      buttonStyle="secondary"
-                      size="small"
-                      disabled={savingId === row.tour_id}
-                      onClick={() => void save(row.tour_id, draft)}
-                    >
-                      {savingId === row.tour_id ? "Saving…" : "Save"}
-                    </Button>
-                    {savedId === row.tour_id ? (
-                      <div style={{ marginTop: "0.35rem", fontSize: "0.75rem", color: "#00b368" }}>
-                        Saved. Run cricket sync (above) to apply — this doesn&rsquo;t re-resolve until
-                        the next sync.
+                      <textarea
+                        rows={2}
+                        placeholder="https://www.espncricinfo.com/story/..."
+                        value={squadDraft}
+                        onChange={(e) =>
+                          setSquadDrafts((prev) => ({ ...prev, [row.tour_id]: e.target.value }))
+                        }
+                        style={{
+                          width: "100%",
+                          maxWidth: "36rem",
+                          padding: "0.4rem 0.5rem",
+                          borderRadius: "4px",
+                          border: "1px solid var(--theme-elevation-150)",
+                          background: "var(--theme-input-bg, transparent)",
+                          fontFamily: "inherit",
+                          fontSize: "0.8125rem",
+                          display: "block",
+                        }}
+                      />
+                      <div style={{ marginTop: "0.35rem" }}>
+                        <Button
+                          buttonStyle="secondary"
+                          size="small"
+                          disabled={savingSquadId === row.tour_id}
+                          onClick={() => void saveSquadStoryUrl(row.tour_id, squadDraft)}
+                        >
+                          {savingSquadId === row.tour_id ? "Saving…" : "Save squad URL"}
+                        </Button>
+                        {savedSquadId === row.tour_id ? (
+                          <span style={{ marginLeft: "0.6rem", fontSize: "0.75rem", color: "#00b368" }}>
+                            Saved. Run cricket sync to apply.
+                          </span>
+                        ) : null}
                       </div>
-                    ) : null}
-                  </td>
-                </tr>
+                    </td>
+                  </tr>
+                </Fragment>
               );
             })}
           </tbody>
