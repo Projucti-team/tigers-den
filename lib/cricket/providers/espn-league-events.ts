@@ -39,6 +39,18 @@ function eventIdFromRef(ref: string): string | null {
   return ref.split("/events/")[1]?.split("/")[0] ?? null;
 }
 
+/**
+ * Events are sometimes only discoverable by querying under the cricinfo series id rather
+ * than the ESPN league id (or vice versa) — but every event's own $ref encodes which league
+ * it actually belongs to. Trust that instead of assuming espnLeagueId: tagging an event with
+ * the wrong league id makes the follow-up competition-detail fetch 404 and silently drop it.
+ */
+function leagueIdFromRef(ref: string): number | null {
+  const match = ref.match(/\/leagues\/(\d+)\//);
+  const id = match ? Number(match[1]) : NaN;
+  return Number.isFinite(id) ? id : null;
+}
+
 /** List event ids for a league — prefers season events for tournaments when configured. */
 export async function fetchLeagueEventRefs(
   options: LeagueEventsOptions,
@@ -63,11 +75,11 @@ export async function fetchLeagueEventRefs(
 
   for (const url of urls) {
     const list = await fetchCoreList(url);
-    const leagueId = options.espnLeagueId;
     for (const item of list.items ?? []) {
       const eventId = eventIdFromRef(item.$ref);
       if (!eventId || seen.has(eventId)) continue;
       seen.add(eventId);
+      const leagueId = leagueIdFromRef(item.$ref) ?? options.espnLeagueId;
       refs.push({ eventId, leagueId });
     }
   }

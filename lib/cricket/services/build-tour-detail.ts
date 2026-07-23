@@ -87,7 +87,10 @@ export async function buildTourDetailLive(
 
   const { squads, warnings: squadWarnings } = await refreshEspnTourSquads(tour);
   const squadSummary = squads.map((s) => `${s.team} (${s.players.length})`).join(", ") || "none";
-  console.log(`[cricket] ${slug}: squads resolved — ${squads.length} squad(s): ${squadSummary}`);
+  console.log(
+    `[cricket] ${slug}: squads resolved — ${squads.length} squad(s): ${squadSummary}` +
+      (squadWarnings.length ? ` | ${squadWarnings.join(" / ")}` : ""),
+  );
   warnings.push(...squadWarnings);
 
   const timedMatches = await enrichMatchFixtureTimes(matches, { tour });
