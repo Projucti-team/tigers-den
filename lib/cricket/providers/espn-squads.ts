@@ -42,6 +42,12 @@ const OVERRIDE_CACHE_TTL_MS = 5 * 60 * 1000;
 const overrideCache = new Map<string, { value: number | null; expiresAt: number }>();
 const resolvedCache = new Map<string, string>();
 
+/** Call after an admin sets/clears an override so the next sync doesn't read a stale cached value. */
+export function invalidateTourSeriesOverrideCache(tourId: string): void {
+  overrideCache.delete(tourId);
+  resolvedCache.delete(tourId);
+}
+
 /** Best-effort — tour_sync_state may not exist yet (fresh tour) or DB may be SQLite in dev. */
 async function getTourSeriesOverrideSafe(tourId: string): Promise<number | null> {
   if (!isPostgresDatabase()) return null;

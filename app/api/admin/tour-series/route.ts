@@ -3,6 +3,7 @@ import { NextResponse } from "next/server";
 import { getPayloadClient } from "@/lib/payload";
 import { readAllTourSyncStates } from "@/lib/cricket/services/tour-sync-state-db";
 import { setTourSeriesOverride } from "@/lib/cricket/services/tour-sync-state-db";
+import { invalidateTourSeriesOverrideCache } from "@/lib/cricket/providers/espn-squads";
 
 export const runtime = "nodejs";
 
@@ -68,6 +69,7 @@ export async function POST(request: Request) {
     }
 
     await setTourSeriesOverride(body.tour_id, value);
+    invalidateTourSeriesOverrideCache(body.tour_id);
     return NextResponse.json({ ok: true, tour_id: body.tour_id, espn_series_override: value });
   } catch (err) {
     return NextResponse.json(
