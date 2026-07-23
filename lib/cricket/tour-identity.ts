@@ -84,19 +84,50 @@ export function tourHostNationSlug(name: string): string | null {
   return null;
 }
 
+/**
+ * Best-effort city hints for the looser (non-seriesId-linked) matching paths below --
+ * necessarily incomplete since international cricket is played at dozens of smaller/regional
+ * venues per country (e.g. Darwin, Mackay for Australia; Bloemfontein, Paarl for South Africa).
+ * Never gate the *trusted* match.seriesId === tour.id path on this list (see
+ * matchBelongsToTour) -- a resolved series/league link is already authoritative and doesn't
+ * need venue-name corroboration, which silently drops genuine fixtures at venues we forgot
+ * to list here.
+ */
+// City names only -- deliberately no bare country-name fallback (e.g. "|australia"). This
+// list is used to detect a CONTRADICTION (a venue clearly in a different country than
+// expected), and match.name / venueBlob almost always contains both teams' country names
+// (e.g. "Bangladesh vs Australia") regardless of where the match is actually played, on a
+// site that only tracks Bangladesh's matches. A bare country-name signal would misfire on
+// every single away tour, since "Bangladesh" is unavoidably present as the touring team.
 const HOST_VENUE_HINTS: Record<string, RegExp> = {
-  bangladesh: /dhaka|chattogram|chittagong|sylhet|mirpur|bangladesh/i,
-  australia: /melbourne|sydney|brisbane|adelaide|perth|hobart|canberra|australia/i,
-  zimbabwe: /harare|bulawayo|zimbabwe/i,
-  "newzealand": /auckland|wellington|christchurch|dunedin|new zealand/i,
-  "southafrica": /johannesburg|centurion|cape town|durban|south africa/i,
-  india: /mumbai|delhi|bangalore|chennai|kolkata|hyderabad|india/i,
-  pakistan: /karachi|lahore|islamabad|rawalpindi|pakistan/i,
-  england: /london|manchester|birmingham|leeds|england/i,
-  "srilanka": /colombo|kandy|galle|sri lanka/i,
-  "westindies": /barbados|jamaica|antigua|guyana|west indies/i,
+  bangladesh:
+    /dhaka|chattogram|chittagong|sylhet|mirpur|bogura|bogra|fatullah|khulna|rajshahi|cox'?s bazar/i,
+  australia:
+    /melbourne|sydney|brisbane|adelaide|perth|hobart|canberra|darwin|mackay|cairns|townsville|geelong|launceston|alice springs/i,
+  zimbabwe: /harare|bulawayo|kwekwe|mutare|victoria falls/i,
+  "newzealand":
+    /auckland|wellington|christchurch|dunedin|hamilton|napier|mount maunganui|tauranga|nelson|queenstown/i,
+  "southafrica":
+    /johannesburg|centurion|cape town|durban|bloemfontein|gqeberha|port elizabeth|east london|paarl|potchefstroom|benoni|kimberley|pietermaritzburg/i,
+  india:
+    /mumbai|delhi|bangalore|bengaluru|chennai|kolkata|hyderabad|ahmedabad|pune|indore|rajkot|guwahati|ranchi|cuttack|nagpur|lucknow|dharamsala|dharamshala|thiruvananthapuram|mohali|visakhapatnam/i,
+  pakistan: /karachi|lahore|islamabad|rawalpindi|multan|faisalabad|sialkot|gujranwala|peshawar/i,
+  england:
+    /london|manchester|birmingham|leeds|cardiff|southampton|nottingham|durham|chester-le-street|bristol|taunton/i,
+  "srilanka": /colombo|kandy|galle|pallekele|hambantota|dambulla/i,
+  "westindies":
+    /barbados|bridgetown|jamaica|kingston|antigua|guyana|georgetown|trinidad|port of spain|st lucia|grenada|st kitts|dominica/i,
 };
 
+/**
+ * True unless the venue text clearly names a DIFFERENT host nation than the tour's --
+ * a genuine contradiction (e.g. a "Bangladesh Tour of Australia" match actually played in
+ * Dhaka, a sign the match was mistagged with the wrong series id). Deliberately not an
+ * allow-list requiring the venue to appear in the tour's own HOST_VENUE_HINTS: that list can
+ * never enumerate every regional ground a country hosts (Darwin, Mackay, Bloemfontein, ...),
+ * and rejecting on "not in my list" silently drops genuine fixtures at venues we forgot to
+ * add. Only reject on positive evidence of a different country.
+ */
 export function matchVenueMatchesTourHost(match: LiveMatchSummary, tourName: string): boolean {
   const host = tourHostNationSlug(tourName);
   if (!host) return true;
@@ -104,10 +135,12 @@ export function matchVenueMatchesTourHost(match: LiveMatchSummary, tourName: str
   const venueBlob = `${match.venue ?? ""} ${match.name}`.trim();
   if (!venueBlob) return true;
 
-  const pattern = HOST_VENUE_HINTS[host];
-  if (!pattern) return venueBlob.toLowerCase().includes(host.replace(/([a-z])([A-Z])/g, "$1 $2"));
+  for (const [nation, pattern] of Object.entries(HOST_VENUE_HINTS)) {
+    if (nation === host) continue;
+    if (pattern.test(venueBlob)) return false;
+  }
 
-  return pattern.test(venueBlob);
+  return true;
 }
 
 export function extractOpponentNation(name: string): string | null {
