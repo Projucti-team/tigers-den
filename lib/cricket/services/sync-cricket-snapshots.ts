@@ -10,8 +10,7 @@ import {
   logRankingsShowcaseStats,
 } from "@/lib/cricket/services/build-rankings-showcase";
 import { buildTourDetailLive, toTourDetailSnapshot } from "@/lib/cricket/services/build-tour-detail";
-import { applyEspnTourSquads } from "@/lib/cricket/providers/espn-squads";
-import { refreshTourSquads } from "@/lib/cricket/services/refresh-tour-squads";
+import { applyEspnTourSquads, refreshEspnTourSquads } from "@/lib/cricket/providers/espn-squads";
 import {
   enrichMatchFixtureTimes,
   espnLeagueForTour,
@@ -163,7 +162,7 @@ async function refreshTourSquadsOnly(
     cached: cachedDetail.venues,
     persist: true,
   });
-  const { squads, warnings: squadWarnings } = await refreshTourSquads(tour);
+  const { squads, warnings: squadWarnings } = await refreshEspnTourSquads(tour);
   const withFreshSquads = applyEspnTourSquads(
     {
       ...cachedDetail,

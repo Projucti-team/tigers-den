@@ -1,33 +1,9 @@
-import { fetchCricApiTourSquads } from "@/lib/cricket/providers/cricapi";
-import { refreshEspnTourSquads } from "@/lib/cricket/providers/espn-squads";
-import type { SeriesSquad } from "@/lib/cricket/squads/types";
-import type { Tour } from "@/lib/cricket/types";
-
 /**
- * ESPNcricinfo first — most reliable once published. Falls back to CricAPI so an
- * officially-announced squad shows on the site even before ESPNcricinfo catches up.
- * Every sync job that pulls squads live should go through this instead of calling
- * refreshEspnTourSquads directly.
+ * @deprecated No longer used. Match/squad/venue details come from ESPNcricinfo only —
+ * call `refreshEspnTourSquads` from "@/lib/cricket/providers/espn-squads" directly.
+ * CricAPI's own series records don't reliably line up with ESPNcricinfo's ids, so the
+ * CricAPI squad fallback this file used to provide produced wrong/no data more often than
+ * it helped. Kept as a thin re-export only so nothing breaks if something still imports it;
+ * safe to delete.
  */
-export async function refreshTourSquads(tour: Tour): Promise<{
-  squads: SeriesSquad[];
-  warnings: string[];
-}> {
-  const { squads: espnSquads, warnings: espnWarnings } = await refreshEspnTourSquads(tour);
-  if (espnSquads.length) {
-    return { squads: espnSquads, warnings: espnWarnings };
-  }
-
-  const { squads: cricapiSquads, warnings: cricapiWarnings } = await fetchCricApiTourSquads(tour);
-  if (cricapiSquads.length) {
-    const warnings = [
-      ...espnWarnings.filter(
-        (w) => !w.startsWith("Squads not published") && !w.startsWith("Could not match this series"),
-      ),
-      "Squads sourced from CricAPI (not yet published on ESPNcricinfo).",
-    ];
-    return { squads: cricapiSquads, warnings };
-  }
-
-  return { squads: espnSquads, warnings: [...espnWarnings, ...cricapiWarnings] };
-}
+export { refreshEspnTourSquads as refreshTourSquads } from "@/lib/cricket/providers/espn-squads";

@@ -8,8 +8,7 @@ import {
 } from "@/lib/cricket/services/tour-sync-state-db";
 import { readCricketSnapshot, upsertCricketSnapshot } from "@/lib/cricket/snapshot-db";
 import { CRICKET_SNAPSHOT_KEYS } from "@/lib/cricket/snapshot-keys";
-import { applyEspnTourSquads } from "@/lib/cricket/providers/espn-squads";
-import { refreshTourSquads } from "@/lib/cricket/services/refresh-tour-squads";
+import { applyEspnTourSquads, refreshEspnTourSquads } from "@/lib/cricket/providers/espn-squads";
 import { tourSlug } from "@/lib/cricket/tour-slug";
 import { sanitizeTourSnapshotForRead } from "@/lib/cricket/tour-detail-sanitize";
 import { squadBelongsToTour } from "@/lib/cricket/tour-identity";
@@ -65,8 +64,8 @@ export async function refreshSquadsForActiveTours(): Promise<RefreshSquadsResult
           continue;
         }
 
-        // Fetch squads (ESPN first, CricAPI fallback if ESPN hasn't published yet)
-        const { squads: newSquads, warnings: squadWarnings } = await refreshTourSquads(tour);
+        // ESPNcricinfo only — see build-tour-detail.ts for why CricAPI isn't used for details.
+        const { squads: newSquads, warnings: squadWarnings } = await refreshEspnTourSquads(tour);
         if (squadWarnings.length > 0) {
           warnings.push(...squadWarnings);
         }

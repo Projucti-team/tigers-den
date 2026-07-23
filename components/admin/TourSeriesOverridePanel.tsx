@@ -122,6 +122,12 @@ export default function TourSeriesOverridePanel() {
                     ) : (
                       <span style={{ opacity: 0.6 }}>not resolved yet</span>
                     )}
+                    {row.espn_league_id ? (
+                      <div style={{ fontSize: "0.7rem", opacity: 0.6, marginTop: "0.15rem" }}>
+                        league id: {row.espn_league_id}
+                        {row.espn_league_id === row.espn_cricinfo_series_id ? " (unresolved — placeholder, ESPN calls likely returning nothing)" : ""}
+                      </div>
+                    ) : null}
                   </td>
                   <td style={{ padding: "0.5rem" }}>
                     <input
