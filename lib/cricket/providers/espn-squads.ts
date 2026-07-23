@@ -549,8 +549,19 @@ function tourNamesMatch(a: string, b: string): boolean {
   return tourNamesShareVenue(a, b);
 }
 
+/**
+ * Map a known cricinfo series id to its ESPN core league id. For many bilateral series the
+ * two ids line up directly, so try that as a single cheap request first. Otherwise fall back
+ * to scanning the leagues list (expensive — one request per league — so only worth doing for
+ * a targeted lookup like this or an admin-pinned override, not the per-sync discovery scan).
+ */
 async function resolveEspnLeagueByCricinfoId(cricinfoSeriesId: number): Promise<number | null> {
-  for (let page = 1; page <= 8; page++) {
+  const direct = await fetchCoreJson<CoreLeague>(`${CORE_BASE}/leagues/${cricinfoSeriesId}`);
+  if (direct?.id && Number(direct.mappings?.cricinfo) === cricinfoSeriesId) {
+    return Number(direct.id);
+  }
+
+  for (let page = 1; page <= 15; page++) {
     const list = await fetchCoreList(`${CORE_BASE}/leagues?page=${page}&pageSize=100`);
     if (!list.items?.length) break;
 
