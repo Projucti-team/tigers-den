@@ -1,6 +1,23 @@
 {
-  "fetchedAt": "2026-07-23T22:36:14.880Z",
+  "fetchedAt": "2026-07-24T22:40:36.080Z",
   "items": [
+    {
+      "id": "dailystar-https://www.thedailystar.net/sports/cricket/news/bangladesh-receive-direct-quarterfinal-berth-asian-games-cricket-4231431",
+      "title": "Bangladesh receive direct quarterfinal berth at Asian Games cricket",
+      "summary": "Bangladesh have secured a direct place in the knockout stage of the men's cricket event at the 2026 Asian Games, which will be held in Nagoya, Japan, in September.",
+      "url": "https://www.thedailystar.net/sports/cricket/news/bangladesh-receive-direct-quarterfinal-berth-asian-games-cricket-4231431",
+      "source": "dailystar",
+      "publishedAt": "2026-07-24T10:30:00.000Z"
+    },
+    {
+      "id": "espn-https://www.cricinfo.com/ci/content/story/1547333.html",
+      "title": "India, Pakistan, Bangladesh, Sri Lanka get direct entry into Asian Games knockouts",
+      "summary": "The men's competition will have ten teams and the women's competition will have eight sides and will start with the quarter-finals",
+      "url": "https://www.cricinfo.com/story/asian-games-2026-india-pakistan-bangladesh-sri-lanka-get-direct-entry-into-knockouts-1547333",
+      "imageUrl": "https://p.imgci.com/db/PICTURES/CMS/368400/368413.5.jpg",
+      "source": "espncricinfo",
+      "publishedAt": "2026-07-24T06:03:17.000Z"
+    },
     {
       "id": "dailystar-https://www.thedailystar.net/sports/cricket/news/bangladesh-play-one-lords-test-against-england-2027-4230671",
       "title": "Bangladesh to play one-off Lord's Test against England in 2027",
@@ -43,14 +60,6 @@
       "publishedAt": "2026-07-22T10:30:00.000Z"
     },
     {
-      "id": "dailystar-https://www.thedailystar.net/sports/cricket/news/aminul-hopeful-improved-sports-diplomacy-through-india-series-4229161",
-      "title": "Aminul hopeful of improved sports diplomacy through India series",
-      "summary": "India last toured Bangladesh in 2022 for a three-match ODI series and a two-match Test series.",
-      "url": "https://www.thedailystar.net/sports/cricket/news/aminul-hopeful-improved-sports-diplomacy-through-india-series-4229161",
-      "source": "dailystar",
-      "publishedAt": "2026-07-21T14:30:31.000Z"
-    },
-    {
       "id": "espn-https://www.cricinfo.com/ci/content/story/1546407.html",
       "title": "Cummins, Hazlewood, Lyon return to face Bangladesh",
       "summary": "Australia's veterans named in a 13-man squad with Cameron Green and Beau Webster both included",
@@ -85,15 +94,6 @@
       "imageUrl": "https://p.imgci.com/db/PICTURES/CMS/419900/419916.5.jpg",
       "source": "espncricinfo",
       "publishedAt": "2026-07-19T13:30:03.000Z"
-    },
-    {
-      "id": "espn-https://www.cricinfo.com/ci/content/story/1546081.html",
-      "title": "Bangladesh eye series win to finish forgettable tour",
-      "summary": "After winning the one-off Test and the ODI series, Zimbabwe have the chance to clinch the T20I series too",
-      "url": "https://www.cricinfo.com/story/zim-vs-ban-3rd-t20i-bangladesh-eye-series-win-to-finish-forgettable-tour-1546081",
-      "imageUrl": "https://p.imgci.com/db/PICTURES/CMS/419800/419820.5.jpg",
-      "source": "espncricinfo",
-      "publishedAt": "2026-07-18T10:55:50.000Z"
     }
   ]
 }
