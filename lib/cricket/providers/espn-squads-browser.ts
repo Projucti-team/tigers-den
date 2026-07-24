@@ -162,10 +162,30 @@ export async function fetchSquadsViaHeadlessBrowser(url: string): Promise<Series
       // still better than nothing, and networkidle can legitimately never fire on pages
       // with long-poll/analytics connections.
     }
+    console.log(`[cricket] espn-squads-browser: landed on ${page.url()} (requested ${url})`);
 
-    const text = await page.evaluate(() => document.body?.innerText ?? "");
-    console.log(`[cricket] espn-squads-browser: rendered ${url} -> ${text.length} char(s) of text`);
-    return parseSquadsFromRenderedText(text, url);
+    // ESPN's legacy squad-page URL now just redirects into the series' generic overview tab
+    // (Home / Fixtures and Results / Teams / ...) rather than a dedicated squads view -- the
+    // actual roster lives one client-side navigation away, behind whichever of those tabs
+    // shows squads (commonly labelled "Teams" or "Squads"). `.last()` because the same label
+    // usually also appears once in the site's global top nav, which we don't want.
+    let text = await page.evaluate(() => document.body?.innerText ?? "");
+    for (const label of ["Squads", "Teams"]) {
+      try {
+        const link = page.getByRole("link", { name: label, exact: true }).last();
+        if ((await link.count()) === 0) continue;
+        await link.click({ timeout: 5_000 });
+        await page.waitForLoadState("networkidle", { timeout: 15_000 }).catch(() => {});
+        console.log(`[cricket] espn-squads-browser: clicked "${label}" tab -> ${page.url()}`);
+        text = await page.evaluate(() => document.body?.innerText ?? "");
+        break;
+      } catch (err) {
+        console.log(`[cricket] espn-squads-browser: click "${label}" failed: ${String(err)}`);
+      }
+    }
+
+    console.log(`[cricket] espn-squads-browser: rendered ${page.url()} -> ${text.length} char(s) of text`);
+    return parseSquadsFromRenderedText(text, page.url());
   } catch (err) {
     console.log(`[cricket] espn-squads-browser: scrape failed for ${url}: ${String(err)}`);
     return [];
