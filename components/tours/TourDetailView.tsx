@@ -10,6 +10,7 @@ import type { SquadPlayer } from "@/lib/cricket/curated-squads";
 import { sortMatchesByDate } from "@/lib/cricket/match-sort";
 import type { TourDetail } from "@/lib/cricket/tour-detail-types";
 import { formatDateRange } from "@/lib/cricket/services/tours-display";
+import { publicFacingWarnings } from "@/lib/cricket/services/public-warnings";
 import type { LiveMatchSummary } from "@/lib/cricket/types";
 
 function squadPlayerPhotoSrc(player: SquadPlayer): string | null {
@@ -81,7 +82,8 @@ function formatMatchType(match: LiveMatchSummary): string {
 }
 
 export function TourDetailView({ detail }: { detail: TourDetail }) {
-  const { tour, card, squads, venues, warnings } = detail;
+  const { tour, card, squads, venues } = detail;
+  const warnings = publicFacingWarnings(detail.warnings);
   const matches = sortMatchesByDate(detail.matches);
 
   return (

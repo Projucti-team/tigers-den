@@ -511,7 +511,13 @@ export async function syncToursIndex(options?: SyncCricketOptions): Promise<Sync
       }
     }
 
-    const detailResult = await syncTourDetails(toursToProcess.tours, toursToProcess.warnings, keysToKeep, {
+    // Deliberately NOT toursToProcess.warnings here -- those are tours-index-level sync
+    // narration ("Discovered N future series...", "Built N tour(s)...") meant for the admin
+    // sync log, not per-tour facts. Passing them through used to seed every single tour's own
+    // detail-page warnings with the same index-level messages, showing sync process chatter to
+    // site visitors on every tour page. Each tour's warnings should only ever reflect that
+    // tour's own fixture/squad resolution (see buildTourDetailLive).
+    const detailResult = await syncTourDetails(toursToProcess.tours, [], keysToKeep, {
       squadsOnly,
     });
     tourDetailsCount = detailResult.built;

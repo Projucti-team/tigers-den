@@ -66,7 +66,8 @@ async function resolveTourFixtures(
   );
 
   if (espnMatches.length) {
-    warnings.push("Fixtures and results from ESPNcricinfo.");
+    // Purely informational (source attribution, not a problem) -- log only, don't surface as
+    // an admin-facing warning.
   } else {
     warnings.push(
       "ESPNcricinfo has no fixtures for this series yet — check the series is matched correctly in the admin panel.",

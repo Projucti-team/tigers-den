@@ -3,6 +3,7 @@ import Link from "next/link";
 import { PageHero } from "@/components/pages/PageHero";
 import { getFutureTours } from "@/lib/cricket/services/tours";
 import { tourToCard } from "@/lib/cricket/services/tours-display";
+import { publicFacingWarnings } from "@/lib/cricket/services/public-warnings";
 
 export const metadata = {
   title: "Tours — The Tigers' Den",
@@ -12,7 +13,7 @@ export const metadata = {
 export default async function ToursPage() {
   const { tours, warnings: tourWarnings } = await getFutureTours({ bangladeshOnly: true });
   const cards = tours.map((t, i) => tourToCard(t, i));
-  const warnings = [...tourWarnings];
+  const warnings = publicFacingWarnings(tourWarnings);
   if (!tours.length && !warnings.length) {
     warnings.push(
       "Tour data not loaded yet. Run `npm run sync:cricket` or wait for the nightly refresh (~3:00 AM BDT).",
