@@ -43,7 +43,6 @@
     "next-auth": "^5.0.0-beta.30",
     "payload": "3.84.1",
     "pg": "^8.16.3",
-    "playwright-core": "^1.61.0",
     "react": "^19.1.0",
     "react-dom": "^19.1.0",
     "react-easy-crop": "^6.0.2",

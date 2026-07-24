@@ -14,6 +14,7 @@ import type { RankedPlayer } from "@/lib/cricket/types";
 import { COUNTRY_SEEDS } from "@/lib/cricket/players/countries-seed";
 import { getPayloadClient } from "@/lib/payload";
 import { lookupSeedPlayerProfileUrl } from "@/lib/cricket/squads/store";
+import { mirrorPlayerImage, resolvePhotoUrl } from "@/lib/cricket/players/mirror-image";
 
 export type PlayerIdentity = {
   id: number;
@@ -36,10 +37,17 @@ type PlayerDoc = {
   displayName: string;
   profileUrl?: string | null;
   imageUrl?: string | null;
+  photo?: number | { id: number } | null;
   iccPlayerId?: number | null;
   cricinfoPlayerId?: number | null;
   country: number | CountryDoc;
 };
+
+function photoIdOf(doc: Pick<PlayerDoc, "photo"> | undefined): number | null {
+  const photo = doc?.photo;
+  if (photo == null) return null;
+  return typeof photo === "object" ? toNumericId(photo.id) : toNumericId(photo);
+}
 
 function toNumericId(id: string | number | null | undefined): number | null {
   if (id == null) return null;
@@ -125,6 +133,40 @@ export async function ensureCountriesSeeded(): Promise<Map<string, CountryDoc>> 
   return countriesReady;
 }
 
+type AliasedPlayerDoc = PlayerDoc & { aliases?: { name: string }[] | null };
+
+/**
+ * A source spelling a name differently ("Mohammad Naeem" vs "Mohammed Naeem") would otherwise
+ * derive a different lookupKey and quietly create a duplicate player on every sync. Checked
+ * only on a direct lookupKey miss, so the common case stays a single indexed query.
+ */
+async function findPlayerByAlias(
+  countrySlug: string,
+  name: string,
+): Promise<PlayerDoc | null> {
+  const countries = await ensureCountriesSeeded();
+  const country = countries.get(countrySlug);
+  if (!country) return null;
+
+  const payload = await getPayloadClient();
+  const target = normalizePlayerName(name);
+
+  const result = await payload.find({
+    collection: "players",
+    where: { country: { equals: country.id } },
+    limit: 500,
+    depth: 0,
+    overrideAccess: true,
+  });
+
+  for (const doc of result.docs as AliasedPlayerDoc[]) {
+    const hit = (doc.aliases ?? []).some((a) => normalizePlayerName(a.name) === target);
+    if (hit) return doc;
+  }
+
+  return null;
+}
+
 async function findPlayerDoc(
   countrySlug: string,
   name: string,
@@ -140,7 +182,7 @@ async function findPlayerDoc(
     overrideAccess: true,
   });
 
-  const doc = result.docs[0] as PlayerDoc | undefined;
+  const doc = (result.docs[0] as PlayerDoc | undefined) ?? (await findPlayerByAlias(countrySlug, name)) ?? undefined;
   if (!doc) return null;
 
   const countries = await ensureCountriesSeeded();
@@ -263,11 +305,20 @@ export async function ensurePlayer(input: EnsurePlayerInput): Promise<PlayerIden
   }
 
   const displayName = squadPlayerDisplayName(input.name);
-  const lookupKey = playerLookupKey(input.countrySlug, displayName);
   const existing = await findPlayerDoc(input.countrySlug, displayName);
+  // When `existing` was matched via an alias (a different spelling than its canonical
+  // lookupKey/displayName), keep the canonical identity as-is -- recomputing these from
+  // whatever spelling this particular call happens to use would flip-flop the record's
+  // identity depending on which source synced most recently.
+  const lookupKey = existing?.doc.lookupKey ?? playerLookupKey(input.countrySlug, displayName);
+  const canonicalDisplayName = existing?.doc.displayName ?? displayName;
   const existingProfileUrl = await validatedProfileUrl(displayName, existing?.doc.profileUrl);
+  const existingPhotoId = photoIdOf(existing?.doc);
 
-  if (existingProfileUrl && existing?.doc.imageUrl) {
+  // Only take the fast path once we've actually mirrored (or an admin has manually uploaded)
+  // a local photo -- otherwise every player created before that field existed would keep
+  // hot-linking their source imageUrl forever, since it already passes isUsableCachedImageUrl.
+  if (existingProfileUrl && existing?.doc.imageUrl && existingPhotoId) {
     const cachedImage = existing.doc.imageUrl;
     if (await isUsableCachedImageUrl(cachedImage)) {
       return toIdentity({ ...existing.doc, profileUrl: existingProfileUrl }, input.countrySlug);
@@ -286,13 +337,29 @@ export async function ensurePlayer(input: EnsurePlayerInput): Promise<PlayerIden
     cricinfoPlayerId: input.cricinfoPlayerId ?? existing?.doc.cricinfoPlayerId,
   });
 
+  // Mirror the resolved headshot into our own Media collection so the site never hot-links
+  // ICC/Cricinfo/CricAPI CDNs. Sticky once set: a photo (auto-mirrored or manually uploaded
+  // by an admin) is never silently replaced -- clear it in the admin panel to force a re-mirror.
+  let photoId = existingPhotoId;
+  let displayImageUrl = resolved.imageUrl;
+  if (!photoId && resolved.imageUrl) {
+    const mirrored = await mirrorPlayerImage(resolved.imageUrl, canonicalDisplayName);
+    if (mirrored) {
+      photoId = mirrored.mediaId;
+      displayImageUrl = mirrored.url ?? resolved.imageUrl;
+    }
+  } else if (photoId) {
+    displayImageUrl = (await resolvePhotoUrl(photoId)) ?? resolved.imageUrl;
+  }
+
   const payload = await getPayloadClient();
   const data = {
     lookupKey,
-    displayName,
+    displayName: canonicalDisplayName,
     country: country.id,
     profileUrl: resolved.profileUrl,
-    imageUrl: resolved.imageUrl,
+    imageUrl: displayImageUrl,
+    photo: photoId,
     iccPlayerId: toNumericId(input.iccPlayerId ?? existing?.doc.iccPlayerId),
     cricinfoPlayerId: resolved.cricinfoPlayerId ?? existing?.doc.cricinfoPlayerId ?? null,
     lastResolvedAt: new Date().toISOString(),

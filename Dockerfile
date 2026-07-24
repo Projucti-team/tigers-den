@@ -31,12 +31,6 @@ RUN apk add --no-cache wget \
   && addgroup --system --gid 1001 nodejs \
   && adduser --system --uid 1001 nextjs
 
-# Alpine's system Chromium for the headless squad-page scraper (playwright-core drives it via
-# executablePath -- we don't use Playwright's own bundled browser download, which doesn't ship
-# musl/Alpine builds). Only used by the infrequent squad-sync job, not per-request.
-RUN apk add --no-cache chromium nss freetype harfbuzz ca-certificates ttf-freefont
-ENV CHROMIUM_EXECUTABLE_PATH=/usr/bin/chromium-browser
-
 COPY --from=builder /app/public ./public
 COPY --from=builder --chown=nextjs:nodejs /app/.next/standalone ./
 COPY --from=builder --chown=nextjs:nodejs /app/.next/static ./.next/static

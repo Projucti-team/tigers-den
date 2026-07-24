@@ -11,6 +11,7 @@ import * as trackedPlayerLeagues from "./20260618_000000_tracked_player_leagues"
 import * as tourSyncState from "./20260705_000000_tour_sync_state";
 import * as tourSeriesOverride from "./20260723_000000_tour_series_override";
 import * as tourSquadStoryUrl from "./20260723_000001_tour_squad_story_url";
+import * as playersPhotoAliases from "./20260724_000000_players_photo_aliases";
 
 type Migration = {
   name: string;
@@ -73,5 +74,10 @@ export const migrations: Migration[] = [
     name: "20260723_000001_tour_squad_story_url",
     up: tourSquadStoryUrl.up,
     down: tourSquadStoryUrl.down,
+  },
+  {
+    name: "20260724_000000_players_photo_aliases",
+    up: playersPhotoAliases.up,
+    down: playersPhotoAliases.down,
   },
 ];

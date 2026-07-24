@@ -4,10 +4,6 @@ import type { NextConfig } from "next";
 // Standalone is for Docker/Coolify VPS deployments.
 const nextConfig: NextConfig = {
   ...(process.env.DOCKER_BUILD === "1" ? { output: "standalone" as const } : {}),
-  // playwright-core does dynamic requires to locate its browser binary -- webpack bundling
-  // that breaks it. Keep it as a plain external so Next just `require()`s it from
-  // node_modules at runtime (same reason "sharp" is externalized by Next by default).
-  serverExternalPackages: ["playwright-core"],
   images: {
     remotePatterns: [
       {

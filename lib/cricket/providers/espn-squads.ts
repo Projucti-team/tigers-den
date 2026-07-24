@@ -1,5 +1,5 @@
 import { fetchText } from "@/lib/news/http";
-import { parseRssItems } from "@/lib/news/providers/rss-parse";
+import { fetchSeriesSquads as fetchCricApiSeriesSquads } from "@/lib/cricket/providers/cricapi";
 import {
   lookupEspnTourSquads,
   readEspnTourSquads,
@@ -31,7 +31,6 @@ import {
   recordResolvedTourSeries,
 } from "@/lib/cricket/services/tour-sync-state-db";
 import { isPostgresDatabase } from "@/lib/payload-postgres-url";
-import { fetchSquadsViaHeadlessBrowser } from "@/lib/cricket/providers/espn-squads-browser";
 
 /**
  * resolveAllEspnLeaguesForTour is called several times per tour per sync (fixtures, squads,
@@ -113,7 +112,6 @@ async function recordResolvedTourSeriesSafe(
 }
 
 const CORE_BASE = "http://core.espnuk.org/v2/sports/cricket";
-const ESPN_RSS_URL = "https://www.espncricinfo.com/rss/content/story/feeds/0.xml";
 
 const BROWSER_USER_AGENT =
   "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36";
@@ -171,14 +169,6 @@ async function fetchCoreJson<T>(url: string): Promise<T | null> {
 
 async function fetchCoreList(url: string): Promise<CoreList> {
   return (await fetchCoreJson<CoreList>(url)) ?? { items: [] };
-}
-
-function tourTokens(name: string): string[] {
-  return name
-    .toLowerCase()
-    .replace(/[^a-z0-9]+/g, " ")
-    .split(/\s+/)
-    .filter((w) => w.length > 2 && !["tour", "the", "of", "in", "vs"].includes(w));
 }
 
 function leagueMatchesTour(league: CoreLeague, tourName: string): boolean {
@@ -484,109 +474,6 @@ export async function fetchSquadsFromEspnCore(league: EspnLeagueRef): Promise<Se
   return squads;
 }
 
-function storyMatchesTour(title: string, tourName: string): boolean {
-  const blob = title.toLowerCase();
-  const tokens = tourTokens(tourName);
-  const hits = tokens.filter((t) => blob.includes(t));
-  if (hits.length < 1) return false;
-
-  // Explicit squad headlines, e.g. "Australia squad for T20Is in Bangladesh".
-  if (/\bsquad\b/i.test(blob)) return true;
-
-  // ESPN often titles announcements without "squad", e.g. "X return for T20Is against Australia".
-  if (/\bt20/i.test(blob)) return true;
-
-  // Test-series squad announcements often skip "squad"/"t20" entirely, e.g.
-  // "Pat Cummins, Josh Hazlewood, Nathan Lyon return to face Bangladesh" or
-  // "Sam Konstas, Campbell Kellaway named in CA XI to face Bangladesh". These
-  // still name specific players and reference the opponent, so require an
-  // opponent-name hit plus one of these squad-announcement verb phrases.
-  // parseSquadsFromStoryHtml requires 8+ parsed names before accepting a
-  // squad list, so a loose match here just costs a wasted fetch, not bad data.
-  if (
-    /\b(return|recall|named|name(?:s|d)?|call(?:ed)? up|included?|announce[sd]?|unveil(?:s|ed)?|join(?:s|ed)?)\b/i.test(
-      blob,
-    )
-  ) {
-    return true;
-  }
-
-  return false;
-}
-
-/** Discover squad announcements via ESPNcricinfo RSS and parse story pages. */
-export async function fetchSquadsFromEspnStories(tourName: string): Promise<SeriesSquad[]> {
-  let xml: string;
-  try {
-    xml = await fetchText(ESPN_RSS_URL, { cache: "no-store" });
-  } catch {
-    return [];
-  }
-
-  const items = parseRssItems(xml).filter((item) => storyMatchesTour(item.title, tourName));
-  const squads: SeriesSquad[] = [];
-
-  for (const item of items.slice(0, 4)) {
-    const url = item.link.split("?")[0];
-    if (!url) continue;
-
-    try {
-      const html = await fetchText(url, {
-        cache: "no-store",
-        headers: {
-          "User-Agent": BROWSER_USER_AGENT,
-          Accept: "text/html",
-          Referer: "https://www.espncricinfo.com/",
-        },
-      });
-      squads.push(...parseSquadsFromStoryHtml(html, url));
-    } catch {
-      // Story HTML may be blocked on some hosts — JSON cache covers this.
-    }
-  }
-
-  return squads;
-}
-
-/**
- * ESPNcricinfo's squad listings (e.g. the "Squads" tab on a series page) are served from
- * their own legacy content system, not the shared ESPN Core Sports API — that's why
- * fetchSquadsFromEspnCore() (Core API team athletes + match rosters) can come back
- * completely empty even once a series has a fully public, populated squads page. The
- * Core API league object still links to this legacy URL under rel:"squads", so it's a
- * stable, deterministic source keyed only by the cricinfo series id — no RSS/heuristic
- * discovery needed. It's a lower-priority legacy page format compared to modern story
- * pages, so this is a best-effort scrape: if ESPN has since retired/redesigned it, this
- * silently returns nothing and the other sources (Core API, RSS stories, admin-pinned
- * story URL) still apply.
- */
-async function fetchSquadsFromLegacySeriesSquadsPage(
-  cricinfoSeriesId: number,
-): Promise<SeriesSquad[]> {
-  const url = `https://www.espncricinfo.com/ci/content/squad/index.html?object=${cricinfoSeriesId}`;
-
-  try {
-    const html = await fetchText(url, {
-      cache: "no-store",
-      headers: {
-        "User-Agent": BROWSER_USER_AGENT,
-        Accept: "text/html",
-        Referer: "https://www.espncricinfo.com/",
-      },
-    });
-    const staticSquads = parseSquadsFromStoryHtml(html, url);
-    if (staticSquads.length) return staticSquads;
-  } catch {
-    // fall through to the headless render below
-  }
-
-  // The page is client-rendered on ESPN's modern site, so a plain fetch usually returns an
-  // empty shell -- render it with a real (headless) browser and parse the visible text
-  // instead. See espn-squads-browser.ts for why, and its own fallback-to-empty behaviour if
-  // no Chromium binary is available in this environment.
-  return fetchSquadsViaHeadlessBrowser(url);
-}
-
 async function fetchSquadsFromStoryUrls(urls: string[]): Promise<SeriesSquad[]> {
   const squads: SeriesSquad[] = [];
 
@@ -697,9 +584,22 @@ export async function loadEspnTourSquadsFromCache(tour: Tour): Promise<SeriesSqu
     : [];
 }
 
+/** Best-effort — CricAPI has no squad data for most series yet; never let it fail the sync. */
+async function fetchSquadsFromCricApi(tour: Tour): Promise<SeriesSquad[]> {
+  try {
+    return await fetchCricApiSeriesSquads(tour.id);
+  } catch {
+    return [];
+  }
+}
+
 /**
- * Refresh squads from ESPNcricinfo (core API + story RSS + cache).
- * CricAPI is not used for squads.
+ * Refresh squads. Preference order: CricAPI (structured, cheapest) and ESPN's Core Sports
+ * API (structured, no scraping) run automatically every sync; if neither has published a
+ * squad yet, fall back to whatever story URL an admin has pinned for this tour via the
+ * admin panel (a single deliberate, human-verified fetch+parse — not automatic discovery).
+ * We deliberately don't scrape ESPN's client-rendered squads pages any more: it was fragile
+ * (client-side-only rendering, bot detection) and broke on every ESPN layout change.
  */
 export async function refreshEspnTourSquads(tour: Tour): Promise<{
   squads: SeriesSquad[];
@@ -719,23 +619,18 @@ export async function refreshEspnTourSquads(tour: Tour): Promise<{
     ...keys.map((key) => snapshot.entries[key]?.squadStoryUrls ?? []).flat(),
   ];
 
-  const coreSquads = league ? await fetchSquadsFromEspnCore(league) : [];
-  const legacySquads = league
-    ? (await fetchSquadsFromLegacySeriesSquadsPage(league.cricinfoSeriesId)).filter((s) =>
-        squadBelongsToTour(s, tour),
-      )
-    : [];
-  const storySquads = (await fetchSquadsFromEspnStories(tour.name)).filter((s) =>
+  const cricApiSquads = (await fetchSquadsFromCricApi(tour)).filter((s) =>
     squadBelongsToTour(s, tour),
   );
+  const coreSquads = league ? await fetchSquadsFromEspnCore(league) : [];
   const curatedSquads = (await fetchSquadsFromStoryUrls(curatedStoryUrls)).filter((s) =>
     squadBelongsToTour(s, tour),
   );
   console.log(
-    `[cricket] ${tourSlug(tour)}: squad sources — core=${coreSquads.length} legacy-squads-page=${legacySquads.length} story(rss)=${storySquads.length} story(curated/admin)=${curatedSquads.length} cached=${cached.length}` +
+    `[cricket] ${tourSlug(tour)}: squad sources — cricapi=${cricApiSquads.length} core=${coreSquads.length} story(curated/admin)=${curatedSquads.length} cached=${cached.length}` +
       (adminStoryUrls.length ? ` | admin-pinned URLs: ${adminStoryUrls.join(", ")}` : ""),
   );
-  const merged = mergeSquads(cached, coreSquads, legacySquads, storySquads, curatedSquads);
+  const merged = mergeSquads(cached, cricApiSquads, coreSquads, curatedSquads);
   const squads: SeriesSquad[] = [];
 
   for (const squad of merged) {
@@ -759,7 +654,7 @@ export async function refreshEspnTourSquads(tour: Tour): Promise<{
     warnings.push("Could not match this series on ESPNcricinfo yet.");
   } else {
     warnings.push(
-      "Squads not published on ESPNcricinfo yet — check back closer to the first match.",
+      "Squads not published yet — check back closer to the first match, or add a news link in the admin panel.",
     );
   }
 
@@ -788,7 +683,7 @@ export function applyEspnTourSquads<T extends { tour: Tour; squads: SeriesSquad[
 
   if (!squads.length && !warnings.some((w) => w.includes("Squads not published"))) {
     warnings.push(
-      "Squads not published on ESPNcricinfo yet — check back closer to the first match.",
+      "Squads not published yet — check back closer to the first match, or add a news link in the admin panel.",
     );
   }
 

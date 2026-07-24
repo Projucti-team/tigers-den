@@ -1,0 +1,17 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(npx tsc *)",
+      "Bash(git add *)",
+      "Bash(git commit -m ' *)",
+      "Bash(git commit *)",
+      "Bash(git push *)",
+      "Bash(git pull *)",
+      "Bash(curl *)",
+      "Bash(git reset *)",
+      "Bash(python3 -m json.tool)",
+      "Bash(chmod +x /Users/mdhasanrahman/Dev/Projucti/Projects/tigersden/scripts/test-before-deploy.sh)",
+      "Bash(chmod +x /Users/mdhasanrahman/Dev/Projucti/Projects/tigersden/setup-local-dev.sh)"
+    ]
+  }
+}

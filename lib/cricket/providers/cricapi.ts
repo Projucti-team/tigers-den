@@ -266,6 +266,11 @@ function mapLiveMatch(m: any): LiveMatchSummary {
   };
 }
 
+/** CricAPI serves this generic icon in place of a real headshot when it has none. */
+function isCricApiPlaceholderImage(url: string | undefined | null): boolean {
+  return !url || /icon512\.png(?:$|\?)/i.test(url);
+}
+
 function parseSquadPlayers(raw: unknown[]): SquadPlayer[] {
   const parsed: (string | SquadPlayer)[] = [];
 
@@ -280,7 +285,16 @@ function parseSquadPlayers(raw: unknown[]): SquadPlayer[] {
       if (!name) continue;
       const profileUrl =
         (row.profileUrl as string | undefined) ?? (row.url as string | undefined) ?? null;
-      parsed.push(profileUrl ? { name, profileUrl } : { name });
+      // CricAPI's own player id/profile isn't a Cricinfo URL, so we don't use `row.id` here --
+      // the registry (lib/cricket/players/registry.ts) resolves the real Cricinfo profile URL
+      // by name instead. `playerImg` is real and worth keeping when it's not their placeholder.
+      const rawImage = (row.playerImg as string | undefined) ?? (row.img as string | undefined);
+      const imageUrl = isCricApiPlaceholderImage(rawImage) ? null : (rawImage as string);
+
+      const player: SquadPlayer = { name };
+      if (profileUrl) player.profileUrl = profileUrl;
+      if (imageUrl) player.imageUrl = imageUrl;
+      parsed.push(player);
     }
   }
 
@@ -317,23 +331,26 @@ export async function fetchSeriesInfo(seriesId: string): Promise<{
   return { matches, squads };
 }
 
+/**
+ * CricAPI's squad endpoint is `series_squad` (singular) -- `series_squads` (plural) is not a
+ * real endpoint and returns "Invalid API requested". The response `data` is the team array
+ * directly (`[{ teamName, shortname, img, players: [...] }, ...]`), not wrapped in another
+ * object, and each player row uses `playerImg` for a headshot -- confirmed against a live
+ * response, since CricAPI's own docs don't spell this out.
+ */
 export async function fetchSeriesSquads(seriesId: string): Promise<SeriesSquad[]> {
-  const data = await cricFetch<Record<string, unknown>>("series_squads", { id: seriesId }).catch(
+  const list = await cricFetch<Record<string, unknown>[]>("series_squad", { id: seriesId }).catch(
     () => null,
   );
 
-  if (!data) return [];
+  if (!Array.isArray(list)) return [];
 
   const squads: SeriesSquad[] = [];
-  const list = (data.squads ?? data.squad ?? data.teams ?? data.data) as unknown;
-
-  if (Array.isArray(list)) {
-    for (const row of list as Record<string, unknown>[]) {
-      const team = String(row.team ?? row.name ?? row.shortname ?? "Squad");
-      const playersRaw = (row.players ?? row.playerList ?? row.squad ?? []) as unknown[];
-      const players = parseSquadPlayers(playersRaw);
-      if (players.length) squads.push({ team, players });
-    }
+  for (const row of list) {
+    const team = String(row.teamName ?? row.team ?? row.name ?? row.shortname ?? "Squad");
+    const playersRaw = (row.players ?? row.playerList ?? row.squad ?? []) as unknown[];
+    const players = parseSquadPlayers(playersRaw);
+    if (players.length) squads.push({ team, players });
   }
 
   return squads;
