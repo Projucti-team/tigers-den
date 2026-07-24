@@ -164,23 +164,41 @@ export async function fetchSquadsViaHeadlessBrowser(url: string): Promise<Series
     }
     console.log(`[cricket] espn-squads-browser: landed on ${page.url()} (requested ${url})`);
 
-    // ESPN's legacy squad-page URL now just redirects into the series' generic overview tab
-    // (Home / Fixtures and Results / Teams / ...) rather than a dedicated squads view -- the
-    // actual roster lives one client-side navigation away, behind whichever of those tabs
-    // shows squads (commonly labelled "Teams" or "Squads"). `.last()` because the same label
-    // usually also appears once in the site's global top nav, which we don't want.
+    // A "get notified" newsletter popup covers the page on first load and intercepts clicks
+    // (shows up as Playwright's "subtree intercepts pointer events" retry loop) -- dismiss it
+    // before trying to interact with anything else. Best-effort: if it's not there, or the
+    // button text/structure has changed, just move on.
+    try {
+      await page
+        .getByRole("button", { name: /not now/i })
+        .first()
+        .click({ timeout: 3_000 });
+      console.log("[cricket] espn-squads-browser: dismissed newsletter popup");
+    } catch {
+      await page.keyboard.press("Escape").catch(() => {});
+    }
+
+    // Some series redirect straight to the real squads URL already (seen for series with
+    // squads actually published); others land on the generic overview tab (Home / Fixtures
+    // and Results / Teams / ...) and need one more client-side navigation to reach the
+    // roster, behind whichever tab is labelled "Teams" or "Squads". Only bother clicking
+    // through when we're not already there.
     let text = await page.evaluate(() => document.body?.innerText ?? "");
-    for (const label of ["Squads", "Teams"]) {
-      try {
-        const link = page.getByRole("link", { name: label, exact: true }).last();
-        if ((await link.count()) === 0) continue;
-        await link.click({ timeout: 5_000 });
-        await page.waitForLoadState("networkidle", { timeout: 15_000 }).catch(() => {});
-        console.log(`[cricket] espn-squads-browser: clicked "${label}" tab -> ${page.url()}`);
-        text = await page.evaluate(() => document.body?.innerText ?? "");
-        break;
-      } catch (err) {
-        console.log(`[cricket] espn-squads-browser: click "${label}" failed: ${String(err)}`);
+    if (!/squads?$/i.test(page.url())) {
+      for (const label of ["Squads", "Teams"]) {
+        try {
+          // `.last()` because the same label usually also appears once in the site's global
+          // top nav, which we don't want -- the series-specific sub-nav renders later in the DOM.
+          const link = page.getByRole("link", { name: label, exact: true }).last();
+          if ((await link.count()) === 0) continue;
+          await link.click({ timeout: 5_000 });
+          await page.waitForLoadState("networkidle", { timeout: 15_000 }).catch(() => {});
+          console.log(`[cricket] espn-squads-browser: clicked "${label}" tab -> ${page.url()}`);
+          text = await page.evaluate(() => document.body?.innerText ?? "");
+          break;
+        } catch (err) {
+          console.log(`[cricket] espn-squads-browser: click "${label}" failed: ${String(err)}`);
+        }
       }
     }
 

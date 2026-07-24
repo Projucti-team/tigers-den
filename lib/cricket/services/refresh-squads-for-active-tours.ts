@@ -75,8 +75,19 @@ export async function refreshSquadsForActiveTours(): Promise<RefreshSquadsResult
         const squadsMatch = squadsAreEqual(existingSquads, newSquads);
 
         if (squadsMatch) {
+          if (newSquads.length === 0) {
+            // Both "existing" and "fetched" are empty -- that's not a confirmed match, it's
+            // ESPN not having published squads yet. Marking squad_import_complete here would
+            // permanently stop getSquadRefreshTargets() from ever checking this tour/format
+            // again (see the bug this comment replaced). Leave the flag alone so the next
+            // sync retries until ESPN actually has something.
+            console.log(`[cricket] ${target.tour_slug}: still 0 squads from ESPN, will retry next sync`);
+            toursProcessed += 1;
+            continue;
+          }
+
           console.log(`[cricket] Squads unchanged for ${target.tour_slug}, skipping sync`);
-          // Still mark as complete since we verified they match
+          // Mark as complete since we verified real (non-empty) squads match what we have.
           const stateUpdates: Record<string, boolean | string> = {
             tour_id: target.tour_id,
             tour_slug: target.tour_slug,
