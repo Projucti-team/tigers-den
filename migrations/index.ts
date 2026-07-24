@@ -12,6 +12,7 @@ import * as tourSyncState from "./20260705_000000_tour_sync_state";
 import * as tourSeriesOverride from "./20260723_000000_tour_series_override";
 import * as tourSquadStoryUrl from "./20260723_000001_tour_squad_story_url";
 import * as playersPhotoAliases from "./20260724_000000_players_photo_aliases";
+import * as tourManualSquadText from "./20260724_000001_tour_manual_squad_text";
 
 type Migration = {
   name: string;
@@ -79,5 +80,10 @@ export const migrations: Migration[] = [
     name: "20260724_000000_players_photo_aliases",
     up: playersPhotoAliases.up,
     down: playersPhotoAliases.down,
+  },
+  {
+    name: "20260724_000001_tour_manual_squad_text",
+    up: tourManualSquadText.up,
+    down: tourManualSquadText.down,
   },
 ];

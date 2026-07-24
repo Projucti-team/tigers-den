@@ -407,6 +407,8 @@ export async function enrichSquadPlayerForDisplay(
     name: player.name,
     profileUrl,
     imageUrl,
+    isCaptain: player.isCaptain,
+    isWicketKeeper: player.isWicketKeeper,
   };
 }
 
@@ -432,6 +434,8 @@ export async function resolveSquadPlayer(
     name: player.name,
     profileUrl: identity.profileUrl,
     imageUrl: identity.imageUrl,
+    isCaptain: player.isCaptain,
+    isWicketKeeper: player.isWicketKeeper,
   };
 }
 

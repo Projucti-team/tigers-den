@@ -24,6 +24,8 @@ export interface TourSyncState {
   espn_series_override?: number | null;
   /** Admin-pinned ESPNcricinfo story URL(s) (newline-separated) to scrape for squads when auto-discovery misses them. */
   squad_story_url?: string | null;
+  /** Admin-pasted squad text (one team per line: "Team Name: Player1 (c), Player2 (wk), ..."). */
+  manual_squad_text?: string | null;
   created_at: string;
   updated_at: string;
 }
@@ -48,6 +50,7 @@ export interface TourSyncStateUpdate {
   espn_league_id?: number | null;
   espn_series_override?: number | null;
   squad_story_url?: string | null;
+  manual_squad_text?: string | null;
 }
 
 export interface SquadRefreshTarget {

@@ -10,6 +10,7 @@ import {
   type CoreAthleteProfile,
 } from "@/lib/cricket/squads/profile-urls";
 import { resolveSquadPlayers } from "@/lib/cricket/players/registry";
+import { parseManualSquadText } from "@/lib/cricket/squads/manual-entry";
 import {
   mergeSquads,
   squadPrimaryNation,
@@ -28,6 +29,7 @@ import type { Tour } from "@/lib/cricket/types";
 import {
   getTourSeriesOverride,
   getTourSquadStoryUrl,
+  getTourManualSquadText,
   recordResolvedTourSeries,
 } from "@/lib/cricket/services/tour-sync-state-db";
 import { isPostgresDatabase } from "@/lib/payload-postgres-url";
@@ -43,12 +45,14 @@ const OVERRIDE_CACHE_TTL_MS = 5 * 60 * 1000;
 const overrideCache = new Map<string, { value: number | null; expiresAt: number }>();
 const resolvedCache = new Map<string, string>();
 const squadStoryUrlCache = new Map<string, { value: string | null; expiresAt: number }>();
+const manualSquadTextCache = new Map<string, { value: string | null; expiresAt: number }>();
 
 /** Call after an admin sets/clears an override so the next sync doesn't read a stale cached value. */
 export function invalidateTourSeriesOverrideCache(tourId: string): void {
   overrideCache.delete(tourId);
   resolvedCache.delete(tourId);
   squadStoryUrlCache.delete(tourId);
+  manualSquadTextCache.delete(tourId);
 }
 
 /** Best-effort — tour_sync_state may not exist yet (fresh tour) or DB may be SQLite in dev. */
@@ -90,6 +94,22 @@ async function getTourSquadStoryUrlsSafe(tourId: string): Promise<string[]> {
     .split(/[\n,]+/)
     .map((u) => u.trim())
     .filter(Boolean);
+}
+
+/** Best-effort — admin-pasted squad text for a tour, raw (parsed by the caller). */
+async function getTourManualSquadTextSafe(tourId: string): Promise<string | null> {
+  if (!isPostgresDatabase()) return null;
+
+  const cached = manualSquadTextCache.get(tourId);
+  if (cached && cached.expiresAt > Date.now()) return cached.value;
+
+  try {
+    const value = await getTourManualSquadText(tourId);
+    manualSquadTextCache.set(tourId, { value, expiresAt: Date.now() + OVERRIDE_CACHE_TTL_MS });
+    return value;
+  } catch {
+    return null;
+  }
 }
 
 /** Best-effort — records which series a sync resolved to, for the admin panel. Never throws. */
@@ -618,6 +638,7 @@ export async function refreshEspnTourSquads(tour: Tour): Promise<{
     ...adminStoryUrls,
     ...keys.map((key) => snapshot.entries[key]?.squadStoryUrls ?? []).flat(),
   ];
+  const manualSquadTextRaw = await getTourManualSquadTextSafe(tour.id);
 
   const cricApiSquads = (await fetchSquadsFromCricApi(tour)).filter((s) =>
     squadBelongsToTour(s, tour),
@@ -626,11 +647,14 @@ export async function refreshEspnTourSquads(tour: Tour): Promise<{
   const curatedSquads = (await fetchSquadsFromStoryUrls(curatedStoryUrls)).filter((s) =>
     squadBelongsToTour(s, tour),
   );
+  const manualSquads = manualSquadTextRaw
+    ? parseManualSquadText(manualSquadTextRaw).filter((s) => squadBelongsToTour(s, tour))
+    : [];
   console.log(
-    `[cricket] ${tourSlug(tour)}: squad sources — cricapi=${cricApiSquads.length} core=${coreSquads.length} story(curated/admin)=${curatedSquads.length} cached=${cached.length}` +
+    `[cricket] ${tourSlug(tour)}: squad sources — cricapi=${cricApiSquads.length} core=${coreSquads.length} story(curated/admin)=${curatedSquads.length} manual=${manualSquads.length} cached=${cached.length}` +
       (adminStoryUrls.length ? ` | admin-pinned URLs: ${adminStoryUrls.join(", ")}` : ""),
   );
-  const merged = mergeSquads(cached, cricApiSquads, coreSquads, curatedSquads);
+  const merged = mergeSquads(cached, cricApiSquads, coreSquads, curatedSquads, manualSquads);
   const squads: SeriesSquad[] = [];
 
   for (const squad of merged) {

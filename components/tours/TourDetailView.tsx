@@ -45,6 +45,11 @@ function SquadPlayerRow({ player }: { player: SquadPlayer }) {
     <span>{player.name}</span>
   );
 
+  const badges = [
+    player.isCaptain ? "C" : null,
+    player.isWicketKeeper ? "WK" : null,
+  ].filter((b): b is string => Boolean(b));
+
   return (
     <div className="flex items-center gap-2.5">
       <PlayerRankAvatar
@@ -53,7 +58,17 @@ function SquadPlayerRow({ player }: { player: SquadPlayer }) {
         alt={player.name}
         className="h-9 w-9 shrink-0 rounded-full border-2 border-emerald/30 bg-emerald/10 object-cover"
       />
-      <div className="min-w-0">{nameEl}</div>
+      <div className="min-w-0 flex items-center gap-1.5">
+        {nameEl}
+        {badges.map((badge) => (
+          <span
+            key={badge}
+            className="rounded bg-amber/20 px-1.5 py-0.5 text-[10px] font-bold uppercase text-amber"
+          >
+            {badge}
+          </span>
+        ))}
+      </div>
     </div>
   );
 }

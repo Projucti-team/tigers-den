@@ -2,6 +2,8 @@ export type SquadPlayer = {
   name: string;
   profileUrl?: string | null;
   imageUrl?: string | null;
+  isCaptain?: boolean;
+  isWicketKeeper?: boolean;
 };
 
 export type SeriesSquad = {
@@ -62,6 +64,8 @@ function squadQualityScore(squad: SeriesSquad, key: string): number {
   if (keyFormat === "t20" && /\bt20/i.test(label)) score += 40;
   if (keyFormat === "odi" && /\bodi\b/i.test(label)) score += 40;
   if (squad.source?.includes("espncricinfo.com/story")) score += 25;
+  // Human-typed by an admin -- treat as ground truth over anything auto-fetched.
+  if (squad.source === "manual-admin-entry") score += 200;
   if (/\s[—–-]\s/.test(squad.team)) score += 10;
 
   return score;
@@ -112,11 +116,15 @@ function mergePlayerProfiles(
 ): SquadPlayer[] {
   const profileByName = new Map<string, string>();
   const imageByName = new Map<string, string>();
+  const captainByName = new Map<string, boolean>();
+  const keeperByName = new Map<string, boolean>();
 
   for (const player of fallback) {
     const key = normalizePlayerKey(player.name);
     if (player.profileUrl) profileByName.set(key, player.profileUrl);
     if (player.imageUrl) imageByName.set(key, player.imageUrl);
+    if (player.isCaptain) captainByName.set(key, true);
+    if (player.isWicketKeeper) keeperByName.set(key, true);
   }
 
   return preferred.map((player) => {
@@ -125,6 +133,8 @@ function mergePlayerProfiles(
       ...player,
       profileUrl: player.profileUrl ?? profileByName.get(key),
       imageUrl: player.imageUrl ?? imageByName.get(key),
+      isCaptain: player.isCaptain || captainByName.get(key) || undefined,
+      isWicketKeeper: player.isWicketKeeper || keeperByName.get(key) || undefined,
     };
   });
 }

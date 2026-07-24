@@ -5,6 +5,7 @@ import {
   readAllTourSyncStates,
   setTourSeriesOverride,
   setTourSquadStoryUrl,
+  setTourManualSquadText,
 } from "@/lib/cricket/services/tour-sync-state-db";
 import { invalidateTourSeriesOverrideCache } from "@/lib/cricket/providers/espn-squads";
 
@@ -36,6 +37,7 @@ export async function GET(request: Request) {
       espn_league_id: s.espn_league_id ?? null,
       espn_series_override: s.espn_series_override ?? null,
       squad_story_url: s.squad_story_url ?? null,
+      manual_squad_text: s.manual_squad_text ?? null,
       updated_at: s.updated_at,
     }));
     return NextResponse.json({ rows });
@@ -62,6 +64,7 @@ export async function POST(request: Request) {
       tour_id?: string;
       cricinfoSeriesId?: number | null;
       squadStoryUrl?: string | null;
+      manualSquadText?: string | null;
     };
     if (!body.tour_id) {
       return NextResponse.json({ error: "tour_id is required" }, { status: 400 });
@@ -88,6 +91,13 @@ export async function POST(request: Request) {
       const value = raw === null || raw === undefined || raw.trim() === "" ? null : raw.trim();
       await setTourSquadStoryUrl(body.tour_id, value);
       result.squad_story_url = value;
+    }
+
+    if ("manualSquadText" in body) {
+      const raw = body.manualSquadText;
+      const value = raw === null || raw === undefined || raw.trim() === "" ? null : raw.trim();
+      await setTourManualSquadText(body.tour_id, value);
+      result.manual_squad_text = value;
     }
 
     invalidateTourSeriesOverrideCache(body.tour_id);

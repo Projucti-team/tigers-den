@@ -11,6 +11,7 @@ type TourSeriesRow = {
   espn_league_id: number | null;
   espn_series_override: number | null;
   squad_story_url: string | null;
+  manual_squad_text: string | null;
   updated_at: string;
 };
 
@@ -23,9 +24,9 @@ export default function TourSeriesOverridePanel() {
   const [drafts, setDrafts] = useState<Record<string, string>>({});
   const [savingId, setSavingId] = useState<string | null>(null);
   const [savedId, setSavedId] = useState<string | null>(null);
-  const [squadDrafts, setSquadDrafts] = useState<Record<string, string>>({});
-  const [savingSquadId, setSavingSquadId] = useState<string | null>(null);
-  const [savedSquadId, setSavedSquadId] = useState<string | null>(null);
+  const [manualDrafts, setManualDrafts] = useState<Record<string, string>>({});
+  const [savingManualId, setSavingManualId] = useState<string | null>(null);
+  const [savedManualId, setSavedManualId] = useState<string | null>(null);
   const [error, setError] = useState<string | null>(null);
 
   async function load() {
@@ -72,8 +73,8 @@ export default function TourSeriesOverridePanel() {
     }
   }
 
-  async function saveSquadStoryUrl(tourId: string, raw: string) {
-    setSavingSquadId(tourId);
+  async function saveManualSquadText(tourId: string, raw: string) {
+    setSavingManualId(tourId);
     setError(null);
 
     try {
@@ -81,17 +82,17 @@ export default function TourSeriesOverridePanel() {
         method: "POST",
         credentials: "include",
         headers: { "Content-Type": "application/json", Accept: "application/json" },
-        body: JSON.stringify({ tour_id: tourId, squadStoryUrl: raw }),
+        body: JSON.stringify({ tour_id: tourId, manualSquadText: raw }),
       });
       const body = (await res.json().catch(() => ({}))) as { error?: string };
       if (!res.ok) throw new Error(body.error ?? `Save failed (HTTP ${res.status})`);
       await load();
-      setSavedSquadId(tourId);
-      setTimeout(() => setSavedSquadId((current) => (current === tourId ? null : current)), 6000);
+      setSavedManualId(tourId);
+      setTimeout(() => setSavedManualId((current) => (current === tourId ? null : current)), 6000);
     } catch (err) {
       setError(err instanceof Error ? err.message : "Save failed");
     } finally {
-      setSavingSquadId(null);
+      setSavingManualId(null);
     }
   }
 
@@ -138,7 +139,7 @@ export default function TourSeriesOverridePanel() {
           <tbody>
             {active.map((row) => {
               const draft = drafts[row.tour_id] ?? String(row.espn_series_override ?? "");
-              const squadDraft = squadDrafts[row.tour_id] ?? row.squad_story_url ?? "";
+              const manualDraft = manualDrafts[row.tour_id] ?? row.manual_squad_text ?? "";
               return (
                 <Fragment key={row.tour_id}>
                   <tr style={{ borderBottom: "1px solid var(--theme-elevation-100)" }}>
@@ -196,20 +197,25 @@ export default function TourSeriesOverridePanel() {
                   <tr style={{ borderBottom: "1px solid var(--theme-elevation-150)" }}>
                     <td colSpan={4} style={{ padding: "0 0.5rem 0.75rem 0" }}>
                       <div style={{ fontSize: "0.75rem", opacity: 0.7, marginBottom: "0.3rem" }}>
-                        Squad not showing? If ESPN hasn&rsquo;t published structured roster data yet
-                        but has a squad-announcement article, paste the story URL(s) here (one per
-                        line) and we&rsquo;ll scrape it directly on the next sync.
+                        Squad not showing? CricAPI and ESPN&rsquo;s API don&rsquo;t have it yet, and
+                        ESPN blocks us from fetching their news pages directly — so paste the squad
+                        here instead. One team per line: <code>Team name: Player 1 (c), Player 2
+                        (wk), Player 3, ...</code> — <code>(c)</code> marks the captain,{" "}
+                        <code>(wk)</code> the wicketkeeper (combine as <code>(c/wk)</code> if one
+                        player is both). This always wins over anything auto-fetched.
                       </div>
                       <textarea
-                        rows={2}
-                        placeholder="https://www.espncricinfo.com/story/..."
-                        value={squadDraft}
+                        rows={3}
+                        placeholder={
+                          "Australia Test squad: Pat Cummins (c), Scott Boland, Alex Carey (wk), Cameron Green, Josh Hazlewood, Travis Head, Josh Inglis (wk), Marnus Labuschagne, Nathan Lyon, Steven Smith, Mitchell Starc, Jake Weatherald, Beau Webster\nBangladesh Test squad: Najmul Hossain Shanto (c), Mushfiqur Rahim (wk), Shadman Islam, ..."
+                        }
+                        value={manualDraft}
                         onChange={(e) =>
-                          setSquadDrafts((prev) => ({ ...prev, [row.tour_id]: e.target.value }))
+                          setManualDrafts((prev) => ({ ...prev, [row.tour_id]: e.target.value }))
                         }
                         style={{
                           width: "100%",
-                          maxWidth: "36rem",
+                          maxWidth: "48rem",
                           padding: "0.4rem 0.5rem",
                           borderRadius: "4px",
                           border: "1px solid var(--theme-elevation-150)",
@@ -223,12 +229,12 @@ export default function TourSeriesOverridePanel() {
                         <Button
                           buttonStyle="secondary"
                           size="small"
-                          disabled={savingSquadId === row.tour_id}
-                          onClick={() => void saveSquadStoryUrl(row.tour_id, squadDraft)}
+                          disabled={savingManualId === row.tour_id}
+                          onClick={() => void saveManualSquadText(row.tour_id, manualDraft)}
                         >
-                          {savingSquadId === row.tour_id ? "Saving…" : "Save squad URL"}
+                          {savingManualId === row.tour_id ? "Saving…" : "Save squad"}
                         </Button>
-                        {savedSquadId === row.tour_id ? (
+                        {savedManualId === row.tour_id ? (
                           <span style={{ marginLeft: "0.6rem", fontSize: "0.75rem", color: "#00b368" }}>
                             Saved. Run cricket sync to apply.
                           </span>

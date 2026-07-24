@@ -140,6 +140,10 @@ export async function upsertTourSyncState(
         setClauses.push(`"squad_story_url" = $${paramIndex++}`);
         values.push(update.squad_story_url);
       }
+      if (update.manual_squad_text !== undefined) {
+        setClauses.push(`"manual_squad_text" = $${paramIndex++}`);
+        values.push(update.manual_squad_text);
+      }
 
       setClauses.push(`"updated_at" = NOW()`);
       values.push(update.tour_id);
@@ -260,6 +264,37 @@ export async function setTourSquadStoryUrl(
     await pool.query(
       `UPDATE "tour_sync_state" SET "squad_story_url" = $2, "updated_at" = NOW() WHERE "tour_id" = $1`,
       [tour_id, squadStoryUrl],
+    );
+  } finally {
+    await pool.end();
+  }
+}
+
+/** Admin-pasted squad text for a tour, if set (one team per line, raw text). */
+export async function getTourManualSquadText(tour_id: string): Promise<string | null> {
+  const pool = await getDbPool();
+  try {
+    const result = await pool.query(
+      `SELECT "manual_squad_text" FROM "tour_sync_state" WHERE "tour_id" = $1`,
+      [tour_id],
+    );
+    const value = result.rows[0]?.manual_squad_text;
+    return typeof value === "string" && value.trim() ? value : null;
+  } finally {
+    await pool.end();
+  }
+}
+
+/** Set (or clear with null) the admin-pasted squad text for a tour. */
+export async function setTourManualSquadText(
+  tour_id: string,
+  manualSquadText: string | null,
+): Promise<void> {
+  const pool = await getDbPool();
+  try {
+    await pool.query(
+      `UPDATE "tour_sync_state" SET "manual_squad_text" = $2, "updated_at" = NOW() WHERE "tour_id" = $1`,
+      [tour_id, manualSquadText],
     );
   } finally {
     await pool.end();
