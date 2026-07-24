@@ -1,5 +1,5 @@
 {
-  "fetchedAt": "2026-07-23T22:16:16.067Z",
+  "fetchedAt": "2026-07-24T22:20:14.960Z",
   "source": "icc-sportz.io",
   "sourceUrl": "https://www.icc-cricket.com/rankings",
   "men": {
@@ -10637,33 +10637,33 @@
           "rank": 17,
           "name": "Uganda",
           "abbreviation": "UGA-W",
-          "rating": 110,
-          "points": 5402,
-          "matches": 49
+          "rating": 111,
+          "points": 5550,
+          "matches": 50
         },
         {
           "rank": 18,
           "name": "Namibia",
           "abbreviation": "NAM-W",
-          "rating": 107,
-          "points": 4391,
-          "matches": 41
+          "rating": 108,
+          "points": 4532,
+          "matches": 42
         },
         {
           "rank": 19,
-          "name": "Tanzania",
-          "abbreviation": "TAN-W",
-          "rating": 98,
-          "points": 3247,
-          "matches": 33
-        },
-        {
-          "rank": 20,
           "name": "USA",
           "abbreviation": "USA-W",
           "rating": 98,
           "points": 2741,
           "matches": 28
+        },
+        {
+          "rank": 20,
+          "name": "Tanzania",
+          "abbreviation": "TAN-W",
+          "rating": 97,
+          "points": 3307,
+          "matches": 34
         },
         {
           "rank": 21,
@@ -10686,8 +10686,8 @@
           "name": "Hong Kong",
           "abbreviation": "HK-W",
           "rating": 91,
-          "points": 5026,
-          "matches": 55
+          "points": 5083,
+          "matches": 56
         },
         {
           "rank": 24,
@@ -17359,7 +17359,7 @@
         "allrounder": "2026-07-20"
       },
       "t20": {
-        "team": "2026-07-22",
+        "team": "2026-07-24",
         "bat": "2026-07-13",
         "bowl": "2026-07-13",
         "allrounder": "2026-07-13"
