@@ -26,7 +26,10 @@ export function isFirebasePublicConfigured(): boolean {
 export function isFirebaseAdminConfigured(): boolean {
   const projectId = process.env.FIREBASE_PROJECT_ID?.trim();
   const clientEmail = process.env.FIREBASE_CLIENT_EMAIL?.trim();
-  const privateKey = process.env.FIREBASE_PRIVATE_KEY?.trim();
+  // FIREBASE_PRIVATE_KEY_B64 (base64-encoded PEM) is preferred; FIREBASE_PRIVATE_KEY (raw PEM)
+  // is the legacy fallback — see lib/firebase/admin.ts resolvePrivateKey().
+  const privateKey =
+    process.env.FIREBASE_PRIVATE_KEY_B64?.trim() || process.env.FIREBASE_PRIVATE_KEY?.trim();
 
   return Boolean(projectId && clientEmail && privateKey);
 }
