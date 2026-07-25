@@ -1,3 +1,5 @@
+import { createPrivateKey } from "node:crypto";
+
 import { cert, getApps, initializeApp, type App } from "firebase-admin/app";
 import { getFirestore, type Firestore } from "firebase-admin/firestore";
 
@@ -5,6 +7,40 @@ import { isFirebaseAdminConfigured } from "@/lib/firebase/config";
 
 let adminApp: App | undefined;
 let adminDb: Firestore | undefined;
+let diagnosticsLogged = false;
+
+/**
+ * Logs the *shape* of the private key we actually received at runtime — never the key
+ * material itself — so we can tell from prod logs whether Coolify is delivering real
+ * newlines, literal `\n` escapes, both, or neither, without ever printing the secret.
+ * Also runs the value through Node's own crypto module directly, which sometimes gives
+ * a more specific error than the wrapped one firebase-admin surfaces.
+ */
+function logPrivateKeyDiagnostics(privateKey: string): void {
+  if (diagnosticsLogged) return;
+  diagnosticsLogged = true;
+
+  const literalBackslashNCount = (privateKey.match(/\\n/g) ?? []).length;
+  const realNewlineCount = (privateKey.match(/\n/g) ?? []).length;
+
+  let cryptoParseResult: string;
+  try {
+    createPrivateKey(privateKey);
+    cryptoParseResult = "OK";
+  } catch (err) {
+    cryptoParseResult = err instanceof Error ? err.message : String(err);
+  }
+
+  console.error("[firebase-admin] FIREBASE_PRIVATE_KEY diagnostics", {
+    length: privateKey.length,
+    literalBackslashNCount,
+    realNewlineCount,
+    hasCarriageReturn: privateKey.includes("\r"),
+    startsWith: JSON.stringify(privateKey.slice(0, 35)),
+    endsWith: JSON.stringify(privateKey.slice(-35)),
+    nodeCryptoParseResult: cryptoParseResult,
+  });
+}
 
 /**
  * Tolerates the two most common ways people mangle this env var when copying it out of the
@@ -33,6 +69,8 @@ function getAdminApp(): App {
   if (!projectId || !clientEmail || !privateKey) {
     throw new Error("FIREBASE_NOT_CONFIGURED");
   }
+
+  logPrivateKeyDiagnostics(privateKey);
 
   if (!privateKey.includes("BEGIN PRIVATE KEY")) {
     // Fail with a message that actually says what's wrong, instead of letting the
