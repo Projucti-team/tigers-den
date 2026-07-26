@@ -1,6 +1,39 @@
 {
-  "fetchedAt": "2026-07-25T22:34:24.728Z",
+  "fetchedAt": "2026-07-26T22:39:20.364Z",
   "items": [
+    {
+      "id": "dailystar-https://www.thedailystar.net/sports/cricket/news/injury-hit-tigers-throw-mixed-bag-australia-opener-4233436",
+      "title": "Injury-hit Tigers throw a mixed bag for Australia opener",
+      "summary": "Soumya is perhaps the most intriguing inclusion, although his domestic form makes a compelling case for his return, either as an opener or in the middle order.",
+      "url": "https://www.thedailystar.net/sports/cricket/news/injury-hit-tigers-throw-mixed-bag-australia-opener-4233436",
+      "source": "dailystar",
+      "publishedAt": "2026-07-26T19:10:49.000Z"
+    },
+    {
+      "id": "dailystar-https://www.thedailystar.net/sports/cricket/news/bangladesh-missed-world-cup-due-political-issues-miraz-4233041",
+      "title": "Bangladesh missed World Cup due to 'political issues': Miraz",
+      "summary": "Bangladesh ODI captain Mehidy Hasan Miraz believes the Tigers were deprived of the opportunity to play in a World Cup because of \"political issues\", saying it was unfortunate that the players missed out on the marquee event.",
+      "url": "https://www.thedailystar.net/sports/cricket/news/bangladesh-missed-world-cup-due-political-issues-miraz-4233041",
+      "source": "dailystar",
+      "publishedAt": "2026-07-26T13:55:34.000Z"
+    },
+    {
+      "id": "espn-https://www.cricinfo.com/ci/content/story/1547672.html",
+      "title": "Bangladesh recall Soumya Sarkar for first Test against Australia",
+      "summary": "Jaker Ali and Musfik Hasan were also picked, while Mehidy Hasan Miraz and Taskin Ahmed returned after being rested for the Zimbabwe Test",
+      "url": "https://www.cricinfo.com/story/bangladesh-recall-soumya-sarkar-for-first-test-against-australia-1547672",
+      "imageUrl": "https://p.imgci.com/db/PICTURES/CMS/316700/316770.5.jpg",
+      "source": "espncricinfo",
+      "publishedAt": "2026-07-26T13:37:45.000Z"
+    },
+    {
+      "id": "dailystar-https://www.thedailystar.net/sports/cricket/news/soumya-jaker-return-first-australia-test-4233006",
+      "title": "Soumya, Jaker return for first Australia Test",
+      "summary": "Opener Mahmudul Hasan Joy was left out after a run of poor starts at the top of the order.<br> <br> <br>",
+      "url": "https://www.thedailystar.net/sports/cricket/news/soumya-jaker-return-first-australia-test-4233006",
+      "source": "dailystar",
+      "publishedAt": "2026-07-26T12:43:52.000Z"
+    },
     {
       "id": "espn-https://www.cricinfo.com/ci/content/story/1547560.html",
       "title": "Nahid Rana ruled out of Test series against Australia",
@@ -44,14 +77,6 @@
       "publishedAt": "2026-07-24T06:03:17.000Z"
     },
     {
-      "id": "dailystar-https://www.thedailystar.net/sports/cricket/news/bangladesh-play-one-lords-test-against-england-2027-4230671",
-      "title": "Bangladesh to play one-off Lord's Test against England in 2027",
-      "summary": "Bangladesh will return to the Home of Cricket for the first time in 17 years when they play a one-off Test against England at Lord's from May 28 to June 1 next year, with the England and Wales Cricket Board (ECB) confirming the full itinerary for Bangladesh men's and women's tours in its 2027 international schedule announced on Thursday.",
-      "url": "https://www.thedailystar.net/sports/cricket/news/bangladesh-play-one-lords-test-against-england-2027-4230671",
-      "source": "dailystar",
-      "publishedAt": "2026-07-23T09:54:59.000Z"
-    },
-    {
       "id": "espn-https://www.cricinfo.com/ci/content/story/1547129.html",
       "title": "Konstas, Kellaway, Patterson named in CA XI to face Bangladesh",
       "summary": "Rocchiccioli, Philippe, Doran also included for the three-day tour game",
@@ -59,39 +84,6 @@
       "imageUrl": "https://p.imgci.com/db/PICTURES/CMS/406300/406350.5.jpg",
       "source": "espncricinfo",
       "publishedAt": "2026-07-23T00:34:23.000Z"
-    },
-    {
-      "id": "dailystar-https://www.thedailystar.net/sports/cricket/news/mahedi-set-face-sanction-after-disciplinary-hearing-4230081",
-      "title": "Mahedi set to face sanction after disciplinary hearing",
-      "summary": "Bangladesh Cricket Board's (BCB) disciplinary committee summoned all-rounder Mahedi Hasan for a hearing over his criticism of the team management during last month's T20I series against Australia. The all-rounder submitted his statement to the committee and is set to be sanctioned for breaching his contract.",
-      "url": "https://www.thedailystar.net/sports/cricket/news/mahedi-set-face-sanction-after-disciplinary-hearing-4230081",
-      "source": "dailystar",
-      "publishedAt": "2026-07-22T16:06:33.000Z"
-    },
-    {
-      "id": "dailystar-https://www.thedailystar.net/sports/cricket/news/can-tigers-batting-pass-the-australian-test-4230056",
-      "title": "Can Tigers’ batting pass the Australian test?",
-      "summary": "Since March 2024, both Bangladesh and Australia’s pacers have averaged over 140kph, establishing them as the two fastest pace attacks in the current game.",
-      "url": "https://www.thedailystar.net/sports/cricket/news/can-tigers-batting-pass-the-australian-test-4230056",
-      "source": "dailystar",
-      "publishedAt": "2026-07-22T15:18:26.000Z"
-    },
-    {
-      "id": "dailystar-https://www.thedailystar.net/sports/cricket/news/lack-practice-matches-behind-batting-debacle-zim-says-ashraful-4229841",
-      "title": "Lack of practice matches behind batting debacle in Zim, says Ashraful",
-      "summary": "Bangladesh batting coach Mohammad Ashraful believes the absence of practice matches before the Zimbabwe tour left the batters struggling to adapt to the conditions, contributing to the team's disappointing performances.",
-      "url": "https://www.thedailystar.net/sports/cricket/news/lack-practice-matches-behind-batting-debacle-zim-says-ashraful-4229841",
-      "source": "dailystar",
-      "publishedAt": "2026-07-22T10:30:00.000Z"
-    },
-    {
-      "id": "espn-https://www.cricinfo.com/ci/content/story/1546407.html",
-      "title": "Cummins, Hazlewood, Lyon return to face Bangladesh",
-      "summary": "Australia's veterans named in a 13-man squad with Cameron Green and Beau Webster both included",
-      "url": "https://www.cricinfo.com/story/pat-cummins-josh-hazlewood-nathan-lyon-return-to-face-bangladesh-1546407",
-      "imageUrl": "https://p.imgci.com/db/PICTURES/CMS/350000/350026.5.jpg",
-      "source": "espncricinfo",
-      "publishedAt": "2026-07-21T13:41:22.000Z"
     }
   ]
 }
