@@ -1,5 +1,5 @@
 {
-  "fetchedAt": "2026-07-25T22:12:30.013Z",
+  "fetchedAt": "2026-07-26T22:14:29.053Z",
   "source": "icc-sportz.io",
   "sourceUrl": "https://www.icc-cricket.com/rankings",
   "men": {
@@ -255,8 +255,8 @@
           "name": "India",
           "abbreviation": "IND",
           "rating": 268,
-          "points": 16088,
-          "matches": 60
+          "points": 16366,
+          "matches": 61
         },
         {
           "rank": 2,
@@ -342,9 +342,9 @@
           "rank": 12,
           "name": "Zimbabwe",
           "abbreviation": "ZIM",
-          "rating": 202,
-          "points": 10683,
-          "matches": 53
+          "rating": 201,
+          "points": 10875,
+          "matches": 54
         },
         {
           "rank": 13,
@@ -590,9 +590,9 @@
           "rank": 43,
           "name": "Austria",
           "abbreviation": "AUT",
-          "rating": 66,
-          "points": 4122,
-          "matches": 62
+          "rating": 67,
+          "points": 4221,
+          "matches": 63
         },
         {
           "rank": 44,
@@ -639,8 +639,8 @@
           "name": "Romania",
           "abbreviation": "ROM",
           "rating": 49,
-          "points": 1867,
-          "matches": 38
+          "points": 1941,
+          "matches": 40
         },
         {
           "rank": 50,
@@ -1008,7 +1008,7 @@
           "abbreviation": "TUR",
           "rating": 0,
           "points": 0,
-          "matches": 13
+          "matches": 14
         },
         {
           "rank": 93,
@@ -10379,7 +10379,7 @@
         "allrounder": "2026-07-21"
       },
       "t20": {
-        "team": "2026-07-25",
+        "team": "2026-07-26",
         "bat": "2026-07-21",
         "bowl": "2026-07-21",
         "allrounder": "2026-07-21"
