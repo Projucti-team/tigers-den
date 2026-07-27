@@ -22,6 +22,9 @@ import {
   tourVenueKey,
 } from "../../lib/cricket/tour-identity.ts";
 import { mergeTourFixtures } from "../../lib/cricket/services/merge-tour-fixtures.ts";
+import { parseManualSquadText } from "../../lib/cricket/squads/manual-entry.ts";
+import { mergeSquads } from "../../lib/cricket/squads/types.ts";
+import { computeSquadRefreshTargets } from "../../lib/cricket/services/tour-sync-state-db.ts";
 import type { Tour } from "../../lib/cricket/types.ts";
 import {
   auditTourDetailSnapshot,
@@ -533,4 +536,124 @@ test("mergeTourFixtures keeps CricAPI schedule and overlays ESPN results", () =>
 
   assert.equal(merged.length, 14);
   assert.match(merged[13]?.status ?? "", /won by 5 wickets/i);
+});
+
+test("parseManualSquadText parses two teams pasted into the same box", () => {
+  const text = `
+Australia Test squad: Pat Cummins (c), Scott Boland, Alex Carey (wk), Cameron Green
+
+Bangladesh Test squad: Najmul Hossain Shanto (c), Mushfiqur Rahim (wk), Shadman Islam
+  `;
+
+  const squads = parseManualSquadText(text);
+  assert.equal(squads.length, 2);
+
+  const australia = squads.find((s) => s.team === "Australia Test squad");
+  assert.ok(australia);
+  assert.equal(australia!.players.length, 4);
+  assert.equal(australia!.players.find((p) => p.name === "Pat Cummins")?.isCaptain, true);
+  assert.equal(australia!.players.find((p) => p.name === "Alex Carey")?.isWicketKeeper, true);
+
+  const bangladesh = squads.find((s) => s.team === "Bangladesh Test squad");
+  assert.ok(bangladesh);
+  assert.equal(bangladesh!.players.length, 3);
+  assert.equal(
+    bangladesh!.players.find((p) => p.name === "Najmul Hossain Shanto")?.isCaptain,
+    true,
+  );
+  assert.equal(
+    bangladesh!.players.find((p) => p.name === "Mushfiqur Rahim")?.isWicketKeeper,
+    true,
+  );
+});
+
+test("mergeSquads combines manual-pasted squads for both teams (real merge step from refreshEspnTourSquads)", () => {
+  const text = `
+Australia Test squad: Pat Cummins (c), Scott Boland, Alex Carey (wk), Cameron Green
+
+Bangladesh Test squad: Najmul Hossain Shanto (c), Mushfiqur Rahim (wk), Shadman Islam
+  `;
+  const manualSquads = parseManualSquadText(text);
+
+  // Mirrors the exact call in lib/cricket/providers/espn-squads.ts:
+  //   mergeSquads(cached, cricApiSquads, coreSquads, curatedSquads, manualSquads)
+  // with every other source empty, i.e. what happens when CricAPI/ESPN Core haven't published
+  // squads yet and only the admin's manual paste has data -- the exact scenario reported.
+  const merged = mergeSquads([], [], [], [], manualSquads);
+
+  assert.equal(merged.length, 2);
+  const teams = merged.map((s) => s.team).sort();
+  assert.deepEqual(teams, ["Australia Test squad", "Bangladesh Test squad"]);
+
+  const bangladesh = merged.find((s) => s.team === "Bangladesh Test squad");
+  assert.equal(bangladesh?.players.length, 3);
+  assert.equal(bangladesh?.players.find((p) => p.name === "Najmul Hossain Shanto")?.isCaptain, true);
+});
+
+test("squadBelongsToTour accepts manual-paste team labels for both sides of a tour", () => {
+  const tour = {
+    id: "1532475",
+    name: "Australia tour of Bangladesh, 2026",
+    test: 2,
+  } satisfies Tour;
+
+  assert.equal(
+    squadBelongsToTour({ team: "Australia Test squad", source: "manual-admin-entry" }, tour),
+    true,
+  );
+  assert.equal(
+    squadBelongsToTour({ team: "Bangladesh Test squad", source: "manual-admin-entry" }, tour),
+    true,
+  );
+});
+
+test("computeSquadRefreshTargets: regression test for 'second team's manual squad never showed up'", () => {
+  // Reproduces the reported bug exactly: Australia's Test squad had already synced
+  // successfully, so squad_import_complete_test flipped true. With that flag still true,
+  // pasting Bangladesh's squad into manual_squad_text had nothing to trigger a re-check --
+  // the tour dropped out of the refresh list entirely and refreshEspnTourSquads() (the
+  // function that actually reads manual_squad_text) never ran again for it.
+  const baseTour = {
+    tour_id: "1532475",
+    tour_slug: "australia-tour-of-bangladesh-2026",
+    test_series_status: "upcoming" as const,
+    odi_series_status: null,
+    t20_series_status: null,
+  };
+
+  const stuck = {
+    ...baseTour,
+    squad_import_complete_test: true,
+    squad_import_complete_odi: false,
+    squad_import_complete_t20: false,
+  };
+  assert.deepEqual(computeSquadRefreshTargets([stuck]), []);
+
+  // setTourManualSquadText() now resets squad_import_complete_* to false whenever new manual
+  // text is saved (the fix) -- once reset, the tour must be a refresh target again.
+  const reset = { ...stuck, squad_import_complete_test: false };
+  const targets = computeSquadRefreshTargets([reset]);
+  assert.equal(targets.length, 1);
+  assert.deepEqual(targets[0], {
+    tour_id: "1532475",
+    tour_slug: "australia-tour-of-bangladesh-2026",
+    matchTypes: ["test"],
+  });
+});
+
+test("computeSquadRefreshTargets skips finished formats and formats already complete", () => {
+  const tour = {
+    tour_id: "1527259",
+    tour_slug: "bangladesh-tour-of-australia",
+    test_series_status: "active" as const,
+    odi_series_status: "finished" as const,
+    t20_series_status: "upcoming" as const,
+    squad_import_complete_test: false,
+    squad_import_complete_odi: false,
+    squad_import_complete_t20: true,
+  };
+
+  const targets = computeSquadRefreshTargets([tour]);
+  assert.equal(targets.length, 1);
+  assert.deepEqual(targets[0].matchTypes, ["test"]);
 });

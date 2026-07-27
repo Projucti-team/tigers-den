@@ -33,9 +33,12 @@ yarn-debug.log*
 yarn-error.log*
 .pnpm-debug.log*
 
-# env files
+# env files (but keep committed .example templates)
 .env
 .env*.local
+.env.production
+.env.development
+!.env*.example
 
 # typescript
 *.tsbuildinfo

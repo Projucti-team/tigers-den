@@ -23,7 +23,9 @@ done
 
 echo "🚀 Starting dev server on port 8083..."
 export DATABASE_URI=""
-export POSTGRES_URL="postgresql://tigersden:tigersden@localhost:5432/tigersden"
+# Port 5433, not 5432 -- avoids colliding with any Postgres already running natively on
+# the host (docker-compose.postgres.yml maps the container's 5432 to host 5433).
+export POSTGRES_URL="postgresql://tigersden:tigersden@localhost:5433/tigersden"
 PORT=8083 npm run dev &
 DEV_PID=$!
 

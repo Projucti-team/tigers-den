@@ -16,6 +16,12 @@ export function getPayloadDatabase(): DatabaseAdapterObj {
         connectionString: postgresUrl,
       },
       prodMigrations: migrations,
+      // Schema is managed entirely by hand-written migrations (see migrations/index.ts), same
+      // in dev as in production -- without this, Payload's Postgres adapter defaults to an
+      // interactive drizzle-kit "push schema" prompt in dev mode, which needs a real attached
+      // terminal to answer and hangs indefinitely when the dev server runs in the background
+      // (e.g. via setup-local-dev.sh).
+      push: false,
     });
   }
 

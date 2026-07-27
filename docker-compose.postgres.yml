@@ -15,6 +15,14 @@ services:
       POSTGRES_USER: tigersden
       POSTGRES_PASSWORD: tigersden
       POSTGRES_DB: tigersden
+    # Exposes Postgres on the host too (not just the Docker network) -- needed by
+    # setup-local-dev.sh, which runs `npm run dev` directly on the host and connects via
+    # localhost, not via the "postgres" container hostname the `app` service uses.
+    # Host port 5433 (not 5432) to avoid colliding with any Postgres already running
+    # natively on the host -- see .env.local and setup-local-dev.sh, which both point at
+    # localhost:5433.
+    ports:
+      - "5433:5432"
     volumes:
       - tigersden-postgres:/var/lib/postgresql/data
     healthcheck:

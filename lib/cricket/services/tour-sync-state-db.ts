@@ -6,7 +6,21 @@ import type {
   SquadRefreshTarget,
 } from "@/lib/cricket/tour-sync-state-types";
 
-async function getDbPool() {
+type MinimalPool = {
+  query: (text: string, params?: unknown[]) => Promise<{ rows: any[] }>;
+  end: () => Promise<void>;
+};
+
+// Test-only seam: lets integration tests point every function in this module at an in-memory
+// Postgres-compatible engine (pg-mem) instead of a real connection, so the exact SQL statements
+// below run for real without needing a live database. Never set outside tests.
+let poolFactoryOverride: (() => MinimalPool | Promise<MinimalPool>) | null = null;
+export function __setPoolFactoryForTests(factory: typeof poolFactoryOverride): void {
+  poolFactoryOverride = factory;
+}
+
+async function getDbPool(): Promise<MinimalPool> {
+  if (poolFactoryOverride) return poolFactoryOverride();
   if (!isPostgresDatabase()) {
     throw new Error("tour_sync_state requires Postgres database");
   }
@@ -329,10 +343,28 @@ export async function deleteTourSyncState(tour_id: string): Promise<boolean> {
   }
 }
 
-export async function getSquadRefreshTargets(): Promise<SquadRefreshTarget[]> {
-  const activeTours = await readActiveTourSyncStates();
-  console.log(`[cricket] getSquadRefreshTargets: found ${activeTours.length} active tour(s)`);
-
+/**
+ * Pure decision logic, split out from getSquadRefreshTargets() so it's testable without a
+ * database: a tour/format is a refresh target only if its series is upcoming/active AND its
+ * squad_import_complete_<format> flag is not already true. This is the exact rule that caused
+ * the "pasted a second team's manual squad text but it never showed up" bug -- once one format
+ * synced successfully, the flag flipped true and the tour dropped out of this list entirely,
+ * so refreshEspnTourSquads() (which reads manual_squad_text) never ran again for it. See
+ * setTourManualSquadText(), which now resets these flags whenever new manual text is saved.
+ */
+export function computeSquadRefreshTargets(
+  activeTours: Pick<
+    TourSyncState,
+    | "tour_id"
+    | "tour_slug"
+    | "test_series_status"
+    | "odi_series_status"
+    | "t20_series_status"
+    | "squad_import_complete_test"
+    | "squad_import_complete_odi"
+    | "squad_import_complete_t20"
+  >[],
+): SquadRefreshTarget[] {
   const targets: SquadRefreshTarget[] = [];
 
   for (const tour of activeTours) {
@@ -358,13 +390,24 @@ export async function getSquadRefreshTargets(): Promise<SquadRefreshTarget[]> {
     }
 
     if (matchTypes.length > 0) {
-      console.log(`[cricket] ${tour.tour_slug}: needs refresh for ${matchTypes.join(", ")}`);
       targets.push({
         tour_id: tour.tour_id,
         tour_slug: tour.tour_slug,
         matchTypes,
       });
     }
+  }
+
+  return targets;
+}
+
+export async function getSquadRefreshTargets(): Promise<SquadRefreshTarget[]> {
+  const activeTours = await readActiveTourSyncStates();
+  console.log(`[cricket] getSquadRefreshTargets: found ${activeTours.length} active tour(s)`);
+
+  const targets = computeSquadRefreshTargets(activeTours);
+  for (const target of targets) {
+    console.log(`[cricket] ${target.tour_slug}: needs refresh for ${target.matchTypes.join(", ")}`);
   }
 
   return targets;
