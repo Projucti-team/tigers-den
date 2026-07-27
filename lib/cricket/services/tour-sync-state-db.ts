@@ -285,17 +285,35 @@ export async function getTourManualSquadText(tour_id: string): Promise<string | 
   }
 }
 
-/** Set (or clear with null) the admin-pasted squad text for a tour. */
+/**
+ * Set (or clear with null) the admin-pasted squad text for a tour. Also resets all three
+ * squad_import_complete_* flags to false whenever new text is saved -- otherwise a tour whose
+ * squads were already marked complete (e.g. one team's squad synced earlier) gets skipped by
+ * getSquadRefreshTargets() entirely, and the newly-pasted text is never read on the next sync.
+ */
 export async function setTourManualSquadText(
   tour_id: string,
   manualSquadText: string | null,
 ): Promise<void> {
   const pool = await getDbPool();
   try {
-    await pool.query(
-      `UPDATE "tour_sync_state" SET "manual_squad_text" = $2, "updated_at" = NOW() WHERE "tour_id" = $1`,
-      [tour_id, manualSquadText],
-    );
+    if (manualSquadText !== null) {
+      await pool.query(
+        `UPDATE "tour_sync_state"
+         SET "manual_squad_text" = $2,
+             "squad_import_complete_test" = false,
+             "squad_import_complete_odi" = false,
+             "squad_import_complete_t20" = false,
+             "updated_at" = NOW()
+         WHERE "tour_id" = $1`,
+        [tour_id, manualSquadText],
+      );
+    } else {
+      await pool.query(
+        `UPDATE "tour_sync_state" SET "manual_squad_text" = $2, "updated_at" = NOW() WHERE "tour_id" = $1`,
+        [tour_id, manualSquadText],
+      );
+    }
   } finally {
     await pool.end();
   }
