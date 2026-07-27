@@ -29,8 +29,8 @@ const FIXTURE_TIMES_PATH = path.join(process.cwd(), "data", "espn-fixture-times.
 const BROWSER_USER_AGENT =
   "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36";
 
-const LIVE_CACHE_MS = 45_000;
-const RECENT_CACHE_MS = 45_000;
+const LIVE_CACHE_MS = 90_000;
+const RECENT_CACHE_MS = 90_000;
 
 type CoreList = { items?: { $ref: string }[] };
 
@@ -70,18 +70,33 @@ type LeagueRef = TrackedLeagueRef;
 let liveCache: { at: number; highlights: MatchHighlight[] } | null = null;
 let recentCache: { at: number; highlight: MatchHighlight | null } | null = null;
 
+const CORE_JSON_CACHE_MS = 20_000;
+// The "live" and "recent" scans (and match-centre's own per-event fetch) can request the same
+// event's competition/status/competitors within one page render -- dedupe + short-cache here too.
+const coreJsonCache = new Map<string, { at: number; promise: Promise<unknown> }>();
+
 async function fetchCoreJson<T>(url: string): Promise<T | null> {
-  try {
-    const res = await fetch(url, {
-      headers: { "User-Agent": BROWSER_USER_AGENT },
-      signal: AbortSignal.timeout(18_000),
-      cache: "no-store",
-    });
-    if (!res.ok) return null;
-    return (await res.json()) as T;
-  } catch {
-    return null;
+  const cached = coreJsonCache.get(url);
+  if (cached && Date.now() - cached.at < CORE_JSON_CACHE_MS) {
+    return cached.promise as Promise<T | null>;
   }
+
+  const promise = (async () => {
+    try {
+      const res = await fetch(url, {
+        headers: { "User-Agent": BROWSER_USER_AGENT },
+        signal: AbortSignal.timeout(18_000),
+        cache: "no-store",
+      });
+      if (!res.ok) return null;
+      return (await res.json()) as T;
+    } catch {
+      return null;
+    }
+  })();
+
+  coreJsonCache.set(url, { at: Date.now(), promise });
+  return promise as Promise<T | null>;
 }
 
 async function fetchCoreList(url: string): Promise<CoreList> {
@@ -554,24 +569,35 @@ async function scanEspnBangladeshMatches(
   mode: "live" | "completed" | "upcoming",
 ): Promise<{ match: LiveMatchSummary; eventAt: number }[]> {
   const leagues = (await trackedLeagues()).filter((league) => league.kind !== "domestic");
-  const candidates: { match: LiveMatchSummary; eventAt: number }[] = [];
-  const seenEvents = new Set<string>();
 
-  for (const league of leagues) {
-    const eventRefs = await fetchLeagueEventRefs(league);
-    for (const { eventId } of eventRefs) {
+  // Every league's event list, then every event's detail fetch, run concurrently instead of
+  // one at a time -- this loop used to take 20-40s wall-clock (sequential ESPN round trips
+  // across every tracked league) on every cache miss, blocking the response for every visitor
+  // regardless of where they were browsing from.
+  const leagueEventRefs = await Promise.all(
+    leagues.map(async (league) => ({ league, refs: await fetchLeagueEventRefs(league) })),
+  );
+
+  const seenEvents = new Set<string>();
+  const uniqueEvents: { league: LeagueRef; eventId: string }[] = [];
+  for (const { league, refs } of leagueEventRefs) {
+    for (const { eventId } of refs) {
       if (seenEvents.has(eventId)) continue;
       seenEvents.add(eventId);
-
-      const match = await buildLiveMatchFromEspnEvent(league.espnLeagueId, eventId, mode);
-      if (!match) continue;
-
-      const eventAt = await fetchEventTimestamp(league.espnLeagueId, eventId);
-      candidates.push({ match, eventAt });
+      uniqueEvents.push({ league, eventId });
     }
   }
 
-  return candidates;
+  const built = await Promise.all(
+    uniqueEvents.map(async ({ league, eventId }) => {
+      const match = await buildLiveMatchFromEspnEvent(league.espnLeagueId, eventId, mode);
+      if (!match) return null;
+      const eventAt = await fetchEventTimestamp(league.espnLeagueId, eventId);
+      return { match, eventAt };
+    }),
+  );
+
+  return built.filter((row): row is { match: LiveMatchSummary; eventAt: number } => row !== null);
 }
 
 async function scanEspnBangladeshHighlights(
@@ -582,24 +608,31 @@ async function scanEspnBangladeshHighlights(
   const scoped = options?.internationalOnly
     ? leagues.filter((league) => league.kind !== "domestic")
     : leagues;
-  const candidates: { highlight: MatchHighlight; eventAt: number }[] = [];
-  const seenEvents = new Set<string>();
 
-  for (const league of scoped) {
-    const eventRefs = await fetchLeagueEventRefs(league);
-    for (const { eventId } of eventRefs) {
+  const leagueEventRefs = await Promise.all(
+    scoped.map(async (league) => ({ league, refs: await fetchLeagueEventRefs(league) })),
+  );
+
+  const seenEvents = new Set<string>();
+  const uniqueEvents: { league: LeagueRef; eventId: string }[] = [];
+  for (const { league, refs } of leagueEventRefs) {
+    for (const { eventId } of refs) {
       if (seenEvents.has(eventId)) continue;
       seenEvents.add(eventId);
-
-      const highlight = await buildHighlightFromEspnEvent(league, eventId, mode);
-      if (!highlight) continue;
-
-      const eventAt = await fetchEventTimestamp(league.espnLeagueId, eventId);
-      candidates.push({ highlight, eventAt });
+      uniqueEvents.push({ league, eventId });
     }
   }
 
-  return candidates;
+  const built = await Promise.all(
+    uniqueEvents.map(async ({ league, eventId }) => {
+      const highlight = await buildHighlightFromEspnEvent(league, eventId, mode);
+      if (!highlight) return null;
+      const eventAt = await fetchEventTimestamp(league.espnLeagueId, eventId);
+      return { highlight, eventAt };
+    }),
+  );
+
+  return built.filter((row): row is { highlight: MatchHighlight; eventAt: number } => row !== null);
 }
 
 /** All live Bangladesh internationals + admin-tracked domestic matches. */

@@ -17,18 +17,34 @@ export type LeagueEventsOptions = {
   useSeasonEvents?: boolean;
 };
 
+const CORE_JSON_CACHE_MS = 20_000;
+// Different call paths (live scan, recent-match scan, upcoming-matches scan) independently
+// re-request the same league/event URLs within a single page render -- this both dedupes
+// concurrent identical requests (same in-flight promise) and short-caches completed ones.
+const coreJsonCache = new Map<string, { at: number; promise: Promise<unknown> }>();
+
 async function fetchCoreJson<T>(url: string): Promise<T | null> {
-  try {
-    const res = await fetch(url, {
-      headers: { "User-Agent": BROWSER_USER_AGENT },
-      signal: AbortSignal.timeout(18_000),
-      cache: "no-store",
-    });
-    if (!res.ok) return null;
-    return (await res.json()) as T;
-  } catch {
-    return null;
+  const cached = coreJsonCache.get(url);
+  if (cached && Date.now() - cached.at < CORE_JSON_CACHE_MS) {
+    return cached.promise as Promise<T | null>;
   }
+
+  const promise = (async () => {
+    try {
+      const res = await fetch(url, {
+        headers: { "User-Agent": BROWSER_USER_AGENT },
+        signal: AbortSignal.timeout(18_000),
+        cache: "no-store",
+      });
+      if (!res.ok) return null;
+      return (await res.json()) as T;
+    } catch {
+      return null;
+    }
+  })();
+
+  coreJsonCache.set(url, { at: Date.now(), promise });
+  return promise as Promise<T | null>;
 }
 
 async function fetchCoreList(url: string): Promise<CoreList> {
@@ -73,9 +89,15 @@ export async function fetchLeagueEventRefs(
     urls.push(`${CORE_BASE}/leagues/${leagueId}/events?pageSize=50`);
   }
 
-  for (const url of urls) {
-    const list = await fetchCoreList(url);
-    console.log(`[cricket] fetchLeagueEventRefs: GET ${url} → ${list.items?.length ?? 0} item(s)`);
+  const lists = await Promise.all(
+    urls.map(async (url) => {
+      const list = await fetchCoreList(url);
+      console.log(`[cricket] fetchLeagueEventRefs: GET ${url} → ${list.items?.length ?? 0} item(s)`);
+      return list;
+    }),
+  );
+
+  for (const list of lists) {
     for (const item of list.items ?? []) {
       const eventId = eventIdFromRef(item.$ref);
       if (!eventId || seen.has(eventId)) continue;
