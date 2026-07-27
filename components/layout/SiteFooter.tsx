@@ -92,6 +92,26 @@ export function SiteFooter() {
             Admin
           </Link>
         </p>
+        <p className="mt-1">
+          Powered by{" "}
+          <a
+            href="https://prologicsw.com/"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="hover:text-white/80 hover:underline"
+          >
+            Prologic
+          </a>{" "}
+          &amp;{" "}
+          <a
+            href="https://projucti.com/"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="hover:text-white/80 hover:underline"
+          >
+            Projucti
+          </a>
+        </p>
       </div>
     </footer>
   );
