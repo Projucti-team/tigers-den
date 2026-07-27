@@ -11,7 +11,9 @@
       "Bash(git reset *)",
       "Bash(python3 -m json.tool)",
       "Bash(chmod +x /Users/mdhasanrahman/Dev/Projucti/Projects/tigersden/scripts/test-before-deploy.sh)",
-      "Bash(chmod +x /Users/mdhasanrahman/Dev/Projucti/Projects/tigersden/setup-local-dev.sh)"
+      "Bash(chmod +x /Users/mdhasanrahman/Dev/Projucti/Projects/tigersden/setup-local-dev.sh)",
+      "Bash(git fetch *)",
+      "Bash(ps *)"
     ]
   }
 }

@@ -678,7 +678,7 @@ export async function refreshEspnTourSquads(tour: Tour): Promise<{
     warnings.push("Could not match this series on ESPNcricinfo yet.");
   } else {
     warnings.push(
-      "Squads not published yet — check back closer to the first match, or add a news link in the admin panel.",
+      "Squads not published yet — check back closer to the first match.",
     );
   }
 
@@ -707,7 +707,7 @@ export function applyEspnTourSquads<T extends { tour: Tour; squads: SeriesSquad[
 
   if (!squads.length && !warnings.some((w) => w.includes("Squads not published"))) {
     warnings.push(
-      "Squads not published yet — check back closer to the first match, or add a news link in the admin panel.",
+      "Squads not published yet — check back closer to the first match.",
     );
   }
 

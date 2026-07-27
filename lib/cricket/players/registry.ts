@@ -15,12 +15,16 @@ import { COUNTRY_SEEDS } from "@/lib/cricket/players/countries-seed";
 import { getPayloadClient } from "@/lib/payload";
 import { lookupSeedPlayerProfileUrl } from "@/lib/cricket/squads/store";
 import { mirrorPlayerImage, resolvePhotoUrl } from "@/lib/cricket/players/mirror-image";
+import { getRelativeMediaUrl } from "@/lib/media";
+import type { Media } from "@/payload-types";
 
 export type PlayerIdentity = {
   id: number;
   displayName: string;
   profileUrl: string | null;
   imageUrl: string | null;
+  /** URL of a manually-uploaded/mirrored `photo` (Media relation), if one is set on the doc. */
+  photoUrl: string | null;
   iccPlayerId: number | null;
   cricinfoPlayerId: number | null;
   countrySlug: string;
@@ -37,7 +41,7 @@ type PlayerDoc = {
   displayName: string;
   profileUrl?: string | null;
   imageUrl?: string | null;
-  photo?: number | { id: number } | null;
+  photo?: number | Media | null;
   iccPlayerId?: number | null;
   cricinfoPlayerId?: number | null;
   country: number | CountryDoc;
@@ -75,6 +79,9 @@ function toIdentity(doc: PlayerDoc, countrySlug: string): PlayerIdentity {
     displayName: doc.displayName,
     profileUrl: doc.profileUrl ?? null,
     imageUrl: doc.imageUrl ?? null,
+    // Only resolves to a real URL when `photo` was populated (depth >= 1) with an object, not
+    // just a raw id -- that's the caller's responsibility (see findPlayerDoc/findPlayerByAlias).
+    photoUrl: getRelativeMediaUrl(doc.photo ?? null),
     iccPlayerId: doc.iccPlayerId ?? null,
     cricinfoPlayerId: doc.cricinfoPlayerId ?? null,
     countrySlug,
@@ -155,7 +162,10 @@ async function findPlayerByAlias(
     collection: "players",
     where: { country: { equals: country.id } },
     limit: 500,
-    depth: 0,
+    // depth: 1 so `photo` comes back populated (with a usable URL) here too, not just on the
+    // direct lookupKey hit path -- otherwise a manually-uploaded photo silently wouldn't show
+    // for any player only found via an alias match.
+    depth: 1,
     overrideAccess: true,
   });
 
@@ -398,7 +408,9 @@ export async function enrichSquadPlayerForDisplay(
   }
 
   const playerId = profileUrl ? extractCricinfoPlayerId(profileUrl) : null;
-  let imageUrl = await validatedImageUrl(cached?.imageUrl);
+  // A manually-uploaded/mirrored `photo` always wins -- it's our own stored copy, trusted as-is,
+  // no need to re-validate it the way an external imageUrl needs checking.
+  let imageUrl = cached?.photoUrl ?? (await validatedImageUrl(cached?.imageUrl));
   if (!imageUrl && playerId) {
     imageUrl = await fetchAthleteHeadshotUrl(playerId);
   }
@@ -497,6 +509,10 @@ export async function resolveRankedPlayer(player: RankedPlayer): Promise<RankedP
   return {
     ...player,
     profileUrl: identity.profileUrl ?? player.profileUrl,
-    imageUrl: identity.imageUrl ?? player.imageUrl,
+    // Same photo-first precedence as enrichSquadPlayerForDisplay -- a manually-uploaded photo
+    // wins. This only takes effect at the next rankings sync (rankings are a frozen snapshot,
+    // unlike tour squads which re-check on every page read), but it's the same fix for the
+    // same underlying bug.
+    imageUrl: identity.photoUrl ?? identity.imageUrl ?? player.imageUrl,
   };
 }

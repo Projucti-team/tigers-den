@@ -1,7 +1,24 @@
 import type { CollectionConfig } from "payload";
 
+/**
+ * Tour/rankings pages aren't dynamically rendered -- they're served from Next's route cache
+ * until explicitly revalidated (see lib/cricket/services/sync-lock.ts, same pattern). Without
+ * this, editing a player here (uploading a photo, merging aliases, etc.) would sit correct in
+ * the database but never actually show up on an already-cached page.
+ */
+async function revalidatePlayerPages() {
+  const { revalidatePath } = await import("next/cache");
+  revalidatePath("/");
+  revalidatePath("/rankings");
+  revalidatePath("/tours", "layout");
+}
+
 export const Players: CollectionConfig = {
   slug: "players",
+  hooks: {
+    afterChange: [revalidatePlayerPages],
+    afterDelete: [revalidatePlayerPages],
+  },
   admin: {
     useAsTitle: "displayName",
     defaultColumns: ["displayName", "country", "photo", "cricinfoPlayerId", "iccPlayerId", "updatedAt"],
