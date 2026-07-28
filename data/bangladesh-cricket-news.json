@@ -1,6 +1,30 @@
 {
-  "fetchedAt": "2026-07-27T22:40:16.968Z",
+  "fetchedAt": "2026-07-28T22:40:41.019Z",
   "items": [
+    {
+      "id": "dailystar-https://www.thedailystar.net/sports/cricket/news/fatigue-high-altitude-or-voodoo-team-management-perplexed-over-nahid-ranas-injury-4234881",
+      "title": "Fatigue, high altitude or voodoo: Team management perplexed over Nahid Rana's injury",
+      "summary": "The Bangladesh Cricket Board (BCB) and its medical department remain perplexed about how Nahid Rana sustained his injury during the Tigers' tour of Zimbabwe earlier this month, despite his workload being carefully managed.",
+      "url": "https://www.thedailystar.net/sports/cricket/news/fatigue-high-altitude-or-voodoo-team-management-perplexed-over-nahid-ranas-injury-4234881",
+      "source": "dailystar",
+      "publishedAt": "2026-07-28T16:11:06.000Z"
+    },
+    {
+      "id": "dailystar-https://www.thedailystar.net/sports/cricket/news/rana-taskin-depart-perth-tuesday-4234561",
+      "title": "Rana, Taskin to depart for Perth tonight",
+      "summary": "Bangladesh pacers Nahid Rana and Taskin Ahmed are set to leave for Australia on Tuesday night for medical assessments, BCB sources confirmed.",
+      "url": "https://www.thedailystar.net/sports/cricket/news/rana-taskin-depart-perth-tuesday-4234561",
+      "source": "dailystar",
+      "publishedAt": "2026-07-28T07:04:56.000Z"
+    },
+    {
+      "id": "dailystar-https://www.thedailystar.net/sports/cricket/news/bashars-respect-challenge-tigers-down-under-4234491",
+      "title": "Bashar’s ‘respect’ challenge for Tigers Down Under",
+      "summary": "The challenge is compounded by the left-hand-heavy composition of the batting order.",
+      "url": "https://www.thedailystar.net/sports/cricket/news/bashars-respect-challenge-tigers-down-under-4234491",
+      "source": "dailystar",
+      "publishedAt": "2026-07-28T04:46:44.000Z"
+    },
     {
       "id": "espn-https://www.cricinfo.com/ci/content/story/1547749.html",
       "title": "Bashar regrets Rana's absence from Australia tour despite being 'extra cautious'",
@@ -19,22 +43,6 @@
       "publishedAt": "2026-07-27T06:45:34.000Z"
     },
     {
-      "id": "dailystar-https://www.thedailystar.net/sports/cricket/news/injury-hit-tigers-throw-mixed-bag-australia-opener-4233436",
-      "title": "Injury-hit Tigers throw a mixed bag for Australia opener",
-      "summary": "Soumya is perhaps the most intriguing inclusion, although his domestic form makes a compelling case for his return, either as an opener or in the middle order.",
-      "url": "https://www.thedailystar.net/sports/cricket/news/injury-hit-tigers-throw-mixed-bag-australia-opener-4233436",
-      "source": "dailystar",
-      "publishedAt": "2026-07-26T19:10:49.000Z"
-    },
-    {
-      "id": "dailystar-https://www.thedailystar.net/sports/cricket/news/bangladesh-missed-world-cup-due-political-issues-miraz-4233041",
-      "title": "Bangladesh missed World Cup due to 'political issues': Miraz",
-      "summary": "Bangladesh ODI captain Mehidy Hasan Miraz believes the Tigers were deprived of the opportunity to play in a World Cup because of \"political issues\", saying it was unfortunate that the players missed out on the marquee event.",
-      "url": "https://www.thedailystar.net/sports/cricket/news/bangladesh-missed-world-cup-due-political-issues-miraz-4233041",
-      "source": "dailystar",
-      "publishedAt": "2026-07-26T13:55:34.000Z"
-    },
-    {
       "id": "espn-https://www.cricinfo.com/ci/content/story/1547672.html",
       "title": "Bangladesh recall Soumya Sarkar for first Test against Australia",
       "summary": "Jaker Ali and Musfik Hasan were also picked, while Mehidy Hasan Miraz and Taskin Ahmed returned after being rested for the Zimbabwe Test",
@@ -42,14 +50,6 @@
       "imageUrl": "https://p.imgci.com/db/PICTURES/CMS/316700/316770.5.jpg",
       "source": "espncricinfo",
       "publishedAt": "2026-07-26T13:37:45.000Z"
-    },
-    {
-      "id": "dailystar-https://www.thedailystar.net/sports/cricket/news/soumya-jaker-return-first-australia-test-4233006",
-      "title": "Soumya, Jaker return for first Australia Test",
-      "summary": "Opener Mahmudul Hasan Joy was left out after a run of poor starts at the top of the order.<br> <br> <br>",
-      "url": "https://www.thedailystar.net/sports/cricket/news/soumya-jaker-return-first-australia-test-4233006",
-      "source": "dailystar",
-      "publishedAt": "2026-07-26T12:43:52.000Z"
     },
     {
       "id": "espn-https://www.cricinfo.com/ci/content/story/1547560.html",
