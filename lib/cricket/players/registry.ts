@@ -391,6 +391,16 @@ export async function ensurePlayer(input: EnsurePlayerInput): Promise<PlayerIden
   return toIdentity(doc as PlayerDoc, input.countrySlug);
 }
 
+/**
+ * DB/cache only -- no live network calls. The squad-refresh cron (refreshEspnTourSquads, via
+ * resolveSquadPlayers -> ensurePlayer) already resolves and persists each player's profile URL
+ * and mirrored photo 2-3x/day, so by the time a tour page is read here that data normally
+ * already exists. This used to also call resolveCricinfoPlayerProfileUrl/fetchAthleteHeadshotUrl/
+ * validatedImageUrl live as a fallback, which meant every squad view could block on live ESPN
+ * lookups for any player the cron hadn't resolved yet (or whose cached image needed
+ * re-validating) -- a brand-new player now simply shows without a photo/profile link until the
+ * next squad-refresh cycle picks them up, rather than the page waiting on it.
+ */
 export async function enrichSquadPlayerForDisplay(
   countrySlug: string,
   player: SquadPlayer,
@@ -398,22 +408,12 @@ export async function enrichSquadPlayerForDisplay(
   const displayName = squadPlayerDisplayName(player.name);
   const cached = await lookupPlayer(countrySlug, player.name);
 
-  let profileUrl =
+  const profileUrl =
     profileUrlWithId(player.profileUrl) ??
     profileUrlWithId(cached?.profileUrl) ??
     profileUrlWithId(await lookupSeedPlayerProfileUrl(displayName));
 
-  if (!profileUrl) {
-    profileUrl = await resolveCricinfoPlayerProfileUrl(displayName, countrySlug);
-  }
-
-  const playerId = profileUrl ? extractCricinfoPlayerId(profileUrl) : null;
-  // A manually-uploaded/mirrored `photo` always wins -- it's our own stored copy, trusted as-is,
-  // no need to re-validate it the way an external imageUrl needs checking.
-  let imageUrl = cached?.photoUrl ?? (await validatedImageUrl(cached?.imageUrl));
-  if (!imageUrl && playerId) {
-    imageUrl = await fetchAthleteHeadshotUrl(playerId);
-  }
+  const imageUrl = cached?.photoUrl ?? cached?.imageUrl ?? null;
 
   return {
     name: player.name,

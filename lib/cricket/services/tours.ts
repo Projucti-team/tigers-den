@@ -91,7 +91,14 @@ export async function buildFutureToursLive(options?: {
   return { tours, warnings: [...new Set(warnings)] };
 }
 
-/** Read pre-built tours from DB (nightly cron). */
+/**
+ * Read pre-built tours from DB (nightly cron) -- no live fetches. The curated/discovered ESPN
+ * tours merged in here used to be re-fetched live on every call via mergeCuratedTours(), even
+ * though buildToursIndexLive() (used by the nightly sync) already performs that exact merge
+ * before writing the snapshot -- so this was doing the same expensive ESPN league-discovery
+ * scan (up to 8 paginated league list calls plus a live detail + fixture fetch per league)
+ * again on every tour page, homepage, and nav render, for data already sitting in the DB.
+ */
 export async function getFutureTours(options?: { bangladeshOnly?: boolean }): Promise<{
   tours: Tour[];
   warnings: string[];
@@ -109,11 +116,6 @@ export async function getFutureTours(options?: { bangladeshOnly?: boolean }): Pr
   }
 
   let tours = deduplicateTours(cached?.tours ?? []);
-  if (options?.bangladeshOnly) {
-    tours = filterBangladeshTours(tours);
-  }
-
-  tours = await mergeCuratedTours(tours);
   if (options?.bangladeshOnly) {
     tours = filterBangladeshTours(tours);
   }
