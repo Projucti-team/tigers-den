@@ -40,38 +40,18 @@ export async function refreshRankingsShowcase(): Promise<RankingsShowcaseSnapsho
   return snapshot;
 }
 
-/** Read pre-built rankings from DB; rebuild automatically when the snapshot schema is outdated. */
+/**
+ * Read pre-built rankings from DB -- never rebuilds live on the request path. A live rebuild
+ * only ever happens via the nightly rankings cron job or deploy bootstrap (see
+ * lib/deploy/bootstrap.ts), so an outdated/missing snapshot here just gets a warning instead
+ * of blocking the page (this used to call refreshRankingsShowcase() synchronously whenever the
+ * snapshot's schema version was outdated, which made every visitor pay for a live ICC+WTC
+ * rebuild until the next cron run caught up).
+ */
 export async function getRankingsShowcase(): Promise<RankingsShowcaseSnapshot> {
   const cached = await readCricketSnapshot<RankingsShowcaseSnapshot>(
     CRICKET_SNAPSHOT_KEYS.rankingsShowcase,
   );
-
-  if (needsRankingsShowcaseRebuild(cached)) {
-    try {
-      const rebuilt = await refreshRankingsShowcase();
-      const warnings = [...rebuilt.warnings];
-      if (cached) {
-        warnings.push("Rankings snapshot upgraded to the latest layout (top 10 teams + Tigers in top 100).");
-      }
-      return { ...rebuilt, warnings };
-    } catch (err) {
-      const message = err instanceof Error ? err.message : "Rankings rebuild failed";
-      if (cached) {
-        const warnings = [...(cached.warnings ?? []), message];
-        return { ...cached, warnings };
-      }
-      return {
-        fetchedAt: new Date(0).toISOString(),
-        men: emptyShowcase("men"),
-        women: emptyShowcase("women"),
-        wtc: null,
-        warnings: [
-          message,
-          "Run `npm run sync:cricket` or trigger /api/cron/cricket on production.",
-        ],
-      };
-    }
-  }
 
   if (!cached) {
     return {
@@ -86,6 +66,11 @@ export async function getRankingsShowcase(): Promise<RankingsShowcaseSnapshot> {
   }
 
   const warnings = [...cached.warnings];
+  if (needsRankingsShowcaseRebuild(cached)) {
+    warnings.push(
+      "Rankings snapshot is on an older layout version -- will refresh at the next scheduled sync.",
+    );
+  }
   const stale = staleSnapshotWarning(cached.fetchedAt, "Rankings");
   if (stale) warnings.push(stale);
 

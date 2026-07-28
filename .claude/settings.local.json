@@ -19,7 +19,8 @@
       "Bash(export POSTGRES_URL=\"postgresql://tigersden:tigersden@localhost:5433/tigersden\")",
       "Bash(rm -f /tmp/tigersden-dev.log)",
       "Bash(nohup env PORT=8083 npm run dev)",
-      "Bash(npm run *)"
+      "Bash(npm run *)",
+      "Bash(docker compose *)"
     ]
   }
 }

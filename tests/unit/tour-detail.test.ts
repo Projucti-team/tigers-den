@@ -25,6 +25,7 @@ import { mergeTourFixtures } from "../../lib/cricket/services/merge-tour-fixture
 import { parseManualSquadText } from "../../lib/cricket/squads/manual-entry.ts";
 import { mergeSquads } from "../../lib/cricket/squads/types.ts";
 import { computeSquadRefreshTargets } from "../../lib/cricket/services/tour-sync-state-db.ts";
+import { filterToursByPublishedSlugs } from "../../lib/cricket/services/filter-published-tours.ts";
 import type { Tour } from "../../lib/cricket/types.ts";
 import {
   auditTourDetailSnapshot,
@@ -656,4 +657,32 @@ test("computeSquadRefreshTargets skips finished formats and formats already comp
   const targets = computeSquadRefreshTargets([tour]);
   assert.equal(targets.length, 1);
   assert.deepEqual(targets[0].matchTypes, ["test"]);
+});
+
+test("filterToursByPublishedSlugs drops a discovered tour with no built detail page (404 regression)", () => {
+  // Reproduces the reported bug exactly: a loosely-discovered tour (e.g. an "Emerging
+  // Players" or unofficial series) shows up in the nav dropdown even though its detail page
+  // build never succeeded, so clicking it 404s. Only tours whose slug is in the "published"
+  // set (built, with at least one real match -- see readTourDetailSlugsWithMatches) should
+  // ever be linked.
+  const publishedTour = {
+    id: "1532475",
+    name: "Australia tour of Bangladesh, 2026",
+  } satisfies Tour;
+  const unbuiltTour = {
+    id: "1547772",
+    name: "Bangladesh Emerging Players Women in South Africa unofficial ODI Series",
+  } satisfies Tour;
+
+  const publishedSlugs = new Set(["australia-tour-of-bangladesh-1532475"]);
+
+  const kept = filterToursByPublishedSlugs([publishedTour, unbuiltTour], publishedSlugs);
+
+  assert.equal(kept.length, 1);
+  assert.equal(kept[0]?.id, "1532475");
+});
+
+test("filterToursByPublishedSlugs keeps nothing when nothing has been published yet", () => {
+  const tour = { id: "1", name: "Bangladesh Tour of Australia" } satisfies Tour;
+  assert.deepEqual(filterToursByPublishedSlugs([tour], new Set()), []);
 });

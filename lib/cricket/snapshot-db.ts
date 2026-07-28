@@ -1,4 +1,4 @@
-import { CRICKET_SNAPSHOT_KEYS } from "@/lib/cricket/snapshot-keys";
+import { CRICKET_SNAPSHOT_KEYS, isTourDetailSnapshotKey, tourDetailSlugFromKey } from "@/lib/cricket/snapshot-keys";
 import { isNextProductionBuild } from "@/lib/next-build";
 import { hasPersistedDatabase } from "@/lib/payload-db";
 import { getPayloadClient } from "@/lib/payload";
@@ -104,6 +104,39 @@ export async function readCricketSnapshot<T extends { fetchedAt: string }>(
     if (isMissingRelationError(err)) return null;
     throw err;
   }
+}
+
+/**
+ * Slugs of tours that actually have a built, non-empty detail page -- i.e. safe to link to
+ * from the nav dropdown / homepage cards. Discovery (tours-index) is intentionally loose (any
+ * ESPN/CricAPI series that loosely mentions Bangladesh) and doesn't guarantee a detail page
+ * ever got built for a given tour, or that the build didn't come back with zero matches --
+ * this is one query, not one-per-tour, so it's cheap enough to call on every nav render.
+ */
+export async function readTourDetailSlugsWithMatches(): Promise<Set<string>> {
+  const slugs = new Set<string>();
+  if (!isPayloadConfigured()) return slugs;
+
+  try {
+    const payload = await getPayloadClient();
+    const result = await payload.find({
+      collection: "cricket-snapshots",
+      limit: 500,
+      overrideAccess: true,
+    });
+
+    for (const doc of result.docs as { key?: string; data?: { matches?: unknown[] } }[]) {
+      const key = doc.key ?? "";
+      if (!isTourDetailSnapshotKey(key)) continue;
+      if (!Array.isArray(doc.data?.matches) || doc.data.matches.length === 0) continue;
+      const slug = tourDetailSlugFromKey(key);
+      if (slug) slugs.add(slug);
+    }
+  } catch (err) {
+    if (!isMissingRelationError(err)) throw err;
+  }
+
+  return slugs;
 }
 
 export async function deleteCricketSnapshotsExcept(keysToKeep: Set<string>): Promise<number> {

@@ -1,6 +1,8 @@
 import { getFutureTours } from "@/lib/cricket/services/tours";
+import { filterToursByPublishedSlugs } from "@/lib/cricket/services/filter-published-tours";
 import { tourFlagIsos } from "@/lib/cricket/tour-flags";
 import { tourPath } from "@/lib/cricket/tour-slug";
+import { readTourDetailSlugsWithMatches } from "@/lib/cricket/snapshot-db";
 import type { Tour } from "@/lib/cricket/types";
 
 export type TourCard = {
@@ -85,13 +87,19 @@ export function tourToCard(tour: Tour, _index: number): TourCard {
   };
 }
 
+async function filterToursWithPublishedDetail(tours: Tour[]): Promise<Tour[]> {
+  const publishedSlugs = await readTourDetailSlugsWithMatches();
+  return filterToursByPublishedSlugs(tours, publishedSlugs);
+}
+
 /** Homepage cards — from nightly DB snapshot + confirmed ESPN schedules. */
 export async function getTourCards(limit = 3): Promise<{
   cards: TourCard[];
   featuredAway: TourCard | null;
   warnings: string[];
 }> {
-  const { tours, warnings } = await getFutureTours({ bangladeshOnly: true });
+  const { tours: allTours, warnings } = await getFutureTours({ bangladeshOnly: true });
+  const tours = await filterToursWithPublishedDetail(allTours);
   const cards = tours.map((t, i) => tourToCard(t, i));
   const awayTour = tours.find((t) => isAwaySeries(t.name));
   const featuredAway = awayTour
@@ -105,9 +113,11 @@ export async function getTourCards(limit = 3): Promise<{
   };
 }
 
-/** Navbar TOURS dropdown — always deduped (not stale snapshot navLinks). */
+/** Navbar TOURS dropdown — only tours with a real, published detail page (see
+ * filterToursWithPublishedDetail) -- always deduped (not stale snapshot navLinks). */
 export async function getTourNavLinks(): Promise<{ label: string; href: string }[]> {
-  const { tours } = await getFutureTours({ bangladeshOnly: true });
+  const { tours: allTours } = await getFutureTours({ bangladeshOnly: true });
+  const tours = await filterToursWithPublishedDetail(allTours);
   return tours.map((tour) => ({
     label: shortenTitle(tour.name),
     href: tourPath(tour),
