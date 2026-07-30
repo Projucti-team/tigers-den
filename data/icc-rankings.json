@@ -1,5 +1,5 @@
 {
-  "fetchedAt": "2026-07-29T22:14:36.893Z",
+  "fetchedAt": "2026-07-30T22:20:17.250Z",
   "source": "icc-sportz.io",
   "sourceUrl": "https://www.icc-cricket.com/rankings",
   "men": {
@@ -590,9 +590,9 @@
           "rank": 43,
           "name": "Austria",
           "abbreviation": "AUT",
-          "rating": 66,
-          "points": 4294,
-          "matches": 65
+          "rating": 65,
+          "points": 4293,
+          "matches": 66
         },
         {
           "rank": 44,
@@ -636,19 +636,19 @@
         },
         {
           "rank": 49,
-          "name": "Romania",
-          "abbreviation": "ROM",
-          "rating": 49,
-          "points": 2019,
-          "matches": 41
+          "name": "France",
+          "abbreviation": "FRA",
+          "rating": 50,
+          "points": 1753,
+          "matches": 35
         },
         {
           "rank": 50,
-          "name": "France",
-          "abbreviation": "FRA",
-          "rating": 49,
-          "points": 1652,
-          "matches": 34
+          "name": "Romania",
+          "abbreviation": "ROM",
+          "rating": 50,
+          "points": 2134,
+          "matches": 43
         },
         {
           "rank": 51,
@@ -10383,7 +10383,7 @@
         "allrounder": "2026-07-28"
       },
       "t20": {
-        "team": "2026-07-29",
+        "team": "2026-07-30",
         "bat": "2026-07-28",
         "bowl": "2026-07-28",
         "allrounder": "2026-07-28"
@@ -10641,17 +10641,17 @@
           "rank": 17,
           "name": "Uganda",
           "abbreviation": "UGA-W",
-          "rating": 111,
-          "points": 5895,
-          "matches": 53
+          "rating": 112,
+          "points": 6056,
+          "matches": 54
         },
         {
           "rank": 18,
           "name": "Namibia",
           "abbreviation": "NAM-W",
-          "rating": 111,
-          "points": 4982,
-          "matches": 45
+          "rating": 110,
+          "points": 5043,
+          "matches": 46
         },
         {
           "rank": 19,
@@ -10665,9 +10665,9 @@
           "rank": 20,
           "name": "Tanzania",
           "abbreviation": "TAN-W",
-          "rating": 94,
-          "points": 3466,
-          "matches": 37
+          "rating": 95,
+          "points": 3607,
+          "matches": 38
         },
         {
           "rank": 21,
@@ -10689,9 +10689,9 @@
           "rank": 23,
           "name": "Hong Kong",
           "abbreviation": "HK-W",
-          "rating": 91,
-          "points": 5350,
-          "matches": 59
+          "rating": 90,
+          "points": 5394,
+          "matches": 60
         },
         {
           "rank": 24,
@@ -10721,9 +10721,9 @@
           "rank": 27,
           "name": "Brazil",
           "abbreviation": "BRA-W",
-          "rating": 70,
-          "points": 2802,
-          "matches": 40
+          "rating": 71,
+          "points": 2909,
+          "matches": 41
         },
         {
           "rank": 28,
@@ -10761,33 +10761,33 @@
           "rank": 32,
           "name": "Jersey",
           "abbreviation": "JSY-W",
-          "rating": 59,
-          "points": 1541,
-          "matches": 26
+          "rating": 61,
+          "points": 1639,
+          "matches": 27
         },
         {
           "rank": 33,
-          "name": "Canada",
-          "abbreviation": "CAN-W",
-          "rating": 57,
-          "points": 852,
-          "matches": 15
-        },
-        {
-          "rank": 34,
           "name": "Spain",
           "abbreviation": "ESP-W",
           "rating": 55,
-          "points": 658,
-          "matches": 12
+          "points": 773,
+          "matches": 14
         },
         {
-          "rank": 35,
+          "rank": 34,
           "name": "Oman",
           "abbreviation": "OMA-W",
           "rating": 55,
           "points": 1639,
           "matches": 30
+        },
+        {
+          "rank": 35,
+          "name": "Canada",
+          "abbreviation": "CAN-W",
+          "rating": 51,
+          "points": 822,
+          "matches": 16
         },
         {
           "rank": 36,
@@ -10799,14 +10799,6 @@
         },
         {
           "rank": 37,
-          "name": "Switzerland",
-          "abbreviation": "CHE-W",
-          "rating": 47,
-          "points": 1127,
-          "matches": 24
-        },
-        {
-          "rank": 38,
           "name": "Isle of Man",
           "abbreviation": "IOM-W",
           "rating": 47,
@@ -10814,12 +10806,20 @@
           "matches": 20
         },
         {
-          "rank": 39,
+          "rank": 38,
           "name": "Sweden",
           "abbreviation": "SWE-W",
           "rating": 46,
           "points": 777,
           "matches": 17
+        },
+        {
+          "rank": 39,
+          "name": "Switzerland",
+          "abbreviation": "CHE-W",
+          "rating": 44,
+          "points": 1141,
+          "matches": 26
         },
         {
           "rank": 40,
@@ -10927,6 +10927,14 @@
         },
         {
           "rank": 53,
+          "name": "Argentina",
+          "abbreviation": "ARG-W",
+          "rating": 26,
+          "points": 366,
+          "matches": 14
+        },
+        {
+          "rank": 54,
           "name": "Guernsey",
           "abbreviation": "GSY-W",
           "rating": 25,
@@ -10934,20 +10942,12 @@
           "matches": 10
         },
         {
-          "rank": 54,
+          "rank": 55,
           "name": "Austria",
           "abbreviation": "AUT-W",
           "rating": 23,
           "points": 501,
           "matches": 22
-        },
-        {
-          "rank": 55,
-          "name": "Argentina",
-          "abbreviation": "ARG-W",
-          "rating": 20,
-          "points": 259,
-          "matches": 13
         },
         {
           "rank": 56,
@@ -17367,7 +17367,7 @@
         "allrounder": "2026-07-27"
       },
       "t20": {
-        "team": "2026-07-29",
+        "team": "2026-07-30",
         "bat": "2026-07-27",
         "bowl": "2026-07-27",
         "allrounder": "2026-07-27"
