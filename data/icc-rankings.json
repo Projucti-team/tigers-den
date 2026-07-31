@@ -1,5 +1,5 @@
 {
-  "fetchedAt": "2026-07-30T22:20:17.250Z",
+  "fetchedAt": "2026-07-31T22:17:04.526Z",
   "source": "icc-sportz.io",
   "sourceUrl": "https://www.icc-cricket.com/rankings",
   "men": {
@@ -188,9 +188,9 @@
           "rank": 13,
           "name": "Netherlands",
           "abbreviation": "NED",
-          "rating": 46,
-          "points": 1331,
-          "matches": 29
+          "rating": 44,
+          "points": 1309,
+          "matches": 30
         },
         {
           "rank": 14,
@@ -220,9 +220,9 @@
           "rank": 17,
           "name": "Namibia",
           "abbreviation": "NAM",
-          "rating": 28,
-          "points": 527,
-          "matches": 19
+          "rating": 31,
+          "points": 623,
+          "matches": 20
         },
         {
           "rank": 18,
@@ -476,19 +476,19 @@
         },
         {
           "rank": 29,
+          "name": "Bahrain",
+          "abbreviation": "BRN",
+          "rating": 119,
+          "points": 7584,
+          "matches": 64
+        },
+        {
+          "rank": 30,
           "name": "Jersey",
           "abbreviation": "JSY",
           "rating": 118,
           "points": 2484,
           "matches": 21
-        },
-        {
-          "rank": 30,
-          "name": "Bahrain",
-          "abbreviation": "BRN",
-          "rating": 118,
-          "points": 7431,
-          "matches": 63
         },
         {
           "rank": 31,
@@ -510,9 +510,9 @@
           "rank": 33,
           "name": "Kenya",
           "abbreviation": "KEN",
-          "rating": 103,
-          "points": 4022,
-          "matches": 39
+          "rating": 102,
+          "points": 4090,
+          "matches": 40
         },
         {
           "rank": 34,
@@ -10377,13 +10377,13 @@
         "allrounder": "2026-07-28"
       },
       "odi": {
-        "team": "2026-07-29",
+        "team": "2026-07-31",
         "bat": "2026-07-28",
         "bowl": "2026-07-28",
         "allrounder": "2026-07-28"
       },
       "t20": {
-        "team": "2026-07-30",
+        "team": "2026-07-31",
         "bat": "2026-07-28",
         "bowl": "2026-07-28",
         "allrounder": "2026-07-28"
@@ -10554,8 +10554,8 @@
           "name": "Sri Lanka",
           "abbreviation": "SL-W",
           "rating": 238,
-          "points": 8084,
-          "matches": 34
+          "points": 8344,
+          "matches": 35
         },
         {
           "rank": 7,
@@ -10570,8 +10570,8 @@
           "name": "Pakistan",
           "abbreviation": "PAK-W",
           "rating": 210,
-          "points": 6524,
-          "matches": 31
+          "points": 6712,
+          "matches": 32
         },
         {
           "rank": 9,
@@ -17367,7 +17367,7 @@
         "allrounder": "2026-07-27"
       },
       "t20": {
-        "team": "2026-07-30",
+        "team": "2026-07-31",
         "bat": "2026-07-27",
         "bowl": "2026-07-27",
         "allrounder": "2026-07-27"
