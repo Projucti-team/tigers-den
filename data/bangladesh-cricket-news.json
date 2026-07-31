@@ -1,6 +1,14 @@
 {
-  "fetchedAt": "2026-07-30T22:44:56.333Z",
+  "fetchedAt": "2026-07-31T22:40:17.283Z",
   "items": [
+    {
+      "id": "dailystar-https://www.thedailystar.net/sports/cricket/news/underprepared-and-the-unknown-4236931",
+      "title": "Underprepared and into the unknown",
+      "summary": "The challenge in Australia was never going to be easy. Yet, after months of knowing what lay ahead, Bangladesh leave for the unknown with preparation emerging as the focal talking point.",
+      "url": "https://www.thedailystar.net/sports/cricket/news/underprepared-and-the-unknown-4236931",
+      "source": "dailystar",
+      "publishedAt": "2026-07-31T04:33:10.000Z"
+    },
     {
       "id": "dailystar-https://www.thedailystar.net/sports/cricket/news/history-looms-hazlewood-eyeing-bigger-picture-bangladesh-tests-4236431",
       "title": "History looms but Hazlewood eyeing bigger picture in Bangladesh Tests",
@@ -36,14 +44,6 @@
       "publishedAt": "2026-07-30T07:09:54.000Z"
     },
     {
-      "id": "dailystar-https://www.thedailystar.net/sports/cricket/news/tamim-hopeful-despite-no-update-india-series-4235921",
-      "title": "Tamim hopeful despite no update on India series",
-      "summary": "The series, originally scheduled for 2025 before being postponed to September this year, remains uncertain amid strained relations between the two neighbouring countries.",
-      "url": "https://www.thedailystar.net/sports/cricket/news/tamim-hopeful-despite-no-update-india-series-4235921",
-      "source": "dailystar",
-      "publishedAt": "2026-07-29T18:34:54.000Z"
-    },
-    {
       "id": "espn-https://www.cricinfo.com/ci/content/story/1548025.html",
       "title": "Litton Das named Bangladesh's new ODI captain",
       "summary": "He takes over from Mehidy, who the BCB hopes will be able to regain top form without added responsibility",
@@ -51,14 +51,6 @@
       "imageUrl": "https://p.imgci.com/db/PICTURES/CMS/403600/403664.5.jpg",
       "source": "espncricinfo",
       "publishedAt": "2026-07-29T17:11:53.000Z"
-    },
-    {
-      "id": "dailystar-https://www.thedailystar.net/sports/cricket/news/litton-replaces-miraz-odi-captain-4235571",
-      "title": "Litton replaces Miraz as ODI captain",
-      "summary": "Bangladesh Cricket Board (BCB) president Tamim Iqbal confirmed at a press conference in Mirpur on Wednesday that Litton Das has been appointed ODI captain, adding the 50-over format to his T20I captaincy and replacing Mehidy Hasan Miraz.",
-      "url": "https://www.thedailystar.net/sports/cricket/news/litton-replaces-miraz-odi-captain-4235571",
-      "source": "dailystar",
-      "publishedAt": "2026-07-29T13:53:19.000Z"
     },
     {
       "id": "espn-https://www.cricinfo.com/ci/content/story/1547749.html",
@@ -77,15 +69,6 @@
       "imageUrl": "https://p.imgci.com/db/PICTURES/CMS/316700/316770.5.jpg",
       "source": "espncricinfo",
       "publishedAt": "2026-07-26T13:37:45.000Z"
-    },
-    {
-      "id": "espn-https://www.cricinfo.com/ci/content/story/1547560.html",
-      "title": "Nahid Rana ruled out of Test series against Australia",
-      "summary": "Shoriful Islam and Litton Das will also miss the first Test but could be available for the second after rehabilitation",
-      "url": "https://www.cricinfo.com/story/nahid-rana-ruled-out-of-two-test-series-against-australia-1547560",
-      "imageUrl": "https://p.imgci.com/db/PICTURES/CMS/417200/417230.5.jpg",
-      "source": "espncricinfo",
-      "publishedAt": "2026-07-25T15:42:57.000Z"
     }
   ]
 }
