@@ -1,6 +1,55 @@
 {
-  "fetchedAt": "2026-08-04T22:42:34.978Z",
+  "fetchedAt": "2026-08-05T22:40:42.900Z",
   "items": [
+    {
+      "id": "dailystar-https://www.thedailystar.net/sports/cricket/news/litton-trains-without-discomfort-practice-match-call-due-thursday-4240736",
+      "title": "Litton trains 'without discomfort', practice match call due on Thursday",
+      "summary": "The Bangladesh Cricket Board's (BCB) chief selector Habibul Bashar confirmed that Litton came through both batting and wicketkeeping drills unscathed",
+      "url": "https://www.thedailystar.net/sports/cricket/news/litton-trains-without-discomfort-practice-match-call-due-thursday-4240736",
+      "source": "dailystar",
+      "publishedAt": "2026-08-05T11:29:25.000Z"
+    },
+    {
+      "id": "dailystar-https://www.thedailystar.net/sports/cricket/news/rishad-earns-maiden-sa20-call-champions-eastern-cape-4240701",
+      "title": "Rishad earns maiden SA20 call-up with champions Eastern Cape",
+      "summary": "The three-time champions confirmed Rishad's signing on Wednesday as one of two overseas additions to their squad, alongside Australia all-rounder Mitchell Marsh, who will also make his first appearance in the tournament.",
+      "url": "https://www.thedailystar.net/sports/cricket/news/rishad-earns-maiden-sa20-call-champions-eastern-cape-4240701",
+      "source": "dailystar",
+      "publishedAt": "2026-08-05T10:17:06.000Z"
+    },
+    {
+      "id": "dailystar-https://www.thedailystar.net/sports/cricket/news/top-end-t20-schedule-set-bangladesh-hp-4240646",
+      "title": "Top End T20 schedule set for Bangladesh HP",
+      "summary": "Bangladesh HP will face Nepal, New Zealand A and hosts NT Strike, while also taking on Australian domestic and Big Bash League academy sides representing the Hobart Hurricanes, Victoria and Adelaide Strikers.",
+      "url": "https://www.thedailystar.net/sports/cricket/news/top-end-t20-schedule-set-bangladesh-hp-4240646",
+      "source": "dailystar",
+      "publishedAt": "2026-08-05T07:42:01.000Z"
+    },
+    {
+      "id": "espn-https://www.cricinfo.com/ci/content/story/1548737.html",
+      "title": "Neser suffers calf strain at training, but hopeful for South Africa tour",
+      "summary": "Ashes hero was not selected in Australia's 13-man squad for the home two-Test series against Bangladesh, which starts next Thursday in Darwin",
+      "url": "https://www.cricinfo.com/story/michael-neser-suffers-calf-strain-at-training-hopeful-for-south-africa-tour-1548737",
+      "imageUrl": "https://p.imgci.com/db/PICTURES/CMS/410200/410265.5.jpg",
+      "source": "espncricinfo",
+      "publishedAt": "2026-08-05T06:44:39.000Z"
+    },
+    {
+      "id": "dailystar-https://www.thedailystar.net/sports/cricket/news/different-bangladesh-similar-australia-challenge-4240586",
+      "title": "Different Bangladesh, similar Australia challenge",
+      "summary": "Former opener Hannan Sarkar believes that experience should help Bangladesh put up a stronger fight this time.",
+      "url": "https://www.thedailystar.net/sports/cricket/news/different-bangladesh-similar-australia-challenge-4240586",
+      "source": "dailystar",
+      "publishedAt": "2026-08-05T05:33:52.000Z"
+    },
+    {
+      "id": "dailystar-https://www.thedailystar.net/sports/cricket/news/starc-eyes-kapil-devs-mark-aussies-focus-bangladesh-4240576",
+      "title": "Starc eyes Kapil Dev's mark as Aussies focus on Bangladesh",
+      "summary": "Experienced pacer Mitchell Starc can further elevate his status among the all-time greats when Australia host Bangladesh in a two-match ICC World Test Championship series this month.",
+      "url": "https://www.thedailystar.net/sports/cricket/news/starc-eyes-kapil-devs-mark-aussies-focus-bangladesh-4240576",
+      "source": "dailystar",
+      "publishedAt": "2026-08-05T04:56:20.000Z"
+    },
     {
       "id": "dailystar-https://www.thedailystar.net/sports/cricket/news/bcb-explains-decision-not-renew-sharfuddoulas-contract-4240326",
       "title": "BCB explains decision not to renew Saikat’s contract",
@@ -16,22 +65,6 @@
       "url": "https://www.thedailystar.net/sports/cricket/news/extra-caution-drives-hannans-advice-echoes-tendulkars-sydney-masterclass-4240111",
       "source": "dailystar",
       "publishedAt": "2026-08-04T15:27:20.000Z"
-    },
-    {
-      "id": "dailystar-https://www.thedailystar.net/sports/cricket/news/bangladesh-mens-emerging-claim-first-tri-series-win-after-poor-start-4239536",
-      "title": "Bangladesh Men's Emerging claim first tri-series win after poor start",
-      "summary": "Bangladesh Men's Emerging Team registered their first victory of the ongoing tri-series in South Africa, beating USSA by 26 runs via the DLS method in their second match at Tuks Oval in Pretoria on Monday.",
-      "url": "https://www.thedailystar.net/sports/cricket/news/bangladesh-mens-emerging-claim-first-tri-series-win-after-poor-start-4239536",
-      "source": "dailystar",
-      "publishedAt": "2026-08-03T18:24:02.000Z"
-    },
-    {
-      "id": "dailystar-https://www.thedailystar.net/sports/cricket/news/tunnicliffe-ton-hands-bangladesh-womens-emerging-team-series-defeat-4239266",
-      "title": "Tunnicliffe ton hands Bangladesh Women's Emerging Team series defeat",
-      "summary": "Bangladesh Emerging Women's Team suffered a 38-run defeat to South Africa in the third one-day match, conceding the three-match series 2-0 in Pietermaritzburg on Monday.",
-      "url": "https://www.thedailystar.net/sports/cricket/news/tunnicliffe-ton-hands-bangladesh-womens-emerging-team-series-defeat-4239266",
-      "source": "dailystar",
-      "publishedAt": "2026-08-03T15:48:12.000Z"
     },
     {
       "id": "espn-https://www.cricinfo.com/ci/content/story/1548341.html",
@@ -59,15 +92,6 @@
       "imageUrl": "https://p.imgci.com/db/PICTURES/CMS/405400/405467.5.png",
       "source": "espncricinfo",
       "publishedAt": "2026-07-30T07:09:54.000Z"
-    },
-    {
-      "id": "espn-https://www.cricinfo.com/ci/content/story/1548025.html",
-      "title": "Litton Das named Bangladesh's new ODI captain",
-      "summary": "He takes over from Mehidy, who the BCB hopes will be able to regain top form without added responsibility",
-      "url": "https://www.cricinfo.com/story/litton-das-named-bangladeshs-new-odi-captain-1548025",
-      "imageUrl": "https://p.imgci.com/db/PICTURES/CMS/403600/403664.5.jpg",
-      "source": "espncricinfo",
-      "publishedAt": "2026-07-29T17:11:53.000Z"
     }
   ]
 }
