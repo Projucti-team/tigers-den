@@ -1,5 +1,5 @@
 {
-  "fetchedAt": "2026-08-05T22:29:12.204Z",
+  "fetchedAt": "2026-08-07T01:03:03.681Z",
   "source": "icc-sportz.io",
   "sourceUrl": "https://www.icc-cricket.com/rankings",
   "men": {
@@ -780,6 +780,14 @@
         },
         {
           "rank": 67,
+          "name": "Panama",
+          "abbreviation": "PAN",
+          "rating": 33,
+          "points": 400,
+          "matches": 12
+        },
+        {
+          "rank": 68,
           "name": "Vanuatu",
           "abbreviation": "VAN",
           "rating": 33,
@@ -787,20 +795,12 @@
           "matches": 15
         },
         {
-          "rank": 68,
+          "rank": 69,
           "name": "Eswatini",
           "abbreviation": "ESW",
           "rating": 32,
           "points": 713,
           "matches": 22
-        },
-        {
-          "rank": 69,
-          "name": "Panama",
-          "abbreviation": "PAN",
-          "rating": 30,
-          "points": 329,
-          "matches": 11
         },
         {
           "rank": 70,
@@ -844,14 +844,6 @@
         },
         {
           "rank": 75,
-          "name": "Mexico",
-          "abbreviation": "MEX",
-          "rating": 21,
-          "points": 454,
-          "matches": 22
-        },
-        {
-          "rank": 76,
           "name": "Bhutan",
           "abbreviation": "BHU",
           "rating": 20,
@@ -859,12 +851,20 @@
           "matches": 26
         },
         {
-          "rank": 77,
+          "rank": 76,
           "name": "Belize",
           "abbreviation": "BIZ",
           "rating": 20,
           "points": 139,
           "matches": 7
+        },
+        {
+          "rank": 77,
+          "name": "Mexico",
+          "abbreviation": "MEX",
+          "rating": 19,
+          "points": 434,
+          "matches": 23
         },
         {
           "rank": 78,
@@ -932,6 +932,14 @@
         },
         {
           "rank": 86,
+          "name": "Brazil",
+          "abbreviation": "BRA",
+          "rating": 7,
+          "points": 122,
+          "matches": 18
+        },
+        {
+          "rank": 87,
           "name": "Seychelles",
           "abbreviation": "SEY",
           "rating": 7,
@@ -939,7 +947,7 @@
           "matches": 7
         },
         {
-          "rank": 87,
+          "rank": 88,
           "name": "ISR",
           "abbreviation": "ISR",
           "rating": 6,
@@ -947,20 +955,12 @@
           "matches": 7
         },
         {
-          "rank": 88,
+          "rank": 89,
           "name": "Lesotho",
           "abbreviation": "LES",
           "rating": 5,
           "points": 85,
           "matches": 16
-        },
-        {
-          "rank": 89,
-          "name": "Brazil",
-          "abbreviation": "BRA",
-          "rating": 4,
-          "points": 72,
-          "matches": 17
         },
         {
           "rank": 90,
@@ -10381,7 +10381,7 @@
         "allrounder": "2026-08-04"
       },
       "t20": {
-        "team": "2026-08-01",
+        "team": "2026-08-06",
         "bat": "2026-08-04",
         "bowl": "2026-08-04",
         "allrounder": "2026-08-04"
