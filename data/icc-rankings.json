@@ -1,5 +1,5 @@
 {
-  "fetchedAt": "2026-08-07T01:03:03.681Z",
+  "fetchedAt": "2026-08-07T21:56:59.907Z",
   "source": "icc-sportz.io",
   "sourceUrl": "https://www.icc-cricket.com/rankings",
   "men": {
@@ -149,8 +149,8 @@
           "name": "Afghanistan",
           "abbreviation": "AFG",
           "rating": 90,
-          "points": 2154,
-          "matches": 24
+          "points": 2258,
+          "matches": 25
         },
         {
           "rank": 9,
@@ -180,9 +180,9 @@
           "rank": 12,
           "name": "Ireland",
           "abbreviation": "IRE",
-          "rating": 54,
-          "points": 653,
-          "matches": 12
+          "rating": 53,
+          "points": 693,
+          "matches": 13
         },
         {
           "rank": 13,
@@ -196,9 +196,9 @@
           "rank": 14,
           "name": "Scotland",
           "abbreviation": "SCO",
-          "rating": 43,
-          "points": 1071,
-          "matches": 25
+          "rating": 44,
+          "points": 1134,
+          "matches": 26
         },
         {
           "rank": 15,
@@ -244,9 +244,9 @@
           "rank": 20,
           "name": "Canada",
           "abbreviation": "CAN",
-          "rating": 13,
-          "points": 242,
-          "matches": 19
+          "rating": 12,
+          "points": 235,
+          "matches": 20
         }
       ],
       "t20": [
@@ -780,14 +780,6 @@
         },
         {
           "rank": 67,
-          "name": "Panama",
-          "abbreviation": "PAN",
-          "rating": 33,
-          "points": 400,
-          "matches": 12
-        },
-        {
-          "rank": 68,
           "name": "Vanuatu",
           "abbreviation": "VAN",
           "rating": 33,
@@ -795,7 +787,7 @@
           "matches": 15
         },
         {
-          "rank": 69,
+          "rank": 68,
           "name": "Eswatini",
           "abbreviation": "ESW",
           "rating": 32,
@@ -803,7 +795,7 @@
           "matches": 22
         },
         {
-          "rank": 70,
+          "rank": 69,
           "name": "Zambia",
           "abbreviation": "ZAM",
           "rating": 29,
@@ -811,12 +803,20 @@
           "matches": 10
         },
         {
-          "rank": 71,
+          "rank": 70,
           "name": "Hungary",
           "abbreviation": "HUN",
           "rating": 29,
           "points": 1014,
           "matches": 35
+        },
+        {
+          "rank": 71,
+          "name": "Panama",
+          "abbreviation": "PAN",
+          "rating": 27,
+          "points": 357,
+          "matches": 13
         },
         {
           "rank": 72,
@@ -900,6 +900,14 @@
         },
         {
           "rank": 82,
+          "name": "Brazil",
+          "abbreviation": "BRA",
+          "rating": 11,
+          "points": 205,
+          "matches": 19
+        },
+        {
+          "rank": 83,
           "name": "Maldives",
           "abbreviation": "MDV",
           "rating": 9,
@@ -907,7 +915,7 @@
           "matches": 13
         },
         {
-          "rank": 83,
+          "rank": 84,
           "name": "Bulgaria",
           "abbreviation": "BUL",
           "rating": 8,
@@ -915,7 +923,7 @@
           "matches": 20
         },
         {
-          "rank": 84,
+          "rank": 85,
           "name": "Suriname",
           "abbreviation": "SUR",
           "rating": 8,
@@ -923,20 +931,12 @@
           "matches": 10
         },
         {
-          "rank": 85,
+          "rank": 86,
           "name": "Croatia",
           "abbreviation": "CRO",
           "rating": 7,
           "points": 169,
           "matches": 24
-        },
-        {
-          "rank": 86,
-          "name": "Brazil",
-          "abbreviation": "BRA",
-          "rating": 7,
-          "points": 122,
-          "matches": 18
         },
         {
           "rank": 87,
@@ -10375,13 +10375,13 @@
         "allrounder": "2026-07-28"
       },
       "odi": {
-        "team": "2026-07-31",
+        "team": "2026-08-07",
         "bat": "2026-08-04",
         "bowl": "2026-08-04",
         "allrounder": "2026-08-04"
       },
       "t20": {
-        "team": "2026-08-06",
+        "team": "2026-08-07",
         "bat": "2026-08-04",
         "bowl": "2026-08-04",
         "allrounder": "2026-08-04"
