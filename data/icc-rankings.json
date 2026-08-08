@@ -1,5 +1,5 @@
 {
-  "fetchedAt": "2026-08-07T21:56:59.907Z",
+  "fetchedAt": "2026-08-08T21:47:22.508Z",
   "source": "icc-sportz.io",
   "sourceUrl": "https://www.icc-cricket.com/rankings",
   "men": {
@@ -796,6 +796,14 @@
         },
         {
           "rank": 69,
+          "name": "Panama",
+          "abbreviation": "PAN",
+          "rating": 29,
+          "points": 407,
+          "matches": 14
+        },
+        {
+          "rank": 70,
           "name": "Zambia",
           "abbreviation": "ZAM",
           "rating": 29,
@@ -803,20 +811,12 @@
           "matches": 10
         },
         {
-          "rank": 70,
+          "rank": 71,
           "name": "Hungary",
           "abbreviation": "HUN",
           "rating": 29,
           "points": 1014,
           "matches": 35
-        },
-        {
-          "rank": 71,
-          "name": "Panama",
-          "abbreviation": "PAN",
-          "rating": 27,
-          "points": 357,
-          "matches": 13
         },
         {
           "rank": 72,
@@ -860,14 +860,6 @@
         },
         {
           "rank": 77,
-          "name": "Mexico",
-          "abbreviation": "MEX",
-          "rating": 19,
-          "points": 434,
-          "matches": 23
-        },
-        {
-          "rank": 78,
           "name": "Korea",
           "abbreviation": "KOR",
           "rating": 17,
@@ -875,12 +867,20 @@
           "matches": 17
         },
         {
-          "rank": 79,
+          "rank": 78,
           "name": "Gibraltar",
           "abbreviation": "GIB",
           "rating": 16,
           "points": 412,
           "matches": 25
+        },
+        {
+          "rank": 79,
+          "name": "Mexico",
+          "abbreviation": "MEX",
+          "rating": 16,
+          "points": 395,
+          "matches": 24
         },
         {
           "rank": 80,
@@ -892,19 +892,19 @@
         },
         {
           "rank": 81,
+          "name": "Brazil",
+          "abbreviation": "BRA",
+          "rating": 14,
+          "points": 274,
+          "matches": 20
+        },
+        {
+          "rank": 82,
           "name": "Sierra Leone",
           "abbreviation": "SRL",
           "rating": 11,
           "points": 295,
           "matches": 27
-        },
-        {
-          "rank": 82,
-          "name": "Brazil",
-          "abbreviation": "BRA",
-          "rating": 11,
-          "points": 205,
-          "matches": 19
         },
         {
           "rank": 83,
@@ -10381,7 +10381,7 @@
         "allrounder": "2026-08-04"
       },
       "t20": {
-        "team": "2026-08-07",
+        "team": "2026-08-08",
         "bat": "2026-08-04",
         "bowl": "2026-08-04",
         "allrounder": "2026-08-04"
