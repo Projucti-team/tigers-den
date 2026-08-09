@@ -1,5 +1,5 @@
 {
-  "fetchedAt": "2026-08-08T21:47:22.508Z",
+  "fetchedAt": "2026-08-09T21:49:25.028Z",
   "source": "icc-sportz.io",
   "sourceUrl": "https://www.icc-cricket.com/rankings",
   "men": {
@@ -186,19 +186,19 @@
         },
         {
           "rank": 13,
+          "name": "Scotland",
+          "abbreviation": "SCO",
+          "rating": 44,
+          "points": 1200,
+          "matches": 27
+        },
+        {
+          "rank": 14,
           "name": "Netherlands",
           "abbreviation": "NED",
           "rating": 44,
           "points": 1309,
           "matches": 30
-        },
-        {
-          "rank": 14,
-          "name": "Scotland",
-          "abbreviation": "SCO",
-          "rating": 44,
-          "points": 1134,
-          "matches": 26
         },
         {
           "rank": 15,
@@ -236,9 +236,9 @@
           "rank": 19,
           "name": "United Arab Emirates",
           "abbreviation": "UAE",
-          "rating": 16,
-          "points": 357,
-          "matches": 23
+          "rating": 15,
+          "points": 351,
+          "matches": 24
         },
         {
           "rank": 20,
@@ -860,6 +860,14 @@
         },
         {
           "rank": 77,
+          "name": "Mexico",
+          "abbreviation": "MEX",
+          "rating": 18,
+          "points": 445,
+          "matches": 25
+        },
+        {
+          "rank": 78,
           "name": "Korea",
           "abbreviation": "KOR",
           "rating": 17,
@@ -867,20 +875,12 @@
           "matches": 17
         },
         {
-          "rank": 78,
+          "rank": 79,
           "name": "Gibraltar",
           "abbreviation": "GIB",
           "rating": 16,
           "points": 412,
           "matches": 25
-        },
-        {
-          "rank": 79,
-          "name": "Mexico",
-          "abbreviation": "MEX",
-          "rating": 16,
-          "points": 395,
-          "matches": 24
         },
         {
           "rank": 80,
@@ -10375,7 +10375,7 @@
         "allrounder": "2026-07-28"
       },
       "odi": {
-        "team": "2026-08-07",
+        "team": "2026-08-10",
         "bat": "2026-08-04",
         "bowl": "2026-08-04",
         "allrounder": "2026-08-04"
