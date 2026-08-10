@@ -1,5 +1,5 @@
 {
-  "fetchedAt": "2026-08-09T21:49:25.028Z",
+  "fetchedAt": "2026-08-10T22:00:04.444Z",
   "source": "icc-sportz.io",
   "sourceUrl": "https://www.icc-cricket.com/rankings",
   "men": {
@@ -148,9 +148,9 @@
           "rank": 8,
           "name": "Afghanistan",
           "abbreviation": "AFG",
-          "rating": 90,
-          "points": 2258,
-          "matches": 25
+          "rating": 91,
+          "points": 2361,
+          "matches": 26
         },
         {
           "rank": 9,
@@ -180,9 +180,9 @@
           "rank": 12,
           "name": "Ireland",
           "abbreviation": "IRE",
-          "rating": 53,
-          "points": 693,
-          "matches": 13
+          "rating": 52,
+          "points": 733,
+          "matches": 14
         },
         {
           "rank": 13,
@@ -796,14 +796,6 @@
         },
         {
           "rank": 69,
-          "name": "Panama",
-          "abbreviation": "PAN",
-          "rating": 29,
-          "points": 407,
-          "matches": 14
-        },
-        {
-          "rank": 70,
           "name": "Zambia",
           "abbreviation": "ZAM",
           "rating": 29,
@@ -811,12 +803,20 @@
           "matches": 10
         },
         {
-          "rank": 71,
+          "rank": 70,
           "name": "Hungary",
           "abbreviation": "HUN",
           "rating": 29,
           "points": 1014,
           "matches": 35
+        },
+        {
+          "rank": 71,
+          "name": "Panama",
+          "abbreviation": "PAN",
+          "rating": 25,
+          "points": 371,
+          "matches": 15
         },
         {
           "rank": 72,
@@ -876,6 +876,14 @@
         },
         {
           "rank": 79,
+          "name": "Brazil",
+          "abbreviation": "BRA",
+          "rating": 17,
+          "points": 353,
+          "matches": 21
+        },
+        {
+          "rank": 80,
           "name": "Gibraltar",
           "abbreviation": "GIB",
           "rating": 16,
@@ -883,20 +891,12 @@
           "matches": 25
         },
         {
-          "rank": 80,
+          "rank": 81,
           "name": "Mozambique",
           "abbreviation": "MOZ",
           "rating": 15,
           "points": 250,
           "matches": 17
-        },
-        {
-          "rank": 81,
-          "name": "Brazil",
-          "abbreviation": "BRA",
-          "rating": 14,
-          "points": 274,
-          "matches": 20
         },
         {
           "rank": 82,
@@ -10381,7 +10381,7 @@
         "allrounder": "2026-08-04"
       },
       "t20": {
-        "team": "2026-08-08",
+        "team": "2026-08-10",
         "bat": "2026-08-04",
         "bowl": "2026-08-04",
         "allrounder": "2026-08-04"
@@ -10599,17 +10599,17 @@
           "rank": 12,
           "name": "Thailand",
           "abbreviation": "THA-W",
-          "rating": 154,
-          "points": 9082,
-          "matches": 59
+          "rating": 153,
+          "points": 9173,
+          "matches": 60
         },
         {
           "rank": 13,
           "name": "Papua New Guinea",
           "abbreviation": "PNG-W",
-          "rating": 141,
-          "points": 4235,
-          "matches": 30
+          "rating": 143,
+          "points": 4439,
+          "matches": 31
         },
         {
           "rank": 14,
@@ -17361,7 +17361,7 @@
         "allrounder": "2026-08-03"
       },
       "t20": {
-        "team": "2026-08-04",
+        "team": "2026-08-10",
         "bat": "2026-08-03",
         "bowl": "2026-08-03",
         "allrounder": "2026-08-03"
