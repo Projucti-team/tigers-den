@@ -2,6 +2,7 @@ import { isBangladeshTeam } from "@/lib/cricket/constants";
 import { formatShortDismissal, parseEspnDismissalText } from "@/lib/cricket/dismissal-format";
 import {
   cricinfoSeriesIdFromEventRef,
+  fetchCricinfoMatchFormat,
   fetchCricinfoScorecardExtras,
 } from "@/lib/cricket/providers/cricinfo-match-extras";
 import type { LiveBall, LiveMatchFeed, LiveOverBalls, Scorecard, ScorecardPlayer } from "@/lib/cricket/types";
@@ -464,8 +465,13 @@ export function isMultiInningsMatch(
   currentPeriod: number,
   battingCards: Matchcard[],
   note?: string,
+  /** Cricinfo's own match.format field — authoritative, unlike the free-text note, which for a
+   * live Test often doesn't contain the word "test" at all (e.g. "Bangladesh need 96 runs"). */
+  format?: string | null,
 ): boolean {
-  if (/test|first.class|\bfc\b|multi-day/i.test(note ?? "")) return currentPeriod > 1;
+  if (/test|first.class|\bfc\b|multi-day/i.test(`${format ?? ""} ${note ?? ""}`)) {
+    return currentPeriod > 1;
+  }
   if (currentPeriod > 2) return true;
   const periods = new Set(battingCards.map((c) => Number(c.inningsNumber ?? 1)));
   return periods.size > 1;
@@ -826,10 +832,12 @@ export async function fetchEspnMatchCentre(
   ]);
 
   const seriesId = cricinfoSeriesIdFromEventRef(event?.$ref);
-  const extras =
-    seriesId != null
-      ? await fetchCricinfoScorecardExtras(seriesId, eventId).catch(() => null)
-      : null;
+  const [extras, cricinfoFormat] = seriesId != null
+    ? await Promise.all([
+        fetchCricinfoScorecardExtras(seriesId, eventId).catch(() => null),
+        fetchCricinfoMatchFormat(seriesId, eventId).catch(() => null),
+      ])
+    : [null, null];
 
   if (!competition && !matchcards?.items?.length) return null;
 
@@ -866,7 +874,7 @@ export async function fetchEspnMatchCentre(
   }
 
   const competitionNote = competition?.note ?? competition?.shortDescription ?? "";
-  const innings = isMultiInningsMatch(currentPeriod, battingCards, competitionNote)
+  const innings = isMultiInningsMatch(currentPeriod, battingCards, competitionNote, cricinfoFormat)
     ? await buildMultiInningsScorecard({
         cards,
         compBase,

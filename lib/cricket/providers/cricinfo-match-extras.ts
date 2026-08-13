@@ -71,6 +71,11 @@ type CricinfoMatchPage = {
 };
 
 const extrasCache = new Map<string, { at: number; data: ScorecardExtras | null }>();
+// Raw page payload, shared by fetchCricinfoScorecardExtras and fetchCricinfoMatchFormat so a
+// live match (which usually has no awards/milestones yet, so extras comes back null) doesn't
+// lose its match.format signal along with the rest of the discarded payload. Keyed promise
+// (not resolved value) so two callers racing on a cold cache dedupe to one HTTP request.
+const pageCache = new Map<string, { at: number; promise: Promise<CricinfoMatchPage | null> }>();
 
 const CLASS_LABEL: Record<number, string> = {
   1: "Test",
@@ -234,6 +239,45 @@ function extractCricinfoPagePayload(raw: unknown): CricinfoMatchPage | null {
   return null;
 }
 
+async function fetchCricinfoMatchPage(
+  seriesId: string,
+  matchId: string,
+): Promise<CricinfoMatchPage | null> {
+  const cacheKey = `${seriesId}:${matchId}`;
+  const cached = pageCache.get(cacheKey);
+  if (cached && Date.now() - cached.at < EXTRAS_CACHE_MS) {
+    return cached.promise;
+  }
+
+  const url = `${CRICINFO_ORIGIN}/series/series-${seriesId}/match-${matchId}/live-cricket-score`;
+
+  const promise = (async (): Promise<CricinfoMatchPage | null> => {
+    try {
+      const res = await fetch(url, {
+        headers: {
+          "User-Agent": ESPN_BROWSER_USER_AGENT,
+          Accept: "text/html,application/xhtml+xml",
+          Referer: `${CRICINFO_ORIGIN}/`,
+        },
+        signal: AbortSignal.timeout(18_000),
+        cache: "no-store",
+      });
+      if (!res.ok) return null;
+
+      const html = await res.text();
+      const match = html.match(/<script[^>]*type="application\/json"[^>]*>([\s\S]*?)<\/script>/);
+      if (!match) return null;
+
+      return extractCricinfoPagePayload(JSON.parse(match[1]));
+    } catch {
+      return null;
+    }
+  })();
+
+  pageCache.set(cacheKey, { at: Date.now(), promise });
+  return promise;
+}
+
 export async function fetchCricinfoScorecardExtras(
   seriesId: string,
   matchId: string,
@@ -244,50 +288,37 @@ export async function fetchCricinfoScorecardExtras(
     return cached.data;
   }
 
-  const url = `${CRICINFO_ORIGIN}/series/series-${seriesId}/match-${matchId}/live-cricket-score`;
-
-  try {
-    const res = await fetch(url, {
-      headers: {
-        "User-Agent": ESPN_BROWSER_USER_AGENT,
-        Accept: "text/html,application/xhtml+xml",
-        Referer: `${CRICINFO_ORIGIN}/`,
-      },
-      signal: AbortSignal.timeout(18_000),
-      cache: "no-store",
-    });
-    if (!res.ok) {
-      extrasCache.set(cacheKey, { at: Date.now(), data: null });
-      return null;
-    }
-
-    const html = await res.text();
-    const match = html.match(/<script[^>]*type="application\/json"[^>]*>([\s\S]*?)<\/script>/);
-    if (!match) {
-      extrasCache.set(cacheKey, { at: Date.now(), data: null });
-      return null;
-    }
-
-    const parsed = extractCricinfoPagePayload(JSON.parse(match[1]));
-    if (!parsed) {
-      extrasCache.set(cacheKey, { at: Date.now(), data: null });
-      return null;
-    }
-
-    const extras = parseCricinfoMatchPage(parsed);
-    const hasContent =
-      extras.manOfTheMatch ||
-      extras.mvp ||
-      extras.topBangladeshPlayer ||
-      extras.records.length > 0;
-
-    const data = hasContent ? extras : null;
-    extrasCache.set(cacheKey, { at: Date.now(), data });
-    return data;
-  } catch {
+  const parsed = await fetchCricinfoMatchPage(seriesId, matchId);
+  if (!parsed) {
     extrasCache.set(cacheKey, { at: Date.now(), data: null });
     return null;
   }
+
+  const extras = parseCricinfoMatchPage(parsed);
+  const hasContent =
+    extras.manOfTheMatch ||
+    extras.mvp ||
+    extras.topBangladeshPlayer ||
+    extras.records.length > 0;
+
+  const data = hasContent ? extras : null;
+  extrasCache.set(cacheKey, { at: Date.now(), data });
+  return data;
+}
+
+/**
+ * Match format ("Test" / "ODI" / "T20I", as published by Cricinfo) for a live/recent match.
+ * Deliberately independent of fetchCricinfoScorecardExtras, which returns null whenever a match
+ * has no awards or milestones yet — true for most live matches, including every Test still in
+ * progress. Losing that null-gated payload would also lose the format signal the scorecard
+ * builder needs to know a match can have more than 2 innings.
+ */
+export async function fetchCricinfoMatchFormat(
+  seriesId: string,
+  matchId: string,
+): Promise<string | null> {
+  const parsed = await fetchCricinfoMatchPage(seriesId, matchId);
+  return parsed?.match?.format ?? null;
 }
 
 /** Cricinfo series id embedded in ESPN event refs (e.g. 1532475). */

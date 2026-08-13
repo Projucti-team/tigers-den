@@ -103,7 +103,13 @@
     "1483859": {
       "tourName": "ICC Women's T20 World Cup, 2026",
       "cricinfoSeriesId": 1483859,
-      "espnLeagueId": 1483859,
+      "seasonYear": 2026,
+      "useSeasonEvents": true,
+      "fixtures": []
+    },
+    "1502138": {
+      "tourName": "ICC Men's T20 World Cup, 2026",
+      "cricinfoSeriesId": 1502138,
       "seasonYear": 2026,
       "useSeasonEvents": true,
       "fixtures": []

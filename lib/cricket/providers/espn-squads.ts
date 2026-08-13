@@ -556,7 +556,7 @@ function tourNamesMatch(a: string, b: string): boolean {
  * to scanning the leagues list (expensive — one request per league — so only worth doing for
  * a targeted lookup like this or an admin-pinned override, not the per-sync discovery scan).
  */
-async function resolveEspnLeagueByCricinfoId(cricinfoSeriesId: number): Promise<number | null> {
+export async function resolveEspnLeagueByCricinfoId(cricinfoSeriesId: number): Promise<number | null> {
   const direct = await fetchCoreJson<CoreLeague>(`${CORE_BASE}/leagues/${cricinfoSeriesId}`);
   if (direct?.id && Number(direct.mappings?.cricinfo) === cricinfoSeriesId) {
     return Number(direct.id);

@@ -1,4 +1,4 @@
-import { readFile } from "node:fs/promises";
+import { readFile, writeFile } from "node:fs/promises";
 import path from "node:path";
 
 import { isBangladeshTeam } from "@/lib/cricket/constants";
@@ -11,6 +11,7 @@ import {
   fetchEventTimestamp,
   fetchLeagueEventRefs,
 } from "@/lib/cricket/providers/espn-league-events";
+import { resolveEspnLeagueByCricinfoId } from "@/lib/cricket/providers/espn-squads";
 import { teamShortCode } from "@/lib/cricket/services/marquee-format";
 import type { MatchHighlight } from "@/lib/cricket/services/match-highlight";
 import { readEspnTourSquads } from "@/lib/cricket/squads/store";
@@ -107,6 +108,98 @@ function eventIdFromRef(ref: string): string | null {
   return ref.split("/events/")[1]?.split("/")[0] ?? null;
 }
 
+// Auto-resolving a missing/unresolved espnLeagueId can fall back to scanning ESPN's full
+// leagues list (up to ~1500 requests — see resolveEspnLeagueByCricinfoId). trackedLeagues() is
+// on live-match/marquee hot paths, so cap resolution attempts per series regardless of how many
+// times it's called; a successful resolve gets persisted to disk so it never retries again.
+const RESOLVE_COOLDOWN_MS = 60 * 60 * 1000;
+const resolveAttemptedAt = new Map<number, number>();
+
+type FixtureTimesFile = {
+  fetchedAt?: string;
+  series?: Record<
+    string,
+    {
+      tourName?: string;
+      espnLeagueId?: number;
+      cricinfoSeriesId?: number;
+      seasonYear?: number;
+      useSeasonEvents?: boolean;
+      fixtures?: unknown;
+    }
+  >;
+};
+
+/**
+ * Leagues from data/espn-fixture-times.json. An entry with no espnLeagueId, or with
+ * espnLeagueId seeded equal to cricinfoSeriesId (the "unresolved" sentinel — same convention
+ * normalizeLeagueRef uses for admin-pinned overrides in espn-squads.ts), gets auto-resolved
+ * against ESPN's Core API and the result persisted back to the file so future reads are direct.
+ * This lets a tournament (e.g. an ICC World Cup) be tracked by cricinfoSeriesId alone, without
+ * anyone having to manually look up ESPN's internal league id.
+ */
+async function fixtureTimesLeagues(): Promise<LeagueRef[]> {
+  let raw: string;
+  try {
+    raw = await readFile(FIXTURE_TIMES_PATH, "utf8");
+  } catch {
+    return [];
+  }
+
+  let data: FixtureTimesFile;
+  try {
+    data = JSON.parse(raw) as FixtureTimesFile;
+  } catch {
+    return [];
+  }
+
+  const refs: LeagueRef[] = [];
+  let changed = false;
+
+  for (const series of Object.values(data.series ?? {})) {
+    const cricinfoSeriesId = series.cricinfoSeriesId;
+    let espnLeagueId = series.espnLeagueId;
+    const unresolved = !espnLeagueId || espnLeagueId === cricinfoSeriesId;
+
+    if (unresolved && cricinfoSeriesId) {
+      const lastAttempt = resolveAttemptedAt.get(cricinfoSeriesId) ?? 0;
+      if (Date.now() - lastAttempt > RESOLVE_COOLDOWN_MS) {
+        resolveAttemptedAt.set(cricinfoSeriesId, Date.now());
+        const resolved = await resolveEspnLeagueByCricinfoId(cricinfoSeriesId).catch(() => null);
+        if (resolved && resolved !== espnLeagueId) {
+          espnLeagueId = resolved;
+          series.espnLeagueId = resolved;
+          changed = true;
+        }
+      }
+      // Not yet resolved (or resolution failed/cooling down) — fall back to the sentinel so
+      // the series is still attempted rather than silently dropped from every scan.
+      espnLeagueId = espnLeagueId || cricinfoSeriesId;
+    }
+
+    if (!espnLeagueId) continue;
+    refs.push({
+      espnLeagueId,
+      cricinfoSeriesId,
+      seasonYear: series.seasonYear,
+      useSeasonEvents: series.useSeasonEvents !== false,
+      tourName: series.tourName,
+      kind: "international",
+    });
+  }
+
+  if (changed) {
+    try {
+      await writeFile(FIXTURE_TIMES_PATH, `${JSON.stringify(data, null, 2)}\n`, "utf8");
+    } catch {
+      // Best-effort persistence (e.g. read-only filesystem) — resolution still succeeded
+      // in-memory for this run.
+    }
+  }
+
+  return refs;
+}
+
 async function trackedLeagues(): Promise<LeagueRef[]> {
   const byId = new Map<number, LeagueRef>();
 
@@ -122,34 +215,8 @@ async function trackedLeagues(): Promise<LeagueRef[]> {
     }
   }
 
-  try {
-    const raw = await readFile(FIXTURE_TIMES_PATH, "utf8");
-    const data = JSON.parse(raw) as {
-      series?: Record<
-        string,
-        {
-          tourName?: string;
-          espnLeagueId?: number;
-          cricinfoSeriesId?: number;
-          seasonYear?: number;
-          useSeasonEvents?: boolean;
-        }
-      >;
-    };
-    for (const series of Object.values(data.series ?? {})) {
-      if (series.espnLeagueId) {
-        byId.set(series.espnLeagueId, {
-          espnLeagueId: series.espnLeagueId,
-          cricinfoSeriesId: series.cricinfoSeriesId,
-          seasonYear: series.seasonYear,
-          useSeasonEvents: series.useSeasonEvents !== false,
-          tourName: series.tourName,
-          kind: "international",
-        });
-      }
-    }
-  } catch {
-    // optional file
+  for (const ref of await fixtureTimesLeagues()) {
+    byId.set(ref.espnLeagueId, ref);
   }
 
   const playerEntries = await getTrackedPlayerLeagueEntries();
