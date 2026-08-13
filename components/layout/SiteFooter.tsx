@@ -27,18 +27,29 @@ export function SiteFooter() {
             We are not just another supporters club — we are Bangladesh&apos;s fan army, bringing
             passionate, fun-loving fans together at home and abroad for over a generation of roars.
           </p>
-          <div className="mt-4 flex flex-wrap gap-3 text-sm font-bold">
-            {socialLinks.map((link) => (
-              <a
-                key={link.label}
-                href={link.href}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="hover:text-amber"
-              >
-                {link.label}
-              </a>
-            ))}
+          <div className="mt-4 flex flex-wrap items-center gap-3 text-sm font-bold">
+            {socialLinks.map((link) =>
+              link.comingSoon ? (
+                <span
+                  key={link.label}
+                  className="inline-flex items-center gap-1.5 text-white/40"
+                  aria-disabled="true"
+                >
+                  {link.label}
+                  <ComingSoonBadge compact />
+                </span>
+              ) : (
+                <a
+                  key={link.label}
+                  href={link.href}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="hover:text-amber"
+                >
+                  {link.label}
+                </a>
+              ),
+            )}
           </div>
         </div>
 

@@ -2,6 +2,7 @@ import Link from "next/link";
 
 import { PageHero } from "@/components/pages/PageHero";
 import { aboutCopy, socialLinks } from "@/lib/site-content";
+import { ComingSoonBadge } from "@/components/ui/ComingSoonBadge";
 
 export const metadata = {
   title: "About — The Tigers' Den",
@@ -23,19 +24,29 @@ export default function AboutPage() {
           <ul className="mt-4 flex flex-wrap gap-3">
             {socialLinks.map((link) => (
               <li key={link.label}>
-                <a
-                  href={link.href}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="fan-btn-green rounded px-4 py-2 text-xs"
-                >
-                  {link.label}
-                </a>
+                {link.comingSoon ? (
+                  <span
+                    className="inline-flex cursor-default items-center gap-1.5 rounded border-2 border-charcoal/15 px-4 py-2 text-xs font-bold uppercase tracking-wide text-charcoal/40"
+                    aria-disabled="true"
+                  >
+                    {link.label}
+                    <ComingSoonBadge compact />
+                  </span>
+                ) : (
+                  <a
+                    href={link.href}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="fan-btn-green rounded px-4 py-2 text-xs"
+                  >
+                    {link.label}
+                  </a>
+                )}
               </li>
             ))}
           </ul>
           <p className="mt-4 text-xs text-charcoal/55">
-            Replace these links with your official channels when ready.
+            More channels launching soon — follow us on Facebook for now.
           </p>
         </section>
 

@@ -40,15 +40,31 @@ export function TopBar() {
             Contact Us
           </Link>
           <div className="ml-2 flex gap-2 border-l border-white/30 pl-3">
-            <a href="#" className="hover:text-amber" aria-label="X / Twitter">
+            <span
+              className="cursor-default text-white/30"
+              aria-label="X / Twitter — coming soon"
+              aria-disabled="true"
+              title="Coming soon"
+            >
               𝕏
-            </a>
-            <a href="#" className="hover:text-amber" aria-label="Facebook">
+            </span>
+            <a
+              href="https://www.facebook.com/profile.php?id=61590375044835"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="hover:text-amber"
+              aria-label="Facebook"
+            >
               f
             </a>
-            <a href="#" className="hover:text-amber" aria-label="Instagram">
+            <span
+              className="cursor-default text-white/30"
+              aria-label="Instagram — coming soon"
+              aria-disabled="true"
+              title="Coming soon"
+            >
               ◎
-            </a>
+            </span>
           </div>
         </div>
       </div>

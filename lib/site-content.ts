@@ -149,10 +149,14 @@ export function buildMainNav(tourChildren: NavLink[]): NavItem[] {
 }
 
 export const socialLinks = [
-  { label: "Facebook", href: "https://facebook.com" },
-  { label: "X (Twitter)", href: "https://x.com" },
-  { label: "Instagram", href: "https://instagram.com" },
-  { label: "YouTube", href: "https://youtube.com" },
+  {
+    label: "Facebook",
+    href: "https://www.facebook.com/profile.php?id=61590375044835",
+    comingSoon: false,
+  },
+  { label: "X (Twitter)", href: "https://x.com", comingSoon: true },
+  { label: "Instagram", href: "https://instagram.com", comingSoon: true },
+  { label: "YouTube", href: "https://youtube.com", comingSoon: true },
 ] as const;
 
 export const aboutCopy = {

@@ -11,6 +11,15 @@ interface FeedbackFormData {
   name: string;
 }
 
+const MAX_IMAGE_BYTES = 5_000_000;
+const MAX_IMAGE_LABEL = "5MB";
+
+const CATEGORY_OPTIONS: { value: FeedbackFormData["category"]; label: string; emoji: string }[] = [
+  { value: "bug", label: "Bug Report", emoji: "🐛" },
+  { value: "feature", label: "Feature Request", emoji: "✨" },
+  { value: "other", label: "Other Feedback", emoji: "💬" },
+];
+
 export function FeedbackModal({ onClose }: { onClose: () => void }) {
   const { data: session } = useSession();
   const [formData, setFormData] = useState<FeedbackFormData>({
@@ -20,12 +29,16 @@ export function FeedbackModal({ onClose }: { onClose: () => void }) {
     email: session?.user?.email || "",
     name: session?.user?.name || "",
   });
+  const [image, setImage] = useState<File | null>(null);
+  const [imagePreviewUrl, setImagePreviewUrl] = useState<string | null>(null);
+  const [imageError, setImageError] = useState<string | null>(null);
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [submitStatus, setSubmitStatus] = useState<{
     type: "success" | "error";
     message: string;
   } | null>(null);
   const modalRef = useRef<HTMLDivElement>(null);
+  const fileInputRef = useRef<HTMLInputElement>(null);
 
   const pageUrl = typeof window !== "undefined" ? window.location.href : "";
 
@@ -36,6 +49,58 @@ export function FeedbackModal({ onClose }: { onClose: () => void }) {
     window.addEventListener("keydown", handleEscape);
     return () => window.removeEventListener("keydown", handleEscape);
   }, [onClose]);
+
+  // Revoke the object URL when it's replaced or the modal unmounts, so we don't leak memory.
+  useEffect(() => {
+    return () => {
+      if (imagePreviewUrl) URL.revokeObjectURL(imagePreviewUrl);
+    };
+  }, [imagePreviewUrl]);
+
+  const handleImageChange = useCallback(
+    (e: React.ChangeEvent<HTMLInputElement>) => {
+      const file = e.target.files?.[0] ?? null;
+      setImageError(null);
+
+      if (!file) {
+        setImage(null);
+        setImagePreviewUrl((prev) => {
+          if (prev) URL.revokeObjectURL(prev);
+          return null;
+        });
+        return;
+      }
+
+      if (!file.type.startsWith("image/")) {
+        setImageError("Please choose an image file.");
+        e.target.value = "";
+        return;
+      }
+
+      if (file.size > MAX_IMAGE_BYTES) {
+        setImageError(`That image is too large — please attach a file under ${MAX_IMAGE_LABEL}.`);
+        e.target.value = "";
+        return;
+      }
+
+      setImage(file);
+      setImagePreviewUrl((prev) => {
+        if (prev) URL.revokeObjectURL(prev);
+        return URL.createObjectURL(file);
+      });
+    },
+    [],
+  );
+
+  const clearImage = useCallback(() => {
+    setImage(null);
+    setImageError(null);
+    setImagePreviewUrl((prev) => {
+      if (prev) URL.revokeObjectURL(prev);
+      return null;
+    });
+    if (fileInputRef.current) fileInputRef.current.value = "";
+  }, []);
 
   const handleSubmit = useCallback(
     async (e: React.FormEvent) => {
@@ -60,18 +125,19 @@ export function FeedbackModal({ onClose }: { onClose: () => void }) {
       setSubmitStatus(null);
 
       try {
+        const body = new FormData();
+        body.set("title", formData.title);
+        body.set("description", formData.description);
+        body.set("category", formData.category);
+        body.set("email", formData.email);
+        body.set("name", formData.name);
+        body.set("pageUrl", pageUrl);
+        if (session?.user?.id) body.set("userId", session.user.id);
+        if (image) body.set("image", image);
+
         const response = await fetch("/api/feedback", {
           method: "POST",
-          headers: { "Content-Type": "application/json" },
-          body: JSON.stringify({
-            title: formData.title,
-            description: formData.description,
-            category: formData.category,
-            email: formData.email,
-            name: formData.name,
-            pageUrl,
-            ...(session?.user?.id && { userId: session.user.id }),
-          }),
+          body,
         });
 
         if (!response.ok) {
@@ -94,7 +160,7 @@ export function FeedbackModal({ onClose }: { onClose: () => void }) {
         setIsSubmitting(false);
       }
     },
-    [formData, pageUrl, session?.user?.id],
+    [formData, image, pageUrl, session?.user?.id, onClose],
   );
 
   return (
@@ -126,20 +192,30 @@ export function FeedbackModal({ onClose }: { onClose: () => void }) {
             <label className="block text-sm font-medium text-gray-700 mb-2">
               Type
             </label>
-            <select
-              value={formData.category}
-              onChange={(e) =>
-                setFormData((prev) => ({
-                  ...prev,
-                  category: e.target.value as typeof formData.category,
-                }))
-              }
-              className="w-full px-3 py-2 border border-gray-300 rounded-md focus:ring-amber-500 focus:border-amber-500"
-            >
-              <option value="bug">🐛 Bug Report</option>
-              <option value="feature">✨ Feature Request</option>
-              <option value="other">💬 Other Feedback</option>
-            </select>
+            <div className="grid grid-cols-1 gap-2 sm:grid-cols-3" role="radiogroup" aria-label="Feedback type">
+              {CATEGORY_OPTIONS.map((option) => {
+                const isSelected = formData.category === option.value;
+                return (
+                  <button
+                    key={option.value}
+                    type="button"
+                    role="radio"
+                    aria-checked={isSelected}
+                    onClick={() =>
+                      setFormData((prev) => ({ ...prev, category: option.value }))
+                    }
+                    className={`flex items-center justify-center gap-1.5 rounded-md border px-3 py-2 text-sm font-medium transition-colors ${
+                      isSelected
+                        ? "border-amber-600 bg-amber-50 text-amber-800"
+                        : "border-gray-300 text-gray-600 hover:bg-gray-50"
+                    }`}
+                  >
+                    <span aria-hidden>{option.emoji}</span>
+                    <span>{option.label}</span>
+                  </button>
+                );
+              })}
+            </div>
           </div>
 
           {/* Title */}
@@ -181,6 +257,45 @@ export function FeedbackModal({ onClose }: { onClose: () => void }) {
             <p className="text-xs text-gray-500 mt-1">
               {formData.description.length}/5000
             </p>
+          </div>
+
+          {/* Screenshot */}
+          <div>
+            <label className="block text-sm font-medium text-gray-700 mb-2">
+              Screenshot (optional)
+            </label>
+            {imagePreviewUrl ? (
+              <div className="flex items-center gap-3">
+                {/* eslint-disable-next-line @next/next/no-img-element */}
+                <img
+                  src={imagePreviewUrl}
+                  alt="Attached screenshot preview"
+                  className="h-20 w-20 rounded-md border border-gray-300 object-cover"
+                />
+                <div className="flex-1 text-sm text-gray-600">
+                  <p className="truncate font-medium text-gray-800">{image?.name}</p>
+                  <button
+                    type="button"
+                    onClick={clearImage}
+                    className="mt-1 text-xs font-semibold text-crimson hover:underline"
+                  >
+                    Remove
+                  </button>
+                </div>
+              </div>
+            ) : (
+              <input
+                ref={fileInputRef}
+                type="file"
+                accept="image/*"
+                onChange={handleImageChange}
+                className="block w-full text-sm text-gray-600 file:mr-3 file:rounded-md file:border-0 file:bg-amber-600 file:px-3 file:py-2 file:text-sm file:font-semibold file:text-white hover:file:bg-amber-700"
+              />
+            )}
+            <p className="mt-1 text-xs text-gray-500">Attach a screenshot, under {MAX_IMAGE_LABEL}.</p>
+            {imageError ? (
+              <p className="mt-1 text-xs font-semibold text-crimson">{imageError}</p>
+            ) : null}
           </div>
 
           {/* Contact Info */}
