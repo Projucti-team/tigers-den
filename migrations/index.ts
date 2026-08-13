@@ -9,6 +9,7 @@ import * as cricketPlayers from "./20260616_000000_cricket_players";
 import * as legalGlobals from "./20260617_000000_legal_globals";
 import * as trackedPlayerLeagues from "./20260618_000000_tracked_player_leagues";
 import * as tourSyncState from "./20260705_000000_tour_sync_state";
+import * as feedback from "./20260706_000000_feedback";
 import * as tourSeriesOverride from "./20260723_000000_tour_series_override";
 import * as tourSquadStoryUrl from "./20260723_000001_tour_squad_story_url";
 import * as playersPhotoAliases from "./20260724_000000_players_photo_aliases";
@@ -65,6 +66,13 @@ export const migrations: Migration[] = [
     name: "20260705_000000_tour_sync_state",
     up: tourSyncState.up,
     down: tourSyncState.down,
+  },
+  {
+    // Was written but never registered here, so it never actually ran -- the "feedback" table
+    // didn't exist in production despite the migration file existing (see feedback-db.ts).
+    name: "20260706_000000_feedback",
+    up: feedback.up,
+    down: feedback.down,
   },
   {
     name: "20260723_000000_tour_series_override",
