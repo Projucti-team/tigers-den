@@ -172,7 +172,12 @@ export function FeedbackModal({ onClose }: { onClose: () => void }) {
     >
       <div
         ref={modalRef}
-        className="bg-white rounded-lg shadow-lg max-w-2xl w-full max-h-[90vh] overflow-y-auto"
+        // text-gray-900: the page body sets text-white for the site's dark theme, which this
+        // modal's white background would otherwise inherit -- making every input, label, and
+        // heading inside invisible white-on-white unless explicitly overridden. Setting a dark
+        // default here once, rather than on every element, is what actually fixes it for all of
+        // them (title/description inputs, the "Send Feedback" heading, etc.).
+        className="bg-white text-gray-900 rounded-lg shadow-lg max-w-2xl w-full max-h-[90vh] overflow-y-auto"
       >
         {/* Header */}
         <div className="flex items-center justify-between border-b p-6">
