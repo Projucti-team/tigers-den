@@ -454,8 +454,21 @@ export function teamForPeriod(
   const norm = (value: string) => value.toLowerCase().replace(/[^a-z0-9]+/g, "");
   const battingNorm = norm(battingTeam);
   let currentIdx = teams.findIndex(
-    (team) => norm(team) === battingNorm || battingNorm.includes(norm(team)),
+    (team) =>
+      norm(team) === battingNorm ||
+      battingNorm.includes(norm(team)) ||
+      // battingTeam can be an abbreviation ("BAN") that doesn't share a substring with the
+      // full name ("Bangladesh") in the other direction the original check covered.
+      norm(team).includes(battingNorm),
   );
+  if (currentIdx < 0) {
+    // Names didn't line up at all (different abbreviation scheme, whitespace, etc.) — fall
+    // back to Bangladesh-vs-opponent matching, which the codebase already handles reliably
+    // for every naming variant, rather than defaulting to index 0 and risking mislabeling
+    // whichever team happens to be listed first as the currently-batting side.
+    const battingIsBangladesh = isBangladeshTeam(battingTeam);
+    currentIdx = teams.findIndex((team) => isBangladeshTeam(team) === battingIsBangladesh);
+  }
   if (currentIdx < 0) currentIdx = 0;
   const idx = ((currentIdx - (currentPeriod - period)) % 2 + 2) % 2;
   return teams[idx] ?? teams[0];
@@ -477,10 +490,12 @@ export function isMultiInningsMatch(
   return periods.size > 1;
 }
 
-function maxOversFromBowling(bowling: ScorecardPlayer[]): number {
-  return bowling.reduce((max, row) => {
+/** Every over in a completed innings was bowled by exactly one bowler, so the team's total
+ * overs is the sum across the bowling card — not the top individual bowler's own figure. */
+function sumOversFromBowling(bowling: ScorecardPlayer[]): number {
+  return bowling.reduce((total, row) => {
     const overs = Number.parseFloat(String(row.overs ?? 0));
-    return Number.isFinite(overs) ? Math.max(max, overs) : max;
+    return Number.isFinite(overs) ? total + overs : total;
   }, 0);
 }
 
@@ -583,6 +598,10 @@ async function buildMultiInningsScorecard(options: {
   }
 
   const innings: Scorecard["innings"] = [];
+  // Track each team's own innings count as periods are processed in order, so a team batting a
+  // second time (follow-on, or simply the match running its full course) gets "2nd Innings"
+  // instead of an identical "Innings" label indistinguishable from their first.
+  const teamInningsSeen = new Map<string, number>();
 
   for (const period of [...periods].sort((a, b) => a - b)) {
     const batCard = battingCardsForPeriod(options.cards, period);
@@ -611,19 +630,35 @@ async function buildMultiInningsScorecard(options: {
       const aggregated = await aggregateInningsFromDetails(options.compBase, options.leagueId, period);
       batting = aggregated.batting;
       bowling = aggregated.bowling;
-      if (!totals.runs && batting.length) {
-        totals = {
-          runs: batting.reduce((sum, row) => sum + (row.runs ?? 0), 0),
-          wickets: batting.filter(
-            (row) => row.dismissed && !/not out/i.test(row.dismissed ?? ""),
-          ).length,
-          overs: maxOversFromBowling(bowling),
-        };
+      if (!totals.runs) {
+        // Prefer the official per-team score ESPN already gave us (teamSummaries) over
+        // reconstructing a total from the aggregated player list: summing individual batting
+        // runs silently drops byes/leg-byes, and using bowling figures needs the sum of every
+        // bowler's overs, not any single one, to recover the innings' actual over count.
+        const officialTotal = options.teamSummaries.find((s) => s.team === team);
+        totals = officialTotal
+          ? { runs: officialTotal.runs, wickets: officialTotal.wickets, overs: officialTotal.overs }
+          : batting.length
+            ? {
+                runs: batting.reduce((sum, row) => sum + (row.runs ?? 0), 0),
+                wickets: batting.filter(
+                  (row) => row.dismissed && !/not out/i.test(row.dismissed ?? ""),
+                ).length,
+                overs: sumOversFromBowling(bowling),
+              }
+            : totals;
       }
     }
 
+    const teamInningsNumber = (teamInningsSeen.get(team) ?? 0) + 1;
+    teamInningsSeen.set(team, teamInningsNumber);
+
     innings.push({
-      inning: `${team} Innings`,
+      // Always include the ordinal (matches buildLimitedOversInnings's convention below, and
+      // MatchCentreLiveTab's currentInningsLine() strips a trailing "Nth Innings" via regex to
+      // get the bare team name — an unconditional "Team Innings" without a number never matched
+      // that regex, leaving the word "Innings" stuck onto the team name in the live summary).
+      inning: `${team} ${ordinalInnings(teamInningsNumber)} Innings`,
       runs: totals.runs,
       wickets: totals.wickets,
       overs: totals.overs,

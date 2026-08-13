@@ -15,6 +15,20 @@ test("teamForPeriod alternates batting teams across a Test match", () => {
   assert.equal(teamForPeriod(teams, "Middlesex", 4, 1), "Kent");
 });
 
+test("teamForPeriod regression: abbreviated battingTeam doesn't substring-match the full team name", () => {
+  // Reproduces the "AUS's completed innings mislabeled BANGLADESH" bug: when battingTeam is a
+  // short form ("BAN") that isn't a substring of the full name in `teams` ("Bangladesh") in
+  // either direction under the old check, currentIdx fell back to 0 and the alternation could
+  // point at the wrong team entirely, independent of which team is actually listed first.
+  const teams = ["Australia", "Bangladesh"];
+  assert.equal(teamForPeriod(teams, "BAN", 2, 1), "Australia");
+  assert.equal(teamForPeriod(teams, "BAN", 2, 2), "Bangladesh");
+
+  const teamsReversed = ["Bangladesh", "Australia"];
+  assert.equal(teamForPeriod(teamsReversed, "BAN", 2, 1), "Australia");
+  assert.equal(teamForPeriod(teamsReversed, "BAN", 2, 2), "Bangladesh");
+});
+
 test("isMultiInningsMatch detects Tests and four-innings matches", () => {
   assert.equal(isMultiInningsMatch(4, [], "Lunch · Middlesex require another 179 runs"), true);
   assert.equal(isMultiInningsMatch(2, [], "Bangladesh won by 5 wickets"), false);
