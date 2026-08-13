@@ -3,8 +3,22 @@ import test from "node:test";
 
 import {
   isMultiInningsMatch,
+  parseTeamScoreDisplay,
   teamForPeriod,
 } from "../../lib/cricket/providers/espn-match-centre.ts";
+
+test("parseTeamScoreDisplay regression: all-out innings dropped a team from teamSummaries entirely", () => {
+  // Root cause of "both innings blocks show Bangladesh": the old regex required a literal
+  // "runs/wickets" format and returned no match at all for a completed all-out innings, which
+  // ESPN can display without a wicket count ("198 (53 ov)"). That silently dropped the team
+  // from teamSummaries, leaving only one team in the list — so every by-team lookup elsewhere
+  // (teamForPeriod, the totals-fix's teamSummaries.find) collapsed onto that single survivor
+  // regardless of which period was actually being resolved.
+  assert.deepEqual(parseTeamScoreDisplay("198 (53 ov)"), { runs: 198, wickets: 10, overs: 53 });
+  assert.deepEqual(parseTeamScoreDisplay("198/10 (53 ov)"), { runs: 198, wickets: 10, overs: 53 });
+  assert.deepEqual(parseTeamScoreDisplay("96/1 (24 ov)"), { runs: 96, wickets: 1, overs: 24 });
+  assert.equal(parseTeamScoreDisplay(""), null);
+});
 
 test("teamForPeriod alternates batting teams across a Test match", () => {
   const teams = ["Kent", "Middlesex"];

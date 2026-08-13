@@ -407,6 +407,26 @@ function markStriker(atCrease: ScorecardPlayer[], balls: DetailBall[]): Scorecar
   });
 }
 
+/**
+ * Parse a team's ESPN score display ("96/1 (24 ov)", "198/10 (53 ov)") into runs/wickets/overs.
+ * A completed all-out innings can be displayed without the wicket count at all ("198 (53 ov)"
+ * — the standard cricket scoreboard convention once all 10 are down) rather than "198/10", so
+ * the wicket group is optional and defaults to 10 (all out) when absent. Requiring a literal
+ * "/" used to silently drop that team from teamSummaries entirely, which (with only one team
+ * left in the list) made every lookup in teamForPeriod/buildMultiInningsScorecard collapse onto
+ * whichever single team survived, regardless of which period was actually being resolved.
+ */
+export function parseTeamScoreDisplay(raw: string): Omit<TeamInningsSummary, "team"> | null {
+  const m = raw.match(/^(\d+)(?:\/(\d+))?/);
+  if (!m) return null;
+  const ovs = raw.match(/\(([\d.]+)/);
+  return {
+    runs: num(m[1]),
+    wickets: m[2] !== undefined ? num(m[2]) : 10,
+    overs: ovs ? num(ovs[1]) : 0,
+  };
+}
+
 async function fetchTeamSummaries(compBase: string): Promise<TeamInningsSummary[]> {
   const competitors = await fetchEspnCoreList(`${compBase}/competitors`);
   const summaries: TeamInningsSummary[] = [];
@@ -423,15 +443,9 @@ async function fetchTeamSummaries(compBase: string): Promise<TeamInningsSummary[
       ? await fetchEspnCoreJson<{ displayValue?: string; value?: string }>(comp.score.$ref)
       : null;
     const raw = score?.displayValue ?? score?.value ?? "";
-    const m = raw.match(/^(\d+)\/(\d+)/);
-    const ovs = raw.match(/\(([\d.]+)/);
-    if (team?.displayName && m) {
-      summaries.push({
-        team: team.displayName,
-        runs: num(m[1]),
-        wickets: num(m[2]),
-        overs: ovs ? num(ovs[1]) : 0,
-      });
+    const parsed = parseTeamScoreDisplay(raw);
+    if (team?.displayName && parsed) {
+      summaries.push({ team: team.displayName, ...parsed });
     }
   }
 
