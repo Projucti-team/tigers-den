@@ -48,6 +48,10 @@ export default buildConfig({
         Icon: "@/components/admin/BrandIcon",
         Logo: "@/components/admin/BrandLogo",
       },
+      // "feedback" is a standalone table, not a Payload collection (see feedback-db.ts), so
+      // there's no natural collection list page for it. Surface it on the dashboard instead —
+      // same mechanism as the beforeList panels below, proven to work in this app already.
+      beforeDashboard: ["@/components/admin/FeedbackAdminView"],
     },
     meta: {
       titleSuffix: "— The Tigers' Den",

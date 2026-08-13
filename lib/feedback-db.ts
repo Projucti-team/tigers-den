@@ -12,6 +12,14 @@ import { getPostgresConnectionString, isPostgresDatabase } from "@/lib/payload-p
 
 export type FeedbackCategory = "bug" | "feature" | "other";
 
+export type FeedbackStatus =
+  | "new"
+  | "under_review"
+  | "ticket_raised"
+  | "in_progress"
+  | "resolved"
+  | "dismissed";
+
 export type FeedbackStatusEntry = {
   status: string;
   changedAt: string;
@@ -39,11 +47,30 @@ export type FeedbackRow = {
   user_id: number | null;
   email: string | null;
   name: string | null;
-  status: string;
+  status: FeedbackStatus;
   status_timeline: FeedbackStatusEntry[];
   created_at: string;
   updated_at: string;
 };
+
+/** jsonb columns come back already-parsed from node-postgres, but pg-mem (used in tests) can
+ * return the raw string — normalize either shape the same way in every read path. */
+function parseTimeline(raw: unknown): FeedbackStatusEntry[] {
+  if (Array.isArray(raw)) return raw as FeedbackStatusEntry[];
+  if (typeof raw === "string") {
+    try {
+      const parsed = JSON.parse(raw);
+      return Array.isArray(parsed) ? parsed : [];
+    } catch {
+      return [];
+    }
+  }
+  return [];
+}
+
+function normalizeRow(row: any): FeedbackRow {
+  return { ...row, status_timeline: parseTimeline(row.status_timeline) } as FeedbackRow;
+}
 
 type MinimalPool = {
   query: (text: string, params?: unknown[]) => Promise<{ rows: any[] }>;
@@ -99,7 +126,77 @@ export async function createFeedback(input: CreateFeedbackInput): Promise<Feedba
       ],
     );
 
-    return result.rows[0] as FeedbackRow;
+    return normalizeRow(result.rows[0]);
+  } finally {
+    await pool.end();
+  }
+}
+
+export async function readAllFeedback(status?: FeedbackStatus): Promise<FeedbackRow[]> {
+  const pool = await getDbPool();
+  try {
+    const result = status
+      ? await pool.query(
+          `SELECT * FROM "feedback" WHERE "status" = $1 ORDER BY "created_at" DESC`,
+          [status],
+        )
+      : await pool.query(`SELECT * FROM "feedback" ORDER BY "created_at" DESC`);
+    return result.rows.map(normalizeRow);
+  } finally {
+    await pool.end();
+  }
+}
+
+export async function readFeedbackById(id: number): Promise<FeedbackRow | null> {
+  const pool = await getDbPool();
+  try {
+    const result = await pool.query(`SELECT * FROM "feedback" WHERE "id" = $1`, [id]);
+    if (!result.rows.length) return null;
+    return normalizeRow(result.rows[0]);
+  } finally {
+    await pool.end();
+  }
+}
+
+export async function countFeedbackByStatus(status: FeedbackStatus): Promise<number> {
+  const pool = await getDbPool();
+  try {
+    const result = await pool.query(
+      `SELECT COUNT(*)::int AS count FROM "feedback" WHERE "status" = $1`,
+      [status],
+    );
+    return Number(result.rows[0]?.count ?? 0);
+  } finally {
+    await pool.end();
+  }
+}
+
+export async function updateFeedbackStatus(
+  id: number,
+  status: FeedbackStatus,
+  note?: string | null,
+): Promise<FeedbackRow | null> {
+  const pool = await getDbPool();
+  try {
+    const existing = await pool.query(`SELECT "status_timeline" FROM "feedback" WHERE "id" = $1`, [id]);
+    if (!existing.rows.length) return null;
+
+    const timeline = parseTimeline(existing.rows[0].status_timeline);
+    timeline.push({
+      status,
+      changedAt: new Date().toISOString(),
+      ...(note?.trim() ? { note: note.trim() } : {}),
+    });
+
+    const result = await pool.query(
+      `UPDATE "feedback"
+       SET "status" = $1, "status_timeline" = $2::jsonb, "updated_at" = now()
+       WHERE "id" = $3
+       RETURNING *`,
+      [status, JSON.stringify(timeline), id],
+    );
+    if (!result.rows.length) return null;
+    return normalizeRow(result.rows[0]);
   } finally {
     await pool.end();
   }

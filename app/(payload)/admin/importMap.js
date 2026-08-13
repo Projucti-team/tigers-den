@@ -28,6 +28,7 @@ import { default as default_5f2c8e91a4d63b7f809e1c3d6a2f4b8e } from '@/component
 import { default as default_03852dcda313ea71c49ef97adea308f7 } from '@/components/admin/AdminLogoutButton'
 import { default as default_b4e8f1a2c5d6479ba0e3f7c1d8a29b6f } from '@/components/admin/BrandIcon'
 import { default as default_c9d2a6b3e7f14805a1c4d8e2f9b03a7d } from '@/components/admin/BrandLogo'
+import { default as default_2d6f9a4c1b8e5073ae62d4f7c0b91a83 } from '@/components/admin/FeedbackAdminView'
 import { CollectionCards as CollectionCards_f9c02e79a4aed9a3924487c0cd4cafb1 } from '@payloadcms/next/rsc'
 
 /** @type import('payload').ImportMap */
@@ -62,5 +63,6 @@ export const importMap = {
   "@/components/admin/AdminLogoutButton#default": default_03852dcda313ea71c49ef97adea308f7,
   "@/components/admin/BrandIcon#default": default_b4e8f1a2c5d6479ba0e3f7c1d8a29b6f,
   "@/components/admin/BrandLogo#default": default_c9d2a6b3e7f14805a1c4d8e2f9b03a7d,
+  "@/components/admin/FeedbackAdminView#default": default_2d6f9a4c1b8e5073ae62d4f7c0b91a83,
   "@payloadcms/next/rsc#CollectionCards": CollectionCards_f9c02e79a4aed9a3924487c0cd4cafb1
 }

@@ -3,7 +3,13 @@ import test from "node:test";
 
 import { newDb } from "pg-mem";
 
-import { __setPoolFactoryForTests, createFeedback } from "../../lib/feedback-db.ts";
+import {
+  __setPoolFactoryForTests,
+  countFeedbackByStatus,
+  createFeedback,
+  readAllFeedback,
+  updateFeedbackStatus,
+} from "../../lib/feedback-db.ts";
 
 /**
  * Real integration test: runs the actual INSERT from lib/feedback-db.ts against pg-mem, an
@@ -100,6 +106,101 @@ test("integration: createFeedback stores the attached image's media id", async (
 
     assert.equal(row.image_id, 7);
     assert.equal(row.user_id, 42);
+  } finally {
+    __setPoolFactoryForTests(null);
+    await pool.end();
+  }
+});
+
+test("integration: readAllFeedback filters by status and orders newest first", async () => {
+  const pool = await createTestPool();
+  __setPoolFactoryForTests(async () => pool);
+
+  try {
+    const first = await createFeedback({
+      title: "First report",
+      description: "d",
+      category: "bug",
+      pageUrl: "https://tigersden.example.com/a",
+    });
+    const second = await createFeedback({
+      title: "Second report",
+      description: "d",
+      category: "feature",
+      pageUrl: "https://tigersden.example.com/b",
+    });
+    await updateFeedbackStatus(first.id, "resolved", "Fixed it");
+
+    const all = await readAllFeedback();
+    assert.equal(all.length, 2);
+    assert.equal(all[0].id, second.id, "newest first");
+
+    const newOnly = await readAllFeedback("new");
+    assert.equal(newOnly.length, 1);
+    assert.equal(newOnly[0].id, second.id);
+
+    const resolvedOnly = await readAllFeedback("resolved");
+    assert.equal(resolvedOnly.length, 1);
+    assert.equal(resolvedOnly[0].id, first.id);
+  } finally {
+    __setPoolFactoryForTests(null);
+    await pool.end();
+  }
+});
+
+test("integration: updateFeedbackStatus appends to the timeline instead of replacing it", async () => {
+  const pool = await createTestPool();
+  __setPoolFactoryForTests(async () => pool);
+
+  try {
+    const row = await createFeedback({
+      title: "Needs triage",
+      description: "d",
+      category: "other",
+      pageUrl: "https://tigersden.example.com/c",
+    });
+    assert.equal(row.status_timeline.length, 1);
+
+    const afterFirst = await updateFeedbackStatus(row.id, "under_review", "Looking into it");
+    assert.equal(afterFirst?.status, "under_review");
+    assert.equal(afterFirst?.status_timeline.length, 2);
+    assert.equal(afterFirst?.status_timeline[1].note, "Looking into it");
+
+    const afterSecond = await updateFeedbackStatus(row.id, "resolved");
+    assert.equal(afterSecond?.status, "resolved");
+    assert.equal(afterSecond?.status_timeline.length, 3);
+    // No note passed this time -- shouldn't crash, and shouldn't fabricate one.
+    assert.equal(afterSecond?.status_timeline[2].note, undefined);
+
+    assert.equal(await updateFeedbackStatus(999_999, "resolved"), null);
+  } finally {
+    __setPoolFactoryForTests(null);
+    await pool.end();
+  }
+});
+
+test("integration: countFeedbackByStatus counts only matching rows", async () => {
+  const pool = await createTestPool();
+  __setPoolFactoryForTests(async () => pool);
+
+  try {
+    const a = await createFeedback({
+      title: "a",
+      description: "d",
+      category: "bug",
+      pageUrl: "https://tigersden.example.com/a",
+    });
+    await createFeedback({
+      title: "b",
+      description: "d",
+      category: "bug",
+      pageUrl: "https://tigersden.example.com/b",
+    });
+    await updateFeedbackStatus(a.id, "resolved");
+
+    assert.equal(await countFeedbackByStatus("new"), 1);
+    assert.equal(await countFeedbackByStatus("resolved"), 1);
+    assert.equal(await countFeedbackByStatus("dismissed"), 0);
   } finally {
     __setPoolFactoryForTests(null);
     await pool.end();
