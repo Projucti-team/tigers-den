@@ -6,13 +6,32 @@ import "@/app/globals.css";
 
 export const dynamic = "force-dynamic";
 
+const SITE_TITLE = "The Tigers' Den — Bangladesh Cricket Fan Army";
+const SITE_DESCRIPTION =
+  "The definitive community hub for passionate Bangladesh cricket fans. Live scores, forum, chants, and tour travel.";
+
 export const metadata: Metadata = {
-  title: "The Tigers' Den — Bangladesh Cricket Fan Army",
-  description:
-    "The definitive community hub for passionate Bangladesh cricket fans. Live scores, forum, chants, and tour travel.",
+  metadataBase: new URL("https://tigersden.bd"),
+  title: SITE_TITLE,
+  description: SITE_DESCRIPTION,
   icons: {
     icon: [{ url: "/tigers-den-logo-nav.png", type: "image/png" }],
     apple: [{ url: "/tigers-den-logo.png", type: "image/png" }],
+  },
+  openGraph: {
+    title: SITE_TITLE,
+    description: SITE_DESCRIPTION,
+    url: "https://tigersden.bd",
+    siteName: "The Tigers' Den",
+    images: [{ url: "/tigers-den-logo.png", width: 479, height: 512, alt: "The Tigers' Den logo" }],
+    locale: "en_US",
+    type: "website",
+  },
+  twitter: {
+    card: "summary",
+    title: SITE_TITLE,
+    description: SITE_DESCRIPTION,
+    images: ["/tigers-den-logo.png"],
   },
 };
 

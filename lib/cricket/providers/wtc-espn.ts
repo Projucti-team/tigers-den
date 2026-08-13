@@ -52,10 +52,17 @@ async function fetchJson<T>(url: string): Promise<T | null> {
   }
 }
 
-async function resolveTeam(ref: string): Promise<{ name: string; abbreviation: string }> {
+/**
+ * Resolves a team $ref to its display name. Returns null (rather than a placeholder like
+ * "Unknown") when ESPN's team lookup fails, so the caller can drop the row instead of showing
+ * a bogus team in the table.
+ */
+async function resolveTeam(ref: string): Promise<{ name: string; abbreviation: string } | null> {
   const team = await fetchJson<CoreTeam>(ref);
+  const name = team?.displayName ?? team?.name ?? null;
+  if (!name) return null;
   return {
-    name: team?.displayName ?? team?.name ?? "Unknown",
+    name,
     abbreviation: team?.abbreviation ?? "",
   };
 }
@@ -98,13 +105,19 @@ export async function fetchWtcStandingsFromEspn(): Promise<WtcStandingsSnapshot>
       const ref = row.team?.$ref;
       if (!ref) return null;
       const team = await resolveTeam(ref);
+      if (!team) return null;
       return mapRow(row, team);
     }),
   );
 
+  // The official WTC table is ordered by points percentage (PCT), not raw ESPN "rank" or raw
+  // points -- teams play different numbers of matches, so points alone isn't comparable. Sort
+  // by pct here and derive the displayed rank from that order, rather than trusting whatever
+  // "rank" stat ESPN's core API happens to return for each row.
   const standings = mapped
     .filter((r): r is WtcTeamStanding => r != null)
-    .sort((a, b) => a.rank - b.rank);
+    .sort((a, b) => b.pct - a.pct)
+    .map((team, index) => ({ ...team, rank: index + 1 }));
 
   return {
     fetchedAt: new Date().toISOString(),
