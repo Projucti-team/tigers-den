@@ -49,3 +49,23 @@ test("isMultiInningsMatch regression: Test match with a plain note and no histor
   // Non-Test format must not be forced true by the format branch.
   assert.equal(isMultiInningsMatch(2, [], "Bangladesh won by 5 wickets", "ODI"), false);
 });
+
+test("isMultiInningsMatch regression: real BAN v AUS Darwin Test — note shadows the description that says 'Test'", () => {
+  // The actual production bug: espn-match-centre.ts used to build competitionNote as
+  // `competition.note ?? competition.shortDescription`, so whenever ESPN set `note` to a live
+  // status line, `shortDescription` (which carries the "1st Test, at Darwin"-style headline)
+  // was discarded entirely by the ?? fallback before isMultiInningsMatch ever saw it. The fix
+  // is to pass a blob combining description + shortDescription + note instead of picking one.
+  const noteOnly = "Stumps · Bangladesh trail by 102 runs with 9 wickets remaining in the 1st innings";
+  const blobWithHeadline = `1st Test, at Darwin ${noteOnly}`;
+
+  // Old bug reproduction: note alone (what used to reach the function) has no "test" in it and
+  // there's no historical battingCard for AUS's completed innings — misclassified as false.
+  assert.equal(isMultiInningsMatch(2, [{ typeID: "11", inningsNumber: "2" }], noteOnly), false);
+
+  // Fixed: combined blob carries "Test" from the headline, regardless of where note points.
+  assert.equal(
+    isMultiInningsMatch(2, [{ typeID: "11", inningsNumber: "2" }], blobWithHeadline),
+    true,
+  );
+});

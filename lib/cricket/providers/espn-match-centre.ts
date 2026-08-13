@@ -873,8 +873,18 @@ export async function fetchEspnMatchCentre(
     liveBatters = await battersFromRecentBalls(leagueId, periodBalls);
   }
 
-  const competitionNote = competition?.note ?? competition?.shortDescription ?? "";
-  const innings = isMultiInningsMatch(currentPeriod, battingCards, competitionNote, cricinfoFormat)
+  // Combine every text field instead of falling back with ?? — competition.note is usually a
+  // live status line ("Stumps · Bangladesh trail by 102 runs"), which rarely contains the word
+  // "test" even for a Test match, and that would previously shadow shortDescription/description
+  // (typically "1st Test, at Darwin"-style headlines that do) since note is checked first.
+  const competitionTextBlob = [
+    competition?.description,
+    competition?.shortDescription,
+    competition?.note,
+  ]
+    .filter(Boolean)
+    .join(" ");
+  const innings = isMultiInningsMatch(currentPeriod, battingCards, competitionTextBlob, cricinfoFormat)
     ? await buildMultiInningsScorecard({
         cards,
         compBase,
