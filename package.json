@@ -14,7 +14,7 @@
     "start": "next start",
     "lint": "next lint",
     "test": "npm run test:unit && npm run test:e2e",
-    "test:unit": "node --import tsx --test tests/unit/tour-detail.test.ts tests/unit/tour-sync-state-db.integration.test.ts tests/unit/espn-match-centre.test.ts tests/unit/feedback-db.integration.test.ts tests/unit/migrations-registered.test.ts tests/unit/wtc-espn.test.ts tests/unit/ga-stats.test.ts",
+    "test:unit": "node --import tsx --test tests/unit/tour-detail.test.ts tests/unit/tour-sync-state-db.integration.test.ts tests/unit/espn-match-centre.test.ts tests/unit/feedback-db.integration.test.ts tests/unit/migrations-registered.test.ts tests/unit/wtc-espn.test.ts tests/unit/ga-stats.test.ts tests/unit/tour-active-status.test.ts",
     "test:e2e": "playwright test",
     "payload": "payload",
     "generate:types": "payload generate:types",

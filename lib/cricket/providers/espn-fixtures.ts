@@ -1,6 +1,7 @@
 import { readFile } from "node:fs/promises";
 import path from "node:path";
 
+import { estimatedMatchEndDate } from "@/lib/cricket/match-duration";
 import { resolveMatchStartIso } from "@/lib/cricket/match-sort";
 import { isUpcomingBangladeshMatch } from "@/lib/cricket/services/marquee-format";
 import { matchTime } from "@/lib/cricket/services/match-highlight";
@@ -97,6 +98,17 @@ function leagueInvolvesBangladesh(league: CoreLeague): boolean {
   return true;
 }
 
+/**
+ * A fixture's `date` is just its start day -- for the last (or only) Test in a tour that
+ * understates the tour's real end by up to 4 days, which made isFutureSeries() drop the whole
+ * tour from every listing the day after a still-in-progress Test began. See match-duration.ts.
+ */
+function tourEndDateFromLastFixture(last: FixtureTimeEntry): string {
+  const start = new Date(last.date);
+  if (Number.isNaN(start.getTime())) return last.date;
+  return estimatedMatchEndDate(start, normalizeMatchType(last.matchType)).toISOString();
+}
+
 function tourFromFixtures(
   name: string,
   id: string,
@@ -115,7 +127,7 @@ function tourFromFixtures(
     id,
     name,
     startDate: first.date,
-    endDate: last.date,
+    endDate: tourEndDateFromLastFixture(last),
     test: test || undefined,
     odi: odi || undefined,
     t20: t20 || undefined,
@@ -288,7 +300,7 @@ export async function fetchCuratedEspnTours(): Promise<Tour[]> {
       id: String(series.cricinfoSeriesId ?? seriesId),
       name: series.tourName,
       startDate: first.date,
-      endDate: last.date,
+      endDate: tourEndDateFromLastFixture(last),
       test: test || undefined,
       odi: odi || undefined,
       t20: t20 || undefined,

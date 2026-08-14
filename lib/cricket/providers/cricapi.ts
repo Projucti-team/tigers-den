@@ -1,6 +1,7 @@
 import { CRICAPI_BASE } from "@/lib/cricket/constants";
 import type { SeriesSquad, SquadPlayer } from "@/lib/cricket/curated-squads";
 import { normalizeSquadPlayers } from "@/lib/cricket/curated-squads";
+import { estimatedMatchEndDate } from "@/lib/cricket/match-duration";
 import { isFutureSeries } from "@/lib/cricket/tour-dates";
 import { fetchEspnFutureTours } from "@/lib/cricket/providers/espn-fixtures";
 import { isUpcomingBangladeshMatch } from "@/lib/cricket/services/marquee-format";
@@ -478,11 +479,21 @@ async function deriveToursFromUpcomingMatches(
       ),
     ];
 
+    const lastRaw = last.date || last.dateTimeGMT;
+    const lastStart = lastRaw ? new Date(lastRaw) : null;
+    // last.date is just the last match's start day -- for a Test that understates the tour's
+    // real end by up to 4 days, which drops the whole tour once isFutureSeries() sees a stale
+    // endDate the day after a still-in-progress Test began. See match-duration.ts.
+    const endDate =
+      lastStart && !Number.isNaN(lastStart.getTime())
+        ? estimatedMatchEndDate(lastStart, last.matchType).toISOString()
+        : lastRaw;
+
     const tour: Tour = {
       id: seriesId || key,
       name,
       startDate: first.date || first.dateTimeGMT,
-      endDate: last.date || last.dateTimeGMT,
+      endDate,
       odi: odi || undefined,
       t20: t20 || undefined,
       test: test || undefined,

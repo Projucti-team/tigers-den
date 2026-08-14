@@ -1,3 +1,4 @@
+import { estimatedMatchEndDate } from "@/lib/cricket/match-duration";
 import type { Tour, LiveMatchSummary } from "@/lib/cricket/types";
 import type { ToursIndexSnapshot, TourDetailSnapshot } from "@/lib/cricket/snapshot-types";
 import type { MatchType, SquadRefreshTarget } from "@/lib/cricket/tour-sync-state-types";
@@ -28,17 +29,21 @@ function getFormatDates(matches: LiveMatchSummary[]): TourFormatDates {
     if (matchType !== "test" && matchType !== "odi" && matchType !== "t20") continue;
 
     const startDate = new Date(match.date);
+    // A Test match's own start date isn't its end date -- it's scheduled to run up to 5 days.
+    // Using the raw start date here marked a still-in-progress Test (and its whole tour)
+    // "finished" the day after it began. See lib/cricket/match-duration.ts.
+    const matchEndDate = estimatedMatchEndDate(startDate, matchType);
     const key = matchType as MatchType;
 
     if (!formatDates[key]) {
-      formatDates[key] = { startDate, endDate: startDate };
+      formatDates[key] = { startDate, endDate: matchEndDate };
     } else {
       const existing = formatDates[key];
       if (startDate < existing.startDate) {
         existing.startDate = startDate;
       }
-      if (!existing.endDate || startDate > existing.endDate) {
-        existing.endDate = startDate;
+      if (!existing.endDate || matchEndDate > existing.endDate) {
+        existing.endDate = matchEndDate;
       }
     }
   }
