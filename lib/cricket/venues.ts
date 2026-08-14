@@ -110,6 +110,12 @@ function monthFromDate(iso?: string): number {
   return Number.isNaN(d.getTime()) ? new Date().getMonth() + 1 : d.getMonth() + 1;
 }
 
+/** True when venueRaw matches one of our hand-written VENUE_ENTRIES templates (deterministic, code-controlled — never worth trusting a cached copy over). */
+export function isCuratedVenue(venueRaw: string): boolean {
+  const venueName = venueRaw.trim();
+  return VENUE_ENTRIES.some((e) => e.patterns.some((p) => p.test(venueName)));
+}
+
 export function lookupVenueGuide(venueRaw: string, matchDate?: string): VenueGuide {
   const venueName = venueRaw.trim() || "Venue TBC";
   const entry = VENUE_ENTRIES.find((e) => e.patterns.some((p) => p.test(venueName)));
@@ -195,7 +201,15 @@ export async function resolveTourVenues(
 
     const cached = cachedByKey.get(key);
     const stored = store.entries[key];
-    let guide = cached ?? stored ?? lookupVenueGuide(match.venue, match.date);
+    // Curated venues (VENUE_ENTRIES) are deterministic, code-controlled templates -- always
+    // recompute rather than trust a cached/stored copy. A stale cached guide is how the
+    // Marrara Oval / Kia Oval collision survived fixing the regex that caused it: the wrong
+    // guide had already been persisted, so `stored` kept winning over the corrected template
+    // on every later sync. Non-curated (generic fallback) venues still prefer cache/store, since
+    // there's no "correct" template to fall back to for those.
+    let guide = isCuratedVenue(match.venue)
+      ? lookupVenueGuide(match.venue, match.date)
+      : (cached ?? stored ?? lookupVenueGuide(match.venue, match.date));
 
     const venueName = match.venue.trim();
     if (guide.venueName !== venueName) {
@@ -204,7 +218,10 @@ export async function resolveTourVenues(
 
     guides.push(guide);
 
-    if (!stored && options.persist) {
+    // Also re-persist curated venues even when already stored, so a stale/wrong cached copy
+    // (like the Marrara/Kia Oval collision) gets corrected in the store instead of just being
+    // bypassed at read time. upsertVenueGuides() is itself a no-op if the content is unchanged.
+    if (options.persist && (!stored || isCuratedVenue(match.venue))) {
       toPersist.push(guide);
     }
   }
