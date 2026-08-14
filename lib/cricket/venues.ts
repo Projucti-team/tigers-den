@@ -50,7 +50,10 @@ const VENUE_ENTRIES: VenueEntry[] = [
       "UK summer (May–August) is mild (15–24°C) with changeable skies — pack a light jacket; rain delays are always possible.",
   },
   {
-    patterns: [/oval|kennington/i],
+    // Deliberately not a bare /oval/i -- plenty of grounds worldwide have "Oval" in their name
+    // (Marrara Oval in Darwin, Adelaide Oval, Queen's Park Oval, Kensington Oval), and a bare
+    // match here silently overwrote all of them with Kia Oval/London's guide content.
+    patterns: [/kia oval|the oval,?\s*london|kennington/i],
     city: "London",
     about:
       "The Kia Oval is a classic London venue known for dramatic Tests and one-day thrillers, with a lively crowd and famous pavilion.",
@@ -78,6 +81,16 @@ const VENUE_ENTRIES: VenueEntry[] = [
       "Sydney pairs harbour views with world-class food; many fans extend their trip to combine the match with beaches and the Blue Mountains.",
     weather:
       "Humid summers (22–32°C) with afternoon storms possible; evening sea breeze often cools T20 nights.",
+  },
+  {
+    patterns: [/marrara/i],
+    city: "Darwin",
+    about:
+      "Marrara Oval (Marrara Cricket Ground) hosted Bangladesh's first-ever Test on Australian soil — a tropical outfield with a small-ground buzz and a fast-growing local following.",
+    cityAbout:
+      "Darwin is Australia's tropical northern capital — harbourside sunsets, a laid-back pace, and a warm welcome for touring Tigers' Den fans.",
+    weather:
+      "Darwin's dry season (May–October) is warm and largely rain-free (20–33°C) — good touring weather, though humidity builds toward the wet season.",
   },
   {
     patterns: [/kensington oval|barbados/i],
