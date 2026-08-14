@@ -35,6 +35,7 @@ export const metadata: Metadata = {
   },
 };
 
+import { GoogleAnalytics } from "@/components/analytics/GoogleAnalytics";
 import { LiveMarquee } from "@/components/cricket/LiveMarquee";
 import { Navbar } from "@/components/layout/Navbar";
 import { SiteFooter } from "@/components/layout/SiteFooter";
@@ -76,6 +77,7 @@ export default async function FrontendLayout({ children }: { children: ReactNode
   return (
     <html lang="en">
       <body>
+        <GoogleAnalytics />
         <AuthSessionProvider>
           <div
             className={`${montserrat.variable} ${inter.variable} ${robotoMono.variable} fan-page-bg min-h-screen text-white`}
