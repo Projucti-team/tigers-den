@@ -1,5 +1,5 @@
 {
-  "fetchedAt": "2026-08-14T21:42:47.646Z",
+  "fetchedAt": "2026-08-15T21:36:17.650Z",
   "source": "icc-sportz.io",
   "sourceUrl": "https://www.icc-cricket.com/rankings",
   "men": {
@@ -148,9 +148,9 @@
           "rank": 8,
           "name": "Afghanistan",
           "abbreviation": "AFG",
-          "rating": 91,
-          "points": 2463,
-          "matches": 27
+          "rating": 92,
+          "points": 2565,
+          "matches": 28
         },
         {
           "rank": 9,
@@ -180,9 +180,9 @@
           "rank": 12,
           "name": "Ireland",
           "abbreviation": "IRE",
-          "rating": 52,
-          "points": 774,
-          "matches": 15
+          "rating": 51,
+          "points": 815,
+          "matches": 16
         },
         {
           "rank": 13,
@@ -444,19 +444,19 @@
         },
         {
           "rank": 25,
+          "name": "Spain",
+          "abbreviation": "ESP",
+          "rating": 127,
+          "points": 1648,
+          "matches": 13
+        },
+        {
+          "rank": 26,
           "name": "Malaysia",
           "abbreviation": "MAS",
           "rating": 127,
           "points": 6335,
           "matches": 50
-        },
-        {
-          "rank": 26,
-          "name": "Spain",
-          "abbreviation": "ESP",
-          "rating": 126,
-          "points": 1512,
-          "matches": 12
         },
         {
           "rank": 27,
@@ -524,18 +524,18 @@
         },
         {
           "rank": 35,
+          "name": "Portugal",
+          "abbreviation": "POR",
+          "rating": 86,
+          "points": 2155,
+          "matches": 25
+        },
+        {
+          "rank": 36,
           "name": "Guernsey",
           "abbreviation": "GSY",
           "rating": 85,
           "points": 2028,
-          "matches": 24
-        },
-        {
-          "rank": 36,
-          "name": "Portugal",
-          "abbreviation": "POR",
-          "rating": 84,
-          "points": 2022,
           "matches": 24
         },
         {
@@ -550,9 +550,9 @@
           "rank": 38,
           "name": "Germany",
           "abbreviation": "GER",
-          "rating": 83,
-          "points": 2164,
-          "matches": 26
+          "rating": 81,
+          "points": 2198,
+          "matches": 27
         },
         {
           "rank": 39,
@@ -615,8 +615,8 @@
           "name": "Finland",
           "abbreviation": "FIN",
           "rating": 56,
-          "points": 1455,
-          "matches": 26
+          "points": 1521,
+          "matches": 27
         },
         {
           "rank": 47,
@@ -668,19 +668,19 @@
         },
         {
           "rank": 53,
-          "name": "Malawi",
-          "abbreviation": "MAW",
-          "rating": 47,
-          "points": 1832,
-          "matches": 39
-        },
-        {
-          "rank": 54,
           "name": "Cook Islands",
           "abbreviation": "COK",
           "rating": 46,
           "points": 649,
           "matches": 14
+        },
+        {
+          "rank": 54,
+          "name": "Malawi",
+          "abbreviation": "MAW",
+          "rating": 45,
+          "points": 1815,
+          "matches": 40
         },
         {
           "rank": 55,
@@ -694,9 +694,9 @@
           "rank": 56,
           "name": "Rwanda",
           "abbreviation": "RWA",
-          "rating": 43,
-          "points": 2649,
-          "matches": 61
+          "rating": 42,
+          "points": 2628,
+          "matches": 62
         },
         {
           "rank": 57,
@@ -716,14 +716,6 @@
         },
         {
           "rank": 59,
-          "name": "Isle of Man",
-          "abbreviation": "IOM",
-          "rating": 40,
-          "points": 358,
-          "matches": 9
-        },
-        {
-          "rank": 60,
           "name": "Thailand",
           "abbreviation": "THA",
           "rating": 39,
@@ -731,12 +723,20 @@
           "matches": 35
         },
         {
-          "rank": 61,
+          "rank": 60,
           "name": "Bahamas",
           "abbreviation": "BAH",
           "rating": 39,
           "points": 704,
           "matches": 18
+        },
+        {
+          "rank": 61,
+          "name": "Isle of Man",
+          "abbreviation": "IOM",
+          "rating": 39,
+          "points": 388,
+          "matches": 10
         },
         {
           "rank": 62,
@@ -750,12 +750,20 @@
           "rank": 63,
           "name": "Czechia",
           "abbreviation": "CZE",
-          "rating": 37,
-          "points": 631,
-          "matches": 17
+          "rating": 38,
+          "points": 681,
+          "matches": 18
         },
         {
           "rank": 64,
+          "name": "Zambia",
+          "abbreviation": "ZAM",
+          "rating": 38,
+          "points": 565,
+          "matches": 15
+        },
+        {
+          "rank": 65,
           "name": "Indonesia",
           "abbreviation": "INA",
           "rating": 37,
@@ -763,7 +771,7 @@
           "matches": 83
         },
         {
-          "rank": 65,
+          "rank": 66,
           "name": "Cyprus",
           "abbreviation": "CYP",
           "rating": 34,
@@ -771,7 +779,7 @@
           "matches": 26
         },
         {
-          "rank": 66,
+          "rank": 67,
           "name": "Malta",
           "abbreviation": "MLT",
           "rating": 34,
@@ -779,7 +787,7 @@
           "matches": 39
         },
         {
-          "rank": 67,
+          "rank": 68,
           "name": "Vanuatu",
           "abbreviation": "VAN",
           "rating": 33,
@@ -787,7 +795,7 @@
           "matches": 15
         },
         {
-          "rank": 68,
+          "rank": 69,
           "name": "Eswatini",
           "abbreviation": "ESW",
           "rating": 32,
@@ -795,20 +803,12 @@
           "matches": 22
         },
         {
-          "rank": 69,
+          "rank": 70,
           "name": "Hungary",
           "abbreviation": "HUN",
           "rating": 29,
           "points": 1014,
           "matches": 35
-        },
-        {
-          "rank": 70,
-          "name": "Zambia",
-          "abbreviation": "ZAM",
-          "rating": 29,
-          "points": 375,
-          "matches": 13
         },
         {
           "rank": 71,
@@ -916,19 +916,19 @@
         },
         {
           "rank": 84,
-          "name": "Bulgaria",
-          "abbreviation": "BUL",
-          "rating": 8,
-          "points": 165,
-          "matches": 20
-        },
-        {
-          "rank": 85,
           "name": "Suriname",
           "abbreviation": "SUR",
           "rating": 8,
           "points": 82,
           "matches": 10
+        },
+        {
+          "rank": 85,
+          "name": "Bulgaria",
+          "abbreviation": "BUL",
+          "rating": 8,
+          "points": 163,
+          "matches": 21
         },
         {
           "rank": 86,
@@ -10380,13 +10380,13 @@
         "allrounder": "2026-08-11"
       },
       "odi": {
-        "team": "2026-08-13",
+        "team": "2026-08-15",
         "bat": "2026-08-11",
         "bowl": "2026-08-11",
         "allrounder": "2026-08-11"
       },
       "t20": {
-        "team": "2026-08-14",
+        "team": "2026-08-15",
         "bat": "2026-08-11",
         "bowl": "2026-08-11",
         "allrounder": "2026-08-11"
@@ -10490,9 +10490,9 @@
           "rank": 12,
           "name": "THA",
           "abbreviation": "THA",
-          "rating": 27,
-          "points": 135,
-          "matches": 5
+          "rating": 32,
+          "points": 193,
+          "matches": 6
         },
         {
           "rank": 13,
@@ -10514,9 +10514,9 @@
           "rank": 15,
           "name": "Papua New Guinea",
           "abbreviation": "PNG-W",
-          "rating": 8,
-          "points": 78,
-          "matches": 10
+          "rating": 5,
+          "points": 55,
+          "matches": 11
         }
       ],
       "t20": [
@@ -17371,7 +17371,7 @@
         "allrounder": null
       },
       "odi": {
-        "team": "2026-08-13",
+        "team": "2026-08-15",
         "bat": "2026-08-03",
         "bowl": "2026-08-03",
         "allrounder": "2026-08-03"
