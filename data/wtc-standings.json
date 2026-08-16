@@ -1,5 +1,5 @@
 {
-  "fetchedAt": "2026-08-15T21:36:19.291Z",
+  "fetchedAt": "2026-08-16T21:35:38.761Z",
   "source": "espn-cricinfo-core",
   "cycleLabel": "2025–2027",
   "standings": [
@@ -7,14 +7,14 @@
       "rank": 1,
       "team": "Australia",
       "abbreviation": "AUS",
-      "played": 8,
+      "played": 9,
       "won": 7,
-      "lost": 1,
+      "lost": 2,
       "drawn": 0,
       "tied": 0,
       "noResult": 0,
       "points": 84,
-      "pct": 87.5
+      "pct": 77.78
     },
     {
       "rank": 2,
@@ -46,14 +46,14 @@
       "rank": 4,
       "team": "Bangladesh",
       "abbreviation": "BAN",
-      "played": 4,
-      "won": 2,
+      "played": 5,
+      "won": 3,
       "lost": 1,
       "drawn": 1,
       "tied": 0,
       "noResult": 0,
-      "points": 28,
-      "pct": 58.33
+      "points": 40,
+      "pct": 66.67
     },
     {
       "rank": 5,
