@@ -1,5 +1,5 @@
 {
-  "fetchedAt": "2026-08-16T21:35:37.334Z",
+  "fetchedAt": "2026-08-17T21:42:59.109Z",
   "source": "icc-sportz.io",
   "sourceUrl": "https://www.icc-cricket.com/rankings",
   "men": {
@@ -446,9 +446,9 @@
           "rank": 25,
           "name": "Spain",
           "abbreviation": "ESP",
-          "rating": 127,
-          "points": 1648,
-          "matches": 13
+          "rating": 128,
+          "points": 1785,
+          "matches": 14
         },
         {
           "rank": 26,
@@ -526,9 +526,9 @@
           "rank": 35,
           "name": "Portugal",
           "abbreviation": "POR",
-          "rating": 86,
-          "points": 2155,
-          "matches": 25
+          "rating": 87,
+          "points": 2251,
+          "matches": 26
         },
         {
           "rank": 36,
@@ -550,9 +550,9 @@
           "rank": 38,
           "name": "Germany",
           "abbreviation": "GER",
-          "rating": 81,
-          "points": 2198,
-          "matches": 27
+          "rating": 82,
+          "points": 2289,
+          "matches": 28
         },
         {
           "rank": 39,
@@ -708,6 +708,14 @@
         },
         {
           "rank": 58,
+          "name": "Isle of Man",
+          "abbreviation": "IOM",
+          "rating": 41,
+          "points": 446,
+          "matches": 11
+        },
+        {
+          "rank": 59,
           "name": "Ghana",
           "abbreviation": "GHA",
           "rating": 40,
@@ -715,7 +723,7 @@
           "matches": 15
         },
         {
-          "rank": 59,
+          "rank": 60,
           "name": "Thailand",
           "abbreviation": "THA",
           "rating": 39,
@@ -723,20 +731,12 @@
           "matches": 35
         },
         {
-          "rank": 60,
+          "rank": 61,
           "name": "Bahamas",
           "abbreviation": "BAH",
           "rating": 39,
           "points": 704,
           "matches": 18
-        },
-        {
-          "rank": 61,
-          "name": "Isle of Man",
-          "abbreviation": "IOM",
-          "rating": 39,
-          "points": 388,
-          "matches": 10
         },
         {
           "rank": 62,
@@ -838,9 +838,9 @@
           "rank": 74,
           "name": "Luxembourg",
           "abbreviation": "LUX",
-          "rating": 21,
-          "points": 437,
-          "matches": 21
+          "rating": 20,
+          "points": 448,
+          "matches": 22
         },
         {
           "rank": 75,
@@ -924,19 +924,19 @@
         },
         {
           "rank": 85,
-          "name": "Bulgaria",
-          "abbreviation": "BUL",
-          "rating": 8,
-          "points": 163,
-          "matches": 21
-        },
-        {
-          "rank": 86,
           "name": "Croatia",
           "abbreviation": "CRO",
           "rating": 7,
           "points": 169,
           "matches": 24
+        },
+        {
+          "rank": 86,
+          "name": "Bulgaria",
+          "abbreviation": "BUL",
+          "rating": 7,
+          "points": 152,
+          "matches": 22
         },
         {
           "rank": 87,
@@ -956,14 +956,6 @@
         },
         {
           "rank": 89,
-          "name": "ISR",
-          "abbreviation": "ISR",
-          "rating": 5,
-          "points": 36,
-          "matches": 8
-        },
-        {
-          "rank": 90,
           "name": "Serbia",
           "abbreviation": "SER",
           "rating": 4,
@@ -971,12 +963,20 @@
           "matches": 27
         },
         {
-          "rank": 91,
+          "rank": 90,
           "name": "Turkiye",
           "abbreviation": "TUR",
           "rating": 4,
           "points": 63,
           "matches": 17
+        },
+        {
+          "rank": 91,
+          "name": "ISR",
+          "abbreviation": "ISR",
+          "rating": 3,
+          "points": 31,
+          "matches": 9
         },
         {
           "rank": 92,
@@ -10386,7 +10386,7 @@
         "allrounder": "2026-08-11"
       },
       "t20": {
-        "team": "2026-08-16",
+        "team": "2026-08-17",
         "bat": "2026-08-11",
         "bowl": "2026-08-11",
         "allrounder": "2026-08-11"
@@ -10490,9 +10490,9 @@
           "rank": 12,
           "name": "THA",
           "abbreviation": "THA",
-          "rating": 32,
-          "points": 193,
-          "matches": 6
+          "rating": 35,
+          "points": 248,
+          "matches": 7
         },
         {
           "rank": 13,
@@ -10514,9 +10514,9 @@
           "rank": 15,
           "name": "Papua New Guinea",
           "abbreviation": "PNG-W",
-          "rating": 5,
-          "points": 55,
-          "matches": 11
+          "rating": 3,
+          "points": 37,
+          "matches": 12
         }
       ],
       "t20": [
@@ -17371,7 +17371,7 @@
         "allrounder": null
       },
       "odi": {
-        "team": "2026-08-15",
+        "team": "2026-08-17",
         "bat": "2026-08-03",
         "bowl": "2026-08-03",
         "allrounder": "2026-08-03"
