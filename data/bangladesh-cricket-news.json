@@ -1,21 +1,54 @@
 {
-  "fetchedAt": "2026-08-18T21:55:56.821Z",
+  "fetchedAt": "2026-08-19T21:58:09.742Z",
   "items": [
     {
-      "id": "dailystar-https://www.thedailystar.net/sports/cricket/news/naim-points-strong-pipeline-team-depart-south-africa-4251071",
-      "title": "Naim points to 'strong pipeline' as Bangladesh A team depart for South Africa",
-      "summary": "Bangladesh A team’s red-ball squad for the first Test of their South Africa tour included several names with notable international experience.",
-      "url": "https://www.thedailystar.net/sports/cricket/news/naim-points-strong-pipeline-team-depart-south-africa-4251071",
+      "id": "dailystar-https://www.thedailystar.net/sports/cricket/news/emerging-team-earn-hard-fought-draw-against-south-africa-4252091",
+      "title": "Emerging team earn hard-fought draw against South Africa",
+      "summary": "Resuming their second innings at 15-0 and needing 396 more runs to win on the final day, Bangladesh were in deep trouble after losing five wickets for just 70 runs. However, Ankon and Biplob steadied the innings with a 105-run partnership for the sixth wicket.",
+      "url": "https://www.thedailystar.net/sports/cricket/news/emerging-team-earn-hard-fought-draw-against-south-africa-4252091",
       "source": "dailystar",
-      "publishedAt": "2026-08-18T17:39:48.000Z"
+      "publishedAt": "2026-08-19T20:41:31.000Z"
     },
     {
-      "id": "dailystar-https://www.thedailystar.net/sports/cricket/news/should-have-been-us-tigers-historic-win-reopens-englands-ashes-wounds-4250871",
-      "title": "'Should have been us’: Tigers’ historic win reopens England’s Ashes wounds",
-      "summary": "Rather than simply revelling in Australia’s heavy defeat, several former England greats have been left lamenting the missed opportunity of last winter’s Ashes",
-      "url": "https://www.thedailystar.net/sports/cricket/news/should-have-been-us-tigers-historic-win-reopens-englands-ashes-wounds-4250871",
+      "id": "dailystar-https://www.thedailystar.net/sports/cricket/news/disillusionment-hand-mackay-4252056",
+      "title": "Disillusionment at hand in Mackay",
+      "summary": "The last time Bangladesh came close to following up a landmark away victory with a series win in a SENA country was in 2021/22, when they famously beat New Zealand in Mount Maunganui. An innings-and-117-run defeat in Christchurch followed inside three days. For many, it was simply Bangladesh reverting to type after producing something spectacular.",
+      "url": "https://www.thedailystar.net/sports/cricket/news/disillusionment-hand-mackay-4252056",
       "source": "dailystar",
-      "publishedAt": "2026-08-18T14:42:09.000Z"
+      "publishedAt": "2026-08-19T18:31:08.000Z"
+    },
+    {
+      "id": "espn-https://www.cricinfo.com/ci/content/story/1550591.html",
+      "title": "Renshaw 'has got the game for all conditions' as he returns to Test cricket",
+      "summary": "Matt Renshaw has returned to Australia's Test squad for the second Test against Bangladesh and is in line to play a Test after three-and-a-half years",
+      "url": "https://www.cricinfo.com/story/aus-vs-ban-2nd-wtc-test-alex-carey-happy-to-have-matt-renshaw-back-in-the-test-squad-1550591",
+      "imageUrl": "https://p.imgci.com/db/PICTURES/CMS/421300/421378.6.jpg",
+      "source": "espncricinfo",
+      "publishedAt": "2026-08-19T11:26:46.000Z"
+    },
+    {
+      "id": "dailystar-https://www.thedailystar.net/sports/cricket/news/hasan-26-places-shanto-top-20-after-bangladeshs-sensational-test-win-4251496",
+      "title": "Hasan up 26 places, Shanto into top 20 after Bangladesh’s sensational Darwin Test win",
+      "summary": "Teammates Mehidy Hasan Miraz and Mominul Haque also moved up in Test rankings",
+      "url": "https://www.thedailystar.net/sports/cricket/news/hasan-26-places-shanto-top-20-after-bangladeshs-sensational-test-win-4251496",
+      "source": "dailystar",
+      "publishedAt": "2026-08-19T09:05:02.000Z"
+    },
+    {
+      "id": "dailystar-https://www.thedailystar.net/sports/cricket/news/australia-will-go-all-demolish-bangladesh-mackay-warns-donald-4251471",
+      "title": "Australia will go all in to ‘demolish’ Bangladesh in Mackay, warns Donald",
+      "summary": "Donald, who was the fast-bowling coach of Bangladesh before stepping down in 2023, warned that a wounded Australia would come back hard in the second Test, seeking to avoid a rare series defeat.",
+      "url": "https://www.thedailystar.net/sports/cricket/news/australia-will-go-all-demolish-bangladesh-mackay-warns-donald-4251471",
+      "source": "dailystar",
+      "publishedAt": "2026-08-19T08:22:48.000Z"
+    },
+    {
+      "id": "dailystar-https://www.thedailystar.net/sports/cricket/news/we-were-comparing-it-argentinas-world-cup-games-simmons-bangladeshs-australia-test-triumph-4251456",
+      "title": "‘We were comparing it to Argentina’s World Cup games’: Simmons on Bangladesh’s Australia Test triumph",
+      "summary": "The victory came 23 years after Bangladesh last played a Test in Australia and was only their second win against the hosts in Test cricket.",
+      "url": "https://www.thedailystar.net/sports/cricket/news/we-were-comparing-it-argentinas-world-cup-games-simmons-bangladeshs-australia-test-triumph-4251456",
+      "source": "dailystar",
+      "publishedAt": "2026-08-19T07:36:49.000Z"
     },
     {
       "id": "espn-https://www.cricinfo.com/ci/content/story/1550487.html",
@@ -25,14 +58,6 @@
       "imageUrl": "https://p.imgci.com/db/PICTURES/CMS/421000/421032.5.jpg",
       "source": "espncricinfo",
       "publishedAt": "2026-08-18T07:57:58.000Z"
-    },
-    {
-      "id": "dailystar-https://www.thedailystar.net/sports/cricket/news/weatherald-axed-renshaw-recalled-after-bangladesh-rout-forces-australia-change-4250461",
-      "title": "Weatherald axed, Renshaw recalled after Bangladesh rout forces Australia change",
-      "summary": "If selected it would be Renshaw's first appearance at Test level for more than three years",
-      "url": "https://www.thedailystar.net/sports/cricket/news/weatherald-axed-renshaw-recalled-after-bangladesh-rout-forces-australia-change-4250461",
-      "source": "dailystar",
-      "publishedAt": "2026-08-18T04:02:16.000Z"
     },
     {
       "id": "espn-https://www.cricinfo.com/ci/content/story/1550102.html",
@@ -123,24 +148,6 @@
       "imageUrl": "https://p.imgci.com/db/PICTURES/CMS/421000/421004.5.jpg",
       "source": "espncricinfo",
       "publishedAt": "2026-08-12T23:38:07.000Z"
-    },
-    {
-      "id": "espn-https://www.cricinfo.com/ci/content/story/1549582.html",
-      "title": "'Bounce is the key' as Bangladesh look to rebound from 54 all out, says Shanto",
-      "summary": "Najmul Hossain Shanto hinted that Bangladesh will field two spinners in Darwin despite the fast and bouncy conditions",
-      "url": "https://www.cricinfo.com/story/aus-vs-ban-1st-wtc-test-najmul-hossain-shanto-confident-as-bangladesh-get-ready-for-darwin-test-1549582",
-      "imageUrl": "https://p.imgci.com/db/PICTURES/CMS/420600/420659.6.jpg",
-      "source": "espncricinfo",
-      "publishedAt": "2026-08-12T05:54:51.000Z"
-    },
-    {
-      "id": "espn-https://www.cricinfo.com/ci/content/story/1549579.html",
-      "title": "Hazlewood keeps Boland out of Australia XI for first Test",
-      "summary": "The home side named the XI that had been expected but Bangladesh will wait until the morning of the match to confirm their team",
-      "url": "https://www.cricinfo.com/story/josh-hazlewood-keeps-scott-boland-out-of-australia-xi-for-first-test-against-bangladesh-1549579",
-      "imageUrl": "https://p.imgci.com/db/PICTURES/CMS/391400/391495.5.jpg",
-      "source": "espncricinfo",
-      "publishedAt": "2026-08-12T05:17:21.000Z"
     }
   ]
 }
