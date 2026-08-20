@@ -14,6 +14,8 @@ import * as tourSeriesOverride from "./20260723_000000_tour_series_override";
 import * as tourSquadStoryUrl from "./20260723_000001_tour_squad_story_url";
 import * as playersPhotoAliases from "./20260724_000000_players_photo_aliases";
 import * as tourManualSquadText from "./20260724_000001_tour_manual_squad_text";
+import * as bangladeshMatches from "./20260820_000000_bangladesh_matches";
+import * as trackedPlayerLeaguesLinks from "./20260820_000001_tracked_player_leagues_links";
 
 type Migration = {
   name: string;
@@ -93,5 +95,15 @@ export const migrations: Migration[] = [
     name: "20260724_000001_tour_manual_squad_text",
     up: tourManualSquadText.up,
     down: tourManualSquadText.down,
+  },
+  {
+    name: "20260820_000000_bangladesh_matches",
+    up: bangladeshMatches.up,
+    down: bangladeshMatches.down,
+  },
+  {
+    name: "20260820_000001_tracked_player_leagues_links",
+    up: trackedPlayerLeaguesLinks.up,
+    down: trackedPlayerLeaguesLinks.down,
   },
 ];

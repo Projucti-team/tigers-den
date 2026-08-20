@@ -88,17 +88,76 @@ async function runPostgresPatches(): Promise<void> {
     await pool.query(`
       CREATE TABLE IF NOT EXISTS "tracked_player_leagues" (
         "id" serial PRIMARY KEY NOT NULL,
-        "player_name" varchar NOT NULL,
-        "team_name" varchar NOT NULL,
-        "league_name" varchar NOT NULL,
-        "espn_league_id" numeric NOT NULL,
-        "cricinfo_series_id" numeric,
-        "season_year" numeric,
-        "use_season_events" boolean DEFAULT true,
+        "player_name" varchar,
+        "team_name" varchar,
+        "league_name" varchar,
+        "espn_league_id" numeric,
+        "player_cricinfo_url" varchar,
+        "team_cricinfo_url" varchar,
+        "athlete_id" integer,
+        "team_id" integer,
+        "last_resolved_at" timestamp(3) with time zone,
         "active" boolean DEFAULT true,
         "updated_at" timestamp(3) with time zone DEFAULT now() NOT NULL,
         "created_at" timestamp(3) with time zone DEFAULT now() NOT NULL
       );
+    `);
+
+    // Table may already exist from before the link-based redesign (20260820_..._links.ts) --
+    // patch it forward the same way, since this boot-time script has to stay idempotent for
+    // deployments that skip the real migration runner.
+    await pool.query(`
+      ALTER TABLE "tracked_player_leagues"
+        ADD COLUMN IF NOT EXISTS "player_cricinfo_url" varchar,
+        ADD COLUMN IF NOT EXISTS "team_cricinfo_url" varchar,
+        ADD COLUMN IF NOT EXISTS "athlete_id" integer,
+        ADD COLUMN IF NOT EXISTS "team_id" integer,
+        ADD COLUMN IF NOT EXISTS "last_resolved_at" timestamp(3) with time zone;
+    `);
+    await pool.query(`
+      ALTER TABLE "tracked_player_leagues"
+        ALTER COLUMN "player_name" DROP NOT NULL,
+        ALTER COLUMN "team_name" DROP NOT NULL,
+        ALTER COLUMN "league_name" DROP NOT NULL,
+        ALTER COLUMN "espn_league_id" DROP NOT NULL;
+    `);
+    await pool.query(`
+      ALTER TABLE "tracked_player_leagues"
+        DROP COLUMN IF EXISTS "cricinfo_series_id",
+        DROP COLUMN IF EXISTS "season_year",
+        DROP COLUMN IF EXISTS "use_season_events";
+    `);
+
+    await pool.query(`
+      CREATE TABLE IF NOT EXISTS "bangladesh_matches" (
+        "id" serial PRIMARY KEY NOT NULL,
+        "match_id" varchar NOT NULL UNIQUE,
+        "team_category" varchar NOT NULL CHECK ("team_category" IN ('men', 'women', 'u19', 'emerging')),
+        "match_type" varchar,
+        "status" varchar NOT NULL CHECK ("status" IN ('live', 'completed', 'upcoming')),
+        "status_text" varchar,
+        "teams" jsonb,
+        "opponent" varchar,
+        "score_summary" varchar,
+        "venue" varchar,
+        "match_date" timestamp(3) with time zone,
+        "series_id" varchar,
+        "series_name" varchar,
+        "espn_league_id" integer,
+        "espn_event_id" varchar,
+        "source" varchar NOT NULL DEFAULT 'cricapi',
+        "created_at" timestamp(3) with time zone DEFAULT now() NOT NULL,
+        "updated_at" timestamp(3) with time zone DEFAULT now() NOT NULL
+      );
+    `);
+    await pool.query(`
+      CREATE INDEX IF NOT EXISTS "idx_bangladesh_matches_status" ON "bangladesh_matches" ("status");
+    `);
+    await pool.query(`
+      CREATE INDEX IF NOT EXISTS "idx_bangladesh_matches_category" ON "bangladesh_matches" ("team_category");
+    `);
+    await pool.query(`
+      CREATE INDEX IF NOT EXISTS "idx_bangladesh_matches_date" ON "bangladesh_matches" ("match_date");
     `);
 
     await pool.query(`

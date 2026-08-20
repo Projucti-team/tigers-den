@@ -4,11 +4,13 @@ import type { CollectionConfig } from "payload";
 export const TrackedPlayerLeagues: CollectionConfig = {
   slug: "tracked-player-leagues",
   admin: {
-    useAsTitle: "playerName",
-    defaultColumns: ["playerName", "teamName", "leagueName", "espnLeagueId", "active"],
+    useAsTitle: "playerCricinfoUrl",
+    defaultColumns: ["playerName", "teamName", "leagueName", "active", "lastResolvedAt"],
     description:
-      "Track Bangladeshi players in overseas leagues (e.g. Hasan Mahmud for Kent in County Championship). " +
-      "Match Centre shows live scores when their team is playing, with a banner above the score.",
+      "Track Bangladeshi players in overseas leagues (e.g. Hasan Mahmud for Kent). Paste the player's " +
+      "and team's ESPNcricinfo profile links — the sync job resolves the display names and current " +
+      "competition automatically. Match Centre only shows a live/completed match when the tracked " +
+      "player is actually named in that match's playing XI, not just whenever their team plays.",
     components: {
       beforeList: ["@/components/admin/TrackedPlayerLeaguesHelp"],
     },
@@ -21,50 +23,21 @@ export const TrackedPlayerLeagues: CollectionConfig = {
   },
   fields: [
     {
-      name: "playerName",
+      name: "playerCricinfoUrl",
       type: "text",
-      required: true,
-      admin: { description: "Player display name, e.g. Hasan Mahmud." },
-    },
-    {
-      name: "teamName",
-      type: "text",
-      required: true,
-      admin: { description: "Franchise / county side, e.g. Kent." },
-    },
-    {
-      name: "leagueName",
-      type: "text",
-      required: true,
-      admin: { description: "Competition label shown in Match Centre, e.g. County Championship." },
-    },
-    {
-      name: "espnLeagueId",
-      type: "number",
       required: true,
       admin: {
         description:
-          "ESPN Core league id (same as cricinfo series id on the series URL). Required for live scores.",
+          "Player's ESPNcricinfo profile link, e.g. https://www.espncricinfo.com/cricketers/hasan-mahmud-926629",
       },
     },
     {
-      name: "cricinfoSeriesId",
-      type: "number",
-      admin: { description: "Optional cricinfo series id if different from ESPN league id." },
-    },
-    {
-      name: "seasonYear",
-      type: "number",
+      name: "teamCricinfoUrl",
+      type: "text",
+      required: true,
       admin: {
-        description: "Season year for tournament fixtures (e.g. 2026). Uses season events API when set.",
-      },
-    },
-    {
-      name: "useSeasonEvents",
-      type: "checkbox",
-      defaultValue: true,
-      admin: {
-        description: "Scan /seasons/{year}/events for full fixture lists (needed for World Cups and long leagues).",
+        description:
+          "Team's ESPNcricinfo profile link, e.g. https://www.espncricinfo.com/team/kent-1098",
       },
     },
     {
@@ -72,6 +45,42 @@ export const TrackedPlayerLeagues: CollectionConfig = {
       type: "checkbox",
       defaultValue: true,
       admin: { description: "Uncheck when the player leaves the league or the season ends." },
+    },
+    // Everything below is resolved automatically by the sync job — not admin-entered.
+    {
+      name: "playerName",
+      type: "text",
+      admin: { readOnly: true, description: "Resolved from the player link." },
+    },
+    {
+      name: "teamName",
+      type: "text",
+      admin: { readOnly: true, description: "Resolved from the team link." },
+    },
+    {
+      name: "leagueName",
+      type: "text",
+      admin: { readOnly: true, description: "Resolved current/default competition for the team." },
+    },
+    {
+      name: "athleteId",
+      type: "number",
+      admin: { readOnly: true, description: "ESPN Core athlete id, parsed from the player link." },
+    },
+    {
+      name: "teamId",
+      type: "number",
+      admin: { readOnly: true, description: "ESPN Core team id, parsed from the team link." },
+    },
+    {
+      name: "espnLeagueId",
+      type: "number",
+      admin: { readOnly: true, description: "Resolved ESPN Core league id currently being scanned." },
+    },
+    {
+      name: "lastResolvedAt",
+      type: "date",
+      admin: { readOnly: true, description: "When the sync job last resolved this entry." },
     },
   ],
 };

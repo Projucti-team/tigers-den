@@ -371,6 +371,14 @@ async function fetchSeriesBatch(
   }
 }
 
+/** Search CricAPI's series list by free-text name — e.g. "bangladesh women", "bangladesh under-19". */
+export async function searchCricApiSeries(
+  search: string,
+): Promise<{ rows: Record<string, unknown>[]; warning?: string }> {
+  if (cricApiBlocked) return { rows: [], warning: blockedUserWarnings()[0] };
+  return fetchSeriesBatch({ offset: "0", search });
+}
+
 function sortToursByStart(tours: Tour[]): Tour[] {
   return tours.sort((a, b) => {
     const da = a.startDate ? new Date(a.startDate).getTime() : 0;

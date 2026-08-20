@@ -10,8 +10,9 @@ import { firstBangladeshTeamMatch } from "@/lib/cricket/services/marquee-priorit
 import { teamShortCode } from "@/lib/cricket/services/marquee-format";
 import type { LiveMatchFeed } from "@/lib/cricket/types";
 import {
-  getRecentBangladeshMatchHighlight,
-} from "@/lib/cricket/services/bangladesh-last-match";
+  getBangladeshLastResultHighlight,
+  getBangladeshLiveHighlights,
+} from "@/lib/cricket/services/bangladesh-schedule-read";
 import type { LiveMatchSummary, Scorecard } from "@/lib/cricket/types";
 
 export type MatchHighlight = {
@@ -162,18 +163,33 @@ export function sortMatchHighlights(highlights: MatchHighlight[]): MatchHighligh
   });
 }
 
-/** Live from ESPN — all in-progress Bangladesh + tracked domestic matches, priority sorted. */
+/**
+ * All in-progress Bangladesh-team matches (any category) + tracked domestic matches, priority
+ * sorted. ESPN's live scan takes priority per category (it's what powers Match Centre's detailed
+ * ball-by-ball scorecard, keyed off an "espn-" matchId) -- the DB-backed bangladesh_matches table
+ * only fills in a category ESPN's league-discovery doesn't have live, so a tour ESPN hasn't been
+ * told about yet still shows a (simpler) live score instead of nothing.
+ */
 export async function getLiveMatchHighlights(): Promise<MatchHighlight[]> {
   const { fetchEspnLiveBangladeshHighlights } = await import(
     "@/lib/cricket/providers/espn-live"
   );
-  return sortMatchHighlights(await fetchEspnLiveBangladeshHighlights());
+  const [espnHighlights, dbHighlights] = await Promise.all([
+    fetchEspnLiveBangladeshHighlights().catch(() => []),
+    getBangladeshLiveHighlights().catch(() => []),
+  ]);
+
+  const coveredCategories = new Set(espnHighlights.map((h) => h.category ?? "men"));
+  const supplemental = dbHighlights.filter((h) => !coveredCategories.has(h.category ?? "men"));
+
+  return sortMatchHighlights([...espnHighlights, ...supplemental]);
 }
 
 export { firstBangladeshTeamMatch };
 
 /**
- * Live from ESPN/CricAPI; otherwise the most recent completed match (ESPN first).
+ * Live if any Bangladesh-team match is in progress; otherwise the most recent completed result
+ * across every category, straight from bangladesh_matches (see bangladesh-schedule-read.ts).
  *
  * getLiveMatchHighlights() deliberately includes admin-tracked domestic matches so the Match
  * Centre's match picker can offer them — but this function feeds the top marquee ticker's
@@ -187,7 +203,7 @@ export async function getMatchHighlight(): Promise<MatchHighlight | null> {
   const liveBangladeshTeamMatch = firstBangladeshTeamMatch(liveMatches);
   if (liveBangladeshTeamMatch) return liveBangladeshTeamMatch;
 
-  return getRecentBangladeshMatchHighlight();
+  return getBangladeshLastResultHighlight();
 }
 
 /** Current weather at the match venue — live matches only. */

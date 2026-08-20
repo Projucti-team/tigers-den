@@ -4,8 +4,7 @@ export const CRICKET_SYNC_JOB_IDS = [
   "icc",
   "wtc",
   "rankings",
-  "last-match",
-  "upcoming",
+  "bangladesh-schedule",
   "tours",
   "squads",
 ] as const;
@@ -45,14 +44,10 @@ export const CRICKET_SYNC_JOBS: {
     description: "Rebuild the /rankings showcase snapshot in the database.",
   },
   {
-    id: "last-match",
-    label: "Last Bangladesh match",
-    description: "Update the Bangladesh last completed match snapshot (ESPNcricinfo).",
-  },
-  {
-    id: "upcoming",
-    label: "Upcoming Bangladesh matches",
-    description: "Update the upcoming Bangladesh fixtures snapshot (ESPNcricinfo).",
+    id: "bangladesh-schedule",
+    label: "Bangladesh schedule",
+    description:
+      "Refresh every Bangladesh team's (men/women/u19/emerging) results and fixtures, plus admin-tracked domestic players, in the database (CricAPI + ESPN).",
   },
   {
     id: "tours",

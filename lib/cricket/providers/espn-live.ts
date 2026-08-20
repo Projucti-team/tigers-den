@@ -15,6 +15,7 @@ import { resolveEspnLeagueByCricinfoId } from "@/lib/cricket/providers/espn-squa
 import { teamShortCode } from "@/lib/cricket/services/marquee-format";
 import type { MatchHighlight } from "@/lib/cricket/services/match-highlight";
 import { readEspnTourSquads } from "@/lib/cricket/squads/store";
+import { readTourSyncStatesWithEspnLeague } from "@/lib/cricket/services/tour-sync-state-db";
 import {
   getTrackedPlayerLeagueEntries,
   teamNameMatches,
@@ -23,6 +24,7 @@ import {
 } from "@/lib/cricket/tracked-player-leagues";
 import { filterMatchesForTour, isUmbrellaTourName } from "@/lib/cricket/tour-identity";
 import type { LiveMatchSummary, Tour } from "@/lib/cricket/types";
+import { isPostgresDatabase } from "@/lib/payload-postgres-url";
 
 const CORE_BASE = "http://core.espnuk.org/v2/sports/cricket";
 const FIXTURE_TIMES_PATH = path.join(process.cwd(), "data", "espn-fixture-times.json");
@@ -200,6 +202,37 @@ async function fixtureTimesLeagues(): Promise<LeagueRef[]> {
   return refs;
 }
 
+/**
+ * Tours the squad-refresh pipeline has already resolved against ESPN (tour_sync_state.espn_league_id,
+ * set via recordResolvedTourSeries()) — populated automatically for every Bangladesh tour the site
+ * tracks, unlike espn-fixture-times.json and espn-tour-squads.json, which both require someone to
+ * hand-add a new series before the live/completed/upcoming ESPN scans below know it exists. A tour
+ * that starts (or finishes) without anyone updating those curated files used to leave the marquee
+ * stuck on the previous tour's result and an empty upcoming list, even though CricAPI's own tours
+ * feed already knew about it.
+ */
+async function tourSyncStateLeagues(): Promise<LeagueRef[]> {
+  if (!isPostgresDatabase()) return [];
+  try {
+    const states = await readTourSyncStatesWithEspnLeague();
+    const refs: LeagueRef[] = [];
+    for (const state of states) {
+      if (!state.espn_league_id) continue;
+      refs.push({
+        espnLeagueId: state.espn_league_id,
+        cricinfoSeriesId: state.espn_cricinfo_series_id ?? undefined,
+        seasonYear: new Date(state.updated_at).getFullYear(),
+        useSeasonEvents: true,
+        tourName: state.tour_slug,
+        kind: "international",
+      });
+    }
+    return refs;
+  } catch {
+    return [];
+  }
+}
+
 async function trackedLeagues(): Promise<LeagueRef[]> {
   const byId = new Map<number, LeagueRef>();
 
@@ -216,6 +249,10 @@ async function trackedLeagues(): Promise<LeagueRef[]> {
   }
 
   for (const ref of await fixtureTimesLeagues()) {
+    byId.set(ref.espnLeagueId, ref);
+  }
+
+  for (const ref of await tourSyncStateLeagues()) {
     byId.set(ref.espnLeagueId, ref);
   }
 
@@ -311,9 +348,15 @@ export function liveMatchSummaryFromHighlight(highlight: MatchHighlight): LiveMa
   };
 }
 
-async function fetchCompetitorScore(
-  compRef: string,
-): Promise<{ team: string; score: string } | null> {
+type CompetitorRow = { team: string; score: string; teamId: number | null; competitorRef: string };
+
+function teamIdFromRef(ref: string | undefined): number | null {
+  const match = ref?.match(/\/teams\/(\d+)/);
+  const id = match ? Number(match[1]) : NaN;
+  return Number.isFinite(id) ? id : null;
+}
+
+async function fetchCompetitorScore(compRef: string): Promise<CompetitorRow | null> {
   const comp = await fetchCoreJson<{
     team?: { $ref: string };
     score?: { $ref: string };
@@ -329,7 +372,27 @@ async function fetchCompetitorScore(
     scoreText = score?.displayValue ?? score?.value ?? "";
   }
 
-  return { team: label, score: scoreText };
+  return { team: label, score: scoreText, teamId: teamIdFromRef(comp.team.$ref), competitorRef: compRef };
+}
+
+/** True when the tracked athlete is actually named in this competitor's roster (playing XI). */
+async function isAthleteInCompetitorRoster(
+  competitorRef: string,
+  athleteId: number,
+): Promise<boolean> {
+  const roster = await fetchCoreJson<{ entries?: { playerId?: number }[] }>(
+    `${competitorRef}/roster`,
+  );
+  return (roster?.entries ?? []).some((entry) => Number(entry.playerId) === athleteId);
+}
+
+/** Team-id match when we have it (reliable — resolved directly from the team's cricinfo link), else name fallback. */
+function domesticTeamMatches(
+  row: { team: string; teamId: number | null },
+  league: LeagueRef,
+): boolean {
+  if (league.trackedTeamId && row.teamId) return row.teamId === league.trackedTeamId;
+  return Boolean(league.trackedTeamName) && teamNameMatches(row.team, league.trackedTeamName!);
 }
 
 async function buildHighlightFromEspnEvent(
@@ -363,7 +426,7 @@ async function buildHighlightFromEspnEvent(
     await Promise.all(
       (competitors.items ?? []).map((item) => fetchCompetitorScore(item.$ref)),
     )
-  ).filter((row): row is { team: string; score: string } => Boolean(row));
+  ).filter((row): row is CompetitorRow => Boolean(row));
 
   const innings = rows.filter((row) => row.score);
 
@@ -382,9 +445,18 @@ async function buildHighlightFromEspnEvent(
     .join(" ");
 
   if (league.kind === "domestic") {
-    const trackedTeam = league.trackedTeamName?.trim();
-    if (!trackedTeam || !rows.some((row) => teamNameMatches(row.team, trackedTeam))) {
-      return null;
+    const trackedRow = rows.find((row) => domesticTeamMatches(row, league));
+    if (!trackedRow) return null;
+
+    // The team is playing, but is the tracked player actually in the XI? A live/completed
+    // roster is set once the match starts, so verify it here rather than trusting "their team
+    // is playing" -- e.g. Kent have a live match but the specific tracked player was left out.
+    if (league.trackedAthleteId) {
+      const inRoster = await isAthleteInCompetitorRoster(
+        trackedRow.competitorRef,
+        league.trackedAthleteId,
+      ).catch(() => true); // ESPN roster hiccup shouldn't silently hide a real match — fail open
+      if (!inRoster) return null;
     }
   } else {
     let involvesBd =
@@ -504,7 +576,7 @@ async function buildLiveMatchFromEspnEvent(
     await Promise.all(
       (competitors.items ?? []).map((item) => fetchCompetitorScore(item.$ref)),
     )
-  ).filter((row): row is { team: string; score: string } => Boolean(row));
+  ).filter((row): row is CompetitorRow => Boolean(row));
 
   let involvesBd =
     rows.some((row) => isBangladeshTeam(row.team)) ||
@@ -580,8 +652,7 @@ async function buildUpcomingDomesticMatch(
   eventId: string,
 ): Promise<LiveMatchSummary | null> {
   const leagueId = league.espnLeagueId;
-  const trackedTeam = league.trackedTeamName?.trim();
-  if (!trackedTeam) return null;
+  if (!league.trackedTeamId && !league.trackedTeamName?.trim()) return null;
 
   const competition = await fetchCoreJson<CoreCompetition>(
     `${CORE_BASE}/leagues/${leagueId}/events/${eventId}/competitions/${eventId}`,
@@ -600,9 +671,11 @@ async function buildUpcomingDomesticMatch(
     await Promise.all(
       (competitors.items ?? []).map((item) => fetchCompetitorScore(item.$ref)),
     )
-  ).filter((row): row is { team: string; score: string } => Boolean(row));
+  ).filter((row): row is CompetitorRow => Boolean(row));
 
-  if (!rows.some((row) => teamNameMatches(row.team, trackedTeam))) return null;
+  // No playing-XI check here -- lineups for domestic matches aren't announced ahead of the toss,
+  // so "the tracked player's team is fixtured to play" is the best we can show in advance.
+  if (!rows.some((row) => domesticTeamMatches(row, league))) return null;
 
   const teams = rows.map((row) => row.team).filter(Boolean);
   const event = await fetchCoreJson<{ name?: string; shortName?: string; date?: string }>(
@@ -783,12 +856,14 @@ async function scanEspnBangladeshMatches(
 
 async function scanEspnBangladeshHighlights(
   mode: "live" | "completed",
-  options?: { internationalOnly?: boolean },
+  options?: { internationalOnly?: boolean; domesticOnly?: boolean },
 ): Promise<{ highlight: MatchHighlight; eventAt: number }[]> {
   const leagues = await trackedLeagues();
   const scoped = options?.internationalOnly
     ? leagues.filter((league) => league.kind !== "domestic")
-    : leagues;
+    : options?.domesticOnly
+      ? leagues.filter((league) => league.kind === "domestic")
+      : leagues;
 
   const leagueEventRefs = await Promise.all(
     scoped.map(async (league) => ({ league, refs: await fetchLeagueEventRefs(league) })),
@@ -842,6 +917,22 @@ export async function fetchEspnLiveBangladeshHighlights(): Promise<MatchHighligh
 export async function fetchEspnLiveBangladeshHighlight(): Promise<MatchHighlight | null> {
   const highlights = await fetchEspnLiveBangladeshHighlights();
   return highlights[0] ?? null;
+}
+
+/**
+ * Live admin-tracked domestic matches only (never a real Bangladesh-team match) -- the DB-backed
+ * bangladesh_matches table now covers men/women/u19/emerging directly, but domestic tracked-player
+ * fixtures still need this live ESPN scan since there's no pre-announced schedule to sync ahead
+ * of time for those. Scoped to just the domestic leagues so it doesn't redo the international scan
+ * fetchEspnLiveBangladeshHighlights() already does for the (now DB-backed) national-team matches.
+ */
+export async function fetchEspnLiveDomesticHighlights(): Promise<MatchHighlight[]> {
+  const candidates = await scanEspnBangladeshHighlights("live", { domesticOnly: true });
+  const byMatchId = new Map<string, MatchHighlight>();
+  for (const row of candidates) {
+    byMatchId.set(row.highlight.matchId, row.highlight);
+  }
+  return [...byMatchId.values()];
 }
 
 /** Most recent completed Bangladesh match from ESPN — used when live play has ended. */

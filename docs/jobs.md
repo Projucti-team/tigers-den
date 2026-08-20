@@ -13,7 +13,7 @@ All **Bangladesh times** below assume **UTC+6** (no DST). Cron expressions use *
 | **3:00 AM** | 21:00 | **Tours index + state** — CricAPI tours → DB, initialize `tour_sync_state` | Server: `POST /api/cron/cricket?jobs=tours` |
 | **3:15 AM** | 21:15 | **Squad refresh** — ESPN squads for active tours, upcoming formats only | Server: `POST /api/cron/cricket?jobs=squads` |
 | **3:30 AM** | 21:30 | **Rankings** — ICC + WTC → JSON + DB showcase | Server: `POST /api/cron/cricket?jobs=rankings` |
-| **3:45 AM** | 21:45 | **Bangladesh live** — Last/upcoming BD matches → JSON + DB | Server: `POST /api/cron/cricket?jobs=last-match,upcoming` |
+| **3:45 AM** | 21:45 | **Bangladesh schedule** — men/women/u19/emerging results + fixtures, tracked domestic players → DB | Server: `POST /api/cron/cricket?jobs=bangladesh-schedule` |
 | **12:00 PM** | 06:00 | **Squad refresh** (repeat) — ESPN squads for active tours | Server: `POST /api/cron/cricket?jobs=squads` |
 | **6:00 PM** | 12:00 | **Squad refresh** (repeat) — ESPN squads for active tours | Server: `POST /api/cron/cricket?jobs=squads` |
 
@@ -66,12 +66,20 @@ The sync is now split into **independent jobs** that can run on different schedu
 2. Refresh WTC standings (ESPN) → `data/wtc-standings.json`
 3. Build rankings showcase → DB + JSON
 
-#### Bangladesh live job (`?jobs=last-match,upcoming`)
+#### Bangladesh schedule job (`?jobs=bangladesh-schedule`)
 
-`lib/cricket/services/sync-cricket-snapshots.ts::syncBangladeshLive()`:
+`lib/cricket/services/sync-cricket-snapshots.ts::syncBangladeshSchedule()`:
 
-1. Scrape last completed Bangladesh match → `bangladesh-last-match.json`
-2. Scrape upcoming Bangladesh fixtures → `bangladesh-upcoming-matches.json`
+1. `syncBangladeshMatches()` — search CricAPI for men's/women's/u19/emerging Bangladesh series,
+   pull each series' match list (results + fixtures), upsert one row per match into the
+   `bangladesh_matches` table (see `lib/cricket/services/bangladesh-matches-db.ts`)
+2. `syncTrackedDomesticPlayers()` — resolve each admin-pasted (player link, team link) pair against
+   ESPN's Core API and write back the resolved player/team names, ids, and current league
+
+Replaces the old `?jobs=last-match,upcoming` pair (single cached "last match" / "upcoming
+matches" blobs, silently stale whenever the ESPN league-discovery scan behind them found nothing
+new). The read side (marquee, Match Centre) now queries `bangladesh_matches` directly —
+see `lib/cricket/services/bangladesh-schedule-read.ts`.
 
 #### Player registry job (`?jobs=players`)
 
@@ -119,9 +127,9 @@ curl -fsS -X POST "https://your-domain.com/api/cron/cricket?jobs=rankings" \
 ```
 Cron: `30 21 * * *`
 
-**3:45 AM BDT (21:45 UTC) — Bangladesh live:**
+**3:45 AM BDT (21:45 UTC) — Bangladesh schedule:**
 ```bash
-curl -fsS -X POST "https://your-domain.com/api/cron/cricket?jobs=last-match,upcoming" \
+curl -fsS -X POST "https://your-domain.com/api/cron/cricket?jobs=bangladesh-schedule" \
   -H "Authorization: Bearer YOUR_CRON_SECRET"
 ```
 Cron: `45 21 * * *`
@@ -131,7 +139,7 @@ Cron: `45 21 * * *`
 - `?jobs=tours` — Tours index only
 - `?jobs=squads` — Squad refresh only
 - `?jobs=rankings` — Rankings (ICC + WTC) only
-- `?jobs=last-match,upcoming` — Bangladesh matches only
+- `?jobs=bangladesh-schedule` — Bangladesh matches (all categories) + tracked domestic players only
 - `?jobs=tours,squads` — Multiple jobs (comma-separated)
 - `?force=1` — Force full CricAPI refresh on tours job (ignore 24h freshness check)
 - `?wait=1` — Wait synchronously (default: background 202 response + poll `?status=1`)
@@ -209,8 +217,12 @@ These are updated by `POST /api/cron/cricket`, not GitHub Actions:
 | `data/tour-details.json` | `tour-detail:{slug}` | Per-series fixtures, results, squads, venues |
 | `data/venue-guides.json` | `venue-guides` | Ground & host city copy (once per venue) |
 | `data/espn-tour-squads.json` | (merged into tour snapshots) | ESPN squad cache |
-| `data/bangladesh-last-match.json` | `bangladesh-last-match` | Last completed BD match |
-| `data/bangladesh-upcoming-matches.json` | `bangladesh-upcoming-matches` | Upcoming marquee fixtures |
+
+Bangladesh last-match / upcoming fixtures moved from single JSON snapshots to a real table,
+`bangladesh_matches` (Postgres only, no JSON mirror) — see the "Bangladesh schedule job" section
+above. `data/bangladesh-last-match.json` and `data/bangladesh-upcoming-matches.json` still exist
+on disk (written by the legacy `scrape-bangladesh-match.yml` GitHub Action below) but nothing in
+the app reads them anymore; safe to retire that workflow.
 
 ### JSON written by GitHub Actions
 

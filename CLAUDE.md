@@ -120,7 +120,7 @@ Cron / Admin Dispatch (/api/cron/cricket or /api/admin/cricket-sync)
     ├─ syncToursIndex() [CricAPI, daily] → tours, details, build snapshots → tour_sync_state
     ├─ refreshSquadsForActiveTours() [ESPN, 2–3×/day] → selective squad fetch
     ├─ syncRankings() [ICC + WTC, daily] → icc-rankings.json, wtc-standings.json
-    ├─ syncBangladeshLive() [ESPN, 2–3×/day] → bangladesh-last-match.json
+    ├─ syncBangladeshSchedule() [CricAPI + ESPN, 2–3×/day] → bangladesh_matches table (men/women/u19/emerging) + tracked domestic players
     └─ (more jobs as needed)
 ```
 
@@ -128,11 +128,20 @@ Cron / Admin Dispatch (/api/cron/cricket or /api/admin/cricket-sync)
 
 **Key table:** `tour_sync_state` (tour_id, current_status, test/odi/t20_series_status, squad_import_complete_*, last_*_sync timestamps)
 
+**Bangladesh schedule:** `bangladesh_matches` table — one row per match across every Bangladesh
+team (men/women/u19/emerging), populated by CricAPI series search
+(`lib/cricket/services/sync-bangladesh-matches.ts`). Read side
+(`lib/cricket/services/bangladesh-schedule-read.ts`) serves last result / live (any category) /
+next 5 upcoming; live rows get a fresh CricAPI score at read time. Admin-tracked domestic players
+(`tracked-player-leagues` collection) now take just two ESPNcricinfo links (player + team profile)
+— `syncTrackedDomesticPlayers()` resolves everything else, and a live/completed domestic match
+only shows once the tracked player is confirmed in that match's playing XI.
+
 **Cron jobs (Coolify scheduled tasks):**
 - 3:00 AM: `?jobs=tours` (CricAPI daily fetch)
 - 3:15 AM, 12 PM, 6 PM: `?jobs=squads` (selective ESPN fetch)
 - 3:30 AM: `?jobs=rankings` (ICC + WTC)
-- 3:45 AM: `?jobs=last-match,upcoming` (Bangladesh live)
+- 3:45 AM: `?jobs=bangladesh-schedule` (Bangladesh matches, all categories + tracked domestic players)
 
 Details: [docs/jobs.md](docs/jobs.md)
 

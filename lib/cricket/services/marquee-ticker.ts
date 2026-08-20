@@ -1,5 +1,6 @@
-import { getMatchHighlight } from "@/lib/cricket/services/match-highlight";
-import { getCachedUpcomingBangladeshMatches } from "@/lib/cricket/services/bangladesh-upcoming-matches";
+import { getMatchHighlight, matchTime } from "@/lib/cricket/services/match-highlight";
+import { getBangladeshUpcomingMatches } from "@/lib/cricket/services/bangladesh-schedule-read";
+import { fetchEspnUpcomingDomesticMatches } from "@/lib/cricket/providers/espn-live";
 import {
   formatLastMatchMarqueeLine,
   formatLiveMarqueeLine,
@@ -33,7 +34,16 @@ export async function getMarqueeTickerSnapshot(): Promise<MarqueeTickerSnapshot>
     lastLine = formatLastMatchMarqueeLine(highlight);
   }
 
-  const upcoming = await getCachedUpcomingBangladeshMatches();
+  // Real Bangladesh-team fixtures (men/women/u19/emerging) come from the DB, refreshed by the
+  // "bangladesh-schedule" sync job; admin-tracked domestic fixtures still come from a live ESPN
+  // league scan since there's no announced schedule for those to sync ahead of time the same way.
+  const [bangladeshUpcoming, domesticUpcoming] = await Promise.all([
+    getBangladeshUpcomingMatches(5),
+    fetchEspnUpcomingDomesticMatches(3).catch(() => []),
+  ]);
+  const upcoming = [...bangladeshUpcoming, ...domesticUpcoming].sort(
+    (a, b) => matchTime(a) - matchTime(b),
+  );
   const visibleUpcoming =
     isLive && highlight
       ? upcoming.filter((m) => !isUpcomingHiddenByLive(highlight, m))

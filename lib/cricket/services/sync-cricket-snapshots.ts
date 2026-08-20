@@ -28,8 +28,8 @@ import {
   isCricApiRateLimited,
   shouldKeepPreviousToursSnapshot,
 } from "@/lib/cricket/services/tour-sync-policy";
-import { scrapeBangladeshLastMatch } from "@/lib/cricket/services/bangladesh-last-match";
-import { scrapeBangladeshUpcomingMatches } from "@/lib/cricket/services/bangladesh-upcoming-matches";
+import { syncBangladeshMatches } from "@/lib/cricket/services/sync-bangladesh-matches";
+import { syncTrackedDomesticPlayers } from "@/lib/cricket/services/sync-tracked-domestic-players";
 import type { TourDetailSnapshot, ToursIndexSnapshot } from "@/lib/cricket/snapshot-types";
 import { CRICKET_SNAPSHOT_KEYS } from "@/lib/cricket/snapshot-keys";
 import {
@@ -310,9 +310,14 @@ export async function syncSquads(options?: SyncCricketOptions): Promise<SyncCric
 }
 
 /**
- * Sync Bangladesh last completed match and upcoming matches.
+ * Refresh every Bangladesh team's (men/women/u19/emerging) results and fixtures in
+ * bangladesh_matches, plus admin-tracked domestic players. Replaces the old syncBangladeshLive()
+ * (single-blob "last match" + "upcoming matches" snapshots, silently stale whenever the ESPN
+ * league-discovery scan behind them found nothing new — see docs/HANDOVER.md).
  */
-export async function syncBangladeshLive(options?: SyncCricketOptions): Promise<SyncCricketResult> {
+export async function syncBangladeshSchedule(
+  options?: SyncCricketOptions,
+): Promise<SyncCricketResult> {
   const warnings: string[] = [];
   const errors: string[] = [];
 
@@ -324,34 +329,22 @@ export async function syncBangladeshLive(options?: SyncCricketOptions): Promise<
       tourDetailsCount: 0,
       warnings: [],
       errors: ["PAYLOAD_SECRET is not set"],
-      jobsRun: ["last-match", "upcoming"],
+      jobsRun: ["bangladesh-schedule"],
     };
   }
 
   try {
-    const lastMatch = await scrapeBangladeshLastMatch();
-    if (lastMatch) {
-      await upsertCricketSnapshot(
-        CRICKET_SNAPSHOT_KEYS.lastMatch,
-        "Bangladesh last completed match",
-        lastMatch,
-      );
-    }
+    const result = await syncBangladeshMatches();
+    warnings.push(...result.warnings);
   } catch (e) {
-    errors.push(`Last match: ${e instanceof Error ? e.message : "failed"}`);
+    errors.push(`Bangladesh schedule: ${e instanceof Error ? e.message : "failed"}`);
   }
 
   try {
-    const upcoming = await scrapeBangladeshUpcomingMatches();
-    if (upcoming) {
-      await upsertCricketSnapshot(
-        CRICKET_SNAPSHOT_KEYS.upcomingMatches,
-        "Bangladesh upcoming matches",
-        upcoming,
-      );
-    }
+    const result = await syncTrackedDomesticPlayers();
+    warnings.push(...result.warnings);
   } catch (e) {
-    errors.push(`Upcoming matches: ${e instanceof Error ? e.message : "failed"}`);
+    errors.push(`Domestic players: ${e instanceof Error ? e.message : "failed"}`);
   }
 
   return {
@@ -361,7 +354,7 @@ export async function syncBangladeshLive(options?: SyncCricketOptions): Promise<
     tourDetailsCount: 0,
     warnings,
     errors,
-    jobsRun: ["last-match", "upcoming"],
+    jobsRun: ["bangladesh-schedule"],
   };
 }
 
@@ -618,8 +611,8 @@ export async function syncCricketSnapshots(options?: SyncCricketOptions): Promis
     results.push(await syncRankings(options));
   }
 
-  if (run("last-match") || run("upcoming")) {
-    results.push(await syncBangladeshLive(options));
+  if (run("bangladesh-schedule")) {
+    results.push(await syncBangladeshSchedule(options));
   }
 
   if (run("tours")) {

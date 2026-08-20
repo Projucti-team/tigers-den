@@ -8,6 +8,7 @@ import {
   getSquadRefreshTargets,
   setTourManualSquadText,
   readTourSyncState,
+  readTourSyncStatesWithEspnLeague,
 } from "../../lib/cricket/services/tour-sync-state-db.ts";
 
 /**
@@ -122,6 +123,57 @@ test("integration: clearing manual squad text (set to null) does not touch the c
     assert.equal(state?.manual_squad_text, null);
     // Clearing text isn't "new information to re-check" -- leave the flag alone.
     assert.equal(state?.squad_import_complete_test, true);
+  } finally {
+    __setPoolFactoryForTests(null);
+    await pool.end();
+  }
+});
+
+/**
+ * Regression coverage for the marquee/last-match staleness bug: espn-live.ts's trackedLeagues()
+ * now sources leagues from here (readTourSyncStatesWithEspnLeague()) instead of only the
+ * hand-curated data/espn-fixture-times.json + data/espn-tour-squads.json files. A tour that
+ * finished (current_status = 'finished') must still be found for a while so the just-completed
+ * result isn't invisible to the last-match scan, but a tour resolved months ago should eventually
+ * drop out so the scan doesn't grow unbounded.
+ */
+test("integration: readTourSyncStatesWithEspnLeague finds a recently-resolved tour regardless of current_status", async () => {
+  const pool = await createTestPool();
+  __setPoolFactoryForTests(async () => pool);
+
+  try {
+    // Just-finished Test tour: current_status flips to 'finished' as soon as the nightly tours
+    // sync notices, but the squad-refresh pipeline resolved espn_league_id days ago and it should
+    // still be scanned for its (now completed) result.
+    await pool.query(
+      `INSERT INTO "tour_sync_state"
+         ("tour_id", "tour_slug", "current_status", "espn_cricinfo_series_id", "espn_league_id", "updated_at")
+       VALUES ($1, $2, 'finished', $3, $4, now())`,
+      ["1532999", "australia-tour-of-bangladesh-test-2026", 1532999, 24999],
+    );
+
+    // Never resolved against ESPN — must not show up (nothing to scan for).
+    await pool.query(
+      `INSERT INTO "tour_sync_state"
+         ("tour_id", "tour_slug", "current_status", "updated_at")
+       VALUES ($1, $2, 'active', now())`,
+      ["9999999", "unresolved-tour"],
+    );
+
+    // Resolved a very long time ago — old enough that scanning it forever would just be dead
+    // weight on every live/completed/upcoming request.
+    await pool.query(
+      `INSERT INTO "tour_sync_state"
+         ("tour_id", "tour_slug", "current_status", "espn_cricinfo_series_id", "espn_league_id", "updated_at")
+       VALUES ($1, $2, 'finished', $3, $4, now() - interval '200 days')`,
+      ["1400000", "old-tour-from-last-year", 1400000, 20000],
+    );
+
+    const found = await readTourSyncStatesWithEspnLeague();
+    const tourIds = found.map((s) => s.tour_id).sort();
+
+    assert.deepEqual(tourIds, ["1532999"]);
+    assert.equal(found[0]?.espn_league_id, 24999);
   } finally {
     __setPoolFactoryForTests(null);
     await pool.end();

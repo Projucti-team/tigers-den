@@ -73,6 +73,33 @@ export async function readActiveTourSyncStates(): Promise<TourSyncState[]> {
   }
 }
 
+/**
+ * Tours the squad-refresh pipeline has already resolved an ESPN league id for (recordResolvedTourSeries()),
+ * regardless of current_status — so a series that just finished (current_status flips to "finished"
+ * as soon as the nightly tour sync notices) still shows up here for a while, instead of vanishing
+ * the moment it's no longer "active". Used to auto-discover which ESPN leagues the last-match/
+ * upcoming/live scans should scan, without anyone having to hand-add the tour to
+ * data/espn-fixture-times.json first.
+ */
+export async function readTourSyncStatesWithEspnLeague(
+  options?: { maxAgeDays?: number },
+): Promise<TourSyncState[]> {
+  const pool = await getDbPool();
+  try {
+    const maxAgeDays = options?.maxAgeDays ?? 45;
+    const result = await pool.query(
+      `SELECT * FROM "tour_sync_state"
+       WHERE "espn_league_id" IS NOT NULL
+         AND "updated_at" > (NOW() - ($1::text || ' days')::interval)::timestamp
+       ORDER BY "updated_at" DESC`,
+      [maxAgeDays],
+    );
+    return (result.rows as TourSyncState[]) || [];
+  } finally {
+    await pool.end();
+  }
+}
+
 export async function upsertTourSyncState(
   update: TourSyncStateUpdate,
 ): Promise<TourSyncState> {
