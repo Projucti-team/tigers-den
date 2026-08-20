@@ -1,5 +1,5 @@
 {
-  "fetchedAt": "2026-08-19T21:43:10.404Z",
+  "fetchedAt": "2026-08-20T21:45:10.007Z",
   "source": "icc-sportz.io",
   "sourceUrl": "https://www.icc-cricket.com/rankings",
   "men": {
@@ -527,8 +527,8 @@
           "name": "Portugal",
           "abbreviation": "POR",
           "rating": 87,
-          "points": 2251,
-          "matches": 26
+          "points": 2348,
+          "matches": 27
         },
         {
           "rank": 36,
@@ -783,8 +783,8 @@
           "name": "Czechia",
           "abbreviation": "CZE",
           "rating": 33,
-          "points": 634,
-          "matches": 19
+          "points": 657,
+          "matches": 20
         },
         {
           "rank": 68,
@@ -852,14 +852,6 @@
         },
         {
           "rank": 76,
-          "name": "Luxembourg",
-          "abbreviation": "LUX",
-          "rating": 20,
-          "points": 454,
-          "matches": 23
-        },
-        {
-          "rank": 77,
           "name": "Mexico",
           "abbreviation": "MEX",
           "rating": 18,
@@ -867,12 +859,20 @@
           "matches": 25
         },
         {
-          "rank": 78,
+          "rank": 77,
           "name": "Korea",
           "abbreviation": "KOR",
           "rating": 17,
           "points": 294,
           "matches": 17
+        },
+        {
+          "rank": 78,
+          "name": "Luxembourg",
+          "abbreviation": "LUX",
+          "rating": 17,
+          "points": 410,
+          "matches": 24
         },
         {
           "rank": 79,
@@ -892,19 +892,19 @@
         },
         {
           "rank": 81,
+          "name": "ISR",
+          "abbreviation": "ISR",
+          "rating": 15,
+          "points": 169,
+          "matches": 11
+        },
+        {
+          "rank": 82,
           "name": "Mozambique",
           "abbreviation": "MOZ",
           "rating": 15,
           "points": 250,
           "matches": 17
-        },
-        {
-          "rank": 82,
-          "name": "ISR",
-          "abbreviation": "ISR",
-          "rating": 12,
-          "points": 119,
-          "matches": 10
         },
         {
           "rank": 83,
@@ -916,6 +916,14 @@
         },
         {
           "rank": 84,
+          "name": "Bulgaria",
+          "abbreviation": "BUL",
+          "rating": 9,
+          "points": 219,
+          "matches": 24
+        },
+        {
+          "rank": 85,
           "name": "Maldives",
           "abbreviation": "MDV",
           "rating": 9,
@@ -923,7 +931,7 @@
           "matches": 13
         },
         {
-          "rank": 85,
+          "rank": 86,
           "name": "Suriname",
           "abbreviation": "SUR",
           "rating": 8,
@@ -931,7 +939,7 @@
           "matches": 10
         },
         {
-          "rank": 86,
+          "rank": 87,
           "name": "Croatia",
           "abbreviation": "CRO",
           "rating": 7,
@@ -939,20 +947,12 @@
           "matches": 24
         },
         {
-          "rank": 87,
+          "rank": 88,
           "name": "Seychelles",
           "abbreviation": "SEY",
           "rating": 7,
           "points": 46,
           "matches": 7
-        },
-        {
-          "rank": 88,
-          "name": "Bulgaria",
-          "abbreviation": "BUL",
-          "rating": 6,
-          "points": 149,
-          "matches": 23
         },
         {
           "rank": 89,
@@ -1049,6 +1049,14 @@
           "rating": 0,
           "points": 0,
           "matches": 10
+        },
+        {
+          "rank": 94,
+          "name": "GRE",
+          "abbreviation": "GRE",
+          "rating": 0,
+          "points": 0,
+          "matches": 6
         },
         {
           "rank": 94,
@@ -10389,7 +10397,7 @@
         "allrounder": "2026-08-18"
       },
       "t20": {
-        "team": "2026-08-18",
+        "team": "2026-08-20",
         "bat": "2026-08-18",
         "bowl": "2026-08-18",
         "allrounder": "2026-08-18"
@@ -10791,9 +10799,9 @@
           "rank": 34,
           "name": "Oman",
           "abbreviation": "OMA-W",
-          "rating": 55,
-          "points": 1639,
-          "matches": 30
+          "rating": 53,
+          "points": 1630,
+          "matches": 31
         },
         {
           "rank": 35,
@@ -10829,6 +10837,14 @@
         },
         {
           "rank": 39,
+          "name": "China",
+          "abbreviation": "CHN-W",
+          "rating": 43,
+          "points": 1432,
+          "matches": 33
+        },
+        {
+          "rank": 40,
           "name": "Switzerland",
           "abbreviation": "CHE-W",
           "rating": 42,
@@ -10836,7 +10852,7 @@
           "matches": 27
         },
         {
-          "rank": 40,
+          "rank": 41,
           "name": "Canada",
           "abbreviation": "CAN-W",
           "rating": 42,
@@ -10844,19 +10860,11 @@
           "matches": 20
         },
         {
-          "rank": 41,
+          "rank": 42,
           "name": "Myanmar",
           "abbreviation": "MYA-W",
           "rating": 42,
           "points": 1344,
-          "matches": 32
-        },
-        {
-          "rank": 42,
-          "name": "China",
-          "abbreviation": "CHN-W",
-          "rating": 41,
-          "points": 1327,
           "matches": 32
         },
         {
@@ -17378,7 +17386,7 @@
         "allrounder": "2026-08-17"
       },
       "t20": {
-        "team": "2026-08-11",
+        "team": "2026-08-20",
         "bat": "2026-08-17",
         "bowl": "2026-08-17",
         "allrounder": "2026-08-17"
