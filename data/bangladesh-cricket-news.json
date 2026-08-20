@@ -1,6 +1,56 @@
 {
-  "fetchedAt": "2026-08-19T21:58:09.742Z",
+  "fetchedAt": "2026-08-20T21:59:05.752Z",
   "items": [
+    {
+      "id": "espn-https://www.cricinfo.com/ci/content/story/1550809.html",
+      "title": "India's tour of Bangladesh could be postponed yet again",
+      "summary": "The tour was originally planned for August last year before being deferred to September 2026",
+      "url": "https://www.cricinfo.com/story/indias-tour-of-bangladesh-could-be-postponed-yet-again-1550809",
+      "imageUrl": "https://p.imgci.com/db/PICTURES/CMS/406700/406799.5.jpg",
+      "source": "espncricinfo",
+      "publishedAt": "2026-08-20T16:46:09.000Z"
+    },
+    {
+      "id": "dailystar-https://www.thedailystar.net/sports/cricket/news/bangladesh-people-are-emotional-i-am-not-simmons-urges-tigers-stay-grounded-4252776",
+      "title": "'Bangladesh people are emotional, I am not': Simmons urges Tigers to stay grounded",
+      "summary": "Bangladesh head coach Phil Simmons has urged his players to keep their emotions in check as the Tigers prepare for the second Test against Australia in Mackay on Sunday.",
+      "url": "https://www.thedailystar.net/sports/cricket/news/bangladesh-people-are-emotional-i-am-not-simmons-urges-tigers-stay-grounded-4252776",
+      "source": "dailystar",
+      "publishedAt": "2026-08-20T15:34:22.000Z"
+    },
+    {
+      "id": "dailystar-https://www.thedailystar.net/sports/cricket/news/bpl-unlikely-be-held-year-says-bcb-president-tamim-4252596",
+      "title": "BPL unlikely to be held this year, says BCB president Tamim",
+      "summary": "The BPL window is fixed for December-January, and Tamim said that the franchise-based T20 tournament is not a priority for the board right now.",
+      "url": "https://www.thedailystar.net/sports/cricket/news/bpl-unlikely-be-held-year-says-bcb-president-tamim-4252596",
+      "source": "dailystar",
+      "publishedAt": "2026-08-20T12:48:03.000Z"
+    },
+    {
+      "id": "espn-https://www.cricinfo.com/ci/content/story/1550747.html",
+      "title": "'Australia are going to come harder at us' - Simmons to high-flying Bangladesh",
+      "summary": "Head coach wants his side to start second Test against Australia \"on the right footing\" after the highs of Darwin",
+      "url": "https://www.cricinfo.com/story/aus-vs-ban-bangladesh-coach-phil-simmons-australia-are-going-to-come-harder-at-us-1550747",
+      "imageUrl": "https://p.imgci.com/db/PICTURES/CMS/421400/421436.5.jpg",
+      "source": "espncricinfo",
+      "publishedAt": "2026-08-20T09:36:22.000Z"
+    },
+    {
+      "id": "dailystar-https://www.thedailystar.net/sports/cricket/news/mackay-pitch-what-can-bangladesh-expect-4252356",
+      "title": "Mackay pitch: What can Bangladesh expect?",
+      "summary": "There has never been a Test match at Mackay, the venue for the second and final Test of the Bangladesh-Australia series. Even first-class cricket has been played only sparingly at the ground, with just five matches held there.",
+      "url": "https://www.thedailystar.net/sports/cricket/news/mackay-pitch-what-can-bangladesh-expect-4252356",
+      "source": "dailystar",
+      "publishedAt": "2026-08-20T06:42:12.000Z"
+    },
+    {
+      "id": "dailystar-https://www.thedailystar.net/sports/cricket/news/australia-look-response-darwin-disaster-mackay-test-4252316",
+      "title": "Australia look for response to 'Darwin Disaster' in Mackay Test",
+      "summary": "Only a thumping win will do for Australia in the second Test against Bangladesh this week as they look to ease the embarrassment of their shock nine-wicket loss in Darwin and even up the two-match series.",
+      "url": "https://www.thedailystar.net/sports/cricket/news/australia-look-response-darwin-disaster-mackay-test-4252316",
+      "source": "dailystar",
+      "publishedAt": "2026-08-20T06:03:02.000Z"
+    },
     {
       "id": "dailystar-https://www.thedailystar.net/sports/cricket/news/emerging-team-earn-hard-fought-draw-against-south-africa-4252091",
       "title": "Emerging team earn hard-fought draw against South Africa",
@@ -10,14 +60,6 @@
       "publishedAt": "2026-08-19T20:41:31.000Z"
     },
     {
-      "id": "dailystar-https://www.thedailystar.net/sports/cricket/news/disillusionment-hand-mackay-4252056",
-      "title": "Disillusionment at hand in Mackay",
-      "summary": "The last time Bangladesh came close to following up a landmark away victory with a series win in a SENA country was in 2021/22, when they famously beat New Zealand in Mount Maunganui. An innings-and-117-run defeat in Christchurch followed inside three days. For many, it was simply Bangladesh reverting to type after producing something spectacular.",
-      "url": "https://www.thedailystar.net/sports/cricket/news/disillusionment-hand-mackay-4252056",
-      "source": "dailystar",
-      "publishedAt": "2026-08-19T18:31:08.000Z"
-    },
-    {
       "id": "espn-https://www.cricinfo.com/ci/content/story/1550591.html",
       "title": "Renshaw 'has got the game for all conditions' as he returns to Test cricket",
       "summary": "Matt Renshaw has returned to Australia's Test squad for the second Test against Bangladesh and is in line to play a Test after three-and-a-half years",
@@ -25,30 +67,6 @@
       "imageUrl": "https://p.imgci.com/db/PICTURES/CMS/421300/421378.6.jpg",
       "source": "espncricinfo",
       "publishedAt": "2026-08-19T11:26:46.000Z"
-    },
-    {
-      "id": "dailystar-https://www.thedailystar.net/sports/cricket/news/hasan-26-places-shanto-top-20-after-bangladeshs-sensational-test-win-4251496",
-      "title": "Hasan up 26 places, Shanto into top 20 after Bangladesh’s sensational Darwin Test win",
-      "summary": "Teammates Mehidy Hasan Miraz and Mominul Haque also moved up in Test rankings",
-      "url": "https://www.thedailystar.net/sports/cricket/news/hasan-26-places-shanto-top-20-after-bangladeshs-sensational-test-win-4251496",
-      "source": "dailystar",
-      "publishedAt": "2026-08-19T09:05:02.000Z"
-    },
-    {
-      "id": "dailystar-https://www.thedailystar.net/sports/cricket/news/australia-will-go-all-demolish-bangladesh-mackay-warns-donald-4251471",
-      "title": "Australia will go all in to ‘demolish’ Bangladesh in Mackay, warns Donald",
-      "summary": "Donald, who was the fast-bowling coach of Bangladesh before stepping down in 2023, warned that a wounded Australia would come back hard in the second Test, seeking to avoid a rare series defeat.",
-      "url": "https://www.thedailystar.net/sports/cricket/news/australia-will-go-all-demolish-bangladesh-mackay-warns-donald-4251471",
-      "source": "dailystar",
-      "publishedAt": "2026-08-19T08:22:48.000Z"
-    },
-    {
-      "id": "dailystar-https://www.thedailystar.net/sports/cricket/news/we-were-comparing-it-argentinas-world-cup-games-simmons-bangladeshs-australia-test-triumph-4251456",
-      "title": "‘We were comparing it to Argentina’s World Cup games’: Simmons on Bangladesh’s Australia Test triumph",
-      "summary": "The victory came 23 years after Bangladesh last played a Test in Australia and was only their second win against the hosts in Test cricket.",
-      "url": "https://www.thedailystar.net/sports/cricket/news/we-were-comparing-it-argentinas-world-cup-games-simmons-bangladeshs-australia-test-triumph-4251456",
-      "source": "dailystar",
-      "publishedAt": "2026-08-19T07:36:49.000Z"
     },
     {
       "id": "espn-https://www.cricinfo.com/ci/content/story/1550487.html",
@@ -121,33 +139,6 @@
       "imageUrl": "https://p.imgci.com/db/PICTURES/CMS/421000/421086.5.jpg",
       "source": "espncricinfo",
       "publishedAt": "2026-08-14T01:21:26.000Z"
-    },
-    {
-      "id": "espn-https://www.cricinfo.com/ci/content/story/1549660.html",
-      "title": "Mahmud's 6 for 55 gives Bangladesh dream start",
-      "summary": "Steven Smith waged a lone battle for Australia with 71 in 109 balls, but it was largely a sorry batting effort",
-      "url": "https://www.cricinfo.com/story/aus-vs-ban-1st-wtc-test-hasan-mahmud-taskin-ahmed-and-ebadot-hossain-dominate-australia-1549660",
-      "imageUrl": "https://p.imgci.com/db/PICTURES/CMS/421000/421052.6.jpg",
-      "source": "espncricinfo",
-      "publishedAt": "2026-08-13T10:59:01.000Z"
-    },
-    {
-      "id": "espn-https://www.cricinfo.com/ci/content/story/1549650.html",
-      "title": "Australia bat first in Darwin, Bangladesh play Ebadot and Mahmud",
-      "summary": "There could be some early movement on offer with the new ball to test the home side's top order",
-      "url": "https://www.cricinfo.com/story/aus-vs-ban-1st-test-2026-australia-bat-first-in-darwin-bangladesh-play-ebadot-and-mahmud-1549650",
-      "imageUrl": "https://p.imgci.com/db/PICTURES/CMS/402700/402783.5.jpg",
-      "source": "espncricinfo",
-      "publishedAt": "2026-08-13T00:47:17.000Z"
-    },
-    {
-      "id": "espn-https://www.cricinfo.com/ci/content/story/1549559.html",
-      "title": "Long wait over for Bangladesh and Darwin as Australia start their long run",
-      "summary": "For the home side this is the start of a massive 12 months in Test cricket and they won't want to slip up early on",
-      "url": "https://www.cricinfo.com/story/aus-v-ban-1st-test-2026-long-wait-over-for-bangladesh-and-darwin-as-australia-start-their-long-run-1549559",
-      "imageUrl": "https://p.imgci.com/db/PICTURES/CMS/421000/421004.5.jpg",
-      "source": "espncricinfo",
-      "publishedAt": "2026-08-12T23:38:07.000Z"
     }
   ]
 }
