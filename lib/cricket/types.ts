@@ -34,6 +34,10 @@ export type LiveMatchSummary = {
   isLive: boolean;
   seriesId?: string;
   seriesName?: string;
+  /** Set only for admin-tracked domestic fixtures (a county match with a Bangladeshi player in the XI, say) — never a real Bangladesh team match. */
+  trackedPlayerName?: string;
+  /** Display label for the domestic competition (e.g. "County Championship"). */
+  leagueLabel?: string;
 };
 
 export type ScorecardPlayer = {

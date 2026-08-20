@@ -6,6 +6,7 @@ import {
 } from "@/lib/cricket/match-category";
 import { fetchEspnMatchCentre } from "@/lib/cricket/providers/espn-match-centre";
 import { getCityWeather, type MatchWeather } from "@/lib/cricket/providers/weather";
+import { firstBangladeshTeamMatch } from "@/lib/cricket/services/marquee-priority";
 import { teamShortCode } from "@/lib/cricket/services/marquee-format";
 import type { LiveMatchFeed } from "@/lib/cricket/types";
 import {
@@ -169,10 +170,22 @@ export async function getLiveMatchHighlights(): Promise<MatchHighlight[]> {
   return sortMatchHighlights(await fetchEspnLiveBangladeshHighlights());
 }
 
-/** Live from ESPN/CricAPI; otherwise the most recent completed match (ESPN first). */
+export { firstBangladeshTeamMatch };
+
+/**
+ * Live from ESPN/CricAPI; otherwise the most recent completed match (ESPN first).
+ *
+ * getLiveMatchHighlights() deliberately includes admin-tracked domestic matches so the Match
+ * Centre's match picker can offer them — but this function feeds the top marquee ticker's
+ * single "live" headline, which should only ever claim Bangladesh are playing live when an
+ * actual Bangladesh representative team is playing. A domestic-only match being the sole live
+ * entry used to hijack that slot (e.g. showing "LIVE · Kent 23/0…" once the real Bangladesh
+ * Test had ended for the day/finished, just because it happened to be the only thing still live).
+ */
 export async function getMatchHighlight(): Promise<MatchHighlight | null> {
   const liveMatches = await getLiveMatchHighlights();
-  if (liveMatches.length) return liveMatches[0];
+  const liveBangladeshTeamMatch = firstBangladeshTeamMatch(liveMatches);
+  if (liveBangladeshTeamMatch) return liveBangladeshTeamMatch;
 
   return getRecentBangladeshMatchHighlight();
 }

@@ -19,21 +19,27 @@ function normalizePrivateKey(raw: string): string {
   return key.replace(/\\n/g, "\n").trim();
 }
 
+/**
+ * Priority: GA_PRIVATE_KEY_B64 -> GA_PRIVATE_KEY -> FIREBASE_PRIVATE_KEY_B64 ->
+ * FIREBASE_PRIVATE_KEY. The Firebase fallbacks let the same service account already used for
+ * The Roar's Firestore access double up for GA4 reporting (grant it Viewer on the GA4 property
+ * and you're done) without duplicating the key into a second Coolify var — see ga-config.ts.
+ */
 function resolvePrivateKey(): string | undefined {
-  const b64 = process.env.GA_PRIVATE_KEY_B64?.trim();
+  const b64 = process.env.GA_PRIVATE_KEY_B64?.trim() || process.env.FIREBASE_PRIVATE_KEY_B64?.trim();
   if (b64) {
     try {
       const decoded = Buffer.from(b64, "base64").toString("utf8").trim();
       if (decoded.includes("BEGIN PRIVATE KEY")) return decoded;
       console.error(
-        "[ga-admin] GA_PRIVATE_KEY_B64 decoded but doesn't contain a PEM header — falling back to GA_PRIVATE_KEY",
+        "[ga-admin] *_PRIVATE_KEY_B64 decoded but doesn't contain a PEM header — falling back to raw *_PRIVATE_KEY",
       );
     } catch (err) {
-      console.error("[ga-admin] GA_PRIVATE_KEY_B64 failed to base64-decode", err);
+      console.error("[ga-admin] *_PRIVATE_KEY_B64 failed to base64-decode", err);
     }
   }
 
-  const raw = process.env.GA_PRIVATE_KEY;
+  const raw = process.env.GA_PRIVATE_KEY || process.env.FIREBASE_PRIVATE_KEY;
   return raw ? normalizePrivateKey(raw) : undefined;
 }
 

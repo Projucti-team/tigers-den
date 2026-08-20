@@ -3,7 +3,10 @@ import {
   enrichUpcomingMatchFixtureTimes,
   matchDateKey,
 } from "@/lib/cricket/providers/espn-fixtures";
-import { fetchEspnUpcomingBangladeshMatchesFromEvents } from "@/lib/cricket/providers/espn-live";
+import {
+  fetchEspnUpcomingBangladeshMatchesFromEvents,
+  fetchEspnUpcomingDomesticMatches,
+} from "@/lib/cricket/providers/espn-live";
 import {
   readBangladeshUpcomingMatches,
   writeBangladeshUpcomingMatches,
@@ -19,6 +22,8 @@ import type { LiveMatchSummary } from "@/lib/cricket/types";
 const UPCOMING_LIMIT = 5;
 /** Merged cache can hold more — e.g. men's tour + women's fixtures side by side. */
 const UPCOMING_MERGED_LIMIT = 8;
+/** Domestic tracked-player fixtures are supplementary content, not the headline schedule. */
+const UPCOMING_DOMESTIC_LIMIT = 3;
 /** Grace before a fixture counts as started (clock skew, delayed toss). */
 const UPCOMING_GRACE_MS = 15 * 60 * 1000;
 
@@ -68,13 +73,14 @@ async function loadStoredUpcomingMatches(): Promise<LiveMatchSummary[]> {
 }
 
 async function resolveUpcomingBangladeshMatches(): Promise<LiveMatchSummary[]> {
-  const [freshCurated, stored] = await Promise.all([
+  const [freshCurated, stored, domestic] = await Promise.all([
     buildCuratedUpcomingBangladeshMatches(UPCOMING_MERGED_LIMIT).catch(() => []),
     loadStoredUpcomingMatches(),
+    fetchEspnUpcomingDomesticMatches(UPCOMING_DOMESTIC_LIMIT).catch(() => []),
   ]);
 
   // Curated schedule has correct ordinals (3rd T20, not 1st) — always merge over stale cache.
-  const merged = dedupeUpcomingMatches([...freshCurated, ...stored]);
+  const merged = dedupeUpcomingMatches([...freshCurated, ...stored, ...domestic]);
   const upcoming = merged.filter(isStillUpcoming);
   const enriched = await enrichUpcomingMatchFixtureTimes(upcoming);
   return dedupeUpcomingMatches(enriched.filter(isStillUpcoming));
@@ -93,13 +99,14 @@ export function findUpcomingBangladeshMatches(
 async function fetchEspnUpcomingBangladeshMatches(
   limit = UPCOMING_MERGED_LIMIT,
 ): Promise<LiveMatchSummary[]> {
-  const [curated, events] = await Promise.all([
+  const [curated, events, domestic] = await Promise.all([
     buildCuratedUpcomingBangladeshMatches(limit),
     fetchEspnUpcomingBangladeshMatchesFromEvents(limit),
+    fetchEspnUpcomingDomesticMatches(UPCOMING_DOMESTIC_LIMIT).catch(() => []),
   ]);
 
   const byId = new Map<string, LiveMatchSummary>();
-  for (const match of [...events, ...curated]) {
+  for (const match of [...events, ...curated, ...domestic]) {
     if (match.id && !byId.has(match.id)) byId.set(match.id, match);
   }
 

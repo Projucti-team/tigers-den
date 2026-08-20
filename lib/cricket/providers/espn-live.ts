@@ -567,6 +567,120 @@ async function buildLiveMatchFromEspnEvent(
   };
 }
 
+/**
+ * Upcoming-fixture counterpart to buildHighlightFromEspnEvent()'s domestic branch (that one
+ * only covers live/completed) — matches against league.trackedTeamName, not Bangladesh, since
+ * neither side of a county match is literally "Bangladesh". Deliberately a separate function
+ * rather than extending buildLiveMatchFromEspnEvent(), which is also called from
+ * buildTourMatchesFromEspnSeries() for real tour fixtures and shouldn't gain domestic-matching
+ * behavior it was never designed for.
+ */
+async function buildUpcomingDomesticMatch(
+  league: LeagueRef,
+  eventId: string,
+): Promise<LiveMatchSummary | null> {
+  const leagueId = league.espnLeagueId;
+  const trackedTeam = league.trackedTeamName?.trim();
+  if (!trackedTeam) return null;
+
+  const competition = await fetchCoreJson<CoreCompetition>(
+    `${CORE_BASE}/leagues/${leagueId}/events/${eventId}/competitions/${eventId}`,
+  );
+  if (!competition) return null;
+
+  const status = competition.status?.$ref
+    ? await fetchCoreJson<CoreStatus>(competition.status.$ref)
+    : null;
+  if (!isUpcomingStatus(status, competition)) return null;
+
+  const competitors = await fetchCoreList(
+    `${CORE_BASE}/leagues/${leagueId}/events/${eventId}/competitions/${eventId}/competitors`,
+  );
+  const rows = (
+    await Promise.all(
+      (competitors.items ?? []).map((item) => fetchCompetitorScore(item.$ref)),
+    )
+  ).filter((row): row is { team: string; score: string } => Boolean(row));
+
+  if (!rows.some((row) => teamNameMatches(row.team, trackedTeam))) return null;
+
+  const teams = rows.map((row) => row.team).filter(Boolean);
+  const event = await fetchCoreJson<{ name?: string; shortName?: string; date?: string }>(
+    `${CORE_BASE}/leagues/${leagueId}/events/${eventId}`,
+  );
+  const title =
+    competition.shortDescription?.trim() ||
+    competition.description?.trim() ||
+    event?.name?.trim() ||
+    `${league.trackedTeamName} match`;
+
+  const eventAt = await fetchEventTimestamp(leagueId, eventId);
+  const iso =
+    competition.date ??
+    event?.date ??
+    (eventAt > 0 ? new Date(eventAt).toISOString() : undefined);
+  const dateTimeGMT = iso
+    ? iso.endsWith("Z")
+      ? iso.replace(/(\.\d{3})?Z$/, ".000Z")
+      : `${iso}Z`
+    : undefined;
+
+  const blob = `${title} ${event?.name ?? ""} ${event?.shortName ?? ""}`;
+  let matchType: string | undefined;
+  if (/t20/i.test(blob)) matchType = "t20";
+  else if (/odi|one-day|50-over/i.test(blob)) matchType = "odi";
+  else if (/test|championship|4-day|four-day/i.test(blob)) matchType = "test";
+
+  return {
+    id: `espn-${eventId}`,
+    name: title,
+    matchType,
+    status: "Match not started",
+    venue: competition.venue?.fullName,
+    date: dateTimeGMT?.slice(0, 10),
+    dateTimeGMT,
+    teams: teams.length ? teams : undefined,
+    isLive: false,
+    trackedPlayerName: league.trackedPlayerName,
+    leagueLabel: league.leagueDisplayName,
+  };
+}
+
+/** Upcoming admin-tracked domestic fixtures (a Bangladeshi player's county/franchise match). */
+export async function fetchEspnUpcomingDomesticMatches(limit = 8): Promise<LiveMatchSummary[]> {
+  const leagues = (await trackedLeagues()).filter((league) => league.kind === "domestic");
+  if (!leagues.length) return [];
+
+  const leagueEventRefs = await Promise.all(
+    leagues.map(async (league) => ({ league, refs: await fetchLeagueEventRefs(league) })),
+  );
+
+  const seenEvents = new Set<string>();
+  const uniqueEvents: { league: LeagueRef; eventId: string }[] = [];
+  for (const { league, refs } of leagueEventRefs) {
+    for (const { eventId } of refs) {
+      if (seenEvents.has(eventId)) continue;
+      seenEvents.add(eventId);
+      uniqueEvents.push({ league, eventId });
+    }
+  }
+
+  const built = await Promise.all(
+    uniqueEvents.map(async ({ league, eventId }) => {
+      const match = await buildUpcomingDomesticMatch(league, eventId);
+      if (!match) return null;
+      const eventAt = await fetchEventTimestamp(league.espnLeagueId, eventId);
+      return { match, eventAt };
+    }),
+  );
+
+  return built
+    .filter((row): row is { match: LiveMatchSummary; eventAt: number } => row !== null)
+    .sort((a, b) => a.eventAt - b.eventAt)
+    .map((row) => row.match)
+    .slice(0, limit);
+}
+
 export type EspnTourLeagueRef = {
   espnLeagueId: number;
   cricinfoSeriesId?: number;

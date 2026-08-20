@@ -133,6 +133,11 @@ export function formatUpcomingMatchMarqueeLine(match: LiveMatchSummary): string 
   return ["Ban vs", opp, format, datePart, city, time].filter(Boolean).join(" ");
 }
 
+// formatUpcomingDomesticMarqueeLine lives in marquee-domestic-format.ts, not here -- this file
+// imports matchTime from match-highlight.ts, which transitively pulls in Payload's env loader
+// and crashes when imported outside a Next.js runtime, so anything that needs to be unit-tested
+// in isolation (like that formatter) has to stay out of this module's import graph entirely.
+
 function fixtureOrdinalLabel(text: string): string | null {
   return text.match(/\d+(?:st|nd|rd|th)\s+(?:odi|t20i?|test)/i)?.[0]?.toLowerCase() ?? null;
 }

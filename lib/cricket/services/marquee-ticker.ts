@@ -6,12 +6,16 @@ import {
   formatUpcomingMatchMarqueeLine,
   isUpcomingHiddenByLive,
 } from "@/lib/cricket/services/marquee-format";
+import { formatUpcomingDomesticMarqueeLine } from "@/lib/cricket/services/marquee-domestic-format";
 
 const BRAND_ITEMS = [
   "🐅 THE TIGERS' DEN",
   "🇧🇩 GREEN & RED ARMY",
   "🔥 ROAR FOR BANGLADESH",
 ] as const;
+
+/** Top marquee only ever teases the next few fixtures, not the whole cached lookahead. */
+const MARQUEE_UPCOMING_LIMIT = 3;
 
 export type MarqueeTickerSnapshot = {
   items: string[];
@@ -34,7 +38,9 @@ export async function getMarqueeTickerSnapshot(): Promise<MarqueeTickerSnapshot>
     isLive && highlight
       ? upcoming.filter((m) => !isUpcomingHiddenByLive(highlight, m))
       : upcoming;
-  const upcomingLines = visibleUpcoming.map((m) => formatUpcomingMatchMarqueeLine(m));
+  const upcomingLines = visibleUpcoming
+    .slice(0, MARQUEE_UPCOMING_LIMIT)
+    .map((m) => (m.trackedPlayerName ? formatUpcomingDomesticMarqueeLine(m) : formatUpcomingMatchMarqueeLine(m)));
 
   const dynamic: string[] = [];
   if (lastLine) dynamic.push(`🏏 ${lastLine}`);
