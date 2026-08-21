@@ -7,11 +7,46 @@ import {
 } from "@/lib/cricket/services/sync-lock";
 import { syncCricketSnapshots } from "@/lib/cricket/services/sync-cricket-snapshots";
 import { parseCricketSyncJobs, resolveCricketSyncJobs } from "@/lib/cricket/sync-jobs";
+import { readAllSyncJobRuns } from "@/lib/cricket/services/sync-job-runs-db";
 
 /** Nightly cricket data (rankings, tours, squads, venues) — written by cron, read on page load. */
 export const CricketSnapshots: CollectionConfig = {
   slug: "cricket-snapshots",
   endpoints: [
+    {
+      path: "/sync/last-runs",
+      method: "get",
+      handler: async (req) => {
+        const { user } = req.user
+          ? { user: req.user }
+          : await req.payload.auth({ headers: req.headers });
+
+        if (!user) {
+          return Response.json(
+            { error: "Unauthorized — sign in to Payload admin first." },
+            {
+              status: 401,
+              headers: headersWithCors({ headers: new Headers(), req }),
+            },
+          );
+        }
+
+        try {
+          const runs = await readAllSyncJobRuns();
+          return Response.json(runs, {
+            headers: headersWithCors({ headers: new Headers(), req }),
+          });
+        } catch (err) {
+          return Response.json(
+            { error: err instanceof Error ? err.message : "Failed to read job run history" },
+            {
+              status: 500,
+              headers: headersWithCors({ headers: new Headers(), req }),
+            },
+          );
+        }
+      },
+    },
     {
       path: "/sync/status",
       method: "get",

@@ -16,6 +16,7 @@ import * as playersPhotoAliases from "./20260724_000000_players_photo_aliases";
 import * as tourManualSquadText from "./20260724_000001_tour_manual_squad_text";
 import * as bangladeshMatches from "./20260820_000000_bangladesh_matches";
 import * as trackedPlayerLeaguesLinks from "./20260820_000001_tracked_player_leagues_links";
+import * as cricketSyncJobRuns from "./20260821_000000_cricket_sync_job_runs";
 
 type Migration = {
   name: string;
@@ -105,5 +106,10 @@ export const migrations: Migration[] = [
     name: "20260820_000001_tracked_player_leagues_links",
     up: trackedPlayerLeaguesLinks.up,
     down: trackedPlayerLeaguesLinks.down,
+  },
+  {
+    name: "20260821_000000_cricket_sync_job_runs",
+    up: cricketSyncJobRuns.up,
+    down: cricketSyncJobRuns.down,
   },
 ];

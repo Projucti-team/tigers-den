@@ -30,6 +30,7 @@ import {
 } from "@/lib/cricket/services/tour-sync-policy";
 import { syncBangladeshMatches } from "@/lib/cricket/services/sync-bangladesh-matches";
 import { syncTrackedDomesticPlayers } from "@/lib/cricket/services/sync-tracked-domestic-players";
+import { recordSyncJobRun } from "@/lib/cricket/services/sync-job-runs-db";
 import type { TourDetailSnapshot, ToursIndexSnapshot } from "@/lib/cricket/snapshot-types";
 import { CRICKET_SNAPSHOT_KEYS } from "@/lib/cricket/snapshot-keys";
 import {
@@ -67,6 +68,18 @@ import {
   markFinishedTours,
 } from "@/lib/cricket/services/update-tour-sync-state";
 import { refreshSquadsForActiveTours } from "@/lib/cricket/services/refresh-squads-for-active-tours";
+
+/** Best-effort — a run-history write failure (e.g. migration not applied yet) must never fail the sync itself. */
+async function recordJobRunSafe(
+  jobId: string,
+  outcome: { ok: boolean; warnings: string[]; errors: string[] },
+): Promise<void> {
+  try {
+    await recordSyncJobRun(jobId, outcome);
+  } catch (e) {
+    console.warn(`[cricket] recordSyncJobRun(${jobId}) failed:`, e);
+  }
+}
 
 export type SyncCricketResult = {
   ok: boolean;
@@ -594,15 +607,20 @@ export async function syncCricketSnapshots(options?: SyncCricketOptions): Promis
       if (repairedPlayers > 0) {
         console.log(`[cricket] Cleared ${repairedPlayers} invalid player profile URLs`);
       }
+      await recordJobRunSafe("players", { ok: true, warnings: [], errors: [] });
     }
   } catch (e) {
+    const message = e instanceof Error ? e.message : "error";
+    if (run("players")) {
+      await recordJobRunSafe("players", { ok: false, warnings: [], errors: [message] });
+    }
     return {
       ok: false,
       fetchedAt: new Date().toISOString(),
       toursCount: 0,
       tourDetailsCount: 0,
       warnings: [],
-      errors: [`Database schema: ${e instanceof Error ? e.message : "error"}`],
+      errors: [`Database schema: ${message}`],
       jobsRun,
     };
   }
@@ -621,6 +639,16 @@ export async function syncCricketSnapshots(options?: SyncCricketOptions): Promis
 
   if (run("squads")) {
     results.push(await syncSquads(options));
+  }
+
+  for (const result of results) {
+    for (const jobId of result.jobsRun) {
+      await recordJobRunSafe(jobId, {
+        ok: result.ok,
+        warnings: result.warnings,
+        errors: result.errors,
+      });
+    }
   }
 
   const aggregated: SyncCricketResult = {

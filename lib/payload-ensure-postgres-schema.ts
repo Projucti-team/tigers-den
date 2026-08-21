@@ -161,6 +161,18 @@ async function runPostgresPatches(): Promise<void> {
     `);
 
     await pool.query(`
+      CREATE TABLE IF NOT EXISTS "cricket_sync_job_runs" (
+        "job_id" varchar PRIMARY KEY NOT NULL,
+        "last_run_at" timestamp(3) with time zone,
+        "last_success_at" timestamp(3) with time zone,
+        "last_ok" boolean,
+        "last_warnings" jsonb,
+        "last_errors" jsonb,
+        "updated_at" timestamp(3) with time zone DEFAULT now() NOT NULL
+      );
+    `);
+
+    await pool.query(`
       CREATE TABLE IF NOT EXISTS "countries" (
         "id" serial PRIMARY KEY NOT NULL,
         "slug" varchar NOT NULL,

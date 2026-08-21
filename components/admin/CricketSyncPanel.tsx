@@ -2,7 +2,7 @@
 
 import { Button } from "@payloadcms/ui";
 import { useRouter } from "next/navigation";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 
 import type { SyncCricketResult } from "@/lib/cricket/services/sync-cricket-snapshots";
 import {
@@ -16,9 +16,72 @@ type SyncState =
   | { status: "done"; job: CricketSyncJobSelection; result: SyncCricketResult }
   | { status: "error"; job: CricketSyncJobSelection; message: string };
 
+type JobRunInfo = {
+  job_id: string;
+  last_run_at: string | null;
+  last_success_at: string | null;
+  last_ok: boolean | null;
+  last_warnings: string[] | null;
+  last_errors: string[] | null;
+};
+
+function formatRelative(iso: string): string {
+  const then = new Date(iso).getTime();
+  if (Number.isNaN(then)) return iso;
+  const diffMs = Date.now() - then;
+  const mins = Math.round(diffMs / 60000);
+  if (mins < 1) return "just now";
+  if (mins < 60) return `${mins}m ago`;
+  const hours = Math.round(mins / 60);
+  if (hours < 48) return `${hours}h ago`;
+  const days = Math.round(hours / 24);
+  return `${days}d ago`;
+}
+
+function JobLastRun({ info }: { info: JobRunInfo | undefined }) {
+  if (!info || (!info.last_run_at && !info.last_success_at)) {
+    return <span style={{ opacity: 0.6 }}>never run</span>;
+  }
+
+  if (info.last_ok && info.last_success_at) {
+    return (
+      <span style={{ color: "#0a7a52" }}>
+        ✓ last ran {formatRelative(info.last_success_at)}
+      </span>
+    );
+  }
+
+  const attempted = info.last_run_at ? formatRelative(info.last_run_at) : "recently";
+  return (
+    <span style={{ color: "#c41e24" }}>
+      ✕ failed {attempted}
+      {info.last_success_at ? ` (last success ${formatRelative(info.last_success_at)})` : ""}
+    </span>
+  );
+}
+
 export default function CricketSyncPanel() {
   const router = useRouter();
   const [state, setState] = useState<SyncState>({ status: "idle" });
+  const [lastRuns, setLastRuns] = useState<Record<string, JobRunInfo> | null>(null);
+
+  async function fetchLastRuns() {
+    try {
+      const res = await fetch("/api/cricket-snapshots/sync/last-runs", {
+        credentials: "include",
+        headers: { Accept: "application/json" },
+      });
+      if (!res.ok) return;
+      const body = (await res.json().catch(() => null)) as Record<string, JobRunInfo> | null;
+      if (body) setLastRuns(body);
+    } catch {
+      // Best-effort — the sync buttons still work without this.
+    }
+  }
+
+  useEffect(() => {
+    void fetchLastRuns();
+  }, []);
 
   async function runSync(job: CricketSyncJobSelection) {
     setState({ status: "running", job });
@@ -49,6 +112,7 @@ export default function CricketSyncPanel() {
         if (result) {
           setState({ status: "done", job, result });
           router.refresh();
+          void fetchLastRuns();
           return;
         }
         setState({
@@ -56,6 +120,7 @@ export default function CricketSyncPanel() {
           job,
           message: "Sync did not finish — check server logs or run ./scripts/prod-cricket-sync.sh on the VPS.",
         });
+        void fetchLastRuns();
         return;
       }
 
@@ -70,14 +135,17 @@ export default function CricketSyncPanel() {
           job,
           message: detail ?? `Sync failed (HTTP ${res.status})`,
         });
+        void fetchLastRuns();
         return;
       }
 
       setState({ status: "done", job, result: body });
       router.refresh();
+      void fetchLastRuns();
     } catch (err) {
       const message = err instanceof Error ? err.message : "Sync failed";
       setState({ status: "error", job, message });
+      void fetchLastRuns();
     }
   }
 
@@ -127,20 +195,26 @@ export default function CricketSyncPanel() {
         need to refresh one area.
       </p>
 
-      <div style={{ display: "flex", flexWrap: "wrap", gap: "0.5rem", marginBottom: "1rem" }}>
+      <div style={{ display: "flex", flexWrap: "wrap", gap: "0.75rem", marginBottom: "1rem" }}>
         {CRICKET_SYNC_JOBS.map((entry) => {
           const isRunning = runningJob === entry.id;
           const isPrimary = entry.id === "all";
 
           return (
-            <Button
-              key={entry.id}
-              buttonStyle={isPrimary ? "primary" : "secondary"}
-              disabled={Boolean(runningJob)}
-              onClick={() => void runSync(entry.id)}
-            >
-              {isRunning ? `Running ${entry.label}…` : entry.label}
-            </Button>
+            <div key={entry.id} style={{ display: "flex", flexDirection: "column", gap: "0.25rem" }}>
+              <Button
+                buttonStyle={isPrimary ? "primary" : "secondary"}
+                disabled={Boolean(runningJob)}
+                onClick={() => void runSync(entry.id)}
+              >
+                {isRunning ? `Running ${entry.label}…` : entry.label}
+              </Button>
+              {!isPrimary ? (
+                <span style={{ fontSize: "0.75rem", textAlign: "center" }}>
+                  <JobLastRun info={lastRuns?.[entry.id]} />
+                </span>
+              ) : null}
+            </div>
           );
         })}
       </div>
