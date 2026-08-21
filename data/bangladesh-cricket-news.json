@@ -1,6 +1,73 @@
 {
-  "fetchedAt": "2026-08-20T21:59:05.752Z",
+  "fetchedAt": "2026-08-21T21:57:45.551Z",
   "items": [
+    {
+      "id": "dailystar-https://www.thedailystar.net/sports/cricket/news/shanto-urges-tigers-keep-the-grind-going-4253481",
+      "title": "Shanto urges Tigers to keep the grind going",
+      "summary": "The Tigers know a sterner test awaits in Mackay, where conditions are expected to offer more assistance to Australia.",
+      "url": "https://www.thedailystar.net/sports/cricket/news/shanto-urges-tigers-keep-the-grind-going-4253481",
+      "source": "dailystar",
+      "publishedAt": "2026-08-21T17:45:00.000Z"
+    },
+    {
+      "id": "espn-https://www.cricinfo.com/ci/content/story/1550885.html",
+      "title": "Confident Shanto plots 'five days of good cricket again'",
+      "summary": "Bangladesh captain Najmul Hossain Shanto believes his side can cope with the extra bounce in Mackay, the venue of the second Test against Australia",
+      "url": "https://www.cricinfo.com/story/aus-vs-ban-najmul-hossain-shanto-increasingly-confident-after-piling-runs-against-australias-attack-1550885",
+      "imageUrl": "https://p.imgci.com/db/PICTURES/CMS/421100/421125.5.jpg",
+      "source": "espncricinfo",
+      "publishedAt": "2026-08-21T09:26:08.000Z"
+    },
+    {
+      "id": "espn-https://www.cricinfo.com/ci/content/story/1550834.html",
+      "title": "Lyon survives selection call as Renshaw locked in to open",
+      "summary": "Jake Weatherald, who had opened with Travis Head in the first Test against Bangladesh, was dropped from the squad prior to the second Test, which starts on Saturday in Mackay",
+      "url": "https://www.cricinfo.com/story/aus-vs-ban-2nd-wtc-test-matt-renshaw-returns-to-open-with-travis-head-in-change-for-australia-1550834",
+      "imageUrl": "https://p.imgci.com/db/PICTURES/CMS/421400/421434.6.jpg",
+      "source": "espncricinfo",
+      "publishedAt": "2026-08-21T08:45:49.000Z"
+    },
+    {
+      "id": "dailystar-https://www.thedailystar.net/sports/cricket/news/tanzid-positive-shoriful-ready-tigers-ponder-xi-mackay-test-4253276",
+      "title": "Tanzid ‘positive’, Shoriful ‘ready’ as Tigers ponder XI for Mackay Test",
+      "summary": "Bangladesh have five pace bowlers available for the Test, but Shanto said the final combination would only be decided after another inspection of the Mackay surface on Saturday morning.",
+      "url": "https://www.thedailystar.net/sports/cricket/news/tanzid-positive-shoriful-ready-tigers-ponder-xi-mackay-test-4253276",
+      "source": "dailystar",
+      "publishedAt": "2026-08-21T06:01:34.000Z"
+    },
+    {
+      "id": "espn-https://www.cricinfo.com/ci/content/story/1550848.html",
+      "title": "Bangladesh eye more history with only one result on Australia's mind",
+      "summary": "Bangladesh did the unthinkable in Darwin, and will have to do it all over again if they want to convert the Test match win to a Test series win",
+      "url": "https://www.cricinfo.com/story/aus-vs-ban-2nd-wtc-test-bangladesh-eye-more-history-with-only-one-result-on-australias-mind-1550848",
+      "imageUrl": "https://p.imgci.com/db/PICTURES/CMS/421100/421193.6.jpg",
+      "source": "espncricinfo",
+      "publishedAt": "2026-08-21T05:58:21.000Z"
+    },
+    {
+      "id": "dailystar-https://www.thedailystar.net/sports/cricket/news/renshaw-only-change-australia-name-xi-shortly-after-cummins-call-time-4253261",
+      "title": "Renshaw only change; Australia name XI shortly after Cummins’ call for time",
+      "summary": "Matthew Renshaw was the only change, replacing Jake Weatherald at the top of the order, while Lyon retained his place for the second Test against Bangladesh at the Great Barrier Reef Arena in Mackay.",
+      "url": "https://www.thedailystar.net/sports/cricket/news/renshaw-only-change-australia-name-xi-shortly-after-cummins-call-time-4253261",
+      "source": "dailystar",
+      "publishedAt": "2026-08-21T05:51:29.000Z"
+    },
+    {
+      "id": "dailystar-https://www.thedailystar.net/sports/cricket/news/shanto-blocks-out-history-focuses-next-five-days-4253246",
+      "title": "Shanto blocks out history, focuses on next five days",
+      "summary": "The approach is also about putting the emotion of their historic nine-wicket victory in Darwin behind them.",
+      "url": "https://www.thedailystar.net/sports/cricket/news/shanto-blocks-out-history-focuses-next-five-days-4253246",
+      "source": "dailystar",
+      "publishedAt": "2026-08-21T05:21:06.000Z"
+    },
+    {
+      "id": "dailystar-https://www.thedailystar.net/sports/cricket/news/more-history-beckons-tigers-against-wounded-australia-4253116",
+      "title": "More history beckons Tigers against wounded Australia",
+      "summary": "The Mackay pitch is likely to offer more pace and bounce, potentially giving Australia’s fast bowlers a much stronger platform. The open nature of the venue could also bring strong winds into play, adding another challenge for Bangladesh’s batters.",
+      "url": "https://www.thedailystar.net/sports/cricket/news/more-history-beckons-tigers-against-wounded-australia-4253116",
+      "source": "dailystar",
+      "publishedAt": "2026-08-21T03:10:00.000Z"
+    },
     {
       "id": "espn-https://www.cricinfo.com/ci/content/story/1550809.html",
       "title": "India's tour of Bangladesh could be postponed yet again",
@@ -11,22 +78,6 @@
       "publishedAt": "2026-08-20T16:46:09.000Z"
     },
     {
-      "id": "dailystar-https://www.thedailystar.net/sports/cricket/news/bangladesh-people-are-emotional-i-am-not-simmons-urges-tigers-stay-grounded-4252776",
-      "title": "'Bangladesh people are emotional, I am not': Simmons urges Tigers to stay grounded",
-      "summary": "Bangladesh head coach Phil Simmons has urged his players to keep their emotions in check as the Tigers prepare for the second Test against Australia in Mackay on Sunday.",
-      "url": "https://www.thedailystar.net/sports/cricket/news/bangladesh-people-are-emotional-i-am-not-simmons-urges-tigers-stay-grounded-4252776",
-      "source": "dailystar",
-      "publishedAt": "2026-08-20T15:34:22.000Z"
-    },
-    {
-      "id": "dailystar-https://www.thedailystar.net/sports/cricket/news/bpl-unlikely-be-held-year-says-bcb-president-tamim-4252596",
-      "title": "BPL unlikely to be held this year, says BCB president Tamim",
-      "summary": "The BPL window is fixed for December-January, and Tamim said that the franchise-based T20 tournament is not a priority for the board right now.",
-      "url": "https://www.thedailystar.net/sports/cricket/news/bpl-unlikely-be-held-year-says-bcb-president-tamim-4252596",
-      "source": "dailystar",
-      "publishedAt": "2026-08-20T12:48:03.000Z"
-    },
-    {
       "id": "espn-https://www.cricinfo.com/ci/content/story/1550747.html",
       "title": "'Australia are going to come harder at us' - Simmons to high-flying Bangladesh",
       "summary": "Head coach wants his side to start second Test against Australia \"on the right footing\" after the highs of Darwin",
@@ -34,30 +85,6 @@
       "imageUrl": "https://p.imgci.com/db/PICTURES/CMS/421400/421436.5.jpg",
       "source": "espncricinfo",
       "publishedAt": "2026-08-20T09:36:22.000Z"
-    },
-    {
-      "id": "dailystar-https://www.thedailystar.net/sports/cricket/news/mackay-pitch-what-can-bangladesh-expect-4252356",
-      "title": "Mackay pitch: What can Bangladesh expect?",
-      "summary": "There has never been a Test match at Mackay, the venue for the second and final Test of the Bangladesh-Australia series. Even first-class cricket has been played only sparingly at the ground, with just five matches held there.",
-      "url": "https://www.thedailystar.net/sports/cricket/news/mackay-pitch-what-can-bangladesh-expect-4252356",
-      "source": "dailystar",
-      "publishedAt": "2026-08-20T06:42:12.000Z"
-    },
-    {
-      "id": "dailystar-https://www.thedailystar.net/sports/cricket/news/australia-look-response-darwin-disaster-mackay-test-4252316",
-      "title": "Australia look for response to 'Darwin Disaster' in Mackay Test",
-      "summary": "Only a thumping win will do for Australia in the second Test against Bangladesh this week as they look to ease the embarrassment of their shock nine-wicket loss in Darwin and even up the two-match series.",
-      "url": "https://www.thedailystar.net/sports/cricket/news/australia-look-response-darwin-disaster-mackay-test-4252316",
-      "source": "dailystar",
-      "publishedAt": "2026-08-20T06:03:02.000Z"
-    },
-    {
-      "id": "dailystar-https://www.thedailystar.net/sports/cricket/news/emerging-team-earn-hard-fought-draw-against-south-africa-4252091",
-      "title": "Emerging team earn hard-fought draw against South Africa",
-      "summary": "Resuming their second innings at 15-0 and needing 396 more runs to win on the final day, Bangladesh were in deep trouble after losing five wickets for just 70 runs. However, Ankon and Biplob steadied the innings with a 105-run partnership for the sixth wicket.",
-      "url": "https://www.thedailystar.net/sports/cricket/news/emerging-team-earn-hard-fought-draw-against-south-africa-4252091",
-      "source": "dailystar",
-      "publishedAt": "2026-08-19T20:41:31.000Z"
     },
     {
       "id": "espn-https://www.cricinfo.com/ci/content/story/1550591.html",
@@ -121,24 +148,6 @@
       "imageUrl": "https://p.imgci.com/db/PICTURES/CMS/421100/421193.5.jpg",
       "source": "espncricinfo",
       "publishedAt": "2026-08-15T08:38:21.000Z"
-    },
-    {
-      "id": "espn-https://www.cricinfo.com/ci/content/story/1549797.html",
-      "title": "Tanzid, Shanto and Mehidy keep Bangladesh in front after gripping day's play",
-      "summary": "Australia had most of their success in a brief spell with the second new ball, but it's been Bangladesh most of the way otherwise",
-      "url": "https://www.cricinfo.com/story/aus-vs-ban-1st-wtc-test-tanzid-hasan-najmul-hossain-shanto-and-mehidy-hasan-miraz-keep-bangladesh-in-front-1549797",
-      "imageUrl": "https://p.imgci.com/db/PICTURES/CMS/421100/421109.6.jpg",
-      "source": "espncricinfo",
-      "publishedAt": "2026-08-14T08:50:49.000Z"
-    },
-    {
-      "id": "espn-https://www.cricinfo.com/ci/content/story/1549751.html",
-      "title": "Smith was ready to walk off before DRS flat line",
-      "summary": "Bangladesh were convinced Smith had edged behind early in his innings and the batter himself thought so too",
-      "url": "https://www.cricinfo.com/story/aus-v-ban-1st-test-2026-steven-smith-was-ready-to-walk-off-before-drs-flat-line-1549751",
-      "imageUrl": "https://p.imgci.com/db/PICTURES/CMS/421000/421086.5.jpg",
-      "source": "espncricinfo",
-      "publishedAt": "2026-08-14T01:21:26.000Z"
     }
   ]
 }
