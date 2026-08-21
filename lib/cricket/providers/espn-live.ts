@@ -5,12 +5,14 @@ import { isBangladeshTeam } from "@/lib/cricket/constants";
 import {
   matchCategoryFromText,
   matchCategoryPriority,
+  type MatchCategory,
 } from "@/lib/cricket/match-category";
 import { compactCricketScore } from "@/lib/cricket/score-format";
 import {
   fetchEventTimestamp,
   fetchLeagueEventRefs,
 } from "@/lib/cricket/providers/espn-league-events";
+import { fetchEspnTeamInfo } from "@/lib/cricket/providers/espn-athletes-teams";
 import { resolveEspnLeagueByCricinfoId } from "@/lib/cricket/providers/espn-squads";
 import { teamShortCode } from "@/lib/cricket/services/marquee-format";
 import type { MatchHighlight } from "@/lib/cricket/services/match-highlight";
@@ -233,8 +235,60 @@ async function tourSyncStateLeagues(): Promise<LeagueRef[]> {
   }
 }
 
-async function trackedLeagues(): Promise<LeagueRef[]> {
+/** Exported so the DB-backed Bangladesh schedule sync (sync-bangladesh-matches.ts) can drive
+ * its own event scan off the exact same auto-discovered league set as the live/recent/upcoming
+ * scans below, instead of a separate CricAPI-based discovery path that turned out to have real
+ * data gaps (CricAPI's series_info endpoint returning zero matches for a real, currently-running
+ * series). This is the list /tours and the marquee already depend on. */
+export /**
+ * ESPN Core team ids for Bangladesh's four representative sides — confirmed live against ESPN's
+ * team search (site.api.espn.com/apis/search/v2): men=25, women=299037, u19=672, emerging/A=668.
+ * Kept here rather than in countries-seed.ts (which only tracks senior teams for every country)
+ * since these extra three ids are specific to Bangladesh's own age-group/A sides.
+ */
+const BANGLADESH_TEAM_IDS: Record<"men" | "women" | "u19" | "emerging", number> = {
+  men: 25,
+  women: 299037,
+  u19: 672,
+  emerging: 668,
+};
+
+/**
+ * Every Bangladesh side's own current-event/default league, resolved straight from ESPN's team
+ * object (the same `event`/`defaultLeague` refs sync-tracked-domestic-players.ts already trusts
+ * for county sides) -- a baseline that doesn't depend on any other pipeline (squad refresh,
+ * tour_sync_state, curated fixture-times.json) having already discovered the series first. This
+ * closes the exact gap that made a real, currently-live series ("Bangladesh tour of Australia
+ * 2026", ESPN league 24231) invisible to every scan below until the squad-refresh job happened
+ * to resolve it separately -- confirmed live: teams/25's `event` ref already points straight at
+ * league 24231's next match, no other pipeline required.
+ */
+async function bangladeshTeamLeagues(): Promise<LeagueRef[]> {
+  const refs: LeagueRef[] = [];
+  await Promise.all(
+    Object.values(BANGLADESH_TEAM_IDS).map(async (teamId) => {
+      const info = await fetchEspnTeamInfo(teamId).catch(() => null);
+      if (!info) return;
+      for (const leagueId of [info.currentEventLeagueId, info.defaultLeagueId]) {
+        if (!leagueId) continue;
+        refs.push({ espnLeagueId: leagueId, kind: "international" });
+      }
+    }),
+  );
+  return refs;
+}
+
+/** Exported so the DB-backed Bangladesh schedule sync (sync-bangladesh-matches.ts) can drive its
+ * own event scan off the exact same auto-discovered league set the live/recent/upcoming scans
+ * below already use, instead of a separate CricAPI-based discovery path. */
+export async function trackedLeagues(): Promise<LeagueRef[]> {
   const byId = new Map<number, LeagueRef>();
+
+  // Baseline first -- richer sources below (squads, curated fixture times, tour_sync_state) fill
+  // in tourName/seasonYear/cricinfoSeriesId for the same league id when they know about it too.
+  for (const ref of await bangladeshTeamLeagues()) {
+    byId.set(ref.espnLeagueId, ref);
+  }
 
   const squads = await readEspnTourSquads();
   for (const entry of Object.values(squads.entries)) {
@@ -542,6 +596,123 @@ async function buildHighlightFromEspnEvent(
         ? `${league.trackedPlayerName} is playing for ${league.trackedTeamName}`
         : undefined,
     leagueLabel: league.leagueDisplayName ?? league.tourName,
+  };
+}
+
+export type BangladeshScheduleEventRow = {
+  espnEventId: string;
+  espnLeagueId: number;
+  category: MatchCategory;
+  status: "live" | "completed" | "upcoming";
+  statusText: string;
+  matchType: string | null;
+  teams: string[];
+  opponent: string | null;
+  scoreSummary: string | null;
+  venue: string | null;
+  matchDate: string | null;
+  seriesId: string | null;
+  seriesName: string | null;
+};
+
+/**
+ * One row per ESPN event, shaped for the DB-backed bangladesh_matches table -- sibling to
+ * buildHighlightFromEspnEvent (which builds a UI-ready MatchHighlight for live/completed only)
+ * and buildLiveMatchFromEspnEvent (LiveMatchSummary, no category). This is the single function
+ * used by sync-bangladesh-matches.ts to persist last-result/live/upcoming rows for every
+ * Bangladesh representative side (men/women/u19/emerging) straight from ESPNcricinfo's Core API,
+ * with no CricAPI involvement.
+ */
+export async function buildBangladeshScheduleRow(
+  league: LeagueRef,
+  eventId: string,
+): Promise<BangladeshScheduleEventRow | null> {
+  const leagueId = league.espnLeagueId;
+  const competition = await fetchCoreJson<CoreCompetition>(
+    `${CORE_BASE}/leagues/${leagueId}/events/${eventId}/competitions/${eventId}`,
+  );
+  if (!competition) return null;
+
+  const status = competition.status?.$ref
+    ? await fetchCoreJson<CoreStatus>(competition.status.$ref)
+    : null;
+
+  const live = isLiveStatus(status, competition);
+  const completed = !live && isCompletedStatus(status, competition);
+
+  const competitors = await fetchCoreList(
+    `${CORE_BASE}/leagues/${leagueId}/events/${eventId}/competitions/${eventId}/competitors`,
+  );
+  const rows = (
+    await Promise.all((competitors.items ?? []).map((item) => fetchCompetitorScore(item.$ref)))
+  ).filter((row): row is CompetitorRow => Boolean(row));
+
+  const event = await fetchCoreJson<{ name?: string; shortName?: string; date?: string }>(
+    `${CORE_BASE}/leagues/${leagueId}/events/${eventId}`,
+  );
+
+  let involvesBd =
+    rows.some((row) => isBangladeshTeam(row.team)) || /bangladesh/i.test(competition.note ?? "");
+  if (!involvesBd) {
+    const blob = `${event?.name ?? ""} ${event?.shortName ?? ""}`.toLowerCase();
+    involvesBd = blob.includes("bangladesh") || /\bban\b/.test(blob);
+  }
+  if (!involvesBd) return null;
+
+  const teams = rows.map((row) => row.team).filter(Boolean);
+  const opponent = teams.find((t) => !isBangladeshTeam(t)) ?? null;
+
+  const titleBlob = [
+    competition.shortDescription,
+    competition.description,
+    event?.name,
+    event?.shortName,
+    competition.note,
+    ...teams,
+  ]
+    .filter(Boolean)
+    .join(" ");
+  // matchCategoryFromText never actually returns "domestic" (that value only comes from
+  // league.kind elsewhere) — safe to narrow here since this function is only ever called for
+  // international (non-domestic) leagues.
+  const category = matchCategoryFromText(titleBlob) as MatchCategory;
+
+  const innings = rows.filter((row) => row.score);
+  const scoreSummary = innings.length
+    ? innings.map((row) => `${row.team}: ${compactCricketScore(row.score, true)}`).join(" · ")
+    : null;
+
+  const eventAt = await fetchEventTimestamp(leagueId, eventId);
+  const iso =
+    competition.date ??
+    event?.date ??
+    (eventAt > 0 ? new Date(eventAt).toISOString() : undefined);
+
+  const statusText =
+    status?.longSummary ??
+    status?.summary ??
+    competition.note ??
+    (live ? "Live" : completed ? "Completed" : "Match not started");
+
+  let matchType: string | null = null;
+  if (/t20/i.test(titleBlob)) matchType = "t20";
+  else if (/odi|one-day/i.test(titleBlob)) matchType = "odi";
+  else if (/test/i.test(titleBlob)) matchType = "test";
+
+  return {
+    espnEventId: eventId,
+    espnLeagueId: leagueId,
+    category,
+    status: live ? "live" : completed ? "completed" : "upcoming",
+    statusText,
+    matchType,
+    teams,
+    opponent,
+    scoreSummary,
+    venue: competition.venue?.fullName ?? null,
+    matchDate: iso ?? null,
+    seriesId: league.cricinfoSeriesId ? String(league.cricinfoSeriesId) : null,
+    seriesName: league.tourName ?? null,
   };
 }
 

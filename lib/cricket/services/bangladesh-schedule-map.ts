@@ -90,19 +90,44 @@ export function resolveMatchCategory(
   return detected;
 }
 
+/**
+ * CricAPI's series-search endpoint often returns dates with no year for near-term series --
+ * confirmed live: "Bangladesh tour of Australia, 2026" (the actual current Test series) came back
+ * as {"startDate":"Aug 06","endDate":"Aug 26"}, no year at all. Naively `new Date("Aug 26")`-ing
+ * that mis-dates it (V8 defaults missing-year strings to 2001), which made isRelevantSeriesWindow
+ * silently drop the series believing it was 25 years stale -- this is the same quirk
+ * lib/cricket/tour-dates.ts's parseSeriesEndDate() already works around for the Tours page;
+ * duplicated here (not imported) to keep this module dependency-free for tests.
+ */
+function parseCricApiDate(raw: string | undefined, yearHint: string | undefined): Date | null {
+  if (!raw) return null;
+  const trimmed = raw.trim();
+  if (/^\d{4}-\d{2}-\d{2}/.test(trimmed)) {
+    const d = new Date(trimmed);
+    return Number.isNaN(d.getTime()) ? null : d;
+  }
+
+  const year =
+    yearHint && /^\d{4}-\d{2}-\d{2}/.test(yearHint.trim())
+      ? new Date(yearHint).getFullYear()
+      : new Date().getFullYear();
+  const d = new Date(`${trimmed} ${year}`);
+  return Number.isNaN(d.getTime()) ? null : d;
+}
+
 /** Only keep series recently finished, currently on, or announced for the reasonably near future. */
 export function isRelevantSeriesWindow(
   series: Pick<RawCricApiSeries, "startDate" | "endDate">,
   now = Date.now(),
 ): boolean {
-  const start = series.startDate ? new Date(series.startDate).getTime() : NaN;
-  const end = series.endDate ? new Date(series.endDate).getTime() : start;
-  const reference = Number.isFinite(end) ? end : start;
-  if (!Number.isFinite(reference)) return false;
+  const start = parseCricApiDate(series.startDate, series.endDate);
+  const end = parseCricApiDate(series.endDate, series.startDate);
+  const reference = end ?? start;
+  if (!reference) return false;
 
   const minAgeMs = now - 120 * 24 * 60 * 60 * 1000; // 120 days in the past
   const maxAheadMs = now + 365 * 24 * 60 * 60 * 1000; // 1 year out
-  return reference >= minAgeMs && reference <= maxAheadMs;
+  return reference.getTime() >= minAgeMs && reference.getTime() <= maxAheadMs;
 }
 
 function opponentFromTeams(
