@@ -53,10 +53,19 @@ export async function syncTrackedDomesticPlayers(): Promise<{
       continue;
     }
 
-    const espnLeagueId = team.currentEventLeagueId ?? team.defaultLeagueId ?? null;
+    // A team between fixtures can briefly have no "current event" and no "defaultLeague" on
+    // ESPN's side -- when that happens, keep whatever league id already resolved last time
+    // instead of nulling it out and silently dropping this entry from every scan until the
+    // next successful resolve (this is exactly what made a previously-working tracked player
+    // vanish from the marquee after a routine re-sync).
+    const espnLeagueId = team.currentEventLeagueId ?? team.defaultLeagueId ?? entry.espnLeagueId ?? null;
     if (!espnLeagueId) {
       warnings.push(
         `Tracked player entry ${entry.id}: ${team.displayName} has no current or default competition on ESPN yet.`,
+      );
+    } else if (!team.currentEventLeagueId && !team.defaultLeagueId) {
+      warnings.push(
+        `Tracked player entry ${entry.id}: ${team.displayName} has no current/default competition this run — kept the previously-resolved league.`,
       );
     }
 
