@@ -67,10 +67,13 @@ export default async function FrontendLayout({ children }: { children: ReactNode
   await ensureCricketSnapshotsFresh();
 
   const [marqueeSnapshot, tourLinks] = await Promise.all([
-    getMarqueeTickerSnapshot().catch(() => ({
-      items: ["🐅 THE TIGERS' DEN", "🇧🇩 GREEN & RED ARMY", "🔥 ROAR FOR BANGLADESH"],
-      isLive: false,
-    })),
+    getMarqueeTickerSnapshot().catch((e) => {
+      console.error("[cricket] getMarqueeTickerSnapshot failed, falling back to brand-only marquee:", e);
+      return {
+        items: ["🐅 THE TIGERS' DEN", "🇧🇩 GREEN & RED ARMY", "🔥 ROAR FOR BANGLADESH"],
+        isLive: false,
+      };
+    }),
     getTourNavLinks(),
   ]);
 
