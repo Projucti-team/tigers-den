@@ -1,5 +1,5 @@
 {
-  "fetchedAt": "2026-08-21T21:41:31.687Z",
+  "fetchedAt": "2026-08-22T21:37:40.397Z",
   "source": "icc-sportz.io",
   "sourceUrl": "https://www.icc-cricket.com/rankings",
   "men": {
@@ -10693,19 +10693,19 @@
         },
         {
           "rank": 21,
+          "name": "Indonesia",
+          "abbreviation": "INA-W",
+          "rating": 92,
+          "points": 3579,
+          "matches": 39
+        },
+        {
+          "rank": 22,
           "name": "Nepal",
           "abbreviation": "NEP-W",
           "rating": 92,
           "points": 4673,
           "matches": 51
-        },
-        {
-          "rank": 22,
-          "name": "Indonesia",
-          "abbreviation": "INA-W",
-          "rating": 91,
-          "points": 3374,
-          "matches": 37
         },
         {
           "rank": 23,
@@ -10799,9 +10799,9 @@
           "rank": 34,
           "name": "Oman",
           "abbreviation": "OMA-W",
-          "rating": 53,
-          "points": 1630,
-          "matches": 31
+          "rating": 51,
+          "points": 1667,
+          "matches": 33
         },
         {
           "rank": 35,
@@ -10813,19 +10813,19 @@
         },
         {
           "rank": 36,
+          "name": "China",
+          "abbreviation": "CHN-W",
+          "rating": 47,
+          "points": 1705,
+          "matches": 36
+        },
+        {
+          "rank": 37,
           "name": "Isle of Man",
           "abbreviation": "IOM-W",
           "rating": 47,
           "points": 930,
           "matches": 20
-        },
-        {
-          "rank": 37,
-          "name": "China",
-          "abbreviation": "CHN-W",
-          "rating": 46,
-          "points": 1565,
-          "matches": 34
         },
         {
           "rank": 38,
@@ -11077,6 +11077,14 @@
         },
         {
           "rank": 69,
+          "name": "Luxembourg",
+          "abbreviation": "LUX-W",
+          "rating": 3,
+          "points": 57,
+          "matches": 17
+        },
+        {
+          "rank": 70,
           "name": "Lesotho",
           "abbreviation": "LES-W",
           "rating": 3,
@@ -11084,7 +11092,7 @@
           "matches": 17
         },
         {
-          "rank": 70,
+          "rank": 71,
           "name": "Mongolia",
           "abbreviation": "MNG-W",
           "rating": 2,
@@ -11092,7 +11100,7 @@
           "matches": 20
         },
         {
-          "rank": 71,
+          "rank": 72,
           "name": "Philippines",
           "abbreviation": "PHI-W",
           "rating": 2,
@@ -11100,7 +11108,7 @@
           "matches": 22
         },
         {
-          "rank": 72,
+          "rank": 73,
           "name": "Singapore",
           "abbreviation": "SIN-W",
           "rating": 0,
@@ -11108,7 +11116,7 @@
           "matches": 29
         },
         {
-          "rank": 72,
+          "rank": 73,
           "name": "Eswatini",
           "abbreviation": "ESW-W",
           "rating": 0,
@@ -11116,7 +11124,7 @@
           "matches": 10
         },
         {
-          "rank": 72,
+          "rank": 73,
           "name": "SDA",
           "abbreviation": "SDA",
           "rating": 0,
@@ -11124,15 +11132,7 @@
           "matches": 8
         },
         {
-          "rank": 72,
-          "name": "Luxembourg",
-          "abbreviation": "LUX-W",
-          "rating": 0,
-          "points": 0,
-          "matches": 15
-        },
-        {
-          "rank": 72,
+          "rank": 73,
           "name": "Cook Islands",
           "abbreviation": "COK-W",
           "rating": 0,
@@ -11140,7 +11140,7 @@
           "matches": 12
         },
         {
-          "rank": 72,
+          "rank": 73,
           "name": "Bulgaria",
           "abbreviation": "BUL-W",
           "rating": 0,
@@ -11148,15 +11148,15 @@
           "matches": 19
         },
         {
-          "rank": 72,
+          "rank": 73,
           "name": "Belgium",
           "abbreviation": "BEL-W",
           "rating": 0,
           "points": 0,
-          "matches": 6
+          "matches": 8
         },
         {
-          "rank": 72,
+          "rank": 73,
           "name": "Bahrain",
           "abbreviation": "BRN-W",
           "rating": 0,
@@ -17386,7 +17386,7 @@
         "allrounder": "2026-08-17"
       },
       "t20": {
-        "team": "2026-08-21",
+        "team": "2026-08-22",
         "bat": "2026-08-17",
         "bowl": "2026-08-17",
         "allrounder": "2026-08-17"
