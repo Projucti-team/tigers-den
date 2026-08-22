@@ -1,6 +1,57 @@
 {
-  "fetchedAt": "2026-08-21T21:57:45.551Z",
+  "fetchedAt": "2026-08-22T21:55:57.328Z",
   "items": [
+    {
+      "id": "dailystar-https://www.thedailystar.net/sports/cricket/news/shoriful-keeps-tigers-the-hunt-4254156",
+      "title": "Shoriful keeps Tigers in the hunt",
+      "summary": "Shoriful, returning after missing the first Test with a hamstring injury, kept the Tigers in the hunt after Mitchell Starc's 6-12 had threatened to turn the match into a one-sided contest.",
+      "url": "https://www.thedailystar.net/sports/cricket/news/shoriful-keeps-tigers-the-hunt-4254156",
+      "source": "dailystar",
+      "publishedAt": "2026-08-22T17:55:00.000Z"
+    },
+    {
+      "id": "dailystar-https://www.thedailystar.net/sports/cricket/news/bangladesh-hp-beat-nepal-9-wickets-darwin-top-end-t20-4254111",
+      "title": "Bangladesh HP beat Nepal 'A' by 9 wickets in Darwin Top End T20",
+      "summary": "Nepal 'A' were reduced to 13 for five after sent in to bat.",
+      "url": "https://www.thedailystar.net/sports/cricket/news/bangladesh-hp-beat-nepal-9-wickets-darwin-top-end-t20-4254111",
+      "source": "dailystar",
+      "publishedAt": "2026-08-22T13:58:24.000Z"
+    },
+    {
+      "id": "espn-https://www.cricinfo.com/ci/content/story/1550957.html",
+      "title": "Six for Starc, six for Shoriful, Australia in front after 18-wicket opening day",
+      "summary": "Bangladesh were knocked over in just 34 overs for 64 but fought back to leave Australia eight down - though 101 runs in front - by the end of the first day",
+      "url": "https://www.cricinfo.com/story/aus-vs-ban-2nd-test-2026-mitchell-starc-and-shoriful-islam-return-six-fors-1550957",
+      "imageUrl": "https://p.imgci.com/db/PICTURES/CMS/421500/421541.6.jpg",
+      "source": "espncricinfo",
+      "publishedAt": "2026-08-22T09:12:16.000Z"
+    },
+    {
+      "id": "espn-https://www.cricinfo.com/ci/content/story/1550959.html",
+      "title": "How Starc completed his five-wicket haul in 22 balls",
+      "summary": "The left-arm quick dismantled Bangladesh's top order on the opening day in Mackay",
+      "url": "https://www.cricinfo.com/story/aus-vs-ban-2nd-test-2026-how-mitchell-starc-took-a-five-wicket-haul-in-22-balls-1550959",
+      "imageUrl": "https://p.imgci.com/db/PICTURES/CMS/421500/421535.5.jpg",
+      "source": "espncricinfo",
+      "publishedAt": "2026-08-22T02:49:08.000Z"
+    },
+    {
+      "id": "espn-https://www.cricinfo.com/ci/content/story/1550946.html",
+      "title": "Australia bowl first on Mackay's Test debut; Shoriful in for Bangladesh",
+      "summary": "After surprising many by batting first in Darwin, Australia's captain went the opposite way in the second Test",
+      "url": "https://www.cricinfo.com/story/australia-bowl-first-on-mackays-test-debut-shoriful-in-for-bangladesh-1550946",
+      "imageUrl": "https://p.imgci.com/db/PICTURES/CMS/421500/421531.5.jpg",
+      "source": "espncricinfo",
+      "publishedAt": "2026-08-21T23:52:05.000Z"
+    },
+    {
+      "id": "dailystar-https://www.thedailystar.net/sports/cricket/news/australia-opt-bowl-first-mackay-tigers-eye-more-history-4253671",
+      "title": "Shoriful keeps Bangladesh alive after chaotic opening day",
+      "summary": "Australia have won the toss and elected to field first in the second and final Test of the two-match series against Bangladesh at the Great Barrier Reef Arena in Mackay on Saturday.",
+      "url": "https://www.thedailystar.net/sports/cricket/news/australia-opt-bowl-first-mackay-tigers-eye-more-history-4253671",
+      "source": "dailystar",
+      "publishedAt": "2026-08-21T23:32:00.000Z"
+    },
     {
       "id": "dailystar-https://www.thedailystar.net/sports/cricket/news/shanto-urges-tigers-keep-the-grind-going-4253481",
       "title": "Shanto urges Tigers to keep the grind going",
@@ -28,14 +79,6 @@
       "publishedAt": "2026-08-21T08:45:49.000Z"
     },
     {
-      "id": "dailystar-https://www.thedailystar.net/sports/cricket/news/tanzid-positive-shoriful-ready-tigers-ponder-xi-mackay-test-4253276",
-      "title": "Tanzid ‘positive’, Shoriful ‘ready’ as Tigers ponder XI for Mackay Test",
-      "summary": "Bangladesh have five pace bowlers available for the Test, but Shanto said the final combination would only be decided after another inspection of the Mackay surface on Saturday morning.",
-      "url": "https://www.thedailystar.net/sports/cricket/news/tanzid-positive-shoriful-ready-tigers-ponder-xi-mackay-test-4253276",
-      "source": "dailystar",
-      "publishedAt": "2026-08-21T06:01:34.000Z"
-    },
-    {
       "id": "espn-https://www.cricinfo.com/ci/content/story/1550848.html",
       "title": "Bangladesh eye more history with only one result on Australia's mind",
       "summary": "Bangladesh did the unthinkable in Darwin, and will have to do it all over again if they want to convert the Test match win to a Test series win",
@@ -43,30 +86,6 @@
       "imageUrl": "https://p.imgci.com/db/PICTURES/CMS/421100/421193.6.jpg",
       "source": "espncricinfo",
       "publishedAt": "2026-08-21T05:58:21.000Z"
-    },
-    {
-      "id": "dailystar-https://www.thedailystar.net/sports/cricket/news/renshaw-only-change-australia-name-xi-shortly-after-cummins-call-time-4253261",
-      "title": "Renshaw only change; Australia name XI shortly after Cummins’ call for time",
-      "summary": "Matthew Renshaw was the only change, replacing Jake Weatherald at the top of the order, while Lyon retained his place for the second Test against Bangladesh at the Great Barrier Reef Arena in Mackay.",
-      "url": "https://www.thedailystar.net/sports/cricket/news/renshaw-only-change-australia-name-xi-shortly-after-cummins-call-time-4253261",
-      "source": "dailystar",
-      "publishedAt": "2026-08-21T05:51:29.000Z"
-    },
-    {
-      "id": "dailystar-https://www.thedailystar.net/sports/cricket/news/shanto-blocks-out-history-focuses-next-five-days-4253246",
-      "title": "Shanto blocks out history, focuses on next five days",
-      "summary": "The approach is also about putting the emotion of their historic nine-wicket victory in Darwin behind them.",
-      "url": "https://www.thedailystar.net/sports/cricket/news/shanto-blocks-out-history-focuses-next-five-days-4253246",
-      "source": "dailystar",
-      "publishedAt": "2026-08-21T05:21:06.000Z"
-    },
-    {
-      "id": "dailystar-https://www.thedailystar.net/sports/cricket/news/more-history-beckons-tigers-against-wounded-australia-4253116",
-      "title": "More history beckons Tigers against wounded Australia",
-      "summary": "The Mackay pitch is likely to offer more pace and bounce, potentially giving Australia’s fast bowlers a much stronger platform. The open nature of the venue could also bring strong winds into play, adding another challenge for Bangladesh’s batters.",
-      "url": "https://www.thedailystar.net/sports/cricket/news/more-history-beckons-tigers-against-wounded-australia-4253116",
-      "source": "dailystar",
-      "publishedAt": "2026-08-21T03:10:00.000Z"
     },
     {
       "id": "espn-https://www.cricinfo.com/ci/content/story/1550809.html",
@@ -103,51 +122,6 @@
       "imageUrl": "https://p.imgci.com/db/PICTURES/CMS/421000/421032.5.jpg",
       "source": "espncricinfo",
       "publishedAt": "2026-08-18T07:57:58.000Z"
-    },
-    {
-      "id": "espn-https://www.cricinfo.com/ci/content/story/1550102.html",
-      "title": "Bangladesh trump Australia for historic win in Darwin after Mehidy five-for",
-      "summary": "Visitors needed just 57 to win on day four even as Cameron Green scored 104 for Australia in the second innings",
-      "url": "https://www.cricinfo.com/story/aus-vs-ban-1st-test-2026-bangladesh-trump-australia-for-historic-win-in-darwin-after-mehidy-five-for-1550102",
-      "imageUrl": "https://p.imgci.com/db/PICTURES/CMS/421200/421236.5.jpg",
-      "source": "espncricinfo",
-      "publishedAt": "2026-08-16T17:09:28.000Z"
-    },
-    {
-      "id": "espn-https://www.cricinfo.com/ci/content/story/1550173.html",
-      "title": "Time for change? Who are Australia's batting options?",
-      "summary": "The result of the first Test against Bangladesh could demand a reaction from the selectors",
-      "url": "https://www.cricinfo.com/story/time-for-change-matt-renshaw-oliver-peake-josh-inglis-among-australias-batting-options-1550173",
-      "imageUrl": "https://p.imgci.com/db/PICTURES/CMS/409100/409124.5.jpg",
-      "source": "espncricinfo",
-      "publishedAt": "2026-08-16T11:37:55.000Z"
-    },
-    {
-      "id": "espn-https://www.cricinfo.com/ci/content/story/1550156.html",
-      "title": "Shanto: Whole team deserves Player-of-the-Match award",
-      "summary": "Bangladesh captain hails his fast bowlers for dismissing Australia for 198 on the opening day in Darwin",
-      "url": "https://www.cricinfo.com/story/whole-bangladesh-team-deserves-player-of-the-match-award-for-darwin-win-says-najmul-hossain-shanto-1550156",
-      "imageUrl": "https://p.imgci.com/db/PICTURES/CMS/421200/421255.5.jpg",
-      "source": "espncricinfo",
-      "publishedAt": "2026-08-16T09:26:20.000Z"
-    },
-    {
-      "id": "espn-https://www.cricinfo.com/ci/content/story/1550128.html",
-      "title": "Shanto: 'Biggest win for Bangladesh in any format'",
-      "summary": "Shanto especially heaped praise on his fast bowlers, who took all 10 wickets in the first innings",
-      "url": "https://www.cricinfo.com/story/aus-vs-ban-1st-test-najmul-hossain-shanto-biggest-win-for-bangladesh-in-any-format-1550128",
-      "imageUrl": "https://p.imgci.com/db/PICTURES/CMS/421200/421244.5.jpg",
-      "source": "espncricinfo",
-      "publishedAt": "2026-08-16T06:57:21.000Z"
-    },
-    {
-      "id": "espn-https://www.cricinfo.com/ci/content/story/1550002.html",
-      "title": "Bangladesh chip away to keep famous victory in sight",
-      "summary": "Hasan Mahmud claimed both Australia's openers while Mehidy Hasan Miraz followed a half-century with the key wicket of Steven Smith",
-      "url": "https://www.cricinfo.com/story/aus-vs-ban-1st-wtc-test-mahmud-taijul-and-mehidy-chip-away-to-keep-famous-victory-in-sight-1550002",
-      "imageUrl": "https://p.imgci.com/db/PICTURES/CMS/421100/421193.5.jpg",
-      "source": "espncricinfo",
-      "publishedAt": "2026-08-15T08:38:21.000Z"
     }
   ]
 }
