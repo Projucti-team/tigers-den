@@ -264,7 +264,10 @@ SELECT * FROM tour_sync_state;
 
 ## Memory & Preferences
 
-- **Daily Airtable update:** One row per day logging progress (project: [Airtable Logging Practice](docs/HANDOVER.md))
+- **Daily Airtable update:** After every push (or meaningfully-sized chunk of work), log it to Airtable so the next session can pick up where this one left off.
+  - Base: `appe8oeguzTq8XzY5`. Table: `Logs` (`tblUH5FCiJD7KNIVm`). Project link field: `Project` → the "Tigers Den" record (`recAqzAz6jHwkWDrl`) in the `Projects` table (`tbln6JK343jcS21mp`).
+  - **One row per calendar day, not one per push.** Before writing, check whether a `Logs` row already exists for today (filter `Project` = Tigers Den, sort `Date` desc). If today's row exists, update its `Changelog Update` field by appending a new dated section — don't create a second row for the same day. If no row exists yet for today, create one.
+  - `Changelog Update` is richText — use `**Bold headers**` per topic, short paragraphs, no code dumps. Cover: what was broken/requested, root cause (if a bug), what changed, how it was verified (tsc/tests/live confirmation), and current status/anything still pending for next time.
 - **Terse responses:** No trailing summaries or closing pleasantries
 - **Standalone feedback:** Not a Payload collection; direct DB + API (avoid Payload auto-migration conflicts)
 
