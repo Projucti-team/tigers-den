@@ -1,5 +1,5 @@
 {
-  "fetchedAt": "2026-08-22T21:37:40.397Z",
+  "fetchedAt": "2026-08-23T21:37:40.668Z",
   "source": "icc-sportz.io",
   "sourceUrl": "https://www.icc-cricket.com/rankings",
   "men": {
@@ -10,9 +10,9 @@
           "rank": 1,
           "name": "Australia",
           "abbreviation": "AUS",
-          "rating": 131,
-          "points": 3138,
-          "matches": 24
+          "rating": 126,
+          "points": 3411,
+          "matches": 27
         },
         {
           "rank": 2,
@@ -48,6 +48,14 @@
         },
         {
           "rank": 6,
+          "name": "Bangladesh",
+          "abbreviation": "BAN",
+          "rating": 78,
+          "points": 1878,
+          "matches": 24
+        },
+        {
+          "rank": 7,
           "name": "Sri Lanka",
           "abbreviation": "SL",
           "rating": 76,
@@ -55,7 +63,7 @@
           "matches": 16
         },
         {
-          "rank": 7,
+          "rank": 8,
           "name": "Pakistan",
           "abbreviation": "PAK",
           "rating": 75,
@@ -63,20 +71,12 @@
           "matches": 19
         },
         {
-          "rank": 8,
+          "rank": 9,
           "name": "West Indies",
           "abbreviation": "WI",
           "rating": 74,
           "points": 2008,
           "matches": 27
-        },
-        {
-          "rank": 9,
-          "name": "Bangladesh",
-          "abbreviation": "BAN",
-          "rating": 73,
-          "points": 1539,
-          "matches": 21
         },
         {
           "rank": 10,
@@ -1070,12 +1070,12 @@
     },
     "bangladesh": {
       "test": {
-        "rank": 9,
+        "rank": 6,
         "name": "Bangladesh",
         "abbreviation": "BAN",
-        "rating": 73,
-        "points": 1539,
-        "matches": 21
+        "rating": 78,
+        "points": 1878,
+        "matches": 24
       },
       "odi": {
         "rank": 9,
@@ -10385,7 +10385,7 @@
     },
     "rankUpdatedAt": {
       "test": {
-        "team": "2026-08-05",
+        "team": "2026-08-23",
         "bat": "2026-08-18",
         "bowl": "2026-08-18",
         "allrounder": "2026-08-18"
@@ -10696,8 +10696,8 @@
           "name": "Indonesia",
           "abbreviation": "INA-W",
           "rating": 92,
-          "points": 3579,
-          "matches": 39
+          "points": 3681,
+          "matches": 40
         },
         {
           "rank": 22,
@@ -10799,9 +10799,9 @@
           "rank": 34,
           "name": "Oman",
           "abbreviation": "OMA-W",
-          "rating": 51,
-          "points": 1667,
-          "matches": 33
+          "rating": 50,
+          "points": 1708,
+          "matches": 34
         },
         {
           "rank": 35,
@@ -11079,9 +11079,9 @@
           "rank": 69,
           "name": "Luxembourg",
           "abbreviation": "LUX-W",
-          "rating": 3,
-          "points": 57,
-          "matches": 17
+          "rating": 8,
+          "points": 157,
+          "matches": 19
         },
         {
           "rank": 70,
@@ -11153,7 +11153,7 @@
           "abbreviation": "BEL-W",
           "rating": 0,
           "points": 0,
-          "matches": 8
+          "matches": 10
         },
         {
           "rank": 73,
@@ -17386,7 +17386,7 @@
         "allrounder": "2026-08-17"
       },
       "t20": {
-        "team": "2026-08-22",
+        "team": "2026-08-23",
         "bat": "2026-08-17",
         "bowl": "2026-08-17",
         "allrounder": "2026-08-17"
