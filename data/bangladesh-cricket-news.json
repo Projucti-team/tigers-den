@@ -1,21 +1,88 @@
 {
-  "fetchedAt": "2026-08-22T21:55:57.328Z",
+  "fetchedAt": "2026-08-23T21:56:23.155Z",
   "items": [
     {
-      "id": "dailystar-https://www.thedailystar.net/sports/cricket/news/shoriful-keeps-tigers-the-hunt-4254156",
-      "title": "Shoriful keeps Tigers in the hunt",
-      "summary": "Shoriful, returning after missing the first Test with a hamstring injury, kept the Tigers in the hunt after Mitchell Starc's 6-12 had threatened to turn the match into a one-sided contest.",
-      "url": "https://www.thedailystar.net/sports/cricket/news/shoriful-keeps-tigers-the-hunt-4254156",
+      "id": "dailystar-https://www.thedailystar.net/sports/cricket/news/sabbir-leads-bangladesh-hp-second-straight-win-top-end-series-4254931",
+      "title": "Sabbir leads Bangladesh HP to second straight win in Top End Series",
+      "summary": "Sabbir Rahman smashed a half-century as Bangladesh HP secured a three-wicket victory over Hobart Hurricanes Academy in the Top End T20 Series at Marrara Oval in Darwin on Sunday.",
+      "url": "https://www.thedailystar.net/sports/cricket/news/sabbir-leads-bangladesh-hp-second-straight-win-top-end-series-4254931",
       "source": "dailystar",
-      "publishedAt": "2026-08-22T17:55:00.000Z"
+      "publishedAt": "2026-08-23T14:40:37.000Z"
     },
     {
-      "id": "dailystar-https://www.thedailystar.net/sports/cricket/news/bangladesh-hp-beat-nepal-9-wickets-darwin-top-end-t20-4254111",
-      "title": "Bangladesh HP beat Nepal 'A' by 9 wickets in Darwin Top End T20",
-      "summary": "Nepal 'A' were reduced to 13 for five after sent in to bat.",
-      "url": "https://www.thedailystar.net/sports/cricket/news/bangladesh-hp-beat-nepal-9-wickets-darwin-top-end-t20-4254111",
+      "id": "dailystar-https://www.thedailystar.net/sports/cricket/news/cummins-hails-sharp-australia-after-innings-victory-against-bangladesh-4254801",
+      "title": "Cummins hails 'sharp' Australia after innings victory against Bangladesh",
+      "summary": "Australia captain Pat Cummins praised his side for \"all looking sharp\" in a crushing innings and 51-run thrashing of Bangladesh in Mackay on Sunday as they emphatically bounced back from losing the first Test.",
+      "url": "https://www.thedailystar.net/sports/cricket/news/cummins-hails-sharp-australia-after-innings-victory-against-bangladesh-4254801",
       "source": "dailystar",
-      "publishedAt": "2026-08-22T13:58:24.000Z"
+      "publishedAt": "2026-08-23T11:09:33.000Z"
+    },
+    {
+      "id": "espn-https://www.cricinfo.com/ci/content/story/1551210.html",
+      "title": "Shanto hopes Bangladesh 'do it' in South Africa after Darwin conquest",
+      "summary": "\"I don't want to point finger at anyone in particular but we played poorly as a team,\" Shanto said after the two-day loss in Mackay",
+      "url": "https://www.cricinfo.com/story/aus-vs-ban-2nd-test-najmul-hossain-shanto-hopes-to-do-it-in-south-africa-after-darwin-conquest-1551210",
+      "imageUrl": "https://p.imgci.com/db/PICTURES/CMS/421500/421598.5.jpg",
+      "source": "espncricinfo",
+      "publishedAt": "2026-08-23T10:37:21.000Z"
+    },
+    {
+      "id": "espn-https://www.cricinfo.com/ci/content/story/1551205.html",
+      "title": "Shanto wants more SENA Tests after Bangladesh rise to No. 6 in rankings",
+      "summary": "Bangladesh drew their first series in Australia in 23 years, and rose above No. 9 on the ICC Test rankings for the first time",
+      "url": "https://www.cricinfo.com/story/najmul-hossain-wants-more-sena-tests-after-bangladesh-rise-to-no-6-in-rankings-1551205",
+      "imageUrl": "https://p.imgci.com/db/PICTURES/CMS/421200/421244.5.jpg",
+      "source": "espncricinfo",
+      "publishedAt": "2026-08-23T10:36:42.000Z"
+    },
+    {
+      "id": "espn-https://www.cricinfo.com/ci/content/story/1551163.html",
+      "title": "Starc claims 10 to demolish Bangladesh in two days",
+      "summary": "It became the second-shortest Test ever played on Australian soil after Bangladesh were bundled for 95 on the second day",
+      "url": "https://www.cricinfo.com/story/aus-vs-ban-2nd-test-2026-mitchell-starc-claims-10-to-demolish-bangladesh-in-two-days-1551163",
+      "imageUrl": "https://p.imgci.com/db/PICTURES/CMS/421500/421593.5.jpg",
+      "source": "espncricinfo",
+      "publishedAt": "2026-08-23T10:35:58.000Z"
+    },
+    {
+      "id": "dailystar-https://www.thedailystar.net/sports/cricket/news/historic-high-humiliating-low-bangladesh-see-both-sides-the-coin-down-under-4254701",
+      "title": "From historic high to humiliating low: Bangladesh see both sides of the coin Down Under",
+      "summary": "Yet Shanto insisted the Mackay defeat should not erase what Bangladesh achieved a week earlier.",
+      "url": "https://www.thedailystar.net/sports/cricket/news/historic-high-humiliating-low-bangladesh-see-both-sides-the-coin-down-under-4254701",
+      "source": "dailystar",
+      "publishedAt": "2026-08-23T08:25:03.000Z"
+    },
+    {
+      "id": "dailystar-https://www.thedailystar.net/sports/cricket/news/shanto-calls-regular-australia-tours-questions-pitch-scrutiny-4254696",
+      "title": "Shanto calls for regular Australia tours, questions pitch scrutiny",
+      "summary": "Shanto hopes that more regular opportunities against top teams and in difficult conditions can help turn such breakthroughs into sustained progress.",
+      "url": "https://www.thedailystar.net/sports/cricket/news/shanto-calls-regular-australia-tours-questions-pitch-scrutiny-4254696",
+      "source": "dailystar",
+      "publishedAt": "2026-08-23T08:12:01.000Z"
+    },
+    {
+      "id": "dailystar-https://www.thedailystar.net/sports/cricket/news/no-excuses-batting-collapse-shanto-4254676",
+      "title": "No excuses for batting collapse: Shanto",
+      "summary": "Shanto said the challenge in Mackay exposed areas of Bangladesh's batting that need work.",
+      "url": "https://www.thedailystar.net/sports/cricket/news/no-excuses-batting-collapse-shanto-4254676",
+      "source": "dailystar",
+      "publishedAt": "2026-08-23T07:46:44.000Z"
+    },
+    {
+      "id": "dailystar-https://www.thedailystar.net/sports/cricket/news/bangladesh-rise-record-sixth-test-rankings-4254666",
+      "title": "Bangladesh rise to record sixth in Test rankings",
+      "summary": "The Tigers' progress in the World Test Championship (WTC) 2025-27 table has also remained intact despite the Mackay defeat.",
+      "url": "https://www.thedailystar.net/sports/cricket/news/bangladesh-rise-record-sixth-test-rankings-4254666",
+      "source": "dailystar",
+      "publishedAt": "2026-08-23T07:19:35.000Z"
+    },
+    {
+      "id": "dailystar-https://www.thedailystar.net/sports/cricket/news/littons-duck-tales-tour-down-under-without-run-4254581",
+      "title": "Litton’s duck tales: A tour Down Under without a run",
+      "summary": "The bright side for the Bangladesh wicketkeeper is that this is only a two-Test series",
+      "url": "https://www.thedailystar.net/sports/cricket/news/littons-duck-tales-tour-down-under-without-run-4254581",
+      "source": "dailystar",
+      "publishedAt": "2026-08-23T04:06:26.000Z"
     },
     {
       "id": "espn-https://www.cricinfo.com/ci/content/story/1550957.html",
@@ -43,22 +110,6 @@
       "imageUrl": "https://p.imgci.com/db/PICTURES/CMS/421500/421531.5.jpg",
       "source": "espncricinfo",
       "publishedAt": "2026-08-21T23:52:05.000Z"
-    },
-    {
-      "id": "dailystar-https://www.thedailystar.net/sports/cricket/news/australia-opt-bowl-first-mackay-tigers-eye-more-history-4253671",
-      "title": "Shoriful keeps Bangladesh alive after chaotic opening day",
-      "summary": "Australia have won the toss and elected to field first in the second and final Test of the two-match series against Bangladesh at the Great Barrier Reef Arena in Mackay on Saturday.",
-      "url": "https://www.thedailystar.net/sports/cricket/news/australia-opt-bowl-first-mackay-tigers-eye-more-history-4253671",
-      "source": "dailystar",
-      "publishedAt": "2026-08-21T23:32:00.000Z"
-    },
-    {
-      "id": "dailystar-https://www.thedailystar.net/sports/cricket/news/shanto-urges-tigers-keep-the-grind-going-4253481",
-      "title": "Shanto urges Tigers to keep the grind going",
-      "summary": "The Tigers know a sterner test awaits in Mackay, where conditions are expected to offer more assistance to Australia.",
-      "url": "https://www.thedailystar.net/sports/cricket/news/shanto-urges-tigers-keep-the-grind-going-4253481",
-      "source": "dailystar",
-      "publishedAt": "2026-08-21T17:45:00.000Z"
     },
     {
       "id": "espn-https://www.cricinfo.com/ci/content/story/1550885.html",
@@ -113,15 +164,6 @@
       "imageUrl": "https://p.imgci.com/db/PICTURES/CMS/421300/421378.6.jpg",
       "source": "espncricinfo",
       "publishedAt": "2026-08-19T11:26:46.000Z"
-    },
-    {
-      "id": "espn-https://www.cricinfo.com/ci/content/story/1550487.html",
-      "title": "Weatherald dropped, Renshaw called up for second Test against Bangladesh",
-      "summary": "The opener has paid the price for Australia's poor display in Darwin and is the only change made to the squad",
-      "url": "https://www.cricinfo.com/story/australia-news-jake-weatherald-dropped-matt-renshaw-called-up-for-second-test-against-bangladesh-1550487",
-      "imageUrl": "https://p.imgci.com/db/PICTURES/CMS/421000/421032.5.jpg",
-      "source": "espncricinfo",
-      "publishedAt": "2026-08-18T07:57:58.000Z"
     }
   ]
 }
