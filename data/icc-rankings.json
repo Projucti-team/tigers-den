@@ -1,5 +1,5 @@
 {
-  "fetchedAt": "2026-08-23T21:37:40.668Z",
+  "fetchedAt": "2026-08-24T21:45:43.975Z",
   "source": "icc-sportz.io",
   "sourceUrl": "https://www.icc-cricket.com/rankings",
   "men": {
@@ -10693,14 +10693,6 @@
         },
         {
           "rank": 21,
-          "name": "Indonesia",
-          "abbreviation": "INA-W",
-          "rating": 92,
-          "points": 3681,
-          "matches": 40
-        },
-        {
-          "rank": 22,
           "name": "Nepal",
           "abbreviation": "NEP-W",
           "rating": 92,
@@ -10708,12 +10700,20 @@
           "matches": 51
         },
         {
-          "rank": 23,
+          "rank": 22,
           "name": "Hong Kong",
           "abbreviation": "HK-W",
           "rating": 90,
           "points": 5394,
           "matches": 60
+        },
+        {
+          "rank": 23,
+          "name": "Indonesia",
+          "abbreviation": "INA-W",
+          "rating": 90,
+          "points": 3683,
+          "matches": 41
         },
         {
           "rank": 24,
@@ -10805,19 +10805,19 @@
         },
         {
           "rank": 35,
+          "name": "China",
+          "abbreviation": "CHN-W",
+          "rating": 50,
+          "points": 1842,
+          "matches": 37
+        },
+        {
+          "rank": 36,
           "name": "Cyprus",
           "abbreviation": "CYP-W",
           "rating": 49,
           "points": 1080,
           "matches": 22
-        },
-        {
-          "rank": 36,
-          "name": "China",
-          "abbreviation": "CHN-W",
-          "rating": 47,
-          "points": 1705,
-          "matches": 36
         },
         {
           "rank": 37,
@@ -17386,7 +17386,7 @@
         "allrounder": "2026-08-17"
       },
       "t20": {
-        "team": "2026-08-23",
+        "team": "2026-08-24",
         "bat": "2026-08-17",
         "bowl": "2026-08-17",
         "allrounder": "2026-08-17"
