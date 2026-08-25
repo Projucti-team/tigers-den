@@ -1,5 +1,5 @@
 {
-  "fetchedAt": "2026-08-24T21:45:43.975Z",
+  "fetchedAt": "2026-08-25T21:45:55.023Z",
   "source": "icc-sportz.io",
   "sourceUrl": "https://www.icc-cricket.com/rankings",
   "men": {
@@ -15197,16 +15197,6 @@
           },
           {
             "rank": 91,
-            "name": "Ni Putu Ayu Nanda Sakarini",
-            "team": "Indonesia",
-            "rating": 337,
-            "points": 337,
-            "iccPlayerId": "70983",
-            "profileUrl": "https://www.icc-cricket.com/rankings/70983/ni-putu-ayu-nanda-sakarini",
-            "imageUrl": "https://images.icc-cricket.com/image/upload/t_player-headshot-portrait-lg-webp/prd/assets/players/generic/colored/70983.png"
-          },
-          {
-            "rank": 92,
             "name": "Josephine Nkomo",
             "team": "Zimbabwe",
             "rating": 336,
@@ -15216,7 +15206,18 @@
             "imageUrl": "https://images.icc-cricket.com/image/upload/t_player-headshot-portrait-lg-webp/prd/assets/players/generic/colored/67315.png"
           },
           {
-            "rank": 93,
+            "rank": 92,
+            "name": "Ni Putu Ayu Nanda Sakarini",
+            "team": "Indonesia",
+            "rating": 333,
+            "points": 333,
+            "iccPlayerId": "70983",
+            "profileUrl": "https://www.icc-cricket.com/rankings/70983/ni-putu-ayu-nanda-sakarini",
+            "imageUrl": "https://images.icc-cricket.com/image/upload/t_player-headshot-portrait-lg-webp/prd/assets/players/generic/colored/70983.png"
+          },
+          {
+            "rank": 92,
+            "rankTied": true,
             "name": "Jannillea Glasgow",
             "team": "West Indies",
             "rating": 333,
@@ -15237,16 +15238,6 @@
           },
           {
             "rank": 95,
-            "name": "Jayadhanyha Gunasekar",
-            "team": "Oman",
-            "rating": 329,
-            "points": 329,
-            "iccPlayerId": "89143",
-            "profileUrl": "https://www.icc-cricket.com/rankings/89143/jayadhanyha-gunasekar",
-            "imageUrl": "https://images.icc-cricket.com/image/upload/t_player-headshot-portrait-lg-webp/prd/assets/players/generic/colored/89143.png"
-          },
-          {
-            "rank": 96,
             "name": "Sidra Amin",
             "team": "Pakistan",
             "rating": 326,
@@ -15256,7 +15247,7 @@
             "imageUrl": "https://images.icc-cricket.com/image/upload/t_player-headshot-portrait-lg-webp/prd/assets/players/generic/colored/58242.png"
           },
           {
-            "rank": 97,
+            "rank": 96,
             "name": "Robine Rijke",
             "team": "Netherlands",
             "rating": 325,
@@ -15264,6 +15255,16 @@
             "iccPlayerId": "69590",
             "profileUrl": "https://www.icc-cricket.com/rankings/69590/robine-rijke",
             "imageUrl": "https://images.icc-cricket.com/image/upload/t_player-headshot-portrait-lg-webp/prd/assets/players/generic/colored/69590.png"
+          },
+          {
+            "rank": 97,
+            "name": "Jayadhanyha Gunasekar",
+            "team": "Oman",
+            "rating": 316,
+            "points": 316,
+            "iccPlayerId": "89143",
+            "profileUrl": "https://www.icc-cricket.com/rankings/89143/jayadhanyha-gunasekar",
+            "imageUrl": "https://images.icc-cricket.com/image/upload/t_player-headshot-portrait-lg-webp/prd/assets/players/generic/colored/89143.png"
           },
           {
             "rank": 98,
@@ -15469,12 +15470,12 @@
           },
           {
             "rank": 18,
-            "name": "Renuka Singh Thakur",
+            "name": "Renuka Singh",
             "team": "India",
             "rating": 629,
             "points": 629,
             "iccPlayerId": "70714",
-            "profileUrl": "https://www.icc-cricket.com/rankings/70714/renuka-singh-thakur",
+            "profileUrl": "https://www.icc-cricket.com/rankings/70714/renuka-singh",
             "imageUrl": "https://images.icc-cricket.com/image/upload/t_player-headshot-portrait-lg-webp/prd/assets/players/generic/colored/70714.png"
           },
           {
@@ -16851,12 +16852,12 @@
           },
           {
             "rank": 54,
-            "name": "Renuka Singh Thakur",
+            "name": "Renuka Singh",
             "team": "India",
             "rating": 94,
             "points": 94,
             "iccPlayerId": "70714",
-            "profileUrl": "https://www.icc-cricket.com/rankings/70714/renuka-singh-thakur",
+            "profileUrl": "https://www.icc-cricket.com/rankings/70714/renuka-singh",
             "imageUrl": "https://images.icc-cricket.com/image/upload/t_player-headshot-portrait-lg-webp/prd/assets/players/generic/colored/70714.png"
           },
           {
@@ -17387,9 +17388,9 @@
       },
       "t20": {
         "team": "2026-08-24",
-        "bat": "2026-08-17",
-        "bowl": "2026-08-17",
-        "allrounder": "2026-08-17"
+        "bat": "2026-08-24",
+        "bowl": "2026-08-24",
+        "allrounder": "2026-08-24"
       }
     }
   }
