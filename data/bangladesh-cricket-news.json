@@ -1,6 +1,30 @@
 {
-  "fetchedAt": "2026-08-27T01:03:21.997Z",
+  "fetchedAt": "2026-08-28T05:36:42.811Z",
   "items": [
+    {
+      "id": "dailystar-https://www.thedailystar.net/sports/cricket/news/team-collapse-raises-red-ball-concerns-4258571",
+      "title": "‘A’ team collapse raises red-ball concerns",
+      "summary": "Chief selector Habibul Bashar described the performance as “disappointing” but said Bangladesh were “not alarmed”.",
+      "url": "https://www.thedailystar.net/sports/cricket/news/team-collapse-raises-red-ball-concerns-4258571",
+      "source": "dailystar",
+      "publishedAt": "2026-08-28T02:00:00.000Z"
+    },
+    {
+      "id": "dailystar-https://www.thedailystar.net/sports/cricket/news/bangladesh-field-strong-asian-games-team-4258576",
+      "title": "Bangladesh to field strong Asian Games team",
+      "summary": "India have already named a formidable squad featuring Shreyas Iyer, Jasprit Bumrah, Vaibhav Sooryavanshi and Abhishek Sharma, while Pakistan have picked a side including Sahibzada Farhan, Abrar Ahmed among other known faces.",
+      "url": "https://www.thedailystar.net/sports/cricket/news/bangladesh-field-strong-asian-games-team-4258576",
+      "source": "dailystar",
+      "publishedAt": "2026-08-28T01:30:00.000Z"
+    },
+    {
+      "id": "dailystar-https://www.thedailystar.net/sports/cricket/news/ariful-sabbir-shine-bangladesh-hp-return-winning-ways-against-new-zealand-4258101",
+      "title": "Ariful, Sabbir shine as Bangladesh HP go top of Top End T20 table",
+      "summary": "Bangladesh High Performance (HP) team returned to winning ways and moved to the top of the table in the Top End T20 Series with a 23-run victory over New Zealand A at Darwin’s Marrara Cricket Ground on Thursday.",
+      "url": "https://www.thedailystar.net/sports/cricket/news/ariful-sabbir-shine-bangladesh-hp-return-winning-ways-against-new-zealand-4258101",
+      "source": "dailystar",
+      "publishedAt": "2026-08-27T15:47:52.000Z"
+    },
     {
       "id": "dailystar-https://www.thedailystar.net/sports/cricket/news/three-innings-defeats-four-days-another-bangladesh-side-outplayed-4257456",
       "title": "Three innings defeats in four days: Another Bangladesh side outplayed",
@@ -25,38 +49,6 @@
       "url": "https://www.thedailystar.net/sports/cricket/news/starc-dethrones-bumrah-claim-no-1-test-ranking-4257316",
       "source": "dailystar",
       "publishedAt": "2026-08-26T09:24:43.000Z"
-    },
-    {
-      "id": "dailystar-https://www.thedailystar.net/sports/cricket/news/lyons-australia-future-spins-doubt-4257266",
-      "title": "Lyon’s Australia future spins into doubt after Bangladesh series",
-      "summary": "With Nathan Lyon almost as iconic in Australian cricket as the baggy green cap worn by the nation's test players, selectors face a delicate task in managing a proud spinner whose role may be curtailed amid changing priorities.",
-      "url": "https://www.thedailystar.net/sports/cricket/news/lyons-australia-future-spins-doubt-4257266",
-      "source": "dailystar",
-      "publishedAt": "2026-08-26T07:31:01.000Z"
-    },
-    {
-      "id": "dailystar-https://www.thedailystar.net/sports/cricket/news/tigers-set-afghanistan-series-october-4256681",
-      "title": "Tigers set for Afghanistan series in October",
-      "summary": "While Bangladesh’s series against India in September remains in limbo, the Tigers have red-ball and white-ball assignments to look forward to in October. Bangladesh are set to face Afghanistan in the UAE in a series featuring one Test and three white-ball matches.",
-      "url": "https://www.thedailystar.net/sports/cricket/news/tigers-set-afghanistan-series-october-4256681",
-      "source": "dailystar",
-      "publishedAt": "2026-08-25T16:30:00.000Z"
-    },
-    {
-      "id": "dailystar-https://www.thedailystar.net/sports/cricket/news/batting-woes-deepen-bangladesh-crumble-413-run-defeat-against-south-africa-4256786",
-      "title": "Batting woes deepen as Bangladesh A crumble to an innings and 413-run defeat against South Africa A",
-      "summary": "Bangladesh A’s batting woes continued as they slumped to a massive innings-and-413-run defeat against South Africa A in the opening four-day match at LC de Villiers Oval in Pretoria on Tuesday.",
-      "url": "https://www.thedailystar.net/sports/cricket/news/batting-woes-deepen-bangladesh-crumble-413-run-defeat-against-south-africa-4256786",
-      "source": "dailystar",
-      "publishedAt": "2026-08-25T16:06:59.000Z"
-    },
-    {
-      "id": "dailystar-https://www.thedailystar.net/sports/cricket/news/late-collapse-hands-bangladesh-hp-first-defeat-top-end-t20-series-4256736",
-      "title": "Late collapse hands Bangladesh HP first defeat in Top End T20 Series",
-      "summary": "The high-flying Bangladesh High Performance team suffered their first defeat of the Top End T20 Series, falling to the Adelaide Strikers Academy by 21 runs at Darwin's Marrara Cricket Ground on Tuesday.",
-      "url": "https://www.thedailystar.net/sports/cricket/news/late-collapse-hands-bangladesh-hp-first-defeat-top-end-t20-series-4256736",
-      "source": "dailystar",
-      "publishedAt": "2026-08-25T15:18:43.000Z"
     },
     {
       "id": "espn-https://www.cricinfo.com/ci/content/story/1551210.html",
@@ -111,33 +103,6 @@
       "imageUrl": "https://p.imgci.com/db/PICTURES/CMS/421500/421531.5.jpg",
       "source": "espncricinfo",
       "publishedAt": "2026-08-21T23:52:05.000Z"
-    },
-    {
-      "id": "espn-https://www.cricinfo.com/ci/content/story/1550885.html",
-      "title": "Confident Shanto plots 'five days of good cricket again'",
-      "summary": "Bangladesh captain Najmul Hossain Shanto believes his side can cope with the extra bounce in Mackay, the venue of the second Test against Australia",
-      "url": "https://www.cricinfo.com/story/aus-vs-ban-najmul-hossain-shanto-increasingly-confident-after-piling-runs-against-australias-attack-1550885",
-      "imageUrl": "https://p.imgci.com/db/PICTURES/CMS/421100/421125.5.jpg",
-      "source": "espncricinfo",
-      "publishedAt": "2026-08-21T09:26:08.000Z"
-    },
-    {
-      "id": "espn-https://www.cricinfo.com/ci/content/story/1550834.html",
-      "title": "Lyon survives selection call as Renshaw locked in to open",
-      "summary": "Jake Weatherald, who had opened with Travis Head in the first Test against Bangladesh, was dropped from the squad prior to the second Test, which starts on Saturday in Mackay",
-      "url": "https://www.cricinfo.com/story/aus-vs-ban-2nd-wtc-test-matt-renshaw-returns-to-open-with-travis-head-in-change-for-australia-1550834",
-      "imageUrl": "https://p.imgci.com/db/PICTURES/CMS/421400/421434.6.jpg",
-      "source": "espncricinfo",
-      "publishedAt": "2026-08-21T08:45:49.000Z"
-    },
-    {
-      "id": "espn-https://www.cricinfo.com/ci/content/story/1550848.html",
-      "title": "Bangladesh eye more history with only one result on Australia's mind",
-      "summary": "Bangladesh did the unthinkable in Darwin, and will have to do it all over again if they want to convert the Test match win to a Test series win",
-      "url": "https://www.cricinfo.com/story/aus-vs-ban-2nd-wtc-test-bangladesh-eye-more-history-with-only-one-result-on-australias-mind-1550848",
-      "imageUrl": "https://p.imgci.com/db/PICTURES/CMS/421100/421193.6.jpg",
-      "source": "espncricinfo",
-      "publishedAt": "2026-08-21T05:58:21.000Z"
     }
   ]
 }
