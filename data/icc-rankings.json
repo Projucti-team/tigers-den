@@ -1,5 +1,5 @@
 {
-  "fetchedAt": "2026-08-29T23:22:22.828Z",
+  "fetchedAt": "2026-08-30T23:31:54.814Z",
   "source": "icc-sportz.io",
   "sourceUrl": "https://www.icc-cricket.com/rankings",
   "men": {
@@ -10544,8 +10544,8 @@
           "name": "India",
           "abbreviation": "IND-W",
           "rating": 262,
-          "points": 10743,
-          "matches": 41
+          "points": 11015,
+          "matches": 42
         },
         {
           "rank": 4,
@@ -10616,8 +10616,8 @@
           "name": "Thailand",
           "abbreviation": "THA-W",
           "rating": 154,
-          "points": 9530,
-          "matches": 62
+          "points": 9674,
+          "matches": 63
         },
         {
           "rank": 13,
@@ -10757,19 +10757,19 @@
         },
         {
           "rank": 30,
+          "name": "Germany",
+          "abbreviation": "GER-W",
+          "rating": 65,
+          "points": 2130,
+          "matches": 33
+        },
+        {
+          "rank": 31,
           "name": "Kenya",
           "abbreviation": "KEN-W",
           "rating": 64,
           "points": 1534,
           "matches": 24
-        },
-        {
-          "rank": 31,
-          "name": "Germany",
-          "abbreviation": "GER-W",
-          "rating": 64,
-          "points": 2038,
-          "matches": 32
         },
         {
           "rank": 32,
@@ -10805,14 +10805,6 @@
         },
         {
           "rank": 36,
-          "name": "Isle of Man",
-          "abbreviation": "IOM-W",
-          "rating": 50,
-          "points": 1148,
-          "matches": 23
-        },
-        {
-          "rank": 37,
           "name": "China",
           "abbreviation": "CHN-W",
           "rating": 50,
@@ -10820,12 +10812,20 @@
           "matches": 37
         },
         {
-          "rank": 38,
+          "rank": 37,
           "name": "Cyprus",
           "abbreviation": "CYP-W",
           "rating": 49,
           "points": 1080,
           "matches": 22
+        },
+        {
+          "rank": 38,
+          "name": "Isle of Man",
+          "abbreviation": "IOM-W",
+          "rating": 47,
+          "points": 1137,
+          "matches": 24
         },
         {
           "rank": 39,
@@ -10837,19 +10837,19 @@
         },
         {
           "rank": 40,
+          "name": "Turkiye",
+          "abbreviation": "TUR-W",
+          "rating": 43,
+          "points": 643,
+          "matches": 15
+        },
+        {
+          "rank": 41,
           "name": "Switzerland",
           "abbreviation": "CHE-W",
           "rating": 42,
           "points": 1146,
           "matches": 27
-        },
-        {
-          "rank": 41,
-          "name": "Denmark",
-          "abbreviation": "DEN-W",
-          "rating": 42,
-          "points": 1180,
-          "matches": 28
         },
         {
           "rank": 42,
@@ -10869,11 +10869,11 @@
         },
         {
           "rank": 44,
-          "name": "Turkiye",
-          "abbreviation": "TUR-W",
-          "rating": 39,
-          "points": 543,
-          "matches": 14
+          "name": "Denmark",
+          "abbreviation": "DEN-W",
+          "rating": 41,
+          "points": 1194,
+          "matches": 29
         },
         {
           "rank": 45,
@@ -10943,9 +10943,9 @@
           "rank": 53,
           "name": "Austria",
           "abbreviation": "AUT-W",
-          "rating": 25,
-          "points": 618,
-          "matches": 25
+          "rating": 27,
+          "points": 689,
+          "matches": 26
         },
         {
           "rank": 54,
@@ -10957,19 +10957,19 @@
         },
         {
           "rank": 55,
-          "name": "Norway",
-          "abbreviation": "NOR-W",
-          "rating": 21,
-          "points": 458,
-          "matches": 22
-        },
-        {
-          "rank": 56,
           "name": "Guernsey",
           "abbreviation": "GSY-W",
           "rating": 21,
           "points": 267,
           "matches": 13
+        },
+        {
+          "rank": 56,
+          "name": "Norway",
+          "abbreviation": "NOR-W",
+          "rating": 19,
+          "points": 433,
+          "matches": 23
         },
         {
           "rank": 57,
@@ -17379,7 +17379,7 @@
         "allrounder": "2026-08-17"
       },
       "t20": {
-        "team": "2026-08-29",
+        "team": "2026-08-30",
         "bat": "2026-08-24",
         "bowl": "2026-08-24",
         "allrounder": "2026-08-24"

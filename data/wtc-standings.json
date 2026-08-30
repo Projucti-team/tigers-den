@@ -1,5 +1,5 @@
 {
-  "fetchedAt": "2026-08-29T23:22:24.869Z",
+  "fetchedAt": "2026-08-30T23:31:57.811Z",
   "source": "espn-cricinfo-core",
   "cycleLabel": "2025–2027",
   "standings": [
@@ -70,6 +70,19 @@
     },
     {
       "rank": 6,
+      "team": "England",
+      "abbreviation": "ENG",
+      "played": 15,
+      "won": 6,
+      "lost": 8,
+      "drawn": 1,
+      "tied": 0,
+      "noResult": 0,
+      "points": 62,
+      "pct": 34.44
+    },
+    {
+      "rank": 7,
       "team": "Sri Lanka",
       "abbreviation": "SL",
       "played": 6,
@@ -80,19 +93,6 @@
       "noResult": 0,
       "points": 24,
       "pct": 33.33
-    },
-    {
-      "rank": 7,
-      "team": "England",
-      "abbreviation": "ENG",
-      "played": 14,
-      "won": 5,
-      "lost": 8,
-      "drawn": 1,
-      "tied": 0,
-      "noResult": 0,
-      "points": 50,
-      "pct": 29.76
     },
     {
       "rank": 8,
@@ -111,14 +111,14 @@
       "rank": 9,
       "team": "Pakistan",
       "abbreviation": "PAK",
-      "played": 7,
+      "played": 8,
       "won": 2,
-      "lost": 5,
+      "lost": 6,
       "drawn": 0,
       "tied": 0,
       "noResult": 0,
       "points": 16,
-      "pct": 19.05
+      "pct": 16.67
     }
   ]
 }
