@@ -139,6 +139,40 @@ export async function readTourDetailSlugsWithMatches(): Promise<Set<string>> {
   return slugs;
 }
 
+/**
+ * Slugs of every tour that has *a* built detail page, whether or not it has matches yet -- for
+ * the nav dropdown, which just needs to avoid a real 404 (no snapshot doc at all). A page with
+ * zero matches still renders fine (squads/venue info, "fixtures TBC"), unlike readTourDetailSlugsWithMatches()'s
+ * stricter set (used for homepage cards, where a "0 matches" card would look broken). Distinguishing
+ * these two closes a gap where a real, discovered series -- with a working detail page -- was
+ * silently missing from the nav dropdown just because its match-level data hadn't synced yet,
+ * even though the /tours index page already linked to it directly.
+ */
+export async function readTourDetailSlugsWithSnapshot(): Promise<Set<string>> {
+  const slugs = new Set<string>();
+  if (!isPayloadConfigured()) return slugs;
+
+  try {
+    const payload = await getPayloadClient();
+    const result = await payload.find({
+      collection: "cricket-snapshots",
+      limit: 500,
+      overrideAccess: true,
+    });
+
+    for (const doc of result.docs as { key?: string }[]) {
+      const key = doc.key ?? "";
+      if (!isTourDetailSnapshotKey(key)) continue;
+      const slug = tourDetailSlugFromKey(key);
+      if (slug) slugs.add(slug);
+    }
+  } catch (err) {
+    if (!isMissingRelationError(err)) throw err;
+  }
+
+  return slugs;
+}
+
 export async function deleteCricketSnapshotsExcept(keysToKeep: Set<string>): Promise<number> {
   if (!isPayloadConfigured()) return 0;
 

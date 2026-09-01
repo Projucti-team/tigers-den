@@ -2,7 +2,10 @@ import { getFutureTours } from "@/lib/cricket/services/tours";
 import { filterToursByPublishedSlugs } from "@/lib/cricket/services/filter-published-tours";
 import { tourFlagIsos } from "@/lib/cricket/tour-flags";
 import { tourPath } from "@/lib/cricket/tour-slug";
-import { readTourDetailSlugsWithMatches } from "@/lib/cricket/snapshot-db";
+import {
+  readTourDetailSlugsWithMatches,
+  readTourDetailSlugsWithSnapshot,
+} from "@/lib/cricket/snapshot-db";
 import type { Tour } from "@/lib/cricket/types";
 
 export type TourCard = {
@@ -92,6 +95,15 @@ async function filterToursWithPublishedDetail(tours: Tour[]): Promise<Tour[]> {
   return filterToursByPublishedSlugs(tours, publishedSlugs);
 }
 
+/** Looser than filterToursWithPublishedDetail() -- only requires a detail page to exist at all
+ * (not that it has matches yet), since the nav dropdown is just a list of links and a page with
+ * zero matches still renders fine (squads/venue info). Keeps the nav dropdown in sync with what
+ * the /tours index page already links to, instead of a stricter subset. */
+async function filterToursWithAnyPublishedDetail(tours: Tour[]): Promise<Tour[]> {
+  const publishedSlugs = await readTourDetailSlugsWithSnapshot();
+  return filterToursByPublishedSlugs(tours, publishedSlugs);
+}
+
 /** Homepage cards — from nightly DB snapshot + confirmed ESPN schedules. */
 export async function getTourCards(limit = 3): Promise<{
   cards: TourCard[];
@@ -113,11 +125,12 @@ export async function getTourCards(limit = 3): Promise<{
   };
 }
 
-/** Navbar TOURS dropdown — only tours with a real, published detail page (see
- * filterToursWithPublishedDetail) -- always deduped (not stale snapshot navLinks). */
+/** Navbar TOURS dropdown — every tour with a real detail page (see
+ * filterToursWithAnyPublishedDetail), matching what /tours already links to, not just the
+ * stricter "has matches" subset used for homepage cards -- always deduped (not stale snapshot navLinks). */
 export async function getTourNavLinks(): Promise<{ label: string; href: string }[]> {
   const { tours: allTours } = await getFutureTours({ bangladeshOnly: true });
-  const tours = await filterToursWithPublishedDetail(allTours);
+  const tours = await filterToursWithAnyPublishedDetail(allTours);
   return tours.map((tour) => ({
     label: shortenTitle(tour.name),
     href: tourPath(tour),

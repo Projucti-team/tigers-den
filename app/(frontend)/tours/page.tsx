@@ -30,7 +30,7 @@ export default async function ToursPage() {
 
       <div className="mx-auto max-w-[1440px] px-4 py-10 md:px-8">
         {warnings.length > 0 ? (
-          <ul className="mb-6 space-y-1 rounded border border-amber/40 bg-amber/10 px-4 py-3 text-xs text-charcoal/75">
+          <ul className="mb-6 space-y-1 rounded border border-amber/40 bg-amber/15 px-4 py-3 text-xs font-medium text-amber">
             {warnings.map((w) => (
               <li key={w}>• {w}</li>
             ))}
