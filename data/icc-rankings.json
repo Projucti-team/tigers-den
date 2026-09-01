@@ -1,5 +1,5 @@
 {
-  "fetchedAt": "2026-08-30T23:31:54.814Z",
+  "fetchedAt": "2026-09-01T00:38:46.199Z",
   "source": "icc-sportz.io",
   "sourceUrl": "https://www.icc-cricket.com/rankings",
   "men": {
@@ -342,9 +342,9 @@
           "rank": 12,
           "name": "Zimbabwe",
           "abbreviation": "ZIM",
-          "rating": 201,
-          "points": 11066,
-          "matches": 55
+          "rating": 202,
+          "points": 11297,
+          "matches": 56
         },
         {
           "rank": 13,
@@ -358,9 +358,9 @@
           "rank": 14,
           "name": "Namibia",
           "abbreviation": "NAM",
-          "rating": 181,
-          "points": 6885,
-          "matches": 38
+          "rating": 180,
+          "points": 7036,
+          "matches": 39
         },
         {
           "rank": 15,
@@ -10389,7 +10389,7 @@
         "allrounder": "2026-08-18"
       },
       "t20": {
-        "team": "2026-08-29",
+        "team": "2026-08-31",
         "bat": "2026-08-25",
         "bowl": "2026-08-25",
         "allrounder": "2026-08-25"
@@ -10485,12 +10485,20 @@
           "rank": 11,
           "name": "Scotland",
           "abbreviation": "SCO-W",
-          "rating": 36,
-          "points": 287,
-          "matches": 8
+          "rating": 44,
+          "points": 393,
+          "matches": 9
         },
         {
           "rank": 12,
+          "name": "NED",
+          "abbreviation": "NED",
+          "rating": 42,
+          "points": 208,
+          "matches": 5
+        },
+        {
+          "rank": 13,
           "name": "THA",
           "abbreviation": "THA",
           "rating": 35,
@@ -10498,7 +10506,7 @@
           "matches": 7
         },
         {
-          "rank": 13,
+          "rank": 14,
           "name": "Zimbabwe",
           "abbreviation": "ZIM-W",
           "rating": 12,
@@ -10506,7 +10514,7 @@
           "matches": 19
         },
         {
-          "rank": 14,
+          "rank": 15,
           "name": "United Arab Emirates",
           "abbreviation": "UAE-W",
           "rating": 10,
@@ -10514,7 +10522,7 @@
           "matches": 8
         },
         {
-          "rank": 15,
+          "rank": 16,
           "name": "Papua New Guinea",
           "abbreviation": "PNG-W",
           "rating": 3,
@@ -10600,8 +10608,8 @@
           "name": "Bangladesh",
           "abbreviation": "BAN-W",
           "rating": 196,
-          "points": 7240,
-          "matches": 37
+          "points": 7446,
+          "matches": 38
         },
         {
           "rank": 11,
@@ -10693,19 +10701,19 @@
         },
         {
           "rank": 22,
-          "name": "Indonesia",
-          "abbreviation": "INA-W",
-          "rating": 90,
-          "points": 3683,
-          "matches": 41
-        },
-        {
-          "rank": 23,
           "name": "Hong Kong",
           "abbreviation": "HK-W",
           "rating": 90,
           "points": 5474,
           "matches": 61
+        },
+        {
+          "rank": 23,
+          "name": "Indonesia",
+          "abbreviation": "INA-W",
+          "rating": 90,
+          "points": 3763,
+          "matches": 42
         },
         {
           "rank": 24,
@@ -11172,8 +11180,8 @@
         "name": "Bangladesh",
         "abbreviation": "BAN-W",
         "rating": 196,
-        "points": 7240,
-        "matches": 37
+        "points": 7446,
+        "matches": 38
       }
     },
     "players": {
@@ -17373,13 +17381,13 @@
         "allrounder": null
       },
       "odi": {
-        "team": "2026-08-28",
+        "team": "2026-08-31",
         "bat": "2026-08-17",
         "bowl": "2026-08-17",
         "allrounder": "2026-08-17"
       },
       "t20": {
-        "team": "2026-08-30",
+        "team": "2026-08-31",
         "bat": "2026-08-24",
         "bowl": "2026-08-24",
         "allrounder": "2026-08-24"
