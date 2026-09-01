@@ -13,12 +13,10 @@ export const metadata = {
 export default async function ToursPage() {
   const { tours, warnings: tourWarnings } = await getFutureTours({ bangladeshOnly: true });
   const cards = tours.map((t, i) => tourToCard(t, i));
+  // No dev-instruction fallback here when both are empty -- the "No upcoming series listed
+  // right now" empty state below already explains this to a visitor without exposing ops
+  // commands (see publicFacingWarnings for why those are filtered out in the first place).
   const warnings = publicFacingWarnings(tourWarnings);
-  if (!tours.length && !warnings.length) {
-    warnings.push(
-      "Tour data not loaded yet. Run `npm run sync:cricket` or wait for the nightly refresh (~3:00 AM BDT).",
-    );
-  }
 
   return (
     <>

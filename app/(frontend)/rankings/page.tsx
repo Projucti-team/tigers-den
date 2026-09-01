@@ -4,6 +4,7 @@ import { RankingsPageView } from "@/components/rankings/RankingsPageView";
 import { PageHero } from "@/components/pages/PageHero";
 import { getRankingsShowcase } from "@/lib/cricket";
 import { emptyRankingsShowcase } from "@/lib/cricket/services/rankings-display";
+import { publicFacingWarnings } from "@/lib/cricket/services/public-warnings";
 
 export const metadata = {
   title: "ICC Rankings — The Tigers' Den",
@@ -38,7 +39,7 @@ export default async function RankingsPage() {
         men={rankings.men}
         women={rankings.women}
         wtc={rankings.wtc}
-        warnings={rankings.warnings}
+        warnings={publicFacingWarnings(rankings.warnings)}
       />
     </>
   );

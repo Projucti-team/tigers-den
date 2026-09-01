@@ -12,6 +12,7 @@ import { MerchSection } from "@/components/home/MerchSection";
 import { getMatchHighlight, getRankingsShowcase, getTourCards } from "@/lib/cricket";
 import { getBangladeshCricketNews } from "@/lib/news/services/bangladesh-news";
 import { emptyRankingsShowcase } from "@/lib/cricket/services/rankings-display";
+import { publicFacingWarnings } from "@/lib/cricket/services/public-warnings";
 import { formatThreadFromPost, isSlideVisible } from "@/lib/data";
 import { getPayloadClient } from "@/lib/payload";
 import type { HeroSlide, Media, Post } from "@/payload-types";
@@ -98,7 +99,7 @@ export default async function HomePage() {
         men={rankings.men}
         women={rankings.women}
         wtc={rankings.wtc}
-        warnings={rankings.warnings}
+        warnings={publicFacingWarnings(rankings.warnings)}
       />
       <ExperienceCards
         featuredAwayTour={toursResult.featuredAway}

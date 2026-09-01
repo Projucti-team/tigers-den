@@ -110,7 +110,7 @@ export function IccRankingsShowcase({ men, women, wtc = null, warnings = [] }: P
         {warnings.length > 0 ? (
           <div className="mt-8 rounded-lg border-2 border-amber/40 bg-amber/15 px-4 py-3 text-center text-xs font-semibold text-amber">
             {warnings[0]}
-            {warnings.length > 1 ? ` (+${warnings.length - 1} more — check /api/cricket)` : null}
+            {warnings.length > 1 ? ` (+${warnings.length - 1} more)` : null}
           </div>
         ) : null}
       </div>
