@@ -1,5 +1,5 @@
 {
-  "fetchedAt": "2026-09-02T23:20:49.004Z",
+  "fetchedAt": "2026-09-03T23:18:38.309Z",
   "source": "icc-sportz.io",
   "sourceUrl": "https://www.icc-cricket.com/rankings",
   "men": {
@@ -343,8 +343,8 @@
           "name": "Zimbabwe",
           "abbreviation": "ZIM",
           "rating": 202,
-          "points": 11489,
-          "matches": 57
+          "points": 11719,
+          "matches": 58
         },
         {
           "rank": 13,
@@ -359,8 +359,8 @@
           "name": "Namibia",
           "abbreviation": "NAM",
           "rating": 180,
-          "points": 7036,
-          "matches": 39
+          "points": 7188,
+          "matches": 40
         },
         {
           "rank": 15,
@@ -10400,7 +10400,7 @@
         "allrounder": "2026-08-18"
       },
       "t20": {
-        "team": "2026-09-01",
+        "team": "2026-09-03",
         "bat": "2026-09-01",
         "bowl": "2026-09-01",
         "allrounder": "2026-09-01"
@@ -10563,8 +10563,8 @@
           "name": "India",
           "abbreviation": "IND-W",
           "rating": 262,
-          "points": 11015,
-          "matches": 42
+          "points": 11287,
+          "matches": 43
         },
         {
           "rank": 4,
@@ -10715,8 +10715,8 @@
           "name": "Hong Kong",
           "abbreviation": "HK-W",
           "rating": 90,
-          "points": 5474,
-          "matches": 61
+          "points": 5554,
+          "matches": 62
         },
         {
           "rank": 23,
@@ -12469,7 +12469,7 @@
           },
           {
             "rank": 26,
-            "name": "Shree Charani",
+            "name": "Sree Charani",
             "team": "India",
             "rating": 497,
             "points": 497,
@@ -13697,7 +13697,7 @@
           },
           {
             "rank": 47,
-            "name": "Shree Charani",
+            "name": "Sree Charani",
             "team": "India",
             "rating": 93,
             "points": 93,
@@ -15309,7 +15309,7 @@
         "topBowlers": [
           {
             "rank": 1,
-            "name": "Shree Charani",
+            "name": "Sree Charani",
             "team": "India",
             "rating": 759,
             "points": 759,
@@ -17162,7 +17162,7 @@
           {
             "rank": 81,
             "rankTied": true,
-            "name": "Shree Charani",
+            "name": "Sree Charani",
             "team": "India",
             "rating": 66,
             "points": 66,
@@ -17397,7 +17397,7 @@
         "allrounder": "2026-08-31"
       },
       "t20": {
-        "team": "2026-09-02",
+        "team": "2026-09-03",
         "bat": "2026-08-31",
         "bowl": "2026-08-31",
         "allrounder": "2026-08-31"
