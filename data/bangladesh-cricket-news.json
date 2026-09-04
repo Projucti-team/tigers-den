@@ -1,6 +1,23 @@
 {
-  "fetchedAt": "2026-09-03T23:31:28.386Z",
+  "fetchedAt": "2026-09-04T23:18:31.382Z",
   "items": [
+    {
+      "id": "dailystar-https://www.thedailystar.net/sports/cricket/news/top-top-bowler-kents-milnes-full-praise-hasan-mahmud-4264956",
+      "title": "'Top, top bowler': Kent's Milnes full of praise for Hasan Mahmud",
+      "summary": "Kent seamer Matt Milnes was full of praise for his bowling partner Hasan Mahmud after the Bangladesh pacer continued his merry run of form on his return to county cricket.",
+      "url": "https://www.thedailystar.net/sports/cricket/news/top-top-bowler-kents-milnes-full-praise-hasan-mahmud-4264956",
+      "source": "dailystar",
+      "publishedAt": "2026-09-04T18:43:56.000Z"
+    },
+    {
+      "id": "espn-https://www.cricinfo.com/ci/content/story/1552849.html",
+      "title": "UAE keep semi-final hopes alive after convincing win over Indonesia",
+      "summary": "They now have to beat Bangladesh on September 8 and also hope other results go their way",
+      "url": "https://www.cricinfo.com/story/uae-keep-semi-final-hopes-alive-after-convincing-win-over-indonesia-1552849",
+      "imageUrl": "https://p.imgci.com/db/PICTURES/CMS/422000/422056.5.jpg",
+      "source": "espncricinfo",
+      "publishedAt": "2026-09-04T18:03:50.000Z"
+    },
     {
       "id": "dailystar-https://www.thedailystar.net/sports/cricket/news/we-are-only-here-serve-the-cricketers-tamim-pushes-back-against-bpl-criticism-4264136",
       "title": "'We are only here to serve the cricketers': Tamim pushes back against BPL criticism",
@@ -16,14 +33,6 @@
       "url": "https://www.thedailystar.net/sports/cricket/news/bcb-introduces-major-match-fee-hikes-amid-bpl-postponement-4264051",
       "source": "dailystar",
       "publishedAt": "2026-09-03T13:08:16.000Z"
-    },
-    {
-      "id": "dailystar-https://www.thedailystar.net/sports/cricket/news/faruque-bulbul-pressured-tamim-spared-cricketers-bpl-double-standards-4263501",
-      "title": "Faruque, Bulbul pressured, Tamim spared: Cricketers' BPL double standards?",
-      "summary": "Expect the unexpected. This has become something of an unofficial motto of the Bangladesh Cricket Board (BCB). From U-turns and limping logic to claims of “following a process” that contradicts the process itself, little can surprise us anymore.",
-      "url": "https://www.thedailystar.net/sports/cricket/news/faruque-bulbul-pressured-tamim-spared-cricketers-bpl-double-standards-4263501",
-      "source": "dailystar",
-      "publishedAt": "2026-09-02T18:56:42.000Z"
     },
     {
       "id": "espn-https://www.cricinfo.com/ci/content/story/1552620.html",
@@ -44,22 +53,6 @@
       "publishedAt": "2026-09-02T15:20:49.000Z"
     },
     {
-      "id": "dailystar-https://www.thedailystar.net/sports/cricket/news/hridoy-smashes-350-breaks-tamims-fc-record-4263211",
-      "title": "Hridoy smashes 350, breaks Tamim’s FC record",
-      "summary": "Hridoy’s marathon innings saw him break several records.",
-      "url": "https://www.thedailystar.net/sports/cricket/news/hridoy-smashes-350-breaks-tamims-fc-record-4263211",
-      "source": "dailystar",
-      "publishedAt": "2026-09-02T15:09:57.000Z"
-    },
-    {
-      "id": "dailystar-https://www.thedailystar.net/sports/cricket/news/shanto-back-bangladesh-t20-fold-asian-games-4263191",
-      "title": "Shanto back in Bangladesh T20 fold for Asian Games",
-      "summary": "Former captain Najmul Hossain Shanto has returned to Bangladesh’s T20 fold for the upcoming 20th Asian Games in Aichi-Nagoya, Japan, with the Bangladesh Cricket Board (BCB) announcing a strong 15-member squad for the event on Wednesday.",
-      "url": "https://www.thedailystar.net/sports/cricket/news/shanto-back-bangladesh-t20-fold-asian-games-4263191",
-      "source": "dailystar",
-      "publishedAt": "2026-09-02T14:41:58.000Z"
-    },
-    {
       "id": "espn-https://www.cricinfo.com/ci/content/story/1552385.html",
       "title": "Nahida, Marufa help Bangladesh brush aside Indonesia",
       "summary": "The pair shared five wickets to bowl Indonesia out for 58",
@@ -67,15 +60,6 @@
       "imageUrl": "https://p.imgci.com/db/PICTURES/CMS/421900/421936.5.jpg",
       "source": "espncricinfo",
       "publishedAt": "2026-08-31T18:16:14.000Z"
-    },
-    {
-      "id": "espn-https://www.cricinfo.com/ci/content/story/1552342.html",
-      "title": "BCB president Tamim Iqbal 'hopeful' of India touring Bangladesh in 2026-27 season",
-      "summary": "Cricinfo understands that the six-match white-ball series is likely to take place early next year",
-      "url": "https://www.cricinfo.com/story/bcb-president-tamim-iqbal-hopeful-of-india-touring-bangladesh-in-2026-27-season-1552342",
-      "imageUrl": "https://p.imgci.com/db/PICTURES/CMS/396800/396894.5.jpg",
-      "source": "espncricinfo",
-      "publishedAt": "2026-08-31T11:08:41.000Z"
     }
   ]
 }
