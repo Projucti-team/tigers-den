@@ -1,6 +1,30 @@
 {
-  "fetchedAt": "2026-09-04T23:18:31.382Z",
+  "fetchedAt": "2026-09-05T23:16:34.220Z",
   "items": [
+    {
+      "id": "dailystar-https://www.thedailystar.net/sports/cricket/news/batting-focus-tigresses-eye-semifinal-berth-4265516",
+      "title": "Batting in focus as Tigresses eye semifinal berth",
+      "summary": "With net run rate the first tiebreaker, a victory for Bangladesh would confirm their place in the semifinals.",
+      "url": "https://www.thedailystar.net/sports/cricket/news/batting-focus-tigresses-eye-semifinal-berth-4265516",
+      "source": "dailystar",
+      "publishedAt": "2026-09-05T19:12:00.000Z"
+    },
+    {
+      "id": "dailystar-https://www.thedailystar.net/sports/cricket/news/hasan-mahmud-takes-seven-kent-beat-worcestershire-4265596",
+      "title": "Hasan Mahmud takes seven as Kent beat Worcestershire",
+      "summary": "Hasan Mahmud made an impressive return to the County Championship, taking seven wickets across two innings as Kent secured their sixth victory of the season.",
+      "url": "https://www.thedailystar.net/sports/cricket/news/hasan-mahmud-takes-seven-kent-beat-worcestershire-4265596",
+      "source": "dailystar",
+      "publishedAt": "2026-09-05T17:40:23.000Z"
+    },
+    {
+      "id": "dailystar-https://www.thedailystar.net/sports/cricket/news/higher-match-fees-playing-chances-remain-key-4265031",
+      "title": "Higher match fees, but playing chances remain key",
+      "summary": "Tamim said a player completing the domestic season could earn Tk 35-40 lakh, including salary -- more than Tk 3 lakh a month when averaged over a year. But that raises a pertinent question: will all domestic cricketers have a realistic opportunity to earn that amount, or will the increase primarily benefit those who already feature regularly in the national team, ‘A’ team and top-tier domestic competitions?",
+      "url": "https://www.thedailystar.net/sports/cricket/news/higher-match-fees-playing-chances-remain-key-4265031",
+      "source": "dailystar",
+      "publishedAt": "2026-09-05T02:30:00.000Z"
+    },
     {
       "id": "dailystar-https://www.thedailystar.net/sports/cricket/news/top-top-bowler-kents-milnes-full-praise-hasan-mahmud-4264956",
       "title": "'Top, top bowler': Kent's Milnes full of praise for Hasan Mahmud",
@@ -19,22 +43,6 @@
       "publishedAt": "2026-09-04T18:03:50.000Z"
     },
     {
-      "id": "dailystar-https://www.thedailystar.net/sports/cricket/news/we-are-only-here-serve-the-cricketers-tamim-pushes-back-against-bpl-criticism-4264136",
-      "title": "'We are only here to serve the cricketers': Tamim pushes back against BPL criticism",
-      "summary": "Bangladesh Cricket Board (BCB) president Tamim Iqbal has defended his decision to postpone this season's Bangladesh Premier League (BPL), pushing back against critics by asserting that only a \"partial story\" of the controversy has been told.",
-      "url": "https://www.thedailystar.net/sports/cricket/news/we-are-only-here-serve-the-cricketers-tamim-pushes-back-against-bpl-criticism-4264136",
-      "source": "dailystar",
-      "publishedAt": "2026-09-03T14:44:13.000Z"
-    },
-    {
-      "id": "dailystar-https://www.thedailystar.net/sports/cricket/news/bcb-introduces-major-match-fee-hikes-amid-bpl-postponement-4264051",
-      "title": "BCB introduces major match-fee hikes amid BPL postponement",
-      "summary": "Bangladesh Cricket Board (BCB) president Tamim Iqbal on Thursday announced major increases in match fees for domestic cricketers, amid growing concerns that top players could lose significant earnings following the postponement of this season’s Bangladesh Premier League (BPL).",
-      "url": "https://www.thedailystar.net/sports/cricket/news/bcb-introduces-major-match-fee-hikes-amid-bpl-postponement-4264051",
-      "source": "dailystar",
-      "publishedAt": "2026-09-03T13:08:16.000Z"
-    },
-    {
       "id": "espn-https://www.cricinfo.com/ci/content/story/1552620.html",
       "title": "Shanto, Mahmud back in Bangladesh T20I squad for Asian Games",
       "summary": "Litton Das too returns as the T20I captain after missing the Zimbabwe and Australia series due to a hamstring injury",
@@ -51,15 +59,6 @@
       "imageUrl": "https://p.imgci.com/db/PICTURES/CMS/422000/422000.5.jpg",
       "source": "espncricinfo",
       "publishedAt": "2026-09-02T15:20:49.000Z"
-    },
-    {
-      "id": "espn-https://www.cricinfo.com/ci/content/story/1552385.html",
-      "title": "Nahida, Marufa help Bangladesh brush aside Indonesia",
-      "summary": "The pair shared five wickets to bowl Indonesia out for 58",
-      "url": "https://www.cricinfo.com/story/womens-t20-asia-cup-nahida-marufa-help-bangladesh-brush-aside-indonesia-1552385",
-      "imageUrl": "https://p.imgci.com/db/PICTURES/CMS/421900/421936.5.jpg",
-      "source": "espncricinfo",
-      "publishedAt": "2026-08-31T18:16:14.000Z"
     }
   ]
 }
