@@ -1,5 +1,5 @@
 {
-  "fetchedAt": "2026-09-04T23:04:05.458Z",
+  "fetchedAt": "2026-09-05T22:56:31.142Z",
   "source": "icc-sportz.io",
   "sourceUrl": "https://www.icc-cricket.com/rankings",
   "men": {
@@ -10562,9 +10562,9 @@
           "rank": 3,
           "name": "India",
           "abbreviation": "IND-W",
-          "rating": 262,
-          "points": 11287,
-          "matches": 43
+          "rating": 263,
+          "points": 11559,
+          "matches": 44
         },
         {
           "rank": 4,
@@ -10602,9 +10602,9 @@
           "rank": 8,
           "name": "Pakistan",
           "abbreviation": "PAK-W",
-          "rating": 212,
-          "points": 7410,
-          "matches": 35
+          "rating": 211,
+          "points": 7612,
+          "matches": 36
         },
         {
           "rank": 9,
@@ -10960,19 +10960,19 @@
         },
         {
           "rank": 53,
+          "name": "Croatia",
+          "abbreviation": "CRO-W",
+          "rating": 27,
+          "points": 240,
+          "matches": 9
+        },
+        {
+          "rank": 54,
           "name": "Austria",
           "abbreviation": "AUT-W",
           "rating": 27,
           "points": 689,
           "matches": 26
-        },
-        {
-          "rank": 54,
-          "name": "Croatia",
-          "abbreviation": "CRO-W",
-          "rating": 24,
-          "points": 190,
-          "matches": 8
         },
         {
           "rank": 55,
@@ -11016,6 +11016,22 @@
         },
         {
           "rank": 60,
+          "name": "Czechia",
+          "abbreviation": "CZE-W",
+          "rating": 16,
+          "points": 434,
+          "matches": 27
+        },
+        {
+          "rank": 61,
+          "name": "Serbia",
+          "abbreviation": "SER-W",
+          "rating": 16,
+          "points": 264,
+          "matches": 17
+        },
+        {
+          "rank": 62,
           "name": "Greece",
           "abbreviation": "GRE-W",
           "rating": 14,
@@ -11023,7 +11039,7 @@
           "matches": 31
         },
         {
-          "rank": 61,
+          "rank": 63,
           "name": "Estonia",
           "abbreviation": "EST-W",
           "rating": 13,
@@ -11031,28 +11047,12 @@
           "matches": 21
         },
         {
-          "rank": 62,
-          "name": "Serbia",
-          "abbreviation": "SER-W",
-          "rating": 13,
-          "points": 214,
-          "matches": 16
-        },
-        {
-          "rank": 63,
+          "rank": 64,
           "name": "Qatar",
           "abbreviation": "QAT-W",
           "rating": 12,
           "points": 299,
           "matches": 24
-        },
-        {
-          "rank": 64,
-          "name": "Czechia",
-          "abbreviation": "CZE-W",
-          "rating": 12,
-          "points": 311,
-          "matches": 25
         },
         {
           "rank": 65,
@@ -11156,7 +11156,7 @@
           "abbreviation": "BUL-W",
           "rating": 0,
           "points": 0,
-          "matches": 20
+          "matches": 22
         },
         {
           "rank": 73,
@@ -11164,7 +11164,7 @@
           "abbreviation": "BEL-W",
           "rating": 0,
           "points": 0,
-          "matches": 12
+          "matches": 14
         },
         {
           "rank": 73,
@@ -17397,7 +17397,7 @@
         "allrounder": "2026-08-31"
       },
       "t20": {
-        "team": "2026-09-04",
+        "team": "2026-09-05",
         "bat": "2026-08-31",
         "bowl": "2026-08-31",
         "allrounder": "2026-08-31"
