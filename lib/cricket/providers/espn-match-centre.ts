@@ -417,9 +417,18 @@ function markStriker(atCrease: ScorecardPlayer[], balls: DetailBall[]): Scorecar
  * whichever single team survived, regardless of which period was actually being resolved.
  */
 export function parseTeamScoreDisplay(raw: string): Omit<TeamInningsSummary, "team"> | null {
-  const m = raw.match(/^(\d+)(?:\/(\d+))?/);
+  // A team that has batted twice can be displayed as a combined "217 & 199/4" (first innings
+  // total & second/current innings score) rather than just the latest number. Reading only the
+  // leading segment would report the team's completed FIRST innings (217, defaulting to all-out
+  // since it has no "/") as if it were their current total -- which is exactly the stale total
+  // that was leaking into a phantom extra innings entry in buildMultiInningsScorecard. The last
+  // "&"-separated segment is always the most current one, and a single-innings display (no "&")
+  // is unaffected since it's already just one segment.
+  const segments = raw.split("&");
+  const latest = segments[segments.length - 1]?.trim() ?? raw;
+  const m = latest.match(/^(\d+)(?:\/(\d+))?/);
   if (!m) return null;
-  const ovs = raw.match(/\(([\d.]+)/);
+  const ovs = latest.match(/\(([\d.]+)/);
   return {
     runs: num(m[1]),
     wickets: m[2] !== undefined ? num(m[2]) : 10,
@@ -455,6 +464,103 @@ async function fetchTeamSummaries(compBase: string): Promise<TeamInningsSummary[
 function ordinalInnings(n: number): string {
   const labels = ["1st", "2nd", "3rd", "4th"];
   return labels[n - 1] ?? `${n}th`;
+}
+
+function normTeamName(value: string): string {
+  return value.toLowerCase().replace(/[^a-z0-9]+/g, "");
+}
+
+function longestCommonPrefixLength(a: string, b: string): number {
+  let i = 0;
+  while (i < a.length && i < b.length && a[i] === b[i]) i += 1;
+  return i;
+}
+
+/**
+ * Resolve a matchcard's free-text teamName (or a fallback label) against the match's
+ * authoritative team list from teamSummaries. ESPN doesn't consistently use the same string for
+ * a team across every matchcard -- a completed innings' card can say "Worcestershire" while the
+ * live/current innings card for the SAME team says the customary short form "Worcs" -- and those
+ * two strings share no contiguous substring (there's an extra "e" in the middle of the full name),
+ * so a plain substring check doesn't unify them. Falling back to longest-common-prefix catches
+ * this class of abbreviation (most cricket short forms keep the team's opening letters) without
+ * needing a hardcoded abbreviation table.
+ */
+export function canonicalTeamName(raw: string, teams: string[]): string {
+  if (!raw || teams.length === 0) return raw;
+  const rawNorm = normTeamName(raw);
+  if (!rawNorm) return raw;
+
+  const direct = teams.find((team) => {
+    const teamNorm = normTeamName(team);
+    return teamNorm === rawNorm || teamNorm.includes(rawNorm) || rawNorm.includes(teamNorm);
+  });
+  if (direct) return direct;
+
+  let best: { team: string; score: number } | null = null;
+  for (const team of teams) {
+    const score = longestCommonPrefixLength(rawNorm, normTeamName(team));
+    if (score >= 3 && (!best || score > best.score)) {
+      best = { team, score };
+    }
+  }
+  return best?.team ?? raw;
+}
+
+function inningsTeamName(inning: string): string {
+  return inning.replace(/\s+\d+(?:st|nd|rd|th)\s+Innings$/i, "").trim();
+}
+
+/**
+ * Collapse innings entries that refer to the same real team under different labels, and
+ * renumber the ordinal suffix from what actually survives. This is the fix for a live multi-day
+ * match showing e.g. both "Worcestershire 1st Innings 217/10" and a spurious "Worcestershire 2nd
+ * Innings 217/10" (an exact duplicate with no batting card, produced when a period has no
+ * matchcard/ball data of its own and falls back to a stale combined score total) alongside "Worcs
+ * 1st Innings 199/4" (the same team's real, live second innings, mislabeled as a fresh "1st"
+ * because its teamName string didn't match the earlier "Worcestershire" entries).
+ */
+export function dedupeAndRelabelInnings(
+  innings: Scorecard["innings"],
+  teams: string[],
+): Scorecard["innings"] {
+  type Entry = Scorecard["innings"][number];
+  const groups = new Map<string, Entry[]>();
+  const order: string[] = [];
+
+  for (const entry of innings) {
+    const canonical = canonicalTeamName(inningsTeamName(entry.inning), teams);
+    if (!groups.has(canonical)) {
+      groups.set(canonical, []);
+      order.push(canonical);
+    }
+    groups.get(canonical)!.push(entry);
+  }
+
+  const result: Entry[] = [];
+  for (const team of order) {
+    const entries = groups.get(team) ?? [];
+    const kept: Entry[] = [];
+
+    for (const entry of entries) {
+      const dupIndex = kept.findIndex(
+        (k) => k.runs === entry.runs && k.wickets === entry.wickets && k.overs === entry.overs,
+      );
+      if (dupIndex >= 0) {
+        if (!kept[dupIndex].batting.length && entry.batting.length) {
+          kept[dupIndex] = entry;
+        }
+        continue;
+      }
+      kept.push(entry);
+    }
+
+    kept.forEach((entry, idx) => {
+      result.push({ ...entry, inning: `${team} ${ordinalInnings(idx + 1)} Innings` });
+    });
+  }
+
+  return result;
 }
 
 /** Which team batted in a given period, given the current batting side. */
@@ -681,7 +787,12 @@ async function buildMultiInningsScorecard(options: {
     });
   }
 
-  return innings;
+  // Periods are collected from a mix of matchcard inningsNumbers, ball-by-ball period markers,
+  // and alternation guesses (see teamForPeriod above) -- sources that don't always agree on team
+  // identity or period boundaries. dedupeAndRelabelInnings folds any resulting same-team
+  // duplicates back together and fixes the ordinal labels rather than trying to make period
+  // resolution itself perfectly consistent upstream.
+  return dedupeAndRelabelInnings(innings, teams);
 }
 
 function athleteIdFromRef(ref?: string): string | null {

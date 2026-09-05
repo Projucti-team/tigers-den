@@ -2,10 +2,13 @@ import assert from "node:assert/strict";
 import test from "node:test";
 
 import {
+  canonicalTeamName,
+  dedupeAndRelabelInnings,
   isMultiInningsMatch,
   parseTeamScoreDisplay,
   teamForPeriod,
 } from "../../lib/cricket/providers/espn-match-centre.ts";
+import type { Scorecard } from "../../lib/cricket/types.ts";
 
 test("parseTeamScoreDisplay regression: all-out innings dropped a team from teamSummaries entirely", () => {
   // Root cause of "both innings blocks show Bangladesh": the old regex required a literal
@@ -96,4 +99,63 @@ test("isMultiInningsMatch regression: real BAN v AUS Darwin Test — note shadow
     isMultiInningsMatch(2, [{ typeID: "11", inningsNumber: "2" }], blobWithHeadline),
     true,
   );
+});
+
+test("parseTeamScoreDisplay regression: a combined 'X & Y' display must use the latest segment, not the first", () => {
+  // A team that has batted twice can be shown as "217 & 199/4" (first innings total & current
+  // second-innings score). Reading only the leading number reported the team's completed FIRST
+  // innings as if it were their live total -- the exact stale value that leaked into a phantom
+  // duplicate innings entry for Worcestershire in the Kent v Worcestershire scorecard bug.
+  assert.deepEqual(parseTeamScoreDisplay("217 & 199/4 (52 ov)"), { runs: 199, wickets: 4, overs: 52 });
+  assert.deepEqual(parseTeamScoreDisplay("217/10"), { runs: 217, wickets: 10, overs: 0 });
+});
+
+test("canonicalTeamName maps an established short form back to the full team name", () => {
+  // "Worcs" shares no contiguous substring with "Worcestershire" (there's an extra "e" in the
+  // full name right where the abbreviation drops it), so a plain substring/includes check never
+  // unifies them -- this was the direct cause of the same real team appearing as two different
+  // identities ("Worcestershire" and "Worcs") in the same scorecard.
+  const teams = ["Worcestershire", "Kent"];
+  assert.equal(canonicalTeamName("Worcs", teams), "Worcestershire");
+  assert.equal(canonicalTeamName("Worcestershire", teams), "Worcestershire");
+  assert.equal(canonicalTeamName("Kent", teams), "Kent");
+  // No reasonable match at all (score below threshold) -- fall back to the raw string rather
+  // than guessing.
+  assert.equal(canonicalTeamName("Somerset", teams), "Somerset");
+});
+
+test("dedupeAndRelabelInnings regression: Kent v Worcestershire scorecard showed a duplicated, mislabeled innings", () => {
+  // Reproduces the reported bug exactly: "Worcestershire 1st Innings 217/10" (no batting card),
+  // "Kent 1st Innings 238/10" (no batting card), a spurious duplicate "Worcestershire 2nd
+  // Innings 217/10" (identical total, no batting card -- produced by a phantom period falling
+  // back to a stale combined-score total), and "Worcs 1st Innings 199/4" (the real, live second
+  // Worcestershire innings, wrongly labeled "1st" because its teamName string never matched the
+  // earlier "Worcestershire" entries).
+  const teams = ["Worcestershire", "Kent"];
+  const liveBatting: Scorecard["innings"][number]["batting"] = [
+    { name: "B D'Oliveira", runs: 67, dismissed: "not out" },
+  ];
+
+  const raw: Scorecard["innings"] = [
+    { inning: "Worcestershire 1st Innings", runs: 217, wickets: 10, overs: 52, batting: [], bowling: [] },
+    { inning: "Kent 1st Innings", runs: 238, wickets: 10, overs: 60, batting: [], bowling: [] },
+    { inning: "Worcestershire 2nd Innings", runs: 217, wickets: 10, overs: 52, batting: [], bowling: [] },
+    { inning: "Worcs 1st Innings", runs: 199, wickets: 4, overs: 52, batting: liveBatting, bowling: [] },
+  ];
+
+  const result = dedupeAndRelabelInnings(raw, teams);
+
+  assert.deepEqual(
+    result.map((r) => r.inning),
+    ["Worcestershire 1st Innings", "Worcestershire 2nd Innings", "Kent 1st Innings"],
+  );
+
+  const worcSecond = result.find((r) => r.inning === "Worcestershire 2nd Innings");
+  assert.equal(worcSecond?.runs, 199, "the surviving 2nd innings must be the real live total, not the stale duplicate");
+  assert.equal(worcSecond?.batting.length, 1, "the surviving 2nd innings must keep the real batting card");
+
+  const worcFirst = result.find((r) => r.inning === "Worcestershire 1st Innings");
+  assert.equal(worcFirst?.runs, 217);
+
+  assert.equal(result.length, 3, "the exact-duplicate 217/10 entry must be collapsed away");
 });

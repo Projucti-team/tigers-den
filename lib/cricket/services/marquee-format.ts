@@ -78,6 +78,21 @@ export function formatLastMatchMarqueeLine(highlight: MatchHighlight): string {
   return `${compact} (${highlight.detailLine.replace(/Bangladesh/gi, "Ban")})`;
 }
 
+/**
+ * Hasan Mahmud is playing for Kent · KEN 238/1 · WOR 217 (Kent lead by 75 runs...)
+ *
+ * For a currently-LIVE admin-tracked domestic fixture -- deliberately separate from
+ * formatLiveMarqueeLine(), which assumes one side of the match IS the Bangladesh team (never
+ * true for a county/franchise match). Without this, a live domestic match only ever showed up
+ * in the "upcoming" scroll before it started and vanished from the marquee entirely once it
+ * actually went live, even though Match Centre picked it up correctly.
+ */
+export function formatLiveDomesticMarqueeLine(highlight: MatchHighlight): string {
+  const prefix = highlight.bannerTitle ?? highlight.title;
+  const score = highlight.scoreLine || highlight.detailLine;
+  return score ? `${prefix} · ${score}` : prefix;
+}
+
 function formatOrdinalDay(d: Date): string {
   const parts = new Intl.DateTimeFormat("en-GB", {
     day: "numeric",

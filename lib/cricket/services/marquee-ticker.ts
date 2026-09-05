@@ -1,8 +1,12 @@
 import { getMatchHighlight, matchTime } from "@/lib/cricket/services/match-highlight";
 import { getBangladeshUpcomingMatches } from "@/lib/cricket/services/bangladesh-schedule-read";
-import { fetchEspnUpcomingDomesticMatches } from "@/lib/cricket/providers/espn-live";
+import {
+  fetchEspnLiveDomesticHighlights,
+  fetchEspnUpcomingDomesticMatches,
+} from "@/lib/cricket/providers/espn-live";
 import {
   formatLastMatchMarqueeLine,
+  formatLiveDomesticMarqueeLine,
   formatLiveMarqueeLine,
   formatUpcomingMatchMarqueeLine,
   isUpcomingHiddenByLive,
@@ -47,7 +51,7 @@ export async function getMarqueeTickerSnapshot(): Promise<MarqueeTickerSnapshot>
   // Each source is independently caught -- one feed failing (a bad date on a single domestic
   // fixture, say) used to reject the whole snapshot and silently drop the marquee to brand-only
   // items with no trace in the logs.
-  const [bangladeshUpcoming, domesticUpcoming] = await Promise.all([
+  const [bangladeshUpcoming, domesticUpcoming, domesticLive] = await Promise.all([
     getBangladeshUpcomingMatches(5).catch((e) => {
       console.error("[cricket] marquee: getBangladeshUpcomingMatches failed:", e);
       return [];
@@ -56,7 +60,25 @@ export async function getMarqueeTickerSnapshot(): Promise<MarqueeTickerSnapshot>
       console.error("[cricket] marquee: fetchEspnUpcomingDomesticMatches failed:", e);
       return [];
     }),
+    // A live domestic tracked-player match (e.g. Hasan Mahmud batting for Kent right now) used
+    // to only ever appear in the "upcoming" scroll before it started, then vanish from the
+    // marquee entirely once it went live -- even though Match Centre picked it up correctly via
+    // the same underlying scan. isUpcomingHiddenByLive() only hides an upcoming *national-team*
+    // fixture that the live Bangladesh headline already covers, so this doesn't collide with it.
+    fetchEspnLiveDomesticHighlights().catch((e) => {
+      console.error("[cricket] marquee: fetchEspnLiveDomesticHighlights failed:", e);
+      return [];
+    }),
   ]);
+
+  const domesticLiveLines: string[] = [];
+  for (const h of domesticLive) {
+    try {
+      domesticLiveLines.push(formatLiveDomesticMarqueeLine(h));
+    } catch (e) {
+      console.error("[cricket] marquee: formatting a live domestic line failed, skipping it:", e, h);
+    }
+  }
   const upcoming = [...bangladeshUpcoming, ...domesticUpcoming].sort(
     (a, b) => matchTime(a) - matchTime(b),
   );
@@ -77,6 +99,9 @@ export async function getMarqueeTickerSnapshot(): Promise<MarqueeTickerSnapshot>
 
   const dynamic: string[] = [];
   if (lastLine) dynamic.push(`🏏 ${lastLine}`);
+  for (const line of domesticLiveLines) {
+    dynamic.push(`🔴 LIVE · ${line}`);
+  }
   for (const line of upcomingLines) {
     dynamic.push(`📅 ${line}`);
   }
