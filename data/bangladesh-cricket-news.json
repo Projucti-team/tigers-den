@@ -1,6 +1,32 @@
 {
-  "fetchedAt": "2026-09-05T23:16:34.220Z",
+  "fetchedAt": "2026-09-06T23:09:03.258Z",
   "items": [
+    {
+      "id": "espn-https://www.cricinfo.com/ci/content/story/1553119.html",
+      "title": "Samarawickrama's composed knock seals SL's semi-final berth",
+      "summary": "Samarawickrama's unbeaten 48 and Praboda's career-best three wickets helped Sri Lanka survive Bangladesh scare",
+      "url": "https://www.cricinfo.com/story/harshitha-samarawickramas-composed-knock-seals-sri-lankas-semi-final-berth-1553119",
+      "imageUrl": "https://p.imgci.com/db/PICTURES/CMS/422100/422176.5.jpg",
+      "source": "espncricinfo",
+      "publishedAt": "2026-09-06T19:12:40.000Z"
+    },
+    {
+      "id": "dailystar-https://www.thedailystar.net/sports/cricket/news/harshitha-sinks-tigresses-sri-lanka-seal-semifinal-spot-4266656",
+      "title": "Harshitha sinks Tigresses as Sri Lanka seal semifinal spot",
+      "summary": "Bangladesh staged a spirited fightback with the ball at the Dubai International Cricket Stadium, but Harshitha Samarawickrama's brilliant unbeaten 37-ball 48 carried Sri Lanka to a four-wicket win and into the Women’s Asia Cup semifinals.",
+      "url": "https://www.thedailystar.net/sports/cricket/news/harshitha-sinks-tigresses-sri-lanka-seal-semifinal-spot-4266656",
+      "source": "dailystar",
+      "publishedAt": "2026-09-06T18:53:05.000Z"
+    },
+    {
+      "id": "espn-https://www.cricinfo.com/ci/content/story/1553077.html",
+      "title": "Gunaratne in as SL bowl; Easmin debuts for Bangladesh",
+      "summary": "Sri Lanka have dominated Bangladesh in the format with 13 wins from 16 matches",
+      "url": "https://www.cricinfo.com/story/womens-asia-cup-gunaratne-in-as-sl-bowl-easmin-debuts-for-bangladesh-1553077",
+      "imageUrl": "https://p.imgci.com/db/PICTURES/CMS/422000/422012.5.jpg",
+      "source": "espncricinfo",
+      "publishedAt": "2026-09-06T15:13:41.000Z"
+    },
     {
       "id": "dailystar-https://www.thedailystar.net/sports/cricket/news/batting-focus-tigresses-eye-semifinal-berth-4265516",
       "title": "Batting in focus as Tigresses eye semifinal berth",
