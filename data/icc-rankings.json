@@ -1,5 +1,5 @@
 {
-  "fetchedAt": "2026-09-06T22:54:53.293Z",
+  "fetchedAt": "2026-09-07T23:31:42.395Z",
   "source": "icc-sportz.io",
   "sourceUrl": "https://www.icc-cricket.com/rankings",
   "men": {
@@ -10602,9 +10602,9 @@
           "rank": 8,
           "name": "Pakistan",
           "abbreviation": "PAK-W",
-          "rating": 211,
-          "points": 7612,
-          "matches": 36
+          "rating": 212,
+          "points": 7833,
+          "matches": 37
         },
         {
           "rank": 9,
@@ -10714,9 +10714,9 @@
           "rank": 22,
           "name": "Hong Kong",
           "abbreviation": "HK-W",
-          "rating": 90,
-          "points": 5554,
-          "matches": 62
+          "rating": 89,
+          "points": 5634,
+          "matches": 63
         },
         {
           "rank": 23,
@@ -17405,7 +17405,7 @@
         "allrounder": "2026-08-31"
       },
       "t20": {
-        "team": "2026-09-06",
+        "team": "2026-09-07",
         "bat": "2026-08-31",
         "bowl": "2026-08-31",
         "allrounder": "2026-08-31"
