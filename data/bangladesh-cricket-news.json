@@ -1,6 +1,84 @@
 {
-  "fetchedAt": "2026-09-07T23:45:21.141Z",
+  "fetchedAt": "2026-09-08T23:39:41.546Z",
   "items": [
+    {
+      "id": "espn-https://www.cricinfo.com/ci/content/story/1553302.html",
+      "title": "Marufa, spinners step up to seal Bangladesh's semi-final spot",
+      "summary": "Sharmin Akhter earlier rescued Bangladesh from the depths of 55 for 6 to 103 for 7 before the bowlers kept UAE to 69",
+      "url": "https://www.cricinfo.com/story/ban-vs-uae-marufa-akter-spinners-step-up-to-seal-bangladeshs-semi-final-spot-1553302",
+      "imageUrl": "https://p.imgci.com/db/PICTURES/CMS/422200/422236.5.jpg",
+      "source": "espncricinfo",
+      "publishedAt": "2026-09-08T18:41:10.000Z"
+    },
+    {
+      "id": "espn-https://www.cricinfo.com/ci/content/story/1553219.html",
+      "title": "CPL: Mehidy, Mohammad Haris set to join Amazon Warriors",
+      "summary": "Mehidy Hasan Miraz will replace Mohammad Nabi, while Mohammad Haris will join the squad in place of Rahmanullah Gurbaz",
+      "url": "https://www.cricinfo.com/story/cpl-2026-mehidy-hasan-miraz-set-for-cpl-debut-after-being-signed-by-guyana-amazon-warriors-1553219",
+      "imageUrl": "https://p.imgci.com/db/PICTURES/CMS/362900/362918.5.jpg",
+      "source": "espncricinfo",
+      "publishedAt": "2026-09-08T18:30:28.000Z"
+    },
+    {
+      "id": "dailystar-https://www.thedailystar.net/sports/cricket/news/bangladesh-survive-uae-scare-reach-semis-4268206",
+      "title": "Bangladesh survive UAE scare to reach semis",
+      "summary": "Bangladesh survived a major scare against the United Arab Emirates before securing a 34-run victory over the hosts in their final Group B match of the Women’s Asia Cup T20 in Dubai on Tuesday.",
+      "url": "https://www.thedailystar.net/sports/cricket/news/bangladesh-survive-uae-scare-reach-semis-4268206",
+      "source": "dailystar",
+      "publishedAt": "2026-09-08T18:13:57.000Z"
+    },
+    {
+      "id": "espn-https://www.cricinfo.com/ci/content/story/1553267.html",
+      "title": "Andersson 129* holds up Kent's promotion push",
+      "summary": "Derbyshire recover after Hasan Mahmud strikes with first two balls of match",
+      "url": "https://www.cricinfo.com/story/county-championship-andersson-holds-up-kent-promotion-push-1553267",
+      "imageUrl": "https://p.imgci.com/db/PICTURES/CMS/416800/416808.5.jpg",
+      "source": "espncricinfo",
+      "publishedAt": "2026-09-08T17:53:58.000Z"
+    },
+    {
+      "id": "espn-https://www.cricinfo.com/ci/content/story/1553270.html",
+      "title": "UAE bowl against Bangladesh in must-win game",
+      "summary": "UAE made one change while Bangladesh made two",
+      "url": "https://www.cricinfo.com/story/uae-bowl-against-bangladesh-in-must-win-womens-asia-cup-2026-game-1553270",
+      "imageUrl": "https://p.imgci.com/db/PICTURES/CMS/422200/422228.5.jpg",
+      "source": "espncricinfo",
+      "publishedAt": "2026-09-08T15:31:57.000Z"
+    },
+    {
+      "id": "espn-https://www.cricinfo.com/ci/content/story/1553264.html",
+      "title": "Dhaka and Sylhet to host West Indies for two-Test series in October-November",
+      "summary": "West Indies will return to Bangladesh for their first Test tour of the country in five years",
+      "url": "https://www.cricinfo.com/story/ban-vs-wi-dhaka-and-sylhet-to-host-west-indies-for-two-test-series-in-october-november-1553264",
+      "imageUrl": "https://p.imgci.com/db/PICTURES/CMS/392100/392108.5.jpg",
+      "source": "espncricinfo",
+      "publishedAt": "2026-09-08T13:58:03.000Z"
+    },
+    {
+      "id": "dailystar-https://www.thedailystar.net/sports/cricket/news/bangladesh-eye-wtc-gains-home-tests-against-west-indies-october-4267946",
+      "title": "Bangladesh eye WTC gains in home Tests against West Indies in October",
+      "summary": "The Bangladesh Cricket Board (BCB) has announced the itinerary for the upcoming two-match home Test series against the West Indies, with the visitors slated to arrive in Dhaka on October 18.",
+      "url": "https://www.thedailystar.net/sports/cricket/news/bangladesh-eye-wtc-gains-home-tests-against-west-indies-october-4267946",
+      "source": "dailystar",
+      "publishedAt": "2026-09-08T13:33:27.000Z"
+    },
+    {
+      "id": "espn-https://www.cricinfo.com/ci/content/story/1553233.html",
+      "title": "Afghanistan to host Bangladesh and Zimbabwe in the UAE in three-format home season",
+      "summary": "There will be Tests against both teams, T20Is against Zimbabwe, and an ODI tri-series",
+      "url": "https://www.cricinfo.com/story/afghanistan-to-host-bangladesh-and-zimbabwe-in-the-uae-in-three-format-home-season-1553233",
+      "imageUrl": "https://p.imgci.com/db/PICTURES/CMS/417900/417938.5.jpg",
+      "source": "espncricinfo",
+      "publishedAt": "2026-09-08T08:30:58.000Z"
+    },
+    {
+      "id": "dailystar-https://www.thedailystar.net/sports/cricket/news/afghanistan-confirm-bangladesh-test-tri-series-october-4267756",
+      "title": "Afghanistan confirm Bangladesh Test, tri-series in October",
+      "summary": "Bangladesh team were originally scheduled to host India for three ODIs and three T20Is in September, but the series was postponed. As a result, Bangladesh have been away from international cricket for almost a month.",
+      "url": "https://www.thedailystar.net/sports/cricket/news/afghanistan-confirm-bangladesh-test-tri-series-october-4267756",
+      "source": "dailystar",
+      "publishedAt": "2026-09-08T08:27:24.000Z"
+    },
     {
       "id": "dailystar-https://www.thedailystar.net/sports/cricket/news/we-should-win-tigresses-face-do-or-die-uae-clash-india-semifinal-4267531",
       "title": "'We should win this': Tigresses face do-or-die UAE clash for India semifinal",
@@ -35,22 +113,6 @@
       "publishedAt": "2026-09-07T07:23:24.000Z"
     },
     {
-      "id": "dailystar-https://www.thedailystar.net/sports/cricket/news/stability-ensures-crucial-opportunity-shanto-t20-wc-4266891",
-      "title": "Stability ensures crucial opportunity for Shanto before T20 WC",
-      "summary": "For Shanto, that improvement has opened the door to a T20I return, while the Asian Games provide a platform to begin building his role as a stabilising presence ahead of the T20 World Cup.",
-      "url": "https://www.thedailystar.net/sports/cricket/news/stability-ensures-crucial-opportunity-shanto-t20-wc-4266891",
-      "source": "dailystar",
-      "publishedAt": "2026-09-07T06:29:59.000Z"
-    },
-    {
-      "id": "dailystar-https://www.thedailystar.net/sports/cricket/news/mushtaq-keen-pakistan-job-admits-he-scared-pcb-treatment-4266861",
-      "title": "Mushtaq keen on Pakistan job but admits he is ‘scared’ of PCB treatment",
-      "summary": "Mushtaq, who is currently working as Bangladesh's spin-bowling coach, said the lack of job security and what he described as emotional decision-making within the PCB are major concerns for him.",
-      "url": "https://www.thedailystar.net/sports/cricket/news/mushtaq-keen-pakistan-job-admits-he-scared-pcb-treatment-4266861",
-      "source": "dailystar",
-      "publishedAt": "2026-09-07T05:34:23.000Z"
-    },
-    {
       "id": "espn-https://www.cricinfo.com/ci/content/story/1553119.html",
       "title": "Samarawickrama's composed knock seals Sri Lanka's semi-final berth",
       "summary": "Samarawickrama's unbeaten 48 and Praboda's career-best three wickets helped Sri Lanka survive Bangladesh scare",
@@ -58,14 +120,6 @@
       "imageUrl": "https://p.imgci.com/db/PICTURES/CMS/422100/422176.5.jpg",
       "source": "espncricinfo",
       "publishedAt": "2026-09-07T04:43:33.000Z"
-    },
-    {
-      "id": "dailystar-https://www.thedailystar.net/sports/cricket/news/harshitha-sinks-tigresses-sri-lanka-seal-semifinal-spot-4266656",
-      "title": "Harshitha sinks Tigresses as Sri Lanka seal semifinal spot",
-      "summary": "Bangladesh staged a spirited fightback with the ball at the Dubai International Cricket Stadium, but Harshitha Samarawickrama's brilliant unbeaten 37-ball 48 carried Sri Lanka to a four-wicket win and into the Women’s Asia Cup semifinals.",
-      "url": "https://www.thedailystar.net/sports/cricket/news/harshitha-sinks-tigresses-sri-lanka-seal-semifinal-spot-4266656",
-      "source": "dailystar",
-      "publishedAt": "2026-09-06T18:53:05.000Z"
     },
     {
       "id": "espn-https://www.cricinfo.com/ci/content/story/1553077.html",
