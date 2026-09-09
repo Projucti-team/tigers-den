@@ -1,5 +1,5 @@
 {
-  "fetchedAt": "2026-09-08T23:25:31.635Z",
+  "fetchedAt": "2026-09-09T23:17:48.423Z",
   "source": "icc-sportz.io",
   "sourceUrl": "https://www.icc-cricket.com/rankings",
   "men": {
@@ -106,19 +106,19 @@
         },
         {
           "rank": 3,
+          "name": "South Africa",
+          "abbreviation": "SA",
+          "rating": 102,
+          "points": 2967,
+          "matches": 29
+        },
+        {
+          "rank": 4,
           "name": "Australia",
           "abbreviation": "AUS",
           "rating": 102,
           "points": 2965,
           "matches": 29
-        },
-        {
-          "rank": 4,
-          "name": "South Africa",
-          "abbreviation": "SA",
-          "rating": 102,
-          "points": 2855,
-          "matches": 28
         },
         {
           "rank": 5,
@@ -213,8 +213,8 @@
           "name": "Namibia",
           "abbreviation": "NAM",
           "rating": 31,
-          "points": 623,
-          "matches": 20
+          "points": 644,
+          "matches": 21
         },
         {
           "rank": 17,
@@ -415,8 +415,8 @@
           "name": "Uganda",
           "abbreviation": "UGA",
           "rating": 144,
-          "points": 5478,
-          "matches": 38
+          "points": 5632,
+          "matches": 39
         },
         {
           "rank": 22,
@@ -511,8 +511,8 @@
           "name": "Kenya",
           "abbreviation": "KEN",
           "rating": 104,
-          "points": 4373,
-          "matches": 42
+          "points": 4487,
+          "matches": 43
         },
         {
           "rank": 34,
@@ -679,8 +679,8 @@
           "name": "Rwanda",
           "abbreviation": "RWA",
           "rating": 45,
-          "points": 2909,
-          "matches": 65
+          "points": 2944,
+          "matches": 66
         },
         {
           "rank": 55,
@@ -910,9 +910,9 @@
           "rank": 83,
           "name": "Sierra Leone",
           "abbreviation": "SRL",
-          "rating": 11,
-          "points": 296,
-          "matches": 28
+          "rating": 10,
+          "points": 297,
+          "matches": 29
         },
         {
           "rank": 84,
@@ -4859,16 +4859,6 @@
           },
           {
             "rank": 68,
-            "name": "Jatinder Singh",
-            "team": "Oman",
-            "rating": 446,
-            "points": 446,
-            "iccPlayerId": "60454",
-            "profileUrl": "https://www.icc-cricket.com/rankings/60454/jatinder-singh",
-            "imageUrl": "https://images.icc-cricket.com/image/upload/t_player-headshot-portrait-lg-webp/prd/assets/players/generic/colored/60454.png"
-          },
-          {
-            "rank": 69,
             "name": "Gerhard Erasmus",
             "team": "Namibia",
             "rating": 445,
@@ -4878,7 +4868,7 @@
             "imageUrl": "https://images.icc-cricket.com/image/upload/t_player-headshot-portrait-lg-webp/prd/assets/players/generic/colored/57890.png"
           },
           {
-            "rank": 70,
+            "rank": 69,
             "name": "Soumya Sarkar",
             "team": "Bangladesh",
             "rating": 444,
@@ -4886,6 +4876,16 @@
             "iccPlayerId": "61831",
             "profileUrl": "https://www.icc-cricket.com/rankings/61831/soumya-sarkar",
             "imageUrl": "https://images.icc-cricket.com/image/upload/t_player-headshot-portrait-lg-webp/prd/assets/players/generic/colored/61831.png"
+          },
+          {
+            "rank": 70,
+            "name": "Jatinder Singh",
+            "team": "Oman",
+            "rating": 436,
+            "points": 436,
+            "iccPlayerId": "60454",
+            "profileUrl": "https://www.icc-cricket.com/rankings/60454/jatinder-singh",
+            "imageUrl": "https://images.icc-cricket.com/image/upload/t_player-headshot-portrait-lg-webp/prd/assets/players/generic/colored/60454.png"
           },
           {
             "rank": 71,
@@ -5039,28 +5039,7 @@
             "imageUrl": "https://images.icc-cricket.com/image/upload/t_player-headshot-portrait-lg-webp/prd/assets/players/generic/colored/80359.png"
           },
           {
-            "rank": 85,
-            "rankTied": true,
-            "name": "Hammad Mirza",
-            "team": "Oman",
-            "rating": 388,
-            "points": 388,
-            "iccPlayerId": "90789",
-            "profileUrl": "https://www.icc-cricket.com/rankings/90789/hammad-mirza",
-            "imageUrl": "https://images.icc-cricket.com/image/upload/t_player-headshot-portrait-lg-webp/prd/assets/players/generic/colored/90789.png"
-          },
-          {
-            "rank": 87,
-            "name": "Muhammad Waseem",
-            "team": "United Arab Emirates",
-            "rating": 387,
-            "points": 387,
-            "iccPlayerId": "79405",
-            "profileUrl": "https://www.icc-cricket.com/rankings/79405/muhammad-waseem",
-            "imageUrl": "https://images.icc-cricket.com/image/upload/t_player-headshot-portrait-lg-webp/prd/assets/players/generic/colored/79405.png"
-          },
-          {
-            "rank": 88,
+            "rank": 86,
             "name": "Cooper Connolly",
             "team": "Australia",
             "rating": 386,
@@ -5070,7 +5049,7 @@
             "imageUrl": "https://images.icc-cricket.com/image/upload/t_player-headshot-portrait-lg-webp/prd/assets/players/generic/colored/74410.png"
           },
           {
-            "rank": 89,
+            "rank": 87,
             "name": "Brandon King",
             "team": "West Indies",
             "rating": 385,
@@ -5080,7 +5059,18 @@
             "imageUrl": "https://images.icc-cricket.com/image/upload/t_player-headshot-portrait-lg-webp/prd/assets/players/generic/colored/64543.png"
           },
           {
-            "rank": 90,
+            "rank": 87,
+            "rankTied": true,
+            "name": "Hammad Mirza",
+            "team": "Oman",
+            "rating": 385,
+            "points": 385,
+            "iccPlayerId": "90789",
+            "profileUrl": "https://www.icc-cricket.com/rankings/90789/hammad-mirza",
+            "imageUrl": "https://images.icc-cricket.com/image/upload/t_player-headshot-portrait-lg-webp/prd/assets/players/generic/colored/90789.png"
+          },
+          {
+            "rank": 89,
             "name": "Mitchell Santner",
             "team": "New Zealand",
             "rating": 384,
@@ -5090,7 +5080,7 @@
             "imageUrl": "https://images.icc-cricket.com/image/upload/t_player-headshot-portrait-lg-webp/prd/assets/players/generic/colored/57903.png"
           },
           {
-            "rank": 90,
+            "rank": 89,
             "rankTied": true,
             "name": "Jan Frylinck",
             "team": "Namibia",
@@ -5101,7 +5091,7 @@
             "imageUrl": "https://images.icc-cricket.com/image/upload/t_player-headshot-portrait-lg-webp/prd/assets/players/generic/colored/57688.png"
           },
           {
-            "rank": 90,
+            "rank": 89,
             "rankTied": true,
             "name": "Jaker Ali",
             "team": "Bangladesh",
@@ -5112,7 +5102,7 @@
             "imageUrl": "https://images.icc-cricket.com/image/upload/t_player-headshot-portrait-lg-webp/prd/assets/players/generic/colored/65411.png"
           },
           {
-            "rank": 93,
+            "rank": 92,
             "name": "George Dockrell",
             "team": "Ireland",
             "rating": 383,
@@ -5120,6 +5110,17 @@
             "iccPlayerId": "9694",
             "profileUrl": "https://www.icc-cricket.com/rankings/9694/george-dockrell",
             "imageUrl": "https://images.icc-cricket.com/image/upload/t_player-headshot-portrait-lg-webp/prd/assets/players/generic/colored/9694.png"
+          },
+          {
+            "rank": 92,
+            "rankTied": true,
+            "name": "Muhammad Waseem",
+            "team": "United Arab Emirates",
+            "rating": 383,
+            "points": 383,
+            "iccPlayerId": "79405",
+            "profileUrl": "https://www.icc-cricket.com/rankings/79405/muhammad-waseem",
+            "imageUrl": "https://images.icc-cricket.com/image/upload/t_player-headshot-portrait-lg-webp/prd/assets/players/generic/colored/79405.png"
           },
           {
             "rank": 94,
@@ -5174,18 +5175,7 @@
             "imageUrl": "https://images.icc-cricket.com/image/upload/t_player-headshot-portrait-lg-webp/prd/assets/players/generic/colored/68002.png"
           },
           {
-            "rank": 97,
-            "rankTied": true,
-            "name": "Rahul Chopra",
-            "team": "United Arab Emirates",
-            "rating": 377,
-            "points": 377,
-            "iccPlayerId": "90522",
-            "profileUrl": "https://www.icc-cricket.com/rankings/90522/rahul-chopra",
-            "imageUrl": "https://images.icc-cricket.com/image/upload/t_player-headshot-portrait-lg-webp/prd/assets/players/generic/colored/90522.png"
-          },
-          {
-            "rank": 100,
+            "rank": 99,
             "name": "Vikramjit Singh",
             "team": "Netherlands",
             "rating": 376,
@@ -5193,6 +5183,17 @@
             "iccPlayerId": "73256",
             "profileUrl": "https://www.icc-cricket.com/rankings/73256/vikramjit-singh",
             "imageUrl": "https://images.icc-cricket.com/image/upload/t_player-headshot-portrait-lg-webp/prd/assets/players/generic/colored/73256.png"
+          },
+          {
+            "rank": 99,
+            "rankTied": true,
+            "name": "Jamie Overton",
+            "team": "England",
+            "rating": 376,
+            "points": 376,
+            "iccPlayerId": "58482",
+            "profileUrl": "https://www.icc-cricket.com/rankings/58482/jamie-overton",
+            "imageUrl": "https://images.icc-cricket.com/image/upload/t_player-headshot-portrait-lg-webp/prd/assets/players/generic/colored/58482.png"
           }
         ],
         "topBowlers": [
@@ -5483,8 +5484,8 @@
             "rank": 29,
             "name": "Shakeel Ahmed",
             "team": "Oman",
-            "rating": 531,
-            "points": 531,
+            "rating": 534,
+            "points": 534,
             "iccPlayerId": "90742",
             "profileUrl": "https://www.icc-cricket.com/rankings/90742/shakeel-ahmed",
             "imageUrl": "https://images.icc-cricket.com/image/upload/t_player-headshot-portrait-lg-webp/prd/assets/players/generic/colored/90742.png"
@@ -5849,6 +5850,16 @@
           },
           {
             "rank": 65,
+            "name": "Aayan Afzal Khan",
+            "team": "United Arab Emirates",
+            "rating": 448,
+            "points": 448,
+            "iccPlayerId": "82579",
+            "profileUrl": "https://www.icc-cricket.com/rankings/82579/aayan-afzal-khan",
+            "imageUrl": "https://images.icc-cricket.com/image/upload/t_player-headshot-portrait-lg-webp/prd/assets/players/generic/colored/82579.png"
+          },
+          {
+            "rank": 66,
             "name": "Harshit Rana",
             "team": "India",
             "rating": 447,
@@ -5858,7 +5869,7 @@
             "imageUrl": "https://images.icc-cricket.com/image/upload/t_player-headshot-portrait-lg-webp/prd/assets/players/generic/colored/93526.png"
           },
           {
-            "rank": 66,
+            "rank": 67,
             "name": "Roelof van der Merwe",
             "team": "Netherlands",
             "rating": 443,
@@ -5868,7 +5879,7 @@
             "imageUrl": "https://images.icc-cricket.com/image/upload/t_player-headshot-portrait-lg-webp/prd/assets/players/generic/colored/5305.png"
           },
           {
-            "rank": 66,
+            "rank": 67,
             "rankTied": true,
             "name": "Sean Abbott",
             "team": "Australia",
@@ -5879,7 +5890,7 @@
             "imageUrl": "https://images.icc-cricket.com/image/upload/t_player-headshot-portrait-lg-webp/prd/assets/players/generic/colored/57028.png"
           },
           {
-            "rank": 68,
+            "rank": 69,
             "name": "Washington Sundar",
             "team": "India",
             "rating": 438,
@@ -5889,7 +5900,7 @@
             "imageUrl": "https://images.icc-cricket.com/image/upload/t_player-headshot-portrait-lg-webp/prd/assets/players/generic/colored/65859.png"
           },
           {
-            "rank": 68,
+            "rank": 69,
             "rankTied": true,
             "name": "Saqib Mahmood",
             "team": "England",
@@ -5900,7 +5911,7 @@
             "imageUrl": "https://images.icc-cricket.com/image/upload/t_player-headshot-portrait-lg-webp/prd/assets/players/generic/colored/64948.png"
           },
           {
-            "rank": 70,
+            "rank": 71,
             "name": "Dilshan Madushanka",
             "team": "Sri Lanka",
             "rating": 436,
@@ -5908,16 +5919,6 @@
             "iccPlayerId": "70764",
             "profileUrl": "https://www.icc-cricket.com/rankings/70764/dilshan-madushanka",
             "imageUrl": "https://images.icc-cricket.com/image/upload/t_player-headshot-portrait-lg-webp/prd/assets/players/generic/colored/70764.png"
-          },
-          {
-            "rank": 71,
-            "name": "Aayan Afzal Khan",
-            "team": "United Arab Emirates",
-            "rating": 434,
-            "points": 434,
-            "iccPlayerId": "82579",
-            "profileUrl": "https://www.icc-cricket.com/rankings/82579/aayan-khan",
-            "imageUrl": "https://images.icc-cricket.com/image/upload/t_player-headshot-portrait-lg-webp/prd/assets/players/generic/colored/82579.png"
           },
           {
             "rank": 72,
@@ -5951,17 +5952,6 @@
           },
           {
             "rank": 75,
-            "name": "Junaid Siddique",
-            "team": "United Arab Emirates",
-            "rating": 427,
-            "points": 427,
-            "iccPlayerId": "73675",
-            "profileUrl": "https://www.icc-cricket.com/rankings/73675/junaid-siddique",
-            "imageUrl": "https://images.icc-cricket.com/image/upload/t_player-headshot-portrait-lg-webp/prd/assets/players/generic/colored/73675.png"
-          },
-          {
-            "rank": 75,
-            "rankTied": true,
             "name": "Nasum Ahmed",
             "team": "Bangladesh",
             "rating": 427,
@@ -5971,7 +5961,7 @@
             "imageUrl": "https://images.icc-cricket.com/image/upload/t_player-headshot-portrait-lg-webp/prd/assets/players/generic/colored/57999.png"
           },
           {
-            "rank": 77,
+            "rank": 76,
             "name": "Sam Curran",
             "team": "England",
             "rating": 425,
@@ -5981,7 +5971,7 @@
             "imageUrl": "https://images.icc-cricket.com/image/upload/t_player-headshot-portrait-lg-webp/prd/assets/players/generic/colored/65584.png"
           },
           {
-            "rank": 78,
+            "rank": 77,
             "name": "Dipendra Singh Airee",
             "team": "Nepal",
             "rating": 423,
@@ -5989,6 +5979,17 @@
             "iccPlayerId": "66061",
             "profileUrl": "https://www.icc-cricket.com/rankings/66061/dipendra-singh-airee",
             "imageUrl": "https://images.icc-cricket.com/image/upload/t_player-headshot-portrait-lg-webp/prd/assets/players/generic/colored/66061.png"
+          },
+          {
+            "rank": 77,
+            "rankTied": true,
+            "name": "Junaid Siddique",
+            "team": "United Arab Emirates",
+            "rating": 423,
+            "points": 423,
+            "iccPlayerId": "73675",
+            "profileUrl": "https://www.icc-cricket.com/rankings/73675/junaid-siddique",
+            "imageUrl": "https://images.icc-cricket.com/image/upload/t_player-headshot-portrait-lg-webp/prd/assets/players/generic/colored/73675.png"
           },
           {
             "rank": 79,
@@ -6912,6 +6913,16 @@
           },
           {
             "rank": 69,
+            "name": "Aayan Afzal Khan",
+            "team": "United Arab Emirates",
+            "rating": 109,
+            "points": 109,
+            "iccPlayerId": "82579",
+            "profileUrl": "https://www.icc-cricket.com/rankings/82579/aayan-afzal-khan",
+            "imageUrl": "https://images.icc-cricket.com/image/upload/t_player-headshot-portrait-lg-webp/prd/assets/players/generic/colored/82579.png"
+          },
+          {
+            "rank": 70,
             "name": "Nosthush Kenjige",
             "team": "USA",
             "rating": 107,
@@ -6921,7 +6932,7 @@
             "imageUrl": "https://images.icc-cricket.com/image/upload/t_player-headshot-portrait-lg-webp/prd/assets/players/generic/colored/67389.png"
           },
           {
-            "rank": 70,
+            "rank": 71,
             "name": "Logan van Beek",
             "team": "Netherlands",
             "rating": 106,
@@ -6931,7 +6942,7 @@
             "imageUrl": "https://images.icc-cricket.com/image/upload/t_player-headshot-portrait-lg-webp/prd/assets/players/generic/colored/10176.png"
           },
           {
-            "rank": 70,
+            "rank": 71,
             "rankTied": true,
             "name": "Will Jacks",
             "team": "England",
@@ -6942,7 +6953,7 @@
             "imageUrl": "https://images.icc-cricket.com/image/upload/t_player-headshot-portrait-lg-webp/prd/assets/players/generic/colored/66927.png"
           },
           {
-            "rank": 72,
+            "rank": 73,
             "name": "Joe Root",
             "team": "England",
             "rating": 105,
@@ -6952,7 +6963,7 @@
             "imageUrl": "https://images.icc-cricket.com/image/upload/t_player-headshot-portrait-lg-webp/prd/assets/players/generic/colored/10129.png"
           },
           {
-            "rank": 72,
+            "rank": 73,
             "rankTied": true,
             "name": "Lalit Rajbanshi",
             "team": "Nepal",
@@ -6961,17 +6972,6 @@
             "iccPlayerId": "45117",
             "profileUrl": "https://www.icc-cricket.com/rankings/45117/lalit-rajbanshi",
             "imageUrl": "https://images.icc-cricket.com/image/upload/t_player-headshot-portrait-lg-webp/prd/assets/players/generic/colored/45117.png"
-          },
-          {
-            "rank": 72,
-            "rankTied": true,
-            "name": "Shakeel Ahmed",
-            "team": "Oman",
-            "rating": 105,
-            "points": 105,
-            "iccPlayerId": "90742",
-            "profileUrl": "https://www.icc-cricket.com/rankings/90742/shakeel-ahmed",
-            "imageUrl": "https://images.icc-cricket.com/image/upload/t_player-headshot-portrait-lg-webp/prd/assets/players/generic/colored/90742.png"
           },
           {
             "rank": 75,
@@ -6985,6 +6985,16 @@
           },
           {
             "rank": 76,
+            "name": "Shakeel Ahmed",
+            "team": "Oman",
+            "rating": 103,
+            "points": 103,
+            "iccPlayerId": "90742",
+            "profileUrl": "https://www.icc-cricket.com/rankings/90742/shakeel-ahmed",
+            "imageUrl": "https://images.icc-cricket.com/image/upload/t_player-headshot-portrait-lg-webp/prd/assets/players/generic/colored/90742.png"
+          },
+          {
+            "rank": 77,
             "name": "Karan KC",
             "team": "Nepal",
             "rating": 102,
@@ -6994,7 +7004,7 @@
             "imageUrl": "https://images.icc-cricket.com/image/upload/t_player-headshot-portrait-lg-webp/prd/assets/players/generic/colored/65314.png"
           },
           {
-            "rank": 76,
+            "rank": 77,
             "rankTied": true,
             "name": "Sandeep Lamichhane",
             "team": "Nepal",
@@ -7005,7 +7015,7 @@
             "imageUrl": "https://images.icc-cricket.com/image/upload/t_player-headshot-portrait-lg-webp/prd/assets/players/generic/colored/66066.png"
           },
           {
-            "rank": 76,
+            "rank": 77,
             "rankTied": true,
             "name": "AM Ghazanfar",
             "team": "Afghanistan",
@@ -7016,7 +7026,7 @@
             "imageUrl": "https://images.icc-cricket.com/image/upload/t_player-headshot-portrait-lg-webp/prd/assets/players/generic/colored/96648.png"
           },
           {
-            "rank": 79,
+            "rank": 80,
             "name": "Harshit Rana",
             "team": "India",
             "rating": 101,
@@ -7026,7 +7036,7 @@
             "imageUrl": "https://images.icc-cricket.com/image/upload/t_player-headshot-portrait-lg-webp/prd/assets/players/generic/colored/93526.png"
           },
           {
-            "rank": 80,
+            "rank": 81,
             "name": "Mohammad Nawaz",
             "team": "Pakistan",
             "rating": 100,
@@ -7036,7 +7046,7 @@
             "imageUrl": "https://images.icc-cricket.com/image/upload/t_player-headshot-portrait-lg-webp/prd/assets/players/generic/colored/57935.png"
           },
           {
-            "rank": 80,
+            "rank": 81,
             "rankTied": true,
             "name": "Dilshan Madushanka",
             "team": "Sri Lanka",
@@ -7047,7 +7057,7 @@
             "imageUrl": "https://images.icc-cricket.com/image/upload/t_player-headshot-portrait-lg-webp/prd/assets/players/generic/colored/70764.png"
           },
           {
-            "rank": 82,
+            "rank": 83,
             "name": "Jasprit Bumrah",
             "team": "India",
             "rating": 99,
@@ -7057,7 +7067,7 @@
             "imageUrl": "https://images.icc-cricket.com/image/upload/t_player-headshot-portrait-lg-webp/prd/assets/players/generic/colored/63755.png"
           },
           {
-            "rank": 83,
+            "rank": 84,
             "name": "George Dockrell",
             "team": "Ireland",
             "rating": 98,
@@ -7067,7 +7077,7 @@
             "imageUrl": "https://images.icc-cricket.com/image/upload/t_player-headshot-portrait-lg-webp/prd/assets/players/generic/colored/9694.png"
           },
           {
-            "rank": 83,
+            "rank": 84,
             "rankTied": true,
             "name": "Shoriful Islam",
             "team": "Bangladesh",
@@ -7078,7 +7088,7 @@
             "imageUrl": "https://images.icc-cricket.com/image/upload/t_player-headshot-portrait-lg-webp/prd/assets/players/generic/colored/66332.png"
           },
           {
-            "rank": 83,
+            "rank": 84,
             "rankTied": true,
             "name": "Gulshan Jha",
             "team": "Nepal",
@@ -7087,17 +7097,6 @@
             "iccPlayerId": "87400",
             "profileUrl": "https://www.icc-cricket.com/rankings/87400/gulshan-jha",
             "imageUrl": "https://images.icc-cricket.com/image/upload/t_player-headshot-portrait-lg-webp/prd/assets/players/generic/colored/87400.png"
-          },
-          {
-            "rank": 83,
-            "rankTied": true,
-            "name": "Aayan Afzal Khan",
-            "team": "United Arab Emirates",
-            "rating": 98,
-            "points": 98,
-            "iccPlayerId": "82579",
-            "profileUrl": "https://www.icc-cricket.com/rankings/82579/aayan-khan",
-            "imageUrl": "https://images.icc-cricket.com/image/upload/t_player-headshot-portrait-lg-webp/prd/assets/players/generic/colored/82579.png"
           },
           {
             "rank": 87,
@@ -7314,16 +7313,6 @@
           },
           {
             "rank": 4,
-            "name": "Dewald Brevis",
-            "team": "South Africa",
-            "rating": 806,
-            "points": 806,
-            "iccPlayerId": "84562",
-            "profileUrl": "https://www.icc-cricket.com/rankings/84562/dewald-brevis",
-            "imageUrl": "https://images.icc-cricket.com/image/upload/t_player-headshot-portrait-lg-webp/prd/assets/players/generic/colored/84562.png"
-          },
-          {
-            "rank": 5,
             "name": "Phil Salt",
             "team": "England",
             "rating": 799,
@@ -7331,6 +7320,16 @@
             "iccPlayerId": "65632",
             "profileUrl": "https://www.icc-cricket.com/rankings/65632/phil-salt",
             "imageUrl": "https://images.icc-cricket.com/image/upload/t_player-headshot-portrait-lg-webp/prd/assets/players/generic/colored/65632.png"
+          },
+          {
+            "rank": 5,
+            "name": "Dewald Brevis",
+            "team": "South Africa",
+            "rating": 789,
+            "points": 789,
+            "iccPlayerId": "84562",
+            "profileUrl": "https://www.icc-cricket.com/rankings/84562/dewald-brevis",
+            "imageUrl": "https://images.icc-cricket.com/image/upload/t_player-headshot-portrait-lg-webp/prd/assets/players/generic/colored/84562.png"
           },
           {
             "rank": 6,
@@ -7394,16 +7393,6 @@
           },
           {
             "rank": 12,
-            "name": "Brian Bennett",
-            "team": "Zimbabwe",
-            "rating": 686,
-            "points": 686,
-            "iccPlayerId": "87227",
-            "profileUrl": "https://www.icc-cricket.com/rankings/87227/brian-bennett",
-            "imageUrl": "https://images.icc-cricket.com/image/upload/t_player-headshot-portrait-lg-webp/prd/assets/players/generic/colored/87227.png"
-          },
-          {
-            "rank": 13,
             "name": "Travis Head",
             "team": "Australia",
             "rating": 679,
@@ -7413,7 +7402,7 @@
             "imageUrl": "https://images.icc-cricket.com/image/upload/t_player-headshot-portrait-lg-webp/prd/assets/players/generic/colored/62023.png"
           },
           {
-            "rank": 14,
+            "rank": 13,
             "name": "Ibrahim Zadran",
             "team": "Afghanistan",
             "rating": 678,
@@ -7423,7 +7412,7 @@
             "imageUrl": "https://images.icc-cricket.com/image/upload/t_player-headshot-portrait-lg-webp/prd/assets/players/generic/colored/67519.png"
           },
           {
-            "rank": 14,
+            "rank": 13,
             "rankTied": true,
             "name": "Jacob Bethell",
             "team": "England",
@@ -7432,6 +7421,16 @@
             "iccPlayerId": "85736",
             "profileUrl": "https://www.icc-cricket.com/rankings/85736/jacob-bethell",
             "imageUrl": "https://images.icc-cricket.com/image/upload/t_player-headshot-portrait-lg-webp/prd/assets/players/generic/colored/85736.png"
+          },
+          {
+            "rank": 15,
+            "name": "Brian Bennett",
+            "team": "Zimbabwe",
+            "rating": 671,
+            "points": 671,
+            "iccPlayerId": "87227",
+            "profileUrl": "https://www.icc-cricket.com/rankings/87227/brian-bennett",
+            "imageUrl": "https://images.icc-cricket.com/image/upload/t_player-headshot-portrait-lg-webp/prd/assets/players/generic/colored/87227.png"
           },
           {
             "rank": 16,
@@ -7525,13 +7524,13 @@
           },
           {
             "rank": 25,
-            "name": "Ryan Rickelton",
+            "name": "Connor Esterhuizen",
             "team": "South Africa",
-            "rating": 622,
-            "points": 622,
-            "iccPlayerId": "64941",
-            "profileUrl": "https://www.icc-cricket.com/rankings/64941/ryan-rickelton",
-            "imageUrl": "https://images.icc-cricket.com/image/upload/t_player-headshot-portrait-lg-webp/prd/assets/players/generic/colored/64941.png"
+            "rating": 627,
+            "points": 627,
+            "iccPlayerId": "92850",
+            "profileUrl": "https://www.icc-cricket.com/rankings/92850/connor-esterhuizen",
+            "imageUrl": "https://images.icc-cricket.com/image/upload/t_player-headshot-portrait-lg-webp/prd/assets/players/generic/colored/92850.png"
           },
           {
             "rank": 26,
@@ -7545,13 +7544,13 @@
           },
           {
             "rank": 27,
-            "name": "Aiden Markram",
+            "name": "Ryan Rickelton",
             "team": "South Africa",
             "rating": 610,
             "points": 610,
-            "iccPlayerId": "64219",
-            "profileUrl": "https://www.icc-cricket.com/rankings/64219/aiden-markram",
-            "imageUrl": "https://images.icc-cricket.com/image/upload/t_player-headshot-portrait-lg-webp/prd/assets/players/generic/colored/64219.png"
+            "iccPlayerId": "64941",
+            "profileUrl": "https://www.icc-cricket.com/rankings/64941/ryan-rickelton",
+            "imageUrl": "https://images.icc-cricket.com/image/upload/t_player-headshot-portrait-lg-webp/prd/assets/players/generic/colored/64941.png"
           },
           {
             "rank": 28,
@@ -7575,6 +7574,16 @@
           },
           {
             "rank": 30,
+            "name": "Aiden Markram",
+            "team": "South Africa",
+            "rating": 598,
+            "points": 598,
+            "iccPlayerId": "64219",
+            "profileUrl": "https://www.icc-cricket.com/rankings/64219/aiden-markram",
+            "imageUrl": "https://images.icc-cricket.com/image/upload/t_player-headshot-portrait-lg-webp/prd/assets/players/generic/colored/64219.png"
+          },
+          {
+            "rank": 31,
             "name": "Shivam Dube",
             "team": "India",
             "rating": 580,
@@ -7584,7 +7593,7 @@
             "imageUrl": "https://images.icc-cricket.com/image/upload/t_player-headshot-portrait-lg-webp/prd/assets/players/generic/colored/66044.png"
           },
           {
-            "rank": 30,
+            "rank": 31,
             "rankTied": true,
             "name": "Michael Levitt",
             "team": "Netherlands",
@@ -7595,7 +7604,7 @@
             "imageUrl": "https://images.icc-cricket.com/image/upload/t_player-headshot-portrait-lg-webp/prd/assets/players/generic/colored/107562.png"
           },
           {
-            "rank": 32,
+            "rank": 33,
             "name": "Towhid Hridoy",
             "team": "Bangladesh",
             "rating": 577,
@@ -7605,7 +7614,7 @@
             "imageUrl": "https://images.icc-cricket.com/image/upload/t_player-headshot-portrait-lg-webp/prd/assets/players/generic/colored/67719.png"
           },
           {
-            "rank": 33,
+            "rank": 34,
             "name": "Sanju Samson",
             "team": "India",
             "rating": 575,
@@ -7615,7 +7624,7 @@
             "imageUrl": "https://images.icc-cricket.com/image/upload/t_player-headshot-portrait-lg-webp/prd/assets/players/generic/colored/61837.png"
           },
           {
-            "rank": 34,
+            "rank": 35,
             "name": "Josh Inglis",
             "team": "Australia",
             "rating": 573,
@@ -7625,7 +7634,7 @@
             "imageUrl": "https://images.icc-cricket.com/image/upload/t_player-headshot-portrait-lg-webp/prd/assets/players/generic/colored/65893.png"
           },
           {
-            "rank": 35,
+            "rank": 36,
             "name": "Cameron Green",
             "team": "Australia",
             "rating": 572,
@@ -7635,7 +7644,7 @@
             "imageUrl": "https://images.icc-cricket.com/image/upload/t_player-headshot-portrait-lg-webp/prd/assets/players/generic/colored/66870.png"
           },
           {
-            "rank": 36,
+            "rank": 37,
             "name": "Kusal Perera",
             "team": "Sri Lanka",
             "rating": 570,
@@ -7645,7 +7654,7 @@
             "imageUrl": "https://images.icc-cricket.com/image/upload/t_player-headshot-portrait-lg-webp/prd/assets/players/generic/colored/11757.png"
           },
           {
-            "rank": 36,
+            "rank": 37,
             "rankTied": true,
             "name": "Tim Robinson",
             "team": "New Zealand",
@@ -7656,7 +7665,7 @@
             "imageUrl": "https://images.icc-cricket.com/image/upload/t_player-headshot-portrait-lg-webp/prd/assets/players/generic/colored/90292.png"
           },
           {
-            "rank": 38,
+            "rank": 39,
             "name": "Rovman Powell",
             "team": "West Indies",
             "rating": 568,
@@ -7666,7 +7675,7 @@
             "imageUrl": "https://images.icc-cricket.com/image/upload/t_player-headshot-portrait-lg-webp/prd/assets/players/generic/colored/65291.png"
           },
           {
-            "rank": 38,
+            "rank": 39,
             "rankTied": true,
             "name": "Muhammad Waseem",
             "team": "United Arab Emirates",
@@ -7677,7 +7686,7 @@
             "imageUrl": "https://images.icc-cricket.com/image/upload/t_player-headshot-portrait-lg-webp/prd/assets/players/generic/colored/79405.png"
           },
           {
-            "rank": 40,
+            "rank": 41,
             "name": "Saim Ayub",
             "team": "Pakistan",
             "rating": 560,
@@ -7687,7 +7696,7 @@
             "imageUrl": "https://images.icc-cricket.com/image/upload/t_player-headshot-portrait-lg-webp/prd/assets/players/generic/colored/70241.png"
           },
           {
-            "rank": 41,
+            "rank": 42,
             "name": "Shimron Hetmyer",
             "team": "West Indies",
             "rating": 559,
@@ -7695,16 +7704,6 @@
             "iccPlayerId": "64861",
             "profileUrl": "https://www.icc-cricket.com/rankings/64861/shimron-hetmyer",
             "imageUrl": "https://images.icc-cricket.com/image/upload/t_player-headshot-portrait-lg-webp/prd/assets/players/generic/colored/64861.png"
-          },
-          {
-            "rank": 42,
-            "name": "Quinton de Kock",
-            "team": "South Africa",
-            "rating": 556,
-            "points": 556,
-            "iccPlayerId": "28035",
-            "profileUrl": "https://www.icc-cricket.com/rankings/28035/quinton-de-kock",
-            "imageUrl": "https://images.icc-cricket.com/image/upload/t_player-headshot-portrait-lg-webp/prd/assets/players/generic/colored/28035.png"
           },
           {
             "rank": 43,
@@ -7717,7 +7716,18 @@
             "imageUrl": "https://images.icc-cricket.com/image/upload/t_player-headshot-portrait-lg-webp/prd/assets/players/generic/colored/59429.png"
           },
           {
-            "rank": 44,
+            "rank": 43,
+            "rankTied": true,
+            "name": "Lhuan-dre Pretorius",
+            "team": "South Africa",
+            "rating": 555,
+            "points": 555,
+            "iccPlayerId": "109249",
+            "profileUrl": "https://www.icc-cricket.com/rankings/109249/lhuan-dre-pretorius",
+            "imageUrl": "https://images.icc-cricket.com/image/upload/t_player-headshot-portrait-lg-webp/prd/assets/players/generic/colored/109249.png"
+          },
+          {
+            "rank": 45,
             "name": "Salman Agha",
             "team": "Pakistan",
             "rating": 547,
@@ -7727,7 +7737,17 @@
             "imageUrl": "https://images.icc-cricket.com/image/upload/t_player-headshot-portrait-lg-webp/prd/assets/players/generic/colored/64078.png"
           },
           {
-            "rank": 45,
+            "rank": 46,
+            "name": "Quinton de Kock",
+            "team": "South Africa",
+            "rating": 545,
+            "points": 545,
+            "iccPlayerId": "28035",
+            "profileUrl": "https://www.icc-cricket.com/rankings/28035/quinton-de-kock",
+            "imageUrl": "https://images.icc-cricket.com/image/upload/t_player-headshot-portrait-lg-webp/prd/assets/players/generic/colored/28035.png"
+          },
+          {
+            "rank": 47,
             "name": "Sherfane Rutherford",
             "team": "West Indies",
             "rating": 544,
@@ -7737,7 +7757,7 @@
             "imageUrl": "https://images.icc-cricket.com/image/upload/t_player-headshot-portrait-lg-webp/prd/assets/players/generic/colored/67285.png"
           },
           {
-            "rank": 46,
+            "rank": 48,
             "name": "Brandon King",
             "team": "West Indies",
             "rating": 538,
@@ -7747,7 +7767,7 @@
             "imageUrl": "https://images.icc-cricket.com/image/upload/t_player-headshot-portrait-lg-webp/prd/assets/players/generic/colored/64543.png"
           },
           {
-            "rank": 47,
+            "rank": 49,
             "name": "Vaibhav Sooryavanshi",
             "team": "India",
             "rating": 536,
@@ -7757,7 +7777,7 @@
             "imageUrl": "https://images.icc-cricket.com/image/upload/t_player-headshot-portrait-lg-webp/prd/assets/players/generic/colored/114349.png"
           },
           {
-            "rank": 48,
+            "rank": 50,
             "name": "Richie Berrington",
             "team": "Scotland",
             "rating": 530,
@@ -7767,7 +7787,7 @@
             "imageUrl": "https://images.icc-cricket.com/image/upload/t_player-headshot-portrait-lg-webp/prd/assets/players/generic/colored/4023.png"
           },
           {
-            "rank": 49,
+            "rank": 51,
             "name": "Brandon McMullen",
             "team": "Scotland",
             "rating": 528,
@@ -7777,7 +7797,7 @@
             "imageUrl": "https://images.icc-cricket.com/image/upload/t_player-headshot-portrait-lg-webp/prd/assets/players/generic/colored/97960.png"
           },
           {
-            "rank": 49,
+            "rank": 51,
             "rankTied": true,
             "name": "Andries Gous",
             "team": "USA",
@@ -7788,17 +7808,17 @@
             "imageUrl": "https://images.icc-cricket.com/image/upload/t_player-headshot-portrait-lg-webp/prd/assets/players/generic/colored/57274.png"
           },
           {
-            "rank": 51,
+            "rank": 53,
             "name": "Sikandar Raza",
             "team": "Zimbabwe",
-            "rating": 525,
-            "points": 525,
+            "rating": 524,
+            "points": 524,
             "iccPlayerId": "25422",
             "profileUrl": "https://www.icc-cricket.com/rankings/25422/sikandar-raza",
             "imageUrl": "https://images.icc-cricket.com/image/upload/t_player-headshot-portrait-lg-webp/prd/assets/players/generic/colored/25422.png"
           },
           {
-            "rank": 52,
+            "rank": 54,
             "name": "Sediqullah Atal",
             "team": "Afghanistan",
             "rating": 520,
@@ -7808,7 +7828,17 @@
             "imageUrl": "https://images.icc-cricket.com/image/upload/t_player-headshot-portrait-lg-webp/prd/assets/players/generic/colored/70227.png"
           },
           {
-            "rank": 53,
+            "rank": 55,
+            "name": "Gerhard Erasmus",
+            "team": "Namibia",
+            "rating": 516,
+            "points": 516,
+            "iccPlayerId": "57890",
+            "profileUrl": "https://www.icc-cricket.com/rankings/57890/gerhard-erasmus",
+            "imageUrl": "https://images.icc-cricket.com/image/upload/t_player-headshot-portrait-lg-webp/prd/assets/players/generic/colored/57890.png"
+          },
+          {
+            "rank": 56,
             "name": "Parvez Hossain Emon",
             "team": "Bangladesh",
             "rating": 514,
@@ -7818,7 +7848,7 @@
             "imageUrl": "https://images.icc-cricket.com/image/upload/t_player-headshot-portrait-lg-webp/prd/assets/players/generic/colored/70418.png"
           },
           {
-            "rank": 54,
+            "rank": 57,
             "name": "Dasun Shanaka",
             "team": "Sri Lanka",
             "rating": 513,
@@ -7828,7 +7858,7 @@
             "imageUrl": "https://images.icc-cricket.com/image/upload/t_player-headshot-portrait-lg-webp/prd/assets/players/generic/colored/59067.png"
           },
           {
-            "rank": 54,
+            "rank": 57,
             "rankTied": true,
             "name": "Glenn Phillips",
             "team": "New Zealand",
@@ -7839,7 +7869,7 @@
             "imageUrl": "https://images.icc-cricket.com/image/upload/t_player-headshot-portrait-lg-webp/prd/assets/players/generic/colored/65295.png"
           },
           {
-            "rank": 54,
+            "rank": 57,
             "rankTied": true,
             "name": "Kushal Bhurtel",
             "team": "Nepal",
@@ -7850,7 +7880,7 @@
             "imageUrl": "https://images.icc-cricket.com/image/upload/t_player-headshot-portrait-lg-webp/prd/assets/players/generic/colored/66128.png"
           },
           {
-            "rank": 57,
+            "rank": 60,
             "name": "Kamindu Mendis",
             "team": "Sri Lanka",
             "rating": 509,
@@ -7860,17 +7890,7 @@
             "imageUrl": "https://images.icc-cricket.com/image/upload/t_player-headshot-portrait-lg-webp/prd/assets/players/generic/colored/65034.png"
           },
           {
-            "rank": 58,
-            "name": "Reeza Hendricks",
-            "team": "South Africa",
-            "rating": 505,
-            "points": 505,
-            "iccPlayerId": "4356",
-            "profileUrl": "https://www.icc-cricket.com/rankings/4356/reeza-hendricks",
-            "imageUrl": "https://images.icc-cricket.com/image/upload/t_player-headshot-portrait-lg-webp/prd/assets/players/generic/colored/4356.png"
-          },
-          {
-            "rank": 59,
+            "rank": 61,
             "name": "Shubham Ranjane",
             "team": "USA",
             "rating": 501,
@@ -7880,7 +7900,7 @@
             "imageUrl": "https://images.icc-cricket.com/image/upload/t_player-headshot-portrait-lg-webp/prd/assets/players/generic/colored/62006.png"
           },
           {
-            "rank": 60,
+            "rank": 62,
             "name": "Yuvraj Samra",
             "team": "Canada",
             "rating": 500,
@@ -7890,7 +7910,7 @@
             "imageUrl": "https://images.icc-cricket.com/image/upload/t_player-headshot-portrait-lg-webp/prd/assets/players/generic/colored/110977.png"
           },
           {
-            "rank": 61,
+            "rank": 63,
             "name": "Glenn Maxwell",
             "team": "Australia",
             "rating": 499,
@@ -7900,7 +7920,7 @@
             "imageUrl": "https://images.icc-cricket.com/image/upload/t_player-headshot-portrait-lg-webp/prd/assets/players/generic/colored/10085.png"
           },
           {
-            "rank": 62,
+            "rank": 64,
             "name": "Will Jacks",
             "team": "England",
             "rating": 497,
@@ -7910,7 +7930,7 @@
             "imageUrl": "https://images.icc-cricket.com/image/upload/t_player-headshot-portrait-lg-webp/prd/assets/players/generic/colored/66927.png"
           },
           {
-            "rank": 63,
+            "rank": 65,
             "name": "Litton Das",
             "team": "Bangladesh",
             "rating": 496,
@@ -7920,7 +7940,7 @@
             "imageUrl": "https://images.icc-cricket.com/image/upload/t_player-headshot-portrait-lg-webp/prd/assets/players/generic/colored/63206.png"
           },
           {
-            "rank": 63,
+            "rank": 65,
             "rankTied": true,
             "name": "Dipendra Singh Airee",
             "team": "Nepal",
@@ -7931,7 +7951,18 @@
             "imageUrl": "https://images.icc-cricket.com/image/upload/t_player-headshot-portrait-lg-webp/prd/assets/players/generic/colored/66061.png"
           },
           {
-            "rank": 65,
+            "rank": 67,
+            "name": "Reeza Hendricks",
+            "team": "South Africa",
+            "rating": 495,
+            "points": 495,
+            "iccPlayerId": "4356",
+            "profileUrl": "https://www.icc-cricket.com/rankings/4356/reeza-hendricks",
+            "imageUrl": "https://images.icc-cricket.com/image/upload/t_player-headshot-portrait-lg-webp/prd/assets/players/generic/colored/4356.png"
+          },
+          {
+            "rank": 67,
+            "rankTied": true,
             "name": "Alishan Sharafu",
             "team": "United Arab Emirates",
             "rating": 495,
@@ -7941,7 +7972,7 @@
             "imageUrl": "https://images.icc-cricket.com/image/upload/t_player-headshot-portrait-lg-webp/prd/assets/players/generic/colored/70270.png"
           },
           {
-            "rank": 66,
+            "rank": 69,
             "name": "Max O'Dowd",
             "team": "Netherlands",
             "rating": 491,
@@ -7951,18 +7982,7 @@
             "imageUrl": "https://images.icc-cricket.com/image/upload/t_player-headshot-portrait-lg-webp/prd/assets/players/generic/colored/65585.png"
           },
           {
-            "rank": 66,
-            "rankTied": true,
-            "name": "Tristan Stubbs",
-            "team": "South Africa",
-            "rating": 491,
-            "points": 491,
-            "iccPlayerId": "74761",
-            "profileUrl": "https://www.icc-cricket.com/rankings/74761/tristan-stubbs",
-            "imageUrl": "https://images.icc-cricket.com/image/upload/t_player-headshot-portrait-lg-webp/prd/assets/players/generic/colored/74761.png"
-          },
-          {
-            "rank": 68,
+            "rank": 70,
             "name": "Ben Duckett",
             "team": "England",
             "rating": 488,
@@ -7972,7 +7992,7 @@
             "imageUrl": "https://images.icc-cricket.com/image/upload/t_player-headshot-portrait-lg-webp/prd/assets/players/generic/colored/63082.png"
           },
           {
-            "rank": 68,
+            "rank": 70,
             "rankTied": true,
             "name": "Daryl Mitchell",
             "team": "New Zealand",
@@ -7983,7 +8003,7 @@
             "imageUrl": "https://images.icc-cricket.com/image/upload/t_player-headshot-portrait-lg-webp/prd/assets/players/generic/colored/57444.png"
           },
           {
-            "rank": 70,
+            "rank": 72,
             "name": "Hardik Pandya",
             "team": "India",
             "rating": 483,
@@ -7993,7 +8013,7 @@
             "imageUrl": "https://images.icc-cricket.com/image/upload/t_player-headshot-portrait-lg-webp/prd/assets/players/generic/colored/63751.png"
           },
           {
-            "rank": 71,
+            "rank": 73,
             "name": "Fakhar Zaman",
             "team": "Pakistan",
             "rating": 481,
@@ -8003,18 +8023,29 @@
             "imageUrl": "https://images.icc-cricket.com/image/upload/t_player-headshot-portrait-lg-webp/prd/assets/players/generic/colored/57492.png"
           },
           {
-            "rank": 71,
+            "rank": 73,
             "rankTied": true,
-            "name": "Gerhard Erasmus",
+            "name": "Tristan Stubbs",
+            "team": "South Africa",
+            "rating": 481,
+            "points": 481,
+            "iccPlayerId": "74761",
+            "profileUrl": "https://www.icc-cricket.com/rankings/74761/tristan-stubbs",
+            "imageUrl": "https://images.icc-cricket.com/image/upload/t_player-headshot-portrait-lg-webp/prd/assets/players/generic/colored/74761.png"
+          },
+          {
+            "rank": 73,
+            "rankTied": true,
+            "name": "Louren Steenkamp",
             "team": "Namibia",
             "rating": 481,
             "points": 481,
-            "iccPlayerId": "57890",
-            "profileUrl": "https://www.icc-cricket.com/rankings/57890/gerhard-erasmus",
-            "imageUrl": "https://images.icc-cricket.com/image/upload/t_player-headshot-portrait-lg-webp/prd/assets/players/generic/colored/57890.png"
+            "iccPlayerId": "67950",
+            "profileUrl": "https://www.icc-cricket.com/rankings/67950/louren-steenkamp",
+            "imageUrl": "https://images.icc-cricket.com/image/upload/t_player-headshot-portrait-lg-webp/prd/assets/players/generic/colored/67950.png"
           },
           {
-            "rank": 71,
+            "rank": 73,
             "rankTied": true,
             "name": "Matt Renshaw",
             "team": "Australia",
@@ -8025,7 +8056,7 @@
             "imageUrl": "https://images.icc-cricket.com/image/upload/t_player-headshot-portrait-lg-webp/prd/assets/players/generic/colored/65050.png"
           },
           {
-            "rank": 74,
+            "rank": 77,
             "name": "Mark Chapman",
             "team": "New Zealand",
             "rating": 479,
@@ -8035,7 +8066,7 @@
             "imageUrl": "https://images.icc-cricket.com/image/upload/t_player-headshot-portrait-lg-webp/prd/assets/players/generic/colored/60536.png"
           },
           {
-            "rank": 75,
+            "rank": 78,
             "name": "Paul Stirling",
             "team": "Ireland",
             "rating": 477,
@@ -8045,7 +8076,7 @@
             "imageUrl": "https://images.icc-cricket.com/image/upload/t_player-headshot-portrait-lg-webp/prd/assets/players/generic/colored/4476.png"
           },
           {
-            "rank": 76,
+            "rank": 79,
             "name": "Anshy Rath",
             "team": "Hong Kong, China",
             "rating": 476,
@@ -8055,7 +8086,7 @@
             "imageUrl": "https://images.icc-cricket.com/image/upload/t_player-headshot-portrait-lg-webp/prd/assets/players/generic/colored/65108.png"
           },
           {
-            "rank": 77,
+            "rank": 80,
             "name": "Lorcan Tucker",
             "team": "Ireland",
             "rating": 475,
@@ -8065,7 +8096,7 @@
             "imageUrl": "https://images.icc-cricket.com/image/upload/t_player-headshot-portrait-lg-webp/prd/assets/players/generic/colored/66087.png"
           },
           {
-            "rank": 77,
+            "rank": 80,
             "rankTied": true,
             "name": "Devon Conway",
             "team": "New Zealand",
@@ -8076,7 +8107,7 @@
             "imageUrl": "https://images.icc-cricket.com/image/upload/t_player-headshot-portrait-lg-webp/prd/assets/players/generic/colored/13177.png"
           },
           {
-            "rank": 79,
+            "rank": 82,
             "name": "Harry Tector",
             "team": "Ireland",
             "rating": 473,
@@ -8086,7 +8117,7 @@
             "imageUrl": "https://images.icc-cricket.com/image/upload/t_player-headshot-portrait-lg-webp/prd/assets/players/generic/colored/66085.png"
           },
           {
-            "rank": 80,
+            "rank": 83,
             "name": "Marcus Stoinis",
             "team": "Australia",
             "rating": 464,
@@ -8096,18 +8127,18 @@
             "imageUrl": "https://images.icc-cricket.com/image/upload/t_player-headshot-portrait-lg-webp/prd/assets/players/generic/colored/4311.png"
           },
           {
-            "rank": 80,
-            "rankTied": true,
+            "rank": 84,
             "name": "Ryan Burl",
             "team": "Zimbabwe",
-            "rating": 464,
-            "points": 464,
+            "rating": 461,
+            "points": 461,
             "iccPlayerId": "58070",
             "profileUrl": "https://www.icc-cricket.com/rankings/58070/ryan-burl",
             "imageUrl": "https://images.icc-cricket.com/image/upload/t_player-headshot-portrait-lg-webp/prd/assets/players/generic/colored/58070.png"
           },
           {
-            "rank": 82,
+            "rank": 84,
+            "rankTied": true,
             "name": "Benjamin Manenti",
             "team": "Italy",
             "rating": 461,
@@ -8117,7 +8148,7 @@
             "imageUrl": "https://images.icc-cricket.com/image/upload/t_player-headshot-portrait-lg-webp/prd/assets/players/generic/colored/70728.png"
           },
           {
-            "rank": 83,
+            "rank": 86,
             "name": "Darwish Rasooli",
             "team": "Afghanistan",
             "rating": 458,
@@ -8127,7 +8158,7 @@
             "imageUrl": "https://images.icc-cricket.com/image/upload/t_player-headshot-portrait-lg-webp/prd/assets/players/generic/colored/67547.png"
           },
           {
-            "rank": 84,
+            "rank": 87,
             "name": "Ross Adair",
             "team": "Ireland",
             "rating": 456,
@@ -8137,7 +8168,7 @@
             "imageUrl": "https://images.icc-cricket.com/image/upload/t_player-headshot-portrait-lg-webp/prd/assets/players/generic/colored/80575.png"
           },
           {
-            "rank": 85,
+            "rank": 88,
             "name": "Mohammad Nabi",
             "team": "Afghanistan",
             "rating": 454,
@@ -8147,7 +8178,18 @@
             "imageUrl": "https://images.icc-cricket.com/image/upload/t_player-headshot-portrait-lg-webp/prd/assets/players/generic/colored/7797.png"
           },
           {
-            "rank": 86,
+            "rank": 89,
+            "name": "Jan Frylinck",
+            "team": "Namibia",
+            "rating": 451,
+            "points": 451,
+            "iccPlayerId": "57688",
+            "profileUrl": "https://www.icc-cricket.com/rankings/57688/jan-frylinck",
+            "imageUrl": "https://images.icc-cricket.com/image/upload/t_player-headshot-portrait-lg-webp/prd/assets/players/generic/colored/57688.png"
+          },
+          {
+            "rank": 89,
+            "rankTied": true,
             "name": "Tom Banton",
             "team": "England",
             "rating": 451,
@@ -8157,7 +8199,7 @@
             "imageUrl": "https://images.icc-cricket.com/image/upload/t_player-headshot-portrait-lg-webp/prd/assets/players/generic/colored/66923.png"
           },
           {
-            "rank": 87,
+            "rank": 91,
             "name": "Roston Chase",
             "team": "West Indies",
             "rating": 449,
@@ -8167,7 +8209,7 @@
             "imageUrl": "https://images.icc-cricket.com/image/upload/t_player-headshot-portrait-lg-webp/prd/assets/players/generic/colored/58071.png"
           },
           {
-            "rank": 88,
+            "rank": 92,
             "name": "Rohit Paudel",
             "team": "Nepal",
             "rating": 447,
@@ -8177,7 +8219,7 @@
             "imageUrl": "https://images.icc-cricket.com/image/upload/t_player-headshot-portrait-lg-webp/prd/assets/players/generic/colored/68435.png"
           },
           {
-            "rank": 88,
+            "rank": 92,
             "rankTied": true,
             "name": "Shubman Gill",
             "team": "India",
@@ -8188,7 +8230,7 @@
             "imageUrl": "https://images.icc-cricket.com/image/upload/t_player-headshot-portrait-lg-webp/prd/assets/players/generic/colored/66818.png"
           },
           {
-            "rank": 90,
+            "rank": 94,
             "name": "Charith Asalanka",
             "team": "Sri Lanka",
             "rating": 445,
@@ -8198,28 +8240,18 @@
             "imageUrl": "https://images.icc-cricket.com/image/upload/t_player-headshot-portrait-lg-webp/prd/assets/players/generic/colored/65038.png"
           },
           {
-            "rank": 90,
-            "rankTied": true,
-            "name": "Connor Esterhuizen",
-            "team": "South Africa",
-            "rating": 445,
-            "points": 445,
-            "iccPlayerId": "92850",
-            "profileUrl": "https://www.icc-cricket.com/rankings/92850/connor-esterhuizen",
-            "imageUrl": "https://images.icc-cricket.com/image/upload/t_player-headshot-portrait-lg-webp/prd/assets/players/generic/colored/92850.png"
-          },
-          {
-            "rank": 92,
+            "rank": 95,
             "name": "David Miller",
             "team": "South Africa",
-            "rating": 444,
-            "points": 444,
+            "rating": 435,
+            "points": 435,
             "iccPlayerId": "5313",
             "profileUrl": "https://www.icc-cricket.com/rankings/5313/david-miller",
             "imageUrl": "https://images.icc-cricket.com/image/upload/t_player-headshot-portrait-lg-webp/prd/assets/players/generic/colored/5313.png"
           },
           {
-            "rank": 93,
+            "rank": 95,
+            "rankTied": true,
             "name": "Johnson Charles",
             "team": "West Indies",
             "rating": 435,
@@ -8229,7 +8261,7 @@
             "imageUrl": "https://images.icc-cricket.com/image/upload/t_player-headshot-portrait-lg-webp/prd/assets/players/generic/colored/25890.png"
           },
           {
-            "rank": 94,
+            "rank": 97,
             "name": "Rachin Ravindra",
             "team": "New Zealand",
             "rating": 430,
@@ -8239,7 +8271,7 @@
             "imageUrl": "https://images.icc-cricket.com/image/upload/t_player-headshot-portrait-lg-webp/prd/assets/players/generic/colored/66053.png"
           },
           {
-            "rank": 94,
+            "rank": 97,
             "rankTied": true,
             "name": "Jaker Ali",
             "team": "Bangladesh",
@@ -8250,7 +8282,7 @@
             "imageUrl": "https://images.icc-cricket.com/image/upload/t_player-headshot-portrait-lg-webp/prd/assets/players/generic/colored/65411.png"
           },
           {
-            "rank": 96,
+            "rank": 99,
             "name": "Shayan Jahangir",
             "team": "USA",
             "rating": 425,
@@ -8260,7 +8292,7 @@
             "imageUrl": "https://images.icc-cricket.com/image/upload/t_player-headshot-portrait-lg-webp/prd/assets/players/generic/colored/64154.png"
           },
           {
-            "rank": 97,
+            "rank": 100,
             "name": "Romario Shepherd",
             "team": "West Indies",
             "rating": 422,
@@ -8268,37 +8300,6 @@
             "iccPlayerId": "66243",
             "profileUrl": "https://www.icc-cricket.com/rankings/66243/romario-shepherd",
             "imageUrl": "https://images.icc-cricket.com/image/upload/t_player-headshot-portrait-lg-webp/prd/assets/players/generic/colored/66243.png"
-          },
-          {
-            "rank": 98,
-            "name": "Jan Frylinck",
-            "team": "Namibia",
-            "rating": 419,
-            "points": 419,
-            "iccPlayerId": "57688",
-            "profileUrl": "https://www.icc-cricket.com/rankings/57688/jan-frylinck",
-            "imageUrl": "https://images.icc-cricket.com/image/upload/t_player-headshot-portrait-lg-webp/prd/assets/players/generic/colored/57688.png"
-          },
-          {
-            "rank": 99,
-            "name": "Scott Edwards",
-            "team": "Netherlands",
-            "rating": 416,
-            "points": 416,
-            "iccPlayerId": "67919",
-            "profileUrl": "https://www.icc-cricket.com/rankings/67919/scott-edwards",
-            "imageUrl": "https://images.icc-cricket.com/image/upload/t_player-headshot-portrait-lg-webp/prd/assets/players/generic/colored/67919.png"
-          },
-          {
-            "rank": 99,
-            "rankTied": true,
-            "name": "Azmatullah Omarzai",
-            "team": "Afghanistan",
-            "rating": 416,
-            "points": 416,
-            "iccPlayerId": "67516",
-            "profileUrl": "https://www.icc-cricket.com/rankings/67516/azmatullah-omarzai",
-            "imageUrl": "https://images.icc-cricket.com/image/upload/t_player-headshot-portrait-lg-webp/prd/assets/players/generic/colored/67516.png"
           }
         ],
         "topBowlers": [
@@ -8406,16 +8407,6 @@
           },
           {
             "rank": 11,
-            "name": "Corbin Bosch",
-            "team": "South Africa",
-            "rating": 650,
-            "points": 650,
-            "iccPlayerId": "63605",
-            "profileUrl": "https://www.icc-cricket.com/rankings/63605/corbin-bosch",
-            "imageUrl": "https://images.icc-cricket.com/image/upload/t_player-headshot-portrait-lg-webp/prd/assets/players/generic/colored/63605.png"
-          },
-          {
-            "rank": 12,
             "name": "Nasum Ahmed",
             "team": "Bangladesh",
             "rating": 646,
@@ -8425,7 +8416,7 @@
             "imageUrl": "https://images.icc-cricket.com/image/upload/t_player-headshot-portrait-lg-webp/prd/assets/players/generic/colored/57999.png"
           },
           {
-            "rank": 12,
+            "rank": 11,
             "rankTied": true,
             "name": "Matthew Forde",
             "team": "West Indies",
@@ -8436,7 +8427,7 @@
             "imageUrl": "https://images.icc-cricket.com/image/upload/t_player-headshot-portrait-lg-webp/prd/assets/players/generic/colored/74165.png"
           },
           {
-            "rank": 14,
+            "rank": 13,
             "name": "Dunith Wellalage",
             "team": "Sri Lanka",
             "rating": 640,
@@ -8444,6 +8435,16 @@
             "iccPlayerId": "69651",
             "profileUrl": "https://www.icc-cricket.com/rankings/69651/dunith-wellalage",
             "imageUrl": "https://images.icc-cricket.com/image/upload/t_player-headshot-portrait-lg-webp/prd/assets/players/generic/colored/69651.png"
+          },
+          {
+            "rank": 14,
+            "name": "Corbin Bosch",
+            "team": "South Africa",
+            "rating": 637,
+            "points": 637,
+            "iccPlayerId": "63605",
+            "profileUrl": "https://www.icc-cricket.com/rankings/63605/corbin-bosch",
+            "imageUrl": "https://images.icc-cricket.com/image/upload/t_player-headshot-portrait-lg-webp/prd/assets/players/generic/colored/63605.png"
           },
           {
             "rank": 15,
@@ -8528,7 +8529,18 @@
             "imageUrl": "https://images.icc-cricket.com/image/upload/t_player-headshot-portrait-lg-webp/prd/assets/players/generic/colored/4266.png"
           },
           {
-            "rank": 23,
+            "rank": 22,
+            "rankTied": true,
+            "name": "Brad Evans",
+            "team": "Zimbabwe",
+            "rating": 624,
+            "points": 624,
+            "iccPlayerId": "69377",
+            "profileUrl": "https://www.icc-cricket.com/rankings/69377/brad-evans",
+            "imageUrl": "https://images.icc-cricket.com/image/upload/t_player-headshot-portrait-lg-webp/prd/assets/players/generic/colored/69377.png"
+          },
+          {
+            "rank": 24,
             "name": "Matthew Humphreys",
             "team": "Ireland",
             "rating": 619,
@@ -8538,7 +8550,7 @@
             "imageUrl": "https://images.icc-cricket.com/image/upload/t_player-headshot-portrait-lg-webp/prd/assets/players/generic/colored/85951.png"
           },
           {
-            "rank": 24,
+            "rank": 25,
             "name": "Arshdeep Singh",
             "team": "India",
             "rating": 617,
@@ -8548,7 +8560,7 @@
             "imageUrl": "https://images.icc-cricket.com/image/upload/t_player-headshot-portrait-lg-webp/prd/assets/players/generic/colored/67905.png"
           },
           {
-            "rank": 24,
+            "rank": 25,
             "rankTied": true,
             "name": "Rishad Hossain",
             "team": "Bangladesh",
@@ -8559,17 +8571,17 @@
             "imageUrl": "https://images.icc-cricket.com/image/upload/t_player-headshot-portrait-lg-webp/prd/assets/players/generic/colored/70203.png"
           },
           {
-            "rank": 26,
-            "name": "Brad Evans",
+            "rank": 27,
+            "name": "Sikandar Raza",
             "team": "Zimbabwe",
             "rating": 613,
             "points": 613,
-            "iccPlayerId": "69377",
-            "profileUrl": "https://www.icc-cricket.com/rankings/69377/brad-evans",
-            "imageUrl": "https://images.icc-cricket.com/image/upload/t_player-headshot-portrait-lg-webp/prd/assets/players/generic/colored/69377.png"
+            "iccPlayerId": "25422",
+            "profileUrl": "https://www.icc-cricket.com/rankings/25422/sikandar-raza",
+            "imageUrl": "https://images.icc-cricket.com/image/upload/t_player-headshot-portrait-lg-webp/prd/assets/players/generic/colored/25422.png"
           },
           {
-            "rank": 27,
+            "rank": 28,
             "name": "Shamar Joseph",
             "team": "West Indies",
             "rating": 611,
@@ -8579,7 +8591,7 @@
             "imageUrl": "https://images.icc-cricket.com/image/upload/t_player-headshot-portrait-lg-webp/prd/assets/players/generic/colored/101907.png"
           },
           {
-            "rank": 28,
+            "rank": 29,
             "name": "Jason Holder",
             "team": "West Indies",
             "rating": 610,
@@ -8589,17 +8601,17 @@
             "imageUrl": "https://images.icc-cricket.com/image/upload/t_player-headshot-portrait-lg-webp/prd/assets/players/generic/colored/10232.png"
           },
           {
-            "rank": 29,
-            "name": "Sikandar Raza",
+            "rank": 30,
+            "name": "Blessing Muzarabani",
             "team": "Zimbabwe",
-            "rating": 603,
-            "points": 603,
-            "iccPlayerId": "25422",
-            "profileUrl": "https://www.icc-cricket.com/rankings/25422/sikandar-raza",
-            "imageUrl": "https://images.icc-cricket.com/image/upload/t_player-headshot-portrait-lg-webp/prd/assets/players/generic/colored/25422.png"
+            "rating": 604,
+            "points": 604,
+            "iccPlayerId": "67784",
+            "profileUrl": "https://www.icc-cricket.com/rankings/67784/blessing-muzarabani",
+            "imageUrl": "https://images.icc-cricket.com/image/upload/t_player-headshot-portrait-lg-webp/prd/assets/players/generic/colored/67784.png"
           },
           {
-            "rank": 30,
+            "rank": 31,
             "name": "Shaheen Afridi",
             "team": "Pakistan",
             "rating": 602,
@@ -8609,7 +8621,7 @@
             "imageUrl": "https://images.icc-cricket.com/image/upload/t_player-headshot-portrait-lg-webp/prd/assets/players/generic/colored/66833.png"
           },
           {
-            "rank": 31,
+            "rank": 32,
             "name": "Gudakesh Motie",
             "team": "West Indies",
             "rating": 599,
@@ -8619,7 +8631,7 @@
             "imageUrl": "https://images.icc-cricket.com/image/upload/t_player-headshot-portrait-lg-webp/prd/assets/players/generic/colored/64262.png"
           },
           {
-            "rank": 32,
+            "rank": 33,
             "name": "Axar Patel",
             "team": "India",
             "rating": 598,
@@ -8627,17 +8639,6 @@
             "iccPlayerId": "62576",
             "profileUrl": "https://www.icc-cricket.com/rankings/62576/axar-patel",
             "imageUrl": "https://images.icc-cricket.com/image/upload/t_player-headshot-portrait-lg-webp/prd/assets/players/generic/colored/62576.png"
-          },
-          {
-            "rank": 32,
-            "rankTied": true,
-            "name": "Blessing Muzarabani",
-            "team": "Zimbabwe",
-            "rating": 598,
-            "points": 598,
-            "iccPlayerId": "67784",
-            "profileUrl": "https://www.icc-cricket.com/rankings/67784/blessing-muzarabani",
-            "imageUrl": "https://images.icc-cricket.com/image/upload/t_player-headshot-portrait-lg-webp/prd/assets/players/generic/colored/67784.png"
           },
           {
             "rank": 34,
@@ -8690,18 +8691,18 @@
             "imageUrl": "https://images.icc-cricket.com/image/upload/t_player-headshot-portrait-lg-webp/prd/assets/players/generic/colored/81030.png"
           },
           {
-            "rank": 39,
-            "name": "Lungi Ngidi",
+            "rank": 38,
+            "rankTied": true,
+            "name": "Kwena Maphaka",
             "team": "South Africa",
-            "rating": 580,
-            "points": 580,
-            "iccPlayerId": "64225",
-            "profileUrl": "https://www.icc-cricket.com/rankings/64225/lungi-ngidi",
-            "imageUrl": "https://images.icc-cricket.com/image/upload/t_player-headshot-portrait-lg-webp/prd/assets/players/generic/colored/64225.png"
+            "rating": 581,
+            "points": 581,
+            "iccPlayerId": "90908",
+            "profileUrl": "https://www.icc-cricket.com/rankings/90908/kwena-maphaka",
+            "imageUrl": "https://images.icc-cricket.com/image/upload/t_player-headshot-portrait-lg-webp/prd/assets/players/generic/colored/90908.png"
           },
           {
-            "rank": 39,
-            "rankTied": true,
+            "rank": 40,
             "name": "Azmatullah Omarzai",
             "team": "Afghanistan",
             "rating": 580,
@@ -8732,6 +8733,17 @@
           },
           {
             "rank": 43,
+            "name": "Lungi Ngidi",
+            "team": "South Africa",
+            "rating": 569,
+            "points": 569,
+            "iccPlayerId": "64225",
+            "profileUrl": "https://www.icc-cricket.com/rankings/64225/lungi-ngidi",
+            "imageUrl": "https://images.icc-cricket.com/image/upload/t_player-headshot-portrait-lg-webp/prd/assets/players/generic/colored/64225.png"
+          },
+          {
+            "rank": 43,
+            "rankTied": true,
             "name": "Fazalhaq Farooqi",
             "team": "Afghanistan",
             "rating": 569,
@@ -8741,7 +8753,7 @@
             "imageUrl": "https://images.icc-cricket.com/image/upload/t_player-headshot-portrait-lg-webp/prd/assets/players/generic/colored/67927.png"
           },
           {
-            "rank": 44,
+            "rank": 45,
             "name": "Dushmantha Chameera",
             "team": "Sri Lanka",
             "rating": 567,
@@ -8751,7 +8763,7 @@
             "imageUrl": "https://images.icc-cricket.com/image/upload/t_player-headshot-portrait-lg-webp/prd/assets/players/generic/colored/58065.png"
           },
           {
-            "rank": 44,
+            "rank": 45,
             "rankTied": true,
             "name": "Mark Watt",
             "team": "Scotland",
@@ -8762,7 +8774,7 @@
             "imageUrl": "https://images.icc-cricket.com/image/upload/t_player-headshot-portrait-lg-webp/prd/assets/players/generic/colored/64635.png"
           },
           {
-            "rank": 46,
+            "rank": 47,
             "name": "Xavier Bartlett",
             "team": "Australia",
             "rating": 566,
@@ -8772,7 +8784,7 @@
             "imageUrl": "https://images.icc-cricket.com/image/upload/t_player-headshot-portrait-lg-webp/prd/assets/players/generic/colored/66516.png"
           },
           {
-            "rank": 47,
+            "rank": 48,
             "name": "Lockie Ferguson",
             "team": "New Zealand",
             "rating": 563,
@@ -8782,7 +8794,7 @@
             "imageUrl": "https://images.icc-cricket.com/image/upload/t_player-headshot-portrait-lg-webp/prd/assets/players/generic/colored/63719.png"
           },
           {
-            "rank": 48,
+            "rank": 49,
             "name": "Matheesha Pathirana",
             "team": "Sri Lanka",
             "rating": 557,
@@ -8790,16 +8802,6 @@
             "iccPlayerId": "73830",
             "profileUrl": "https://www.icc-cricket.com/rankings/73830/matheesha-pathirana",
             "imageUrl": "https://images.icc-cricket.com/image/upload/t_player-headshot-portrait-lg-webp/prd/assets/players/generic/colored/73830.png"
-          },
-          {
-            "rank": 49,
-            "name": "Marco Jansen",
-            "team": "South Africa",
-            "rating": 556,
-            "points": 556,
-            "iccPlayerId": "69409",
-            "profileUrl": "https://www.icc-cricket.com/rankings/69409/marco-jansen",
-            "imageUrl": "https://images.icc-cricket.com/image/upload/t_player-headshot-portrait-lg-webp/prd/assets/players/generic/colored/69409.png"
           },
           {
             "rank": 50,
@@ -8833,26 +8835,16 @@
           },
           {
             "rank": 53,
-            "name": "Richard Ngarava",
-            "team": "Zimbabwe",
-            "rating": 547,
-            "points": 547,
-            "iccPlayerId": "65649",
-            "profileUrl": "https://www.icc-cricket.com/rankings/65649/richard-ngarava",
-            "imageUrl": "https://images.icc-cricket.com/image/upload/t_player-headshot-portrait-lg-webp/prd/assets/players/generic/colored/65649.png"
-          },
-          {
-            "rank": 54,
-            "name": "Kwena Maphaka",
+            "name": "Marco Jansen",
             "team": "South Africa",
             "rating": 545,
             "points": 545,
-            "iccPlayerId": "90908",
-            "profileUrl": "https://www.icc-cricket.com/rankings/90908/kwena-maphaka",
-            "imageUrl": "https://images.icc-cricket.com/image/upload/t_player-headshot-portrait-lg-webp/prd/assets/players/generic/colored/90908.png"
+            "iccPlayerId": "69409",
+            "profileUrl": "https://www.icc-cricket.com/rankings/69409/marco-jansen",
+            "imageUrl": "https://images.icc-cricket.com/image/upload/t_player-headshot-portrait-lg-webp/prd/assets/players/generic/colored/69409.png"
           },
           {
-            "rank": 55,
+            "rank": 54,
             "name": "Jamie Overton",
             "team": "England",
             "rating": 542,
@@ -8862,7 +8854,7 @@
             "imageUrl": "https://images.icc-cricket.com/image/upload/t_player-headshot-portrait-lg-webp/prd/assets/players/generic/colored/58482.png"
           },
           {
-            "rank": 56,
+            "rank": 55,
             "name": "Sam Curran",
             "team": "England",
             "rating": 539,
@@ -8872,17 +8864,17 @@
             "imageUrl": "https://images.icc-cricket.com/image/upload/t_player-headshot-portrait-lg-webp/prd/assets/players/generic/colored/65584.png"
           },
           {
-            "rank": 57,
-            "name": "Keshav Maharaj",
-            "team": "South Africa",
+            "rank": 56,
+            "name": "Richard Ngarava",
+            "team": "Zimbabwe",
             "rating": 536,
             "points": 536,
-            "iccPlayerId": "48607",
-            "profileUrl": "https://www.icc-cricket.com/rankings/48607/keshav-maharaj",
-            "imageUrl": "https://images.icc-cricket.com/image/upload/t_player-headshot-portrait-lg-webp/prd/assets/players/generic/colored/48607.png"
+            "iccPlayerId": "65649",
+            "profileUrl": "https://www.icc-cricket.com/rankings/65649/richard-ngarava",
+            "imageUrl": "https://images.icc-cricket.com/image/upload/t_player-headshot-portrait-lg-webp/prd/assets/players/generic/colored/65649.png"
           },
           {
-            "rank": 57,
+            "rank": 56,
             "rankTied": true,
             "name": "Nuwan Thushara",
             "team": "Sri Lanka",
@@ -8891,6 +8883,16 @@
             "iccPlayerId": "66158",
             "profileUrl": "https://www.icc-cricket.com/rankings/66158/nuwan-thushara",
             "imageUrl": "https://images.icc-cricket.com/image/upload/t_player-headshot-portrait-lg-webp/prd/assets/players/generic/colored/66158.png"
+          },
+          {
+            "rank": 58,
+            "name": "Keshav Maharaj",
+            "team": "South Africa",
+            "rating": 525,
+            "points": 525,
+            "iccPlayerId": "48607",
+            "profileUrl": "https://www.icc-cricket.com/rankings/48607/keshav-maharaj",
+            "imageUrl": "https://images.icc-cricket.com/image/upload/t_player-headshot-portrait-lg-webp/prd/assets/players/generic/colored/48607.png"
           },
           {
             "rank": 59,
@@ -8914,16 +8916,6 @@
           },
           {
             "rank": 61,
-            "name": "Gerald Coetzee",
-            "team": "South Africa",
-            "rating": 518,
-            "points": 518,
-            "iccPlayerId": "67443",
-            "profileUrl": "https://www.icc-cricket.com/rankings/67443/gerald-coetzee",
-            "imageUrl": "https://images.icc-cricket.com/image/upload/t_player-headshot-portrait-lg-webp/prd/assets/players/generic/colored/67443.png"
-          },
-          {
-            "rank": 62,
             "name": "Dipendra Singh Airee",
             "team": "Nepal",
             "rating": 517,
@@ -8933,7 +8925,7 @@
             "imageUrl": "https://images.icc-cricket.com/image/upload/t_player-headshot-portrait-lg-webp/prd/assets/players/generic/colored/66061.png"
           },
           {
-            "rank": 63,
+            "rank": 62,
             "name": "Noor Ahmad",
             "team": "Afghanistan",
             "rating": 516,
@@ -8943,7 +8935,7 @@
             "imageUrl": "https://images.icc-cricket.com/image/upload/t_player-headshot-portrait-lg-webp/prd/assets/players/generic/colored/71411.png"
           },
           {
-            "rank": 64,
+            "rank": 63,
             "name": "Tanzim Hasan Sakib",
             "team": "Bangladesh",
             "rating": 514,
@@ -8953,7 +8945,7 @@
             "imageUrl": "https://images.icc-cricket.com/image/upload/t_player-headshot-portrait-lg-webp/prd/assets/players/generic/colored/70921.png"
           },
           {
-            "rank": 65,
+            "rank": 64,
             "name": "Shadley van Schalkwyk",
             "team": "USA",
             "rating": 511,
@@ -8963,7 +8955,7 @@
             "imageUrl": "https://images.icc-cricket.com/image/upload/t_player-headshot-portrait-lg-webp/prd/assets/players/generic/colored/9795.png"
           },
           {
-            "rank": 66,
+            "rank": 65,
             "name": "Sufyan Moqim",
             "team": "Pakistan",
             "rating": 510,
@@ -8971,6 +8963,16 @@
             "iccPlayerId": "97317",
             "profileUrl": "https://www.icc-cricket.com/rankings/97317/sufyan-moqim",
             "imageUrl": "https://images.icc-cricket.com/image/upload/t_player-headshot-portrait-lg-webp/prd/assets/players/generic/colored/97317.png"
+          },
+          {
+            "rank": 66,
+            "name": "Gerald Coetzee",
+            "team": "South Africa",
+            "rating": 508,
+            "points": 508,
+            "iccPlayerId": "67443",
+            "profileUrl": "https://www.icc-cricket.com/rankings/67443/gerald-coetzee",
+            "imageUrl": "https://images.icc-cricket.com/image/upload/t_player-headshot-portrait-lg-webp/prd/assets/players/generic/colored/67443.png"
           },
           {
             "rank": 67,
@@ -9005,38 +9007,17 @@
             "imageUrl": "https://images.icc-cricket.com/image/upload/t_player-headshot-portrait-lg-webp/prd/assets/players/generic/colored/66332.png"
           },
           {
-            "rank": 67,
-            "rankTied": true,
+            "rank": 70,
             "name": "Ottniel Baartman",
             "team": "South Africa",
-            "rating": 506,
-            "points": 506,
+            "rating": 496,
+            "points": 496,
             "iccPlayerId": "65089",
             "profileUrl": "https://www.icc-cricket.com/rankings/65089/ottniel-baartman",
             "imageUrl": "https://images.icc-cricket.com/image/upload/t_player-headshot-portrait-lg-webp/prd/assets/players/generic/colored/65089.png"
           },
           {
             "rank": 71,
-            "name": "Kagiso Rabada",
-            "team": "South Africa",
-            "rating": 497,
-            "points": 497,
-            "iccPlayerId": "63611",
-            "profileUrl": "https://www.icc-cricket.com/rankings/63611/kagiso-rabada",
-            "imageUrl": "https://images.icc-cricket.com/image/upload/t_player-headshot-portrait-lg-webp/prd/assets/players/generic/colored/63611.png"
-          },
-          {
-            "rank": 72,
-            "name": "George Linde",
-            "team": "South Africa",
-            "rating": 496,
-            "points": 496,
-            "iccPlayerId": "57533",
-            "profileUrl": "https://www.icc-cricket.com/rankings/57533/george-linde",
-            "imageUrl": "https://images.icc-cricket.com/image/upload/t_player-headshot-portrait-lg-webp/prd/assets/players/generic/colored/57533.png"
-          },
-          {
-            "rank": 73,
             "name": "Sean Abbott",
             "team": "Australia",
             "rating": 495,
@@ -9046,7 +9027,7 @@
             "imageUrl": "https://images.icc-cricket.com/image/upload/t_player-headshot-portrait-lg-webp/prd/assets/players/generic/colored/57028.png"
           },
           {
-            "rank": 74,
+            "rank": 72,
             "name": "Saim Ayub",
             "team": "Pakistan",
             "rating": 492,
@@ -9056,7 +9037,7 @@
             "imageUrl": "https://images.icc-cricket.com/image/upload/t_player-headshot-portrait-lg-webp/prd/assets/players/generic/colored/70241.png"
           },
           {
-            "rank": 75,
+            "rank": 73,
             "name": "Will Jacks",
             "team": "England",
             "rating": 490,
@@ -9066,7 +9047,7 @@
             "imageUrl": "https://images.icc-cricket.com/image/upload/t_player-headshot-portrait-lg-webp/prd/assets/players/generic/colored/66927.png"
           },
           {
-            "rank": 76,
+            "rank": 74,
             "name": "Zakary Foulkes",
             "team": "New Zealand",
             "rating": 488,
@@ -9074,6 +9055,26 @@
             "iccPlayerId": "90571",
             "profileUrl": "https://www.icc-cricket.com/rankings/90571/zakary-foulkes",
             "imageUrl": "https://images.icc-cricket.com/image/upload/t_player-headshot-portrait-lg-webp/prd/assets/players/generic/colored/90571.png"
+          },
+          {
+            "rank": 75,
+            "name": "Kagiso Rabada",
+            "team": "South Africa",
+            "rating": 487,
+            "points": 487,
+            "iccPlayerId": "63611",
+            "profileUrl": "https://www.icc-cricket.com/rankings/63611/kagiso-rabada",
+            "imageUrl": "https://images.icc-cricket.com/image/upload/t_player-headshot-portrait-lg-webp/prd/assets/players/generic/colored/63611.png"
+          },
+          {
+            "rank": 76,
+            "name": "George Linde",
+            "team": "South Africa",
+            "rating": 486,
+            "points": 486,
+            "iccPlayerId": "57533",
+            "profileUrl": "https://www.icc-cricket.com/rankings/57533/george-linde",
+            "imageUrl": "https://images.icc-cricket.com/image/upload/t_player-headshot-portrait-lg-webp/prd/assets/players/generic/colored/57533.png"
           },
           {
             "rank": 77,
@@ -9087,6 +9088,17 @@
           },
           {
             "rank": 78,
+            "name": "Bjorn Fortuin",
+            "team": "South Africa",
+            "rating": 484,
+            "points": 484,
+            "iccPlayerId": "64282",
+            "profileUrl": "https://www.icc-cricket.com/rankings/64282/bjorn-fortuin",
+            "imageUrl": "https://images.icc-cricket.com/image/upload/t_player-headshot-portrait-lg-webp/prd/assets/players/generic/colored/64282.png"
+          },
+          {
+            "rank": 78,
+            "rankTied": true,
             "name": "Haider Ali",
             "team": "United Arab Emirates",
             "rating": 484,
@@ -9096,7 +9108,7 @@
             "imageUrl": "https://images.icc-cricket.com/image/upload/t_player-headshot-portrait-lg-webp/prd/assets/players/generic/colored/70196.png"
           },
           {
-            "rank": 79,
+            "rank": 80,
             "name": "Ben Dwarshuis",
             "team": "Australia",
             "rating": 470,
@@ -9106,7 +9118,7 @@
             "imageUrl": "https://images.icc-cricket.com/image/upload/t_player-headshot-portrait-lg-webp/prd/assets/players/generic/colored/64473.png"
           },
           {
-            "rank": 80,
+            "rank": 81,
             "name": "Mark Adair",
             "team": "Ireland",
             "rating": 466,
@@ -9116,7 +9128,7 @@
             "imageUrl": "https://images.icc-cricket.com/image/upload/t_player-headshot-portrait-lg-webp/prd/assets/players/generic/colored/65690.png"
           },
           {
-            "rank": 81,
+            "rank": 82,
             "name": "Mohammad Nabi",
             "team": "Afghanistan",
             "rating": 462,
@@ -9126,7 +9138,7 @@
             "imageUrl": "https://images.icc-cricket.com/image/upload/t_player-headshot-portrait-lg-webp/prd/assets/players/generic/colored/7797.png"
           },
           {
-            "rank": 82,
+            "rank": 83,
             "name": "Nosthush Kenjige",
             "team": "USA",
             "rating": 461,
@@ -9136,7 +9148,7 @@
             "imageUrl": "https://images.icc-cricket.com/image/upload/t_player-headshot-portrait-lg-webp/prd/assets/players/generic/colored/67389.png"
           },
           {
-            "rank": 83,
+            "rank": 84,
             "name": "Kyle Jamieson",
             "team": "New Zealand",
             "rating": 452,
@@ -9146,7 +9158,7 @@
             "imageUrl": "https://images.icc-cricket.com/image/upload/t_player-headshot-portrait-lg-webp/prd/assets/players/generic/colored/63865.png"
           },
           {
-            "rank": 84,
+            "rank": 85,
             "name": "Michael Leask",
             "team": "Scotland",
             "rating": 450,
@@ -9156,7 +9168,7 @@
             "imageUrl": "https://images.icc-cricket.com/image/upload/t_player-headshot-portrait-lg-webp/prd/assets/players/generic/colored/63917.png"
           },
           {
-            "rank": 85,
+            "rank": 86,
             "name": "Logan van Beek",
             "team": "Netherlands",
             "rating": 449,
@@ -9166,7 +9178,7 @@
             "imageUrl": "https://images.icc-cricket.com/image/upload/t_player-headshot-portrait-lg-webp/prd/assets/players/generic/colored/10176.png"
           },
           {
-            "rank": 85,
+            "rank": 86,
             "rankTied": true,
             "name": "Ish Sodhi",
             "team": "New Zealand",
@@ -9177,29 +9189,7 @@
             "imageUrl": "https://images.icc-cricket.com/image/upload/t_player-headshot-portrait-lg-webp/prd/assets/players/generic/colored/57625.png"
           },
           {
-            "rank": 85,
-            "rankTied": true,
-            "name": "Anrich Nortje",
-            "team": "South Africa",
-            "rating": 449,
-            "points": 449,
-            "iccPlayerId": "63641",
-            "profileUrl": "https://www.icc-cricket.com/rankings/63641/anrich-nortje",
-            "imageUrl": "https://images.icc-cricket.com/image/upload/t_player-headshot-portrait-lg-webp/prd/assets/players/generic/colored/63641.png"
-          },
-          {
             "rank": 88,
-            "name": "Bernard Scholtz",
-            "team": "Namibia",
-            "rating": 448,
-            "points": 448,
-            "iccPlayerId": "59032",
-            "profileUrl": "https://www.icc-cricket.com/rankings/59032/bernard-scholtz",
-            "imageUrl": "https://images.icc-cricket.com/image/upload/t_player-headshot-portrait-lg-webp/prd/assets/players/generic/colored/59032.png"
-          },
-          {
-            "rank": 88,
-            "rankTied": true,
             "name": "Haris Rauf",
             "team": "Pakistan",
             "rating": 448,
@@ -9209,7 +9199,7 @@
             "imageUrl": "https://images.icc-cricket.com/image/upload/t_player-headshot-portrait-lg-webp/prd/assets/players/generic/colored/70326.png"
           },
           {
-            "rank": 90,
+            "rank": 89,
             "name": "Luke Wood",
             "team": "England",
             "rating": 445,
@@ -9219,7 +9209,7 @@
             "imageUrl": "https://images.icc-cricket.com/image/upload/t_player-headshot-portrait-lg-webp/prd/assets/players/generic/colored/64498.png"
           },
           {
-            "rank": 90,
+            "rank": 89,
             "rankTied": true,
             "name": "Spencer Johnson",
             "team": "Australia",
@@ -9230,7 +9220,7 @@
             "imageUrl": "https://images.icc-cricket.com/image/upload/t_player-headshot-portrait-lg-webp/prd/assets/players/generic/colored/67778.png"
           },
           {
-            "rank": 92,
+            "rank": 91,
             "name": "Josh Little",
             "team": "Ireland",
             "rating": 442,
@@ -9240,7 +9230,28 @@
             "imageUrl": "https://images.icc-cricket.com/image/upload/t_player-headshot-portrait-lg-webp/prd/assets/players/generic/colored/66081.png"
           },
           {
+            "rank": 92,
+            "name": "Anrich Nortje",
+            "team": "South Africa",
+            "rating": 440,
+            "points": 440,
+            "iccPlayerId": "63641",
+            "profileUrl": "https://www.icc-cricket.com/rankings/63641/anrich-nortje",
+            "imageUrl": "https://images.icc-cricket.com/image/upload/t_player-headshot-portrait-lg-webp/prd/assets/players/generic/colored/63641.png"
+          },
+          {
             "rank": 93,
+            "name": "Bernard Scholtz",
+            "team": "Namibia",
+            "rating": 439,
+            "points": 439,
+            "iccPlayerId": "59032",
+            "profileUrl": "https://www.icc-cricket.com/rankings/59032/bernard-scholtz",
+            "imageUrl": "https://images.icc-cricket.com/image/upload/t_player-headshot-portrait-lg-webp/prd/assets/players/generic/colored/59032.png"
+          },
+          {
+            "rank": 93,
+            "rankTied": true,
             "name": "Muhammad Arfan",
             "team": "United Arab Emirates",
             "rating": 439,
@@ -9250,7 +9261,7 @@
             "imageUrl": "https://images.icc-cricket.com/image/upload/t_player-headshot-portrait-lg-webp/prd/assets/players/generic/colored/93590.png"
           },
           {
-            "rank": 94,
+            "rank": 95,
             "name": "Kyle Klein",
             "team": "Netherlands",
             "rating": 438,
@@ -9260,7 +9271,7 @@
             "imageUrl": "https://images.icc-cricket.com/image/upload/t_player-headshot-portrait-lg-webp/prd/assets/players/generic/colored/112100.png"
           },
           {
-            "rank": 95,
+            "rank": 96,
             "name": "Paul van Meekeren",
             "team": "Netherlands",
             "rating": 432,
@@ -9270,7 +9281,7 @@
             "imageUrl": "https://images.icc-cricket.com/image/upload/t_player-headshot-portrait-lg-webp/prd/assets/players/generic/colored/63893.png"
           },
           {
-            "rank": 96,
+            "rank": 97,
             "name": "Romario Shepherd",
             "team": "West Indies",
             "rating": 430,
@@ -9280,7 +9291,7 @@
             "imageUrl": "https://images.icc-cricket.com/image/upload/t_player-headshot-portrait-lg-webp/prd/assets/players/generic/colored/66243.png"
           },
           {
-            "rank": 97,
+            "rank": 98,
             "name": "Junaid Siddique",
             "team": "United Arab Emirates",
             "rating": 428,
@@ -9290,7 +9301,17 @@
             "imageUrl": "https://images.icc-cricket.com/image/upload/t_player-headshot-portrait-lg-webp/prd/assets/players/generic/colored/73675.png"
           },
           {
-            "rank": 98,
+            "rank": 99,
+            "name": "Ruben Trumpelmann",
+            "team": "Namibia",
+            "rating": 426,
+            "points": 426,
+            "iccPlayerId": "67897",
+            "profileUrl": "https://www.icc-cricket.com/rankings/67897/ruben-trumpelmann",
+            "imageUrl": "https://images.icc-cricket.com/image/upload/t_player-headshot-portrait-lg-webp/prd/assets/players/generic/colored/67897.png"
+          },
+          {
+            "rank": 100,
             "name": "Saqib Mahmood",
             "team": "England",
             "rating": 424,
@@ -9298,26 +9319,6 @@
             "iccPlayerId": "64948",
             "profileUrl": "https://www.icc-cricket.com/rankings/64948/saqib-mahmood",
             "imageUrl": "https://images.icc-cricket.com/image/upload/t_player-headshot-portrait-lg-webp/prd/assets/players/generic/colored/64948.png"
-          },
-          {
-            "rank": 99,
-            "name": "Barry McCarthy",
-            "team": "Ireland",
-            "rating": 422,
-            "points": 422,
-            "iccPlayerId": "63157",
-            "profileUrl": "https://www.icc-cricket.com/rankings/63157/barry-mccarthy",
-            "imageUrl": "https://images.icc-cricket.com/image/upload/t_player-headshot-portrait-lg-webp/prd/assets/players/generic/colored/63157.png"
-          },
-          {
-            "rank": 100,
-            "name": "Safyaan Sharif",
-            "team": "Scotland",
-            "rating": 416,
-            "points": 416,
-            "iccPlayerId": "56957",
-            "profileUrl": "https://www.icc-cricket.com/rankings/56957/safyaan-sharif",
-            "imageUrl": "https://images.icc-cricket.com/image/upload/t_player-headshot-portrait-lg-webp/prd/assets/players/generic/colored/56957.png"
           }
         ],
         "topAllRounders": [
@@ -9325,8 +9326,8 @@
             "rank": 1,
             "name": "Sikandar Raza",
             "team": "Zimbabwe",
-            "rating": 316,
-            "points": 316,
+            "rating": 321,
+            "points": 321,
             "iccPlayerId": "25422",
             "profileUrl": "https://www.icc-cricket.com/rankings/25422/sikandar-raza",
             "imageUrl": "https://images.icc-cricket.com/image/upload/t_player-headshot-portrait-lg-webp/prd/assets/players/generic/colored/25422.png"
@@ -9393,6 +9394,16 @@
           },
           {
             "rank": 8,
+            "name": "Gerhard Erasmus",
+            "team": "Namibia",
+            "rating": 213,
+            "points": 213,
+            "iccPlayerId": "57890",
+            "profileUrl": "https://www.icc-cricket.com/rankings/57890/gerhard-erasmus",
+            "imageUrl": "https://images.icc-cricket.com/image/upload/t_player-headshot-portrait-lg-webp/prd/assets/players/generic/colored/57890.png"
+          },
+          {
+            "rank": 9,
             "name": "Mohammad Nabi",
             "team": "Afghanistan",
             "rating": 209,
@@ -9402,7 +9413,7 @@
             "imageUrl": "https://images.icc-cricket.com/image/upload/t_player-headshot-portrait-lg-webp/prd/assets/players/generic/colored/7797.png"
           },
           {
-            "rank": 8,
+            "rank": 9,
             "rankTied": true,
             "name": "Jason Holder",
             "team": "West Indies",
@@ -9413,7 +9424,7 @@
             "imageUrl": "https://images.icc-cricket.com/image/upload/t_player-headshot-portrait-lg-webp/prd/assets/players/generic/colored/10232.png"
           },
           {
-            "rank": 10,
+            "rank": 11,
             "name": "Mohammad Nawaz",
             "team": "Pakistan",
             "rating": 203,
@@ -9423,7 +9434,7 @@
             "imageUrl": "https://images.icc-cricket.com/image/upload/t_player-headshot-portrait-lg-webp/prd/assets/players/generic/colored/57935.png"
           },
           {
-            "rank": 11,
+            "rank": 12,
             "name": "Sam Curran",
             "team": "England",
             "rating": 202,
@@ -9431,16 +9442,6 @@
             "iccPlayerId": "65584",
             "profileUrl": "https://www.icc-cricket.com/rankings/65584/sam-curran",
             "imageUrl": "https://images.icc-cricket.com/image/upload/t_player-headshot-portrait-lg-webp/prd/assets/players/generic/colored/65584.png"
-          },
-          {
-            "rank": 12,
-            "name": "Gerhard Erasmus",
-            "team": "Namibia",
-            "rating": 198,
-            "points": 198,
-            "iccPlayerId": "57890",
-            "profileUrl": "https://www.icc-cricket.com/rankings/57890/gerhard-erasmus",
-            "imageUrl": "https://images.icc-cricket.com/image/upload/t_player-headshot-portrait-lg-webp/prd/assets/players/generic/colored/57890.png"
           },
           {
             "rank": 13,
@@ -9545,16 +9546,6 @@
           },
           {
             "rank": 23,
-            "name": "George Linde",
-            "team": "South Africa",
-            "rating": 147,
-            "points": 147,
-            "iccPlayerId": "57533",
-            "profileUrl": "https://www.icc-cricket.com/rankings/57533/george-linde",
-            "imageUrl": "https://images.icc-cricket.com/image/upload/t_player-headshot-portrait-lg-webp/prd/assets/players/generic/colored/57533.png"
-          },
-          {
-            "rank": 24,
             "name": "Gareth Delany",
             "team": "Ireland",
             "rating": 144,
@@ -9564,7 +9555,7 @@
             "imageUrl": "https://images.icc-cricket.com/image/upload/t_player-headshot-portrait-lg-webp/prd/assets/players/generic/colored/67568.png"
           },
           {
-            "rank": 25,
+            "rank": 24,
             "name": "Bas de Leede",
             "team": "Netherlands",
             "rating": 143,
@@ -9572,6 +9563,16 @@
             "iccPlayerId": "67717",
             "profileUrl": "https://www.icc-cricket.com/rankings/67717/bas-de-leede",
             "imageUrl": "https://images.icc-cricket.com/image/upload/t_player-headshot-portrait-lg-webp/prd/assets/players/generic/colored/67717.png"
+          },
+          {
+            "rank": 25,
+            "name": "Brad Evans",
+            "team": "Zimbabwe",
+            "rating": 142,
+            "points": 142,
+            "iccPlayerId": "69377",
+            "profileUrl": "https://www.icc-cricket.com/rankings/69377/brad-evans",
+            "imageUrl": "https://images.icc-cricket.com/image/upload/t_player-headshot-portrait-lg-webp/prd/assets/players/generic/colored/69377.png"
           },
           {
             "rank": 26,
@@ -9584,7 +9585,18 @@
             "imageUrl": "https://images.icc-cricket.com/image/upload/t_player-headshot-portrait-lg-webp/prd/assets/players/generic/colored/62576.png"
           },
           {
-            "rank": 27,
+            "rank": 26,
+            "rankTied": true,
+            "name": "George Linde",
+            "team": "South Africa",
+            "rating": 141,
+            "points": 141,
+            "iccPlayerId": "57533",
+            "profileUrl": "https://www.icc-cricket.com/rankings/57533/george-linde",
+            "imageUrl": "https://images.icc-cricket.com/image/upload/t_player-headshot-portrait-lg-webp/prd/assets/players/generic/colored/57533.png"
+          },
+          {
+            "rank": 28,
             "name": "Kushal Bhurtel",
             "team": "Nepal",
             "rating": 140,
@@ -9592,16 +9604,6 @@
             "iccPlayerId": "66128",
             "profileUrl": "https://www.icc-cricket.com/rankings/66128/kushal-bhurtel",
             "imageUrl": "https://images.icc-cricket.com/image/upload/t_player-headshot-portrait-lg-webp/prd/assets/players/generic/colored/66128.png"
-          },
-          {
-            "rank": 28,
-            "name": "JJ Smit",
-            "team": "Namibia",
-            "rating": 136,
-            "points": 136,
-            "iccPlayerId": "57715",
-            "profileUrl": "https://www.icc-cricket.com/rankings/57715/jj-smit",
-            "imageUrl": "https://images.icc-cricket.com/image/upload/t_player-headshot-portrait-lg-webp/prd/assets/players/generic/colored/57715.png"
           },
           {
             "rank": 29,
@@ -9625,6 +9627,16 @@
           },
           {
             "rank": 31,
+            "name": "JJ Smit",
+            "team": "Namibia",
+            "rating": 133,
+            "points": 133,
+            "iccPlayerId": "57715",
+            "profileUrl": "https://www.icc-cricket.com/rankings/57715/jj-smit",
+            "imageUrl": "https://images.icc-cricket.com/image/upload/t_player-headshot-portrait-lg-webp/prd/assets/players/generic/colored/57715.png"
+          },
+          {
+            "rank": 32,
             "name": "Rachin Ravindra",
             "team": "New Zealand",
             "rating": 129,
@@ -9634,7 +9646,7 @@
             "imageUrl": "https://images.icc-cricket.com/image/upload/t_player-headshot-portrait-lg-webp/prd/assets/players/generic/colored/66053.png"
           },
           {
-            "rank": 32,
+            "rank": 33,
             "name": "Cameron Green",
             "team": "Australia",
             "rating": 126,
@@ -9644,27 +9656,7 @@
             "imageUrl": "https://images.icc-cricket.com/image/upload/t_player-headshot-portrait-lg-webp/prd/assets/players/generic/colored/66870.png"
           },
           {
-            "rank": 33,
-            "name": "Marco Jansen",
-            "team": "South Africa",
-            "rating": 121,
-            "points": 121,
-            "iccPlayerId": "69409",
-            "profileUrl": "https://www.icc-cricket.com/rankings/69409/marco-jansen",
-            "imageUrl": "https://images.icc-cricket.com/image/upload/t_player-headshot-portrait-lg-webp/prd/assets/players/generic/colored/69409.png"
-          },
-          {
             "rank": 34,
-            "name": "Aiden Markram",
-            "team": "South Africa",
-            "rating": 120,
-            "points": 120,
-            "iccPlayerId": "64219",
-            "profileUrl": "https://www.icc-cricket.com/rankings/64219/aiden-markram",
-            "imageUrl": "https://images.icc-cricket.com/image/upload/t_player-headshot-portrait-lg-webp/prd/assets/players/generic/colored/64219.png"
-          },
-          {
-            "rank": 35,
             "name": "Brandon McMullen",
             "team": "Scotland",
             "rating": 119,
@@ -9674,7 +9666,7 @@
             "imageUrl": "https://images.icc-cricket.com/image/upload/t_player-headshot-portrait-lg-webp/prd/assets/players/generic/colored/97960.png"
           },
           {
-            "rank": 36,
+            "rank": 35,
             "name": "Mark Adair",
             "team": "Ireland",
             "rating": 118,
@@ -9684,7 +9676,29 @@
             "imageUrl": "https://images.icc-cricket.com/image/upload/t_player-headshot-portrait-lg-webp/prd/assets/players/generic/colored/65690.png"
           },
           {
-            "rank": 37,
+            "rank": 36,
+            "name": "Aiden Markram",
+            "team": "South Africa",
+            "rating": 116,
+            "points": 116,
+            "iccPlayerId": "64219",
+            "profileUrl": "https://www.icc-cricket.com/rankings/64219/aiden-markram",
+            "imageUrl": "https://images.icc-cricket.com/image/upload/t_player-headshot-portrait-lg-webp/prd/assets/players/generic/colored/64219.png"
+          },
+          {
+            "rank": 36,
+            "rankTied": true,
+            "name": "Marco Jansen",
+            "team": "South Africa",
+            "rating": 116,
+            "points": 116,
+            "iccPlayerId": "69409",
+            "profileUrl": "https://www.icc-cricket.com/rankings/69409/marco-jansen",
+            "imageUrl": "https://images.icc-cricket.com/image/upload/t_player-headshot-portrait-lg-webp/prd/assets/players/generic/colored/69409.png"
+          },
+          {
+            "rank": 36,
+            "rankTied": true,
             "name": "Matthew Forde",
             "team": "West Indies",
             "rating": 116,
@@ -9694,24 +9708,14 @@
             "imageUrl": "https://images.icc-cricket.com/image/upload/t_player-headshot-portrait-lg-webp/prd/assets/players/generic/colored/74165.png"
           },
           {
-            "rank": 38,
+            "rank": 39,
             "name": "Brian Bennett",
             "team": "Zimbabwe",
-            "rating": 111,
-            "points": 111,
+            "rating": 106,
+            "points": 106,
             "iccPlayerId": "87227",
             "profileUrl": "https://www.icc-cricket.com/rankings/87227/brian-bennett",
             "imageUrl": "https://images.icc-cricket.com/image/upload/t_player-headshot-portrait-lg-webp/prd/assets/players/generic/colored/87227.png"
-          },
-          {
-            "rank": 39,
-            "name": "Brad Evans",
-            "team": "Zimbabwe",
-            "rating": 105,
-            "points": 105,
-            "iccPlayerId": "69377",
-            "profileUrl": "https://www.icc-cricket.com/rankings/69377/brad-evans",
-            "imageUrl": "https://images.icc-cricket.com/image/upload/t_player-headshot-portrait-lg-webp/prd/assets/players/generic/colored/69377.png"
           },
           {
             "rank": 40,
@@ -9849,18 +9853,7 @@
             "imageUrl": "https://images.icc-cricket.com/image/upload/t_player-headshot-portrait-lg-webp/prd/assets/players/generic/colored/10094.png"
           },
           {
-            "rank": 52,
-            "rankTied": true,
-            "name": "Ryan Burl",
-            "team": "Zimbabwe",
-            "rating": 81,
-            "points": 81,
-            "iccPlayerId": "58070",
-            "profileUrl": "https://www.icc-cricket.com/rankings/58070/ryan-burl",
-            "imageUrl": "https://images.icc-cricket.com/image/upload/t_player-headshot-portrait-lg-webp/prd/assets/players/generic/colored/58070.png"
-          },
-          {
-            "rank": 54,
+            "rank": 53,
             "name": "Rohit Paudel",
             "team": "Nepal",
             "rating": 80,
@@ -9870,7 +9863,18 @@
             "imageUrl": "https://images.icc-cricket.com/image/upload/t_player-headshot-portrait-lg-webp/prd/assets/players/generic/colored/68435.png"
           },
           {
-            "rank": 55,
+            "rank": 54,
+            "name": "Ryan Burl",
+            "team": "Zimbabwe",
+            "rating": 77,
+            "points": 77,
+            "iccPlayerId": "58070",
+            "profileUrl": "https://www.icc-cricket.com/rankings/58070/ryan-burl",
+            "imageUrl": "https://images.icc-cricket.com/image/upload/t_player-headshot-portrait-lg-webp/prd/assets/players/generic/colored/58070.png"
+          },
+          {
+            "rank": 54,
+            "rankTied": true,
             "name": "Faheem Ashraf",
             "team": "Pakistan",
             "rating": 77,
@@ -9880,7 +9884,7 @@
             "imageUrl": "https://images.icc-cricket.com/image/upload/t_player-headshot-portrait-lg-webp/prd/assets/players/generic/colored/64321.png"
           },
           {
-            "rank": 55,
+            "rank": 54,
             "rankTied": true,
             "name": "Kamindu Mendis",
             "team": "Sri Lanka",
@@ -9954,7 +9958,18 @@
             "imageUrl": "https://images.icc-cricket.com/image/upload/t_player-headshot-portrait-lg-webp/prd/assets/players/generic/colored/66833.png"
           },
           {
-            "rank": 63,
+            "rank": 62,
+            "rankTied": true,
+            "name": "Ruben Trumpelmann",
+            "team": "Namibia",
+            "rating": 69,
+            "points": 69,
+            "iccPlayerId": "67897",
+            "profileUrl": "https://www.icc-cricket.com/rankings/67897/ruben-trumpelmann",
+            "imageUrl": "https://images.icc-cricket.com/image/upload/t_player-headshot-portrait-lg-webp/prd/assets/players/generic/colored/67897.png"
+          },
+          {
+            "rank": 64,
             "name": "Sese Bau",
             "team": "Papua New Guinea",
             "rating": 68,
@@ -9964,7 +9979,7 @@
             "imageUrl": "https://images.icc-cricket.com/image/upload/t_player-headshot-portrait-lg-webp/prd/assets/players/generic/colored/61329.png"
           },
           {
-            "rank": 63,
+            "rank": 64,
             "rankTied": true,
             "name": "Aaron Hardie",
             "team": "Australia",
@@ -9975,7 +9990,7 @@
             "imageUrl": "https://images.icc-cricket.com/image/upload/t_player-headshot-portrait-lg-webp/prd/assets/players/generic/colored/68072.png"
           },
           {
-            "rank": 63,
+            "rank": 64,
             "rankTied": true,
             "name": "Muhammad Asim",
             "team": "Qatar",
@@ -9984,17 +9999,6 @@
             "iccPlayerId": "105173",
             "profileUrl": "https://www.icc-cricket.com/rankings/105173/muhammad-asim",
             "imageUrl": "https://images.icc-cricket.com/image/upload/t_player-headshot-portrait-lg-webp/prd/assets/players/generic/colored/105173.png"
-          },
-          {
-            "rank": 63,
-            "rankTied": true,
-            "name": "Corbin Bosch",
-            "team": "South Africa",
-            "rating": 68,
-            "points": 68,
-            "iccPlayerId": "63605",
-            "profileUrl": "https://www.icc-cricket.com/rankings/63605/corbin-bosch",
-            "imageUrl": "https://images.icc-cricket.com/image/upload/t_player-headshot-portrait-lg-webp/prd/assets/players/generic/colored/63605.png"
           },
           {
             "rank": 67,
@@ -10028,7 +10032,18 @@
             "imageUrl": "https://images.icc-cricket.com/image/upload/t_player-headshot-portrait-lg-webp/prd/assets/players/generic/colored/56961.png"
           },
           {
-            "rank": 70,
+            "rank": 69,
+            "rankTied": true,
+            "name": "Corbin Bosch",
+            "team": "South Africa",
+            "rating": 66,
+            "points": 66,
+            "iccPlayerId": "63605",
+            "profileUrl": "https://www.icc-cricket.com/rankings/63605/corbin-bosch",
+            "imageUrl": "https://images.icc-cricket.com/image/upload/t_player-headshot-portrait-lg-webp/prd/assets/players/generic/colored/63605.png"
+          },
+          {
+            "rank": 71,
             "name": "Mark Watt",
             "team": "Scotland",
             "rating": 65,
@@ -10038,7 +10053,7 @@
             "imageUrl": "https://images.icc-cricket.com/image/upload/t_player-headshot-portrait-lg-webp/prd/assets/players/generic/colored/64635.png"
           },
           {
-            "rank": 71,
+            "rank": 72,
             "name": "Assad Vala",
             "team": "Papua New Guinea",
             "rating": 63,
@@ -10048,7 +10063,7 @@
             "imageUrl": "https://images.icc-cricket.com/image/upload/t_player-headshot-portrait-lg-webp/prd/assets/players/generic/colored/58613.png"
           },
           {
-            "rank": 71,
+            "rank": 72,
             "rankTied": true,
             "name": "Michael Levitt",
             "team": "Netherlands",
@@ -10059,7 +10074,7 @@
             "imageUrl": "https://images.icc-cricket.com/image/upload/t_player-headshot-portrait-lg-webp/prd/assets/players/generic/colored/107562.png"
           },
           {
-            "rank": 73,
+            "rank": 74,
             "name": "Washington Sundar",
             "team": "India",
             "rating": 62,
@@ -10067,17 +10082,6 @@
             "iccPlayerId": "65859",
             "profileUrl": "https://www.icc-cricket.com/rankings/65859/washington-sundar",
             "imageUrl": "https://images.icc-cricket.com/image/upload/t_player-headshot-portrait-lg-webp/prd/assets/players/generic/colored/65859.png"
-          },
-          {
-            "rank": 73,
-            "rankTied": true,
-            "name": "Ruben Trumpelmann",
-            "team": "Namibia",
-            "rating": 62,
-            "points": 62,
-            "iccPlayerId": "67897",
-            "profileUrl": "https://www.icc-cricket.com/rankings/67897/ruben-trumpelmann",
-            "imageUrl": "https://images.icc-cricket.com/image/upload/t_player-headshot-portrait-lg-webp/prd/assets/players/generic/colored/67897.png"
           },
           {
             "rank": 75,
@@ -10092,17 +10096,6 @@
           {
             "rank": 75,
             "rankTied": true,
-            "name": "Gerald Coetzee",
-            "team": "South Africa",
-            "rating": 61,
-            "points": 61,
-            "iccPlayerId": "67443",
-            "profileUrl": "https://www.icc-cricket.com/rankings/67443/gerald-coetzee",
-            "imageUrl": "https://images.icc-cricket.com/image/upload/t_player-headshot-portrait-lg-webp/prd/assets/players/generic/colored/67443.png"
-          },
-          {
-            "rank": 75,
-            "rankTied": true,
             "name": "Muhammad Arfan",
             "team": "United Arab Emirates",
             "rating": 61,
@@ -10112,7 +10105,7 @@
             "imageUrl": "https://images.icc-cricket.com/image/upload/t_player-headshot-portrait-lg-webp/prd/assets/players/generic/colored/93590.png"
           },
           {
-            "rank": 78,
+            "rank": 77,
             "name": "Chris Greaves",
             "team": "Scotland",
             "rating": 60,
@@ -10122,7 +10115,7 @@
             "imageUrl": "https://images.icc-cricket.com/image/upload/t_player-headshot-portrait-lg-webp/prd/assets/players/generic/colored/71106.png"
           },
           {
-            "rank": 79,
+            "rank": 78,
             "name": "Richie Berrington",
             "team": "Scotland",
             "rating": 59,
@@ -10132,7 +10125,7 @@
             "imageUrl": "https://images.icc-cricket.com/image/upload/t_player-headshot-portrait-lg-webp/prd/assets/players/generic/colored/4023.png"
           },
           {
-            "rank": 79,
+            "rank": 78,
             "rankTied": true,
             "name": "Harsh Thaker",
             "team": "Canada",
@@ -10143,7 +10136,7 @@
             "imageUrl": "https://images.icc-cricket.com/image/upload/t_player-headshot-portrait-lg-webp/prd/assets/players/generic/colored/66021.png"
           },
           {
-            "rank": 79,
+            "rank": 78,
             "rankTied": true,
             "name": "Aryan Dutt",
             "team": "Netherlands",
@@ -10154,7 +10147,7 @@
             "imageUrl": "https://images.icc-cricket.com/image/upload/t_player-headshot-portrait-lg-webp/prd/assets/players/generic/colored/81030.png"
           },
           {
-            "rank": 82,
+            "rank": 81,
             "name": "Dhananjaya de Silva",
             "team": "Sri Lanka",
             "rating": 58,
@@ -10164,7 +10157,7 @@
             "imageUrl": "https://images.icc-cricket.com/image/upload/t_player-headshot-portrait-lg-webp/prd/assets/players/generic/colored/57440.png"
           },
           {
-            "rank": 82,
+            "rank": 81,
             "rankTied": true,
             "name": "Gulshan Jha",
             "team": "Nepal",
@@ -10173,6 +10166,17 @@
             "iccPlayerId": "87400",
             "profileUrl": "https://www.icc-cricket.com/rankings/87400/gulshan-jha",
             "imageUrl": "https://images.icc-cricket.com/image/upload/t_player-headshot-portrait-lg-webp/prd/assets/players/generic/colored/87400.png"
+          },
+          {
+            "rank": 81,
+            "rankTied": true,
+            "name": "Gerald Coetzee",
+            "team": "South Africa",
+            "rating": 58,
+            "points": 58,
+            "iccPlayerId": "67443",
+            "profileUrl": "https://www.icc-cricket.com/rankings/67443/gerald-coetzee",
+            "imageUrl": "https://images.icc-cricket.com/image/upload/t_player-headshot-portrait-lg-webp/prd/assets/players/generic/colored/67443.png"
           },
           {
             "rank": 84,
@@ -10218,6 +10222,17 @@
           },
           {
             "rank": 88,
+            "name": "Jan Frylinck",
+            "team": "Namibia",
+            "rating": 55,
+            "points": 55,
+            "iccPlayerId": "57688",
+            "profileUrl": "https://www.icc-cricket.com/rankings/57688/jan-frylinck",
+            "imageUrl": "https://images.icc-cricket.com/image/upload/t_player-headshot-portrait-lg-webp/prd/assets/players/generic/colored/57688.png"
+          },
+          {
+            "rank": 88,
+            "rankTied": true,
             "name": "Yasim Murtaza",
             "team": "Hong Kong, China",
             "rating": 55,
@@ -10238,18 +10253,7 @@
             "imageUrl": "https://images.icc-cricket.com/image/upload/t_player-headshot-portrait-lg-webp/prd/assets/players/generic/colored/90571.png"
           },
           {
-            "rank": 90,
-            "name": "Jan Frylinck",
-            "team": "Namibia",
-            "rating": 53,
-            "points": 53,
-            "iccPlayerId": "57688",
-            "profileUrl": "https://www.icc-cricket.com/rankings/57688/jan-frylinck",
-            "imageUrl": "https://images.icc-cricket.com/image/upload/t_player-headshot-portrait-lg-webp/prd/assets/players/generic/colored/57688.png"
-          },
-          {
-            "rank": 90,
-            "rankTied": true,
+            "rank": 91,
             "name": "Mohammed Aslam",
             "team": "Kuwait",
             "rating": 53,
@@ -10259,7 +10263,7 @@
             "imageUrl": "https://images.icc-cricket.com/image/upload/t_player-headshot-portrait-lg-webp/prd/assets/players/generic/colored/57913.png"
           },
           {
-            "rank": 90,
+            "rank": 91,
             "rankTied": true,
             "name": "Kushal Malla",
             "team": "Nepal",
@@ -10270,7 +10274,7 @@
             "imageUrl": "https://images.icc-cricket.com/image/upload/t_player-headshot-portrait-lg-webp/prd/assets/players/generic/colored/70515.png"
           },
           {
-            "rank": 90,
+            "rank": 91,
             "rankTied": true,
             "name": "Cole McConchie",
             "team": "New Zealand",
@@ -10365,7 +10369,7 @@
           "imageUrl": "https://images.icc-cricket.com/image/upload/t_player-headshot-portrait-lg-webp/prd/assets/players/generic/colored/70206.png"
         },
         "topBangladeshBowler": {
-          "rank": 12,
+          "rank": 11,
           "name": "Nasum Ahmed",
           "team": "Bangladesh",
           "rating": 646,
@@ -10394,16 +10398,16 @@
         "allrounder": "2026-09-01"
       },
       "odi": {
-        "team": "2026-09-08",
-        "bat": "2026-08-18",
-        "bowl": "2026-08-18",
-        "allrounder": "2026-08-18"
+        "team": "2026-09-09",
+        "bat": "2026-09-08",
+        "bowl": "2026-09-08",
+        "allrounder": "2026-09-08"
       },
       "t20": {
-        "team": "2026-09-08",
-        "bat": "2026-09-01",
-        "bowl": "2026-09-01",
-        "allrounder": "2026-09-01"
+        "team": "2026-09-09",
+        "bat": "2026-09-08",
+        "bowl": "2026-09-08",
+        "allrounder": "2026-09-08"
       }
     }
   },
