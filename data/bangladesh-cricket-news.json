@@ -1,6 +1,57 @@
 {
-  "fetchedAt": "2026-09-09T23:30:05.924Z",
+  "fetchedAt": "2026-09-10T23:23:35.173Z",
   "items": [
+    {
+      "id": "dailystar-https://www.thedailystar.net/sports/cricket/news/bangladesh-bow-out-after-another-india-defeat-4270026",
+      "title": "Bangladesh bow out after another India defeat",
+      "summary": "Bangladesh’s chase never looked convincing from the outset, as the batters appeared more focused on avoiding a heavy defeat than seriously pursuing the 150-run target.",
+      "url": "https://www.thedailystar.net/sports/cricket/news/bangladesh-bow-out-after-another-india-defeat-4270026",
+      "source": "dailystar",
+      "publishedAt": "2026-09-10T19:28:21.000Z"
+    },
+    {
+      "id": "espn-https://www.cricinfo.com/ci/content/story/1553691.html",
+      "title": "Shafali, Deepti power India into sixth T20 Asia Cup final",
+      "summary": "Both teams were sub-par with their fielding, but India comfortably prevailed over Bangladesh in Dubai",
+      "url": "https://www.cricinfo.com/story/shafali-verma-deepti-sharma-power-india-into-sixth-womens-t20-asia-cup-final-1553691",
+      "imageUrl": "https://p.imgci.com/db/PICTURES/CMS/422300/422369.5.jpg",
+      "source": "espncricinfo",
+      "publishedAt": "2026-09-10T18:44:50.000Z"
+    },
+    {
+      "id": "espn-https://www.cricinfo.com/ci/content/story/1553632.html",
+      "title": "Bangladesh bowl against India, both teams unchanged",
+      "summary": "India captain Harmanpreet said that she wanted to bat first anyway",
+      "url": "https://www.cricinfo.com/story/womens-t20-asia-cup-2026-semi-final-bangladesh-bowl-against-india-both-teams-unchanged-1553632",
+      "imageUrl": "https://p.imgci.com/db/PICTURES/CMS/422300/422356.5.jpg",
+      "source": "espncricinfo",
+      "publishedAt": "2026-09-10T14:44:37.000Z"
+    },
+    {
+      "id": "dailystar-https://www.thedailystar.net/sports/cricket/news/hasan-mahmud-nominated-icc-player-the-month-august-4269686",
+      "title": "Hasan Mahmud nominated for ICC Player of the Month for August",
+      "summary": "Bangladesh pacer Hasan Mahmud has been nominated for the ICC Men’s Player of the Month award for August 2026 after a memorable tour of Australia, alongside England pacer Ollie Robinson and Sri Lanka batter Sonal Dinusha.",
+      "url": "https://www.thedailystar.net/sports/cricket/news/hasan-mahmud-nominated-icc-player-the-month-august-4269686",
+      "source": "dailystar",
+      "publishedAt": "2026-09-10T13:39:29.000Z"
+    },
+    {
+      "id": "dailystar-https://www.thedailystar.net/sports/cricket/news/tigresses-look-marufa-crunch-semifinal-against-india-4269341",
+      "title": "Tigresses look to Marufa in crunch semifinal against India",
+      "summary": "Bangladesh pacer Marufa Akter has been in rich form in the Asia Cup, and ahead of Thursday’s crunch semifinal against India, she is hoping the senior players can continue making valuable contributions as they have throughout the tournament.",
+      "url": "https://www.thedailystar.net/sports/cricket/news/tigresses-look-marufa-crunch-semifinal-against-india-4269341",
+      "source": "dailystar",
+      "publishedAt": "2026-09-10T05:35:51.000Z"
+    },
+    {
+      "id": "espn-https://www.cricinfo.com/ci/content/story/1553549.html",
+      "title": "Tahir five-for, Sampson's sixes seal top spot for Guyana Amazon Warriors",
+      "summary": "Imran Tahir and CPL debutant Mehidy Hasan Miraz took combined figures of 8 for 30 to subdue St Lucia Kings",
+      "url": "https://www.cricinfo.com/story/cpl-2026-imran-tahir-five-for-quentin-sampson-sixes-seal-top-spot-for-guyana-amazon-warriors-1553549",
+      "imageUrl": "https://p.imgci.com/db/PICTURES/CMS/422300/422323.5.jpg",
+      "source": "espncricinfo",
+      "publishedAt": "2026-09-10T04:26:28.000Z"
+    },
     {
       "id": "dailystar-https://www.thedailystar.net/sports/cricket/news/we-may-already-have-idea-about-the-pipeline-u-19-coach-sarkar-sees-bigger-win-4269121",
       "title": "'We may already have an idea about the pipeline': U-19 coach Sarkar sees bigger win",
@@ -10,14 +61,6 @@
       "publishedAt": "2026-09-09T18:24:02.000Z"
     },
     {
-      "id": "dailystar-https://www.thedailystar.net/sports/cricket/news/pictures-nahid-ranas-road-back-pace-4268671",
-      "title": "In pictures: Nahid Rana’s road back to pace",
-      "summary": "The UAE tri-nation ODI series is being targeted for his competitive comeback as Bangladesh prepare for a demanding international schedule.",
-      "url": "https://www.thedailystar.net/sports/cricket/news/pictures-nahid-ranas-road-back-pace-4268671",
-      "source": "dailystar",
-      "publishedAt": "2026-09-09T10:48:01.000Z"
-    },
-    {
       "id": "espn-https://www.cricinfo.com/ci/content/story/1553394.html",
       "title": "Bangladesh bank on bowlers in bid to bring India down",
       "summary": "Bangladesh will hope to test a shaky Indian middle order in sweltering conditions in Dubai",
@@ -25,14 +68,6 @@
       "imageUrl": "https://p.imgci.com/db/PICTURES/CMS/418900/418900.5.jpg",
       "source": "espncricinfo",
       "publishedAt": "2026-09-09T09:05:47.000Z"
-    },
-    {
-      "id": "dailystar-https://www.thedailystar.net/sports/cricket/news/5-tests-inside-50-days-packed-schedule-throws-unique-challenge-tigers-4268451",
-      "title": "5 Tests inside 50 days: Packed schedule throws unique challenge at Tigers",
-      "summary": "BCB chief selector Habibul Bashar recently told The Daily Star that “Tests will be prioritised.” That commitment will face a stern test as Bangladesh prepare to play five Tests, four of them in the current World Test Championship (WTC) cycle, within 50 days.",
-      "url": "https://www.thedailystar.net/sports/cricket/news/5-tests-inside-50-days-packed-schedule-throws-unique-challenge-tigers-4268451",
-      "source": "dailystar",
-      "publishedAt": "2026-09-09T03:02:23.000Z"
     },
     {
       "id": "espn-https://www.cricinfo.com/ci/content/story/1553302.html",
@@ -51,14 +86,6 @@
       "imageUrl": "https://p.imgci.com/db/PICTURES/CMS/362900/362918.5.jpg",
       "source": "espncricinfo",
       "publishedAt": "2026-09-08T18:30:28.000Z"
-    },
-    {
-      "id": "dailystar-https://www.thedailystar.net/sports/cricket/news/bangladesh-survive-uae-scare-reach-semis-4268206",
-      "title": "Bangladesh survive UAE scare to reach semis",
-      "summary": "Bangladesh survived a major scare against the United Arab Emirates before securing a 34-run victory over the hosts in their final Group B match of the Women’s Asia Cup T20 in Dubai on Tuesday.",
-      "url": "https://www.thedailystar.net/sports/cricket/news/bangladesh-survive-uae-scare-reach-semis-4268206",
-      "source": "dailystar",
-      "publishedAt": "2026-09-08T18:13:57.000Z"
     },
     {
       "id": "espn-https://www.cricinfo.com/ci/content/story/1553267.html",
@@ -104,24 +131,6 @@
       "imageUrl": "https://p.imgci.com/db/PICTURES/CMS/395600/395656.6.jpg",
       "source": "espncricinfo",
       "publishedAt": "2026-09-07T07:23:24.000Z"
-    },
-    {
-      "id": "espn-https://www.cricinfo.com/ci/content/story/1553119.html",
-      "title": "Samarawickrama's composed knock seals Sri Lanka's semi-final berth",
-      "summary": "Samarawickrama's unbeaten 48 and Praboda's career-best three wickets helped Sri Lanka survive Bangladesh scare",
-      "url": "https://www.cricinfo.com/story/harshitha-samarawickramas-composed-knock-seals-sri-lankas-semi-final-berth-1553119",
-      "imageUrl": "https://p.imgci.com/db/PICTURES/CMS/422100/422176.5.jpg",
-      "source": "espncricinfo",
-      "publishedAt": "2026-09-07T04:43:33.000Z"
-    },
-    {
-      "id": "espn-https://www.cricinfo.com/ci/content/story/1553077.html",
-      "title": "Gunaratne in as SL bowl; Easmin debuts for Bangladesh",
-      "summary": "Sri Lanka have dominated Bangladesh in the format with 13 wins from 16 matches",
-      "url": "https://www.cricinfo.com/story/womens-asia-cup-gunaratne-in-as-sl-bowl-easmin-debuts-for-bangladesh-1553077",
-      "imageUrl": "https://p.imgci.com/db/PICTURES/CMS/422000/422012.5.jpg",
-      "source": "espncricinfo",
-      "publishedAt": "2026-09-06T15:13:41.000Z"
     }
   ]
 }
