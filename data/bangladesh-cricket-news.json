@@ -1,13 +1,13 @@
 {
-  "fetchedAt": "2026-09-10T23:23:35.173Z",
+  "fetchedAt": "2026-09-11T23:31:45.275Z",
   "items": [
     {
-      "id": "dailystar-https://www.thedailystar.net/sports/cricket/news/bangladesh-bow-out-after-another-india-defeat-4270026",
-      "title": "Bangladesh bow out after another India defeat",
-      "summary": "Bangladesh’s chase never looked convincing from the outset, as the batters appeared more focused on avoiding a heavy defeat than seriously pursuing the 150-run target.",
-      "url": "https://www.thedailystar.net/sports/cricket/news/bangladesh-bow-out-after-another-india-defeat-4270026",
+      "id": "dailystar-https://www.thedailystar.net/sports/womens-sports/news/asia-cup-failures-rooted-weak-pipeline-4270411",
+      "title": "Asia Cup failures rooted in weak pipeline",
+      "summary": "Women’s cricket has grown rapidly in recent years, and the Asia Cup highlighted not only Bangladesh’s in-game limitations but also the lack of growth behind them, largely stemming from a weak domestic pipeline.",
+      "url": "https://www.thedailystar.net/sports/womens-sports/news/asia-cup-failures-rooted-weak-pipeline-4270411",
       "source": "dailystar",
-      "publishedAt": "2026-09-10T19:28:21.000Z"
+      "publishedAt": "2026-09-11T18:30:00.000Z"
     },
     {
       "id": "espn-https://www.cricinfo.com/ci/content/story/1553691.html",
@@ -16,7 +16,32 @@
       "url": "https://www.cricinfo.com/story/shafali-verma-deepti-sharma-power-india-into-sixth-womens-t20-asia-cup-final-1553691",
       "imageUrl": "https://p.imgci.com/db/PICTURES/CMS/422300/422369.5.jpg",
       "source": "espncricinfo",
-      "publishedAt": "2026-09-10T18:44:50.000Z"
+      "publishedAt": "2026-09-11T06:09:07.000Z"
+    },
+    {
+      "id": "dailystar-https://www.thedailystar.net/sports/cricket/news/dpl-shifted-early-rain-free-world-cup-build-4270216",
+      "title": "DPL shifted early for rain-free World Cup build-up",
+      "summary": "With the ICC World Cup scheduled to be held in Africa from October 4 to November 21 next year and Bangladesh almost certain to secure a direct berth based on their ranking, preparations for the global showpiece are already underway.",
+      "url": "https://www.thedailystar.net/sports/cricket/news/dpl-shifted-early-rain-free-world-cup-build-4270216",
+      "source": "dailystar",
+      "publishedAt": "2026-09-11T05:47:11.000Z"
+    },
+    {
+      "id": "espn-https://www.cricinfo.com/ci/content/story/1553708.html",
+      "title": "Pakistan or Sri Lanka in the final? 'Doesn't matter,' says Deepti Sharma",
+      "summary": "\"I think that it will be a day here or a day there, it happens,\" Deepti Sharma says after India had another poor fielding day in the Women's T20 Asia Cup semi-final against Bangladesh",
+      "url": "https://www.cricinfo.com/story/womens-t20-asia-cup-pakistan-or-sri-lanka-in-the-final-doesnt-matter-says-deepti-sharma-1553708",
+      "imageUrl": "https://p.imgci.com/db/PICTURES/CMS/422300/422383.6.jpg",
+      "source": "espncricinfo",
+      "publishedAt": "2026-09-11T04:22:30.000Z"
+    },
+    {
+      "id": "dailystar-https://www.thedailystar.net/sports/cricket/news/bangladesh-bow-out-after-another-india-defeat-4270026",
+      "title": "Bangladesh bow out after another India defeat",
+      "summary": "Bangladesh’s chase never looked convincing from the outset, as the batters appeared more focused on avoiding a heavy defeat than seriously pursuing the 150-run target.",
+      "url": "https://www.thedailystar.net/sports/cricket/news/bangladesh-bow-out-after-another-india-defeat-4270026",
+      "source": "dailystar",
+      "publishedAt": "2026-09-10T19:28:21.000Z"
     },
     {
       "id": "espn-https://www.cricinfo.com/ci/content/story/1553632.html",
@@ -51,14 +76,6 @@
       "imageUrl": "https://p.imgci.com/db/PICTURES/CMS/422300/422323.5.jpg",
       "source": "espncricinfo",
       "publishedAt": "2026-09-10T04:26:28.000Z"
-    },
-    {
-      "id": "dailystar-https://www.thedailystar.net/sports/cricket/news/we-may-already-have-idea-about-the-pipeline-u-19-coach-sarkar-sees-bigger-win-4269121",
-      "title": "'We may already have an idea about the pipeline': U-19 coach Sarkar sees bigger win",
-      "summary": "The Bangladesh Under-19s walked away with the GD Trophy, but for head coach Hannan Sarkar, the tournament's true success was the spotlight it provided of the country's cricketing pipeline.",
-      "url": "https://www.thedailystar.net/sports/cricket/news/we-may-already-have-idea-about-the-pipeline-u-19-coach-sarkar-sees-bigger-win-4269121",
-      "source": "dailystar",
-      "publishedAt": "2026-09-09T18:24:02.000Z"
     },
     {
       "id": "espn-https://www.cricinfo.com/ci/content/story/1553394.html",
@@ -113,24 +130,6 @@
       "imageUrl": "https://p.imgci.com/db/PICTURES/CMS/392100/392108.5.jpg",
       "source": "espncricinfo",
       "publishedAt": "2026-09-08T13:58:03.000Z"
-    },
-    {
-      "id": "espn-https://www.cricinfo.com/ci/content/story/1553233.html",
-      "title": "Afghanistan to host Bangladesh and Zimbabwe in the UAE in three-format home season",
-      "summary": "There will be Tests against both teams, T20Is against Zimbabwe, and an ODI tri-series",
-      "url": "https://www.cricinfo.com/story/afghanistan-to-host-bangladesh-and-zimbabwe-in-the-uae-in-three-format-home-season-1553233",
-      "imageUrl": "https://p.imgci.com/db/PICTURES/CMS/417900/417938.5.jpg",
-      "source": "espncricinfo",
-      "publishedAt": "2026-09-08T08:30:58.000Z"
-    },
-    {
-      "id": "espn-https://www.cricinfo.com/ci/content/story/1553154.html",
-      "title": "Nigeria edge Zimbabwe in thriller to qualify for Under-19 Women's T20 World Cup",
-      "summary": "Nigeria are the second African team after South Africa to qualify for the Under-19 World Cup in Bangladesh and Nepal next year",
-      "url": "https://www.cricinfo.com/story/nigeria-edge-zimbabwe-in-thriller-to-qualify-for-under-19-womens-t20-world-cup-1553154",
-      "imageUrl": "https://p.imgci.com/db/PICTURES/CMS/395600/395656.6.jpg",
-      "source": "espncricinfo",
-      "publishedAt": "2026-09-07T07:23:24.000Z"
     }
   ]
 }
