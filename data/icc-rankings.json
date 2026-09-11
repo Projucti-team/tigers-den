@@ -1,5 +1,5 @@
 {
-  "fetchedAt": "2026-09-10T23:12:39.588Z",
+  "fetchedAt": "2026-09-11T23:17:51.297Z",
   "source": "icc-sportz.io",
   "sourceUrl": "https://www.icc-cricket.com/rankings",
   "men": {
@@ -108,9 +108,9 @@
           "rank": 3,
           "name": "South Africa",
           "abbreviation": "SA",
-          "rating": 102,
-          "points": 2967,
-          "matches": 29
+          "rating": 103,
+          "points": 3079,
+          "matches": 30
         },
         {
           "rank": 4,
@@ -212,9 +212,9 @@
           "rank": 16,
           "name": "Namibia",
           "abbreviation": "NAM",
-          "rating": 31,
-          "points": 644,
-          "matches": 21
+          "rating": 30,
+          "points": 665,
+          "matches": 22
         },
         {
           "rank": 17,
@@ -415,8 +415,8 @@
           "name": "Uganda",
           "abbreviation": "UGA",
           "rating": 145,
-          "points": 5786,
-          "matches": 40
+          "points": 5941,
+          "matches": 41
         },
         {
           "rank": 22,
@@ -510,9 +510,9 @@
           "rank": 33,
           "name": "Kenya",
           "abbreviation": "KEN",
-          "rating": 104,
-          "points": 4487,
-          "matches": 43
+          "rating": 105,
+          "points": 4601,
+          "matches": 44
         },
         {
           "rank": 34,
@@ -671,16 +671,16 @@
           "name": "Botswana",
           "abbreviation": "BOT",
           "rating": 46,
-          "points": 1560,
-          "matches": 34
+          "points": 1596,
+          "matches": 35
         },
         {
           "rank": 54,
           "name": "Rwanda",
           "abbreviation": "RWA",
           "rating": 45,
-          "points": 3004,
-          "matches": 67
+          "points": 3039,
+          "matches": 68
         },
         {
           "rank": 55,
@@ -10398,13 +10398,13 @@
         "allrounder": "2026-09-01"
       },
       "odi": {
-        "team": "2026-09-10",
+        "team": "2026-09-11",
         "bat": "2026-09-08",
         "bowl": "2026-09-08",
         "allrounder": "2026-09-08"
       },
       "t20": {
-        "team": "2026-09-10",
+        "team": "2026-09-11",
         "bat": "2026-09-08",
         "bowl": "2026-09-08",
         "allrounder": "2026-09-08"
@@ -10583,16 +10583,16 @@
           "name": "South Africa",
           "abbreviation": "SA-W",
           "rating": 245,
-          "points": 9310,
-          "matches": 38
+          "points": 9565,
+          "matches": 39
         },
         {
           "rank": 6,
           "name": "Sri Lanka",
           "abbreviation": "SL-W",
           "rating": 238,
-          "points": 9504,
-          "matches": 40
+          "points": 9766,
+          "matches": 41
         },
         {
           "rank": 7,
@@ -10606,9 +10606,9 @@
           "rank": 8,
           "name": "Pakistan",
           "abbreviation": "PAK-W",
-          "rating": 212,
-          "points": 7833,
-          "matches": 37
+          "rating": 211,
+          "points": 8021,
+          "matches": 38
         },
         {
           "rank": 9,
@@ -10671,8 +10671,8 @@
           "name": "Zimbabwe",
           "abbreviation": "ZIM-W",
           "rating": 122,
-          "points": 4285,
-          "matches": 35
+          "points": 4397,
+          "matches": 36
         },
         {
           "rank": 17,
@@ -17411,7 +17411,7 @@
         "allrounder": "2026-09-07"
       },
       "t20": {
-        "team": "2026-09-10",
+        "team": "2026-09-11",
         "bat": "2026-09-07",
         "bowl": "2026-09-07",
         "allrounder": "2026-09-07"
