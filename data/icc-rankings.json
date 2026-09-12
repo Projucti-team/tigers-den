@@ -1,5 +1,5 @@
 {
-  "fetchedAt": "2026-09-11T23:17:51.297Z",
+  "fetchedAt": "2026-09-12T23:04:31.769Z",
   "source": "icc-sportz.io",
   "sourceUrl": "https://www.icc-cricket.com/rankings",
   "men": {
@@ -42,9 +42,9 @@
           "rank": 5,
           "name": "England",
           "abbreviation": "ENG",
-          "rating": 99,
-          "points": 3158,
-          "matches": 32
+          "rating": 102,
+          "points": 3658,
+          "matches": 36
         },
         {
           "rank": 6,
@@ -64,19 +64,19 @@
         },
         {
           "rank": 8,
-          "name": "Pakistan",
-          "abbreviation": "PAK",
-          "rating": 75,
-          "points": 1427,
-          "matches": 19
-        },
-        {
-          "rank": 9,
           "name": "West Indies",
           "abbreviation": "WI",
           "rating": 74,
           "points": 2008,
           "matches": 27
+        },
+        {
+          "rank": 9,
+          "name": "Pakistan",
+          "abbreviation": "PAK",
+          "rating": 71,
+          "points": 1623,
+          "matches": 23
         },
         {
           "rank": 10,
@@ -218,6 +218,14 @@
         },
         {
           "rank": 17,
+          "name": "Nepal",
+          "abbreviation": "NEP",
+          "rating": 28,
+          "points": 939,
+          "matches": 33
+        },
+        {
+          "rank": 18,
           "name": "Oman",
           "abbreviation": "OMA",
           "rating": 27,
@@ -225,20 +233,12 @@
           "matches": 24
         },
         {
-          "rank": 18,
-          "name": "Nepal",
-          "abbreviation": "NEP",
-          "rating": 27,
-          "points": 870,
-          "matches": 32
-        },
-        {
           "rank": 19,
           "name": "United Arab Emirates",
           "abbreviation": "UAE",
-          "rating": 19,
-          "points": 496,
-          "matches": 26
+          "rating": 18,
+          "points": 473,
+          "matches": 27
         },
         {
           "rank": 20,
@@ -414,9 +414,9 @@
           "rank": 21,
           "name": "Uganda",
           "abbreviation": "UGA",
-          "rating": 145,
-          "points": 5941,
-          "matches": 41
+          "rating": 143,
+          "points": 5996,
+          "matches": 42
         },
         {
           "rank": 22,
@@ -510,9 +510,9 @@
           "rank": 33,
           "name": "Kenya",
           "abbreviation": "KEN",
-          "rating": 105,
-          "points": 4601,
-          "matches": 44
+          "rating": 107,
+          "points": 4796,
+          "matches": 45
         },
         {
           "rank": 34,
@@ -671,8 +671,8 @@
           "name": "Botswana",
           "abbreviation": "BOT",
           "rating": 46,
-          "points": 1596,
-          "matches": 35
+          "points": 1656,
+          "matches": 36
         },
         {
           "rank": 54,
@@ -910,9 +910,9 @@
           "rank": 83,
           "name": "Sierra Leone",
           "abbreviation": "SRL",
-          "rating": 10,
-          "points": 292,
-          "matches": 30
+          "rating": 9,
+          "points": 288,
+          "matches": 31
         },
         {
           "rank": 84,
@@ -10392,19 +10392,19 @@
     },
     "rankUpdatedAt": {
       "test": {
-        "team": "2026-08-27",
+        "team": "2026-09-12",
         "bat": "2026-09-01",
         "bowl": "2026-09-01",
         "allrounder": "2026-09-01"
       },
       "odi": {
-        "team": "2026-09-11",
+        "team": "2026-09-12",
         "bat": "2026-09-08",
         "bowl": "2026-09-08",
         "allrounder": "2026-09-08"
       },
       "t20": {
-        "team": "2026-09-11",
+        "team": "2026-09-12",
         "bat": "2026-09-08",
         "bowl": "2026-09-08",
         "allrounder": "2026-09-08"
