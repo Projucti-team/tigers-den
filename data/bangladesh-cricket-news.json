@@ -1,6 +1,31 @@
 {
-  "fetchedAt": "2026-09-11T23:31:45.275Z",
+  "fetchedAt": "2026-09-12T23:20:06.223Z",
   "items": [
+    {
+      "id": "dailystar-https://www.thedailystar.net/sports/cricket/news/rishad-aliss-shine-bangladesh-clinch-series-south-africa-4271111",
+      "title": "Rishad, Aliss shine as Bangladesh 'A' clinch series in South Africa",
+      "summary": "Rishad Hossain and Aliss Al Islam shared seven wickets before Saif Hassan and Mohammad Naim hit fifties as Bangladesh ‘A’ registered a five-wicket win over South Africa ‘A’ in the third and final one-dayer in Potchefstroom on Saturday, sealing the series 1-0.",
+      "url": "https://www.thedailystar.net/sports/cricket/news/rishad-aliss-shine-bangladesh-clinch-series-south-africa-4271111",
+      "source": "dailystar",
+      "publishedAt": "2026-09-12T15:49:15.000Z"
+    },
+    {
+      "id": "dailystar-https://www.thedailystar.net/sports/cricket/news/workload-concerns-prompt-hasans-early-return-kent-4271066",
+      "title": "Workload concerns prompt Hasan’s early return from Kent",
+      "summary": "After being named in Bangladesh’s Asian Games squad, the BCB changed its decision and called him back to manage his workload.",
+      "url": "https://www.thedailystar.net/sports/cricket/news/workload-concerns-prompt-hasans-early-return-kent-4271066",
+      "source": "dailystar",
+      "publishedAt": "2026-09-12T14:13:24.000Z"
+    },
+    {
+      "id": "espn-https://www.cricinfo.com/ci/content/story/1553867.html",
+      "title": "Mehidy four-for takes Amazon Warriors to eighth win; TKR finish last",
+      "summary": "Trinbago Knight Riders, the defending champions, finished bottom of the table after sinking to their seventh defeat of the season",
+      "url": "https://www.cricinfo.com/story/cpl-2026-mehidy-hasan-miraz-and-shai-hope-guide-guyana-amazon-warriors-to-eighth-win-1553867",
+      "imageUrl": "https://p.imgci.com/db/PICTURES/CMS/422400/422432.5.jpg",
+      "source": "espncricinfo",
+      "publishedAt": "2026-09-12T04:29:57.000Z"
+    },
     {
       "id": "dailystar-https://www.thedailystar.net/sports/womens-sports/news/asia-cup-failures-rooted-weak-pipeline-4270411",
       "title": "Asia Cup failures rooted in weak pipeline",
@@ -19,14 +44,6 @@
       "publishedAt": "2026-09-11T06:09:07.000Z"
     },
     {
-      "id": "dailystar-https://www.thedailystar.net/sports/cricket/news/dpl-shifted-early-rain-free-world-cup-build-4270216",
-      "title": "DPL shifted early for rain-free World Cup build-up",
-      "summary": "With the ICC World Cup scheduled to be held in Africa from October 4 to November 21 next year and Bangladesh almost certain to secure a direct berth based on their ranking, preparations for the global showpiece are already underway.",
-      "url": "https://www.thedailystar.net/sports/cricket/news/dpl-shifted-early-rain-free-world-cup-build-4270216",
-      "source": "dailystar",
-      "publishedAt": "2026-09-11T05:47:11.000Z"
-    },
-    {
       "id": "espn-https://www.cricinfo.com/ci/content/story/1553708.html",
       "title": "Pakistan or Sri Lanka in the final? 'Doesn't matter,' says Deepti Sharma",
       "summary": "\"I think that it will be a day here or a day there, it happens,\" Deepti Sharma says after India had another poor fielding day in the Women's T20 Asia Cup semi-final against Bangladesh",
@@ -36,14 +53,6 @@
       "publishedAt": "2026-09-11T04:22:30.000Z"
     },
     {
-      "id": "dailystar-https://www.thedailystar.net/sports/cricket/news/bangladesh-bow-out-after-another-india-defeat-4270026",
-      "title": "Bangladesh bow out after another India defeat",
-      "summary": "Bangladesh’s chase never looked convincing from the outset, as the batters appeared more focused on avoiding a heavy defeat than seriously pursuing the 150-run target.",
-      "url": "https://www.thedailystar.net/sports/cricket/news/bangladesh-bow-out-after-another-india-defeat-4270026",
-      "source": "dailystar",
-      "publishedAt": "2026-09-10T19:28:21.000Z"
-    },
-    {
       "id": "espn-https://www.cricinfo.com/ci/content/story/1553632.html",
       "title": "Bangladesh bowl against India, both teams unchanged",
       "summary": "India captain Harmanpreet said that she wanted to bat first anyway",
@@ -51,22 +60,6 @@
       "imageUrl": "https://p.imgci.com/db/PICTURES/CMS/422300/422356.5.jpg",
       "source": "espncricinfo",
       "publishedAt": "2026-09-10T14:44:37.000Z"
-    },
-    {
-      "id": "dailystar-https://www.thedailystar.net/sports/cricket/news/hasan-mahmud-nominated-icc-player-the-month-august-4269686",
-      "title": "Hasan Mahmud nominated for ICC Player of the Month for August",
-      "summary": "Bangladesh pacer Hasan Mahmud has been nominated for the ICC Men’s Player of the Month award for August 2026 after a memorable tour of Australia, alongside England pacer Ollie Robinson and Sri Lanka batter Sonal Dinusha.",
-      "url": "https://www.thedailystar.net/sports/cricket/news/hasan-mahmud-nominated-icc-player-the-month-august-4269686",
-      "source": "dailystar",
-      "publishedAt": "2026-09-10T13:39:29.000Z"
-    },
-    {
-      "id": "dailystar-https://www.thedailystar.net/sports/cricket/news/tigresses-look-marufa-crunch-semifinal-against-india-4269341",
-      "title": "Tigresses look to Marufa in crunch semifinal against India",
-      "summary": "Bangladesh pacer Marufa Akter has been in rich form in the Asia Cup, and ahead of Thursday’s crunch semifinal against India, she is hoping the senior players can continue making valuable contributions as they have throughout the tournament.",
-      "url": "https://www.thedailystar.net/sports/cricket/news/tigresses-look-marufa-crunch-semifinal-against-india-4269341",
-      "source": "dailystar",
-      "publishedAt": "2026-09-10T05:35:51.000Z"
     },
     {
       "id": "espn-https://www.cricinfo.com/ci/content/story/1553549.html",
@@ -112,24 +105,6 @@
       "imageUrl": "https://p.imgci.com/db/PICTURES/CMS/416800/416808.5.jpg",
       "source": "espncricinfo",
       "publishedAt": "2026-09-08T17:53:58.000Z"
-    },
-    {
-      "id": "espn-https://www.cricinfo.com/ci/content/story/1553270.html",
-      "title": "UAE bowl against Bangladesh in must-win game",
-      "summary": "UAE made one change while Bangladesh made two",
-      "url": "https://www.cricinfo.com/story/uae-bowl-against-bangladesh-in-must-win-womens-asia-cup-2026-game-1553270",
-      "imageUrl": "https://p.imgci.com/db/PICTURES/CMS/422200/422228.5.jpg",
-      "source": "espncricinfo",
-      "publishedAt": "2026-09-08T15:31:57.000Z"
-    },
-    {
-      "id": "espn-https://www.cricinfo.com/ci/content/story/1553264.html",
-      "title": "Dhaka and Sylhet to host West Indies for two-Test series in October-November",
-      "summary": "West Indies will return to Bangladesh for their first Test tour of the country in five years",
-      "url": "https://www.cricinfo.com/story/ban-vs-wi-dhaka-and-sylhet-to-host-west-indies-for-two-test-series-in-october-november-1553264",
-      "imageUrl": "https://p.imgci.com/db/PICTURES/CMS/392100/392108.5.jpg",
-      "source": "espncricinfo",
-      "publishedAt": "2026-09-08T13:58:03.000Z"
     }
   ]
 }
