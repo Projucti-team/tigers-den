@@ -1,6 +1,22 @@
 {
-  "fetchedAt": "2026-09-12T23:20:06.223Z",
+  "fetchedAt": "2026-09-13T23:29:47.474Z",
   "items": [
+    {
+      "id": "dailystar-https://www.thedailystar.net/sports/cricket/news/tigers-begin-asian-games-camp-hoping-get-adequate-preparation-4271936",
+      "title": "Tigers begin Asian Games camp, hope to get ‘adequate’ preparation",
+      "summary": "Bangladesh began their Asian Games preparation camp on Sunday, returning to T20 cricket for the first time since their full series in Zimbabwe in July. With concerns over the facilities in Japan, adequate preparation is the priority as the Tigers prepare to depart for the tournament on September 24, ahead of their opening match in the quarterfinals on September 28.",
+      "url": "https://www.thedailystar.net/sports/cricket/news/tigers-begin-asian-games-camp-hoping-get-adequate-preparation-4271936",
+      "source": "dailystar",
+      "publishedAt": "2026-09-13T14:27:18.000Z"
+    },
+    {
+      "id": "dailystar-https://www.thedailystar.net/sports/cricket/news/pictures-liton-and-co-begin-practice-ahead-asian-games-4271741",
+      "title": "In Pictures: Litton and Co begin practice ahead of Asian Games",
+      "summary": "The team will play the quarterfinals directly on September 29, facing a side that advances from the first round.",
+      "url": "https://www.thedailystar.net/sports/cricket/news/pictures-liton-and-co-begin-practice-ahead-asian-games-4271741",
+      "source": "dailystar",
+      "publishedAt": "2026-09-13T11:13:02.000Z"
+    },
     {
       "id": "dailystar-https://www.thedailystar.net/sports/cricket/news/rishad-aliss-shine-bangladesh-clinch-series-south-africa-4271111",
       "title": "Rishad, Aliss shine as Bangladesh 'A' clinch series in South Africa",
@@ -25,14 +41,6 @@
       "imageUrl": "https://p.imgci.com/db/PICTURES/CMS/422400/422432.5.jpg",
       "source": "espncricinfo",
       "publishedAt": "2026-09-12T04:29:57.000Z"
-    },
-    {
-      "id": "dailystar-https://www.thedailystar.net/sports/womens-sports/news/asia-cup-failures-rooted-weak-pipeline-4270411",
-      "title": "Asia Cup failures rooted in weak pipeline",
-      "summary": "Women’s cricket has grown rapidly in recent years, and the Asia Cup highlighted not only Bangladesh’s in-game limitations but also the lack of growth behind them, largely stemming from a weak domestic pipeline.",
-      "url": "https://www.thedailystar.net/sports/womens-sports/news/asia-cup-failures-rooted-weak-pipeline-4270411",
-      "source": "dailystar",
-      "publishedAt": "2026-09-11T18:30:00.000Z"
     },
     {
       "id": "espn-https://www.cricinfo.com/ci/content/story/1553691.html",
@@ -78,33 +86,6 @@
       "imageUrl": "https://p.imgci.com/db/PICTURES/CMS/418900/418900.5.jpg",
       "source": "espncricinfo",
       "publishedAt": "2026-09-09T09:05:47.000Z"
-    },
-    {
-      "id": "espn-https://www.cricinfo.com/ci/content/story/1553302.html",
-      "title": "Marufa, spinners step up to seal Bangladesh's semi-final spot",
-      "summary": "Sharmin Akhter earlier rescued Bangladesh from the depths of 55 for 6 to 103 for 7 before the bowlers kept UAE to 69",
-      "url": "https://www.cricinfo.com/story/ban-vs-uae-marufa-akter-spinners-step-up-to-seal-bangladeshs-semi-final-spot-1553302",
-      "imageUrl": "https://p.imgci.com/db/PICTURES/CMS/422200/422236.5.jpg",
-      "source": "espncricinfo",
-      "publishedAt": "2026-09-08T18:41:10.000Z"
-    },
-    {
-      "id": "espn-https://www.cricinfo.com/ci/content/story/1553219.html",
-      "title": "CPL: Mehidy, Mohammad Haris set to join Amazon Warriors",
-      "summary": "Mehidy Hasan Miraz will replace Mohammad Nabi, while Mohammad Haris will join the squad in place of Rahmanullah Gurbaz",
-      "url": "https://www.cricinfo.com/story/cpl-2026-mehidy-hasan-miraz-set-for-cpl-debut-after-being-signed-by-guyana-amazon-warriors-1553219",
-      "imageUrl": "https://p.imgci.com/db/PICTURES/CMS/362900/362918.5.jpg",
-      "source": "espncricinfo",
-      "publishedAt": "2026-09-08T18:30:28.000Z"
-    },
-    {
-      "id": "espn-https://www.cricinfo.com/ci/content/story/1553267.html",
-      "title": "Andersson 129* holds up Kent's promotion push",
-      "summary": "Derbyshire recover after Hasan Mahmud strikes with first two balls of match",
-      "url": "https://www.cricinfo.com/story/county-championship-andersson-holds-up-kent-promotion-push-1553267",
-      "imageUrl": "https://p.imgci.com/db/PICTURES/CMS/416800/416808.5.jpg",
-      "source": "espncricinfo",
-      "publishedAt": "2026-09-08T17:53:58.000Z"
     }
   ]
 }
