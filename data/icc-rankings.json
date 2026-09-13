@@ -1,5 +1,5 @@
 {
-  "fetchedAt": "2026-09-12T23:04:31.769Z",
+  "fetchedAt": "2026-09-13T23:11:51.402Z",
   "source": "icc-sportz.io",
   "sourceUrl": "https://www.icc-cricket.com/rankings",
   "men": {
@@ -109,8 +109,8 @@
           "name": "South Africa",
           "abbreviation": "SA",
           "rating": 103,
-          "points": 3079,
-          "matches": 30
+          "points": 3192,
+          "matches": 31
         },
         {
           "rank": 4,
@@ -213,8 +213,8 @@
           "name": "Namibia",
           "abbreviation": "NAM",
           "rating": 30,
-          "points": 665,
-          "matches": 22
+          "points": 685,
+          "matches": 23
         },
         {
           "rank": 17,
@@ -255,8 +255,8 @@
           "name": "India",
           "abbreviation": "IND",
           "rating": 268,
-          "points": 16366,
-          "matches": 61
+          "points": 16644,
+          "matches": 62
         },
         {
           "rank": 2,
@@ -327,8 +327,8 @@
           "name": "Afghanistan",
           "abbreviation": "AFG",
           "rating": 220,
-          "points": 7935,
-          "matches": 36
+          "points": 8145,
+          "matches": 37
         },
         {
           "rank": 11,
@@ -511,8 +511,8 @@
           "name": "Kenya",
           "abbreviation": "KEN",
           "rating": 107,
-          "points": 4796,
-          "matches": 45
+          "points": 4913,
+          "matches": 46
         },
         {
           "rank": 34,
@@ -668,19 +668,19 @@
         },
         {
           "rank": 53,
-          "name": "Botswana",
-          "abbreviation": "BOT",
-          "rating": 46,
-          "points": 1656,
-          "matches": 36
-        },
-        {
-          "rank": 54,
           "name": "Rwanda",
           "abbreviation": "RWA",
           "rating": 45,
-          "points": 3039,
-          "matches": 68
+          "points": 3135,
+          "matches": 69
+        },
+        {
+          "rank": 54,
+          "name": "Botswana",
+          "abbreviation": "BOT",
+          "rating": 45,
+          "points": 1651,
+          "matches": 37
         },
         {
           "rank": 55,
@@ -911,8 +911,8 @@
           "name": "Sierra Leone",
           "abbreviation": "SRL",
           "rating": 9,
-          "points": 288,
-          "matches": 31
+          "points": 287,
+          "matches": 32
         },
         {
           "rank": 84,
@@ -10398,13 +10398,13 @@
         "allrounder": "2026-09-01"
       },
       "odi": {
-        "team": "2026-09-12",
+        "team": "2026-09-13",
         "bat": "2026-09-08",
         "bowl": "2026-09-08",
         "allrounder": "2026-09-08"
       },
       "t20": {
-        "team": "2026-09-12",
+        "team": "2026-09-13",
         "bat": "2026-09-08",
         "bowl": "2026-09-08",
         "allrounder": "2026-09-08"
@@ -10567,8 +10567,8 @@
           "name": "India",
           "abbreviation": "IND-W",
           "rating": 263,
-          "points": 11832,
-          "matches": 45
+          "points": 12120,
+          "matches": 46
         },
         {
           "rank": 4,
@@ -10582,17 +10582,17 @@
           "rank": 5,
           "name": "South Africa",
           "abbreviation": "SA-W",
-          "rating": 245,
-          "points": 9565,
-          "matches": 39
+          "rating": 246,
+          "points": 9820,
+          "matches": 40
         },
         {
           "rank": 6,
           "name": "Sri Lanka",
           "abbreviation": "SL-W",
           "rating": 238,
-          "points": 9766,
-          "matches": 41
+          "points": 9979,
+          "matches": 42
         },
         {
           "rank": 7,
@@ -10671,8 +10671,8 @@
           "name": "Zimbabwe",
           "abbreviation": "ZIM-W",
           "rating": 122,
-          "points": 4397,
-          "matches": 36
+          "points": 4509,
+          "matches": 37
         },
         {
           "rank": 17,
@@ -10766,9 +10766,9 @@
           "rank": 28,
           "name": "Malaysia",
           "abbreviation": "MAS-W",
-          "rating": 68,
-          "points": 3458,
-          "matches": 51
+          "rating": 67,
+          "points": 3545,
+          "matches": 53
         },
         {
           "rank": 29,
@@ -10854,9 +10854,9 @@
           "rank": 39,
           "name": "Japan",
           "abbreviation": "JPN-W",
-          "rating": 44,
-          "points": 1358,
-          "matches": 31
+          "rating": 45,
+          "points": 1494,
+          "matches": 33
         },
         {
           "rank": 40,
@@ -17411,7 +17411,7 @@
         "allrounder": "2026-09-07"
       },
       "t20": {
-        "team": "2026-09-11",
+        "team": "2026-09-13",
         "bat": "2026-09-07",
         "bowl": "2026-09-07",
         "allrounder": "2026-09-07"
