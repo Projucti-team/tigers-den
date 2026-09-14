@@ -1,6 +1,15 @@
 {
-  "fetchedAt": "2026-09-13T23:29:47.474Z",
+  "fetchedAt": "2026-09-14T23:58:57.821Z",
   "items": [
+    {
+      "id": "espn-https://www.cricinfo.com/ci/content/story/1554206.html",
+      "title": "Hasan Mahmud withdrawn from Kent duty by BCB",
+      "summary": "Fast bowler rested ahead of busy international winter with county vying for promotion",
+      "url": "https://www.cricinfo.com/story/hasan-mahmud-withdrawn-from-kent-duty-by-bcb-1554206",
+      "imageUrl": "https://p.imgci.com/db/PICTURES/CMS/421000/421082.5.jpg",
+      "source": "espncricinfo",
+      "publishedAt": "2026-09-14T13:05:20.000Z"
+    },
     {
       "id": "dailystar-https://www.thedailystar.net/sports/cricket/news/tigers-begin-asian-games-camp-hoping-get-adequate-preparation-4271936",
       "title": "Tigers begin Asian Games camp, hope to get ‘adequate’ preparation",
@@ -24,14 +33,6 @@
       "url": "https://www.thedailystar.net/sports/cricket/news/rishad-aliss-shine-bangladesh-clinch-series-south-africa-4271111",
       "source": "dailystar",
       "publishedAt": "2026-09-12T15:49:15.000Z"
-    },
-    {
-      "id": "dailystar-https://www.thedailystar.net/sports/cricket/news/workload-concerns-prompt-hasans-early-return-kent-4271066",
-      "title": "Workload concerns prompt Hasan’s early return from Kent",
-      "summary": "After being named in Bangladesh’s Asian Games squad, the BCB changed its decision and called him back to manage his workload.",
-      "url": "https://www.thedailystar.net/sports/cricket/news/workload-concerns-prompt-hasans-early-return-kent-4271066",
-      "source": "dailystar",
-      "publishedAt": "2026-09-12T14:13:24.000Z"
     },
     {
       "id": "espn-https://www.cricinfo.com/ci/content/story/1553867.html",
@@ -77,15 +78,6 @@
       "imageUrl": "https://p.imgci.com/db/PICTURES/CMS/422300/422323.5.jpg",
       "source": "espncricinfo",
       "publishedAt": "2026-09-10T04:26:28.000Z"
-    },
-    {
-      "id": "espn-https://www.cricinfo.com/ci/content/story/1553394.html",
-      "title": "Bangladesh bank on bowlers in bid to bring India down",
-      "summary": "Bangladesh will hope to test a shaky Indian middle order in sweltering conditions in Dubai",
-      "url": "https://www.cricinfo.com/story/womens-asia-cup-2026-semi-final-bangladesh-bank-on-bowlers-in-bid-to-bring-india-down-1553394",
-      "imageUrl": "https://p.imgci.com/db/PICTURES/CMS/418900/418900.5.jpg",
-      "source": "espncricinfo",
-      "publishedAt": "2026-09-09T09:05:47.000Z"
     }
   ]
 }
