@@ -1,5 +1,5 @@
 {
-  "fetchedAt": "2026-09-13T23:11:51.402Z",
+  "fetchedAt": "2026-09-14T23:53:30.537Z",
   "source": "icc-sportz.io",
   "sourceUrl": "https://www.icc-cricket.com/rankings",
   "men": {
@@ -391,8 +391,8 @@
           "name": "United Arab Emirates",
           "abbreviation": "UAE",
           "rating": 174,
-          "points": 9408,
-          "matches": 54
+          "points": 9592,
+          "matches": 55
         },
         {
           "rank": 19,
@@ -447,8 +447,8 @@
           "name": "Malaysia",
           "abbreviation": "MAS",
           "rating": 127,
-          "points": 6335,
-          "matches": 50
+          "points": 6452,
+          "matches": 51
         },
         {
           "rank": 26,
@@ -10404,7 +10404,7 @@
         "allrounder": "2026-09-08"
       },
       "t20": {
-        "team": "2026-09-13",
+        "team": "2026-09-14",
         "bat": "2026-09-08",
         "bowl": "2026-09-08",
         "allrounder": "2026-09-08"

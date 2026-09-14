@@ -1,5 +1,5 @@
 {
-  "fetchedAt": "2026-09-13T23:11:52.882Z",
+  "fetchedAt": "2026-09-14T23:53:32.406Z",
   "source": "espn-cricinfo-core",
   "cycleLabel": "2025–2027",
   "standings": [
@@ -117,8 +117,8 @@
       "drawn": 0,
       "tied": 0,
       "noResult": 0,
-      "points": 16,
-      "pct": 14.81
+      "points": 5,
+      "pct": 4.63
     }
   ]
 }
