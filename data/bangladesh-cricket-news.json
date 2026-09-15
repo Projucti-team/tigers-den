@@ -1,6 +1,38 @@
 {
-  "fetchedAt": "2026-09-14T23:58:57.821Z",
+  "fetchedAt": "2026-09-15T23:41:46.005Z",
   "items": [
+    {
+      "id": "dailystar-https://www.thedailystar.net/sports/cricket/news/khaled-fills-hasans-shoes-maiden-county-fifer-4274041",
+      "title": "Khaled ‘fills Hasan’s shoes’ with maiden county fifer",
+      "summary": "Bangladesh fast bowler Khaled Ahmed claimed his maiden five-wicket haul in county cricket as he helped Kent recover after Lancashire’s strong start on Day 1 in Canterbury on Tuesday.",
+      "url": "https://www.thedailystar.net/sports/cricket/news/khaled-fills-hasans-shoes-maiden-county-fifer-4274041",
+      "source": "dailystar",
+      "publishedAt": "2026-09-15T19:40:26.000Z"
+    },
+    {
+      "id": "dailystar-https://www.thedailystar.net/sports/cricket/news/why-investigate-t20-world-cup-absence-now-asif-nazrul-questions-4273781",
+      "title": "‘Why investigate T20 World Cup absence now?’: Asif Nazrul questions",
+      "summary": "Former sports adviser Dr Asif Nazrul was perplexed as to why Bangladesh’s decision not to travel to India for the 2026 T20 World Cup had to be investigated and the findings published so long after the incident.",
+      "url": "https://www.thedailystar.net/sports/cricket/news/why-investigate-t20-world-cup-absence-now-asif-nazrul-questions-4273781",
+      "source": "dailystar",
+      "publishedAt": "2026-09-15T15:56:25.000Z"
+    },
+    {
+      "id": "dailystar-https://www.thedailystar.net/sports/cricket/news/the-opportunity-2016-made-me-the-ebadot-you-see-today-4273741",
+      "title": "'The opportunity in 2016 made me the Ebadot you see today'",
+      "summary": "A decade after that defining trial, Bangladesh pacer Ebadot Hossain stood on the stage at the Sher-e-Bangla National Cricket Stadium in Mirpur on Tuesday, looking back at the day that changed the trajectory of his career. He was there to help inaugurate the latest edition of the BCB and Robi Bowler Hunt, a nationwide talent search returning after an eight-year hiatus.",
+      "url": "https://www.thedailystar.net/sports/cricket/news/the-opportunity-2016-made-me-the-ebadot-you-see-today-4273741",
+      "source": "dailystar",
+      "publishedAt": "2026-09-15T15:49:05.000Z"
+    },
+    {
+      "id": "dailystar-https://www.thedailystar.net/sports/cricket/news/bangladeshs-t20-world-cup-withdrawal-probe-committee-blames-interim-government-4273491",
+      "title": "Probe blames Asif Nazrul, interim govt for Bangladesh’s World Cup miss",
+      "summary": "The National Sports Council (NSC) formed the three-member probe committee on May 10 to investigate the reasons behind Bangladesh’s absence from the ICC Men’s T20 World Cup, co-hosted by India and Sri Lanka from February 7 to March 8.",
+      "url": "https://www.thedailystar.net/sports/cricket/news/bangladeshs-t20-world-cup-withdrawal-probe-committee-blames-interim-government-4273491",
+      "source": "dailystar",
+      "publishedAt": "2026-09-15T12:15:30.000Z"
+    },
     {
       "id": "espn-https://www.cricinfo.com/ci/content/story/1554206.html",
       "title": "Hasan Mahmud withdrawn from Kent duty by BCB",
@@ -9,30 +41,6 @@
       "imageUrl": "https://p.imgci.com/db/PICTURES/CMS/421000/421082.5.jpg",
       "source": "espncricinfo",
       "publishedAt": "2026-09-14T13:05:20.000Z"
-    },
-    {
-      "id": "dailystar-https://www.thedailystar.net/sports/cricket/news/tigers-begin-asian-games-camp-hoping-get-adequate-preparation-4271936",
-      "title": "Tigers begin Asian Games camp, hope to get ‘adequate’ preparation",
-      "summary": "Bangladesh began their Asian Games preparation camp on Sunday, returning to T20 cricket for the first time since their full series in Zimbabwe in July. With concerns over the facilities in Japan, adequate preparation is the priority as the Tigers prepare to depart for the tournament on September 24, ahead of their opening match in the quarterfinals on September 28.",
-      "url": "https://www.thedailystar.net/sports/cricket/news/tigers-begin-asian-games-camp-hoping-get-adequate-preparation-4271936",
-      "source": "dailystar",
-      "publishedAt": "2026-09-13T14:27:18.000Z"
-    },
-    {
-      "id": "dailystar-https://www.thedailystar.net/sports/cricket/news/pictures-liton-and-co-begin-practice-ahead-asian-games-4271741",
-      "title": "In Pictures: Litton and Co begin practice ahead of Asian Games",
-      "summary": "The team will play the quarterfinals directly on September 29, facing a side that advances from the first round.",
-      "url": "https://www.thedailystar.net/sports/cricket/news/pictures-liton-and-co-begin-practice-ahead-asian-games-4271741",
-      "source": "dailystar",
-      "publishedAt": "2026-09-13T11:13:02.000Z"
-    },
-    {
-      "id": "dailystar-https://www.thedailystar.net/sports/cricket/news/rishad-aliss-shine-bangladesh-clinch-series-south-africa-4271111",
-      "title": "Rishad, Aliss shine as Bangladesh 'A' clinch series in South Africa",
-      "summary": "Rishad Hossain and Aliss Al Islam shared seven wickets before Saif Hassan and Mohammad Naim hit fifties as Bangladesh ‘A’ registered a five-wicket win over South Africa ‘A’ in the third and final one-dayer in Potchefstroom on Saturday, sealing the series 1-0.",
-      "url": "https://www.thedailystar.net/sports/cricket/news/rishad-aliss-shine-bangladesh-clinch-series-south-africa-4271111",
-      "source": "dailystar",
-      "publishedAt": "2026-09-12T15:49:15.000Z"
     },
     {
       "id": "espn-https://www.cricinfo.com/ci/content/story/1553867.html",
@@ -60,24 +68,6 @@
       "imageUrl": "https://p.imgci.com/db/PICTURES/CMS/422300/422383.6.jpg",
       "source": "espncricinfo",
       "publishedAt": "2026-09-11T04:22:30.000Z"
-    },
-    {
-      "id": "espn-https://www.cricinfo.com/ci/content/story/1553632.html",
-      "title": "Bangladesh bowl against India, both teams unchanged",
-      "summary": "India captain Harmanpreet said that she wanted to bat first anyway",
-      "url": "https://www.cricinfo.com/story/womens-t20-asia-cup-2026-semi-final-bangladesh-bowl-against-india-both-teams-unchanged-1553632",
-      "imageUrl": "https://p.imgci.com/db/PICTURES/CMS/422300/422356.5.jpg",
-      "source": "espncricinfo",
-      "publishedAt": "2026-09-10T14:44:37.000Z"
-    },
-    {
-      "id": "espn-https://www.cricinfo.com/ci/content/story/1553549.html",
-      "title": "Tahir five-for, Sampson's sixes seal top spot for Guyana Amazon Warriors",
-      "summary": "Imran Tahir and CPL debutant Mehidy Hasan Miraz took combined figures of 8 for 30 to subdue St Lucia Kings",
-      "url": "https://www.cricinfo.com/story/cpl-2026-imran-tahir-five-for-quentin-sampson-sixes-seal-top-spot-for-guyana-amazon-warriors-1553549",
-      "imageUrl": "https://p.imgci.com/db/PICTURES/CMS/422300/422323.5.jpg",
-      "source": "espncricinfo",
-      "publishedAt": "2026-09-10T04:26:28.000Z"
     }
   ]
 }
