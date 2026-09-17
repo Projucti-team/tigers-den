@@ -1,6 +1,31 @@
 {
-  "fetchedAt": "2026-09-16T23:50:08.894Z",
+  "fetchedAt": "2026-09-17T23:40:29.183Z",
   "items": [
+    {
+      "id": "dailystar-https://www.thedailystar.net/sports/cricket/news/cwab-honours-bangladesh-test-team-after-australia-success-4275641",
+      "title": "CWAB honours Bangladesh Test team after Australia success",
+      "summary": "The Cricketers Welfare Association of Bangladesh (CWAB) on Thursday hosted a luncheon and reception in honour of the Bangladesh Test team following their historic success in Australia last month.",
+      "url": "https://www.thedailystar.net/sports/cricket/news/cwab-honours-bangladesh-test-team-after-australia-success-4275641",
+      "source": "dailystar",
+      "publishedAt": "2026-09-17T14:30:18.000Z"
+    },
+    {
+      "id": "dailystar-https://www.thedailystar.net/sports/cricket/news/bcb-charges-chattogram-royals-owner-durbar-rajshahi-official-over-bpl-corruption-allegations-4275301",
+      "title": "BCB charges Chattogram Royals owner, Durbar Rajshahi official over BPL corruption allegations",
+      "summary": "The Bangladesh Cricket Board (BCB) has charged two more individuals with multiple breaches of the ICC Anti-Corruption Code in connection with alleged corruption during the Bangladesh Premier League (BPL), the board said in a press release on Thursday.",
+      "url": "https://www.thedailystar.net/sports/cricket/news/bcb-charges-chattogram-royals-owner-durbar-rajshahi-official-over-bpl-corruption-allegations-4275301",
+      "source": "dailystar",
+      "publishedAt": "2026-09-17T08:00:56.000Z"
+    },
+    {
+      "id": "espn-https://www.cricinfo.com/ci/content/story/1554624.html",
+      "title": "Bangladesh through to semi-final after washout against China",
+      "summary": "Bangladesh will now take on the winner of India vs Japan in the semi-final",
+      "url": "https://www.cricinfo.com/story/womens-asian-games-2026-bangladesh-through-to-semis-after-washout-against-china-1554624",
+      "imageUrl": "https://p.imgci.com/db/PICTURES/CMS/422300/422363.5.jpg",
+      "source": "espncricinfo",
+      "publishedAt": "2026-09-17T05:19:40.000Z"
+    },
     {
       "id": "espn-https://www.cricinfo.com/ci/content/story/1554561.html",
       "title": "Bangladesh to tour Nepal for three T20Is in March 2027",
@@ -9,22 +34,6 @@
       "imageUrl": "https://p.imgci.com/db/PICTURES/CMS/383000/383015.5.jpg",
       "source": "espncricinfo",
       "publishedAt": "2026-09-16T17:22:46.000Z"
-    },
-    {
-      "id": "dailystar-https://www.thedailystar.net/sports/cricket/news/tigresses-begin-asian-games-campaign-against-china-4274706",
-      "title": "Tigresses begin Asian Games campaign against China",
-      "summary": "Bangladesh women’s cricket team will begin their Asian Games 2026 campaign tomorrow against hosts China in the quarterfinals at Korogi Sports Park in Japan.",
-      "url": "https://www.thedailystar.net/sports/cricket/news/tigresses-begin-asian-games-campaign-against-china-4274706",
-      "source": "dailystar",
-      "publishedAt": "2026-09-16T15:06:03.000Z"
-    },
-    {
-      "id": "dailystar-https://www.thedailystar.net/sports/cricket/news/bangladesh-nepal-series-honour-nepal-flood-victims-4274651",
-      "title": "Bangladesh-Nepal series in March to honour Nepal flood victims",
-      "summary": "Bangladesh will tour Nepal for a three-match T20I series in March next year, with the series to be dedicated to the memory of those who lost their lives in the devastating floods that recently hit Nepal.",
-      "url": "https://www.thedailystar.net/sports/cricket/news/bangladesh-nepal-series-honour-nepal-flood-victims-4274651",
-      "source": "dailystar",
-      "publishedAt": "2026-09-16T13:38:50.000Z"
     },
     {
       "id": "espn-https://www.cricinfo.com/ci/content/story/1554398.html",
@@ -36,12 +45,13 @@
       "publishedAt": "2026-09-16T03:48:15.000Z"
     },
     {
-      "id": "dailystar-https://www.thedailystar.net/sports/cricket/news/khaled-fills-hasans-shoes-maiden-county-fifer-4274041",
-      "title": "Khaled ‘fills Hasan’s shoes’ with maiden county fifer",
-      "summary": "Bangladesh fast bowler Khaled Ahmed claimed his maiden five-wicket haul in county cricket as he helped Kent recover after Lancashire’s strong start on Day 1 in Canterbury on Tuesday.",
-      "url": "https://www.thedailystar.net/sports/cricket/news/khaled-fills-hasans-shoes-maiden-county-fifer-4274041",
-      "source": "dailystar",
-      "publishedAt": "2026-09-15T19:40:26.000Z"
+      "id": "bdnews24-37136c61d8cb",
+      "title": "Asif Nazrul alone decided against Bangladesh playing T20 World Cup: probe report",
+      "summary": "National Sports Council inquiry reveals Bangladesh Cricket Board backed the former advisor's decision to sit out tournament",
+      "url": "https://bdnews24.com/cricket/37136c61d8cb",
+      "imageUrl": "https://media.assettype.com/bdnews24-english/import/bdnews/import/bangla/imgAll/2024December/asif-nazrul-231224-1734943701.jpg",
+      "source": "bdnews24",
+      "publishedAt": "2026-09-15T22:49:58.000Z"
     },
     {
       "id": "espn-https://www.cricinfo.com/ci/content/story/1554206.html",
@@ -51,15 +61,6 @@
       "imageUrl": "https://p.imgci.com/db/PICTURES/CMS/421000/421082.5.jpg",
       "source": "espncricinfo",
       "publishedAt": "2026-09-14T13:05:20.000Z"
-    },
-    {
-      "id": "espn-https://www.cricinfo.com/ci/content/story/1553867.html",
-      "title": "Mehidy four-for takes Amazon Warriors to eighth win; TKR finish last",
-      "summary": "Trinbago Knight Riders, the defending champions, finished bottom of the table after sinking to their seventh defeat of the season",
-      "url": "https://www.cricinfo.com/story/cpl-2026-mehidy-hasan-miraz-and-shai-hope-guide-guyana-amazon-warriors-to-eighth-win-1553867",
-      "imageUrl": "https://p.imgci.com/db/PICTURES/CMS/422400/422432.5.jpg",
-      "source": "espncricinfo",
-      "publishedAt": "2026-09-12T04:29:57.000Z"
     }
   ]
 }
