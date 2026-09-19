@@ -1,5 +1,5 @@
 {
-  "fetchedAt": "2026-09-18T23:19:57.370Z",
+  "fetchedAt": "2026-09-19T23:09:21.960Z",
   "source": "icc-sportz.io",
   "sourceUrl": "https://www.icc-cricket.com/rankings",
   "men": {
@@ -252,19 +252,19 @@
       "t20": [
         {
           "rank": 1,
+          "name": "England",
+          "abbreviation": "ENG",
+          "rating": 269,
+          "points": 11021,
+          "matches": 41
+        },
+        {
+          "rank": 2,
           "name": "India",
           "abbreviation": "IND",
           "rating": 269,
           "points": 17201,
           "matches": 64
-        },
-        {
-          "rank": 2,
-          "name": "England",
-          "abbreviation": "ENG",
-          "rating": 269,
-          "points": 10742,
-          "matches": 40
         },
         {
           "rank": 3,
@@ -319,8 +319,8 @@
           "name": "Sri Lanka",
           "abbreviation": "SL",
           "rating": 220,
-          "points": 10124,
-          "matches": 46
+          "points": 10334,
+          "matches": 47
         },
         {
           "rank": 10,
@@ -414,9 +414,9 @@
           "rank": 21,
           "name": "Uganda",
           "abbreviation": "UGA",
-          "rating": 144,
-          "points": 6612,
-          "matches": 46
+          "rating": 142,
+          "points": 6669,
+          "matches": 47
         },
         {
           "rank": 22,
@@ -438,9 +438,9 @@
           "rank": 24,
           "name": "Hong Kong",
           "abbreviation": "HK",
-          "rating": 129,
-          "points": 6215,
-          "matches": 48
+          "rating": 130,
+          "points": 6354,
+          "matches": 49
         },
         {
           "rank": 25,
@@ -500,19 +500,19 @@
         },
         {
           "rank": 32,
+          "name": "Kenya",
+          "abbreviation": "KEN",
+          "rating": 109,
+          "points": 5434,
+          "matches": 50
+        },
+        {
+          "rank": 33,
           "name": "Saudi Arabia",
           "abbreviation": "SDA",
           "rating": 109,
           "points": 2825,
           "matches": 26
-        },
-        {
-          "rank": 33,
-          "name": "Kenya",
-          "abbreviation": "KEN",
-          "rating": 107,
-          "points": 5240,
-          "matches": 49
         },
         {
           "rank": 34,
@@ -575,8 +575,8 @@
           "name": "Japan",
           "abbreviation": "JPN",
           "rating": 74,
-          "points": 2739,
-          "matches": 37
+          "points": 2803,
+          "matches": 38
         },
         {
           "rank": 42,
@@ -10394,7 +10394,7 @@
         "allrounder": "2026-09-15"
       },
       "t20": {
-        "team": "2026-09-18",
+        "team": "2026-09-19",
         "bat": "2026-09-15",
         "bowl": "2026-09-15",
         "allrounder": "2026-09-15"
@@ -10573,8 +10573,8 @@
           "name": "South Africa",
           "abbreviation": "SA-W",
           "rating": 246,
-          "points": 10332,
-          "matches": 42
+          "points": 10588,
+          "matches": 43
         },
         {
           "rank": 6,
@@ -10661,8 +10661,8 @@
           "name": "Zimbabwe",
           "abbreviation": "ZIM-W",
           "rating": 121,
-          "points": 4733,
-          "matches": 39
+          "points": 4844,
+          "matches": 40
         },
         {
           "rank": 17,
@@ -17402,7 +17402,7 @@
         "allrounder": "2026-09-07"
       },
       "t20": {
-        "team": "2026-09-18",
+        "team": "2026-09-19",
         "bat": "2026-09-14",
         "bowl": "2026-09-14",
         "allrounder": "2026-09-14"
