@@ -1,6 +1,40 @@
 {
-  "fetchedAt": "2026-09-18T23:34:36.746Z",
+  "fetchedAt": "2026-09-19T23:31:35.186Z",
   "items": [
+    {
+      "id": "espn-https://www.cricinfo.com/ci/content/story/1554992.html",
+      "title": "Bangladesh pick Hridoy for one-off Test against Afghanistan",
+      "summary": "Nahid Rana and Taskin Ahmed were not available due to fitness and workload management issues",
+      "url": "https://www.cricinfo.com/story/bangladesh-pick-towhid-hridoy-for-one-off-test-against-afghanistan-1554992",
+      "imageUrl": "https://p.imgci.com/db/PICTURES/CMS/422000/422000.5.jpg",
+      "source": "espncricinfo",
+      "publishedAt": "2026-09-19T11:09:48.000Z"
+    },
+    {
+      "id": "dailystar-https://www.thedailystar.net/sports/cricket/news/hridoy-jaker-return-afghanistan-test-taskin-rested-4276941",
+      "title": "Hridoy, Jaker return for Afghanistan Test, Taskin rested",
+      "summary": "Bangladesh will play the one-off Test against Afghanistan on October 9 in the UAE.",
+      "url": "https://www.thedailystar.net/sports/cricket/news/hridoy-jaker-return-afghanistan-test-taskin-rested-4276941",
+      "source": "dailystar",
+      "publishedAt": "2026-09-19T10:25:49.000Z"
+    },
+    {
+      "id": "espn-https://www.cricinfo.com/ci/content/story/1554986.html",
+      "title": "Dot balls the big concern as Bangladesh look to test favourites India",
+      "summary": "India are the pre-eminent team in Asia and go into the Asian Games semi-finals just a week after winning the Asia Cup for a record eighth time",
+      "url": "https://www.cricinfo.com/story/asian-games-india-eye-another-final-as-bangladesh-face-stern-test-1554986",
+      "imageUrl": "https://p.imgci.com/db/PICTURES/CMS/408400/408467.6.jpg",
+      "source": "espncricinfo",
+      "publishedAt": "2026-09-19T10:15:17.000Z"
+    },
+    {
+      "id": "dailystar-https://www.thedailystar.net/sports/cricket/news/bangladesh-turn-china-dont-friendly-cancelled-4276886",
+      "title": "Bangladesh turn up, China don't as friendly cancelled",
+      "summary": "According to team manager S M Golam Faiyaz, Bangladesh arrived at the ground in the morning and waited for China before eventually using the time for a training session ahead of Sunday's semifinal against India.",
+      "url": "https://www.thedailystar.net/sports/cricket/news/bangladesh-turn-china-dont-friendly-cancelled-4276886",
+      "source": "dailystar",
+      "publishedAt": "2026-09-19T08:44:18.000Z"
+    },
     {
       "id": "dailystar-https://www.thedailystar.net/sports/cricket/news/tigresses-face-china-friendly-today-4276501",
       "title": "Tigresses to face China in friendly today",
@@ -60,15 +94,6 @@
       "imageUrl": "https://p.imgci.com/db/PICTURES/CMS/411700/411791.5.jpg",
       "source": "espncricinfo",
       "publishedAt": "2026-09-16T03:48:15.000Z"
-    },
-    {
-      "id": "bdnews24-37136c61d8cb",
-      "title": "Asif Nazrul alone decided against Bangladesh playing T20 World Cup: probe report",
-      "summary": "National Sports Council inquiry reveals Bangladesh Cricket Board backed the former advisor's decision to sit out tournament",
-      "url": "https://bdnews24.com/cricket/37136c61d8cb",
-      "imageUrl": "https://media.assettype.com/bdnews24-english/import/bdnews/import/bangla/imgAll/2024December/asif-nazrul-231224-1734943701.jpg",
-      "source": "bdnews24",
-      "publishedAt": "2026-09-15T22:49:58.000Z"
     }
   ]
 }
