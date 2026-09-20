@@ -1,5 +1,5 @@
 {
-  "fetchedAt": "2026-09-19T23:09:21.960Z",
+  "fetchedAt": "2026-09-20T23:16:33.505Z",
   "source": "icc-sportz.io",
   "sourceUrl": "https://www.icc-cricket.com/rankings",
   "men": {
@@ -106,18 +106,18 @@
         },
         {
           "rank": 3,
+          "name": "Australia",
+          "abbreviation": "AUS",
+          "rating": 103,
+          "points": 3304,
+          "matches": 32
+        },
+        {
+          "rank": 4,
           "name": "South Africa",
           "abbreviation": "SA",
           "rating": 103,
           "points": 3192,
-          "matches": 31
-        },
-        {
-          "rank": 4,
-          "name": "Australia",
-          "abbreviation": "AUS",
-          "rating": 103,
-          "points": 3191,
           "matches": 31
         },
         {
@@ -173,8 +173,8 @@
           "name": "Zimbabwe",
           "abbreviation": "ZIM",
           "rating": 61,
-          "points": 1045,
-          "matches": 17
+          "points": 1096,
+          "matches": 18
         },
         {
           "rank": 12,
@@ -10388,7 +10388,7 @@
         "allrounder": "2026-09-15"
       },
       "odi": {
-        "team": "2026-09-18",
+        "team": "2026-09-20",
         "bat": "2026-09-15",
         "bowl": "2026-09-15",
         "allrounder": "2026-09-15"
@@ -10557,8 +10557,8 @@
           "name": "India",
           "abbreviation": "IND-W",
           "rating": 264,
-          "points": 12393,
-          "matches": 47
+          "points": 12667,
+          "matches": 48
         },
         {
           "rank": 4,
@@ -10581,8 +10581,8 @@
           "name": "Sri Lanka",
           "abbreviation": "SL-W",
           "rating": 238,
-          "points": 10227,
-          "matches": 43
+          "points": 10488,
+          "matches": 44
         },
         {
           "rank": 7,
@@ -10597,8 +10597,8 @@
           "name": "Pakistan",
           "abbreviation": "PAK-W",
           "rating": 211,
-          "points": 8242,
-          "matches": 39
+          "points": 8430,
+          "matches": 40
         },
         {
           "rank": 9,
@@ -10612,9 +10612,9 @@
           "rank": 10,
           "name": "Bangladesh",
           "abbreviation": "BAN-W",
-          "rating": 196,
-          "points": 8024,
-          "matches": 41
+          "rating": 195,
+          "points": 8210,
+          "matches": 42
         },
         {
           "rank": 11,
@@ -11192,9 +11192,9 @@
         "rank": 10,
         "name": "Bangladesh",
         "abbreviation": "BAN-W",
-        "rating": 196,
-        "points": 8024,
-        "matches": 41
+        "rating": 195,
+        "points": 8210,
+        "matches": 42
       }
     },
     "players": {
@@ -17402,7 +17402,7 @@
         "allrounder": "2026-09-07"
       },
       "t20": {
-        "team": "2026-09-19",
+        "team": "2026-09-20",
         "bat": "2026-09-14",
         "bowl": "2026-09-14",
         "allrounder": "2026-09-14"
