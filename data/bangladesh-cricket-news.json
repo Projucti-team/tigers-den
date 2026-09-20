@@ -1,6 +1,38 @@
 {
-  "fetchedAt": "2026-09-19T23:31:35.186Z",
+  "fetchedAt": "2026-09-20T23:30:22.303Z",
   "items": [
+    {
+      "id": "dailystar-https://www.thedailystar.net/sports/cricket/news/bcb-confirms-new-six-team-franchise-competition-4277981",
+      "title": "BCB confirms new six-team franchise competition",
+      "summary": "The Bangladesh Cricket Board (BCB) is set to launch a new six-team, franchise-based domestic competition spanning three formats.",
+      "url": "https://www.thedailystar.net/sports/cricket/news/bcb-confirms-new-six-team-franchise-competition-4277981",
+      "source": "dailystar",
+      "publishedAt": "2026-09-20T14:43:43.000Z"
+    },
+    {
+      "id": "dailystar-https://www.thedailystar.net/sports/cricket/news/difference-between-india-and-us-quite-big-joty-admits-after-114-run-defeat-4277956",
+      "title": "‘Difference between India and us is quite big’: Joty admits after 114-run defeat",
+      "summary": "Bangladesh women’s side suffered another heavy 114-run defeat, this time against India in the Asian Games semifinal in Nisshin, Japan, on Sunday, with skipper Nigar Sultana Joty stating that the gap between India and Bangladesh is quite big.",
+      "url": "https://www.thedailystar.net/sports/cricket/news/difference-between-india-and-us-quite-big-joty-admits-after-114-run-defeat-4277956",
+      "source": "dailystar",
+      "publishedAt": "2026-09-20T14:14:38.000Z"
+    },
+    {
+      "id": "dailystar-https://www.thedailystar.net/sports/cricket/news/shafali-storm-crushes-bangladesh-india-march-final-4277716",
+      "title": "Shafali storm crushes Bangladesh, India march into final",
+      "summary": "The defeat leaves Bangladesh with one final chance to return from the Games with a medal.",
+      "url": "https://www.thedailystar.net/sports/cricket/news/shafali-storm-crushes-bangladesh-india-march-final-4277716",
+      "source": "dailystar",
+      "publishedAt": "2026-09-20T08:20:22.000Z"
+    },
+    {
+      "id": "dailystar-https://www.thedailystar.net/sports/cricket/news/why-amite-omitted-after-just-one-test-4277666",
+      "title": "Why Amite omitted after just one Test",
+      "summary": "Amite’s exclusion came after the 25-year-old had limited opportunities to prove himself at Test level. On the back of a run-spree in the domestic circuit, he made his debut against Zimbabwe in June, scoring 29, and later made 15 and four against Cricket Australia XI in a three-day practice match in Australia, where most of Bangladesh’s batters struggled as the Tigers suffered a heavy defeat.",
+      "url": "https://www.thedailystar.net/sports/cricket/news/why-amite-omitted-after-just-one-test-4277666",
+      "source": "dailystar",
+      "publishedAt": "2026-09-20T06:52:04.000Z"
+    },
     {
       "id": "espn-https://www.cricinfo.com/ci/content/story/1554992.html",
       "title": "Bangladesh pick Hridoy for one-off Test against Afghanistan",
@@ -36,30 +68,6 @@
       "publishedAt": "2026-09-19T08:44:18.000Z"
     },
     {
-      "id": "dailystar-https://www.thedailystar.net/sports/cricket/news/tigresses-face-china-friendly-today-4276501",
-      "title": "Tigresses to face China in friendly today",
-      "summary": "Bangladesh women's cricket team will play a friendly match against China on Saturday.",
-      "url": "https://www.thedailystar.net/sports/cricket/news/tigresses-face-china-friendly-today-4276501",
-      "source": "dailystar",
-      "publishedAt": "2026-09-18T19:02:02.000Z"
-    },
-    {
-      "id": "dailystar-https://www.thedailystar.net/sports/cricket/news/ncls-second-xi-begin-oct-7-4276326",
-      "title": "NCL’s Second XI to begin on Oct 7",
-      "summary": "The BCB had announced the idea of the tournament earlier this year, with board president Tamim Iqbal saying it was aimed at creating more opportunities for players outside the national and top-tier domestic setup.",
-      "url": "https://www.thedailystar.net/sports/cricket/news/ncls-second-xi-begin-oct-7-4276326",
-      "source": "dailystar",
-      "publishedAt": "2026-09-18T14:21:35.000Z"
-    },
-    {
-      "id": "dailystar-https://www.thedailystar.net/sports/cricket/news/japan-cricketers-hail-amazing-experience-playing-india-asian-games-4276316",
-      "title": "Japan cricketers hail ‘amazing’ experience playing India at Asian Games",
-      "summary": "Led by opener Shafali Verma's unbeaten 40 off 15 balls, India romped to an eight-wicket victory by reaching 59-2 off just five overs. Defending Asian Games champions India will play Bangladesh in Sunday's semi-finals and Pakistan face Sri Lanka.",
-      "url": "https://www.thedailystar.net/sports/cricket/news/japan-cricketers-hail-amazing-experience-playing-india-asian-games-4276316",
-      "source": "dailystar",
-      "publishedAt": "2026-09-18T14:10:46.000Z"
-    },
-    {
       "id": "espn-https://www.cricinfo.com/ci/content/story/1554807.html",
       "title": "Charani, Shafali power India past Japan and into Asian Games semi-finals",
       "summary": "India set up semi-finals date with Bangladesh on September 20 for a spot in the gold-medal match",
@@ -85,15 +93,6 @@
       "imageUrl": "https://p.imgci.com/db/PICTURES/CMS/383000/383015.5.jpg",
       "source": "espncricinfo",
       "publishedAt": "2026-09-16T17:22:46.000Z"
-    },
-    {
-      "id": "espn-https://www.cricinfo.com/ci/content/story/1554398.html",
-      "title": "Bangladesh committee names Asif Nazrul as sole decision-maker of pulling out of T20 World Cup",
-      "summary": "The three-member committee concluded that the BCB at the time lacked \"independent strategic leadership, crisis diplomacy capability and long-term planning\"",
-      "url": "https://www.cricinfo.com/story/bangladesh-government-names-asif-nazrul-as-sole-decision-maker-of-pulling-out-of-t20-world-cup-1554398",
-      "imageUrl": "https://p.imgci.com/db/PICTURES/CMS/411700/411791.5.jpg",
-      "source": "espncricinfo",
-      "publishedAt": "2026-09-16T03:48:15.000Z"
     }
   ]
 }
