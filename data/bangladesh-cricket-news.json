@@ -1,6 +1,22 @@
 {
-  "fetchedAt": "2026-09-20T23:30:22.303Z",
+  "fetchedAt": "2026-09-22T00:16:57.722Z",
   "items": [
+    {
+      "id": "dailystar-https://www.thedailystar.net/sports/cricket/news/saifuddin-ruled-out-asian-games-4278996",
+      "title": "Saifuddin ruled out of Asian Games",
+      "summary": "Bangladesh pace-bowling all-rounder Mohammed Saifuddin has been ruled out of the cricket event at the 20th Asian Games due to a right hamstring injury, the Bangladesh Cricket Board (BCB) confirmed in a release on Monday.",
+      "url": "https://www.thedailystar.net/sports/cricket/news/saifuddin-ruled-out-asian-games-4278996",
+      "source": "dailystar",
+      "publishedAt": "2026-09-21T14:16:32.000Z"
+    },
+    {
+      "id": "dailystar-https://www.thedailystar.net/sports/cricket/news/will-coaching-overhaul-fix-tigresses-batting-woes-4277951",
+      "title": "Will coaching overhaul fix Tigresses’ batting woes?",
+      "summary": "Bangladesh women’s side suffered another heavy defeat, this time against India in the Asian Games semifinal in Nisshin, Japan, on Sunday, highlighting not only the gap with the top teams but also the stagnation in women’s cricket.",
+      "url": "https://www.thedailystar.net/sports/cricket/news/will-coaching-overhaul-fix-tigresses-batting-woes-4277951",
+      "source": "dailystar",
+      "publishedAt": "2026-09-21T02:30:00.000Z"
+    },
     {
       "id": "dailystar-https://www.thedailystar.net/sports/cricket/news/bcb-confirms-new-six-team-franchise-competition-4277981",
       "title": "BCB confirms new six-team franchise competition",
@@ -26,14 +42,6 @@
       "publishedAt": "2026-09-20T08:20:22.000Z"
     },
     {
-      "id": "dailystar-https://www.thedailystar.net/sports/cricket/news/why-amite-omitted-after-just-one-test-4277666",
-      "title": "Why Amite omitted after just one Test",
-      "summary": "Amite’s exclusion came after the 25-year-old had limited opportunities to prove himself at Test level. On the back of a run-spree in the domestic circuit, he made his debut against Zimbabwe in June, scoring 29, and later made 15 and four against Cricket Australia XI in a three-day practice match in Australia, where most of Bangladesh’s batters struggled as the Tigers suffered a heavy defeat.",
-      "url": "https://www.thedailystar.net/sports/cricket/news/why-amite-omitted-after-just-one-test-4277666",
-      "source": "dailystar",
-      "publishedAt": "2026-09-20T06:52:04.000Z"
-    },
-    {
       "id": "espn-https://www.cricinfo.com/ci/content/story/1554992.html",
       "title": "Bangladesh pick Hridoy for one-off Test against Afghanistan",
       "summary": "Nahid Rana and Taskin Ahmed were not available due to fitness and workload management issues",
@@ -43,14 +51,6 @@
       "publishedAt": "2026-09-19T11:09:48.000Z"
     },
     {
-      "id": "dailystar-https://www.thedailystar.net/sports/cricket/news/hridoy-jaker-return-afghanistan-test-taskin-rested-4276941",
-      "title": "Hridoy, Jaker return for Afghanistan Test, Taskin rested",
-      "summary": "Bangladesh will play the one-off Test against Afghanistan on October 9 in the UAE.",
-      "url": "https://www.thedailystar.net/sports/cricket/news/hridoy-jaker-return-afghanistan-test-taskin-rested-4276941",
-      "source": "dailystar",
-      "publishedAt": "2026-09-19T10:25:49.000Z"
-    },
-    {
       "id": "espn-https://www.cricinfo.com/ci/content/story/1554986.html",
       "title": "Dot balls the big concern as Bangladesh look to test favourites India",
       "summary": "India are the pre-eminent team in Asia and go into the Asian Games semi-finals just a week after winning the Asia Cup for a record eighth time",
@@ -58,14 +58,6 @@
       "imageUrl": "https://p.imgci.com/db/PICTURES/CMS/408400/408467.6.jpg",
       "source": "espncricinfo",
       "publishedAt": "2026-09-19T10:15:17.000Z"
-    },
-    {
-      "id": "dailystar-https://www.thedailystar.net/sports/cricket/news/bangladesh-turn-china-dont-friendly-cancelled-4276886",
-      "title": "Bangladesh turn up, China don't as friendly cancelled",
-      "summary": "According to team manager S M Golam Faiyaz, Bangladesh arrived at the ground in the morning and waited for China before eventually using the time for a training session ahead of Sunday's semifinal against India.",
-      "url": "https://www.thedailystar.net/sports/cricket/news/bangladesh-turn-china-dont-friendly-cancelled-4276886",
-      "source": "dailystar",
-      "publishedAt": "2026-09-19T08:44:18.000Z"
     },
     {
       "id": "espn-https://www.cricinfo.com/ci/content/story/1554807.html",
@@ -84,15 +76,6 @@
       "imageUrl": "https://p.imgci.com/db/PICTURES/CMS/422300/422363.5.jpg",
       "source": "espncricinfo",
       "publishedAt": "2026-09-17T05:19:40.000Z"
-    },
-    {
-      "id": "espn-https://www.cricinfo.com/ci/content/story/1554561.html",
-      "title": "Bangladesh to tour Nepal for three T20Is in March 2027",
-      "summary": "It will be the first international bilateral series between the two countries",
-      "url": "https://www.cricinfo.com/story/bangladesh-to-tour-nepal-for-three-t20is-in-march-2027-1554561",
-      "imageUrl": "https://p.imgci.com/db/PICTURES/CMS/383000/383015.5.jpg",
-      "source": "espncricinfo",
-      "publishedAt": "2026-09-16T17:22:46.000Z"
     }
   ]
 }
