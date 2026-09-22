@@ -1,5 +1,5 @@
 {
-  "fetchedAt": "2026-09-20T23:16:33.505Z",
+  "fetchedAt": "2026-09-22T00:09:13.106Z",
   "source": "icc-sportz.io",
   "sourceUrl": "https://www.icc-cricket.com/rankings",
   "men": {
@@ -566,9 +566,9 @@
           "rank": 40,
           "name": "Nigeria",
           "abbreviation": "NGR",
-          "rating": 77,
-          "points": 3399,
-          "matches": 44
+          "rating": 78,
+          "points": 3489,
+          "matches": 45
         },
         {
           "rank": 41,
@@ -719,8 +719,8 @@
           "name": "Ghana",
           "abbreviation": "GHA",
           "rating": 40,
-          "points": 605,
-          "matches": 15
+          "points": 632,
+          "matches": 16
         },
         {
           "rank": 60,
@@ -10394,7 +10394,7 @@
         "allrounder": "2026-09-15"
       },
       "t20": {
-        "team": "2026-09-19",
+        "team": "2026-09-21",
         "bat": "2026-09-15",
         "bowl": "2026-09-15",
         "allrounder": "2026-09-15"
