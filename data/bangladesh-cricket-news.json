@@ -1,6 +1,31 @@
 {
-  "fetchedAt": "2026-09-22T23:48:36.069Z",
+  "fetchedAt": "2026-09-23T23:57:05.338Z",
   "items": [
+    {
+      "id": "espn-https://www.cricinfo.com/ci/content/story/1555491.html",
+      "title": "Litton: 'Playing Asian Games is a rare occurence'",
+      "summary": "The Bangladesh captain is excited for his first Asiad, and said they aim to add to their gold-medal tally this time",
+      "url": "https://www.cricinfo.com/story/bangladesh-captain-litton-das-playing-asian-games-is-a-rare-occurence-1555491",
+      "imageUrl": "https://p.imgci.com/db/PICTURES/CMS/420900/420998.5.jpg",
+      "source": "espncricinfo",
+      "publishedAt": "2026-09-23T13:43:24.000Z"
+    },
+    {
+      "id": "dailystar-https://www.thedailystar.net/sports/cricket/news/aliss-replaces-saifuddin-asian-games-squad-4281141",
+      "title": "Aliss replaces Saifuddin in Asian Games squad",
+      "summary": "Aliss has yet to make his senior international debut for Bangladesh.",
+      "url": "https://www.thedailystar.net/sports/cricket/news/aliss-replaces-saifuddin-asian-games-squad-4281141",
+      "source": "dailystar",
+      "publishedAt": "2026-09-23T13:39:49.000Z"
+    },
+    {
+      "id": "dailystar-https://www.thedailystar.net/sports/cricket/news/litton-sees-asian-games-rare-chance-chase-bigger-dream-4280971",
+      "title": "Litton sees Asian Games as rare chance to chase bigger dream",
+      "summary": "Bangladesh won the men’s cricket gold at the 2010 Asian Games in Guangzhou, when the major Test-playing nations did not send their strongest sides.",
+      "url": "https://www.thedailystar.net/sports/cricket/news/litton-sees-asian-games-rare-chance-chase-bigger-dream-4280971",
+      "source": "dailystar",
+      "publishedAt": "2026-09-23T10:00:08.000Z"
+    },
     {
       "id": "dailystar-https://www.thedailystar.net/sports/cricket/news/spin-focus-bangladesh-test-squad-begin-skill-camp-4280396",
       "title": "Spin in focus as Bangladesh Test squad begin skill camp",
@@ -8,22 +33,6 @@
       "url": "https://www.thedailystar.net/sports/cricket/news/spin-focus-bangladesh-test-squad-begin-skill-camp-4280396",
       "source": "dailystar",
       "publishedAt": "2026-09-22T17:55:21.000Z"
-    },
-    {
-      "id": "dailystar-https://www.thedailystar.net/sports/cricket/news/pictures-tigers-begins-skill-camp-ahead-wtc-marathon-4280096",
-      "title": "In Pictures: Tigers begins skill camp ahead of WTC marathon",
-      "summary": "Bangladesh national cricketers hit the practice nets and consult with coaching staff as they kick off their intensive skill camp ahead of a grueling 50-day schedule featuring five Test matches.",
-      "url": "https://www.thedailystar.net/sports/cricket/news/pictures-tigers-begins-skill-camp-ahead-wtc-marathon-4280096",
-      "source": "dailystar",
-      "publishedAt": "2026-09-22T14:34:41.000Z"
-    },
-    {
-      "id": "dailystar-https://www.thedailystar.net/sports/cricket/news/we-are-stuck-imran-highlights-crisis-bangladesh-womens-cricket-4279866",
-      "title": "‘We are stuck’: Imran highlights crisis in Bangladesh women’s cricket",
-      "summary": "He argued that international performance cannot be separated from the structure beneath the national team. While Sri Lanka has hundreds of girls participating in school cricket, Bangladesh does not have a comparable system, he said.",
-      "url": "https://www.thedailystar.net/sports/cricket/news/we-are-stuck-imran-highlights-crisis-bangladesh-womens-cricket-4279866",
-      "source": "dailystar",
-      "publishedAt": "2026-09-22T11:26:12.000Z"
     },
     {
       "id": "espn-https://www.cricinfo.com/ci/content/story/1555282.html",
