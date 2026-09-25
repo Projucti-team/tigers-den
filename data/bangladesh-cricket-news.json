@@ -1,6 +1,14 @@
 {
-  "fetchedAt": "2026-09-23T23:57:05.338Z",
+  "fetchedAt": "2026-09-25T00:00:02.937Z",
   "items": [
+    {
+      "id": "dailystar-https://www.thedailystar.net/sports/cricket/news/50-mind-game-mushtaqs-blueprint-next-generation-spinners-4282021",
+      "title": "‘50% is mind game’: Mushtaq’s blueprint for next generation of spinners",
+      "summary": "Speaking after a specialist three-day spin-bowling workshop at the Sher-e-Bangla National Cricket Stadium in Mirpur, Mushtaq highlighted the importance of developing a repeatable bowling action through biomechanical analysis, particularly before young spinners reach first-class cricket.",
+      "url": "https://www.thedailystar.net/sports/cricket/news/50-mind-game-mushtaqs-blueprint-next-generation-spinners-4282021",
+      "source": "dailystar",
+      "publishedAt": "2026-09-24T12:37:22.000Z"
+    },
     {
       "id": "espn-https://www.cricinfo.com/ci/content/story/1555491.html",
       "title": "Litton: 'Playing Asian Games is a rare occurence'",
@@ -27,14 +35,6 @@
       "publishedAt": "2026-09-23T10:00:08.000Z"
     },
     {
-      "id": "dailystar-https://www.thedailystar.net/sports/cricket/news/spin-focus-bangladesh-test-squad-begin-skill-camp-4280396",
-      "title": "Spin in focus as Bangladesh Test squad begin skill camp",
-      "summary": "Bangladesh have had a pace challenge in Australia, and the UAE series would test batters skills against spin. It was no surprise that on day one, spin was on Tigers’ minds as they geared up for the Afghanistan challenge.",
-      "url": "https://www.thedailystar.net/sports/cricket/news/spin-focus-bangladesh-test-squad-begin-skill-camp-4280396",
-      "source": "dailystar",
-      "publishedAt": "2026-09-22T17:55:21.000Z"
-    },
-    {
       "id": "espn-https://www.cricinfo.com/ci/content/story/1555282.html",
       "title": "Fatima Sana and Umm-e-Hani secure bronze for Pakistan in Asian Games",
       "summary": "Bangladesh were in control of proceedings for the first half of Pakistan's innings, but lost their grip once Fatima Sana got going and never found it again",
@@ -42,33 +42,6 @@
       "imageUrl": "https://p.imgci.com/db/PICTURES/CMS/422800/422853.5.jpg",
       "source": "espncricinfo",
       "publishedAt": "2026-09-22T03:46:42.000Z"
-    },
-    {
-      "id": "espn-https://www.cricinfo.com/ci/content/story/1554992.html",
-      "title": "Bangladesh pick Hridoy for one-off Test against Afghanistan",
-      "summary": "Nahid Rana and Taskin Ahmed were not available due to fitness and workload management issues",
-      "url": "https://www.cricinfo.com/story/bangladesh-pick-towhid-hridoy-for-one-off-test-against-afghanistan-1554992",
-      "imageUrl": "https://p.imgci.com/db/PICTURES/CMS/422000/422000.5.jpg",
-      "source": "espncricinfo",
-      "publishedAt": "2026-09-19T11:09:48.000Z"
-    },
-    {
-      "id": "espn-https://www.cricinfo.com/ci/content/story/1554986.html",
-      "title": "Dot balls the big concern as Bangladesh look to test favourites India",
-      "summary": "India are the pre-eminent team in Asia and go into the Asian Games semi-finals just a week after winning the Asia Cup for a record eighth time",
-      "url": "https://www.cricinfo.com/story/asian-games-india-eye-another-final-as-bangladesh-face-stern-test-1554986",
-      "imageUrl": "https://p.imgci.com/db/PICTURES/CMS/408400/408467.6.jpg",
-      "source": "espncricinfo",
-      "publishedAt": "2026-09-19T10:15:17.000Z"
-    },
-    {
-      "id": "espn-https://www.cricinfo.com/ci/content/story/1554807.html",
-      "title": "Charani, Shafali power India past Japan and into Asian Games semi-finals",
-      "summary": "India set up semi-finals date with Bangladesh on September 20 for a spot in the gold-medal match",
-      "url": "https://www.cricinfo.com/story/asian-games-shree-charani-and-shafali-verma-power-india-past-japan-and-into-semi-finals-1554807",
-      "imageUrl": "https://p.imgci.com/db/PICTURES/CMS/422700/422709.5.jpg",
-      "source": "espncricinfo",
-      "publishedAt": "2026-09-18T10:37:38.000Z"
     }
   ]
 }
