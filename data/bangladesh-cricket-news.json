@@ -1,6 +1,31 @@
 {
-  "fetchedAt": "2026-09-26T00:09:16.211Z",
+  "fetchedAt": "2026-09-26T23:53:00.405Z",
   "items": [
+    {
+      "id": "dailystar-https://www.thedailystar.net/sports/cricket/news/hasan-khaled-help-kent-earn-promotion-county-championships-top-division-4283716",
+      "title": "Hasan, Khaled help Kent earn promotion to County Championship's top division",
+      "summary": "Bangladesh pacers Hasan Mahmud and Khaled Ahmed played important roles in Kent’s successful promotion to Division One of the County Championship, with the English county securing a return to the top tier after a one-year absence.",
+      "url": "https://www.thedailystar.net/sports/cricket/news/hasan-khaled-help-kent-earn-promotion-county-championships-top-division-4283716",
+      "source": "dailystar",
+      "publishedAt": "2026-09-26T18:03:53.000Z"
+    },
+    {
+      "id": "dailystar-https://www.thedailystar.net/sports/cricket/news/bangladesh-face-malaysia-quarterfinals-asian-games-mens-cricket-event-4283351",
+      "title": "Bangladesh to face Malaysia in quarterfinals of Asian Games men's cricket event",
+      "summary": "Bangladesh will begin their men's cricket campaign at the Aichi-Nagoya Asian Games with a quarterfinal against Malaysia on September 29 after the preliminary stage concluded yesterday.",
+      "url": "https://www.thedailystar.net/sports/cricket/news/bangladesh-face-malaysia-quarterfinals-asian-games-mens-cricket-event-4283351",
+      "source": "dailystar",
+      "publishedAt": "2026-09-26T08:58:14.000Z"
+    },
+    {
+      "id": "espn-https://www.cricinfo.com/ci/content/story/1555763.html",
+      "title": "Asian Games: Malaysia enter quarter-finals after washout, Oman knocked out",
+      "summary": "Quarter-final line-ups: Afghanistan vs India, Hong Kong vs Pakistan, Bangladesh vs Malaysia and Nepal vs Sri Lanka",
+      "url": "https://www.cricinfo.com/story/malaysia-enter-asian-games-mens-cricket-quarter-finals-oman-knocked-out-after-washout-1555763",
+      "imageUrl": "https://p.imgci.com/db/PICTURES/CMS/410500/410552.6.jpg",
+      "source": "espncricinfo",
+      "publishedAt": "2026-09-26T07:32:29.000Z"
+    },
     {
       "id": "dailystar-https://www.thedailystar.net/sports/cricket/news/busy-calendar-leaves-ncl-short-national-team-stars-4282876",
       "title": "Busy calendar leaves NCL short of national team stars",
@@ -18,14 +43,6 @@
       "publishedAt": "2026-09-25T03:00:00.000Z"
     },
     {
-      "id": "dailystar-https://www.thedailystar.net/sports/cricket/news/50-mind-game-mushtaqs-blueprint-next-generation-spinners-4282021",
-      "title": "‘50% is mind game’: Mushtaq’s blueprint for next generation of spinners",
-      "summary": "Speaking after a specialist three-day spin-bowling workshop at the Sher-e-Bangla National Cricket Stadium in Mirpur, Mushtaq highlighted the importance of developing a repeatable bowling action through biomechanical analysis, particularly before young spinners reach first-class cricket.",
-      "url": "https://www.thedailystar.net/sports/cricket/news/50-mind-game-mushtaqs-blueprint-next-generation-spinners-4282021",
-      "source": "dailystar",
-      "publishedAt": "2026-09-24T12:37:22.000Z"
-    },
-    {
       "id": "espn-https://www.cricinfo.com/ci/content/story/1555491.html",
       "title": "Litton: 'Playing Asian Games is a rare occurence'",
       "summary": "The Bangladesh captain is excited for his first Asiad, and said they aim to add to their gold-medal tally this time",
@@ -33,23 +50,6 @@
       "imageUrl": "https://p.imgci.com/db/PICTURES/CMS/420900/420998.5.jpg",
       "source": "espncricinfo",
       "publishedAt": "2026-09-23T13:43:24.000Z"
-    },
-    {
-      "id": "dailystar-https://www.thedailystar.net/sports/cricket/news/aliss-replaces-saifuddin-asian-games-squad-4281141",
-      "title": "Aliss replaces Saifuddin in Asian Games squad",
-      "summary": "Aliss has yet to make his senior international debut for Bangladesh.",
-      "url": "https://www.thedailystar.net/sports/cricket/news/aliss-replaces-saifuddin-asian-games-squad-4281141",
-      "source": "dailystar",
-      "publishedAt": "2026-09-23T13:39:49.000Z"
-    },
-    {
-      "id": "espn-https://www.cricinfo.com/ci/content/story/1555282.html",
-      "title": "Fatima Sana and Umm-e-Hani secure bronze for Pakistan in Asian Games",
-      "summary": "Bangladesh were in control of proceedings for the first half of Pakistan's innings, but lost their grip once Fatima Sana got going and never found it again",
-      "url": "https://www.cricinfo.com/story/fatima-sana-and-umm-e-hani-bring-pakistan-asian-games-bronze-by-beating-bangladesh-1555282",
-      "imageUrl": "https://p.imgci.com/db/PICTURES/CMS/422800/422853.5.jpg",
-      "source": "espncricinfo",
-      "publishedAt": "2026-09-22T03:46:42.000Z"
     }
   ]
 }
