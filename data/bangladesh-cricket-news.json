@@ -1,6 +1,49 @@
 {
-  "fetchedAt": "2026-09-27T23:57:08.816Z",
+  "fetchedAt": "2026-09-29T01:15:18.855Z",
   "items": [
+    {
+      "id": "espn-https://www.cricinfo.com/ci/content/story/1556054.html",
+      "title": "Najmul Hossain Shanto ruled out of Asian Games due to illness",
+      "summary": "He has been suffering from fever since his arrival in Nagoya for men's cricket competition",
+      "url": "https://www.cricinfo.com/story/asian-games-najmul-hossain-shanto-ruled-out-due-to-fever-and-infections-1556054",
+      "imageUrl": "https://p.imgci.com/db/PICTURES/CMS/414600/414621.5.jpg",
+      "source": "espncricinfo",
+      "publishedAt": "2026-09-28T12:19:36.000Z"
+    },
+    {
+      "id": "dailystar-https://www.thedailystar.net/sports/cricket/news/shanto-ruled-out-asian-games-fever-4285141",
+      "title": "‎ Shanto ruled out of Asian Games with fever",
+      "summary": "Bangladesh will face Malaysia in their quarterfinal on Tuesday. If the match is washed out due to rain, as Monday's two quarterfinals were, Bangladesh will advance to the semifinals without playing and face Pakistan on October 1.",
+      "url": "https://www.thedailystar.net/sports/cricket/news/shanto-ruled-out-asian-games-fever-4285141",
+      "source": "dailystar",
+      "publishedAt": "2026-09-28T12:00:17.000Z"
+    },
+    {
+      "id": "espn-https://www.cricinfo.com/ci/content/story/1556045.html",
+      "title": "Malaysia face Bangladesh in Asian Games quarter-final repeat from 2023",
+      "summary": "The last time these two teams met, Malaysia fell just two runs short",
+      "url": "https://www.cricinfo.com/story/malaysia-vs-bangladesh-asian-games-2026-malaysia-face-bangladesh-in-an-asian-games-quarter-final-repeat-from-2023-1556045",
+      "imageUrl": "https://p.imgci.com/db/PICTURES/CMS/418500/418569.5.jpg",
+      "source": "espncricinfo",
+      "publishedAt": "2026-09-28T11:45:36.000Z"
+    },
+    {
+      "id": "dailystar-https://www.thedailystar.net/sports/cricket/news/rain-the-decider-asian-games-cricket-4284946",
+      "title": "Rain the decider in Asian Games cricket",
+      "summary": "Sri Lanka play Nepal and Bangladesh face Malaysia, weather permitting, in the last two quarterfinals on Tuesday.",
+      "url": "https://www.thedailystar.net/sports/cricket/news/rain-the-decider-asian-games-cricket-4284946",
+      "source": "dailystar",
+      "publishedAt": "2026-09-28T06:52:32.000Z"
+    },
+    {
+      "id": "espn-https://www.cricinfo.com/ci/content/story/1556018.html",
+      "title": "Molineux a doubt for Bangladesh ODIs with hip injury",
+      "summary": "A CA spokesperson said Molineux's involvement in the series 'will continue to be assessed'",
+      "url": "https://www.cricinfo.com/story/hip-injury-makes-sophie-molineux-a-doubt-for-bangladesh-odis-1556018",
+      "imageUrl": "https://p.imgci.com/db/PICTURES/CMS/418400/418444.5.jpg",
+      "source": "espncricinfo",
+      "publishedAt": "2026-09-28T05:05:11.000Z"
+    },
     {
       "id": "dailystar-https://www.thedailystar.net/sports/cricket/news/bcb-launches-d3-revive-domestic-cricket-4284456",
       "title": "BCB launches D3 to revive domestic cricket",
@@ -18,14 +61,6 @@
       "publishedAt": "2026-09-27T09:04:25.000Z"
     },
     {
-      "id": "dailystar-https://www.thedailystar.net/sports/cricket/news/hasan-khaled-help-kent-earn-promotion-county-championships-top-division-4283716",
-      "title": "Hasan, Khaled help Kent earn promotion to County Championship's top division",
-      "summary": "Bangladesh pacers Hasan Mahmud and Khaled Ahmed played important roles in Kent’s successful promotion to Division One of the County Championship, with the English county securing a return to the top tier after a one-year absence.",
-      "url": "https://www.thedailystar.net/sports/cricket/news/hasan-khaled-help-kent-earn-promotion-county-championships-top-division-4283716",
-      "source": "dailystar",
-      "publishedAt": "2026-09-26T18:03:53.000Z"
-    },
-    {
       "id": "espn-https://www.cricinfo.com/ci/content/story/1555763.html",
       "title": "Asian Games: Malaysia enter quarter-finals after washout, Oman knocked out",
       "summary": "Quarter-final line-ups: Afghanistan vs India, Hong Kong vs Pakistan, Bangladesh vs Malaysia and Nepal vs Sri Lanka",
@@ -33,15 +68,6 @@
       "imageUrl": "https://p.imgci.com/db/PICTURES/CMS/410500/410552.6.jpg",
       "source": "espncricinfo",
       "publishedAt": "2026-09-26T07:32:29.000Z"
-    },
-    {
-      "id": "espn-https://www.cricinfo.com/ci/content/story/1555491.html",
-      "title": "Litton: 'Playing Asian Games is a rare occurence'",
-      "summary": "The Bangladesh captain is excited for his first Asiad, and said they aim to add to their gold-medal tally this time",
-      "url": "https://www.cricinfo.com/story/bangladesh-captain-litton-das-playing-asian-games-is-a-rare-occurence-1555491",
-      "imageUrl": "https://p.imgci.com/db/PICTURES/CMS/420900/420998.5.jpg",
-      "source": "espncricinfo",
-      "publishedAt": "2026-09-23T13:43:24.000Z"
     }
   ]
 }
