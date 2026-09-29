@@ -1,5 +1,5 @@
 {
-  "fetchedAt": "2026-09-27T23:49:22.475Z",
+  "fetchedAt": "2026-09-29T01:01:11.469Z",
   "source": "icc-sportz.io",
   "sourceUrl": "https://www.icc-cricket.com/rankings",
   "men": {
@@ -494,9 +494,9 @@
           "rank": 31,
           "name": "Bermuda",
           "abbreviation": "BER",
-          "rating": 112,
-          "points": 2458,
-          "matches": 22
+          "rating": 113,
+          "points": 2713,
+          "matches": 24
         },
         {
           "rank": 32,
@@ -558,9 +558,9 @@
           "rank": 39,
           "name": "Cayman Islands",
           "abbreviation": "CAY",
-          "rating": 83,
-          "points": 2233,
-          "matches": 27
+          "rating": 82,
+          "points": 2295,
+          "matches": 28
         },
         {
           "rank": 40,
@@ -724,19 +724,19 @@
         },
         {
           "rank": 60,
-          "name": "Bahamas",
-          "abbreviation": "BAH",
-          "rating": 39,
-          "points": 733,
-          "matches": 19
-        },
-        {
-          "rank": 61,
           "name": "Cambodia",
           "abbreviation": "KHM",
           "rating": 38,
           "points": 1109,
           "matches": 29
+        },
+        {
+          "rank": 61,
+          "name": "Bahamas",
+          "abbreviation": "BAH",
+          "rating": 38,
+          "points": 762,
+          "matches": 20
         },
         {
           "rank": 62,
@@ -10385,7 +10385,7 @@
         "allrounder": "2026-09-22"
       },
       "t20": {
-        "team": "2026-09-27",
+        "team": "2026-09-28",
         "bat": "2026-09-22",
         "bowl": "2026-09-22",
         "allrounder": "2026-09-22"
