@@ -1,6 +1,49 @@
 {
-  "fetchedAt": "2026-09-29T01:15:18.855Z",
+  "fetchedAt": "2026-09-30T00:45:41.053Z",
   "items": [
+    {
+      "id": "espn-https://www.cricinfo.com/ci/content/story/1556159.html",
+      "title": "Molineux monitored, Hamilton out of ODIs, Brown out with back injury",
+      "summary": "Molineux is battling a hip injury but has been named to face Bangladesh and New Zealand while Hamilton is out of the ODIs with a minor quad strain",
+      "url": "https://www.cricinfo.com/story/molineux-monitored-hamilton-out-of-odis-brown-out-with-back-injury-1556159",
+      "imageUrl": "https://p.imgci.com/db/PICTURES/CMS/414100/414142.5.jpg",
+      "source": "espncricinfo",
+      "publishedAt": "2026-09-29T23:06:52.000Z"
+    },
+    {
+      "id": "dailystar-https://www.thedailystar.net/sports/cricket/news/salahuddin-ashraful-reunite-fortune-d3-4286151",
+      "title": "Salahuddin, Ashraful reunite at Fortune in D3",
+      "summary": "Former Bangladesh national team senior assistant coach Mohammad Salahuddin was picked as Fortune’s head coach, with current national team batting coach Mohammad Ashraful and Abdul Karim Juel picked as his assistants during the inaugural team management draft for the upcoming D3 competition in Mirpur yesterday.",
+      "url": "https://www.thedailystar.net/sports/cricket/news/salahuddin-ashraful-reunite-fortune-d3-4286151",
+      "source": "dailystar",
+      "publishedAt": "2026-09-29T18:30:00.000Z"
+    },
+    {
+      "id": "espn-https://www.cricinfo.com/ci/content/story/1556088.html",
+      "title": "Pakistan meet Bangladesh, India meet Sri Lanka in Asian Games men's semi-finals",
+      "summary": "All four semi-finalists are yet to contest a ball in the tournament so far",
+      "url": "https://www.cricinfo.com/story/asian-games-2026-pakistan-meet-bangladesh-india-meet-sri-lanka-in-mens-semi-finals-1556088",
+      "imageUrl": "https://p.imgci.com/db/PICTURES/CMS/423100/423172.5.jpg",
+      "source": "espncricinfo",
+      "publishedAt": "2026-09-29T06:31:16.000Z"
+    },
+    {
+      "id": "espn-https://www.cricinfo.com/ci/content/story/1556075.html",
+      "title": "Bangladesh to take on Pakistan in semis after another washout",
+      "summary": "Bangladesh went through because of their higher seeding compared to Malaysia",
+      "url": "https://www.cricinfo.com/story/asian-games-bangladesh-to-take-on-pakistan-in-semis-malaysia-out-1556075",
+      "imageUrl": "https://p.imgci.com/db/PICTURES/CMS/388400/388458.5.jpg",
+      "source": "espncricinfo",
+      "publishedAt": "2026-09-29T03:38:03.000Z"
+    },
+    {
+      "id": "dailystar-https://www.thedailystar.net/sports/more-sports/news/asian-games-cricket-bangladesh-sri-lanka-reach-semifinals-without-playing-ball-4285746",
+      "title": "Asian Games Cricket: Bangladesh, Sri Lanka reach semifinals without playing a ball",
+      "summary": "The Sri Lankans will meet India in the last four and Bangladesh play Pakistan, with both matches scheduled for Thursday.",
+      "url": "https://www.thedailystar.net/sports/more-sports/news/asian-games-cricket-bangladesh-sri-lanka-reach-semifinals-without-playing-ball-4285746",
+      "source": "dailystar",
+      "publishedAt": "2026-09-29T02:50:05.000Z"
+    },
     {
       "id": "espn-https://www.cricinfo.com/ci/content/story/1556054.html",
       "title": "Najmul Hossain Shanto ruled out of Asian Games due to illness",
@@ -43,22 +86,6 @@
       "imageUrl": "https://p.imgci.com/db/PICTURES/CMS/418400/418444.5.jpg",
       "source": "espncricinfo",
       "publishedAt": "2026-09-28T05:05:11.000Z"
-    },
-    {
-      "id": "dailystar-https://www.thedailystar.net/sports/cricket/news/bcb-launches-d3-revive-domestic-cricket-4284456",
-      "title": "BCB launches D3 to revive domestic cricket",
-      "summary": "Speaking at the launching ceremony at a city hotel on Sunday, BCB president Tamim Iqbal said the main objective was to restore the appeal of domestic cricket. He expressed confidence that the new competition would bring significant changes to the domestic cricket structure.",
-      "url": "https://www.thedailystar.net/sports/cricket/news/bcb-launches-d3-revive-domestic-cricket-4284456",
-      "source": "dailystar",
-      "publishedAt": "2026-09-27T15:53:47.000Z"
-    },
-    {
-      "id": "dailystar-https://www.thedailystar.net/sports/cricket/news/salahuddin-warns-litton-and-co-upsets-can-happen-against-malaysia-4284111",
-      "title": "Salahuddin warns Litton and Co: ‘Upsets can happen’ against Malaysia",
-      "summary": "Malaysia are now under the supervision of former Bangladesh coach Dav Whatmore, adding another layer of familiarity between the two sides.",
-      "url": "https://www.thedailystar.net/sports/cricket/news/salahuddin-warns-litton-and-co-upsets-can-happen-against-malaysia-4284111",
-      "source": "dailystar",
-      "publishedAt": "2026-09-27T09:04:25.000Z"
     },
     {
       "id": "espn-https://www.cricinfo.com/ci/content/story/1555763.html",
