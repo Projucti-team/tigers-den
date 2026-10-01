@@ -1,14 +1,56 @@
 {
-  "fetchedAt": "2026-09-30T00:45:41.053Z",
+  "fetchedAt": "2026-10-01T00:50:02.002Z",
   "items": [
     {
+      "id": "dailystar-https://www.thedailystar.net/sports/cricket/news/sun-finally-shines-tigers-brace-pakistan-4287181",
+      "title": "Sun finally shines as Tigers brace for Pakistan",
+      "summary": "The weather could prove just as important as the cricket.",
+      "url": "https://www.thedailystar.net/sports/cricket/news/sun-finally-shines-tigers-brace-pakistan-4287181",
+      "source": "dailystar",
+      "publishedAt": "2026-09-30T15:15:03.000Z"
+    },
+    {
+      "id": "espn-https://www.cricinfo.com/ci/content/story/1556619.html",
+      "title": "Uncapped Biswas, Habiba in Nigar Sultana-led Bangladesh squad for Australia ODIs",
+      "summary": "Nigar had stepped down from T20I captaincy after the Asian Games but the board remains confident in her leadership abilities",
+      "url": "https://www.cricinfo.com/story/uncapped-biswas-habiba-in-nigar-sultana-led-bangladesh-squad-for-australia-odis-1556619",
+      "imageUrl": "https://p.imgci.com/db/PICTURES/CMS/418400/418455.5.jpg",
+      "source": "espncricinfo",
+      "publishedAt": "2026-09-30T13:56:04.000Z"
+    },
+    {
+      "id": "dailystar-https://www.thedailystar.net/sports/womens-sports/news/uncapped-disha-habiba-called-amid-bangladeshs-pace-concerns-australia-tour-4287121",
+      "title": "Uncapped Disha, Habiba called up amid Bangladesh’s pace concerns for Australia tour",
+      "summary": "Bangladesh have named uncapped pacers Disha Biswas and Habiba Islam Pinky in their 16-member squad for the upcoming three-match WODI series against Australia, which gets underway on October 9.",
+      "url": "https://www.thedailystar.net/sports/womens-sports/news/uncapped-disha-habiba-called-amid-bangladeshs-pace-concerns-australia-tour-4287121",
+      "source": "dailystar",
+      "publishedAt": "2026-09-30T13:30:42.000Z"
+    },
+    {
+      "id": "dailystar-https://www.thedailystar.net/sports/cricket/news/abu-dhabi-host-one-test-between-bangladesh-and-afghanistan-4287106",
+      "title": "Abu Dhabi to host one-off Test between Bangladesh and Afghanistan",
+      "summary": "The one-off Test will begin on October 9.",
+      "url": "https://www.thedailystar.net/sports/cricket/news/abu-dhabi-host-one-test-between-bangladesh-and-afghanistan-4287106",
+      "source": "dailystar",
+      "publishedAt": "2026-09-30T13:02:55.000Z"
+    },
+    {
+      "id": "espn-https://www.cricinfo.com/ci/content/story/1556540.html",
+      "title": "Bangladesh and Pakistan hope the sun keeps rising in Nisshin",
+      "summary": "The forecast for semi-finals day in Nisshin is excellent; if that changes and there is no play, Pakistan will enter the final by virtue of their higher seeding",
+      "url": "https://www.cricinfo.com/story/asian-games-semi-final-bangladesh-pakistan-hope-the-rising-sun-allows-them-time-for-a-contest-1556540",
+      "imageUrl": "https://p.imgci.com/db/PICTURES/CMS/415600/415699.6.jpg",
+      "source": "espncricinfo",
+      "publishedAt": "2026-09-30T05:03:49.000Z"
+    },
+    {
       "id": "espn-https://www.cricinfo.com/ci/content/story/1556159.html",
-      "title": "Molineux monitored, Hamilton out of ODIs, Brown out with back injury",
-      "summary": "Molineux is battling a hip injury but has been named to face Bangladesh and New Zealand while Hamilton is out of the ODIs with a minor quad strain",
-      "url": "https://www.cricinfo.com/story/molineux-monitored-hamilton-out-of-odis-brown-out-with-back-injury-1556159",
+      "title": "Molineux, Hamilton out of Bangladesh ODIs; McGrath to captain",
+      "summary": "Molineux is battling a hip injury while Hamilton has a minor quad strain with both hoping to be fit for the New Zealand T20Is",
+      "url": "https://www.cricinfo.com/story/molineux-hamilton-out-of-bangladesh-odis-mcgrath-to-captain-1556159",
       "imageUrl": "https://p.imgci.com/db/PICTURES/CMS/414100/414142.5.jpg",
       "source": "espncricinfo",
-      "publishedAt": "2026-09-29T23:06:52.000Z"
+      "publishedAt": "2026-09-30T03:01:43.000Z"
     },
     {
       "id": "dailystar-https://www.thedailystar.net/sports/cricket/news/salahuddin-ashraful-reunite-fortune-d3-4286151",
@@ -37,14 +79,6 @@
       "publishedAt": "2026-09-29T03:38:03.000Z"
     },
     {
-      "id": "dailystar-https://www.thedailystar.net/sports/more-sports/news/asian-games-cricket-bangladesh-sri-lanka-reach-semifinals-without-playing-ball-4285746",
-      "title": "Asian Games Cricket: Bangladesh, Sri Lanka reach semifinals without playing a ball",
-      "summary": "The Sri Lankans will meet India in the last four and Bangladesh play Pakistan, with both matches scheduled for Thursday.",
-      "url": "https://www.thedailystar.net/sports/more-sports/news/asian-games-cricket-bangladesh-sri-lanka-reach-semifinals-without-playing-ball-4285746",
-      "source": "dailystar",
-      "publishedAt": "2026-09-29T02:50:05.000Z"
-    },
-    {
       "id": "espn-https://www.cricinfo.com/ci/content/story/1556054.html",
       "title": "Najmul Hossain Shanto ruled out of Asian Games due to illness",
       "summary": "He has been suffering from fever since his arrival in Nagoya for men's cricket competition",
@@ -54,14 +88,6 @@
       "publishedAt": "2026-09-28T12:19:36.000Z"
     },
     {
-      "id": "dailystar-https://www.thedailystar.net/sports/cricket/news/shanto-ruled-out-asian-games-fever-4285141",
-      "title": "‎ Shanto ruled out of Asian Games with fever",
-      "summary": "Bangladesh will face Malaysia in their quarterfinal on Tuesday. If the match is washed out due to rain, as Monday's two quarterfinals were, Bangladesh will advance to the semifinals without playing and face Pakistan on October 1.",
-      "url": "https://www.thedailystar.net/sports/cricket/news/shanto-ruled-out-asian-games-fever-4285141",
-      "source": "dailystar",
-      "publishedAt": "2026-09-28T12:00:17.000Z"
-    },
-    {
       "id": "espn-https://www.cricinfo.com/ci/content/story/1556045.html",
       "title": "Malaysia face Bangladesh in Asian Games quarter-final repeat from 2023",
       "summary": "The last time these two teams met, Malaysia fell just two runs short",
@@ -69,14 +95,6 @@
       "imageUrl": "https://p.imgci.com/db/PICTURES/CMS/418500/418569.5.jpg",
       "source": "espncricinfo",
       "publishedAt": "2026-09-28T11:45:36.000Z"
-    },
-    {
-      "id": "dailystar-https://www.thedailystar.net/sports/cricket/news/rain-the-decider-asian-games-cricket-4284946",
-      "title": "Rain the decider in Asian Games cricket",
-      "summary": "Sri Lanka play Nepal and Bangladesh face Malaysia, weather permitting, in the last two quarterfinals on Tuesday.",
-      "url": "https://www.thedailystar.net/sports/cricket/news/rain-the-decider-asian-games-cricket-4284946",
-      "source": "dailystar",
-      "publishedAt": "2026-09-28T06:52:32.000Z"
     },
     {
       "id": "espn-https://www.cricinfo.com/ci/content/story/1556018.html",
