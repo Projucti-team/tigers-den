@@ -1,10 +1,36 @@
 {
-  "fetchedAt": "2026-09-30T00:30:09.436Z",
+  "fetchedAt": "2026-10-01T00:35:20.700Z",
   "source": "espn-cricinfo-core",
   "cycleLabel": "2025–2027",
   "standings": [
     {
       "rank": 1,
+      "team": "Australia",
+      "abbreviation": "AUS",
+      "played": 10,
+      "won": 8,
+      "lost": 2,
+      "drawn": 0,
+      "tied": 0,
+      "noResult": 0,
+      "points": 96,
+      "pct": 80
+    },
+    {
+      "rank": 2,
+      "team": "South Africa",
+      "abbreviation": "SA",
+      "played": 4,
+      "won": 3,
+      "lost": 1,
+      "drawn": 0,
+      "tied": 0,
+      "noResult": 0,
+      "points": 36,
+      "pct": 75
+    },
+    {
+      "rank": 3,
       "team": "New Zealand",
       "abbreviation": "NZ",
       "played": 6,
@@ -17,7 +43,7 @@
       "pct": 72.22
     },
     {
-      "rank": 2,
+      "rank": 4,
       "team": "Bangladesh",
       "abbreviation": "BAN",
       "played": 6,
@@ -30,7 +56,59 @@
       "pct": 55.56
     },
     {
-      "rank": 3,
+      "rank": 5,
+      "team": "India",
+      "abbreviation": "IND",
+      "played": 11,
+      "won": 5,
+      "lost": 4,
+      "drawn": 2,
+      "tied": 0,
+      "noResult": 0,
+      "points": 68,
+      "pct": 51.52
+    },
+    {
+      "rank": 6,
+      "team": "England",
+      "abbreviation": "ENG",
+      "played": 16,
+      "won": 7,
+      "lost": 8,
+      "drawn": 1,
+      "tied": 0,
+      "noResult": 0,
+      "points": 74,
+      "pct": 38.54
+    },
+    {
+      "rank": 7,
+      "team": "Sri Lanka",
+      "abbreviation": "SL",
+      "played": 6,
+      "won": 1,
+      "lost": 2,
+      "drawn": 3,
+      "tied": 0,
+      "noResult": 0,
+      "points": 24,
+      "pct": 33.33
+    },
+    {
+      "rank": 8,
+      "team": "West Indies",
+      "abbreviation": "WI",
+      "played": 12,
+      "won": 2,
+      "lost": 8,
+      "drawn": 2,
+      "tied": 0,
+      "noResult": 0,
+      "points": 30,
+      "pct": 20.83
+    },
+    {
+      "rank": 9,
       "team": "Pakistan",
       "abbreviation": "PAK",
       "played": 9,
