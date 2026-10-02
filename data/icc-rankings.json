@@ -1,5 +1,5 @@
 {
-  "fetchedAt": "2026-10-01T00:35:18.645Z",
+  "fetchedAt": "2026-10-02T00:49:40.919Z",
   "source": "icc-sportz.io",
   "sourceUrl": "https://www.icc-cricket.com/rankings",
   "men": {
@@ -255,8 +255,8 @@
           "name": "India",
           "abbreviation": "IND",
           "rating": 269,
-          "points": 17480,
-          "matches": 65
+          "points": 17759,
+          "matches": 66
         },
         {
           "rank": 2,
@@ -294,9 +294,9 @@
           "rank": 6,
           "name": "Pakistan",
           "abbreviation": "PAK",
-          "rating": 240,
-          "points": 13679,
-          "matches": 57
+          "rating": 241,
+          "points": 13953,
+          "matches": 58
         },
         {
           "rank": 7,
@@ -310,17 +310,17 @@
           "rank": 8,
           "name": "Bangladesh",
           "abbreviation": "BAN",
-          "rating": 224,
-          "points": 11860,
-          "matches": 53
+          "rating": 223,
+          "points": 12050,
+          "matches": 54
         },
         {
           "rank": 9,
           "name": "Sri Lanka",
           "abbreviation": "SL",
           "rating": 220,
-          "points": 10334,
-          "matches": 47
+          "points": 10544,
+          "matches": 48
         },
         {
           "rank": 10,
@@ -1089,9 +1089,9 @@
         "rank": 8,
         "name": "Bangladesh",
         "abbreviation": "BAN",
-        "rating": 224,
-        "points": 11860,
-        "matches": 53
+        "rating": 223,
+        "points": 12050,
+        "matches": 54
       }
     },
     "players": {
@@ -10398,7 +10398,7 @@
         "allrounder": "2026-09-29"
       },
       "t20": {
-        "team": "2026-09-28",
+        "team": "2026-10-01",
         "bat": "2026-09-29",
         "bowl": "2026-09-29",
         "allrounder": "2026-09-29"
