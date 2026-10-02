@@ -1,13 +1,37 @@
 {
-  "fetchedAt": "2026-10-01T00:50:02.002Z",
+  "fetchedAt": "2026-10-02T01:04:57.262Z",
   "items": [
     {
-      "id": "dailystar-https://www.thedailystar.net/sports/cricket/news/sun-finally-shines-tigers-brace-pakistan-4287181",
-      "title": "Sun finally shines as Tigers brace for Pakistan",
-      "summary": "The weather could prove just as important as the cricket.",
-      "url": "https://www.thedailystar.net/sports/cricket/news/sun-finally-shines-tigers-brace-pakistan-4287181",
+      "id": "dailystar-https://www.thedailystar.net/sports/cricket/news/tigers-tough-group-england-sa-sl-nz-4288076",
+      "title": "Tigers in tough group with England, SA, SL, NZ",
+      "summary": "The tournament, co-hosted by South Africa, Zimbabwe and Namibia, will feature 14 teams. 10 teams have come directly by virtue of rankings and hosts.",
+      "url": "https://www.thedailystar.net/sports/cricket/news/tigers-tough-group-england-sa-sl-nz-4288076",
       "source": "dailystar",
-      "publishedAt": "2026-09-30T15:15:03.000Z"
+      "publishedAt": "2026-10-01T15:59:15.000Z"
+    },
+    {
+      "id": "dailystar-https://www.thedailystar.net/sports/cricket/news/afghanistan-announce-all-format-squads-bangladesh-zimbabwe-series-4288006",
+      "title": "Afghanistan announce all-format squads for Bangladesh, Zimbabwe series",
+      "summary": "Afghanistan will first play a one-off Test against Bangladesh from October 9 to 13 in Abu Dhabi, with Rashid missing.",
+      "url": "https://www.thedailystar.net/sports/cricket/news/afghanistan-announce-all-format-squads-bangladesh-zimbabwe-series-4288006",
+      "source": "dailystar",
+      "publishedAt": "2026-10-01T14:17:35.000Z"
+    },
+    {
+      "id": "dailystar-https://www.thedailystar.net/sports/cricket/news/litton-rues-lack-preparation-after-pakistan-defeat-4287706",
+      "title": "Litton rues lack of preparation after Pakistan defeat",
+      "summary": "Bangladesh captain Litton Das blamed the team’s lack of preparation and unfamiliarity with the wicket after their six-wicket defeat to Pakistan in the Asian Games semi-final in Nagoya yesterday, a result that ended their hopes of winning gold.",
+      "url": "https://www.thedailystar.net/sports/cricket/news/litton-rues-lack-preparation-after-pakistan-defeat-4287706",
+      "source": "dailystar",
+      "publishedAt": "2026-10-01T06:41:04.000Z"
+    },
+    {
+      "id": "dailystar-https://www.thedailystar.net/sports/cricket/news/no-gold-time-either-pakistan-knock-out-tigers-4287616",
+      "title": "No gold this time either as Pakistan knock out Tigers",
+      "summary": "The Tigers, who last won gold at the 2010 Asian Games, were restricted to 111-7 after Pakistan elected to field in the rain-curtailed 13-over-a-side contest.",
+      "url": "https://www.thedailystar.net/sports/cricket/news/no-gold-time-either-pakistan-knock-out-tigers-4287616",
+      "source": "dailystar",
+      "publishedAt": "2026-10-01T03:43:54.000Z"
     },
     {
       "id": "espn-https://www.cricinfo.com/ci/content/story/1556619.html",
@@ -17,22 +41,6 @@
       "imageUrl": "https://p.imgci.com/db/PICTURES/CMS/418400/418455.5.jpg",
       "source": "espncricinfo",
       "publishedAt": "2026-09-30T13:56:04.000Z"
-    },
-    {
-      "id": "dailystar-https://www.thedailystar.net/sports/womens-sports/news/uncapped-disha-habiba-called-amid-bangladeshs-pace-concerns-australia-tour-4287121",
-      "title": "Uncapped Disha, Habiba called up amid Bangladesh’s pace concerns for Australia tour",
-      "summary": "Bangladesh have named uncapped pacers Disha Biswas and Habiba Islam Pinky in their 16-member squad for the upcoming three-match WODI series against Australia, which gets underway on October 9.",
-      "url": "https://www.thedailystar.net/sports/womens-sports/news/uncapped-disha-habiba-called-amid-bangladeshs-pace-concerns-australia-tour-4287121",
-      "source": "dailystar",
-      "publishedAt": "2026-09-30T13:30:42.000Z"
-    },
-    {
-      "id": "dailystar-https://www.thedailystar.net/sports/cricket/news/abu-dhabi-host-one-test-between-bangladesh-and-afghanistan-4287106",
-      "title": "Abu Dhabi to host one-off Test between Bangladesh and Afghanistan",
-      "summary": "The one-off Test will begin on October 9.",
-      "url": "https://www.thedailystar.net/sports/cricket/news/abu-dhabi-host-one-test-between-bangladesh-and-afghanistan-4287106",
-      "source": "dailystar",
-      "publishedAt": "2026-09-30T13:02:55.000Z"
     },
     {
       "id": "espn-https://www.cricinfo.com/ci/content/story/1556540.html",
@@ -51,14 +59,6 @@
       "imageUrl": "https://p.imgci.com/db/PICTURES/CMS/414100/414142.5.jpg",
       "source": "espncricinfo",
       "publishedAt": "2026-09-30T03:01:43.000Z"
-    },
-    {
-      "id": "dailystar-https://www.thedailystar.net/sports/cricket/news/salahuddin-ashraful-reunite-fortune-d3-4286151",
-      "title": "Salahuddin, Ashraful reunite at Fortune in D3",
-      "summary": "Former Bangladesh national team senior assistant coach Mohammad Salahuddin was picked as Fortune’s head coach, with current national team batting coach Mohammad Ashraful and Abdul Karim Juel picked as his assistants during the inaugural team management draft for the upcoming D3 competition in Mirpur yesterday.",
-      "url": "https://www.thedailystar.net/sports/cricket/news/salahuddin-ashraful-reunite-fortune-d3-4286151",
-      "source": "dailystar",
-      "publishedAt": "2026-09-29T18:30:00.000Z"
     },
     {
       "id": "espn-https://www.cricinfo.com/ci/content/story/1556088.html",
@@ -104,15 +104,6 @@
       "imageUrl": "https://p.imgci.com/db/PICTURES/CMS/418400/418444.5.jpg",
       "source": "espncricinfo",
       "publishedAt": "2026-09-28T05:05:11.000Z"
-    },
-    {
-      "id": "espn-https://www.cricinfo.com/ci/content/story/1555763.html",
-      "title": "Asian Games: Malaysia enter quarter-finals after washout, Oman knocked out",
-      "summary": "Quarter-final line-ups: Afghanistan vs India, Hong Kong vs Pakistan, Bangladesh vs Malaysia and Nepal vs Sri Lanka",
-      "url": "https://www.cricinfo.com/story/malaysia-enter-asian-games-mens-cricket-quarter-finals-oman-knocked-out-after-washout-1555763",
-      "imageUrl": "https://p.imgci.com/db/PICTURES/CMS/410500/410552.6.jpg",
-      "source": "espncricinfo",
-      "publishedAt": "2026-09-26T07:32:29.000Z"
     }
   ]
 }
