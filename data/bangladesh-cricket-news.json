@@ -1,6 +1,48 @@
 {
-  "fetchedAt": "2026-10-02T01:04:57.262Z",
+  "fetchedAt": "2026-10-03T00:44:11.215Z",
   "items": [
+    {
+      "id": "dailystar-https://www.thedailystar.net/sports/cricket/news/no-more-picnic-tournament-revamped-ncl-begins-today-4288851",
+      "title": "No more 'picnic tournament', says BCB as revamped NCL begins today",
+      "summary": "A new-look National Cricket League (NCL) gets underway on Saturday across four venues, with the Bangladesh Cricket Board (BCB) introducing several changes in an attempt to revive domestic cricket and make the first-class competition more competitive.",
+      "url": "https://www.thedailystar.net/sports/cricket/news/no-more-picnic-tournament-revamped-ncl-begins-today-4288851",
+      "source": "dailystar",
+      "publishedAt": "2026-10-02T18:30:18.000Z"
+    },
+    {
+      "id": "espn-https://www.cricinfo.com/ci/content/story/1556941.html",
+      "title": "Malibongwe Maketa named Bangladesh men's assistant coach",
+      "summary": "Cricinfo has learned that Maketa has been hired with BCB's focus on the two South Africa tours in the next 12 months",
+      "url": "https://www.cricinfo.com/story/malibongwe-maketa-named-bangladesh-mens-assistant-coach-1556941",
+      "imageUrl": "https://p.imgci.com/db/PICTURES/CMS/348600/348639.5.jpg",
+      "source": "espncricinfo",
+      "publishedAt": "2026-10-02T14:56:33.000Z"
+    },
+    {
+      "id": "dailystar-https://www.thedailystar.net/sports/cricket/news/bcb-appoints-south-african-maketa-national-team-assistant-coach-4288786",
+      "title": "BCB appoints South African Maketa as national team assistant coach",
+      "summary": "Maketa's appointment came a day after the International Cricket Council announced the World Cup 2027 fixtures, which will be jointly hosted by South Africa, Zimbabwe and Namibia next year. Bangladesh will also tour South Africa in November this year for a full-fledged series and Maketa's experience will help the Tigers on African soil.",
+      "url": "https://www.thedailystar.net/sports/cricket/news/bcb-appoints-south-african-maketa-national-team-assistant-coach-4288786",
+      "source": "dailystar",
+      "publishedAt": "2026-10-02T14:31:18.000Z"
+    },
+    {
+      "id": "espn-https://www.cricinfo.com/ci/content/story/1556868.html",
+      "title": "Bronze at stake as Bangladesh, SL look to bring cheer to Asian Games contingents",
+      "summary": "Bangladesh start as favourites against a decidedly second-string Sri Lanka side",
+      "url": "https://www.cricinfo.com/story/asian-games-2026-bronze-at-stake-as-bangladesh-sl-look-to-bring-cheer-to-contingents-1556868",
+      "imageUrl": "https://p.imgci.com/db/PICTURES/CMS/405700/405716.5.jpg",
+      "source": "espncricinfo",
+      "publishedAt": "2026-10-02T04:28:02.000Z"
+    },
+    {
+      "id": "dailystar-https://www.thedailystar.net/sports/cricket/news/fatema-tuz-jahara-the-bangladeshi-behind-chinas-olympic-cricket-dream-4288416",
+      "title": "Fatema Tuz Jahara: The Bangladeshi behind China’s Olympic cricket dream",
+      "summary": "The former Bangladesh international spent the next two years helping reshape the national setup. By the time she left China to join the Qatar national team in January this year, around 25 players were living and training in Hangzhou, a more structured daily programme was in place, and international-standard cricket venues were being developed in three cities.",
+      "url": "https://www.thedailystar.net/sports/cricket/news/fatema-tuz-jahara-the-bangladeshi-behind-chinas-olympic-cricket-dream-4288416",
+      "source": "dailystar",
+      "publishedAt": "2026-10-02T03:00:00.000Z"
+    },
     {
       "id": "dailystar-https://www.thedailystar.net/sports/cricket/news/tigers-tough-group-england-sa-sl-nz-4288076",
       "title": "Tigers in tough group with England, SA, SL, NZ",
@@ -16,22 +58,6 @@
       "url": "https://www.thedailystar.net/sports/cricket/news/afghanistan-announce-all-format-squads-bangladesh-zimbabwe-series-4288006",
       "source": "dailystar",
       "publishedAt": "2026-10-01T14:17:35.000Z"
-    },
-    {
-      "id": "dailystar-https://www.thedailystar.net/sports/cricket/news/litton-rues-lack-preparation-after-pakistan-defeat-4287706",
-      "title": "Litton rues lack of preparation after Pakistan defeat",
-      "summary": "Bangladesh captain Litton Das blamed the team’s lack of preparation and unfamiliarity with the wicket after their six-wicket defeat to Pakistan in the Asian Games semi-final in Nagoya yesterday, a result that ended their hopes of winning gold.",
-      "url": "https://www.thedailystar.net/sports/cricket/news/litton-rues-lack-preparation-after-pakistan-defeat-4287706",
-      "source": "dailystar",
-      "publishedAt": "2026-10-01T06:41:04.000Z"
-    },
-    {
-      "id": "dailystar-https://www.thedailystar.net/sports/cricket/news/no-gold-time-either-pakistan-knock-out-tigers-4287616",
-      "title": "No gold this time either as Pakistan knock out Tigers",
-      "summary": "The Tigers, who last won gold at the 2010 Asian Games, were restricted to 111-7 after Pakistan elected to field in the rain-curtailed 13-over-a-side contest.",
-      "url": "https://www.thedailystar.net/sports/cricket/news/no-gold-time-either-pakistan-knock-out-tigers-4287616",
-      "source": "dailystar",
-      "publishedAt": "2026-10-01T03:43:54.000Z"
     },
     {
       "id": "espn-https://www.cricinfo.com/ci/content/story/1556619.html",
