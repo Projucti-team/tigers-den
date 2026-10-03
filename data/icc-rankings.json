@@ -1,5 +1,5 @@
 {
-  "fetchedAt": "2026-10-03T00:32:02.384Z",
+  "fetchedAt": "2026-10-03T23:48:01.813Z",
   "source": "icc-sportz.io",
   "sourceUrl": "https://www.icc-cricket.com/rankings",
   "men": {
@@ -92,9 +92,9 @@
           "rank": 1,
           "name": "India",
           "abbreviation": "IND",
-          "rating": 117,
-          "points": 4095,
-          "matches": 35
+          "rating": 115,
+          "points": 4122,
+          "matches": 36
         },
         {
           "rank": 2,
@@ -164,9 +164,9 @@
           "rank": 10,
           "name": "West Indies",
           "abbreviation": "WI",
-          "rating": 77,
-          "points": 2757,
-          "matches": 36
+          "rating": 79,
+          "points": 2924,
+          "matches": 37
         },
         {
           "rank": 11,
@@ -255,8 +255,8 @@
           "name": "India",
           "abbreviation": "IND",
           "rating": 269,
-          "points": 17759,
-          "matches": 66
+          "points": 18050,
+          "matches": 67
         },
         {
           "rank": 2,
@@ -294,9 +294,9 @@
           "rank": 6,
           "name": "Pakistan",
           "abbreviation": "PAK",
-          "rating": 241,
-          "points": 13953,
-          "matches": 58
+          "rating": 240,
+          "points": 14172,
+          "matches": 59
         },
         {
           "rank": 7,
@@ -310,17 +310,17 @@
           "rank": 8,
           "name": "Bangladesh",
           "abbreviation": "BAN",
-          "rating": 223,
-          "points": 12050,
-          "matches": 54
+          "rating": 222,
+          "points": 12220,
+          "matches": 55
         },
         {
           "rank": 9,
           "name": "Sri Lanka",
           "abbreviation": "SL",
-          "rating": 220,
-          "points": 10544,
-          "matches": 48
+          "rating": 221,
+          "points": 10817,
+          "matches": 49
         },
         {
           "rank": 10,
@@ -742,9 +742,9 @@
           "rank": 62,
           "name": "Indonesia",
           "abbreviation": "INA",
-          "rating": 37,
-          "points": 3052,
-          "matches": 83
+          "rating": 36,
+          "points": 3019,
+          "matches": 84
         },
         {
           "rank": 63,
@@ -836,6 +836,14 @@
         },
         {
           "rank": 74,
+          "name": "Korea",
+          "abbreviation": "KOR",
+          "rating": 21,
+          "points": 381,
+          "matches": 18
+        },
+        {
+          "rank": 75,
           "name": "Bhutan",
           "abbreviation": "BHU",
           "rating": 20,
@@ -843,7 +851,7 @@
           "matches": 26
         },
         {
-          "rank": 75,
+          "rank": 76,
           "name": "Belize",
           "abbreviation": "BIZ",
           "rating": 20,
@@ -851,20 +859,12 @@
           "matches": 7
         },
         {
-          "rank": 76,
+          "rank": 77,
           "name": "Mexico",
           "abbreviation": "MEX",
           "rating": 18,
           "points": 445,
           "matches": 25
-        },
-        {
-          "rank": 77,
-          "name": "Korea",
-          "abbreviation": "KOR",
-          "rating": 17,
-          "points": 294,
-          "matches": 17
         },
         {
           "rank": 78,
@@ -1089,9 +1089,9 @@
         "rank": 8,
         "name": "Bangladesh",
         "abbreviation": "BAN",
-        "rating": 223,
-        "points": 12050,
-        "matches": 54
+        "rating": 222,
+        "points": 12220,
+        "matches": 55
       }
     },
     "players": {
@@ -10392,13 +10392,13 @@
         "allrounder": "2026-09-15"
       },
       "odi": {
-        "team": "2026-09-30",
+        "team": "2026-10-03",
         "bat": "2026-09-29",
         "bowl": "2026-09-29",
         "allrounder": "2026-09-29"
       },
       "t20": {
-        "team": "2026-10-01",
+        "team": "2026-10-03",
         "bat": "2026-09-29",
         "bowl": "2026-09-29",
         "allrounder": "2026-09-29"
@@ -10592,9 +10592,9 @@
           "rank": 7,
           "name": "West Indies",
           "abbreviation": "WI-W",
-          "rating": 237,
-          "points": 7829,
-          "matches": 33
+          "rating": 238,
+          "points": 8076,
+          "matches": 34
         },
         {
           "rank": 8,
@@ -10665,8 +10665,8 @@
           "name": "Zimbabwe",
           "abbreviation": "ZIM-W",
           "rating": 121,
-          "points": 4844,
-          "matches": 40
+          "points": 4955,
+          "matches": 41
         },
         {
           "rank": 17,
@@ -17430,7 +17430,7 @@
         "allrounder": "2026-09-28"
       },
       "t20": {
-        "team": "2026-09-25",
+        "team": "2026-10-03",
         "bat": "2026-09-28",
         "bowl": "2026-09-28",
         "allrounder": "2026-09-28"
