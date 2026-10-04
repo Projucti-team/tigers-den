@@ -1,5 +1,5 @@
 {
-  "fetchedAt": "2026-10-03T23:48:01.813Z",
+  "fetchedAt": "2026-10-04T23:58:38.360Z",
   "source": "icc-sportz.io",
   "sourceUrl": "https://www.icc-cricket.com/rankings",
   "men": {
@@ -742,9 +742,9 @@
           "rank": 62,
           "name": "Indonesia",
           "abbreviation": "INA",
-          "rating": 36,
-          "points": 3019,
-          "matches": 84
+          "rating": 35,
+          "points": 2990,
+          "matches": 85
         },
         {
           "rank": 63,
@@ -820,6 +820,14 @@
         },
         {
           "rank": 72,
+          "name": "Korea",
+          "abbreviation": "KOR",
+          "rating": 25,
+          "points": 467,
+          "matches": 19
+        },
+        {
+          "rank": 73,
           "name": "Estonia",
           "abbreviation": "EST",
           "rating": 24,
@@ -827,20 +835,12 @@
           "matches": 21
         },
         {
-          "rank": 73,
+          "rank": 74,
           "name": "Cameroon",
           "abbreviation": "CMR",
           "rating": 21,
           "points": 213,
           "matches": 10
-        },
-        {
-          "rank": 74,
-          "name": "Korea",
-          "abbreviation": "KOR",
-          "rating": 21,
-          "points": 381,
-          "matches": 18
         },
         {
           "rank": 75,
@@ -10398,7 +10398,7 @@
         "allrounder": "2026-09-29"
       },
       "t20": {
-        "team": "2026-10-03",
+        "team": "2026-10-04",
         "bat": "2026-09-29",
         "bowl": "2026-09-29",
         "allrounder": "2026-09-29"
