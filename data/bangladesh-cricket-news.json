@@ -1,6 +1,39 @@
 {
-  "fetchedAt": "2026-10-03T00:44:11.215Z",
+  "fetchedAt": "2026-10-04T00:02:11.970Z",
   "items": [
+    {
+      "id": "dailystar-https://www.thedailystar.net/sports/cricket/news/litton-laments-missed-opportunity-after-bronze-slip-4289476",
+      "title": "Litton laments missed opportunity after bronze slip",
+      "summary": "Bangladesh won gold at the 2010 Asian Games in Guangzhou before securing bronze medals in the next two editions, in 2014 and 2022.",
+      "url": "https://www.thedailystar.net/sports/cricket/news/litton-laments-missed-opportunity-after-bronze-slip-4289476",
+      "source": "dailystar",
+      "publishedAt": "2026-10-03T15:15:19.000Z"
+    },
+    {
+      "id": "dailystar-https://www.thedailystar.net/sports/cricket/news/deeply-ashamed-salahuddin-apologises-after-bangladeshs-asian-games-failure-4289261",
+      "title": "‘Deeply ashamed’: Salahuddin apologises after Bangladesh’s Asian Games failure",
+      "summary": "Salahuddin accepted that Bangladesh had simply not performed as a team.",
+      "url": "https://www.thedailystar.net/sports/cricket/news/deeply-ashamed-salahuddin-apologises-after-bangladeshs-asian-games-failure-4289261",
+      "source": "dailystar",
+      "publishedAt": "2026-10-03T08:04:52.000Z"
+    },
+    {
+      "id": "dailystar-https://www.thedailystar.net/sports/cricket/news/bronze-slips-away-tigers-suffer-63-run-defeat-sri-lanka-4289146",
+      "title": "Bronze slips away as Tigers suffer 63-run defeat to Sri Lanka",
+      "summary": "Bangladesh cricketers will return home empty-handed from the Asian Games for the first time after suffering a 63-run defeat to a second-string Sri Lanka in the Bronze-deciding third-place playoff in Nisshin today.",
+      "url": "https://www.thedailystar.net/sports/cricket/news/bronze-slips-away-tigers-suffer-63-run-defeat-sri-lanka-4289146",
+      "source": "dailystar",
+      "publishedAt": "2026-10-03T04:03:09.000Z"
+    },
+    {
+      "id": "espn-https://www.cricinfo.com/ci/content/story/1556982.html",
+      "title": "Ratnayake puts in all-round shift to lead Sri Lanka to bronze medal",
+      "summary": "Bangladesh collapsed with the bat after Tharindu Ratnayake had smashed 65 in 32 balls to take Sri Lanka to a solid 165 for 9",
+      "url": "https://www.cricinfo.com/story/asian-games-tharindu-ratnayake-puts-in-all-round-shift-to-lead-sri-lanka-to-bronze-medal-1556982",
+      "imageUrl": "https://p.imgci.com/db/PICTURES/CMS/423300/423329.6.jpg",
+      "source": "espncricinfo",
+      "publishedAt": "2026-10-03T03:55:37.000Z"
+    },
     {
       "id": "dailystar-https://www.thedailystar.net/sports/cricket/news/no-more-picnic-tournament-revamped-ncl-begins-today-4288851",
       "title": "No more 'picnic tournament', says BCB as revamped NCL begins today",
@@ -19,14 +52,6 @@
       "publishedAt": "2026-10-02T14:56:33.000Z"
     },
     {
-      "id": "dailystar-https://www.thedailystar.net/sports/cricket/news/bcb-appoints-south-african-maketa-national-team-assistant-coach-4288786",
-      "title": "BCB appoints South African Maketa as national team assistant coach",
-      "summary": "Maketa's appointment came a day after the International Cricket Council announced the World Cup 2027 fixtures, which will be jointly hosted by South Africa, Zimbabwe and Namibia next year. Bangladesh will also tour South Africa in November this year for a full-fledged series and Maketa's experience will help the Tigers on African soil.",
-      "url": "https://www.thedailystar.net/sports/cricket/news/bcb-appoints-south-african-maketa-national-team-assistant-coach-4288786",
-      "source": "dailystar",
-      "publishedAt": "2026-10-02T14:31:18.000Z"
-    },
-    {
       "id": "espn-https://www.cricinfo.com/ci/content/story/1556868.html",
       "title": "Bronze at stake as Bangladesh, SL look to bring cheer to Asian Games contingents",
       "summary": "Bangladesh start as favourites against a decidedly second-string Sri Lanka side",
@@ -34,30 +59,6 @@
       "imageUrl": "https://p.imgci.com/db/PICTURES/CMS/405700/405716.5.jpg",
       "source": "espncricinfo",
       "publishedAt": "2026-10-02T04:28:02.000Z"
-    },
-    {
-      "id": "dailystar-https://www.thedailystar.net/sports/cricket/news/fatema-tuz-jahara-the-bangladeshi-behind-chinas-olympic-cricket-dream-4288416",
-      "title": "Fatema Tuz Jahara: The Bangladeshi behind China’s Olympic cricket dream",
-      "summary": "The former Bangladesh international spent the next two years helping reshape the national setup. By the time she left China to join the Qatar national team in January this year, around 25 players were living and training in Hangzhou, a more structured daily programme was in place, and international-standard cricket venues were being developed in three cities.",
-      "url": "https://www.thedailystar.net/sports/cricket/news/fatema-tuz-jahara-the-bangladeshi-behind-chinas-olympic-cricket-dream-4288416",
-      "source": "dailystar",
-      "publishedAt": "2026-10-02T03:00:00.000Z"
-    },
-    {
-      "id": "dailystar-https://www.thedailystar.net/sports/cricket/news/tigers-tough-group-england-sa-sl-nz-4288076",
-      "title": "Tigers in tough group with England, SA, SL, NZ",
-      "summary": "The tournament, co-hosted by South Africa, Zimbabwe and Namibia, will feature 14 teams. 10 teams have come directly by virtue of rankings and hosts.",
-      "url": "https://www.thedailystar.net/sports/cricket/news/tigers-tough-group-england-sa-sl-nz-4288076",
-      "source": "dailystar",
-      "publishedAt": "2026-10-01T15:59:15.000Z"
-    },
-    {
-      "id": "dailystar-https://www.thedailystar.net/sports/cricket/news/afghanistan-announce-all-format-squads-bangladesh-zimbabwe-series-4288006",
-      "title": "Afghanistan announce all-format squads for Bangladesh, Zimbabwe series",
-      "summary": "Afghanistan will first play a one-off Test against Bangladesh from October 9 to 13 in Abu Dhabi, with Rashid missing.",
-      "url": "https://www.thedailystar.net/sports/cricket/news/afghanistan-announce-all-format-squads-bangladesh-zimbabwe-series-4288006",
-      "source": "dailystar",
-      "publishedAt": "2026-10-01T14:17:35.000Z"
     },
     {
       "id": "espn-https://www.cricinfo.com/ci/content/story/1556619.html",
@@ -121,15 +122,6 @@
       "imageUrl": "https://p.imgci.com/db/PICTURES/CMS/418500/418569.5.jpg",
       "source": "espncricinfo",
       "publishedAt": "2026-09-28T11:45:36.000Z"
-    },
-    {
-      "id": "espn-https://www.cricinfo.com/ci/content/story/1556018.html",
-      "title": "Molineux a doubt for Bangladesh ODIs with hip injury",
-      "summary": "A CA spokesperson said Molineux's involvement in the series 'will continue to be assessed'",
-      "url": "https://www.cricinfo.com/story/hip-injury-makes-sophie-molineux-a-doubt-for-bangladesh-odis-1556018",
-      "imageUrl": "https://p.imgci.com/db/PICTURES/CMS/418400/418444.5.jpg",
-      "source": "espncricinfo",
-      "publishedAt": "2026-09-28T05:05:11.000Z"
     }
   ]
 }
