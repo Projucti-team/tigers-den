@@ -1,6 +1,31 @@
 {
-  "fetchedAt": "2026-10-05T00:11:52.285Z",
+  "fetchedAt": "2026-10-06T01:53:29.910Z",
   "items": [
+    {
+      "id": "espn-https://www.cricinfo.com/ci/content/story/1557244.html",
+      "title": "Pakistan withdraw from World Championship of Legends after PCB refuse NOCs",
+      "summary": "This year's tournament began on 3 October, but Pakistan's game against Bangladesh was postponed",
+      "url": "https://www.cricinfo.com/story/pakistan-champions-withdraw-from-world-championship-of-legends-after-pcb-refuse-nocs-1557244",
+      "imageUrl": "https://p.imgci.com/db/PICTURES/CMS/397400/397480.5.jpg",
+      "source": "espncricinfo",
+      "publishedAt": "2026-10-06T00:11:28.000Z"
+    },
+    {
+      "id": "dailystar-https://www.thedailystar.net/sports/cricket/news/batting-bust-bowling-boost-tigers-draw-uae-practice-match-4291156",
+      "title": "Batting bust, bowling boost as Tigers draw UAE practice match",
+      "summary": "Bangladesh’s batting suffered a collpase as they were bundled out for a paltry 234 in their first innings, but a strong response from the bowlers saw their two-day practice match against the UAE end in an expected draw at the ICC Academy in Dubai on Monday.",
+      "url": "https://www.thedailystar.net/sports/cricket/news/batting-bust-bowling-boost-tigers-draw-uae-practice-match-4291156",
+      "source": "dailystar",
+      "publishedAt": "2026-10-05T14:49:50.000Z"
+    },
+    {
+      "id": "dailystar-https://www.thedailystar.net/sports/cricket/news/bangladesh-can-now-dominate-test-cricket-hasan-mahmud-4290991",
+      "title": "Bangladesh can now dominate in Test cricket: Hasan Mahmud",
+      "summary": "\"If we win four matches at home, why shouldn't we play in the World Test Championship final? That's the dream for Bangladesh now,\" Hasan said.",
+      "url": "https://www.thedailystar.net/sports/cricket/news/bangladesh-can-now-dominate-test-cricket-hasan-mahmud-4290991",
+      "source": "dailystar",
+      "publishedAt": "2026-10-05T10:22:06.000Z"
+    },
     {
       "id": "dailystar-https://www.thedailystar.net/sports/more-sports/news/bigger-contingent-smaller-return-4290671",
       "title": "Bigger contingent, smaller return",
@@ -40,14 +65,6 @@
       "url": "https://www.thedailystar.net/sports/cricket/news/empty-handed-under-fire-after-historic-failure-4289916",
       "source": "dailystar",
       "publishedAt": "2026-10-04T02:32:00.000Z"
-    },
-    {
-      "id": "dailystar-https://www.thedailystar.net/sports/cricket/news/litton-laments-missed-opportunity-after-bronze-slip-4289476",
-      "title": "Litton laments missed opportunity after bronze slip",
-      "summary": "Bangladesh won gold at the 2010 Asian Games in Guangzhou before securing bronze medals in the next two editions, in 2014 and 2022.",
-      "url": "https://www.thedailystar.net/sports/cricket/news/litton-laments-missed-opportunity-after-bronze-slip-4289476",
-      "source": "dailystar",
-      "publishedAt": "2026-10-03T15:15:19.000Z"
     },
     {
       "id": "espn-https://www.cricinfo.com/ci/content/story/1556982.html",
@@ -102,33 +119,6 @@
       "imageUrl": "https://p.imgci.com/db/PICTURES/CMS/414100/414142.5.jpg",
       "source": "espncricinfo",
       "publishedAt": "2026-09-30T03:01:43.000Z"
-    },
-    {
-      "id": "espn-https://www.cricinfo.com/ci/content/story/1556088.html",
-      "title": "Pakistan meet Bangladesh, India meet Sri Lanka in Asian Games men's semi-finals",
-      "summary": "All four semi-finalists are yet to contest a ball in the tournament so far",
-      "url": "https://www.cricinfo.com/story/asian-games-2026-pakistan-meet-bangladesh-india-meet-sri-lanka-in-mens-semi-finals-1556088",
-      "imageUrl": "https://p.imgci.com/db/PICTURES/CMS/423100/423172.5.jpg",
-      "source": "espncricinfo",
-      "publishedAt": "2026-09-29T06:31:16.000Z"
-    },
-    {
-      "id": "espn-https://www.cricinfo.com/ci/content/story/1556075.html",
-      "title": "Bangladesh to take on Pakistan in semis after another washout",
-      "summary": "Bangladesh went through because of their higher seeding compared to Malaysia",
-      "url": "https://www.cricinfo.com/story/asian-games-bangladesh-to-take-on-pakistan-in-semis-malaysia-out-1556075",
-      "imageUrl": "https://p.imgci.com/db/PICTURES/CMS/388400/388458.5.jpg",
-      "source": "espncricinfo",
-      "publishedAt": "2026-09-29T03:38:03.000Z"
-    },
-    {
-      "id": "espn-https://www.cricinfo.com/ci/content/story/1556054.html",
-      "title": "Najmul Hossain Shanto ruled out of Asian Games due to illness",
-      "summary": "He has been suffering from fever since his arrival in Nagoya for men's cricket competition",
-      "url": "https://www.cricinfo.com/story/asian-games-najmul-hossain-shanto-ruled-out-due-to-fever-and-infections-1556054",
-      "imageUrl": "https://p.imgci.com/db/PICTURES/CMS/414600/414621.5.jpg",
-      "source": "espncricinfo",
-      "publishedAt": "2026-09-28T12:19:36.000Z"
     }
   ]
 }
