@@ -1,5 +1,5 @@
 {
-  "fetchedAt": "2026-10-04T23:58:38.360Z",
+  "fetchedAt": "2026-10-06T01:46:59.386Z",
   "source": "icc-sportz.io",
   "sourceUrl": "https://www.icc-cricket.com/rankings",
   "men": {
@@ -204,9 +204,9 @@
           "rank": 15,
           "name": "USA",
           "abbreviation": "USA",
-          "rating": 40,
-          "points": 1035,
-          "matches": 26
+          "rating": 41,
+          "points": 1103,
+          "matches": 27
         },
         {
           "rank": 16,
@@ -236,9 +236,9 @@
           "rank": 19,
           "name": "United Arab Emirates",
           "abbreviation": "UAE",
-          "rating": 18,
-          "points": 473,
-          "matches": 27
+          "rating": 17,
+          "points": 463,
+          "matches": 28
         },
         {
           "rank": 20,
@@ -454,9 +454,9 @@
           "rank": 26,
           "name": "Kuwait",
           "abbreviation": "KUW",
-          "rating": 124,
-          "points": 3585,
-          "matches": 29
+          "rating": 125,
+          "points": 3754,
+          "matches": 30
         },
         {
           "rank": 27,
@@ -468,14 +468,6 @@
         },
         {
           "rank": 28,
-          "name": "Qatar",
-          "abbreviation": "QAT",
-          "rating": 119,
-          "points": 4297,
-          "matches": 36
-        },
-        {
-          "rank": 29,
           "name": "Jersey",
           "abbreviation": "JSY",
           "rating": 118,
@@ -483,12 +475,20 @@
           "matches": 21
         },
         {
+          "rank": 29,
+          "name": "Qatar",
+          "abbreviation": "QAT",
+          "rating": 118,
+          "points": 4371,
+          "matches": 37
+        },
+        {
           "rank": 30,
           "name": "Bahrain",
           "abbreviation": "BRN",
-          "rating": 117,
-          "points": 7636,
-          "matches": 65
+          "rating": 118,
+          "points": 7763,
+          "matches": 66
         },
         {
           "rank": 31,
@@ -719,8 +719,8 @@
           "name": "Thailand",
           "abbreviation": "THA",
           "rating": 39,
-          "points": 1377,
-          "matches": 35
+          "points": 1406,
+          "matches": 36
         },
         {
           "rank": 60,
@@ -740,14 +740,6 @@
         },
         {
           "rank": 62,
-          "name": "Indonesia",
-          "abbreviation": "INA",
-          "rating": 35,
-          "points": 2990,
-          "matches": 85
-        },
-        {
-          "rank": 63,
           "name": "Zambia",
           "abbreviation": "ZAM",
           "rating": 35,
@@ -755,7 +747,7 @@
           "matches": 16
         },
         {
-          "rank": 64,
+          "rank": 63,
           "name": "Cyprus",
           "abbreviation": "CYP",
           "rating": 34,
@@ -763,7 +755,7 @@
           "matches": 26
         },
         {
-          "rank": 65,
+          "rank": 64,
           "name": "Czechia",
           "abbreviation": "CZE",
           "rating": 34,
@@ -771,12 +763,20 @@
           "matches": 21
         },
         {
-          "rank": 66,
+          "rank": 65,
           "name": "Malta",
           "abbreviation": "MLT",
           "rating": 34,
           "points": 1326,
           "matches": 39
+        },
+        {
+          "rank": 66,
+          "name": "Indonesia",
+          "abbreviation": "INA",
+          "rating": 34,
+          "points": 2943,
+          "matches": 87
         },
         {
           "rank": 67,
@@ -796,6 +796,14 @@
         },
         {
           "rank": 69,
+          "name": "Korea",
+          "abbreviation": "KOR",
+          "rating": 30,
+          "points": 636,
+          "matches": 21
+        },
+        {
+          "rank": 70,
           "name": "Ghana",
           "abbreviation": "GHA",
           "rating": 30,
@@ -803,7 +811,7 @@
           "matches": 19
         },
         {
-          "rank": 70,
+          "rank": 71,
           "name": "Hungary",
           "abbreviation": "HUN",
           "rating": 29,
@@ -811,20 +819,12 @@
           "matches": 35
         },
         {
-          "rank": 71,
+          "rank": 72,
           "name": "Panama",
           "abbreviation": "PAN",
           "rating": 25,
           "points": 371,
           "matches": 15
-        },
-        {
-          "rank": 72,
-          "name": "Korea",
-          "abbreviation": "KOR",
-          "rating": 25,
-          "points": 467,
-          "matches": 19
         },
         {
           "rank": 73,
@@ -846,9 +846,9 @@
           "rank": 75,
           "name": "Bhutan",
           "abbreviation": "BHU",
-          "rating": 20,
-          "points": 519,
-          "matches": 26
+          "rating": 21,
+          "points": 569,
+          "matches": 27
         },
         {
           "rank": 76,
@@ -1040,7 +1040,7 @@
           "abbreviation": "MYA",
           "rating": 0,
           "points": 0,
-          "matches": 23
+          "matches": 24
         },
         {
           "rank": 94,
@@ -10392,13 +10392,13 @@
         "allrounder": "2026-09-15"
       },
       "odi": {
-        "team": "2026-10-03",
+        "team": "2026-10-06",
         "bat": "2026-09-29",
         "bowl": "2026-09-29",
         "allrounder": "2026-09-29"
       },
       "t20": {
-        "team": "2026-10-04",
+        "team": "2026-10-05",
         "bat": "2026-09-29",
         "bowl": "2026-09-29",
         "allrounder": "2026-09-29"
@@ -10582,19 +10582,19 @@
         },
         {
           "rank": 6,
+          "name": "West Indies",
+          "abbreviation": "WI-W",
+          "rating": 238,
+          "points": 8324,
+          "matches": 35
+        },
+        {
+          "rank": 7,
           "name": "Sri Lanka",
           "abbreviation": "SL-W",
           "rating": 238,
           "points": 10702,
           "matches": 45
-        },
-        {
-          "rank": 7,
-          "name": "West Indies",
-          "abbreviation": "WI-W",
-          "rating": 238,
-          "points": 8076,
-          "matches": 34
         },
         {
           "rank": 8,
@@ -10665,8 +10665,8 @@
           "name": "Zimbabwe",
           "abbreviation": "ZIM-W",
           "rating": 121,
-          "points": 4955,
-          "matches": 41
+          "points": 5066,
+          "matches": 42
         },
         {
           "rank": 17,
@@ -17430,7 +17430,7 @@
         "allrounder": "2026-09-28"
       },
       "t20": {
-        "team": "2026-10-03",
+        "team": "2026-10-05",
         "bat": "2026-09-28",
         "bowl": "2026-09-28",
         "allrounder": "2026-09-28"
