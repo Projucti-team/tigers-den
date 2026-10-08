@@ -1,5 +1,5 @@
 {
-  "fetchedAt": "2026-10-07T01:01:19.861Z",
+  "fetchedAt": "2026-10-08T01:18:26.586Z",
   "items": [
     {
       "id": "espn-https://www.cricinfo.com/ci/content/story/1557244.html",
@@ -36,15 +36,6 @@
       "imageUrl": "https://p.imgci.com/db/PICTURES/CMS/405700/405716.5.jpg",
       "source": "espncricinfo",
       "publishedAt": "2026-10-02T04:28:02.000Z"
-    },
-    {
-      "id": "espn-https://www.cricinfo.com/ci/content/story/1556619.html",
-      "title": "Uncapped Biswas, Habiba in Nigar Sultana-led Bangladesh squad for Australia ODIs",
-      "summary": "Nigar had stepped down from T20I captaincy after the Asian Games but the board remains confident in her leadership abilities",
-      "url": "https://www.cricinfo.com/story/uncapped-biswas-habiba-in-nigar-sultana-led-bangladesh-squad-for-australia-odis-1556619",
-      "imageUrl": "https://p.imgci.com/db/PICTURES/CMS/418400/418455.5.jpg",
-      "source": "espncricinfo",
-      "publishedAt": "2026-09-30T13:56:04.000Z"
     }
   ]
 }
