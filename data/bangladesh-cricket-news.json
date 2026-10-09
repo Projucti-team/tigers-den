@@ -1,6 +1,33 @@
 {
-  "fetchedAt": "2026-10-08T01:18:26.586Z",
+  "fetchedAt": "2026-10-09T01:26:29.506Z",
   "items": [
+    {
+      "id": "espn-https://www.cricinfo.com/ci/content/story/1557641.html",
+      "title": "Sultana: Bangladesh 'can surprise any team when we perform as a whole unit'",
+      "summary": "The Bangladesh captain and coach David Hemp emphasised a positive mindset ahead of their first ever ODI in Australia",
+      "url": "https://www.cricinfo.com/story/nigar-sultana-bangladesh-can-surprise-any-team-when-we-perform-as-a-whole-unit-1557641",
+      "imageUrl": "https://p.imgci.com/db/PICTURES/CMS/423500/423517.5.jpg",
+      "source": "espncricinfo",
+      "publishedAt": "2026-10-08T12:28:46.000Z"
+    },
+    {
+      "id": "espn-https://www.cricinfo.com/ci/content/story/1557598.html",
+      "title": "Stand-in captain McGrath has 'absolutely no idea' about her batting position",
+      "summary": "\"We have to be very positive... and we will definitely play our A-game against them,\" Bangladesh captain Nigar Sultana says ahead of the first ODI",
+      "url": "https://www.cricinfo.com/story/aus-vs-ban-tahlia-mcgrath-has-absolutely-no-idea-about-her-batting-position-1557598",
+      "imageUrl": "https://p.imgci.com/db/PICTURES/CMS/423500/423513.6.jpg",
+      "source": "espncricinfo",
+      "publishedAt": "2026-10-08T07:19:11.000Z"
+    },
+    {
+      "id": "espn-https://www.cricinfo.com/ci/content/story/1557588.html",
+      "title": "Afghanistan look to tick boxes in rare Test outing against confident Bangladesh",
+      "summary": "The win in Darwin is still fresh in the memory but Bangladesh have more than one form concern, while Afghanistan will hope to start afresh under new captain Rahmat Shah",
+      "url": "https://www.cricinfo.com/story/afghanistan-look-to-tick-boxes-in-rare-test-outing-against-confident-bangladesh-1557588",
+      "imageUrl": "https://p.imgci.com/db/PICTURES/CMS/375400/375451.6.jpg",
+      "source": "espncricinfo",
+      "publishedAt": "2026-10-08T06:37:53.000Z"
+    },
     {
       "id": "espn-https://www.cricinfo.com/ci/content/story/1557244.html",
       "title": "Pakistan withdraw from World Championship of Legends after PCB refuse NOCs",
@@ -27,15 +54,6 @@
       "imageUrl": "https://p.imgci.com/db/PICTURES/CMS/348600/348639.5.jpg",
       "source": "espncricinfo",
       "publishedAt": "2026-10-02T14:56:33.000Z"
-    },
-    {
-      "id": "espn-https://www.cricinfo.com/ci/content/story/1556868.html",
-      "title": "Bronze at stake as Bangladesh, SL look to bring cheer to Asian Games contingents",
-      "summary": "Bangladesh start as favourites against a decidedly second-string Sri Lanka side",
-      "url": "https://www.cricinfo.com/story/asian-games-2026-bronze-at-stake-as-bangladesh-sl-look-to-bring-cheer-to-contingents-1556868",
-      "imageUrl": "https://p.imgci.com/db/PICTURES/CMS/405700/405716.5.jpg",
-      "source": "espncricinfo",
-      "publishedAt": "2026-10-02T04:28:02.000Z"
     }
   ]
 }
