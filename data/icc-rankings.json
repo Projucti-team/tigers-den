@@ -1,5 +1,5 @@
 {
-  "fetchedAt": "2026-10-08T01:02:26.843Z",
+  "fetchedAt": "2026-10-09T01:14:53.607Z",
   "source": "icc-sportz.io",
   "sourceUrl": "https://www.icc-cricket.com/rankings",
   "men": {
@@ -438,25 +438,25 @@
           "rank": 24,
           "name": "Hong Kong",
           "abbreviation": "HK",
-          "rating": 130,
-          "points": 6634,
-          "matches": 51
+          "rating": 131,
+          "points": 6811,
+          "matches": 52
         },
         {
           "rank": 25,
           "name": "Malaysia",
           "abbreviation": "MAS",
-          "rating": 127,
-          "points": 6865,
-          "matches": 54
+          "rating": 126,
+          "points": 6945,
+          "matches": 55
         },
         {
           "rank": 26,
           "name": "Kuwait",
           "abbreviation": "KUW",
-          "rating": 125,
-          "points": 3889,
-          "matches": 31
+          "rating": 126,
+          "points": 4024,
+          "matches": 32
         },
         {
           "rank": 27,
@@ -487,8 +487,8 @@
           "name": "Bahrain",
           "abbreviation": "BRN",
           "rating": 118,
-          "points": 7891,
-          "matches": 67
+          "points": 8019,
+          "matches": 68
         },
         {
           "rank": 31,
@@ -500,19 +500,19 @@
         },
         {
           "rank": 32,
+          "name": "Saudi Arabia",
+          "abbreviation": "SDA",
+          "rating": 109,
+          "points": 2946,
+          "matches": 27
+        },
+        {
+          "rank": 33,
           "name": "Kenya",
           "abbreviation": "KEN",
           "rating": 109,
           "points": 5434,
           "matches": 50
-        },
-        {
-          "rank": 33,
-          "name": "Saudi Arabia",
-          "abbreviation": "SDA",
-          "rating": 109,
-          "points": 2825,
-          "matches": 26
         },
         {
           "rank": 34,
@@ -583,8 +583,8 @@
           "name": "Singapore",
           "abbreviation": "SIN",
           "rating": 71,
-          "points": 2211,
-          "matches": 31
+          "points": 2270,
+          "matches": 32
         },
         {
           "rank": 43,
@@ -719,8 +719,8 @@
           "name": "Thailand",
           "abbreviation": "THA",
           "rating": 39,
-          "points": 1435,
-          "matches": 37
+          "points": 1464,
+          "matches": 38
         },
         {
           "rank": 60,
@@ -836,19 +836,19 @@
         },
         {
           "rank": 74,
+          "name": "Bhutan",
+          "abbreviation": "BHU",
+          "rating": 22,
+          "points": 630,
+          "matches": 29
+        },
+        {
+          "rank": 75,
           "name": "Cameroon",
           "abbreviation": "CMR",
           "rating": 21,
           "points": 213,
           "matches": 10
-        },
-        {
-          "rank": 75,
-          "name": "Bhutan",
-          "abbreviation": "BHU",
-          "rating": 21,
-          "points": 580,
-          "matches": 28
         },
         {
           "rank": 76,
@@ -918,9 +918,9 @@
           "rank": 84,
           "name": "Maldives",
           "abbreviation": "MDV",
-          "rating": 9,
-          "points": 112,
-          "matches": 13
+          "rating": 12,
+          "points": 164,
+          "matches": 14
         },
         {
           "rank": 85,
@@ -980,14 +980,6 @@
         },
         {
           "rank": 92,
-          "name": "China",
-          "abbreviation": "CHN",
-          "rating": 2,
-          "points": 17,
-          "matches": 8
-        },
-        {
-          "rank": 93,
           "name": "FIJ",
           "abbreviation": "FIJ",
           "rating": 2,
@@ -995,7 +987,7 @@
           "matches": 9
         },
         {
-          "rank": 94,
+          "rank": 93,
           "name": "Timor-Leste",
           "abbreviation": "TLS",
           "rating": 0,
@@ -1003,7 +995,7 @@
           "matches": 8
         },
         {
-          "rank": 94,
+          "rank": 93,
           "name": "CIV",
           "abbreviation": "CIV",
           "rating": 0,
@@ -1011,15 +1003,15 @@
           "matches": 9
         },
         {
-          "rank": 94,
+          "rank": 93,
           "name": "Mongolia",
           "abbreviation": "MNG",
           "rating": 0,
           "points": 0,
-          "matches": 8
+          "matches": 9
         },
         {
-          "rank": 94,
+          "rank": 93,
           "name": "St.Helena",
           "abbreviation": "STH",
           "rating": 0,
@@ -1027,7 +1019,7 @@
           "matches": 7
         },
         {
-          "rank": 94,
+          "rank": 93,
           "name": "Slovenia",
           "abbreviation": "SVN",
           "rating": 0,
@@ -1035,15 +1027,15 @@
           "matches": 17
         },
         {
-          "rank": 94,
+          "rank": 93,
           "name": "Myanmar",
           "abbreviation": "MYA",
           "rating": 0,
           "points": 0,
-          "matches": 24
+          "matches": 25
         },
         {
-          "rank": 94,
+          "rank": 93,
           "name": "Mali",
           "abbreviation": "MLI",
           "rating": 0,
@@ -1051,7 +1043,7 @@
           "matches": 10
         },
         {
-          "rank": 94,
+          "rank": 93,
           "name": "GRE",
           "abbreviation": "GRE",
           "rating": 0,
@@ -1059,12 +1051,20 @@
           "matches": 6
         },
         {
-          "rank": 94,
+          "rank": 93,
           "name": "Costa Rica",
           "abbreviation": "CRC",
           "rating": 0,
           "points": 0,
           "matches": 12
+        },
+        {
+          "rank": 93,
+          "name": "China",
+          "abbreviation": "CHN",
+          "rating": 0,
+          "points": 0,
+          "matches": 9
         }
       ]
     },
@@ -10385,7 +10385,7 @@
         "allrounder": "2026-10-06"
       },
       "t20": {
-        "team": "2026-10-06",
+        "team": "2026-10-08",
         "bat": "2026-10-06",
         "bowl": "2026-10-06",
         "allrounder": "2026-10-06"
