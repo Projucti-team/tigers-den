@@ -1,5 +1,5 @@
 {
-  "fetchedAt": "2026-10-09T01:14:53.607Z",
+  "fetchedAt": "2026-10-10T00:54:57.225Z",
   "source": "icc-sportz.io",
   "sourceUrl": "https://www.icc-cricket.com/rankings",
   "men": {
@@ -210,6 +210,22 @@
         },
         {
           "rank": 16,
+          "name": "Namibia",
+          "abbreviation": "NAM",
+          "rating": 30,
+          "points": 743,
+          "matches": 25
+        },
+        {
+          "rank": 17,
+          "name": "Oman",
+          "abbreviation": "OMA",
+          "rating": 29,
+          "points": 717,
+          "matches": 25
+        },
+        {
+          "rank": 18,
           "name": "Nepal",
           "abbreviation": "NEP",
           "rating": 28,
@@ -217,54 +233,38 @@
           "matches": 33
         },
         {
-          "rank": 17,
-          "name": "Namibia",
-          "abbreviation": "NAM",
-          "rating": 28,
-          "points": 676,
-          "matches": 24
-        },
-        {
-          "rank": 18,
-          "name": "Oman",
-          "abbreviation": "OMA",
-          "rating": 27,
-          "points": 658,
-          "matches": 24
-        },
-        {
           "rank": 19,
           "name": "United Arab Emirates",
           "abbreviation": "UAE",
-          "rating": 17,
-          "points": 463,
-          "matches": 28
+          "rating": 15,
+          "points": 441,
+          "matches": 29
         },
         {
           "rank": 20,
           "name": "Canada",
           "abbreviation": "CAN",
-          "rating": 9,
-          "points": 194,
-          "matches": 22
+          "rating": 7,
+          "points": 171,
+          "matches": 23
         }
       ],
       "t20": [
         {
           "rank": 1,
-          "name": "India",
-          "abbreviation": "IND",
-          "rating": 270,
-          "points": 18334,
-          "matches": 68
-        },
-        {
-          "rank": 2,
           "name": "England",
           "abbreviation": "ENG",
           "rating": 269,
           "points": 11021,
           "matches": 41
+        },
+        {
+          "rank": 2,
+          "name": "India",
+          "abbreviation": "IND",
+          "rating": 268,
+          "points": 18517,
+          "matches": 69
         },
         {
           "rank": 3,
@@ -294,17 +294,17 @@
           "rank": 6,
           "name": "Pakistan",
           "abbreviation": "PAK",
-          "rating": 240,
-          "points": 14172,
-          "matches": 59
+          "rating": 241,
+          "points": 14443,
+          "matches": 60
         },
         {
           "rank": 7,
           "name": "West Indies",
           "abbreviation": "WI",
-          "rating": 233,
-          "points": 13298,
-          "matches": 57
+          "rating": 235,
+          "points": 13618,
+          "matches": 58
         },
         {
           "rank": 8,
@@ -318,9 +318,9 @@
           "rank": 9,
           "name": "Sri Lanka",
           "abbreviation": "SL",
-          "rating": 221,
-          "points": 10817,
-          "matches": 49
+          "rating": 220,
+          "points": 11007,
+          "matches": 50
         },
         {
           "rank": 10,
@@ -439,24 +439,24 @@
           "name": "Hong Kong",
           "abbreviation": "HK",
           "rating": 131,
-          "points": 6811,
-          "matches": 52
+          "points": 6952,
+          "matches": 53
         },
         {
           "rank": 25,
           "name": "Malaysia",
           "abbreviation": "MAS",
-          "rating": 126,
-          "points": 6945,
-          "matches": 55
+          "rating": 125,
+          "points": 7004,
+          "matches": 56
         },
         {
           "rank": 26,
           "name": "Kuwait",
           "abbreviation": "KUW",
-          "rating": 126,
-          "points": 4024,
-          "matches": 32
+          "rating": 124,
+          "points": 4092,
+          "matches": 33
         },
         {
           "rank": 27,
@@ -468,27 +468,27 @@
         },
         {
           "rank": 28,
-          "name": "Qatar",
-          "abbreviation": "QAT",
-          "rating": 118,
-          "points": 4499,
-          "matches": 38
+          "name": "Bahrain",
+          "abbreviation": "BRN",
+          "rating": 119,
+          "points": 8195,
+          "matches": 69
         },
         {
           "rank": 29,
+          "name": "Qatar",
+          "abbreviation": "QAT",
+          "rating": 119,
+          "points": 4627,
+          "matches": 39
+        },
+        {
+          "rank": 30,
           "name": "Jersey",
           "abbreviation": "JSY",
           "rating": 118,
           "points": 2484,
           "matches": 21
-        },
-        {
-          "rank": 30,
-          "name": "Bahrain",
-          "abbreviation": "BRN",
-          "rating": 118,
-          "points": 8019,
-          "matches": 68
         },
         {
           "rank": 31,
@@ -502,9 +502,9 @@
           "rank": 32,
           "name": "Saudi Arabia",
           "abbreviation": "SDA",
-          "rating": 109,
-          "points": 2946,
-          "matches": 27
+          "rating": 112,
+          "points": 3122,
+          "matches": 28
         },
         {
           "rank": 33,
@@ -583,8 +583,8 @@
           "name": "Singapore",
           "abbreviation": "SIN",
           "rating": 71,
-          "points": 2270,
-          "matches": 32
+          "points": 2351,
+          "matches": 33
         },
         {
           "rank": 43,
@@ -719,8 +719,8 @@
           "name": "Thailand",
           "abbreviation": "THA",
           "rating": 39,
-          "points": 1464,
-          "matches": 38
+          "points": 1514,
+          "matches": 39
         },
         {
           "rank": 60,
@@ -918,9 +918,9 @@
           "rank": 84,
           "name": "Maldives",
           "abbreviation": "MDV",
-          "rating": 12,
-          "points": 164,
-          "matches": 14
+          "rating": 11,
+          "points": 166,
+          "matches": 15
         },
         {
           "rank": 85,
@@ -1008,7 +1008,7 @@
           "abbreviation": "MNG",
           "rating": 0,
           "points": 0,
-          "matches": 9
+          "matches": 10
         },
         {
           "rank": 93,
@@ -1032,7 +1032,7 @@
           "abbreviation": "MYA",
           "rating": 0,
           "points": 0,
-          "matches": 25
+          "matches": 26
         },
         {
           "rank": 93,
@@ -1064,7 +1064,7 @@
           "abbreviation": "CHN",
           "rating": 0,
           "points": 0,
-          "matches": 9
+          "matches": 10
         }
       ]
     },
@@ -10379,13 +10379,13 @@
         "allrounder": "2026-09-15"
       },
       "odi": {
-        "team": "2026-10-08",
+        "team": "2026-10-10",
         "bat": "2026-10-06",
         "bowl": "2026-10-06",
         "allrounder": "2026-10-06"
       },
       "t20": {
-        "team": "2026-10-08",
+        "team": "2026-10-09",
         "bat": "2026-10-06",
         "bowl": "2026-10-06",
         "allrounder": "2026-10-06"
@@ -10402,8 +10402,8 @@
           "name": "Australia",
           "abbreviation": "AUS-W",
           "rating": 163,
-          "points": 4565,
-          "matches": 28
+          "points": 4738,
+          "matches": 29
         },
         {
           "rank": 2,
@@ -10447,19 +10447,19 @@
         },
         {
           "rank": 7,
-          "name": "Bangladesh",
-          "abbreviation": "BAN-W",
-          "rating": 73,
-          "points": 1537,
-          "matches": 21
-        },
-        {
-          "rank": 8,
           "name": "Pakistan",
           "abbreviation": "PAK-W",
           "rating": 73,
           "points": 1902,
           "matches": 26
+        },
+        {
+          "rank": 8,
+          "name": "Bangladesh",
+          "abbreviation": "BAN-W",
+          "rating": 73,
+          "points": 1600,
+          "matches": 22
         },
         {
           "rank": 9,
@@ -11188,12 +11188,12 @@
     "bangladesh": {
       "test": null,
       "odi": {
-        "rank": 7,
+        "rank": 8,
         "name": "Bangladesh",
         "abbreviation": "BAN-W",
         "rating": 73,
-        "points": 1537,
-        "matches": 21
+        "points": 1600,
+        "matches": 22
       },
       "t20": {
         "rank": 10,
@@ -17412,7 +17412,7 @@
         "allrounder": null
       },
       "odi": {
-        "team": "2026-09-30",
+        "team": "2026-10-09",
         "bat": "2026-10-05",
         "bowl": "2026-10-05",
         "allrounder": "2026-10-05"
