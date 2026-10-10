@@ -1,6 +1,73 @@
 {
-  "fetchedAt": "2026-10-09T01:26:29.506Z",
+  "fetchedAt": "2026-10-10T01:14:18.148Z",
   "items": [
+    {
+      "id": "dailystar-https://www.thedailystar.net/sports/cricket/news/litton-breaks-free-smile-goes-hit-50-4294461",
+      "title": "Litton breaks free with a smile, goes on to hit 53",
+      "summary": "In the UAE, at least, the duck was finally off the menu.",
+      "url": "https://www.thedailystar.net/sports/cricket/news/litton-breaks-free-smile-goes-hit-50-4294461",
+      "source": "dailystar",
+      "publishedAt": "2026-10-09T14:36:36.000Z"
+    },
+    {
+      "id": "espn-https://www.cricinfo.com/ci/content/story/1557718.html",
+      "title": "Afghanistan fast bowlers hit back after Bangladesh's strong start",
+      "summary": "For Bangladesh, Shadman Islam, Tanzid Hasan and Litton Das made fifties",
+      "url": "https://www.cricinfo.com/story/afg-vs-ban-test-afghanistan-fast-bowlers-hit-back-after-bangladeshs-strong-start-1557718",
+      "imageUrl": "https://p.imgci.com/db/PICTURES/CMS/423500/423548.5.jpg",
+      "source": "espncricinfo",
+      "publishedAt": "2026-10-09T14:20:07.000Z"
+    },
+    {
+      "id": "dailystar-https://www.thedailystar.net/sports/cricket/news/tigresses-batting-woes-persist-historic-australia-odi-opener-4294386",
+      "title": "Tigresses’ batting woes persist in historic Australia ODI opener",
+      "summary": "After Megan Schutt struck twice inside the opening nine deliveries to leave Bangladesh reeling, the visitors were bowled out for 166 in 49.4 overs. Phoebe Litchfield then smashed a blistering 77 off 57 balls as Australia reached the target in just 25.4 overs, with 146 balls to spare.",
+      "url": "https://www.thedailystar.net/sports/cricket/news/tigresses-batting-woes-persist-historic-australia-odi-opener-4294386",
+      "source": "dailystar",
+      "publishedAt": "2026-10-09T12:19:41.000Z"
+    },
+    {
+      "id": "espn-https://www.cricinfo.com/ci/content/story/1557731.html",
+      "title": "Sutherland and Litchfield lead Australia to quick and convincing win in ODI series opener",
+      "summary": "Bangladesh were bowled out for 166 with only Ritu Moni showing any intent with the bat, and it took Australia just 25.4 overs to finish off the chase",
+      "url": "https://www.cricinfo.com/story/aus-vs-ban-annabel-sutherland-and-phoebe-litchfield-lead-australia-to-quick-and-convincing-win-1557731",
+      "imageUrl": "https://p.imgci.com/db/PICTURES/CMS/423500/423537.6.jpg",
+      "source": "espncricinfo",
+      "publishedAt": "2026-10-09T10:18:36.000Z"
+    },
+    {
+      "id": "dailystar-https://www.thedailystar.net/sports/cricket/news/tanzids-83-powers-tigers-flying-start-4294346",
+      "title": "Afghanistan hit back to leave Bangladesh at 317-8",
+      "summary": "Opener Tanzid Hasan Tamim struck a blistering 83 off just 71 balls as Bangladesh made a flying start on the opening day of their one-off Test against Afghanistan at the Zayed Cricket Stadium in Abu Dhabi today.",
+      "url": "https://www.thedailystar.net/sports/cricket/news/tanzids-83-powers-tigers-flying-start-4294346",
+      "source": "dailystar",
+      "publishedAt": "2026-10-09T08:30:44.000Z"
+    },
+    {
+      "id": "espn-https://www.cricinfo.com/ci/content/story/1557692.html",
+      "title": "Bangladesh opt to bat and pick Nayeem Hasan",
+      "summary": "Bangladesh opted for Ebadot Hossain in place of Shoriful Islam while Afghanistan went for a batting-heavy line-up",
+      "url": "https://www.cricinfo.com/story/afg-vs-ban-test-bangladesh-opt-to-bat-leave-out-shoriful-islam-for-ebadot-hossain-1557692",
+      "imageUrl": "https://p.imgci.com/db/PICTURES/CMS/423500/423527.5.jpg",
+      "source": "espncricinfo",
+      "publishedAt": "2026-10-09T06:41:35.000Z"
+    },
+    {
+      "id": "dailystar-https://www.thedailystar.net/sports/cricket/news/tigers-opt-bat-one-test-against-afghanistan-4294311",
+      "title": "Tigers opt to bat in one-off Test against Afghanistan",
+      "summary": "Bangladesh won the toss and elected to bat first in their one-off Test against Afghanistan at the Zayed Cricket Stadium in Abu Dhabi today.",
+      "url": "https://www.thedailystar.net/sports/cricket/news/tigers-opt-bat-one-test-against-afghanistan-4294311",
+      "source": "dailystar",
+      "publishedAt": "2026-10-09T05:49:33.000Z"
+    },
+    {
+      "id": "dailystar-https://www.thedailystar.net/sports/cricket/news/u-19-tigers-make-two-oman-trips-month-4293861",
+      "title": "U-19 Tigers to make two Oman trips in a month",
+      "summary": "The Bangladesh Cricket Board (BCB) announced a 15-member squad for the series on Thursday, with Farid Hasan Faysal named captain.",
+      "url": "https://www.thedailystar.net/sports/cricket/news/u-19-tigers-make-two-oman-trips-month-4293861",
+      "source": "dailystar",
+      "publishedAt": "2026-10-08T15:20:43.000Z"
+    },
     {
       "id": "espn-https://www.cricinfo.com/ci/content/story/1557641.html",
       "title": "Sultana: Bangladesh 'can surprise any team when we perform as a whole unit'",
@@ -36,24 +103,6 @@
       "imageUrl": "https://p.imgci.com/db/PICTURES/CMS/397400/397480.5.jpg",
       "source": "espncricinfo",
       "publishedAt": "2026-10-06T00:11:28.000Z"
-    },
-    {
-      "id": "espn-https://www.cricinfo.com/ci/content/story/1556982.html",
-      "title": "Ratnayake puts in all-round shift to lead Sri Lanka to bronze medal",
-      "summary": "Bangladesh collapsed with the bat after Tharindu Ratnayake had smashed 65 in 32 balls to take Sri Lanka to a solid 165 for 9",
-      "url": "https://www.cricinfo.com/story/asian-games-tharindu-ratnayake-puts-in-all-round-shift-to-lead-sri-lanka-to-bronze-medal-1556982",
-      "imageUrl": "https://p.imgci.com/db/PICTURES/CMS/423300/423329.6.jpg",
-      "source": "espncricinfo",
-      "publishedAt": "2026-10-03T03:55:37.000Z"
-    },
-    {
-      "id": "espn-https://www.cricinfo.com/ci/content/story/1556941.html",
-      "title": "Malibongwe Maketa named Bangladesh men's assistant coach",
-      "summary": "Cricinfo has learned that Maketa has been hired with BCB's focus on the two South Africa tours in the next 12 months",
-      "url": "https://www.cricinfo.com/story/malibongwe-maketa-named-bangladesh-mens-assistant-coach-1556941",
-      "imageUrl": "https://p.imgci.com/db/PICTURES/CMS/348600/348639.5.jpg",
-      "source": "espncricinfo",
-      "publishedAt": "2026-10-02T14:56:33.000Z"
     }
   ]
 }
