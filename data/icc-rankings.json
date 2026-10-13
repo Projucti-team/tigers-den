@@ -1,5 +1,5 @@
 {
-  "fetchedAt": "2026-10-12T00:35:30.011Z",
+  "fetchedAt": "2026-10-13T02:35:52.096Z",
   "source": "icc-sportz.io",
   "sourceUrl": "https://www.icc-cricket.com/rankings",
   "men": {
@@ -447,16 +447,16 @@
           "name": "Malaysia",
           "abbreviation": "MAS",
           "rating": 125,
-          "points": 7139,
-          "matches": 57
+          "points": 7274,
+          "matches": 58
         },
         {
           "rank": 26,
           "name": "Kuwait",
           "abbreviation": "KUW",
-          "rating": 124,
-          "points": 4226,
-          "matches": 34
+          "rating": 125,
+          "points": 4360,
+          "matches": 35
         },
         {
           "rank": 27,
@@ -495,8 +495,8 @@
           "name": "Saudi Arabia",
           "abbreviation": "SDA",
           "rating": 114,
-          "points": 3303,
-          "matches": 29
+          "points": 3427,
+          "matches": 30
         },
         {
           "rank": 32,
@@ -582,9 +582,9 @@
           "rank": 42,
           "name": "Singapore",
           "abbreviation": "SIN",
-          "rating": 72,
-          "points": 2432,
-          "matches": 34
+          "rating": 71,
+          "points": 2494,
+          "matches": 35
         },
         {
           "rank": 43,
@@ -719,8 +719,8 @@
           "name": "Thailand",
           "abbreviation": "THA",
           "rating": 39,
-          "points": 1514,
-          "matches": 39
+          "points": 1564,
+          "matches": 40
         },
         {
           "rank": 60,
@@ -836,19 +836,19 @@
         },
         {
           "rank": 74,
-          "name": "Bhutan",
-          "abbreviation": "BHU",
-          "rating": 21,
-          "points": 642,
-          "matches": 30
-        },
-        {
-          "rank": 75,
           "name": "Cameroon",
           "abbreviation": "CMR",
           "rating": 21,
           "points": 213,
           "matches": 10
+        },
+        {
+          "rank": 75,
+          "name": "Bhutan",
+          "abbreviation": "BHU",
+          "rating": 21,
+          "points": 653,
+          "matches": 31
         },
         {
           "rank": 76,
@@ -1032,7 +1032,7 @@
           "abbreviation": "MYA",
           "rating": 0,
           "points": 0,
-          "matches": 27
+          "matches": 28
         },
         {
           "rank": 93,
@@ -1064,7 +1064,7 @@
           "abbreviation": "CHN",
           "rating": 0,
           "points": 0,
-          "matches": 11
+          "matches": 12
         }
       ]
     },
@@ -10385,7 +10385,7 @@
         "allrounder": "2026-10-06"
       },
       "t20": {
-        "team": "2026-10-11",
+        "team": "2026-10-12",
         "bat": "2026-10-06",
         "bowl": "2026-10-06",
         "allrounder": "2026-10-06"
