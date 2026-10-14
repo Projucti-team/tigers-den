@@ -1,5 +1,5 @@
 {
-  "fetchedAt": "2026-10-13T02:35:55.594Z",
+  "fetchedAt": "2026-10-14T00:19:59.655Z",
   "source": "espn-cricinfo-core",
   "cycleLabel": "2025–2027",
   "standings": [
@@ -7,30 +7,17 @@
       "rank": 1,
       "team": "Australia",
       "abbreviation": "AUS",
-      "played": 10,
-      "won": 8,
+      "played": 11,
+      "won": 9,
       "lost": 2,
       "drawn": 0,
       "tied": 0,
       "noResult": 0,
-      "points": 96,
-      "pct": 80
+      "points": 108,
+      "pct": 81.82
     },
     {
       "rank": 2,
-      "team": "South Africa",
-      "abbreviation": "SA",
-      "played": 4,
-      "won": 3,
-      "lost": 1,
-      "drawn": 0,
-      "tied": 0,
-      "noResult": 0,
-      "points": 36,
-      "pct": 75
-    },
-    {
-      "rank": 3,
       "team": "New Zealand",
       "abbreviation": "NZ",
       "played": 6,
@@ -41,6 +28,19 @@
       "noResult": 0,
       "points": 52,
       "pct": 72.22
+    },
+    {
+      "rank": 3,
+      "team": "South Africa",
+      "abbreviation": "SA",
+      "played": 5,
+      "won": 3,
+      "lost": 2,
+      "drawn": 0,
+      "tied": 0,
+      "noResult": 0,
+      "points": 36,
+      "pct": 60
     },
     {
       "rank": 4,
