@@ -1,29 +1,81 @@
 {
-  "fetchedAt": "2026-10-13T02:43:16.809Z",
+  "fetchedAt": "2026-10-14T00:36:40.574Z",
   "items": [
     {
-      "id": "dailystar-https://www.thedailystar.net/sports/cricket/news/rhythm-behind-the-stumps-helps-litton-break-batting-slump-4297086",
-      "title": "Rhythm behind the stumps helps Litton break batting slump",
-      "summary": "While his bat finally came alive, Litton’s work behind the stumps had already been a standout feature of the Test.",
-      "url": "https://www.thedailystar.net/sports/cricket/news/rhythm-behind-the-stumps-helps-litton-break-batting-slump-4297086",
+      "id": "dailystar-https://www.thedailystar.net/sports/cricket/news/need-learn-how-create-more-chances-such-wickets-shanto-4298151",
+      "title": "Need to learn how to create more chances on such wickets: Shanto",
+      "summary": "Bangladesh had to settle for a draw in their one-off Test against Afghanistan after the hosts produced a brilliant batting display at the Zayed Cricket Stadium in Abu Dhabi.",
+      "url": "https://www.thedailystar.net/sports/cricket/news/need-learn-how-create-more-chances-such-wickets-shanto-4298151",
       "source": "dailystar",
-      "publishedAt": "2026-10-13T02:30:00.000Z"
+      "publishedAt": "2026-10-13T19:04:52.000Z"
     },
     {
-      "id": "dailystar-https://www.thedailystar.net/sports/cricket/news/visas-limbo-u-19s-sweat-11th-hour-clearance-oman-tour-4297361",
-      "title": "Visas in limbo as U-19s sweat on clearance for Oman tour",
-      "summary": "Bangladesh’s Under-19 cricket team are scheduled to fly to Oman at 7:30 am on Tuesday, but with fewer than eight hours remaining before departure, it is still uncertain on Monday night whether the players and coaching staff would be able to travel for their Youth ODI series against Afghanistan.",
-      "url": "https://www.thedailystar.net/sports/cricket/news/visas-limbo-u-19s-sweat-11th-hour-clearance-oman-tour-4297361",
+      "id": "dailystar-https://www.thedailystar.net/sports/cricket/news/we-want-finish-high-note-sharmin-backs-tigresses-final-australia-odi-4297996",
+      "title": "'We want to finish on a high note': Sharmin backs Tigresses in final Australia ODI",
+      "summary": "Bangladesh will aim for a consolatory strong finish when they face Australia in the final game of their three-match WODI series on Wednesday at Brisbane's Allan Border Field.",
+      "url": "https://www.thedailystar.net/sports/cricket/news/we-want-finish-high-note-sharmin-backs-tigresses-final-australia-odi-4297996",
       "source": "dailystar",
-      "publishedAt": "2026-10-12T18:20:43.000Z"
+      "publishedAt": "2026-10-13T18:05:56.000Z"
     },
     {
-      "id": "dailystar-https://www.thedailystar.net/sports/cricket/news/litton-backs-spinners-seal-bangladesh-victory-day-5-4297356",
-      "title": "Litton backs spinners to seal Bangladesh victory on Day 5",
-      "summary": "Wicketkeeper-batter Litton Das is counting on Bangladesh’s spinners to make an impact on the final day as the Tigers push for victory in their one-off Test against Afghanistan in Abu Dhabi.",
-      "url": "https://www.thedailystar.net/sports/cricket/news/litton-backs-spinners-seal-bangladesh-victory-day-5-4297356",
+      "id": "espn-https://www.cricinfo.com/ci/content/story/1558342.html",
+      "title": "'We should have taken all ten wickets' - Shanto rues missed chances",
+      "summary": "\"I think we ended up drawing the game due to the small mistakes,\" Bangladesh captain Shanto says after Abu Dhabi draw",
+      "url": "https://www.cricinfo.com/story/afg-vs-ban-abu-dhabi-test-we-should-have-taken-all-ten-wickets-shanto-rues-missed-chances-1558342",
+      "imageUrl": "https://p.imgci.com/db/PICTURES/CMS/423700/423762.5.jpg",
+      "source": "espncricinfo",
+      "publishedAt": "2026-10-13T17:00:25.000Z"
+    },
+    {
+      "id": "espn-https://www.cricinfo.com/ci/content/story/1558325.html",
+      "title": "Sadikur 149 crushes Barishal; Chattogram move to No. 1 on NCL table",
+      "summary": "The latest round saw Mahedi Hasan take six wickets and score a century, Marshall Ayub hit his 30th first-class ton, and Sabbir Rahman end a 14-year wait for an NCL century",
+      "url": "https://www.cricinfo.com/story/sadikur-rahman-149-crushes-barishal-chattogram-move-to-no-1-on-ncl-table-1558325",
+      "imageUrl": "https://p.imgci.com/db/PICTURES/CMS/423700/423761.5.jpg",
+      "source": "espncricinfo",
+      "publishedAt": "2026-10-13T15:32:53.000Z"
+    },
+    {
+      "id": "dailystar-https://www.thedailystar.net/sports/cricket/news/sabbir-rahman-ends-eight-year-century-drought-4297966",
+      "title": "Sabbir Rahman ends eight-year first-class century drought",
+      "summary": "Rajshahi Division’s Sabbir Rahman ended an eight-year wait for a first-class century to help his side secure a draw against Khulna Division on the final day of the second round of the National Cricket League at the Sher-e-Bangla National Cricket Stadium in Mirpur on Tuesday.",
+      "url": "https://www.thedailystar.net/sports/cricket/news/sabbir-rahman-ends-eight-year-century-drought-4297966",
       "source": "dailystar",
-      "publishedAt": "2026-10-12T17:53:27.000Z"
+      "publishedAt": "2026-10-13T15:24:13.000Z"
+    },
+    {
+      "id": "espn-https://www.cricinfo.com/ci/content/story/1558264.html",
+      "title": "Atal century, lower-order resistence help Afghanistan hang on to a draw",
+      "summary": "Bangladesh's missed chances especially in the final hour cost them as they couldn't pick up the last two wickets",
+      "url": "https://www.cricinfo.com/story/sediqullah-atal-century-lower-order-resistence-help-afghanistan-hang-on-to-a-draw-against-bangladesh-1558264",
+      "imageUrl": "https://p.imgci.com/db/PICTURES/CMS/423700/423726.5.jpg",
+      "source": "espncricinfo",
+      "publishedAt": "2026-10-13T15:12:30.000Z"
+    },
+    {
+      "id": "dailystar-https://www.thedailystar.net/sports/cricket/news/shanto-disappointed-praises-afghanistans-brilliant-cricket-4297936",
+      "title": "Shanto disappointed but praises Afghanistan’s ‘brilliant cricket’",
+      "summary": "“It is disappointing, but they played brilliantly. We couldn't take opportunities. The fast bowlers have been doing a very good job. I expected the spinners to come into the match; they tried, but Afghanistan played very good cricket,” Shanto said during the post-match presentation ceremony.",
+      "url": "https://www.thedailystar.net/sports/cricket/news/shanto-disappointed-praises-afghanistans-brilliant-cricket-4297936",
+      "source": "dailystar",
+      "publishedAt": "2026-10-13T14:46:38.000Z"
+    },
+    {
+      "id": "dailystar-https://www.thedailystar.net/sports/cricket/news/nine-dismissals-century-and-fifty-litton-sets-world-record-32nd-birthday-4297796",
+      "title": "Nine dismissals, a century and a fifty: Litton sets world record on 32nd birthday",
+      "summary": "On Day 5 of Bangladesh’s one-off Test against Afghanistan in Abu Dhabi today, Litton broke the record set by South Africa’s Denis Lindsay, who recorded eight dismissals and scored a half-century and a century in the same Test in 1966. Playing against Australia, Lindsay scored 69 and 182.",
+      "url": "https://www.thedailystar.net/sports/cricket/news/nine-dismissals-century-and-fifty-litton-sets-world-record-32nd-birthday-4297796",
+      "source": "dailystar",
+      "publishedAt": "2026-10-13T11:57:11.000Z"
+    },
+    {
+      "id": "espn-https://www.cricinfo.com/ci/content/story/1558257.html",
+      "title": "World Cup revenge, Olympics dream keeps Mooney motivated",
+      "summary": "Australia's wicketkeeper-batter will play her 100th ODI in the final match of the series against Bangladesh",
+      "url": "https://www.cricinfo.com/story/australia-news-world-cup-revenge-olympics-dream-keeps-mooney-motivated-1558257",
+      "imageUrl": "https://p.imgci.com/db/PICTURES/CMS/423700/423731.5.jpg",
+      "source": "espncricinfo",
+      "publishedAt": "2026-10-13T08:20:55.000Z"
     },
     {
       "id": "espn-https://www.cricinfo.com/ci/content/story/1558079.html",
@@ -33,30 +85,6 @@
       "imageUrl": "https://p.imgci.com/db/PICTURES/CMS/423600/423699.6.jpg",
       "source": "espncricinfo",
       "publishedAt": "2026-10-12T14:18:16.000Z"
-    },
-    {
-      "id": "dailystar-https://www.thedailystar.net/sports/cricket/news/four-ducks-test-ton-litton-makes-his-statement-4296916",
-      "title": "From four ducks to a Test ton: Litton makes his statement",
-      "summary": "Despite Bangladesh’s historic success in their latest series in Australia, Litton endured a personal nightmare, failing to score in all three innings in which he got the opportunity to bat.",
-      "url": "https://www.thedailystar.net/sports/cricket/news/four-ducks-test-ton-litton-makes-his-statement-4296916",
-      "source": "dailystar",
-      "publishedAt": "2026-10-12T11:12:29.000Z"
-    },
-    {
-      "id": "dailystar-https://www.thedailystar.net/sports/cricket/news/litton-miraz-pile-afghan-agony-tigers-stretch-lead-443-4296751",
-      "title": "Bangladesh need 7 wickets, Afghanistan 347 runs in final-day equation",
-      "summary": "Earlier in the day, Litton Das struck his seventh Test century before Bangladesh, who scored 346 in their first innings, declared their second innings at 372 for seven.",
-      "url": "https://www.thedailystar.net/sports/cricket/news/litton-miraz-pile-afghan-agony-tigers-stretch-lead-443-4296751",
-      "source": "dailystar",
-      "publishedAt": "2026-10-12T08:13:18.000Z"
-    },
-    {
-      "id": "dailystar-https://www.thedailystar.net/sports/cricket/news/hasans-domination-continues-immaculate-length-management-4296611",
-      "title": "Hasan’s domination continues with immaculate length management",
-      "summary": "Hasan Mahmud’s Test career has hit a purple patch over the last few months, and a maiden Test hattrick is the icing on the cake as his skill set in the red-ball format continues to grow.",
-      "url": "https://www.thedailystar.net/sports/cricket/news/hasans-domination-continues-immaculate-length-management-4296611",
-      "source": "dailystar",
-      "publishedAt": "2026-10-12T03:07:25.000Z"
     },
     {
       "id": "espn-https://www.cricinfo.com/ci/content/story/1557939.html",
@@ -129,24 +157,6 @@
       "imageUrl": "https://p.imgci.com/db/PICTURES/CMS/423500/423517.5.jpg",
       "source": "espncricinfo",
       "publishedAt": "2026-10-08T12:28:46.000Z"
-    },
-    {
-      "id": "espn-https://www.cricinfo.com/ci/content/story/1557598.html",
-      "title": "Stand-in captain McGrath has 'absolutely no idea' about her batting position",
-      "summary": "\"We have to be very positive... and we will definitely play our A-game against them,\" Bangladesh captain Nigar Sultana says ahead of the first ODI",
-      "url": "https://www.cricinfo.com/story/aus-vs-ban-tahlia-mcgrath-has-absolutely-no-idea-about-her-batting-position-1557598",
-      "imageUrl": "https://p.imgci.com/db/PICTURES/CMS/423500/423513.6.jpg",
-      "source": "espncricinfo",
-      "publishedAt": "2026-10-08T07:19:11.000Z"
-    },
-    {
-      "id": "espn-https://www.cricinfo.com/ci/content/story/1557588.html",
-      "title": "Afghanistan look to tick boxes in rare Test outing against confident Bangladesh",
-      "summary": "The win in Darwin is still fresh in the memory but Bangladesh have more than one form concern, while Afghanistan will hope to start afresh under new captain Rahmat Shah",
-      "url": "https://www.cricinfo.com/story/afghanistan-look-to-tick-boxes-in-rare-test-outing-against-confident-bangladesh-1557588",
-      "imageUrl": "https://p.imgci.com/db/PICTURES/CMS/375400/375451.6.jpg",
-      "source": "espncricinfo",
-      "publishedAt": "2026-10-08T06:37:53.000Z"
     }
   ]
 }
