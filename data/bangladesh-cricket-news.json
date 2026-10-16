@@ -1,6 +1,31 @@
 {
-  "fetchedAt": "2026-10-15T23:51:10.321Z",
+  "fetchedAt": "2026-10-16T23:52:15.722Z",
   "items": [
+    {
+      "id": "dailystar-https://www.thedailystar.net/sports/cricket/news/if-we-play-good-cricket-why-not-litton-backs-tigers-go-all-the-way-tri-series-4300426",
+      "title": "'If we play good cricket, why not?': Litton backs Tigers to go all the way in tri-series",
+      "summary": "“If we play good cricket, why not?” Newly appointed ODI captain Litton Das fell back on the age-old wisdom that Bangladesh players so often reach for in press conferences when asked to predict positive outcomes. In this case, the question was whether Bangladesh could go all the way and become champions in the tri-nation series against Zimbabwe and Afghanistan.",
+      "url": "https://www.thedailystar.net/sports/cricket/news/if-we-play-good-cricket-why-not-litton-backs-tigers-go-all-the-way-tri-series-4300426",
+      "source": "dailystar",
+      "publishedAt": "2026-10-16T20:11:37.000Z"
+    },
+    {
+      "id": "espn-https://www.cricinfo.com/ci/content/story/1558710.html",
+      "title": "Zimbabwe look to extend recent dominance over Bangladesh",
+      "summary": "Litton Das returns to lead as Bangladesh face selection headaches thanks to their bowling depth",
+      "url": "https://www.cricinfo.com/story/zimbabwe-look-to-extend-recent-dominance-over-bangladesh-1558710",
+      "imageUrl": "https://p.imgci.com/db/PICTURES/CMS/405700/405716.5.jpg",
+      "source": "espncricinfo",
+      "publishedAt": "2026-10-16T04:18:08.000Z"
+    },
+    {
+      "id": "dailystar-https://www.thedailystar.net/sports/cricket/news/tigers-back-tri-series-business-world-cup-mind-4300101",
+      "title": "Tigers back in tri-series business, with World Cup in mind",
+      "summary": "The Tigers’ record in tri-series suggests that winning the tournament will be no simple task. They have claimed just one title in 13 attempts, while losing to Sri Lanka in the finals of 2009 and 2018.",
+      "url": "https://www.thedailystar.net/sports/cricket/news/tigers-back-tri-series-business-world-cup-mind-4300101",
+      "source": "dailystar",
+      "publishedAt": "2026-10-16T03:41:14.000Z"
+    },
     {
       "id": "dailystar-https://www.thedailystar.net/sports/cricket/news/u-19-tigers-afghanistan-series-rescheduled-again-4299661",
       "title": "U-19 Tigers’ Afghanistan series rescheduled again",
@@ -33,22 +58,6 @@
       "imageUrl": "https://p.imgci.com/db/PICTURES/CMS/422000/422003.5.jpg",
       "source": "espncricinfo",
       "publishedAt": "2026-10-15T12:38:17.000Z"
-    },
-    {
-      "id": "dailystar-https://www.thedailystar.net/sports/cricket/news/zampa-rishad-spin-partnership-hobart-hurricanes-4299321",
-      "title": "Zampa-Rishad spin partnership for Hobart Hurricanes",
-      "summary": "Hobart Hurricanes have gone to considerable lengths to retain Bangladesh leg-spinner Rishad Hossain for the upcoming Big Bash League season, despite signing Australian star Adam Zampa to strengthen their spin attack.",
-      "url": "https://www.thedailystar.net/sports/cricket/news/zampa-rishad-spin-partnership-hobart-hurricanes-4299321",
-      "source": "dailystar",
-      "publishedAt": "2026-10-15T07:02:07.000Z"
-    },
-    {
-      "id": "dailystar-https://www.thedailystar.net/sports/cricket/news/question-balance-beyond-abu-dhabi-4299231",
-      "title": "A question of balance beyond Abu Dhabi",
-      "summary": "Did Bangladesh once again focus too heavily on conditions at the expense of their own strengths?",
-      "url": "https://www.thedailystar.net/sports/cricket/news/question-balance-beyond-abu-dhabi-4299231",
-      "source": "dailystar",
-      "publishedAt": "2026-10-15T05:26:11.000Z"
     },
     {
       "id": "espn-https://www.cricinfo.com/ci/content/story/1558418.html",
@@ -166,15 +175,6 @@
       "imageUrl": "https://p.imgci.com/db/PICTURES/CMS/284300/284349.5.jpg",
       "source": "espncricinfo",
       "publishedAt": "2026-10-10T11:06:29.000Z"
-    },
-    {
-      "id": "espn-https://www.cricinfo.com/ci/content/story/1557718.html",
-      "title": "Afghanistan fast bowlers hit back after Bangladesh's strong start",
-      "summary": "For Bangladesh, Shadman Islam, Tanzid Hasan and Litton Das made fifties",
-      "url": "https://www.cricinfo.com/story/afg-vs-ban-test-afghanistan-fast-bowlers-hit-back-after-bangladeshs-strong-start-1557718",
-      "imageUrl": "https://p.imgci.com/db/PICTURES/CMS/423500/423548.5.jpg",
-      "source": "espncricinfo",
-      "publishedAt": "2026-10-09T14:20:07.000Z"
     }
   ]
 }
