@@ -1,5 +1,5 @@
 {
-  "fetchedAt": "2026-10-15T23:42:55.704Z",
+  "fetchedAt": "2026-10-16T23:38:24.811Z",
   "source": "icc-sportz.io",
   "sourceUrl": "https://www.icc-cricket.com/rankings",
   "men": {
@@ -10549,9 +10549,9 @@
           "rank": 3,
           "name": "India",
           "abbreviation": "IND-W",
-          "rating": 264,
-          "points": 12955,
-          "matches": 49
+          "rating": 265,
+          "points": 13229,
+          "matches": 50
         },
         {
           "rank": 4,
@@ -10654,8 +10654,8 @@
           "name": "Zimbabwe",
           "abbreviation": "ZIM-W",
           "rating": 120,
-          "points": 5177,
-          "matches": 43
+          "points": 5287,
+          "matches": 44
         },
         {
           "rank": 17,
@@ -10965,9 +10965,9 @@
           "rank": 55,
           "name": "Austria",
           "abbreviation": "AUT-W",
-          "rating": 26,
-          "points": 691,
-          "matches": 27
+          "rating": 27,
+          "points": 744,
+          "matches": 28
         },
         {
           "rank": 56,
@@ -10979,14 +10979,6 @@
         },
         {
           "rank": 57,
-          "name": "Romania",
-          "abbreviation": "ROM-W",
-          "rating": 24,
-          "points": 282,
-          "matches": 12
-        },
-        {
-          "rank": 58,
           "name": "Guernsey",
           "abbreviation": "GSY-W",
           "rating": 21,
@@ -10994,7 +10986,7 @@
           "matches": 13
         },
         {
-          "rank": 59,
+          "rank": 58,
           "name": "Norway",
           "abbreviation": "NOR-W",
           "rating": 19,
@@ -11002,12 +10994,20 @@
           "matches": 23
         },
         {
-          "rank": 60,
+          "rank": 59,
           "name": "Malawi",
           "abbreviation": "MAW-W",
           "rating": 18,
           "points": 556,
           "matches": 31
+        },
+        {
+          "rank": 60,
+          "name": "Romania",
+          "abbreviation": "ROM-W",
+          "rating": 18,
+          "points": 232,
+          "matches": 13
         },
         {
           "rank": 61,
@@ -11115,6 +11115,14 @@
         },
         {
           "rank": 74,
+          "name": "Bulgaria",
+          "abbreviation": "BUL-W",
+          "rating": 2,
+          "points": 50,
+          "matches": 26
+        },
+        {
+          "rank": 75,
           "name": "Philippines",
           "abbreviation": "PHI-W",
           "rating": 2,
@@ -11122,7 +11130,7 @@
           "matches": 22
         },
         {
-          "rank": 75,
+          "rank": 76,
           "name": "Singapore",
           "abbreviation": "SIN-W",
           "rating": 0,
@@ -11130,7 +11138,7 @@
           "matches": 29
         },
         {
-          "rank": 75,
+          "rank": 76,
           "name": "Eswatini",
           "abbreviation": "ESW-W",
           "rating": 0,
@@ -11138,7 +11146,7 @@
           "matches": 10
         },
         {
-          "rank": 75,
+          "rank": 76,
           "name": "SDA",
           "abbreviation": "SDA",
           "rating": 0,
@@ -11146,7 +11154,7 @@
           "matches": 8
         },
         {
-          "rank": 75,
+          "rank": 76,
           "name": "Cook Islands",
           "abbreviation": "COK-W",
           "rating": 0,
@@ -11154,7 +11162,7 @@
           "matches": 12
         },
         {
-          "rank": 75,
+          "rank": 76,
           "name": "CHL",
           "abbreviation": "CHL",
           "rating": 0,
@@ -11162,15 +11170,7 @@
           "matches": 7
         },
         {
-          "rank": 75,
-          "name": "Bulgaria",
-          "abbreviation": "BUL-W",
-          "rating": 0,
-          "points": 0,
-          "matches": 24
-        },
-        {
-          "rank": 75,
+          "rank": 76,
           "name": "Belgium",
           "abbreviation": "BEL-W",
           "rating": 0,
@@ -11178,7 +11178,7 @@
           "matches": 15
         },
         {
-          "rank": 75,
+          "rank": 76,
           "name": "Bahrain",
           "abbreviation": "BRN-W",
           "rating": 0,
@@ -17420,7 +17420,7 @@
         "allrounder": "2026-10-12"
       },
       "t20": {
-        "team": "2026-10-15",
+        "team": "2026-10-16",
         "bat": "2026-10-12",
         "bowl": "2026-10-12",
         "allrounder": "2026-10-12"
