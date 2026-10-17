@@ -1,5 +1,5 @@
 {
-  "fetchedAt": "2026-10-16T23:38:24.811Z",
+  "fetchedAt": "2026-10-17T23:09:47.015Z",
   "source": "icc-sportz.io",
   "sourceUrl": "https://www.icc-cricket.com/rankings",
   "men": {
@@ -156,9 +156,9 @@
           "rank": 9,
           "name": "Bangladesh",
           "abbreviation": "BAN",
-          "rating": 83,
-          "points": 3251,
-          "matches": 39
+          "rating": 82,
+          "points": 3262,
+          "matches": 40
         },
         {
           "rank": 10,
@@ -172,9 +172,9 @@
           "rank": 11,
           "name": "Zimbabwe",
           "abbreviation": "ZIM",
-          "rating": 61,
-          "points": 1096,
-          "matches": 18
+          "rating": 65,
+          "points": 1229,
+          "matches": 19
         },
         {
           "rank": 12,
@@ -220,9 +220,9 @@
           "rank": 17,
           "name": "Nepal",
           "abbreviation": "NEP",
-          "rating": 31,
-          "points": 1075,
-          "matches": 35
+          "rating": 29,
+          "points": 1034,
+          "matches": 36
         },
         {
           "rank": 18,
@@ -244,9 +244,9 @@
           "rank": 20,
           "name": "Canada",
           "abbreviation": "CAN",
-          "rating": 9,
-          "points": 226,
-          "matches": 25
+          "rating": 12,
+          "points": 307,
+          "matches": 26
         }
       ],
       "t20": [
@@ -1081,9 +1081,9 @@
         "rank": 9,
         "name": "Bangladesh",
         "abbreviation": "BAN",
-        "rating": 83,
-        "points": 3251,
-        "matches": 39
+        "rating": 82,
+        "points": 3262,
+        "matches": 40
       },
       "t20": {
         "rank": 8,
@@ -10381,7 +10381,7 @@
         "allrounder": "2026-10-13"
       },
       "odi": {
-        "team": "2026-10-15",
+        "team": "2026-10-17",
         "bat": "2026-10-13",
         "bowl": "2026-10-13",
         "allrounder": "2026-10-13"
@@ -10798,8 +10798,8 @@
           "name": "Sweden",
           "abbreviation": "SWE-W",
           "rating": 54,
-          "points": 1126,
-          "matches": 21
+          "points": 1191,
+          "matches": 22
         },
         {
           "rank": 35,
@@ -10965,9 +10965,9 @@
           "rank": 55,
           "name": "Austria",
           "abbreviation": "AUT-W",
-          "rating": 27,
-          "points": 744,
-          "matches": 28
+          "rating": 28,
+          "points": 812,
+          "matches": 29
         },
         {
           "rank": 56,
@@ -11003,14 +11003,6 @@
         },
         {
           "rank": 60,
-          "name": "Romania",
-          "abbreviation": "ROM-W",
-          "rating": 18,
-          "points": 232,
-          "matches": 13
-        },
-        {
-          "rank": 61,
           "name": "Fiji",
           "abbreviation": "FIJ-W",
           "rating": 18,
@@ -11018,7 +11010,7 @@
           "matches": 15
         },
         {
-          "rank": 62,
+          "rank": 61,
           "name": "Serbia",
           "abbreviation": "SER-W",
           "rating": 15,
@@ -11026,12 +11018,20 @@
           "matches": 19
         },
         {
-          "rank": 63,
+          "rank": 62,
           "name": "Czechia",
           "abbreviation": "CZE-W",
           "rating": 14,
           "points": 403,
           "matches": 28
+        },
+        {
+          "rank": 63,
+          "name": "Romania",
+          "abbreviation": "ROM-W",
+          "rating": 14,
+          "points": 213,
+          "matches": 15
         },
         {
           "rank": 64,
@@ -17420,7 +17420,7 @@
         "allrounder": "2026-10-12"
       },
       "t20": {
-        "team": "2026-10-16",
+        "team": "2026-10-17",
         "bat": "2026-10-12",
         "bowl": "2026-10-12",
         "allrounder": "2026-10-12"
