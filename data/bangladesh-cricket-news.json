@@ -1,6 +1,72 @@
 {
-  "fetchedAt": "2026-10-16T23:52:15.722Z",
+  "fetchedAt": "2026-10-17T23:23:56.125Z",
   "items": [
+    {
+      "id": "dailystar-https://www.thedailystar.net/sports/cricket/news/bangladesh-u-19s-begin-afghanistan-series-33-run-win-4301056",
+      "title": "Bangladesh U-19s begin Afghanistan series with 33-run win",
+      "summary": "Bangladesh’s new-look U-19 team began their campaign in style, beating Afghanistan by 33 runs in the opening match of a four-match Youth ODI series at the Al Amerat Cricket Ground in Oman on Saturday.",
+      "url": "https://www.thedailystar.net/sports/cricket/news/bangladesh-u-19s-begin-afghanistan-series-33-run-win-4301056",
+      "source": "dailystar",
+      "publishedAt": "2026-10-17T16:24:27.000Z"
+    },
+    {
+      "id": "dailystar-https://www.thedailystar.net/sports/cricket/news/ncl-set-another-round-without-test-stars-4301051",
+      "title": "NCL set for another round without Test stars",
+      "summary": "Only wicketkeeper-batter Jaker Ali Anik and pacer Khaled Ahmed will feature for Sylhet Division in their third-round fixture against Rangpur Division in Chattogram.",
+      "url": "https://www.thedailystar.net/sports/cricket/news/ncl-set-another-round-without-test-stars-4301051",
+      "source": "dailystar",
+      "publishedAt": "2026-10-17T16:14:35.000Z"
+    },
+    {
+      "id": "espn-https://www.cricinfo.com/ci/content/story/1558858.html",
+      "title": "Hip injury rules Litton Das out of UAE tri-series",
+      "summary": "Mehidy Hasan Miraz also missed Bangladesh's first game of the tri-series, against Zimbabwe, because of a fever",
+      "url": "https://www.cricinfo.com/story/bangladesh-news-hip-injury-rules-litton-das-out-of-uae-tri-series-mehidy-hasan-miraz-down-with-a-fever-1558858",
+      "imageUrl": "https://p.imgci.com/db/PICTURES/CMS/403600/403664.6.jpg",
+      "source": "espncricinfo",
+      "publishedAt": "2026-10-17T13:44:22.000Z"
+    },
+    {
+      "id": "dailystar-https://www.thedailystar.net/sports/cricket/news/litton-ruled-out-tri-series-miraz-misses-opener-fever-4300886",
+      "title": "Litton ruled out of tri-series; Miraz misses opener with fever",
+      "summary": "Bangladesh ODI captain Litton Das has been ruled out of the ongoing tri-nation series in the UAE due to a right hip joint issue, a Bangladesh Cricket Board (BCB) medical official said on Saturday.",
+      "url": "https://www.thedailystar.net/sports/cricket/news/litton-ruled-out-tri-series-miraz-misses-opener-fever-4300886",
+      "source": "dailystar",
+      "publishedAt": "2026-10-17T12:10:29.000Z"
+    },
+    {
+      "id": "espn-https://www.cricinfo.com/ci/content/story/1558853.html",
+      "title": "Zimbabwe opt to bat; Litton out of tri-series with hip injury",
+      "summary": "Bangladesh are also without Mehidy Hasan Miraz, who has been down with fever, while Zimbabwe handed debut to Tafadzwa Tsiga",
+      "url": "https://www.cricinfo.com/story/zimbabwe-opt-to-bat-against-bangladesh-litton-das-out-of-tri-series-with-hip-injury-1558853",
+      "imageUrl": "https://p.imgci.com/db/PICTURES/CMS/418200/418287.5.jpg",
+      "source": "espncricinfo",
+      "publishedAt": "2026-10-17T11:49:33.000Z"
+    },
+    {
+      "id": "dailystar-https://www.thedailystar.net/sports/cricket/news/taskin-strikes-thrice-rattle-zimbabwe-early-4300851",
+      "title": "Tigers suffer heavy defeat to Zimbabwe",
+      "summary": "Bangladesh suffered a 99-run defeat to Zimbabwe in the opening match of the UAE ODI Tri-series at the Zayed Cricket Stadium in Abu Dhabi on Saturday.",
+      "url": "https://www.thedailystar.net/sports/cricket/news/taskin-strikes-thrice-rattle-zimbabwe-early-4300851",
+      "source": "dailystar",
+      "publishedAt": "2026-10-17T11:18:29.000Z"
+    },
+    {
+      "id": "dailystar-https://www.thedailystar.net/sports/cricket/news/bangladeshs-tri-series-record-one-title-13-attempts-4300721",
+      "title": "Bangladesh’s tri-series record: One title in 13 attempts",
+      "summary": "Bangladesh’s only tri-series title came in Ireland in 2019, when they beat the West Indies by five wickets under the Duckworth-Lewis method in the final.",
+      "url": "https://www.thedailystar.net/sports/cricket/news/bangladeshs-tri-series-record-one-title-13-attempts-4300721",
+      "source": "dailystar",
+      "publishedAt": "2026-10-17T06:44:07.000Z"
+    },
+    {
+      "id": "dailystar-https://www.thedailystar.net/sports/cricket/news/tri-series-puts-littons-leadership-focus-4300641",
+      "title": "Tri-series puts Litton’s leadership in focus",
+      "summary": "Litton Das took over as Bangladesh’s ODI captain at the end of July, but his first test as skipper since replacing Mehidy Hasan Miraz comes almost three months later, with the tri-series involving Zimbabwe and Afghanistan beginning today.",
+      "url": "https://www.thedailystar.net/sports/cricket/news/tri-series-puts-littons-leadership-focus-4300641",
+      "source": "dailystar",
+      "publishedAt": "2026-10-17T03:30:00.000Z"
+    },
     {
       "id": "dailystar-https://www.thedailystar.net/sports/cricket/news/if-we-play-good-cricket-why-not-litton-backs-tigers-go-all-the-way-tri-series-4300426",
       "title": "'If we play good cricket, why not?': Litton backs Tigers to go all the way in tri-series",
@@ -17,38 +83,6 @@
       "imageUrl": "https://p.imgci.com/db/PICTURES/CMS/405700/405716.5.jpg",
       "source": "espncricinfo",
       "publishedAt": "2026-10-16T04:18:08.000Z"
-    },
-    {
-      "id": "dailystar-https://www.thedailystar.net/sports/cricket/news/tigers-back-tri-series-business-world-cup-mind-4300101",
-      "title": "Tigers back in tri-series business, with World Cup in mind",
-      "summary": "The Tigers’ record in tri-series suggests that winning the tournament will be no simple task. They have claimed just one title in 13 attempts, while losing to Sri Lanka in the finals of 2009 and 2018.",
-      "url": "https://www.thedailystar.net/sports/cricket/news/tigers-back-tri-series-business-world-cup-mind-4300101",
-      "source": "dailystar",
-      "publishedAt": "2026-10-16T03:41:14.000Z"
-    },
-    {
-      "id": "dailystar-https://www.thedailystar.net/sports/cricket/news/u-19-tigers-afghanistan-series-rescheduled-again-4299661",
-      "title": "U-19 Tigers’ Afghanistan series rescheduled again",
-      "summary": "The series was initially scheduled to comprise five matches, starting on October 13, but was reduced to four after the Bangladesh team failed to obtain Oman visas on time.",
-      "url": "https://www.thedailystar.net/sports/cricket/news/u-19-tigers-afghanistan-series-rescheduled-again-4299661",
-      "source": "dailystar",
-      "publishedAt": "2026-10-15T17:50:00.000Z"
-    },
-    {
-      "id": "dailystar-https://www.thedailystar.net/sports/cricket/news/jahanara-expresses-interest-national-team-return-4299681",
-      "title": "Jahanara expresses interest in national team return",
-      "summary": "The former Bangladesh women’s team captain last played for the Tigresses during the three-match home T20I series against Ireland in 2024.",
-      "url": "https://www.thedailystar.net/sports/cricket/news/jahanara-expresses-interest-national-team-return-4299681",
-      "source": "dailystar",
-      "publishedAt": "2026-10-15T17:00:00.000Z"
-    },
-    {
-      "id": "dailystar-https://www.thedailystar.net/sports/cricket/news/mosaddek-draws-inspiration-2019-tri-series-heroics-4299646",
-      "title": "Mosaddek draws inspiration from 2019 tri-series heroics",
-      "summary": "Mosaddek Hossain was the hero of Bangladesh’s last and only multi-nation tournament triumph, when the Tigers won the Ireland tri-nation series, also featuring the West Indies, in 2019. The batter now hopes to draw inspiration from that triumph and replicate his heroics in the upcoming tri-nation series in Abu Dhabi, starting on October 17.",
-      "url": "https://www.thedailystar.net/sports/cricket/news/mosaddek-draws-inspiration-2019-tri-series-heroics-4299646",
-      "source": "dailystar",
-      "publishedAt": "2026-10-15T15:16:33.000Z"
     },
     {
       "id": "espn-https://www.cricinfo.com/ci/content/story/1558559.html",
@@ -148,33 +182,6 @@
       "imageUrl": "https://p.imgci.com/db/PICTURES/CMS/423500/423597.6.jpg",
       "source": "espncricinfo",
       "publishedAt": "2026-10-11T14:52:27.000Z"
-    },
-    {
-      "id": "espn-https://www.cricinfo.com/ci/content/story/1557976.html",
-      "title": "Mostary: I am so happy about my century",
-      "summary": "She made 118 off 134 against Australia in Brisbane, the highest score by a Bangladesh batter in ODIs",
-      "url": "https://www.cricinfo.com/story/aus-vs-ban-sobhana-mostary-says-i-am-so-happy-about-my-century-for-bangladesh-women-against-australia-1557976",
-      "imageUrl": "https://p.imgci.com/db/PICTURES/CMS/423600/423620.5.jpg",
-      "source": "espncricinfo",
-      "publishedAt": "2026-10-11T12:19:26.000Z"
-    },
-    {
-      "id": "espn-https://www.cricinfo.com/ci/content/story/1557831.html",
-      "title": "Rahmat, Malik fifties lead Afghanistan's strong reply",
-      "summary": "Afghanistan managed to chip away at Bangladesh's 346 all-out and were only 135 away by stumps on the second day",
-      "url": "https://www.cricinfo.com/story/rahmat-shah-abdul-malik-fifties-lead-afghanistans-strong-reply-against-bangladesh-1557831",
-      "imageUrl": "https://p.imgci.com/db/PICTURES/CMS/423600/423600.5.jpg",
-      "source": "espncricinfo",
-      "publishedAt": "2026-10-10T14:08:10.000Z"
-    },
-    {
-      "id": "espn-https://www.cricinfo.com/ci/content/story/1557851.html",
-      "title": "Aliss Al Islam in Litton-led Bangladesh squad for ODI tri-series",
-      "summary": "The mystery spinner is uncapped in ODI cricket, but has played one T20I so far",
-      "url": "https://www.cricinfo.com/story/uae-odi-tri-series-aliss-al-islam-in-litton-led-bangladesh-squad-1557851",
-      "imageUrl": "https://p.imgci.com/db/PICTURES/CMS/284300/284349.5.jpg",
-      "source": "espncricinfo",
-      "publishedAt": "2026-10-10T11:06:29.000Z"
     }
   ]
 }
