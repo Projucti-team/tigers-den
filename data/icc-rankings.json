@@ -1,5 +1,5 @@
 {
-  "fetchedAt": "2026-10-18T23:16:21.515Z",
+  "fetchedAt": "2026-10-20T00:23:32.696Z",
   "source": "icc-sportz.io",
   "sourceUrl": "https://www.icc-cricket.com/rankings",
   "men": {
@@ -149,8 +149,8 @@
           "name": "Afghanistan",
           "abbreviation": "AFG",
           "rating": 92,
-          "points": 2565,
-          "matches": 28
+          "points": 2680,
+          "matches": 29
         },
         {
           "rank": 9,
@@ -172,9 +172,9 @@
           "rank": 11,
           "name": "Zimbabwe",
           "abbreviation": "ZIM",
-          "rating": 65,
-          "points": 1229,
-          "matches": 19
+          "rating": 64,
+          "points": 1271,
+          "matches": 20
         },
         {
           "rank": 12,
@@ -220,17 +220,17 @@
           "rank": 17,
           "name": "Nepal",
           "abbreviation": "NEP",
-          "rating": 29,
-          "points": 1034,
-          "matches": 36
+          "rating": 30,
+          "points": 1108,
+          "matches": 37
         },
         {
           "rank": 18,
           "name": "Oman",
           "abbreviation": "OMA",
-          "rating": 24,
-          "points": 652,
-          "matches": 27
+          "rating": 23,
+          "points": 631,
+          "matches": 28
         },
         {
           "rank": 19,
@@ -10381,7 +10381,7 @@
         "allrounder": "2026-10-13"
       },
       "odi": {
-        "team": "2026-10-18",
+        "team": "2026-10-19",
         "bat": "2026-10-13",
         "bowl": "2026-10-13",
         "allrounder": "2026-10-13"
