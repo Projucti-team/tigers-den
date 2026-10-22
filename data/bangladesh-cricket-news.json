@@ -1,29 +1,81 @@
 {
-  "fetchedAt": "2026-10-21T00:08:01.202Z",
+  "fetchedAt": "2026-10-22T00:11:59.032Z",
   "items": [
     {
-      "id": "dailystar-https://www.thedailystar.net/sports/cricket/news/tigers-tricky-equation-final-4303481",
-      "title": "Tigers' tricky equation for final",
-      "summary": "Heading into today’s must-win clash against Afghanistan at the Sharjah Cricket Stadium, simply securing a victory will not be enough for the Tigers.",
-      "url": "https://www.thedailystar.net/sports/cricket/news/tigers-tricky-equation-final-4303481",
-      "source": "dailystar",
-      "publishedAt": "2026-10-20T16:10:00.000Z"
+      "id": "espn-https://www.cricinfo.com/ci/content/story/1559341.html",
+      "title": "Rahmat, Rashid knock Bangladesh out and send Afghanistan to final",
+      "summary": "Bangladesh's 160 was never going to be enough, as Afghanistan strolled home to set up a final date with Zimbabwe",
+      "url": "https://www.cricinfo.com/story/afg-vs-ban-rahmat-rashid-knock-bangladesh-out-and-send-afghanistan-to-final-1559341",
+      "imageUrl": "https://p.imgci.com/db/PICTURES/CMS/424100/424114.5.jpg",
+      "source": "espncricinfo",
+      "publishedAt": "2026-10-21T19:20:56.000Z"
     },
     {
-      "id": "dailystar-https://www.thedailystar.net/sports/cricket/news/nayeems-double-ton-zawads-record-breaking-fifty-light-ncl-4303501",
-      "title": "Nayeem's double ton, Zawad's record-breaking fifty light up NCL",
-      "summary": "Nayeem Ahmed struck the National Cricket League's first double century of the season, while Zawad Abrar set a new record for the fastest fifty in Bangladesh first-class cricket as batters dominated the third day of the third round on Tuesday. Azizul Hakim Tamim and Mohammad Naim also struck centuries in their respective matches.",
-      "url": "https://www.thedailystar.net/sports/cricket/news/nayeems-double-ton-zawads-record-breaking-fifty-light-ncl-4303501",
-      "source": "dailystar",
-      "publishedAt": "2026-10-20T15:45:00.000Z"
+      "id": "espn-https://www.cricinfo.com/ci/content/story/1559358.html",
+      "title": "NCL: Khulna go top; Nayeem double-century lifts Rajshahi",
+      "summary": "Meanwhile, defending champions Rangpur's difficult season continued, as they lost to Sylhet by 37 runs",
+      "url": "https://www.cricinfo.com/story/ncl-2026-27-khulna-go-top-nayeem-double-century-lifts-rajshahi-1559358",
+      "imageUrl": "https://p.imgci.com/db/PICTURES/CMS/424100/424110.5.jpg",
+      "source": "espncricinfo",
+      "publishedAt": "2026-10-21T17:18:48.000Z"
     },
     {
-      "id": "dailystar-https://www.thedailystar.net/sports/cricket/news/we-must-play-our-brand-top-class-cricket-4303496",
-      "title": "‘We must play our brand of top-class cricket’",
-      "summary": "Bangladesh face Afghanistan on Wednesday in Sharjah, needing not only a win but a convincing one to avoid elimination in the UAE tri-series.",
-      "url": "https://www.thedailystar.net/sports/cricket/news/we-must-play-our-brand-top-class-cricket-4303496",
+      "id": "dailystar-https://www.thedailystar.net/sports/cricket/news/debutant-rakibs-five-helps-khulna-edge-chattogram-sylhet-rajshahi-win-4304326",
+      "title": "Debutant Rakib’s five-for helps Khulna edge Chattogram; Sylhet, Rajshahi win",
+      "summary": "Rakib, who came on as a concussion substitute for Samiun Basir Ratul, took four wickets on the third day to reduce Chattogram to 174 for five in their pursuit of a 275-run target.",
+      "url": "https://www.thedailystar.net/sports/cricket/news/debutant-rakibs-five-helps-khulna-edge-chattogram-sylhet-rajshahi-win-4304326",
       "source": "dailystar",
-      "publishedAt": "2026-10-20T15:00:45.000Z"
+      "publishedAt": "2026-10-21T15:41:41.000Z"
+    },
+    {
+      "id": "dailystar-https://www.thedailystar.net/sports/cricket/news/dramatic-collapse-costs-bangladesh-u-19s-against-afghanistan-4304321",
+      "title": "Dramatic collapse costs Bangladesh U-19s against Afghanistan",
+      "summary": "Bangladesh U-19 team suffered their first defeat in the ongoing four-match Youth One-Day International (YODI) series after losing to Afghanistan by 43 runs at the Al Amerat Cricket Ground in Oman on Wednesday.",
+      "url": "https://www.thedailystar.net/sports/cricket/news/dramatic-collapse-costs-bangladesh-u-19s-against-afghanistan-4304321",
+      "source": "dailystar",
+      "publishedAt": "2026-10-21T15:35:11.000Z"
+    },
+    {
+      "id": "espn-https://www.cricinfo.com/ci/content/story/1559322.html",
+      "title": "Bangladesh opt to bat in must-win match against Afghanistan",
+      "summary": "Fingerspinner Aliss Al Islam made his debut for Bangladesh, while Afghanistan made two changes",
+      "url": "https://www.cricinfo.com/story/odi-tri-series-bangladesh-opt-to-bat-in-must-win-match-against-afghanistan-1559322",
+      "imageUrl": "https://p.imgci.com/db/PICTURES/CMS/424000/424098.5.jpg",
+      "source": "espncricinfo",
+      "publishedAt": "2026-10-21T11:35:30.000Z"
+    },
+    {
+      "id": "dailystar-https://www.thedailystar.net/sports/cricket/news/debut-aliss-bangladesh-make-three-changes-crucial-afghanistan-tie-4304156",
+      "title": "Bangladesh out of tri-series after Afghanistan defeat",
+      "summary": "Chasing a target of 161 runs, Afghanistan reached the target in 35.3 overs to complete their successive win in the tournament and set up a final clash against Zimbabwe at the same venue on Friday.",
+      "url": "https://www.thedailystar.net/sports/cricket/news/debut-aliss-bangladesh-make-three-changes-crucial-afghanistan-tie-4304156",
+      "source": "dailystar",
+      "publishedAt": "2026-10-21T11:11:18.000Z"
+    },
+    {
+      "id": "espn-https://www.cricinfo.com/ci/content/story/1559294.html",
+      "title": "Bangladesh and Nepal to host Women's Under-19 T20 World Cup from January 21 to February 6",
+      "summary": "Chattogram is set to host both semi-finals on February 4 as well as the final on February 6",
+      "url": "https://www.cricinfo.com/story/bangladesh-and-nepal-to-host-womens-under-19-t20-world-cup-from-january-21-to-february-6-1559294",
+      "imageUrl": "https://p.imgci.com/db/PICTURES/CMS/395900/395934.5.jpg",
+      "source": "espncricinfo",
+      "publishedAt": "2026-10-21T08:17:56.000Z"
+    },
+    {
+      "id": "dailystar-https://www.thedailystar.net/sports/cricket/news/schedule-unveiled-icc-womens-u19-t20-world-cup-2027-bangladesh-and-nepal-4304071",
+      "title": "Schedule unveiled for ICC Women's U19 T20 World Cup 2027 in Bangladesh and Nepal",
+      "summary": "The opening day of the tournament will see eight teams in actions across four games, including the co-hosts Bangladesh taking on UAE.",
+      "url": "https://www.thedailystar.net/sports/cricket/news/schedule-unveiled-icc-womens-u19-t20-world-cup-2027-bangladesh-and-nepal-4304071",
+      "source": "dailystar",
+      "publishedAt": "2026-10-21T07:46:04.000Z"
+    },
+    {
+      "id": "dailystar-https://www.thedailystar.net/sports/cricket/news/jaker-shamim-included-bcb-xi-west-indies-warm-4304061",
+      "title": "Jaker, Shamim included in BCB XI for West Indies warm-up",
+      "summary": "The two-day match will be played on Thursday and Friday at Bashundhara’s Anvir Cricket Stadium",
+      "url": "https://www.thedailystar.net/sports/cricket/news/jaker-shamim-included-bcb-xi-west-indies-warm-4304061",
+      "source": "dailystar",
+      "publishedAt": "2026-10-21T07:06:20.000Z"
     },
     {
       "id": "espn-https://www.cricinfo.com/ci/content/story/1559113.html",
@@ -33,30 +85,6 @@
       "imageUrl": "https://p.imgci.com/db/PICTURES/CMS/418000/418075.5.jpg",
       "source": "espncricinfo",
       "publishedAt": "2026-10-20T14:26:01.000Z"
-    },
-    {
-      "id": "dailystar-https://www.thedailystar.net/sports/cricket/news/debut-remember-4303451",
-      "title": "October 20, 2016: A debut to remember",
-      "summary": "Exactly 10 years ago today, Mehidy Hasan Miraz announced his arrival on the international stage with a mesmerizing spell of off-spin against England in Chattogram.",
-      "url": "https://www.thedailystar.net/sports/cricket/news/debut-remember-4303451",
-      "source": "dailystar",
-      "publishedAt": "2026-10-20T13:58:59.000Z"
-    },
-    {
-      "id": "dailystar-https://www.thedailystar.net/sports/cricket/news/tigers-must-win-big-against-afghanistan-and-overcome-the-nrr-mountain-reach-tri-series-final-4302976",
-      "title": "Tigers must win big against Afghanistan and overcome NRR mountain to reach tri-series final",
-      "summary": "Bangladesh may not have been in action in Abu Dhabi on Monday, but the Tigers had plenty at stake as Afghanistan took on Zimbabwe in the UAE ODI Tri-Series.",
-      "url": "https://www.thedailystar.net/sports/cricket/news/tigers-must-win-big-against-afghanistan-and-overcome-the-nrr-mountain-reach-tri-series-final-4302976",
-      "source": "dailystar",
-      "publishedAt": "2026-10-19T19:47:13.000Z"
-    },
-    {
-      "id": "dailystar-https://www.thedailystar.net/sports/cricket/news/can-tigers-middle-order-bat-smarter-4302671",
-      "title": "Can Tigers’ middle order bat smarter?",
-      "summary": "Bangladesh failed to build on a decent start against Zimbabwe, struggling to rotate strike as pressure mounted. Hridoy tried to force the pace and fell, triggering a collapse that saw the Tigers bowled out for 172 in 33.4 overs while chasing 272.",
-      "url": "https://www.thedailystar.net/sports/cricket/news/can-tigers-middle-order-bat-smarter-4302671",
-      "source": "dailystar",
-      "publishedAt": "2026-10-19T17:30:00.000Z"
     },
     {
       "id": "espn-https://www.cricinfo.com/ci/content/story/1558998.html",
@@ -120,51 +148,6 @@
       "imageUrl": "https://p.imgci.com/db/PICTURES/CMS/422000/422003.5.jpg",
       "source": "espncricinfo",
       "publishedAt": "2026-10-15T12:38:17.000Z"
-    },
-    {
-      "id": "espn-https://www.cricinfo.com/ci/content/story/1558418.html",
-      "title": "Swingin' Schutt sets up ODI series sweep for Australia with 4 for 16",
-      "summary": "With Megan Schutt knocking out the top order, Bangladesh were never really in the contest despite half-centuries from Sharmin Akhter and Shorna Akter",
-      "url": "https://www.cricinfo.com/story/aus-vs-ban-3rd-odi-megan-schutt-sets-up-odi-series-sweep-for-australia-over-bangladesh-with-4-for-16-1558418",
-      "imageUrl": "https://p.imgci.com/db/PICTURES/CMS/423700/423774.6.jpg",
-      "source": "espncricinfo",
-      "publishedAt": "2026-10-14T10:07:11.000Z"
-    },
-    {
-      "id": "espn-https://www.cricinfo.com/ci/content/story/1558344.html",
-      "title": "Jack Leach not on England radar for Bangladesh tour",
-      "summary": "Test team \"focusing on slightly different direction\" despite Somerset spinner's pre-eminence at county level",
-      "url": "https://www.cricinfo.com/story/jack-leach-not-currently-on-england-radar-marcus-north-1558344",
-      "imageUrl": "https://p.imgci.com/db/PICTURES/CMS/404100/404165.5.jpg",
-      "source": "espncricinfo",
-      "publishedAt": "2026-10-14T08:52:13.000Z"
-    },
-    {
-      "id": "espn-https://www.cricinfo.com/ci/content/story/1558358.html",
-      "title": "Alzarri Joseph, Shai Hope to miss WI's two-Test series in Bangladesh",
-      "summary": "Alzarri Joseph has been \"withdrawn\" to manage his workload while Hope was rested keeping the ODI World Cup qualifiers in February 2027 in mind",
-      "url": "https://www.cricinfo.com/story/west-indies-squad-alzarri-joseph-and-shai-hope-to-miss-two-test-series-in-bangladesh-1558358",
-      "imageUrl": "https://p.imgci.com/db/PICTURES/CMS/384500/384531.6.jpg",
-      "source": "espncricinfo",
-      "publishedAt": "2026-10-14T05:39:20.000Z"
-    },
-    {
-      "id": "espn-https://www.cricinfo.com/ci/content/story/1558264.html",
-      "title": "Atal century, lower-order resistance help Afghanistan hang on to a draw",
-      "summary": "Bangladesh's missed chances especially in the final hour cost them as they couldn't pick up the last two wickets",
-      "url": "https://www.cricinfo.com/story/sediqullah-atal-century-lower-order-resistence-help-afghanistan-hang-on-to-a-draw-against-bangladesh-1558264",
-      "imageUrl": "https://p.imgci.com/db/PICTURES/CMS/423700/423726.5.jpg",
-      "source": "espncricinfo",
-      "publishedAt": "2026-10-14T05:27:32.000Z"
-    },
-    {
-      "id": "espn-https://www.cricinfo.com/ci/content/story/1558362.html",
-      "title": "Australia bowl again, Litchfield out with hip complaint; Bangladesh debut for Disha Biswas",
-      "summary": "Bangladesh made three changes in search of their first win of the series",
-      "url": "https://www.cricinfo.com/story/aus-vs-ban-australia-bowl-phoebe-litchfield-out-with-hip-niggle-bangladesh-debut-for-disha-biswas-1558362",
-      "imageUrl": "https://p.imgci.com/db/PICTURES/CMS/414900/414985.5.jpg",
-      "source": "espncricinfo",
-      "publishedAt": "2026-10-14T04:09:41.000Z"
     }
   ]
 }
