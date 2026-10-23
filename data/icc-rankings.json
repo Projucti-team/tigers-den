@@ -1,5 +1,5 @@
 {
-  "fetchedAt": "2026-10-22T00:01:42.420Z",
+  "fetchedAt": "2026-10-23T00:00:08.776Z",
   "source": "icc-sportz.io",
   "sourceUrl": "https://www.icc-cricket.com/rankings",
   "men": {
@@ -130,27 +130,27 @@
         },
         {
           "rank": 6,
-          "name": "England",
-          "abbreviation": "ENG",
-          "rating": 94,
-          "points": 3287,
-          "matches": 35
+          "name": "Sri Lanka",
+          "abbreviation": "SL",
+          "rating": 95,
+          "points": 3896,
+          "matches": 41
         },
         {
           "rank": 7,
-          "name": "Sri Lanka",
-          "abbreviation": "SL",
-          "rating": 94,
-          "points": 3752,
-          "matches": 40
-        },
-        {
-          "rank": 8,
           "name": "Afghanistan",
           "abbreviation": "AFG",
           "rating": 94,
           "points": 2812,
           "matches": 30
+        },
+        {
+          "rank": 8,
+          "name": "England",
+          "abbreviation": "ENG",
+          "rating": 93,
+          "points": 3331,
+          "matches": 36
         },
         {
           "rank": 9,
@@ -180,9 +180,9 @@
           "rank": 12,
           "name": "Ireland",
           "abbreviation": "IRE",
-          "rating": 51,
-          "points": 815,
-          "matches": 16
+          "rating": 53,
+          "points": 897,
+          "matches": 17
         },
         {
           "rank": 13,
@@ -212,9 +212,9 @@
           "rank": 16,
           "name": "Namibia",
           "abbreviation": "NAM",
-          "rating": 32,
-          "points": 836,
-          "matches": 26
+          "rating": 31,
+          "points": 837,
+          "matches": 27
         },
         {
           "rank": 17,
@@ -262,9 +262,9 @@
           "rank": 2,
           "name": "India",
           "abbreviation": "IND",
-          "rating": 267,
-          "points": 18987,
-          "matches": 71
+          "rating": 268,
+          "points": 19284,
+          "matches": 72
         },
         {
           "rank": 3,
@@ -278,9 +278,9 @@
           "rank": 4,
           "name": "New Zealand",
           "abbreviation": "NZ",
-          "rating": 247,
-          "points": 12348,
-          "matches": 50
+          "rating": 246,
+          "points": 12565,
+          "matches": 51
         },
         {
           "rank": 5,
@@ -10377,13 +10377,13 @@
         "allrounder": "2026-10-13"
       },
       "odi": {
-        "team": "2026-10-21",
+        "team": "2026-10-22",
         "bat": "2026-10-20",
         "bowl": "2026-10-20",
         "allrounder": "2026-10-20"
       },
       "t20": {
-        "team": "2026-10-21",
+        "team": "2026-10-22",
         "bat": "2026-10-20",
         "bowl": "2026-10-20",
         "allrounder": "2026-10-20"
