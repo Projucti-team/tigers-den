@@ -1,5 +1,5 @@
 {
-  "fetchedAt": "2026-10-23T00:00:08.776Z",
+  "fetchedAt": "2026-10-23T23:52:30.417Z",
   "source": "icc-sportz.io",
   "sourceUrl": "https://www.icc-cricket.com/rankings",
   "men": {
@@ -141,8 +141,8 @@
           "name": "Afghanistan",
           "abbreviation": "AFG",
           "rating": 94,
-          "points": 2812,
-          "matches": 30
+          "points": 2926,
+          "matches": 31
         },
         {
           "rank": 8,
@@ -172,9 +172,9 @@
           "rank": 11,
           "name": "Zimbabwe",
           "abbreviation": "ZIM",
-          "rating": 64,
-          "points": 1271,
-          "matches": 20
+          "rating": 63,
+          "points": 1315,
+          "matches": 21
         },
         {
           "rank": 12,
@@ -414,9 +414,9 @@
           "rank": 21,
           "name": "Uganda",
           "abbreviation": "UGA",
-          "rating": 142,
-          "points": 6973,
-          "matches": 49
+          "rating": 143,
+          "points": 7125,
+          "matches": 50
         },
         {
           "rank": 22,
@@ -566,9 +566,9 @@
           "rank": 40,
           "name": "Nigeria",
           "abbreviation": "NGR",
-          "rating": 78,
-          "points": 3841,
-          "matches": 49
+          "rating": 79,
+          "points": 3929,
+          "matches": 50
         },
         {
           "rank": 41,
@@ -740,6 +740,14 @@
         },
         {
           "rank": 62,
+          "name": "Zambia",
+          "abbreviation": "ZAM",
+          "rating": 35,
+          "points": 665,
+          "matches": 19
+        },
+        {
+          "rank": 63,
           "name": "Cyprus",
           "abbreviation": "CYP",
           "rating": 34,
@@ -747,7 +755,7 @@
           "matches": 26
         },
         {
-          "rank": 63,
+          "rank": 64,
           "name": "Czechia",
           "abbreviation": "CZE",
           "rating": 34,
@@ -755,7 +763,7 @@
           "matches": 21
         },
         {
-          "rank": 64,
+          "rank": 65,
           "name": "Malta",
           "abbreviation": "MLT",
           "rating": 34,
@@ -763,20 +771,12 @@
           "matches": 39
         },
         {
-          "rank": 65,
+          "rank": 66,
           "name": "Indonesia",
           "abbreviation": "INA",
           "rating": 34,
           "points": 2943,
           "matches": 87
-        },
-        {
-          "rank": 66,
-          "name": "Zambia",
-          "abbreviation": "ZAM",
-          "rating": 34,
-          "points": 607,
-          "matches": 18
         },
         {
           "rank": 67,
@@ -892,19 +892,19 @@
         },
         {
           "rank": 81,
-          "name": "Mozambique",
-          "abbreviation": "MOZ",
-          "rating": 13,
-          "points": 255,
-          "matches": 19
-        },
-        {
-          "rank": 82,
           "name": "ISR",
           "abbreviation": "ISR",
           "rating": 13,
           "points": 160,
           "matches": 12
+        },
+        {
+          "rank": 82,
+          "name": "Mozambique",
+          "abbreviation": "MOZ",
+          "rating": 13,
+          "points": 258,
+          "matches": 20
         },
         {
           "rank": 83,
@@ -924,14 +924,6 @@
         },
         {
           "rank": 85,
-          "name": "Lesotho",
-          "abbreviation": "LES",
-          "rating": 8,
-          "points": 149,
-          "matches": 18
-        },
-        {
-          "rank": 86,
           "name": "Suriname",
           "abbreviation": "SUR",
           "rating": 8,
@@ -939,7 +931,7 @@
           "matches": 10
         },
         {
-          "rank": 87,
+          "rank": 86,
           "name": "Bulgaria",
           "abbreviation": "BUL",
           "rating": 8,
@@ -947,12 +939,20 @@
           "matches": 25
         },
         {
-          "rank": 88,
+          "rank": 87,
           "name": "Croatia",
           "abbreviation": "CRO",
           "rating": 7,
           "points": 169,
           "matches": 24
+        },
+        {
+          "rank": 88,
+          "name": "Lesotho",
+          "abbreviation": "LES",
+          "rating": 7,
+          "points": 133,
+          "matches": 19
         },
         {
           "rank": 89,
@@ -1046,6 +1046,14 @@
           "rank": 94,
           "name": "GRE",
           "abbreviation": "GRE",
+          "rating": 0,
+          "points": 0,
+          "matches": 6
+        },
+        {
+          "rank": 94,
+          "name": "GAM",
+          "abbreviation": "GAM",
           "rating": 0,
           "points": 0,
           "matches": 6
@@ -10377,13 +10385,13 @@
         "allrounder": "2026-10-13"
       },
       "odi": {
-        "team": "2026-10-22",
+        "team": "2026-10-23",
         "bat": "2026-10-20",
         "bowl": "2026-10-20",
         "allrounder": "2026-10-20"
       },
       "t20": {
-        "team": "2026-10-22",
+        "team": "2026-10-23",
         "bat": "2026-10-20",
         "bowl": "2026-10-20",
         "allrounder": "2026-10-20"
@@ -10416,8 +10424,8 @@
           "name": "India",
           "abbreviation": "IND-W",
           "rating": 124,
-          "points": 3712,
-          "matches": 30
+          "points": 3846,
+          "matches": 31
         },
         {
           "rank": 4,
@@ -10504,8 +10512,8 @@
           "name": "Zimbabwe",
           "abbreviation": "ZIM-W",
           "rating": 15,
-          "points": 335,
-          "matches": 22
+          "points": 340,
+          "matches": 23
         },
         {
           "rank": 15,
@@ -17396,7 +17404,7 @@
         "allrounder": null
       },
       "odi": {
-        "team": "2026-10-14",
+        "team": "2026-10-23",
         "bat": "2026-10-19",
         "bowl": "2026-10-19",
         "allrounder": "2026-10-19"
