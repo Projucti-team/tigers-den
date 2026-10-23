@@ -1,6 +1,32 @@
 {
-  "fetchedAt": "2026-10-22T00:11:59.032Z",
+  "fetchedAt": "2026-10-23T00:09:28.609Z",
   "items": [
+    {
+      "id": "espn-https://www.cricinfo.com/ci/content/story/1559587.html",
+      "title": "Bangladesh offspinner Aliss Al Islam reported for suspect bowling action",
+      "summary": "Match officials reported debutant Aliss after Bangladesh's ODI tri-series match against Afghanistan",
+      "url": "https://www.cricinfo.com/story/bangladesh-offspinner-aliss-al-islam-reported-for-suspect-bowling-action-1559587",
+      "imageUrl": "https://p.imgci.com/db/PICTURES/CMS/424100/424199.5.jpg",
+      "source": "espncricinfo",
+      "publishedAt": "2026-10-22T14:23:25.000Z"
+    },
+    {
+      "id": "dailystar-https://www.thedailystar.net/sports/cricket/news/aliss-reported-again-suspect-bowling-action-after-odi-debut-4304986",
+      "title": "Aliss reported again for suspect bowling action after ODI debut",
+      "summary": "Bangladesh off-spinner Aliss Al Islam has been reported with a suspect bowling action during the United Arab Emirates (UAE) Tri-Series match against Afghanistan in Sharjah on Wednesday.",
+      "url": "https://www.thedailystar.net/sports/cricket/news/aliss-reported-again-suspect-bowling-action-after-odi-debut-4304986",
+      "source": "dailystar",
+      "publishedAt": "2026-10-22T11:48:08.000Z"
+    },
+    {
+      "id": "espn-https://www.cricinfo.com/ci/content/story/1559433.html",
+      "title": "Towhid Hridoy: 'Our batting unit has been consistently poor abroad'",
+      "summary": "\"The issue is indeed related to mindset. I believe there is room for improvement here,\" stand-in captain Towhid Hridoy says after Bangladesh are knocked out of the UAE ODI tri-series",
+      "url": "https://www.cricinfo.com/story/uae-odi-tri-series-towhid-hridoy-bangladesh-batting-unit-has-been-consistently-poor-abroad-1559433",
+      "imageUrl": "https://p.imgci.com/db/PICTURES/CMS/424100/424114.6.jpg",
+      "source": "espncricinfo",
+      "publishedAt": "2026-10-22T05:53:56.000Z"
+    },
     {
       "id": "espn-https://www.cricinfo.com/ci/content/story/1559341.html",
       "title": "Rahmat, Rashid knock Bangladesh out and send Afghanistan to final",
@@ -20,22 +46,6 @@
       "publishedAt": "2026-10-21T17:18:48.000Z"
     },
     {
-      "id": "dailystar-https://www.thedailystar.net/sports/cricket/news/debutant-rakibs-five-helps-khulna-edge-chattogram-sylhet-rajshahi-win-4304326",
-      "title": "Debutant Rakib’s five-for helps Khulna edge Chattogram; Sylhet, Rajshahi win",
-      "summary": "Rakib, who came on as a concussion substitute for Samiun Basir Ratul, took four wickets on the third day to reduce Chattogram to 174 for five in their pursuit of a 275-run target.",
-      "url": "https://www.thedailystar.net/sports/cricket/news/debutant-rakibs-five-helps-khulna-edge-chattogram-sylhet-rajshahi-win-4304326",
-      "source": "dailystar",
-      "publishedAt": "2026-10-21T15:41:41.000Z"
-    },
-    {
-      "id": "dailystar-https://www.thedailystar.net/sports/cricket/news/dramatic-collapse-costs-bangladesh-u-19s-against-afghanistan-4304321",
-      "title": "Dramatic collapse costs Bangladesh U-19s against Afghanistan",
-      "summary": "Bangladesh U-19 team suffered their first defeat in the ongoing four-match Youth One-Day International (YODI) series after losing to Afghanistan by 43 runs at the Al Amerat Cricket Ground in Oman on Wednesday.",
-      "url": "https://www.thedailystar.net/sports/cricket/news/dramatic-collapse-costs-bangladesh-u-19s-against-afghanistan-4304321",
-      "source": "dailystar",
-      "publishedAt": "2026-10-21T15:35:11.000Z"
-    },
-    {
       "id": "espn-https://www.cricinfo.com/ci/content/story/1559322.html",
       "title": "Bangladesh opt to bat in must-win match against Afghanistan",
       "summary": "Fingerspinner Aliss Al Islam made his debut for Bangladesh, while Afghanistan made two changes",
@@ -45,14 +55,6 @@
       "publishedAt": "2026-10-21T11:35:30.000Z"
     },
     {
-      "id": "dailystar-https://www.thedailystar.net/sports/cricket/news/debut-aliss-bangladesh-make-three-changes-crucial-afghanistan-tie-4304156",
-      "title": "Bangladesh out of tri-series after Afghanistan defeat",
-      "summary": "Chasing a target of 161 runs, Afghanistan reached the target in 35.3 overs to complete their successive win in the tournament and set up a final clash against Zimbabwe at the same venue on Friday.",
-      "url": "https://www.thedailystar.net/sports/cricket/news/debut-aliss-bangladesh-make-three-changes-crucial-afghanistan-tie-4304156",
-      "source": "dailystar",
-      "publishedAt": "2026-10-21T11:11:18.000Z"
-    },
-    {
       "id": "espn-https://www.cricinfo.com/ci/content/story/1559294.html",
       "title": "Bangladesh and Nepal to host Women's Under-19 T20 World Cup from January 21 to February 6",
       "summary": "Chattogram is set to host both semi-finals on February 4 as well as the final on February 6",
@@ -60,22 +62,6 @@
       "imageUrl": "https://p.imgci.com/db/PICTURES/CMS/395900/395934.5.jpg",
       "source": "espncricinfo",
       "publishedAt": "2026-10-21T08:17:56.000Z"
-    },
-    {
-      "id": "dailystar-https://www.thedailystar.net/sports/cricket/news/schedule-unveiled-icc-womens-u19-t20-world-cup-2027-bangladesh-and-nepal-4304071",
-      "title": "Schedule unveiled for ICC Women's U19 T20 World Cup 2027 in Bangladesh and Nepal",
-      "summary": "The opening day of the tournament will see eight teams in actions across four games, including the co-hosts Bangladesh taking on UAE.",
-      "url": "https://www.thedailystar.net/sports/cricket/news/schedule-unveiled-icc-womens-u19-t20-world-cup-2027-bangladesh-and-nepal-4304071",
-      "source": "dailystar",
-      "publishedAt": "2026-10-21T07:46:04.000Z"
-    },
-    {
-      "id": "dailystar-https://www.thedailystar.net/sports/cricket/news/jaker-shamim-included-bcb-xi-west-indies-warm-4304061",
-      "title": "Jaker, Shamim included in BCB XI for West Indies warm-up",
-      "summary": "The two-day match will be played on Thursday and Friday at Bashundhara’s Anvir Cricket Stadium",
-      "url": "https://www.thedailystar.net/sports/cricket/news/jaker-shamim-included-bcb-xi-west-indies-warm-4304061",
-      "source": "dailystar",
-      "publishedAt": "2026-10-21T07:06:20.000Z"
     },
     {
       "id": "espn-https://www.cricinfo.com/ci/content/story/1559113.html",
@@ -130,24 +116,6 @@
       "imageUrl": "https://p.imgci.com/db/PICTURES/CMS/418200/418287.5.jpg",
       "source": "espncricinfo",
       "publishedAt": "2026-10-17T11:49:33.000Z"
-    },
-    {
-      "id": "espn-https://www.cricinfo.com/ci/content/story/1558710.html",
-      "title": "Zimbabwe look to extend recent dominance over Bangladesh",
-      "summary": "Litton Das returns to lead as Bangladesh face selection headaches thanks to their bowling depth",
-      "url": "https://www.cricinfo.com/story/zimbabwe-look-to-extend-recent-dominance-over-bangladesh-1558710",
-      "imageUrl": "https://p.imgci.com/db/PICTURES/CMS/405700/405716.5.jpg",
-      "source": "espncricinfo",
-      "publishedAt": "2026-10-16T04:18:08.000Z"
-    },
-    {
-      "id": "espn-https://www.cricinfo.com/ci/content/story/1558559.html",
-      "title": "Sydney Thunder sign Boult for entire BBL 2026-27 season",
-      "summary": "Bangladesh legspinner Rishad Hossain will join Hobart Hurricanes for a second consecutive season",
-      "url": "https://www.cricinfo.com/story/sydney-thunder-sign-trent-boult-for-entire-bbl-2026-27-season-1558559",
-      "imageUrl": "https://p.imgci.com/db/PICTURES/CMS/422000/422003.5.jpg",
-      "source": "espncricinfo",
-      "publishedAt": "2026-10-15T12:38:17.000Z"
     }
   ]
 }
