@@ -1,6 +1,47 @@
 {
-  "fetchedAt": "2026-10-23T00:09:28.609Z",
+  "fetchedAt": "2026-10-23T23:59:25.027Z",
   "items": [
+    {
+      "id": "dailystar-https://www.thedailystar.net/sports/cricket/news/afghanistan-u-19-deny-bangladesh-series-victory-4305936",
+      "title": "Afghanistan U-19 deny Bangladesh series victory",
+      "summary": "Bangladesh had won the opening match by 33 runs before clinching the second via a Super Over. Afghanistan bounced back with a 43-run victory in the third game before drawing level in the series with Friday's win.",
+      "url": "https://www.thedailystar.net/sports/cricket/news/afghanistan-u-19-deny-bangladesh-series-victory-4305936",
+      "source": "dailystar",
+      "publishedAt": "2026-10-23T19:44:54.000Z"
+    },
+    {
+      "id": "dailystar-https://www.thedailystar.net/sports/cricket/news/bcb-announces-free-entry-select-galleries-first-ban-wi-test-4305741",
+      "title": "BCB announces free entry to select galleries for first Ban-WI Test",
+      "summary": "The Bangladesh Cricket Board (BCB) on Friday announced that spectators will be able to watch the first Test between Bangladesh and West Indies at the Sher-e-Bangla National Cricket Stadium in Mirpur free of charge from designated galleries.",
+      "url": "https://www.thedailystar.net/sports/cricket/news/bcb-announces-free-entry-select-galleries-first-ban-wi-test-4305741",
+      "source": "dailystar",
+      "publishedAt": "2026-10-23T11:17:57.000Z"
+    },
+    {
+      "id": "espn-https://www.cricinfo.com/ci/content/story/1559671.html",
+      "title": "Taskin returns for first Bangladesh vs West Indies Test",
+      "summary": "Litton Das, who missed the ODI tri-series in the UAE because of an injury, has been brought in, while Towhid Hridoy has retained his place",
+      "url": "https://www.cricinfo.com/story/ban-vs-wi-wtc-1st-test-taskin-ahmed-returns-for-first-bangladesh-vs-west-indies-test-1559671",
+      "imageUrl": "https://p.imgci.com/db/PICTURES/CMS/421000/421030.6.jpg",
+      "source": "espncricinfo",
+      "publishedAt": "2026-10-23T07:26:02.000Z"
+    },
+    {
+      "id": "dailystar-https://www.thedailystar.net/sports/cricket/news/taskin-returns-fit-again-litton-named-squad-first-west-indies-test-4305576",
+      "title": "Taskin returns, fit-again Litton named in squad for first West Indies Test",
+      "summary": "Batter Soumya Sarkar and pacer Syed Khaled Ahmed, who were part of the squad for the Afghanistan Test, have been left out.",
+      "url": "https://www.thedailystar.net/sports/cricket/news/taskin-returns-fit-again-litton-named-squad-first-west-indies-test-4305576",
+      "source": "dailystar",
+      "publishedAt": "2026-10-23T04:07:07.000Z"
+    },
+    {
+      "id": "dailystar-https://www.thedailystar.net/sports/cricket/news/fear-failure-gripping-tigers-4305571",
+      "title": "Fear of failure gripping Tigers?",
+      "summary": "Bangladesh once dominated both Zimbabwe and Afghanistan, but that advantage has faded.",
+      "url": "https://www.thedailystar.net/sports/cricket/news/fear-failure-gripping-tigers-4305571",
+      "source": "dailystar",
+      "publishedAt": "2026-10-23T03:04:55.000Z"
+    },
     {
       "id": "espn-https://www.cricinfo.com/ci/content/story/1559587.html",
       "title": "Bangladesh offspinner Aliss Al Islam reported for suspect bowling action",
@@ -9,14 +50,6 @@
       "imageUrl": "https://p.imgci.com/db/PICTURES/CMS/424100/424199.5.jpg",
       "source": "espncricinfo",
       "publishedAt": "2026-10-22T14:23:25.000Z"
-    },
-    {
-      "id": "dailystar-https://www.thedailystar.net/sports/cricket/news/aliss-reported-again-suspect-bowling-action-after-odi-debut-4304986",
-      "title": "Aliss reported again for suspect bowling action after ODI debut",
-      "summary": "Bangladesh off-spinner Aliss Al Islam has been reported with a suspect bowling action during the United Arab Emirates (UAE) Tri-Series match against Afghanistan in Sharjah on Wednesday.",
-      "url": "https://www.thedailystar.net/sports/cricket/news/aliss-reported-again-suspect-bowling-action-after-odi-debut-4304986",
-      "source": "dailystar",
-      "publishedAt": "2026-10-22T11:48:08.000Z"
     },
     {
       "id": "espn-https://www.cricinfo.com/ci/content/story/1559433.html",
@@ -98,24 +131,6 @@
       "imageUrl": "https://p.imgci.com/db/PICTURES/CMS/423600/423679.5.jpg",
       "source": "espncricinfo",
       "publishedAt": "2026-10-18T04:11:41.000Z"
-    },
-    {
-      "id": "espn-https://www.cricinfo.com/ci/content/story/1558858.html",
-      "title": "Hip injury rules Litton Das out of UAE tri-series",
-      "summary": "Mehidy Hasan Miraz also missed Bangladesh's first game of the tri-series, against Zimbabwe, because of a fever",
-      "url": "https://www.cricinfo.com/story/bangladesh-news-hip-injury-rules-litton-das-out-of-uae-tri-series-mehidy-hasan-miraz-down-with-a-fever-1558858",
-      "imageUrl": "https://p.imgci.com/db/PICTURES/CMS/403600/403664.6.jpg",
-      "source": "espncricinfo",
-      "publishedAt": "2026-10-17T13:44:22.000Z"
-    },
-    {
-      "id": "espn-https://www.cricinfo.com/ci/content/story/1558853.html",
-      "title": "Zimbabwe opt to bat; Litton out of tri-series with hip injury",
-      "summary": "Bangladesh are also without Mehidy Hasan Miraz, who has been down with fever, while Zimbabwe handed debut to Tafadzwa Tsiga",
-      "url": "https://www.cricinfo.com/story/zimbabwe-opt-to-bat-against-bangladesh-litton-das-out-of-tri-series-with-hip-injury-1558853",
-      "imageUrl": "https://p.imgci.com/db/PICTURES/CMS/418200/418287.5.jpg",
-      "source": "espncricinfo",
-      "publishedAt": "2026-10-17T11:49:33.000Z"
     }
   ]
 }
