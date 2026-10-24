@@ -1,6 +1,40 @@
 {
-  "fetchedAt": "2026-10-23T23:59:25.027Z",
+  "fetchedAt": "2026-10-24T23:41:56.840Z",
   "items": [
+    {
+      "id": "espn-https://www.cricinfo.com/ci/content/story/1559879.html",
+      "title": "Ashraful no longer Bangladesh's batting coach",
+      "summary": "Mohammad Salahuddin set to take over the role on an interim basis, while Ashraful will be reassigned to a new role within the BCB",
+      "url": "https://www.cricinfo.com/story/mohammad-ashraful-no-longer-bangladeshs-batting-coach-1559879",
+      "imageUrl": "https://p.imgci.com/db/PICTURES/CMS/420600/420656.5.jpg",
+      "source": "espncricinfo",
+      "publishedAt": "2026-10-24T17:36:55.000Z"
+    },
+    {
+      "id": "dailystar-https://www.thedailystar.net/sports/cricket/news/ashraful-removed-batting-coachs-role-4306526",
+      "title": "Ashraful removed from batting coach's role",
+      "summary": "‎In a surprising development, Bangladesh batting coach Mohammad Ashraful was removed from his position by the Bangladesh Cricket Board (BCB) on Saturday.",
+      "url": "https://www.thedailystar.net/sports/cricket/news/ashraful-removed-batting-coachs-role-4306526",
+      "source": "dailystar",
+      "publishedAt": "2026-10-24T17:06:45.000Z"
+    },
+    {
+      "id": "dailystar-https://www.thedailystar.net/sports/cricket/news/bangladesh-face-tough-group-asia-cup-rising-stars-4306456",
+      "title": "Bangladesh A in tough group in Asia Cup Rising Stars",
+      "summary": "Bangladesh A finished runners-up in last year’s inaugural edition after losing to Pakistan A in a Super Over in a thrilling final.",
+      "url": "https://www.thedailystar.net/sports/cricket/news/bangladesh-face-tough-group-asia-cup-rising-stars-4306456",
+      "source": "dailystar",
+      "publishedAt": "2026-10-24T15:10:56.000Z"
+    },
+    {
+      "id": "espn-https://www.cricinfo.com/ci/content/story/1559853.html",
+      "title": "BCB flags umpiring errors, questions Afghanistan captain's 11th over in U-19 one-dayers",
+      "summary": "Bangladesh provided footage of the over to match referee Latifzai and explained how the discrepancies had occurred",
+      "url": "https://www.cricinfo.com/story/bcb-flags-umpiring-errors-questions-afghanistan-captains-11th-over-in-u-19-one-dayers-1559853",
+      "imageUrl": "https://p.imgci.com/db/PICTURES/CMS/366300/366372.5.jpg",
+      "source": "espncricinfo",
+      "publishedAt": "2026-10-24T12:48:02.000Z"
+    },
     {
       "id": "dailystar-https://www.thedailystar.net/sports/cricket/news/afghanistan-u-19-deny-bangladesh-series-victory-4305936",
       "title": "Afghanistan U-19 deny Bangladesh series victory",
@@ -25,22 +59,6 @@
       "imageUrl": "https://p.imgci.com/db/PICTURES/CMS/421000/421030.6.jpg",
       "source": "espncricinfo",
       "publishedAt": "2026-10-23T07:26:02.000Z"
-    },
-    {
-      "id": "dailystar-https://www.thedailystar.net/sports/cricket/news/taskin-returns-fit-again-litton-named-squad-first-west-indies-test-4305576",
-      "title": "Taskin returns, fit-again Litton named in squad for first West Indies Test",
-      "summary": "Batter Soumya Sarkar and pacer Syed Khaled Ahmed, who were part of the squad for the Afghanistan Test, have been left out.",
-      "url": "https://www.thedailystar.net/sports/cricket/news/taskin-returns-fit-again-litton-named-squad-first-west-indies-test-4305576",
-      "source": "dailystar",
-      "publishedAt": "2026-10-23T04:07:07.000Z"
-    },
-    {
-      "id": "dailystar-https://www.thedailystar.net/sports/cricket/news/fear-failure-gripping-tigers-4305571",
-      "title": "Fear of failure gripping Tigers?",
-      "summary": "Bangladesh once dominated both Zimbabwe and Afghanistan, but that advantage has faded.",
-      "url": "https://www.thedailystar.net/sports/cricket/news/fear-failure-gripping-tigers-4305571",
-      "source": "dailystar",
-      "publishedAt": "2026-10-23T03:04:55.000Z"
     },
     {
       "id": "espn-https://www.cricinfo.com/ci/content/story/1559587.html",
@@ -104,33 +122,6 @@
       "imageUrl": "https://p.imgci.com/db/PICTURES/CMS/418000/418075.5.jpg",
       "source": "espncricinfo",
       "publishedAt": "2026-10-20T14:26:01.000Z"
-    },
-    {
-      "id": "espn-https://www.cricinfo.com/ci/content/story/1558998.html",
-      "title": "Nahida Akter named Bangladesh women's T20I captain",
-      "summary": "She has been given an initial one-year term, with the ICC Women's Emerging Nations Trophy next month set to be her first assignment",
-      "url": "https://www.cricinfo.com/story/nahida-akter-named-bangladesh-womens-t20i-captain-1558998",
-      "imageUrl": "https://p.imgci.com/db/PICTURES/CMS/422300/422376.5.jpg",
-      "source": "espncricinfo",
-      "publishedAt": "2026-10-18T16:42:34.000Z"
-    },
-    {
-      "id": "espn-https://www.cricinfo.com/ci/content/story/1558949.html",
-      "title": "Taskin: 'We sometimes collapse quickly under pressure'",
-      "summary": "Taskin has bemoaned Bangladesh's \"noticeable lack of game awareness\" after their defeat to Zimbabwe",
-      "url": "https://www.cricinfo.com/story/taskin-ahmed-we-sometimes-collapse-quickly-under-pressure-1558949",
-      "imageUrl": "https://p.imgci.com/db/PICTURES/CMS/419600/419652.5.jpg",
-      "source": "espncricinfo",
-      "publishedAt": "2026-10-18T09:52:23.000Z"
-    },
-    {
-      "id": "espn-https://www.cricinfo.com/ci/content/story/1558907.html",
-      "title": "Springer replaces Paul on West Indies' Test tour of Bangladesh",
-      "summary": "Springer earns his maiden Test call-up with Paul withdrawn for \"personal and family reasons\"",
-      "url": "https://www.cricinfo.com/story/ban-vs-wi-tests-shamar-springer-replaces-keemo-paul-in-west-indies-squad-1558907",
-      "imageUrl": "https://p.imgci.com/db/PICTURES/CMS/423600/423679.5.jpg",
-      "source": "espncricinfo",
-      "publishedAt": "2026-10-18T04:11:41.000Z"
     }
   ]
 }
