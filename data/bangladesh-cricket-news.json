@@ -1,6 +1,30 @@
 {
-  "fetchedAt": "2026-10-24T23:41:56.840Z",
+  "fetchedAt": "2026-10-25T23:32:05.036Z",
   "items": [
+    {
+      "id": "dailystar-https://www.thedailystar.net/sports/cricket/news/maternity-blind-spot-bangladesh-cricket-4307456",
+      "title": "Maternity blind spot in Bangladesh cricket",
+      "summary": "When former Bangladesh pacer Suraiya Azmin emailed Bangladesh Cricket Board (BCB) on May 9 to request paid maternity leave, she received no response.",
+      "url": "https://www.thedailystar.net/sports/cricket/news/maternity-blind-spot-bangladesh-cricket-4307456",
+      "source": "dailystar",
+      "publishedAt": "2026-10-25T18:53:23.000Z"
+    },
+    {
+      "id": "dailystar-https://www.thedailystar.net/sports/cricket/news/after-maghrib-i-learned-i-was-rested-ashraful-blindsided-bcb-axe-west-indies-series-4307181",
+      "title": "'After Maghrib, I learned I was rested': Ashraful blindsided by BCB axe before West Indies series",
+      "summary": "Bangladesh batting coach Mohammad Ashraful spent Saturday morning in the trenches, meticulously supervising national team practice at the Sher-e-Bangla National Cricket Stadium and drawing up batting blueprints for the impending Mirpur Test against West Indies on October 28. By nightfall, he was out of a job, at least one with the national team.",
+      "url": "https://www.thedailystar.net/sports/cricket/news/after-maghrib-i-learned-i-was-rested-ashraful-blindsided-bcb-axe-west-indies-series-4307181",
+      "source": "dailystar",
+      "publishedAt": "2026-10-25T15:22:43.000Z"
+    },
+    {
+      "id": "dailystar-https://www.thedailystar.net/sports/cricket/news/litton-trains-the-nets-without-discomfort-4307101",
+      "title": "Litton trains in the nets without discomfort",
+      "summary": "Litton Das slogged a ball pitching outside leg stump, sending it flying from the Academy ground nets to near the Media Block -- a trademark shot played with utter ease.",
+      "url": "https://www.thedailystar.net/sports/cricket/news/litton-trains-the-nets-without-discomfort-4307101",
+      "source": "dailystar",
+      "publishedAt": "2026-10-25T12:44:06.000Z"
+    },
     {
       "id": "espn-https://www.cricinfo.com/ci/content/story/1559879.html",
       "title": "Ashraful no longer Bangladesh's batting coach",
@@ -34,22 +58,6 @@
       "imageUrl": "https://p.imgci.com/db/PICTURES/CMS/366300/366372.5.jpg",
       "source": "espncricinfo",
       "publishedAt": "2026-10-24T12:48:02.000Z"
-    },
-    {
-      "id": "dailystar-https://www.thedailystar.net/sports/cricket/news/afghanistan-u-19-deny-bangladesh-series-victory-4305936",
-      "title": "Afghanistan U-19 deny Bangladesh series victory",
-      "summary": "Bangladesh had won the opening match by 33 runs before clinching the second via a Super Over. Afghanistan bounced back with a 43-run victory in the third game before drawing level in the series with Friday's win.",
-      "url": "https://www.thedailystar.net/sports/cricket/news/afghanistan-u-19-deny-bangladesh-series-victory-4305936",
-      "source": "dailystar",
-      "publishedAt": "2026-10-23T19:44:54.000Z"
-    },
-    {
-      "id": "dailystar-https://www.thedailystar.net/sports/cricket/news/bcb-announces-free-entry-select-galleries-first-ban-wi-test-4305741",
-      "title": "BCB announces free entry to select galleries for first Ban-WI Test",
-      "summary": "The Bangladesh Cricket Board (BCB) on Friday announced that spectators will be able to watch the first Test between Bangladesh and West Indies at the Sher-e-Bangla National Cricket Stadium in Mirpur free of charge from designated galleries.",
-      "url": "https://www.thedailystar.net/sports/cricket/news/bcb-announces-free-entry-select-galleries-first-ban-wi-test-4305741",
-      "source": "dailystar",
-      "publishedAt": "2026-10-23T11:17:57.000Z"
     },
     {
       "id": "espn-https://www.cricinfo.com/ci/content/story/1559671.html",
