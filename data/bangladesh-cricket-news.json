@@ -1,6 +1,48 @@
 {
-  "fetchedAt": "2026-10-25T23:32:05.036Z",
+  "fetchedAt": "2026-10-27T00:48:48.638Z",
   "items": [
+    {
+      "id": "espn-https://www.cricinfo.com/ci/content/story/1560096.html",
+      "title": "Sammy tells West Indies Test stars to attract better pay with better play",
+      "summary": "West Indies' players have been given an incentive to finish in the top five of the WTC cycle with wins in Bangladesh",
+      "url": "https://www.cricinfo.com/story/ban-vs-wi-daren-sammy-tells-west-indies-test-stars-to-attract-better-pay-with-better-play-1560096",
+      "imageUrl": "https://p.imgci.com/db/PICTURES/CMS/407400/407493.5.jpg",
+      "source": "espncricinfo",
+      "publishedAt": "2026-10-26T14:22:38.000Z"
+    },
+    {
+      "id": "espn-https://www.cricinfo.com/ci/content/story/1560092.html",
+      "title": "Simmons brushes aside talk of 'chaos' in Bangladesh camp ahead of WI Tests",
+      "summary": "He insisted that the team remained focused following the removal of batting coach Mohammad Ashraful",
+      "url": "https://www.cricinfo.com/story/ban-vs-wi-phil-simmons-brushes-aside-talk-of-chaos-in-bangladesh-camp-ahead-of-west-indies-tests-1560092",
+      "imageUrl": "https://p.imgci.com/db/PICTURES/CMS/421400/421436.5.jpg",
+      "source": "espncricinfo",
+      "publishedAt": "2026-10-26T12:07:59.000Z"
+    },
+    {
+      "id": "dailystar-https://www.thedailystar.net/sports/cricket/news/the-first-time-theres-chaos-match-4307736",
+      "title": "‘Is this the first time there's chaos before a match?’",
+      "summary": "Having witnessed three changes in the Bangladesh Cricket Board's presidency in a relatively short period, Simmons hardly seemed taken aback when asked about the turbulence surrounding the Tigers ahead of their crucial two-match Test series against West Indies, part of the World Test Championship (WTC).",
+      "url": "https://www.thedailystar.net/sports/cricket/news/the-first-time-theres-chaos-match-4307736",
+      "source": "dailystar",
+      "publishedAt": "2026-10-26T09:38:00.000Z"
+    },
+    {
+      "id": "dailystar-https://www.thedailystar.net/sports/cricket/news/definitely-not-last-year-sammy-laughs-memories-mirpurs-black-wickets-4307711",
+      "title": "‘Definitely not like last year’: Sammy laughs off memories of Mirpur’s black wickets",
+      "summary": "With the West Indies set to begin a two-match Test series against Bangladesh on October 28 at the Sher-e-Bangla National Stadium in Mirpur, Sammy was asked whether the wickets looked anything like those from the previous visit.",
+      "url": "https://www.thedailystar.net/sports/cricket/news/definitely-not-last-year-sammy-laughs-memories-mirpurs-black-wickets-4307711",
+      "source": "dailystar",
+      "publishedAt": "2026-10-26T08:46:27.000Z"
+    },
+    {
+      "id": "dailystar-https://www.thedailystar.net/sports/cricket/news/mustafizur-seeks-bcb-clearance-bbl-debut-4307621",
+      "title": "Mustafizur seeks BCB clearance for BBL debut",
+      "summary": "Shakib Al Hasan was the first Bangladeshi cricketer to feature in the BBL, where he also represented the Melbourne Renegades.",
+      "url": "https://www.thedailystar.net/sports/cricket/news/mustafizur-seeks-bcb-clearance-bbl-debut-4307621",
+      "source": "dailystar",
+      "publishedAt": "2026-10-26T06:35:13.000Z"
+    },
     {
       "id": "dailystar-https://www.thedailystar.net/sports/cricket/news/maternity-blind-spot-bangladesh-cricket-4307456",
       "title": "Maternity blind spot in Bangladesh cricket",
@@ -10,22 +52,6 @@
       "publishedAt": "2026-10-25T18:53:23.000Z"
     },
     {
-      "id": "dailystar-https://www.thedailystar.net/sports/cricket/news/after-maghrib-i-learned-i-was-rested-ashraful-blindsided-bcb-axe-west-indies-series-4307181",
-      "title": "'After Maghrib, I learned I was rested': Ashraful blindsided by BCB axe before West Indies series",
-      "summary": "Bangladesh batting coach Mohammad Ashraful spent Saturday morning in the trenches, meticulously supervising national team practice at the Sher-e-Bangla National Cricket Stadium and drawing up batting blueprints for the impending Mirpur Test against West Indies on October 28. By nightfall, he was out of a job, at least one with the national team.",
-      "url": "https://www.thedailystar.net/sports/cricket/news/after-maghrib-i-learned-i-was-rested-ashraful-blindsided-bcb-axe-west-indies-series-4307181",
-      "source": "dailystar",
-      "publishedAt": "2026-10-25T15:22:43.000Z"
-    },
-    {
-      "id": "dailystar-https://www.thedailystar.net/sports/cricket/news/litton-trains-the-nets-without-discomfort-4307101",
-      "title": "Litton trains in the nets without discomfort",
-      "summary": "Litton Das slogged a ball pitching outside leg stump, sending it flying from the Academy ground nets to near the Media Block -- a trademark shot played with utter ease.",
-      "url": "https://www.thedailystar.net/sports/cricket/news/litton-trains-the-nets-without-discomfort-4307101",
-      "source": "dailystar",
-      "publishedAt": "2026-10-25T12:44:06.000Z"
-    },
-    {
       "id": "espn-https://www.cricinfo.com/ci/content/story/1559879.html",
       "title": "Ashraful no longer Bangladesh's batting coach",
       "summary": "Mohammad Salahuddin set to take over the role on an interim basis, while Ashraful will be reassigned to a new role within the BCB",
@@ -33,22 +59,6 @@
       "imageUrl": "https://p.imgci.com/db/PICTURES/CMS/420600/420656.5.jpg",
       "source": "espncricinfo",
       "publishedAt": "2026-10-24T17:36:55.000Z"
-    },
-    {
-      "id": "dailystar-https://www.thedailystar.net/sports/cricket/news/ashraful-removed-batting-coachs-role-4306526",
-      "title": "Ashraful removed from batting coach's role",
-      "summary": "‎In a surprising development, Bangladesh batting coach Mohammad Ashraful was removed from his position by the Bangladesh Cricket Board (BCB) on Saturday.",
-      "url": "https://www.thedailystar.net/sports/cricket/news/ashraful-removed-batting-coachs-role-4306526",
-      "source": "dailystar",
-      "publishedAt": "2026-10-24T17:06:45.000Z"
-    },
-    {
-      "id": "dailystar-https://www.thedailystar.net/sports/cricket/news/bangladesh-face-tough-group-asia-cup-rising-stars-4306456",
-      "title": "Bangladesh A in tough group in Asia Cup Rising Stars",
-      "summary": "Bangladesh A finished runners-up in last year’s inaugural edition after losing to Pakistan A in a Super Over in a thrilling final.",
-      "url": "https://www.thedailystar.net/sports/cricket/news/bangladesh-face-tough-group-asia-cup-rising-stars-4306456",
-      "source": "dailystar",
-      "publishedAt": "2026-10-24T15:10:56.000Z"
     },
     {
       "id": "espn-https://www.cricinfo.com/ci/content/story/1559853.html",
@@ -121,15 +131,6 @@
       "imageUrl": "https://p.imgci.com/db/PICTURES/CMS/395900/395934.5.jpg",
       "source": "espncricinfo",
       "publishedAt": "2026-10-21T08:17:56.000Z"
-    },
-    {
-      "id": "espn-https://www.cricinfo.com/ci/content/story/1559113.html",
-      "title": "Afghanistan stand in Bangladesh's way for spot in final",
-      "summary": "Following their defeat in the opening game to Zimbabwe, Bangladesh are in a position where they must win, and win big",
-      "url": "https://www.cricinfo.com/story/afg-vs-ban-afghanistan-stand-in-bangladeshs-way-for-spot-in-final-1559113",
-      "imageUrl": "https://p.imgci.com/db/PICTURES/CMS/418000/418075.5.jpg",
-      "source": "espncricinfo",
-      "publishedAt": "2026-10-20T14:26:01.000Z"
     }
   ]
 }
