@@ -1,13 +1,89 @@
 {
-  "fetchedAt": "2026-10-28T00:44:31.544Z",
+  "fetchedAt": "2026-10-29T01:13:37.764Z",
   "items": [
     {
-      "id": "dailystar-https://www.thedailystar.net/sports/cricket/news/bangladesh-vs-west-indies-head-head-record-key-stats-and-more-4309356",
-      "title": "Bangladesh vs West Indies: Head-to-head record, key stats and more",
-      "summary": "Bangladesh will be desperate to put their disappointing UAE tour behind them when they take on West Indies in the first of two Tests at the Sher-e-Bangla National Cricket Stadium today.",
-      "url": "https://www.thedailystar.net/sports/cricket/news/bangladesh-vs-west-indies-head-head-record-key-stats-and-more-4309356",
+      "id": "dailystar-https://www.thedailystar.net/sports/cricket/news/shadmans-realisation-cracking-the-conversion-code-4309946",
+      "title": "Shadman’s ‘realisation’ on cracking the conversion code",
+      "summary": "Since scoring a century against Zimbabwe last April, Shadman had gone 17 innings without reaching the three-figure mark, managing four fifties and twice missing out on centuries against Ireland. His struggles, particularly away from home, had raised concerns over his place in the side and Bangladesh’s World Test Championship (WTC) campaign.",
+      "url": "https://www.thedailystar.net/sports/cricket/news/shadmans-realisation-cracking-the-conversion-code-4309946",
       "source": "dailystar",
-      "publishedAt": "2026-10-27T19:28:52.000Z"
+      "publishedAt": "2026-10-28T17:15:00.000Z"
+    },
+    {
+      "id": "dailystar-https://www.thedailystar.net/sports/cricket/news/lightning-strikes-twice-mirpur-4309956",
+      "title": "Lightning strikes twice in Mirpur",
+      "summary": "Cricket has plenty of ways to keep a batter waiting, but Mirpur appears to have settled on a particularly specific one.",
+      "url": "https://www.thedailystar.net/sports/cricket/news/lightning-strikes-twice-mirpur-4309956",
+      "source": "dailystar",
+      "publishedAt": "2026-10-28T15:28:37.000Z"
+    },
+    {
+      "id": "espn-https://www.cricinfo.com/ci/content/story/1560463.html",
+      "title": "WI 'disappointed' with early finish, Shadman 99* earns praise from hosts' camp",
+      "summary": "Jomel Warrican said the visitors wanted to have a crack at bowling at the new batter Litton Das",
+      "url": "https://www.cricinfo.com/story/ban-vs-wi-1st-test-west-indies-disappointed-with-early-finish-bangladesh-on-edge-with-shadman-on-99-1560463",
+      "imageUrl": "https://p.imgci.com/db/PICTURES/CMS/424400/424454.5.jpg",
+      "source": "espncricinfo",
+      "publishedAt": "2026-10-28T14:41:06.000Z"
+    },
+    {
+      "id": "espn-https://www.cricinfo.com/ci/content/story/1560383.html",
+      "title": "Shadman's unbeaten 99 gives Bangladesh first-day honours against WI",
+      "summary": "Warrican took two wickets for WI while Seales took another; debutant Joshua Bishop went wicketless",
+      "url": "https://www.cricinfo.com/story/ban-vs-wi-1st-test-shadman-islams-unbeaten-99-gives-bangladesh-first-day-honours-against-west-indies-1560383",
+      "imageUrl": "https://p.imgci.com/db/PICTURES/CMS/424400/424461.6.jpg",
+      "source": "espncricinfo",
+      "publishedAt": "2026-10-28T14:30:40.000Z"
+    },
+    {
+      "id": "dailystar-https://www.thedailystar.net/sports/cricket/news/drama-could-unfold-any-moment-test-4309796",
+      "title": "‘Drama could unfold at any moment in this Test’",
+      "summary": "Bangladesh were in a decent position at the end of the opening day of their first Test against West Indies at the Sher-e-Bangla National Cricket Stadium in Mirpur today, but batting coach Mohammad Salahuddin insisted that “drama could unfold” at any moment in the five-day affair.",
+      "url": "https://www.thedailystar.net/sports/cricket/news/drama-could-unfold-any-moment-test-4309796",
+      "source": "dailystar",
+      "publishedAt": "2026-10-28T12:09:08.000Z"
+    },
+    {
+      "id": "espn-https://www.cricinfo.com/ci/content/story/1560370.html",
+      "title": "Mushfiqur out with 'contusion injury', expected to be fit for second Test against West Indies",
+      "summary": "\"There wasn't sufficient improvement till this morning\" to the injured finger, Bangladesh team physio Bayjedul Islam Khan said",
+      "url": "https://www.cricinfo.com/story/ban-vs-wi-1st-test-mushfiqur-rahim-out-with-contusion-injury-expected-to-be-fit-for-second-test-1560370",
+      "imageUrl": "https://p.imgci.com/db/PICTURES/CMS/420600/420661.6.jpg",
+      "source": "espncricinfo",
+      "publishedAt": "2026-10-28T04:45:43.000Z"
+    },
+    {
+      "id": "dailystar-https://www.thedailystar.net/sports/cricket/news/bangladesh-reach-96-2-lunch-after-mominul-dismissal-4309506",
+      "title": "Shadman left waiting on 99 as bad light brings Day 1 to an early close",
+      "summary": "Bangladesh captain Najmul Hossain Shanto won the toss and elected to bat first against the West Indies in the opening Test.",
+      "url": "https://www.thedailystar.net/sports/cricket/news/bangladesh-reach-96-2-lunch-after-mominul-dismissal-4309506",
+      "source": "dailystar",
+      "publishedAt": "2026-10-28T04:33:34.000Z"
+    },
+    {
+      "id": "dailystar-https://www.thedailystar.net/sports/cricket/news/mushfiqur-expected-return-sylhet-test-4309491",
+      "title": "Mushfiqur expected to return for Sylhet Test",
+      "summary": "National team physio Bayjedul Islam Khan confirmed in a video message that Mushfiqur is expected to recover within three days and be fit for the second Test.",
+      "url": "https://www.thedailystar.net/sports/cricket/news/mushfiqur-expected-return-sylhet-test-4309491",
+      "source": "dailystar",
+      "publishedAt": "2026-10-28T04:18:12.000Z"
+    },
+    {
+      "id": "espn-https://www.cricinfo.com/ci/content/story/1560367.html",
+      "title": "WI hand Bishop his Test debut; Mushfiqur out with injury as Bangladesh bat",
+      "summary": "Mushfiqur Rahim picked up a hand injury while training on the eve of the Test and has been replaced in the Bangladesh playing XI by Towhid Hridoy",
+      "url": "https://www.cricinfo.com/story/ban-vs-wi-1st-test-west-indies-hand-joshua-bishop-test-debut-mushfiqur-rahim-out-with-injury-as-bangladesh-bat-1560367",
+      "imageUrl": "https://p.imgci.com/db/PICTURES/CMS/424400/424439.6.jpg",
+      "source": "espncricinfo",
+      "publishedAt": "2026-10-28T03:31:41.000Z"
+    },
+    {
+      "id": "dailystar-https://www.thedailystar.net/sports/cricket/news/no-mushfiqur-tigers-bat-first-test-against-west-indies-4309476",
+      "title": "No Mushfiqur as Tigers bat in first Test against West Indies",
+      "summary": "Bangladesh will be desperate to put their disappointing tour of the UAE behind them as they look to get their Test campaign back on track.",
+      "url": "https://www.thedailystar.net/sports/cricket/news/no-mushfiqur-tigers-bat-first-test-against-west-indies-4309476",
+      "source": "dailystar",
+      "publishedAt": "2026-10-28T03:16:14.000Z"
     },
     {
       "id": "espn-https://www.cricinfo.com/ci/content/story/1560332.html",
@@ -19,22 +95,6 @@
       "publishedAt": "2026-10-27T17:16:46.000Z"
     },
     {
-      "id": "dailystar-https://www.thedailystar.net/sports/cricket/news/amite-hits-third-double-ton-dhaka-bag-first-win-4308961",
-      "title": "Amite hits third double ton as Dhaka bag first win",
-      "summary": "Despite three of the four matches ending in draws, the round produced several notable individual performances, with Chattogram’s Shah Paran scoring his maiden first-class century and Rangpur’s Mim Mosaddeq and Nabin Islam also reaching three figures.",
-      "url": "https://www.thedailystar.net/sports/cricket/news/amite-hits-third-double-ton-dhaka-bag-first-win-4308961",
-      "source": "dailystar",
-      "publishedAt": "2026-10-27T15:48:02.000Z"
-    },
-    {
-      "id": "dailystar-https://www.thedailystar.net/sports/cricket/news/good-christmas-gift-chase-eyes-bangladesh-series-win-propel-windies-wtc-table-4308916",
-      "title": "'A good Christmas gift': Chase eyes Bangladesh series win to propel Windies up WTC table",
-      "summary": "West Indies have had the luxury of an extended build-up to their Test series against Bangladesh. Now, captain Roston Chase wants his side to turn that preparation into wins, and give their World Test Championship campaign a much-needed lift.",
-      "url": "https://www.thedailystar.net/sports/cricket/news/good-christmas-gift-chase-eyes-bangladesh-series-win-propel-windies-wtc-table-4308916",
-      "source": "dailystar",
-      "publishedAt": "2026-10-27T14:46:15.000Z"
-    },
-    {
       "id": "espn-https://www.cricinfo.com/ci/content/story/1560227.html",
       "title": "Chase: We want newbies to approach Bangladesh conditions with open mind",
       "summary": "Chase backs other batters to step up in the absence of Hope, who has been rested",
@@ -42,14 +102,6 @@
       "imageUrl": "https://p.imgci.com/db/PICTURES/CMS/407500/407508.5.jpg",
       "source": "espncricinfo",
       "publishedAt": "2026-10-27T09:26:13.000Z"
-    },
-    {
-      "id": "dailystar-https://www.thedailystar.net/sports/cricket/news/shanto-wants-bangladesh-focus-small-targets-4308666",
-      "title": "Shanto wants Bangladesh to focus on small targets",
-      "summary": "Bangladesh Test captain Najmul Hossain Shanto wants his team to focus on the immediate task rather than the prospect of reaching the World Test Championship (WTC) final.",
-      "url": "https://www.thedailystar.net/sports/cricket/news/shanto-wants-bangladesh-focus-small-targets-4308666",
-      "source": "dailystar",
-      "publishedAt": "2026-10-27T09:02:08.000Z"
     },
     {
       "id": "espn-https://www.cricinfo.com/ci/content/story/1560136.html",
@@ -68,22 +120,6 @@
       "imageUrl": "https://p.imgci.com/db/PICTURES/CMS/421200/421244.5.jpg",
       "source": "espncricinfo",
       "publishedAt": "2026-10-27T07:17:46.000Z"
-    },
-    {
-      "id": "dailystar-https://www.thedailystar.net/sports/cricket/news/mushfiqur-injured-training-ahead-first-test-4308586",
-      "title": "Mushfiqur injured in training ahead of first Test",
-      "summary": "Bangladesh batter Mushfiqur Rahim was hit on the hand during a net session on Tuesday as the hosts continued their preparations for the first Test against West Indies.",
-      "url": "https://www.thedailystar.net/sports/cricket/news/mushfiqur-injured-training-ahead-first-test-4308586",
-      "source": "dailystar",
-      "publishedAt": "2026-10-27T06:20:32.000Z"
-    },
-    {
-      "id": "dailystar-https://www.thedailystar.net/sports/cricket/news/chaos-building-towards-perfect-storm-4308541",
-      "title": "Chaos building towards a perfect storm?",
-      "summary": "Whether the Tigers can keep their heads above water will depend on how they navigate the mounting distractions and respond when the Test series gets underway.",
-      "url": "https://www.thedailystar.net/sports/cricket/news/chaos-building-towards-perfect-storm-4308541",
-      "source": "dailystar",
-      "publishedAt": "2026-10-27T04:25:49.000Z"
     },
     {
       "id": "espn-https://www.cricinfo.com/ci/content/story/1560096.html",
@@ -120,24 +156,6 @@
       "imageUrl": "https://p.imgci.com/db/PICTURES/CMS/366300/366372.5.jpg",
       "source": "espncricinfo",
       "publishedAt": "2026-10-24T12:48:02.000Z"
-    },
-    {
-      "id": "espn-https://www.cricinfo.com/ci/content/story/1559671.html",
-      "title": "Taskin returns for first Bangladesh vs West Indies Test",
-      "summary": "Litton Das, who missed the ODI tri-series in the UAE because of an injury, has been brought in, while Towhid Hridoy has retained his place",
-      "url": "https://www.cricinfo.com/story/ban-vs-wi-wtc-1st-test-taskin-ahmed-returns-for-first-bangladesh-vs-west-indies-test-1559671",
-      "imageUrl": "https://p.imgci.com/db/PICTURES/CMS/421000/421030.6.jpg",
-      "source": "espncricinfo",
-      "publishedAt": "2026-10-23T07:26:02.000Z"
-    },
-    {
-      "id": "espn-https://www.cricinfo.com/ci/content/story/1559587.html",
-      "title": "Bangladesh offspinner Aliss Al Islam reported for suspect bowling action",
-      "summary": "Match officials reported debutant Aliss after Bangladesh's ODI tri-series match against Afghanistan",
-      "url": "https://www.cricinfo.com/story/bangladesh-offspinner-aliss-al-islam-reported-for-suspect-bowling-action-1559587",
-      "imageUrl": "https://p.imgci.com/db/PICTURES/CMS/424100/424199.5.jpg",
-      "source": "espncricinfo",
-      "publishedAt": "2026-10-22T14:23:25.000Z"
     }
   ]
 }
