@@ -1,5 +1,5 @@
 {
-  "fetchedAt": "2026-10-29T01:00:04.040Z",
+  "fetchedAt": "2026-10-30T01:03:19.521Z",
   "source": "icc-sportz.io",
   "sourceUrl": "https://www.icc-cricket.com/rankings",
   "men": {
@@ -132,9 +132,9 @@
           "rank": 6,
           "name": "Sri Lanka",
           "abbreviation": "SL",
-          "rating": 96,
-          "points": 4050,
-          "matches": 42
+          "rating": 95,
+          "points": 4091,
+          "matches": 43
         },
         {
           "rank": 7,
@@ -148,9 +148,9 @@
           "rank": 8,
           "name": "England",
           "abbreviation": "ENG",
-          "rating": 91,
-          "points": 3384,
-          "matches": 37
+          "rating": 93,
+          "points": 3530,
+          "matches": 38
         },
         {
           "rank": 9,
@@ -228,17 +228,17 @@
           "rank": 18,
           "name": "Oman",
           "abbreviation": "OMA",
-          "rating": 22,
-          "points": 625,
-          "matches": 29
+          "rating": 20,
+          "points": 589,
+          "matches": 30
         },
         {
           "rank": 19,
           "name": "United Arab Emirates",
           "abbreviation": "UAE",
-          "rating": 14,
-          "points": 427,
-          "matches": 31
+          "rating": 16,
+          "points": 499,
+          "matches": 32
         },
         {
           "rank": 20,
@@ -327,8 +327,8 @@
           "name": "Afghanistan",
           "abbreviation": "AFG",
           "rating": 219,
-          "points": 9177,
-          "matches": 42
+          "points": 9428,
+          "matches": 43
         },
         {
           "rank": 11,
@@ -343,8 +343,8 @@
           "name": "Zimbabwe",
           "abbreviation": "ZIM",
           "rating": 201,
-          "points": 12079,
-          "matches": 60
+          "points": 12248,
+          "matches": 61
         },
         {
           "rank": 13,
@@ -10388,13 +10388,13 @@
         "allrounder": "2026-10-27"
       },
       "odi": {
-        "team": "2026-10-27",
+        "team": "2026-10-29",
         "bat": "2026-10-27",
         "bowl": "2026-10-27",
         "allrounder": "2026-10-27"
       },
       "t20": {
-        "team": "2026-10-27",
+        "team": "2026-10-29",
         "bat": "2026-10-27",
         "bowl": "2026-10-27",
         "allrounder": "2026-10-27"
