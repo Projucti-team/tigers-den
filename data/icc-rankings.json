@@ -1,5 +1,5 @@
 {
-  "fetchedAt": "2026-10-30T01:03:19.521Z",
+  "fetchedAt": "2026-10-31T00:49:36.374Z",
   "source": "icc-sportz.io",
   "sourceUrl": "https://www.icc-cricket.com/rankings",
   "men": {
@@ -180,9 +180,9 @@
           "rank": 12,
           "name": "Ireland",
           "abbreviation": "IRE",
-          "rating": 45,
-          "points": 862,
-          "matches": 19
+          "rating": 47,
+          "points": 948,
+          "matches": 20
         },
         {
           "rank": 13,
@@ -212,9 +212,9 @@
           "rank": 16,
           "name": "Namibia",
           "abbreviation": "NAM",
-          "rating": 36,
-          "points": 1039,
-          "matches": 29
+          "rating": 34,
+          "points": 1034,
+          "matches": 30
         },
         {
           "rank": 17,
@@ -262,9 +262,9 @@
           "rank": 2,
           "name": "India",
           "abbreviation": "IND",
-          "rating": 269,
-          "points": 19876,
-          "matches": 74
+          "rating": 268,
+          "points": 20071,
+          "matches": 75
         },
         {
           "rank": 3,
@@ -278,9 +278,9 @@
           "rank": 4,
           "name": "New Zealand",
           "abbreviation": "NZ",
-          "rating": 245,
-          "points": 13001,
-          "matches": 53
+          "rating": 247,
+          "points": 13320,
+          "matches": 54
         },
         {
           "rank": 5,
@@ -10388,13 +10388,13 @@
         "allrounder": "2026-10-27"
       },
       "odi": {
-        "team": "2026-10-29",
+        "team": "2026-10-30",
         "bat": "2026-10-27",
         "bowl": "2026-10-27",
         "allrounder": "2026-10-27"
       },
       "t20": {
-        "team": "2026-10-29",
+        "team": "2026-10-30",
         "bat": "2026-10-27",
         "bowl": "2026-10-27",
         "allrounder": "2026-10-27"
