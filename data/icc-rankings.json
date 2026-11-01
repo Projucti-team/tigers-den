@@ -1,5 +1,5 @@
 {
-  "fetchedAt": "2026-10-31T00:49:36.374Z",
+  "fetchedAt": "2026-11-01T00:10:15.598Z",
   "source": "icc-sportz.io",
   "sourceUrl": "https://www.icc-cricket.com/rankings",
   "men": {
@@ -8,19 +8,19 @@
       "test": [
         {
           "rank": 1,
-          "name": "Australia",
-          "abbreviation": "AUS",
-          "rating": 126,
-          "points": 3411,
-          "matches": 27
+          "name": "South Africa",
+          "abbreviation": "SA",
+          "rating": 124,
+          "points": 2860,
+          "matches": 23
         },
         {
           "rank": 2,
-          "name": "South Africa",
-          "abbreviation": "SA",
-          "rating": 119,
-          "points": 2256,
-          "matches": 19
+          "name": "Australia",
+          "abbreviation": "AUS",
+          "rating": 122,
+          "points": 3787,
+          "matches": 31
         },
         {
           "rank": 3,
@@ -116,9 +116,9 @@
           "rank": 4,
           "name": "Pakistan",
           "abbreviation": "PAK",
-          "rating": 103,
-          "points": 3693,
-          "matches": 36
+          "rating": 104,
+          "points": 3838,
+          "matches": 37
         },
         {
           "rank": 5,
@@ -130,19 +130,19 @@
         },
         {
           "rank": 6,
-          "name": "Sri Lanka",
-          "abbreviation": "SL",
-          "rating": 95,
-          "points": 4091,
-          "matches": 43
-        },
-        {
-          "rank": 7,
           "name": "Afghanistan",
           "abbreviation": "AFG",
           "rating": 94,
           "points": 2926,
           "matches": 31
+        },
+        {
+          "rank": 7,
+          "name": "Sri Lanka",
+          "abbreviation": "SL",
+          "rating": 94,
+          "points": 4144,
+          "matches": 44
         },
         {
           "rank": 8,
@@ -186,19 +186,19 @@
         },
         {
           "rank": 13,
-          "name": "Netherlands",
-          "abbreviation": "NED",
-          "rating": 45,
-          "points": 1446,
-          "matches": 32
-        },
-        {
-          "rank": 14,
           "name": "Scotland",
           "abbreviation": "SCO",
           "rating": 45,
           "points": 1260,
           "matches": 28
+        },
+        {
+          "rank": 14,
+          "name": "Netherlands",
+          "abbreviation": "NED",
+          "rating": 43,
+          "points": 1412,
+          "matches": 33
         },
         {
           "rank": 15,
@@ -236,9 +236,9 @@
           "rank": 19,
           "name": "United Arab Emirates",
           "abbreviation": "UAE",
-          "rating": 16,
-          "points": 499,
-          "matches": 32
+          "rating": 18,
+          "points": 594,
+          "matches": 33
         },
         {
           "rank": 20,
@@ -10382,13 +10382,13 @@
     },
     "rankUpdatedAt": {
       "test": {
-        "team": "2026-10-13",
+        "team": "2026-10-31",
         "bat": "2026-10-27",
         "bowl": "2026-10-27",
         "allrounder": "2026-10-27"
       },
       "odi": {
-        "team": "2026-10-30",
+        "team": "2026-10-31",
         "bat": "2026-10-27",
         "bowl": "2026-10-27",
         "allrounder": "2026-10-27"
