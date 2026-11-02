@@ -1,6 +1,22 @@
 {
-  "fetchedAt": "2026-11-01T00:26:36.123Z",
+  "fetchedAt": "2026-11-02T01:02:05.326Z",
   "items": [
+    {
+      "id": "dailystar-https://www.thedailystar.net/sports/cricket/news/four-reasons-behind-tigers-mirpur-test-debacle-4312676",
+      "title": "Four reasons behind Tigers' Mirpur Test debacle",
+      "summary": "Bangladesh's defeat was not the result of one isolated failure. Questionable pitch preparation, technical deficiencies against spin, an ineffective home spin attack and inadequate preparation combined to produce a thoroughly disappointing performance.&nbsp;",
+      "url": "https://www.thedailystar.net/sports/cricket/news/four-reasons-behind-tigers-mirpur-test-debacle-4312676",
+      "source": "dailystar",
+      "publishedAt": "2026-11-01T08:02:04.000Z"
+    },
+    {
+      "id": "dailystar-https://www.thedailystar.net/sports/cricket/news/when-approach-and-ambitions-fail-align-4312346",
+      "title": "When approach and ambitions fail to align",
+      "summary": "Bangladesh’s Test aspirations have soared in recent times, particularly after victories over Pakistan at home and Australia away. Despite those wins coming through pace prominence, their preference for falling back on tried-and-tested yet archaic spin strategies showed that while their ambitions had grown, the mindset required to turn them into reality was still lacking.",
+      "url": "https://www.thedailystar.net/sports/cricket/news/when-approach-and-ambitions-fail-align-4312346",
+      "source": "dailystar",
+      "publishedAt": "2026-11-01T02:00:00.000Z"
+    },
     {
       "id": "espn-https://www.cricinfo.com/ci/content/story/1560822.html",
       "title": "King 81*, Chase five-for guide West Indies to victory on tricky pitch",
@@ -37,30 +53,6 @@
       "publishedAt": "2026-10-31T15:06:20.000Z"
     },
     {
-      "id": "dailystar-https://www.thedailystar.net/sports/cricket/news/bishop-made-impact-chase-late-selection-call-after-shocking-change-mirpur-pitch-4312071",
-      "title": "‘Bishop made impact’: Chase on late selection call after ‘shocking’ change to Mirpur pitch",
-      "summary": "The West Indies captain said they had travelled to Bangladesh with the ambition of winning the series, despite missing key players Shai Hope and Alzarri Joseph.",
-      "url": "https://www.thedailystar.net/sports/cricket/news/bishop-made-impact-chase-late-selection-call-after-shocking-change-mirpur-pitch-4312071",
-      "source": "dailystar",
-      "publishedAt": "2026-10-31T14:44:09.000Z"
-    },
-    {
-      "id": "dailystar-https://www.thedailystar.net/sports/cricket/news/bangladesh-retain-14-players-u-19-asia-cup-4312351",
-      "title": "Bangladesh retain 14 players for U-19 Asia Cup",
-      "summary": "Bangladesh Cricket Board (BCB) retained 14 of the 15 players who recently toured Oman for a four-match Youth ODI series as it announced a 15-member squad on Saturday for the upcoming ACC Men's Under-19 Asia Cup 2026, scheduled to begin in Oman on November 5.",
-      "url": "https://www.thedailystar.net/sports/cricket/news/bangladesh-retain-14-players-u-19-asia-cup-4312351",
-      "source": "dailystar",
-      "publishedAt": "2026-10-31T14:22:00.000Z"
-    },
-    {
-      "id": "dailystar-https://www.thedailystar.net/sports/cricket/news/mominul-out-sylhet-test-due-concussion-protocol-4312011",
-      "title": "Mominul out of Sylhet Test due to concussion protocol",
-      "summary": "Mominul was replaced on October 30, meaning the seven-day period will not have elapsed when the Sylhet Test begins on November 5.",
-      "url": "https://www.thedailystar.net/sports/cricket/news/mominul-out-sylhet-test-due-concussion-protocol-4312011",
-      "source": "dailystar",
-      "publishedAt": "2026-10-31T13:34:09.000Z"
-    },
-    {
       "id": "espn-https://www.cricinfo.com/ci/content/story/1560870.html",
       "title": "Chase hails 'good craftsman' Jomel Warrican",
       "summary": "The left-arm spinner claimed nine wickets and the Player-of-the-Match award in the first Test in Mirpur",
@@ -68,22 +60,6 @@
       "imageUrl": "https://p.imgci.com/db/PICTURES/CMS/424600/424607.5.jpg",
       "source": "espncricinfo",
       "publishedAt": "2026-10-31T13:07:15.000Z"
-    },
-    {
-      "id": "dailystar-https://www.thedailystar.net/sports/cricket/news/shanto-rues-umpires-calls-admits-bangladesh-fell-short-4311971",
-      "title": "Shanto rues umpire’s calls but admits Bangladesh fell short",
-      "summary": "Bangladesh skipper Najmul Hossain Shanto said luck also did not favour his side during the fourth innings of the first Test against West Indies, following an eight-wicket defeat in Mirpur.",
-      "url": "https://www.thedailystar.net/sports/cricket/news/shanto-rues-umpires-calls-admits-bangladesh-fell-short-4311971",
-      "source": "dailystar",
-      "publishedAt": "2026-10-31T12:08:54.000Z"
-    },
-    {
-      "id": "dailystar-https://www.thedailystar.net/sports/cricket/news/bangladesh-suffer-third-straight-home-defeat-wi-slip-fifth-wtc-4311776",
-      "title": "Bangladesh suffer third straight home defeat to WI, slip to fifth in WTC",
-      "summary": "It also dents their position in the World Test Championship standings, with their points percentage falling from 55.56 to 42.86, dropping them to fifth in the table.",
-      "url": "https://www.thedailystar.net/sports/cricket/news/bangladesh-suffer-third-straight-home-defeat-wi-slip-fifth-wtc-4311776",
-      "source": "dailystar",
-      "publishedAt": "2026-10-31T04:56:18.000Z"
     },
     {
       "id": "espn-https://www.cricinfo.com/ci/content/story/1560676.html",
@@ -165,33 +141,6 @@
       "imageUrl": "https://p.imgci.com/db/PICTURES/CMS/424400/424430.5.jpg",
       "source": "espncricinfo",
       "publishedAt": "2026-10-27T17:16:46.000Z"
-    },
-    {
-      "id": "espn-https://www.cricinfo.com/ci/content/story/1560227.html",
-      "title": "Chase: We want newbies to approach Bangladesh conditions with open mind",
-      "summary": "Chase backs other batters to step up in the absence of Hope, who has been rested",
-      "url": "https://www.cricinfo.com/story/roston-chase-we-want-newbies-to-approach-bangladesh-conditions-with-open-mind-1560227",
-      "imageUrl": "https://p.imgci.com/db/PICTURES/CMS/407500/407508.5.jpg",
-      "source": "espncricinfo",
-      "publishedAt": "2026-10-27T09:26:13.000Z"
-    },
-    {
-      "id": "espn-https://www.cricinfo.com/ci/content/story/1560136.html",
-      "title": "Bangladesh's chance to bounce back after tough UAE tour",
-      "summary": "Bangladesh lost both games in the tri-series and failed to win the one-off Test against Afghanistan in the lead-up to this Test series",
-      "url": "https://www.cricinfo.com/story/ban-vs-wi-bangladeshs-chance-to-bounce-back-after-tough-uae-tour-1560136",
-      "imageUrl": "https://p.imgci.com/db/PICTURES/CMS/193700/193753.4.jpg",
-      "source": "espncricinfo",
-      "publishedAt": "2026-10-27T07:21:07.000Z"
-    },
-    {
-      "id": "espn-https://www.cricinfo.com/ci/content/story/1560137.html",
-      "title": "No pressure, but an inspiration - Shanto on Bangladesh's WTC chances",
-      "summary": "Bangladesh are currently fourth in the World Test Championship standings",
-      "url": "https://www.cricinfo.com/story/najmul-hossain-shanto-wants-bangladesh-to-improve-consistency-in-test-cricket-1560137",
-      "imageUrl": "https://p.imgci.com/db/PICTURES/CMS/421200/421244.5.jpg",
-      "source": "espncricinfo",
-      "publishedAt": "2026-10-27T07:17:46.000Z"
     }
   ]
 }
