@@ -1,5 +1,5 @@
 {
-  "fetchedAt": "2026-11-01T00:10:15.598Z",
+  "fetchedAt": "2026-11-02T00:47:21.553Z",
   "source": "icc-sportz.io",
   "sourceUrl": "https://www.icc-cricket.com/rankings",
   "men": {
@@ -178,19 +178,19 @@
         },
         {
           "rank": 12,
-          "name": "Ireland",
-          "abbreviation": "IRE",
-          "rating": 47,
-          "points": 948,
-          "matches": 20
-        },
-        {
-          "rank": 13,
           "name": "Scotland",
           "abbreviation": "SCO",
           "rating": 45,
           "points": 1260,
           "matches": 28
+        },
+        {
+          "rank": 13,
+          "name": "Ireland",
+          "abbreviation": "IRE",
+          "rating": 44,
+          "points": 932,
+          "matches": 21
         },
         {
           "rank": 14,
@@ -212,9 +212,9 @@
           "rank": 16,
           "name": "Namibia",
           "abbreviation": "NAM",
-          "rating": 34,
-          "points": 1034,
-          "matches": 30
+          "rating": 36,
+          "points": 1131,
+          "matches": 31
         },
         {
           "rank": 17,
@@ -262,9 +262,9 @@
           "rank": 2,
           "name": "India",
           "abbreviation": "IND",
-          "rating": 268,
-          "points": 20071,
-          "matches": 75
+          "rating": 267,
+          "points": 20268,
+          "matches": 76
         },
         {
           "rank": 3,
@@ -278,9 +278,9 @@
           "rank": 4,
           "name": "New Zealand",
           "abbreviation": "NZ",
-          "rating": 247,
-          "points": 13320,
-          "matches": 54
+          "rating": 248,
+          "points": 13638,
+          "matches": 55
         },
         {
           "rank": 5,
@@ -326,9 +326,9 @@
           "rank": 10,
           "name": "Afghanistan",
           "abbreviation": "AFG",
-          "rating": 219,
-          "points": 9428,
-          "matches": 43
+          "rating": 220,
+          "points": 9679,
+          "matches": 44
         },
         {
           "rank": 11,
@@ -342,9 +342,9 @@
           "rank": 12,
           "name": "Zimbabwe",
           "abbreviation": "ZIM",
-          "rating": 201,
-          "points": 12248,
-          "matches": 61
+          "rating": 200,
+          "points": 12417,
+          "matches": 62
         },
         {
           "rank": 13,
@@ -10388,13 +10388,13 @@
         "allrounder": "2026-10-27"
       },
       "odi": {
-        "team": "2026-10-31",
+        "team": "2026-11-01",
         "bat": "2026-10-27",
         "bowl": "2026-10-27",
         "allrounder": "2026-10-27"
       },
       "t20": {
-        "team": "2026-10-30",
+        "team": "2026-11-01",
         "bat": "2026-10-27",
         "bowl": "2026-10-27",
         "allrounder": "2026-10-27"
