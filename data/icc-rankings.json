@@ -1,5 +1,5 @@
 {
-  "fetchedAt": "2026-11-02T00:47:21.553Z",
+  "fetchedAt": "2026-11-03T02:57:07.994Z",
   "source": "icc-sportz.io",
   "sourceUrl": "https://www.icc-cricket.com/rankings",
   "men": {
@@ -196,9 +196,9 @@
           "rank": 14,
           "name": "Netherlands",
           "abbreviation": "NED",
-          "rating": 43,
-          "points": 1412,
-          "matches": 33
+          "rating": 44,
+          "points": 1482,
+          "matches": 34
         },
         {
           "rank": 15,
@@ -228,9 +228,9 @@
           "rank": 18,
           "name": "Oman",
           "abbreviation": "OMA",
-          "rating": 20,
-          "points": 589,
-          "matches": 30
+          "rating": 19,
+          "points": 582,
+          "matches": 31
         },
         {
           "rank": 19,
@@ -10388,7 +10388,7 @@
         "allrounder": "2026-10-27"
       },
       "odi": {
-        "team": "2026-11-01",
+        "team": "2026-11-02",
         "bat": "2026-10-27",
         "bowl": "2026-10-27",
         "allrounder": "2026-10-27"
