@@ -1,6 +1,99 @@
 {
-  "fetchedAt": "2026-11-04T01:39:45.534Z",
+  "fetchedAt": "2026-11-05T01:48:02.047Z",
   "items": [
+    {
+      "id": "dailystar-https://www.thedailystar.net/sports/cricket/news/jnr-tigers-begin-asia-cup-campaign-thursday-4315981",
+      "title": "Jnr Tigers begin Asia Cup campaign on Thursday",
+      "summary": "Bangladesh, champions of the 2023 and 2024 editions, will face Sri Lanka on November 7 before completing their group-stage campaign against Malaysia on November 9.",
+      "url": "https://www.thedailystar.net/sports/cricket/news/jnr-tigers-begin-asia-cup-campaign-thursday-4315981",
+      "source": "dailystar",
+      "publishedAt": "2026-11-04T19:35:08.000Z"
+    },
+    {
+      "id": "dailystar-https://www.thedailystar.net/sports/cricket/news/tigers-caught-between-expectations-and-reality-4315971",
+      "title": "Tigers caught between expectations and reality",
+      "summary": "Even within the Bangladesh camp, there was scepticism about relying heavily on spin, particularly after their struggles in Mirpur. Head coach Phil Simmons hinted at a sporting surface.",
+      "url": "https://www.thedailystar.net/sports/cricket/news/tigers-caught-between-expectations-and-reality-4315971",
+      "source": "dailystar",
+      "publishedAt": "2026-11-04T18:55:55.000Z"
+    },
+    {
+      "id": "dailystar-https://www.thedailystar.net/sports/cricket/news/sammy-eyes-2-0-christmas-present-sylhet-seal-unbeaten-year-west-indies-4315626",
+      "title": "Sammy eyes 2-0 'Christmas present' in Sylhet to seal unbeaten year for West Indies",
+      "summary": "West Indies head coach Darren Sammy is firmly setting his sights on a 2-0 series sweep over Bangladesh in the Sylhet Test starting on Thursday, an achievement he believes would be the perfect \"Christmas present\" to cap off a historic year.",
+      "url": "https://www.thedailystar.net/sports/cricket/news/sammy-eyes-2-0-christmas-present-sylhet-seal-unbeaten-year-west-indies-4315626",
+      "source": "dailystar",
+      "publishedAt": "2026-11-04T13:55:50.000Z"
+    },
+    {
+      "id": "espn-https://www.cricinfo.com/ci/content/story/1561408.html",
+      "title": "Injured Marufa to miss Emerging Nations Trophy for Bangladesh",
+      "summary": "This will be Nahida Akter's first tournament as T20I captain since she took over from Nigar Sultana last month",
+      "url": "https://www.cricinfo.com/story/emerging-nations-trophy-bangaldesh-squad-marufa-akter-out-injured-1561408",
+      "imageUrl": "https://p.imgci.com/db/PICTURES/CMS/407500/407560.5.jpg",
+      "source": "espncricinfo",
+      "publishedAt": "2026-11-04T13:52:44.000Z"
+    },
+    {
+      "id": "espn-https://www.cricinfo.com/ci/content/story/1561394.html",
+      "title": "Sammy: West Indies 'on course' to achieve their WTC goal",
+      "summary": "West Indies coach Daren Sammy reflects on the team's progress, unbeaten Test series run and ambitions ahead of their last match of the the 2025-27 World Test Championship cycle ahead of the second Test against Bangladesh.",
+      "url": "https://www.cricinfo.com/story/daren-sammy-west-indies-on-course-to-achieve-their-goal-in-this-world-test-championship-cycle-1561394",
+      "imageUrl": "https://p.imgci.com/db/PICTURES/CMS/408100/408132.5.jpg",
+      "source": "espncricinfo",
+      "publishedAt": "2026-11-04T13:07:23.000Z"
+    },
+    {
+      "id": "dailystar-https://www.thedailystar.net/sports/cricket/news/taijuls-form-hugely-concerning-ahead-sylhet-test-4315401",
+      "title": "Taijul’s form ‘hugely concerning’ ahead of Sylhet Test",
+      "summary": "The last time Taijul was excluded in a home Test was eleven years ago, in the second Test against South Africa at Mirpur in 2015.",
+      "url": "https://www.thedailystar.net/sports/cricket/news/taijuls-form-hugely-concerning-ahead-sylhet-test-4315401",
+      "source": "dailystar",
+      "publishedAt": "2026-11-04T09:05:42.000Z"
+    },
+    {
+      "id": "espn-https://www.cricinfo.com/ci/content/story/1561378.html",
+      "title": "Off-colour Taijul could lose his place for Sylhet Test",
+      "summary": "\"We have to step up\" with the bat, Bangladesh head coach Phil Simmons says after the disappointing performance in the first Test against West Indies in Dhaka",
+      "url": "https://www.cricinfo.com/story/ban-vs-wi-2nd-test-phil-simmons-hints-that-taijul-islam-could-be-dropped-for-the-second-test-in-sylhet-1561378",
+      "imageUrl": "https://p.imgci.com/db/PICTURES/CMS/420900/420997.6.jpg",
+      "source": "espncricinfo",
+      "publishedAt": "2026-11-04T08:56:57.000Z"
+    },
+    {
+      "id": "espn-https://www.cricinfo.com/ci/content/story/1561367.html",
+      "title": "West Indies eye rare series win as Bangladesh seek answers",
+      "summary": "Mushfiqur Rahim should be back in the Bangladesh XI as they look to level the series after going down to West Indies by eight wickets in the first Test in Dhaka",
+      "url": "https://www.cricinfo.com/story/ban-vs-wi-west-indies-eye-series-win-in-sylhet-bangladesh-seek-answers-1561367",
+      "imageUrl": "https://p.imgci.com/db/PICTURES/CMS/424500/424508.6.jpg",
+      "source": "espncricinfo",
+      "publishedAt": "2026-11-04T08:36:59.000Z"
+    },
+    {
+      "id": "dailystar-https://www.thedailystar.net/sports/cricket/news/mustafizur-lands-maiden-bbl-deal-says-playing-mcg-my-home-ground-will-be-special-4315281",
+      "title": "Mustafizur lands maiden BBL deal, says ‘playing at MCG as my home ground will be special’",
+      "summary": "The left-arm bowler is expected to be available for most of the tournament, although he will miss the Renegades' season opener against Perth Scorchers in Chennai due to his commitments with Dubai Capitals in the IPL's franchise circuit.",
+      "url": "https://www.thedailystar.net/sports/cricket/news/mustafizur-lands-maiden-bbl-deal-says-playing-mcg-my-home-ground-will-be-special-4315281",
+      "source": "dailystar",
+      "publishedAt": "2026-11-04T06:19:58.000Z"
+    },
+    {
+      "id": "espn-https://www.cricinfo.com/ci/content/story/1561361.html",
+      "title": "Mustafizur signs with Melbourne Renegades for BBL 2026-27",
+      "summary": "Veteran Bangladesh quick Mustafizur Rahman will miss the first game of the BBL because of his ILT20 commitments",
+      "url": "https://www.cricinfo.com/story/bbl-2026-27-bangladesh-quick-mustafizur-rahman-signs-with-melbourne-renegades-1561361",
+      "imageUrl": "https://p.imgci.com/db/PICTURES/CMS/406000/406088.5.jpg",
+      "source": "espncricinfo",
+      "publishedAt": "2026-11-04T05:36:40.000Z"
+    },
+    {
+      "id": "dailystar-https://www.thedailystar.net/sports/cricket/news/bangladesh-ready-ditch-spin-first-approach-sylhet-4315226",
+      "title": "Bangladesh ready to ditch spin-first approach in Sylhet",
+      "summary": "After their plan to outspin West Indies on a spin-friendly Mirpur wicket backfired last week, Bangladesh are considering a change of approach for the second Test in Sylhet, starting tomorrow.",
+      "url": "https://www.thedailystar.net/sports/cricket/news/bangladesh-ready-ditch-spin-first-approach-sylhet-4315226",
+      "source": "dailystar",
+      "publishedAt": "2026-11-04T05:11:46.000Z"
+    },
     {
       "id": "dailystar-https://www.thedailystar.net/sports/cricket/news/afghanistan-premier-league-shakib-nahid-shamim-get-teams-4314746",
       "title": "Afghanistan Premier League: Shakib, Nahid, Shamim get teams",
@@ -10,22 +103,6 @@
       "publishedAt": "2026-11-03T16:48:45.000Z"
     },
     {
-      "id": "dailystar-https://www.thedailystar.net/sports/cricket/news/bangladesh-name-strong-preliminary-squad-asia-cup-rising-stars-4314736",
-      "title": "Bangladesh name strong preliminary squad for Asia Cup Rising Stars",
-      "summary": "Bangladesh Cricket Board (BCB) on Tuesday announced a 19-member preliminary squad for the ACC Men’s Asia Cup Rising Stars 2026, scheduled to take place in Qatar from November 19 to November 29.",
-      "url": "https://www.thedailystar.net/sports/cricket/news/bangladesh-name-strong-preliminary-squad-asia-cup-rising-stars-4314736",
-      "source": "dailystar",
-      "publishedAt": "2026-11-03T16:33:37.000Z"
-    },
-    {
-      "id": "dailystar-https://www.thedailystar.net/sports/cricket/news/khulna-stay-top-chattogram-edge-sylhet-thriller-4314711",
-      "title": "Khulna stay top as Chattogram edge Sylhet in thriller",
-      "summary": "The day's most exciting contest took place in Chattogram, where the hosts edged past Sylhet by one wicket in a thrilling encounter.",
-      "url": "https://www.thedailystar.net/sports/cricket/news/khulna-stay-top-chattogram-edge-sylhet-thriller-4314711",
-      "source": "dailystar",
-      "publishedAt": "2026-11-03T16:14:22.000Z"
-    },
-    {
       "id": "espn-https://www.cricinfo.com/ci/content/story/1561311.html",
       "title": "NCL round-up: Chattogram win a thriller; Khulna consolidate top spot",
       "summary": "Defending champions Rangpur, meanwhile, picked up their first win of the season",
@@ -33,22 +110,6 @@
       "imageUrl": "https://p.imgci.com/db/PICTURES/CMS/424700/424766.5.jpg",
       "source": "espncricinfo",
       "publishedAt": "2026-11-03T14:50:51.000Z"
-    },
-    {
-      "id": "dailystar-https://www.thedailystar.net/sports/cricket/news/till-now-its-grassy-wicket-amite-ahead-sylhet-test-4314471",
-      "title": "‘Till now it’s a grassy wicket’: Amite ahead of Sylhet Test",
-      "summary": "The Sylhet surface, just like the one in Dhaka a few days ago, looked green. Windies skipper Roston Chase had said previously that grass was cut just ahead of the Mirpur Test. Amite certainly did not want to read too much into it, even as he regularly features in domestic matches and plays for Sylhet in the National Cricket League (NCL).",
-      "url": "https://www.thedailystar.net/sports/cricket/news/till-now-its-grassy-wicket-amite-ahead-sylhet-test-4314471",
-      "source": "dailystar",
-      "publishedAt": "2026-11-03T11:13:48.000Z"
-    },
-    {
-      "id": "dailystar-https://www.thedailystar.net/sports/cricket/news/no-marufa-bangladesh-announce-squad-emerging-nations-trophy-4314341",
-      "title": "No Marufa as Bangladesh announce squad for Emerging Nations Trophy",
-      "summary": "Marufa is reportedly suffering from a bone-related issue in her right foot, which also forced her to miss the third and final ODI during Bangladesh’s recent tour of Australia.",
-      "url": "https://www.thedailystar.net/sports/cricket/news/no-marufa-bangladesh-announce-squad-emerging-nations-trophy-4314341",
-      "source": "dailystar",
-      "publishedAt": "2026-11-03T07:13:11.000Z"
     },
     {
       "id": "espn-https://www.cricinfo.com/ci/content/story/1561132.html",
@@ -130,15 +191,6 @@
       "imageUrl": "https://p.imgci.com/db/PICTURES/CMS/424500/424595.6.jpg",
       "source": "espncricinfo",
       "publishedAt": "2026-10-30T08:53:14.000Z"
-    },
-    {
-      "id": "espn-https://www.cricinfo.com/ci/content/story/1560518.html",
-      "title": "Bangladesh fight but Warrican, Campbell help West Indies edge ahead",
-      "summary": "Bangladesh were bowled out for 272 early on day two, with Shadman Islam scoring 105",
-      "url": "https://www.cricinfo.com/story/ban-vs-wi-john-campbell-fifty-leads-wis-reply-after-jomel-warrican-five-for-restricts-bangladesh-1560518",
-      "imageUrl": "https://p.imgci.com/db/PICTURES/CMS/424500/424509.5.jpg",
-      "source": "espncricinfo",
-      "publishedAt": "2026-10-29T11:28:42.000Z"
     }
   ]
 }
