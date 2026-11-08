@@ -1,5 +1,5 @@
 {
-  "fetchedAt": "2026-11-07T00:58:08.347Z",
+  "fetchedAt": "2026-11-08T00:40:30.720Z",
   "source": "icc-sportz.io",
   "sourceUrl": "https://www.icc-cricket.com/rankings",
   "men": {
@@ -92,17 +92,17 @@
           "rank": 1,
           "name": "India",
           "abbreviation": "IND",
-          "rating": 116,
-          "points": 4281,
-          "matches": 37
+          "rating": 117,
+          "points": 4439,
+          "matches": 38
         },
         {
           "rank": 2,
           "name": "New Zealand",
           "abbreviation": "NZ",
-          "rating": 108,
-          "points": 3874,
-          "matches": 36
+          "rating": 106,
+          "points": 3940,
+          "matches": 37
         },
         {
           "rank": 3,
@@ -10388,7 +10388,7 @@
         "allrounder": "2026-11-03"
       },
       "odi": {
-        "team": "2026-11-04",
+        "team": "2026-11-07",
         "bat": "2026-11-03",
         "bowl": "2026-11-03",
         "allrounder": "2026-11-03"
@@ -10669,32 +10669,32 @@
           "name": "Uganda",
           "abbreviation": "UGA-W",
           "rating": 113,
-          "points": 6216,
-          "matches": 55
+          "points": 6353,
+          "matches": 56
         },
         {
           "rank": 18,
           "name": "Namibia",
           "abbreviation": "NAM-W",
           "rating": 109,
-          "points": 5105,
-          "matches": 47
+          "points": 5251,
+          "matches": 48
         },
         {
           "rank": 19,
-          "name": "USA",
-          "abbreviation": "USA-W",
-          "rating": 96,
-          "points": 2777,
-          "matches": 29
-        },
-        {
-          "rank": 20,
           "name": "Tanzania",
           "abbreviation": "TAN-W",
           "rating": 95,
           "points": 3607,
           "matches": 38
+        },
+        {
+          "rank": 20,
+          "name": "USA",
+          "abbreviation": "USA-W",
+          "rating": 95,
+          "points": 2836,
+          "matches": 30
         },
         {
           "rank": 21,
@@ -10725,8 +10725,8 @@
           "name": "Rwanda",
           "abbreviation": "RWA-W",
           "rating": 87,
-          "points": 5128,
-          "matches": 59
+          "points": 5191,
+          "matches": 60
         },
         {
           "rank": 25,
@@ -17426,7 +17426,7 @@
         "allrounder": "2026-11-02"
       },
       "t20": {
-        "team": "2026-11-06",
+        "team": "2026-11-07",
         "bat": "2026-10-26",
         "bowl": "2026-10-26",
         "allrounder": "2026-10-26"
