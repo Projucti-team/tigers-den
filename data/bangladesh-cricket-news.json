@@ -1,6 +1,56 @@
 {
-  "fetchedAt": "2026-11-08T00:55:22.478Z",
+  "fetchedAt": "2026-11-09T01:12:51.235Z",
   "items": [
+    {
+      "id": "dailystar-https://www.thedailystar.net/sports/cricket/news/spin-plan-failed-turn-4318776",
+      "title": "A spin plan that failed to turn",
+      "summary": "While Bangladesh are putting on a brave face heading into day five, their tactical gambles have repeatedly backfired. A draw is now the most positive result they can realistically hope for in the Sylhet Test, and even that would leave them losing the series. Their decision to back three spin options has once again failed to deliver.",
+      "url": "https://www.thedailystar.net/sports/cricket/news/spin-plan-failed-turn-4318776",
+      "source": "dailystar",
+      "publishedAt": "2026-11-08T18:47:59.000Z"
+    },
+    {
+      "id": "espn-https://www.cricinfo.com/ci/content/story/1561915.html",
+      "title": "Hridoy on his 242*: You 'cannot get out of a difficult spot without counterattacking'",
+      "summary": "Record-breaker also offered praise for the Bangladesh lower-order for the recovery from 184 for 7 to 386 in the first innings against West Indies in Sylhet",
+      "url": "https://www.cricinfo.com/story/ban-vs-wi-towhid-hridoy-backs-counterattacking-approach-after-record-breaking-242-1561915",
+      "imageUrl": "https://p.imgci.com/db/PICTURES/CMS/424900/424942.5.jpg",
+      "source": "espncricinfo",
+      "publishedAt": "2026-11-08T16:07:01.000Z"
+    },
+    {
+      "id": "dailystar-https://www.thedailystar.net/sports/cricket/news/chasing-it-possible-hridoy-keeps-faith-tigers-despite-uphill-task-4318471",
+      "title": "'Chasing it is possible': Hridoy keeps faith in Tigers despite uphill task",
+      "summary": "Bangladesh trail 1-0 in the two-match series and need a victory in Sylhet to draw level. With the West Indies firmly in control, the hosts will need something special on the final day to keep that hope alive.",
+      "url": "https://www.thedailystar.net/sports/cricket/news/chasing-it-possible-hridoy-keeps-faith-tigers-despite-uphill-task-4318471",
+      "source": "dailystar",
+      "publishedAt": "2026-11-08T14:15:36.000Z"
+    },
+    {
+      "id": "espn-https://www.cricinfo.com/ci/content/story/1561911.html",
+      "title": "Kavem Hodge: There is a belief and shared mindset among WI batters",
+      "summary": "Kavem Hodge scored his third Test century in Sylhet and ascribed his team's collective rise in batting form as down to belief and camaraderie within the set-up",
+      "url": "https://www.cricinfo.com/story/ban-vs-wi-2nd-test-kavem-hodge-west-indies-batters-share-ideas-and-mindset-as-they-rack-up-the-runs-1561911",
+      "imageUrl": "https://p.imgci.com/db/PICTURES/CMS/424900/424970.5.jpg",
+      "source": "espncricinfo",
+      "publishedAt": "2026-11-08T13:25:17.000Z"
+    },
+    {
+      "id": "dailystar-https://www.thedailystar.net/sports/cricket/news/it-was-dream-mine-hridoy-record-breaking-innings-4318221",
+      "title": "‘It was a dream of mine’: Hridoy on record-breaking innings",
+      "summary": "Hridoy set multiple Bangladesh records, but scoring the country’s highest individual Test total in just his fifth innings was a dream come true for the 25-year-old.",
+      "url": "https://www.thedailystar.net/sports/cricket/news/it-was-dream-mine-hridoy-record-breaking-innings-4318221",
+      "source": "dailystar",
+      "publishedAt": "2026-11-08T06:12:00.000Z"
+    },
+    {
+      "id": "dailystar-https://www.thedailystar.net/sports/cricket/news/windies-tighten-grip-tigers-toil-sylhet-4318206",
+      "title": "Hodge ton puts Windies in driver's seat",
+      "summary": "Kavem Hodge struck a century as West Indies took control of Sylhet Test.",
+      "url": "https://www.thedailystar.net/sports/cricket/news/windies-tighten-grip-tigers-toil-sylhet-4318206",
+      "source": "dailystar",
+      "publishedAt": "2026-11-08T05:39:56.000Z"
+    },
     {
       "id": "dailystar-https://www.thedailystar.net/sports/cricket/news/hridoys-houdini-act-knock-among-bangladeshs-greatest-4317821",
       "title": "Hridoy's Houdini act: A knock among Bangladesh’s greatest?",
@@ -24,30 +74,6 @@
       "url": "https://www.thedailystar.net/sports/cricket/news/bangladesh-revive-semifinal-hopes-45-run-win-over-sri-lanka-4317801",
       "source": "dailystar",
       "publishedAt": "2026-11-07T15:58:06.000Z"
-    },
-    {
-      "id": "dailystar-https://www.thedailystar.net/sports/cricket/news/historic-hundred-earns-bangladeshs-sobhana-icc-player-the-month-nomination-4317731",
-      "title": "Historic hundred earns Bangladesh’s Sobhana Mostary ICC Player of the Month nomination",
-      "summary": "Sobhana amassed the highest score by a Bangladesh women's player in ODI cricket when she smashed a brilliant innings of 118 from just 134 deliveries against Australia in Brisbane.",
-      "url": "https://www.thedailystar.net/sports/cricket/news/historic-hundred-earns-bangladeshs-sobhana-icc-player-the-month-nomination-4317731",
-      "source": "dailystar",
-      "publishedAt": "2026-11-07T13:24:07.000Z"
-    },
-    {
-      "id": "dailystar-https://www.thedailystar.net/sports/cricket/news/wounded-hridoy-finds-his-heart-4317691",
-      "title": "Wounded Hridoy finds his heart",
-      "summary": "Hercules was celebrated for immense strength, yet his story was defined by a tragic cycle of destructive impulse, lapse of judgment, and severe physical trial. His vulnerabilities gave his triumphs weight. Hridoy’s Mirpur outing suffered from similar rashness -- impatient, eager to force the pace before establishing a baseline. First survive, then dictate First survive, then dictate",
-      "url": "https://www.thedailystar.net/sports/cricket/news/wounded-hridoy-finds-his-heart-4317691",
-      "source": "dailystar",
-      "publishedAt": "2026-11-07T12:10:53.000Z"
-    },
-    {
-      "id": "dailystar-https://www.thedailystar.net/sports/cricket/news/242-not-out-the-records-tawhid-hridoy-set-sylhet-4317631",
-      "title": "242 not out: The records Tawhid Hridoy set in Sylhet",
-      "summary": "His marathon innings, featuring 11 sixes, was brilliantly supported by Taijul Islam (22) and Taskin Ahmed (12), as Bangladesh finished on 386 for 9.",
-      "url": "https://www.thedailystar.net/sports/cricket/news/242-not-out-the-records-tawhid-hridoy-set-sylhet-4317631",
-      "source": "dailystar",
-      "publishedAt": "2026-11-07T11:20:48.000Z"
     },
     {
       "id": "espn-https://www.cricinfo.com/ci/content/story/1561736.html",
@@ -174,15 +200,6 @@
       "imageUrl": "https://p.imgci.com/db/PICTURES/CMS/424700/424766.5.jpg",
       "source": "espncricinfo",
       "publishedAt": "2026-11-03T14:50:51.000Z"
-    },
-    {
-      "id": "espn-https://www.cricinfo.com/ci/content/story/1561132.html",
-      "title": "Tony de Zorzi returns to South Africa squad for Bangladesh Tests",
-      "summary": "South Africa also picked Zubayr Hamza and Anrich Nortje after he recovered from a groin injury",
-      "url": "https://www.cricinfo.com/story/sa-vs-ban-test-tony-de-zorzi-returns-to-south-africa-squad-for-bangladesh-tests-1561132",
-      "imageUrl": "https://p.imgci.com/db/PICTURES/CMS/409700/409739.5.jpg",
-      "source": "espncricinfo",
-      "publishedAt": "2026-11-02T10:36:24.000Z"
     }
   ]
 }
