@@ -1,5 +1,5 @@
 {
-  "fetchedAt": "2026-11-09T00:57:01.703Z",
+  "fetchedAt": "2026-11-10T03:36:00.514Z",
   "source": "icc-sportz.io",
   "sourceUrl": "https://www.icc-cricket.com/rankings",
   "men": {
@@ -48,11 +48,11 @@
         },
         {
           "rank": 6,
-          "name": "Bangladesh",
-          "abbreviation": "BAN",
-          "rating": 77,
-          "points": 1916,
-          "matches": 25
+          "name": "West Indies",
+          "abbreviation": "WI",
+          "rating": 78,
+          "points": 2339,
+          "matches": 30
         },
         {
           "rank": 7,
@@ -64,11 +64,11 @@
         },
         {
           "rank": 8,
-          "name": "West Indies",
-          "abbreviation": "WI",
-          "rating": 74,
-          "points": 2008,
-          "matches": 27
+          "name": "Bangladesh",
+          "abbreviation": "BAN",
+          "rating": 73,
+          "points": 2038,
+          "matches": 28
         },
         {
           "rank": 9,
@@ -1078,12 +1078,12 @@
     },
     "bangladesh": {
       "test": {
-        "rank": 6,
+        "rank": 8,
         "name": "Bangladesh",
         "abbreviation": "BAN",
-        "rating": 77,
-        "points": 1916,
-        "matches": 25
+        "rating": 73,
+        "points": 2038,
+        "matches": 28
       },
       "odi": {
         "rank": 9,
@@ -10382,7 +10382,7 @@
     },
     "rankUpdatedAt": {
       "test": {
-        "team": "2026-10-31",
+        "team": "2026-11-09",
         "bat": "2026-11-03",
         "bowl": "2026-11-03",
         "allrounder": "2026-11-03"

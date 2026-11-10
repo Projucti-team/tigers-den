@@ -1,5 +1,5 @@
 {
-  "fetchedAt": "2026-11-09T00:57:04.263Z",
+  "fetchedAt": "2026-11-10T03:36:03.394Z",
   "source": "espn-cricinfo-core",
   "cycleLabel": "2025–2027",
   "standings": [
@@ -59,14 +59,14 @@
       "rank": 5,
       "team": "Bangladesh",
       "abbreviation": "BAN",
-      "played": 7,
+      "played": 8,
       "won": 3,
       "lost": 3,
-      "drawn": 1,
+      "drawn": 2,
       "tied": 0,
       "noResult": 0,
-      "points": 40,
-      "pct": 47.62
+      "points": 44,
+      "pct": 45.83
     },
     {
       "rank": 6,
@@ -98,14 +98,14 @@
       "rank": 8,
       "team": "West Indies",
       "abbreviation": "WI",
-      "played": 13,
+      "played": 14,
       "won": 3,
       "lost": 8,
-      "drawn": 2,
+      "drawn": 3,
       "tied": 0,
       "noResult": 0,
-      "points": 42,
-      "pct": 26.92
+      "points": 46,
+      "pct": 27.38
     },
     {
       "rank": 9,
