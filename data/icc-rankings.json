@@ -1,5 +1,5 @@
 {
-  "fetchedAt": "2026-11-10T03:36:00.514Z",
+  "fetchedAt": "2026-11-11T01:16:17.576Z",
   "source": "icc-sportz.io",
   "sourceUrl": "https://www.icc-cricket.com/rankings",
   "men": {
@@ -10668,17 +10668,17 @@
           "rank": 17,
           "name": "Uganda",
           "abbreviation": "UGA-W",
-          "rating": 114,
-          "points": 6498,
-          "matches": 57
+          "rating": 113,
+          "points": 6558,
+          "matches": 58
         },
         {
           "rank": 18,
           "name": "Namibia",
           "abbreviation": "NAM-W",
-          "rating": 110,
-          "points": 5388,
-          "matches": 49
+          "rating": 111,
+          "points": 5552,
+          "matches": 50
         },
         {
           "rank": 19,
@@ -10692,9 +10692,9 @@
           "rank": 20,
           "name": "USA",
           "abbreviation": "USA-W",
-          "rating": 94,
-          "points": 2899,
-          "matches": 31
+          "rating": 92,
+          "points": 2935,
+          "matches": 32
         },
         {
           "rank": 21,
@@ -10724,9 +10724,9 @@
           "rank": 24,
           "name": "Rwanda",
           "abbreviation": "RWA-W",
-          "rating": 86,
-          "points": 5250,
-          "matches": 61
+          "rating": 87,
+          "points": 5394,
+          "matches": 62
         },
         {
           "rank": 25,
@@ -15173,7 +15173,7 @@
           },
           {
             "rank": 85,
-            "name": "Babette de Leede",
+            "name": "Babette De Leede",
             "team": "Netherlands",
             "rating": 354,
             "points": 354,
@@ -15892,16 +15892,6 @@
           },
           {
             "rank": 56,
-            "name": "Eveleen Kejarukua",
-            "team": "Namibia",
-            "rating": 466,
-            "points": 466,
-            "iccPlayerId": "70819",
-            "profileUrl": "https://www.icc-cricket.com/rankings/70819/eveleen-kejarukua",
-            "imageUrl": "https://images.icc-cricket.com/image/upload/t_player-headshot-portrait-lg-webp/prd/assets/players/generic/colored/70819.png"
-          },
-          {
-            "rank": 57,
             "name": "Iris Zwilling",
             "team": "Netherlands",
             "rating": 462,
@@ -15911,7 +15901,7 @@
             "imageUrl": "https://images.icc-cricket.com/image/upload/t_player-headshot-portrait-lg-webp/prd/assets/players/generic/colored/72324.png"
           },
           {
-            "rank": 58,
+            "rank": 57,
             "name": "Henao Thomas",
             "team": "Papua New Guinea",
             "rating": 459,
@@ -15919,6 +15909,16 @@
             "iccPlayerId": "72056",
             "profileUrl": "https://www.icc-cricket.com/rankings/72056/henao-thomas",
             "imageUrl": "https://images.icc-cricket.com/image/upload/t_player-headshot-portrait-lg-webp/prd/assets/players/generic/colored/72056.png"
+          },
+          {
+            "rank": 58,
+            "name": "Eveleen Kejarukua",
+            "team": "Namibia",
+            "rating": 456,
+            "points": 456,
+            "iccPlayerId": "70819",
+            "profileUrl": "https://www.icc-cricket.com/rankings/70819/eveleen-kejarukua",
+            "imageUrl": "https://images.icc-cricket.com/image/upload/t_player-headshot-portrait-lg-webp/prd/assets/players/generic/colored/70819.png"
           },
           {
             "rank": 59,
@@ -16053,6 +16053,16 @@
           },
           {
             "rank": 72,
+            "name": "Wilka Mwatile",
+            "team": "Namibia",
+            "rating": 432,
+            "points": 432,
+            "iccPlayerId": "70801",
+            "profileUrl": "https://www.icc-cricket.com/rankings/70801/wilka-mwatile",
+            "imageUrl": "https://images.icc-cricket.com/image/upload/t_player-headshot-portrait-lg-webp/prd/assets/players/generic/colored/70801.png"
+          },
+          {
+            "rank": 73,
             "name": "Mithali Ayodhya",
             "team": "Sri Lanka",
             "rating": 426,
@@ -16062,7 +16072,7 @@
             "imageUrl": "https://images.icc-cricket.com/image/upload/t_player-headshot-portrait-lg-webp/prd/assets/players/generic/colored/136542.png"
           },
           {
-            "rank": 73,
+            "rank": 74,
             "name": "Chinelle Henry",
             "team": "West Indies",
             "rating": 425,
@@ -16072,7 +16082,7 @@
             "imageUrl": "https://images.icc-cricket.com/image/upload/t_player-headshot-portrait-lg-webp/prd/assets/players/generic/colored/64347.png"
           },
           {
-            "rank": 73,
+            "rank": 74,
             "rankTied": true,
             "name": "Nyasha Gwanzura",
             "team": "Zimbabwe",
@@ -16083,7 +16093,7 @@
             "imageUrl": "https://images.icc-cricket.com/image/upload/t_player-headshot-portrait-lg-webp/prd/assets/players/generic/colored/76029.png"
           },
           {
-            "rank": 75,
+            "rank": 76,
             "name": "Rameen Shamim",
             "team": "Pakistan",
             "rating": 423,
@@ -16093,7 +16103,7 @@
             "imageUrl": "https://images.icc-cricket.com/image/upload/t_player-headshot-portrait-lg-webp/prd/assets/players/generic/colored/71752.png"
           },
           {
-            "rank": 76,
+            "rank": 77,
             "name": "Heena Hotchandani",
             "team": "United Arab Emirates",
             "rating": 422,
@@ -16101,17 +16111,6 @@
             "iccPlayerId": "69601",
             "profileUrl": "https://www.icc-cricket.com/rankings/69601/heena-hotchandani",
             "imageUrl": "https://images.icc-cricket.com/image/upload/t_player-headshot-portrait-lg-webp/prd/assets/players/generic/colored/69601.png"
-          },
-          {
-            "rank": 76,
-            "rankTied": true,
-            "name": "Wilka Mwatile",
-            "team": "Namibia",
-            "rating": 422,
-            "points": 422,
-            "iccPlayerId": "70801",
-            "profileUrl": "https://www.icc-cricket.com/rankings/70801/wilka-mwatile",
-            "imageUrl": "https://images.icc-cricket.com/image/upload/t_player-headshot-portrait-lg-webp/prd/assets/players/generic/colored/70801.png"
           },
           {
             "rank": 78,
@@ -16225,16 +16224,6 @@
           },
           {
             "rank": 89,
-            "name": "Kevin Amuge",
-            "team": "Uganda",
-            "rating": 381,
-            "points": 381,
-            "iccPlayerId": "126302",
-            "profileUrl": "https://www.icc-cricket.com/rankings/126302/kevin-amuge",
-            "imageUrl": "https://images.icc-cricket.com/image/upload/t_player-headshot-portrait-lg-webp/prd/assets/players/generic/colored/126302.png"
-          },
-          {
-            "rank": 90,
             "name": "Ritu Moni",
             "team": "Bangladesh",
             "rating": 380,
@@ -16244,7 +16233,7 @@
             "imageUrl": "https://images.icc-cricket.com/image/upload/t_player-headshot-portrait-lg-webp/prd/assets/players/generic/colored/63217.png"
           },
           {
-            "rank": 91,
+            "rank": 90,
             "name": "Ashmini Munisar",
             "team": "West Indies",
             "rating": 379,
@@ -16254,7 +16243,7 @@
             "imageUrl": "https://images.icc-cricket.com/image/upload/t_player-headshot-portrait-lg-webp/prd/assets/players/generic/colored/95119.png"
           },
           {
-            "rank": 92,
+            "rank": 91,
             "name": "Vaishnave Mahesh",
             "team": "United Arab Emirates",
             "rating": 374,
@@ -16264,11 +16253,21 @@
             "imageUrl": "https://images.icc-cricket.com/image/upload/t_player-headshot-portrait-lg-webp/prd/assets/players/generic/colored/71003.png"
           },
           {
+            "rank": 92,
+            "name": "Kevin Amuge",
+            "team": "Uganda",
+            "rating": 370,
+            "points": 370,
+            "iccPlayerId": "126302",
+            "profileUrl": "https://www.icc-cricket.com/rankings/126302/kevin-amuge",
+            "imageUrl": "https://images.icc-cricket.com/image/upload/t_player-headshot-portrait-lg-webp/prd/assets/players/generic/colored/126302.png"
+          },
+          {
             "rank": 93,
             "name": "Concy Aweko",
             "team": "Uganda",
-            "rating": 371,
-            "points": 371,
+            "rating": 367,
+            "points": 367,
             "iccPlayerId": "69589",
             "profileUrl": "https://www.icc-cricket.com/rankings/69589/concy-aweko",
             "imageUrl": "https://images.icc-cricket.com/image/upload/t_player-headshot-portrait-lg-webp/prd/assets/players/generic/colored/69589.png"
@@ -16826,6 +16825,17 @@
           },
           {
             "rank": 48,
+            "name": "Wilka Mwatile",
+            "team": "Namibia",
+            "rating": 98,
+            "points": 98,
+            "iccPlayerId": "70801",
+            "profileUrl": "https://www.icc-cricket.com/rankings/70801/wilka-mwatile",
+            "imageUrl": "https://images.icc-cricket.com/image/upload/t_player-headshot-portrait-lg-webp/prd/assets/players/generic/colored/70801.png"
+          },
+          {
+            "rank": 48,
+            "rankTied": true,
             "name": "Thipatcha Putthawong",
             "team": "Thailand",
             "rating": 98,
@@ -16835,7 +16845,7 @@
             "imageUrl": "https://images.icc-cricket.com/image/upload/t_player-headshot-portrait-lg-webp/prd/assets/players/generic/colored/70980.png"
           },
           {
-            "rank": 49,
+            "rank": 50,
             "name": "Iris Zwilling",
             "team": "Netherlands",
             "rating": 97,
@@ -16845,7 +16855,7 @@
             "imageUrl": "https://images.icc-cricket.com/image/upload/t_player-headshot-portrait-lg-webp/prd/assets/players/generic/colored/72324.png"
           },
           {
-            "rank": 49,
+            "rank": 50,
             "rankTied": true,
             "name": "Kayla Reyneke",
             "team": "South Africa",
@@ -16856,7 +16866,7 @@
             "imageUrl": "https://images.icc-cricket.com/image/upload/t_player-headshot-portrait-lg-webp/prd/assets/players/generic/colored/96206.png"
           },
           {
-            "rank": 51,
+            "rank": 52,
             "name": "Sophie Molineux",
             "team": "Australia",
             "rating": 95,
@@ -16864,17 +16874,6 @@
             "iccPlayerId": "67041",
             "profileUrl": "https://www.icc-cricket.com/rankings/67041/sophie-molineux",
             "imageUrl": "https://images.icc-cricket.com/image/upload/t_player-headshot-portrait-lg-webp/prd/assets/players/generic/colored/67041.png"
-          },
-          {
-            "rank": 51,
-            "rankTied": true,
-            "name": "Wilka Mwatile",
-            "team": "Namibia",
-            "rating": 95,
-            "points": 95,
-            "iccPlayerId": "70801",
-            "profileUrl": "https://www.icc-cricket.com/rankings/70801/wilka-mwatile",
-            "imageUrl": "https://images.icc-cricket.com/image/upload/t_player-headshot-portrait-lg-webp/prd/assets/players/generic/colored/70801.png"
           },
           {
             "rank": 53,
@@ -16899,6 +16898,16 @@
           },
           {
             "rank": 55,
+            "name": "Immaculate Nakisuuyi",
+            "team": "Uganda",
+            "rating": 91,
+            "points": 91,
+            "iccPlayerId": "69580",
+            "profileUrl": "https://www.icc-cricket.com/rankings/69580/immaculate-nakisuuyi",
+            "imageUrl": "https://images.icc-cricket.com/image/upload/t_player-headshot-portrait-lg-webp/prd/assets/players/generic/colored/69580.png"
+          },
+          {
+            "rank": 56,
             "name": "Aaliyah Alleyne",
             "team": "West Indies",
             "rating": 90,
@@ -16908,7 +16917,7 @@
             "imageUrl": "https://images.icc-cricket.com/image/upload/t_player-headshot-portrait-lg-webp/prd/assets/players/generic/colored/73622.png"
           },
           {
-            "rank": 56,
+            "rank": 57,
             "name": "Lea Tahuhu",
             "team": "New Zealand",
             "rating": 89,
@@ -16918,18 +16927,7 @@
             "imageUrl": "https://images.icc-cricket.com/image/upload/t_player-headshot-portrait-lg-webp/prd/assets/players/generic/colored/57828.png"
           },
           {
-            "rank": 56,
-            "rankTied": true,
-            "name": "Immaculate Nakisuuyi",
-            "team": "Uganda",
-            "rating": 89,
-            "points": 89,
-            "iccPlayerId": "69580",
-            "profileUrl": "https://www.icc-cricket.com/rankings/69580/immaculate-nakisuuyi",
-            "imageUrl": "https://images.icc-cricket.com/image/upload/t_player-headshot-portrait-lg-webp/prd/assets/players/generic/colored/69580.png"
-          },
-          {
-            "rank": 56,
+            "rank": 57,
             "rankTied": true,
             "name": "Darcey Carter",
             "team": "Scotland",
@@ -16940,7 +16938,7 @@
             "imageUrl": "https://images.icc-cricket.com/image/upload/t_player-headshot-portrait-lg-webp/prd/assets/players/generic/colored/85801.png"
           },
           {
-            "rank": 56,
+            "rank": 57,
             "rankTied": true,
             "name": "Sree Charani",
             "team": "India",
@@ -17224,6 +17222,28 @@
           },
           {
             "rank": 86,
+            "name": "Janet Mbabazi",
+            "team": "Uganda",
+            "rating": 67,
+            "points": 67,
+            "iccPlayerId": "69578",
+            "profileUrl": "https://www.icc-cricket.com/rankings/69578/janet-mbabazi",
+            "imageUrl": "https://images.icc-cricket.com/image/upload/t_player-headshot-portrait-lg-webp/prd/assets/players/generic/colored/69578.png"
+          },
+          {
+            "rank": 86,
+            "rankTied": true,
+            "name": "Mekelaye Mwatile",
+            "team": "Namibia",
+            "rating": 67,
+            "points": 67,
+            "iccPlayerId": "82762",
+            "profileUrl": "https://www.icc-cricket.com/rankings/82762/mekelaye-mwatile",
+            "imageUrl": "https://images.icc-cricket.com/image/upload/t_player-headshot-portrait-lg-webp/prd/assets/players/generic/colored/82762.png"
+          },
+          {
+            "rank": 86,
+            "rankTied": true,
             "name": "Olivia Bell",
             "team": "Scotland",
             "rating": 67,
@@ -17233,7 +17253,7 @@
             "imageUrl": "https://images.icc-cricket.com/image/upload/t_player-headshot-portrait-lg-webp/prd/assets/players/generic/colored/96900.png"
           },
           {
-            "rank": 87,
+            "rank": 89,
             "name": "Rameen Shamim",
             "team": "Pakistan",
             "rating": 66,
@@ -17241,27 +17261,6 @@
             "iccPlayerId": "71752",
             "profileUrl": "https://www.icc-cricket.com/rankings/71752/rameen-shamim",
             "imageUrl": "https://images.icc-cricket.com/image/upload/t_player-headshot-portrait-lg-webp/prd/assets/players/generic/colored/71752.png"
-          },
-          {
-            "rank": 87,
-            "rankTied": true,
-            "name": "Mekelaye Mwatile",
-            "team": "Namibia",
-            "rating": 66,
-            "points": 66,
-            "iccPlayerId": "82762",
-            "profileUrl": "https://www.icc-cricket.com/rankings/82762/mekelaye-mwatile",
-            "imageUrl": "https://images.icc-cricket.com/image/upload/t_player-headshot-portrait-lg-webp/prd/assets/players/generic/colored/82762.png"
-          },
-          {
-            "rank": 89,
-            "name": "Janet Mbabazi",
-            "team": "Uganda",
-            "rating": 65,
-            "points": 65,
-            "iccPlayerId": "69578",
-            "profileUrl": "https://www.icc-cricket.com/rankings/69578/janet-mbabazi",
-            "imageUrl": "https://images.icc-cricket.com/image/upload/t_player-headshot-portrait-lg-webp/prd/assets/players/generic/colored/69578.png"
           },
           {
             "rank": 90,
@@ -17426,10 +17425,10 @@
         "allrounder": "2026-11-02"
       },
       "t20": {
-        "team": "2026-11-08",
-        "bat": "2026-10-26",
-        "bowl": "2026-10-26",
-        "allrounder": "2026-10-26"
+        "team": "2026-11-10",
+        "bat": "2026-11-09",
+        "bowl": "2026-11-09",
+        "allrounder": "2026-11-09"
       }
     }
   }
