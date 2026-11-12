@@ -1,6 +1,14 @@
 {
-  "fetchedAt": "2026-11-11T01:29:39.001Z",
+  "fetchedAt": "2026-11-12T02:31:24.181Z",
   "items": [
+    {
+      "id": "dailystar-https://www.thedailystar.net/sports/cricket/news/south-africa-captain-bavuma-wary-bangladeshs-fast-bowling-resource-4321241",
+      "title": "South Africa captain Bavuma wary of Bangladesh’s ‘fast bowling resource’",
+      "summary": "\"I think now you look across the world, there's no team that's an easy team. You know, teams on their day can put teams under pressure. And I think you want to make sure that you're not caught with your pants down.\"",
+      "url": "https://www.thedailystar.net/sports/cricket/news/south-africa-captain-bavuma-wary-bangladeshs-fast-bowling-resource-4321241",
+      "source": "dailystar",
+      "publishedAt": "2026-11-11T14:15:57.000Z"
+    },
     {
       "id": "dailystar-https://www.thedailystar.net/sports/cricket/news/tigresses-leave-uae-feature-emerging-nations-trophy-4320691",
       "title": "Tigresses leave for UAE to feature in Emerging Nations Trophy",
@@ -16,30 +24,6 @@
       "url": "https://www.thedailystar.net/sports/cricket/news/no-time-breathe-south-africa-bound-tigers-4320681",
       "source": "dailystar",
       "publishedAt": "2026-11-10T18:49:00.000Z"
-    },
-    {
-      "id": "dailystar-https://www.thedailystar.net/sports/cricket/news/mosaddeaks-third-ton-helps-rangpur-hold-chattogram-4320391",
-      "title": "Mosaddeak’s third ton helps Rangpur hold Chattogram",
-      "summary": "Mosaddeak struck 145 off 317 balls, while Shihab James and Sams M Niloy added 52 apiece as Rangpur reached 310 for nine in their second innings, setting Chattogram a 69-run target.",
-      "url": "https://www.thedailystar.net/sports/cricket/news/mosaddeaks-third-ton-helps-rangpur-hold-chattogram-4320391",
-      "source": "dailystar",
-      "publishedAt": "2026-11-10T15:55:33.000Z"
-    },
-    {
-      "id": "dailystar-https://www.thedailystar.net/sports/cricket/news/tigers-south-africa-set-historic-wanderers-debut-4320256",
-      "title": "Tigers off to South Africa, set for historic Wanderers debut",
-      "summary": "The two sides head into the contest with contrasting recent results. South Africa recently secured a 2-1 home series victory over Australia, while Bangladesh are coming off a 1-0 series defeat against the West Indies at home.",
-      "url": "https://www.thedailystar.net/sports/cricket/news/tigers-south-africa-set-historic-wanderers-debut-4320256",
-      "source": "dailystar",
-      "publishedAt": "2026-11-10T13:19:24.000Z"
-    },
-    {
-      "id": "dailystar-https://www.thedailystar.net/sports/cricket/news/former-bcb-boss-bulbul-appointed-advisor-lahore-qalandars-4320031",
-      "title": "Former BCB boss Bulbul appointed advisor to Lahore Qalandars",
-      "summary": "Lahore Qalandars have appointed former Bangladesh Cricket Board (BCB) president Aminul Islam Bulbul as an advisor to the franchise’s High-Performance Centres.",
-      "url": "https://www.thedailystar.net/sports/cricket/news/former-bcb-boss-bulbul-appointed-advisor-lahore-qalandars-4320031",
-      "source": "dailystar",
-      "publishedAt": "2026-11-10T08:34:30.000Z"
     },
     {
       "id": "espn-https://www.cricinfo.com/ci/content/story/1562052.html",
@@ -166,24 +150,6 @@
       "imageUrl": "https://p.imgci.com/db/PICTURES/CMS/424800/424887.5.jpg",
       "source": "espncricinfo",
       "publishedAt": "2026-11-06T11:26:58.000Z"
-    },
-    {
-      "id": "espn-https://www.cricinfo.com/ci/content/story/1561576.html",
-      "title": "Wickham: Jangoo was telling me what Test cricket is all about",
-      "summary": "West Indies debutant praises his batting partner after they turned the tables on Bangladesh in Sylhet",
-      "url": "https://www.cricinfo.com/story/ban-vs-wi-kevin-wickham-says-amir-jangoo-was-telling-him-what-test-cricket-is-all-about-1561576",
-      "imageUrl": "https://p.imgci.com/db/PICTURES/CMS/424800/424818.5.jpg",
-      "source": "espncricinfo",
-      "publishedAt": "2026-11-05T14:47:43.000Z"
-    },
-    {
-      "id": "espn-https://www.cricinfo.com/ci/content/story/1561497.html",
-      "title": "Jangoo ton lifts West Indies after early wickets",
-      "summary": "Amir Jangoo's second Test century, in his tenth innings, formed the backbone of West Indies' 235 for 4 in the first innings of the second Test against Bangladesh",
-      "url": "https://www.cricinfo.com/story/ban-vs-wi-amir-jangoo-ton-lifts-west-indies-after-early-wickets-1561497",
-      "imageUrl": "https://p.imgci.com/db/PICTURES/CMS/424800/424836.5.jpg",
-      "source": "espncricinfo",
-      "publishedAt": "2026-11-05T11:46:03.000Z"
     }
   ]
 }
