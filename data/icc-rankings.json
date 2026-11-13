@@ -1,5 +1,5 @@
 {
-  "fetchedAt": "2026-11-12T02:17:17.460Z",
+  "fetchedAt": "2026-11-13T01:51:52.469Z",
   "source": "icc-sportz.io",
   "sourceUrl": "https://www.icc-cricket.com/rankings",
   "men": {
@@ -10590,6 +10590,14 @@
         },
         {
           "rank": 6,
+          "name": "Sri Lanka",
+          "abbreviation": "SL-W",
+          "rating": 238,
+          "points": 10955,
+          "matches": 46
+        },
+        {
+          "rank": 7,
           "name": "West Indies",
           "abbreviation": "WI-W",
           "rating": 238,
@@ -10597,68 +10605,60 @@
           "matches": 36
         },
         {
-          "rank": 7,
-          "name": "Sri Lanka",
-          "abbreviation": "SL-W",
-          "rating": 238,
-          "points": 10702,
-          "matches": 45
-        },
-        {
           "rank": 8,
           "name": "Pakistan",
           "abbreviation": "PAK-W",
           "rating": 212,
-          "points": 8675,
-          "matches": 41
+          "points": 8920,
+          "matches": 42
         },
         {
           "rank": 9,
           "name": "Ireland",
           "abbreviation": "IRE-W",
           "rating": 203,
-          "points": 8520,
-          "matches": 42
+          "points": 8708,
+          "matches": 43
         },
         {
           "rank": 10,
           "name": "Bangladesh",
           "abbreviation": "BAN-W",
-          "rating": 195,
-          "points": 8371,
-          "matches": 43
+          "rating": 194,
+          "points": 8533,
+          "matches": 44
         },
         {
           "rank": 11,
           "name": "Scotland",
           "abbreviation": "SCO-W",
           "rating": 168,
-          "points": 6373,
-          "matches": 38
+          "points": 6565,
+          "matches": 39
         },
         {
           "rank": 12,
           "name": "Thailand",
           "abbreviation": "THA-W",
-          "rating": 153,
-          "points": 9961,
-          "matches": 65
+          "rating": 152,
+          "points": 10051,
+          "matches": 66
         },
         {
           "rank": 13,
           "name": "Papua New Guinea",
           "abbreviation": "PNG-W",
-          "rating": 142,
-          "points": 4542,
-          "matches": 32
+          "rating": 141,
+          "points": 4660,
+          "matches": 33
         },
         {
           "rank": 14,
           "name": "Netherlands",
           "abbreviation": "NED-W",
-          "rating": 140,
-          "points": 6855,
-          "matches": 49
+          "rating": 141,
+          "points": 7058,
+          "matches": 50
         },
         {
           "rank": 15,
@@ -10681,16 +10681,16 @@
           "name": "Uganda",
           "abbreviation": "UGA-W",
           "rating": 112,
-          "points": 6595,
-          "matches": 59
+          "points": 6739,
+          "matches": 60
         },
         {
           "rank": 18,
           "name": "Namibia",
           "abbreviation": "NAM-W",
-          "rating": 110,
-          "points": 5594,
-          "matches": 51
+          "rating": 108,
+          "points": 5632,
+          "matches": 52
         },
         {
           "rank": 19,
@@ -10704,9 +10704,9 @@
           "rank": 20,
           "name": "USA",
           "abbreviation": "USA-W",
-          "rating": 94,
-          "points": 3096,
-          "matches": 33
+          "rating": 93,
+          "points": 3158,
+          "matches": 34
         },
         {
           "rank": 21,
@@ -10726,19 +10726,19 @@
         },
         {
           "rank": 23,
+          "name": "Rwanda",
+          "abbreviation": "RWA-W",
+          "rating": 89,
+          "points": 5717,
+          "matches": 64
+        },
+        {
+          "rank": 24,
           "name": "Indonesia",
           "abbreviation": "INA-W",
           "rating": 89,
           "points": 3922,
           "matches": 44
-        },
-        {
-          "rank": 24,
-          "name": "Rwanda",
-          "abbreviation": "RWA-W",
-          "rating": 88,
-          "points": 5557,
-          "matches": 63
         },
         {
           "rank": 25,
@@ -11228,9 +11228,9 @@
         "rank": 10,
         "name": "Bangladesh",
         "abbreviation": "BAN-W",
-        "rating": 195,
-        "points": 8371,
-        "matches": 43
+        "rating": 194,
+        "points": 8533,
+        "matches": 44
       }
     },
     "players": {
@@ -17437,7 +17437,7 @@
         "allrounder": "2026-11-02"
       },
       "t20": {
-        "team": "2026-11-11",
+        "team": "2026-11-12",
         "bat": "2026-11-09",
         "bowl": "2026-11-09",
         "allrounder": "2026-11-09"
