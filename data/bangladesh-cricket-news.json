@@ -1,29 +1,62 @@
 {
-  "fetchedAt": "2026-11-12T02:31:24.181Z",
+  "fetchedAt": "2026-11-13T02:08:23.049Z",
   "items": [
     {
-      "id": "dailystar-https://www.thedailystar.net/sports/cricket/news/south-africa-captain-bavuma-wary-bangladeshs-fast-bowling-resource-4321241",
-      "title": "South Africa captain Bavuma wary of Bangladesh’s ‘fast bowling resource’",
-      "summary": "\"I think now you look across the world, there's no team that's an easy team. You know, teams on their day can put teams under pressure. And I think you want to make sure that you're not caught with your pants down.\"",
-      "url": "https://www.thedailystar.net/sports/cricket/news/south-africa-captain-bavuma-wary-bangladeshs-fast-bowling-resource-4321241",
+      "id": "dailystar-https://www.thedailystar.net/sports/cricket/news/tigers-waste-no-time-ahead-daunting-proteas-challenge-4322631",
+      "title": "Tigers waste no time ahead of daunting Proteas challenge",
+      "summary": "With limited time to acclimatise to the conditions, Bangladesh have wasted no time getting down to business. Following Thursday's session, the visitors have two more practice sessions scheduled before taking on the Proteas in their maiden Test at the iconic Wanderers Stadium.",
+      "url": "https://www.thedailystar.net/sports/cricket/news/tigers-waste-no-time-ahead-daunting-proteas-challenge-4322631",
       "source": "dailystar",
-      "publishedAt": "2026-11-11T14:15:57.000Z"
+      "publishedAt": "2026-11-12T20:14:29.000Z"
     },
     {
-      "id": "dailystar-https://www.thedailystar.net/sports/cricket/news/tigresses-leave-uae-feature-emerging-nations-trophy-4320691",
-      "title": "Tigresses leave for UAE to feature in Emerging Nations Trophy",
-      "summary": "This will be Bangladesh's first appearance in the competition. The second edition of the tournament will feature 10 teams, up from eight in 2025.",
-      "url": "https://www.thedailystar.net/sports/cricket/news/tigresses-leave-uae-feature-emerging-nations-trophy-4320691",
+      "id": "dailystar-https://www.thedailystar.net/sports/cricket/news/toughest-bangladesh-team-well-face-harmer-expects-stern-tigers-test-4322341",
+      "title": "'Toughest Bangladesh team we'll face': Harmer expects stern Tigers test",
+      "summary": "As the hype builds ahead of Sunday’s first Test, a second contingent of Bangladesh players and officials touched down in Johannesburg early Thursday morning and immediately hit the nets. Waiting for them is a South African side expecting a fierce contest.",
+      "url": "https://www.thedailystar.net/sports/cricket/news/toughest-bangladesh-team-well-face-harmer-expects-stern-tigers-test-4322341",
       "source": "dailystar",
-      "publishedAt": "2026-11-10T18:57:19.000Z"
+      "publishedAt": "2026-11-12T16:13:08.000Z"
     },
     {
-      "id": "dailystar-https://www.thedailystar.net/sports/cricket/news/no-time-breathe-south-africa-bound-tigers-4320681",
-      "title": "No time to breathe for South Africa-bound Tigers",
-      "summary": "Bangladesh's record in South Africa makes the challenge particularly daunting. Across eight Tests between 2002 and 2022, the Tigers have lost all eight, including five by an innings. They will begin their campaign at the Wanderers Stadium in Johannesburg, where they are yet to play a Test.",
-      "url": "https://www.thedailystar.net/sports/cricket/news/no-time-breathe-south-africa-bound-tigers-4320681",
+      "id": "dailystar-https://www.thedailystar.net/sports/cricket/news/bangladesh-pace-attack-no-more-pop-gun-says-south-africa-coach-4322221",
+      "title": "Bangladesh pace attack no more a 'pop gun', says South Africa coach",
+      "summary": "“Bangladesh have got a fast-building attack now. Whereas in years gone by, they'd come here with like a pop-gun attack, now they've got guys that can mix it,” Conrad said.",
+      "url": "https://www.thedailystar.net/sports/cricket/news/bangladesh-pace-attack-no-more-pop-gun-says-south-africa-coach-4322221",
       "source": "dailystar",
-      "publishedAt": "2026-11-10T18:49:00.000Z"
+      "publishedAt": "2026-11-12T14:24:52.000Z"
+    },
+    {
+      "id": "dailystar-https://www.thedailystar.net/sports/cricket/news/four-wickets-six-runs-batting-crumbles-tigresses-lose-pakistan-emerging-nations-opener-4322211",
+      "title": "Four wickets for six runs: Batting crumbles as Tigresses lose to Pakistan in Emerging Nations opener",
+      "summary": "Bangladesh women's team began their Emerging Nations Trophy campaign on a disappointing note, suffering an eight-wicket defeat to Pakistan in Ajman, UAE, on Thursday.",
+      "url": "https://www.thedailystar.net/sports/cricket/news/four-wickets-six-runs-batting-crumbles-tigresses-lose-pakistan-emerging-nations-opener-4322211",
+      "source": "dailystar",
+      "publishedAt": "2026-11-12T14:09:34.000Z"
+    },
+    {
+      "id": "espn-https://www.cricinfo.com/ci/content/story/1562387.html",
+      "title": "Rizwanullah, openers set up big win as Pakistan make U-19 Asia Cup final",
+      "summary": "Rizwanullah's five-for restricted Bangladesh to 138 following which Usman Khan and Hayam Khan mowed down the target with ease",
+      "url": "https://www.cricinfo.com/story/ban-vs-pak-under-19-asia-cup-rizwanullah-openers-set-up-big-win-as-pakistan-make-final-1562387",
+      "imageUrl": "https://p.imgci.com/db/PICTURES/CMS/412700/412772.5.jpg",
+      "source": "espncricinfo",
+      "publishedAt": "2026-11-12T12:43:21.000Z"
+    },
+    {
+      "id": "dailystar-https://www.thedailystar.net/sports/cricket/news/pakistan-too-strong-bangladesh-u-19-asia-cup-semis-4321986",
+      "title": "Pakistan too strong for Bangladesh in U-19 Asia Cup semis",
+      "summary": "Usman remained unbeaten on 64 off 54 balls, while Hayam struck 69 off 72 as Pakistan raced to 141 for one in just 21.5 overs to book their place in the final.",
+      "url": "https://www.thedailystar.net/sports/cricket/news/pakistan-too-strong-bangladesh-u-19-asia-cup-semis-4321986",
+      "source": "dailystar",
+      "publishedAt": "2026-11-12T10:28:44.000Z"
+    },
+    {
+      "id": "dailystar-https://www.thedailystar.net/sports/cricket/news/what-do-we-currently-have-womens-cricket-4321801",
+      "title": "‘What do we currently have for women’s cricket?’",
+      "summary": "Veteran coach Sarwar Imran spoke to The Daily Star's Samsul Arefin Khan about his experience, regrets and concerns over the state of women's cricket in Bangladesh.",
+      "url": "https://www.thedailystar.net/sports/cricket/news/what-do-we-currently-have-womens-cricket-4321801",
+      "source": "dailystar",
+      "publishedAt": "2026-11-12T06:00:29.000Z"
     },
     {
       "id": "espn-https://www.cricinfo.com/ci/content/story/1562052.html",
@@ -114,42 +147,6 @@
       "imageUrl": "https://p.imgci.com/db/PICTURES/CMS/424900/424942.5.jpg",
       "source": "espncricinfo",
       "publishedAt": "2026-11-07T11:05:28.000Z"
-    },
-    {
-      "id": "espn-https://www.cricinfo.com/ci/content/story/1561678.html",
-      "title": "Mahmud: 'Beating a batter is quite a good feeling'",
-      "summary": "Fast bowler believes Bangladesh can take the lead against West Indies despite being 268 runs behind after the second day's play in Sylhet",
-      "url": "https://www.cricinfo.com/story/ban-vs-wi-hasan-mahmud-on-his-first-five-wicket-haul-in-a-home-test-1561678",
-      "imageUrl": "https://p.imgci.com/db/PICTURES/CMS/424800/424829.5.jpg",
-      "source": "espncricinfo",
-      "publishedAt": "2026-11-06T14:40:54.000Z"
-    },
-    {
-      "id": "espn-https://www.cricinfo.com/ci/content/story/1561675.html",
-      "title": "'It's all about sticking to my strengths' - Jangoo backs his instincts after Sylhet ton",
-      "summary": "He attributes this impressive run to an unwavering belief in his approach",
-      "url": "https://www.cricinfo.com/story/ban-vs-wi-sylhet-test-amir-jangoo-backs-his-instincts-after-century-1561675",
-      "imageUrl": "https://p.imgci.com/db/PICTURES/CMS/424800/424835.5.jpg",
-      "source": "espncricinfo",
-      "publishedAt": "2026-11-06T14:12:00.000Z"
-    },
-    {
-      "id": "espn-https://www.cricinfo.com/ci/content/story/1561618.html",
-      "title": "Injured Shadman Islam unlikely to bat in Bangladesh's first innings",
-      "summary": "The Bangladesh opener was taken off the field on a stretcher after injuring his ankle on the second morning of the Sylhet Test",
-      "url": "https://www.cricinfo.com/story/ban-vs-wi-2nd-test-shadman-islam-stretchered-off-the-field-after-twisting-his-ankle-1561618",
-      "imageUrl": "https://p.imgci.com/db/PICTURES/CMS/424800/424877.5.jpg",
-      "source": "espncricinfo",
-      "publishedAt": "2026-11-06T12:29:48.000Z"
-    },
-    {
-      "id": "espn-https://www.cricinfo.com/ci/content/story/1561628.html",
-      "title": "WI seamers rattle Bangladesh, put visitors ahead in Sylhet",
-      "summary": "Earlier in the day, Hasan Mahmud took 6 for 90, and became only the second man since Nathan Lyon to take his first five five-wicket hauls in different countries",
-      "url": "https://www.cricinfo.com/story/ban-vs-wi-wi-seamers-rattle-bangladesh-put-visitors-ahead-in-sylhet-1561628",
-      "imageUrl": "https://p.imgci.com/db/PICTURES/CMS/424800/424887.5.jpg",
-      "source": "espncricinfo",
-      "publishedAt": "2026-11-06T11:26:58.000Z"
     }
   ]
 }
