@@ -1,5 +1,5 @@
 {
-  "fetchedAt": "2026-11-13T01:51:52.469Z",
+  "fetchedAt": "2026-11-14T01:28:51.264Z",
   "source": "icc-sportz.io",
   "sourceUrl": "https://www.icc-cricket.com/rankings",
   "men": {
@@ -92,17 +92,17 @@
           "rank": 1,
           "name": "India",
           "abbreviation": "IND",
-          "rating": 117,
-          "points": 4439,
-          "matches": 38
+          "rating": 115,
+          "points": 4495,
+          "matches": 39
         },
         {
           "rank": 2,
           "name": "New Zealand",
           "abbreviation": "NZ",
-          "rating": 106,
-          "points": 3940,
-          "matches": 37
+          "rating": 108,
+          "points": 4107,
+          "matches": 38
         },
         {
           "rank": 3,
@@ -124,9 +124,9 @@
           "rank": 5,
           "name": "Australia",
           "abbreviation": "AUS",
-          "rating": 102,
-          "points": 3568,
-          "matches": 35
+          "rating": 103,
+          "points": 3711,
+          "matches": 36
         },
         {
           "rank": 6,
@@ -148,9 +148,9 @@
           "rank": 8,
           "name": "England",
           "abbreviation": "ENG",
-          "rating": 93,
-          "points": 3530,
-          "matches": 38
+          "rating": 92,
+          "points": 3582,
+          "matches": 39
         },
         {
           "rank": 9,
@@ -10400,7 +10400,7 @@
         "allrounder": "2026-11-10"
       },
       "odi": {
-        "team": "2026-11-07",
+        "team": "2026-11-13",
         "bat": "2026-11-10",
         "bowl": "2026-11-10",
         "allrounder": "2026-11-10"
@@ -10593,8 +10593,8 @@
           "name": "Sri Lanka",
           "abbreviation": "SL-W",
           "rating": 238,
-          "points": 10955,
-          "matches": 46
+          "points": 11203,
+          "matches": 47
         },
         {
           "rank": 7,
@@ -10608,41 +10608,41 @@
           "rank": 8,
           "name": "Pakistan",
           "abbreviation": "PAK-W",
-          "rating": 212,
-          "points": 8920,
-          "matches": 42
+          "rating": 213,
+          "points": 9142,
+          "matches": 43
         },
         {
           "rank": 9,
           "name": "Ireland",
           "abbreviation": "IRE-W",
           "rating": 203,
-          "points": 8708,
-          "matches": 43
+          "points": 8921,
+          "matches": 44
         },
         {
           "rank": 10,
           "name": "Bangladesh",
           "abbreviation": "BAN-W",
           "rating": 194,
-          "points": 8533,
-          "matches": 44
+          "points": 8737,
+          "matches": 45
         },
         {
           "rank": 11,
           "name": "Scotland",
           "abbreviation": "SCO-W",
           "rating": 168,
-          "points": 6565,
-          "matches": 39
+          "points": 6723,
+          "matches": 40
         },
         {
           "rank": 12,
           "name": "Thailand",
           "abbreviation": "THA-W",
           "rating": 152,
-          "points": 10051,
-          "matches": 66
+          "points": 10193,
+          "matches": 67
         },
         {
           "rank": 13,
@@ -10665,16 +10665,16 @@
           "name": "United Arab Emirates",
           "abbreviation": "UAE-W",
           "rating": 137,
-          "points": 6704,
-          "matches": 49
+          "points": 6831,
+          "matches": 50
         },
         {
           "rank": 16,
           "name": "Zimbabwe",
           "abbreviation": "ZIM-W",
           "rating": 120,
-          "points": 5507,
-          "matches": 46
+          "points": 5617,
+          "matches": 47
         },
         {
           "rank": 17,
@@ -11229,8 +11229,8 @@
         "name": "Bangladesh",
         "abbreviation": "BAN-W",
         "rating": 194,
-        "points": 8533,
-        "matches": 44
+        "points": 8737,
+        "matches": 45
       }
     },
     "players": {
@@ -17437,7 +17437,7 @@
         "allrounder": "2026-11-02"
       },
       "t20": {
-        "team": "2026-11-12",
+        "team": "2026-11-13",
         "bat": "2026-11-09",
         "bowl": "2026-11-09",
         "allrounder": "2026-11-09"
