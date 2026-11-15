@@ -1,5 +1,5 @@
 {
-  "fetchedAt": "2026-11-14T01:28:51.264Z",
+  "fetchedAt": "2026-11-15T01:05:40.658Z",
   "source": "icc-sportz.io",
   "sourceUrl": "https://www.icc-cricket.com/rankings",
   "men": {
@@ -10680,17 +10680,17 @@
           "rank": 17,
           "name": "Uganda",
           "abbreviation": "UGA-W",
-          "rating": 112,
-          "points": 6739,
-          "matches": 60
+          "rating": 113,
+          "points": 6878,
+          "matches": 61
         },
         {
           "rank": 18,
           "name": "Namibia",
           "abbreviation": "NAM-W",
-          "rating": 108,
-          "points": 5632,
-          "matches": 52
+          "rating": 107,
+          "points": 5675,
+          "matches": 53
         },
         {
           "rank": 19,
@@ -10704,9 +10704,9 @@
           "rank": 20,
           "name": "USA",
           "abbreviation": "USA-W",
-          "rating": 93,
-          "points": 3158,
-          "matches": 34
+          "rating": 95,
+          "points": 3316,
+          "matches": 35
         },
         {
           "rank": 21,
@@ -10726,19 +10726,19 @@
         },
         {
           "rank": 23,
-          "name": "Rwanda",
-          "abbreviation": "RWA-W",
-          "rating": 89,
-          "points": 5717,
-          "matches": 64
-        },
-        {
-          "rank": 24,
           "name": "Indonesia",
           "abbreviation": "INA-W",
           "rating": 89,
           "points": 3922,
           "matches": 44
+        },
+        {
+          "rank": 24,
+          "name": "Rwanda",
+          "abbreviation": "RWA-W",
+          "rating": 89,
+          "points": 5779,
+          "matches": 65
         },
         {
           "rank": 25,
@@ -17437,7 +17437,7 @@
         "allrounder": "2026-11-02"
       },
       "t20": {
-        "team": "2026-11-13",
+        "team": "2026-11-14",
         "bat": "2026-11-09",
         "bowl": "2026-11-09",
         "allrounder": "2026-11-09"
