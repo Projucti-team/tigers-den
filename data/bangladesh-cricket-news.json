@@ -1,6 +1,89 @@
 {
-  "fetchedAt": "2026-11-15T01:19:26.861Z",
+  "fetchedAt": "2026-11-16T01:23:12.191Z",
   "items": [
+    {
+      "id": "dailystar-https://www.thedailystar.net/sports/cricket/news/we-threw-everything-him-rabada-hails-hridoy-masterclass-4324941",
+      "title": "'We threw everything at him': Rabada hails Hridoy masterclass",
+      "summary": "Hridoy became just the second Bangladeshi batter, after Mahmudul Hasan Joy, to score a century against the Proteas in South Africa.",
+      "url": "https://www.thedailystar.net/sports/cricket/news/we-threw-everything-him-rabada-hails-hridoy-masterclass-4324941",
+      "source": "dailystar",
+      "publishedAt": "2026-11-15T18:53:06.000Z"
+    },
+    {
+      "id": "dailystar-https://www.thedailystar.net/sports/cricket/news/he-wanted-take-the-strike-tanzid-reveals-why-robin-took-first-strike-4324931",
+      "title": "'He wanted to take the strike': Tanzid reveals why Robin took first strike",
+      "summary": "Facing Kagiso Rabada with the new ball at The Wanderers is a daunting prospect for any seasoned opener, let alone a debutant.",
+      "url": "https://www.thedailystar.net/sports/cricket/news/he-wanted-take-the-strike-tanzid-reveals-why-robin-took-first-strike-4324931",
+      "source": "dailystar",
+      "publishedAt": "2026-11-15T18:26:25.000Z"
+    },
+    {
+      "id": "espn-https://www.cricinfo.com/ci/content/story/1562785.html",
+      "title": "Bangladesh, USA to host men's and women's LA28 qualifying tournaments",
+      "summary": "The ICC has finalised the windows for marquee men's tournaments until 2035",
+      "url": "https://www.cricinfo.com/story/bangladesh-usa-to-host-mens-and-womens-la28-qualifying-tournaments-1562785",
+      "imageUrl": "https://p.imgci.com/db/PICTURES/CMS/414300/414344.5.jpg",
+      "source": "espncricinfo",
+      "publishedAt": "2026-11-15T17:10:22.000Z"
+    },
+    {
+      "id": "dailystar-https://www.thedailystar.net/sports/cricket/news/hridoys-discipline-ensures-dream-day-wanderers-4324676",
+      "title": "Hridoy’s discipline ensures dream day at Wanderers",
+      "summary": "Towhid Hridoy hardly put a foot wrong after his two dismissals in the Mirpur Test, and on Sunday he demonstrated his growing mental strength by pacing his innings masterfully to score his second Test century. He became only the second Bangladesh batter after Mahmudul Hasan Joy to score a hundred in South Africa.",
+      "url": "https://www.thedailystar.net/sports/cricket/news/hridoys-discipline-ensures-dream-day-wanderers-4324676",
+      "source": "dailystar",
+      "publishedAt": "2026-11-15T16:25:43.000Z"
+    },
+    {
+      "id": "espn-https://www.cricinfo.com/ci/content/story/1562759.html",
+      "title": "Hridoy and Litton's 206-run stand powers Bangladesh after Rabada's five-for",
+      "summary": "Despite being reduced to 121 for 5, Bangladesh finished the day on 327 for 6",
+      "url": "https://www.cricinfo.com/story/sa-vs-ban-1st-test-towhid-hridoy-litton-das-power-bangladesh-after-kagiso-rabadas-five-1562759",
+      "imageUrl": "https://p.imgci.com/db/PICTURES/CMS/425300/425311.5.jpg",
+      "source": "espncricinfo",
+      "publishedAt": "2026-11-15T16:24:26.000Z"
+    },
+    {
+      "id": "dailystar-https://www.thedailystar.net/sports/cricket/news/10-years-the-making-mosaddek-breaks-bangladeshs-double-ton-record-4324631",
+      "title": "10 years in the making, Mosaddek breaks Bangladesh's double-ton record",
+      "summary": "Ten years is a long time but all-rounder Mosaddek Hossain clearly hasn’t forgotten the recipe for a double century.",
+      "url": "https://www.thedailystar.net/sports/cricket/news/10-years-the-making-mosaddek-breaks-bangladeshs-double-ton-record-4324631",
+      "source": "dailystar",
+      "publishedAt": "2026-11-15T14:40:07.000Z"
+    },
+    {
+      "id": "espn-https://www.cricinfo.com/ci/content/story/1562729.html",
+      "title": "Bangladesh opt to bat first in series opener at the Wanderers",
+      "summary": "Twenty-two-year-old Mahfijul Islam makes his debut for Bangladesh, while South Africa picked Zubayr Hamza at No. 3 and Dane Paterson as the fourth seamer",
+      "url": "https://www.cricinfo.com/story/sa-vs-ban-1st-test-bangladesh-opt-to-bat-first-in-series-opener-at-the-wanderers-1562729",
+      "imageUrl": "https://p.imgci.com/db/PICTURES/CMS/409000/409091.5.jpg",
+      "source": "espncricinfo",
+      "publishedAt": "2026-11-15T07:59:37.000Z"
+    },
+    {
+      "id": "dailystar-https://www.thedailystar.net/sports/cricket/news/robin-handed-test-debut-bangladesh-opt-bat-johannesburg-4324291",
+      "title": "Hridoy’s marathon ton ends in last-ball heartbreak as Tigers reach 327-6",
+      "summary": "A heroic rescue mission by Towhid Hridoy came to a heartbreaking end on the final delivery of the opening day as Bangladesh reached 327 for 6 against South Africa in the first Test at the Wanderers Stadium on Sunday.",
+      "url": "https://www.thedailystar.net/sports/cricket/news/robin-handed-test-debut-bangladesh-opt-bat-johannesburg-4324291",
+      "source": "dailystar",
+      "publishedAt": "2026-11-15T07:49:24.000Z"
+    },
+    {
+      "id": "dailystar-https://www.thedailystar.net/sports/cricket/news/saif-captain-bangladesh-rising-stars-asia-cup-4324276",
+      "title": "Saif to captain Bangladesh in Rising Stars Asia Cup",
+      "summary": "With Mohammad Naim currently in South Africa with the national Test squad, Bangladesh have named Saif Hassan as his replacement in the squad for the Rising Stars Asia Cup, which begins in Qatar on November 19.",
+      "url": "https://www.thedailystar.net/sports/cricket/news/saif-captain-bangladesh-rising-stars-asia-cup-4324276",
+      "source": "dailystar",
+      "publishedAt": "2026-11-15T07:09:34.000Z"
+    },
+    {
+      "id": "dailystar-https://www.thedailystar.net/sports/cricket/news/batting-key-ending-proteas-jinx-4324181",
+      "title": "Batting key to ending Proteas jinx",
+      "summary": "Bangladesh’s batting will be under the microscope when the visitors face South Africa in the opening Test of the two-match series at Johannesburg’s Wanderers Stadium today.",
+      "url": "https://www.thedailystar.net/sports/cricket/news/batting-key-ending-proteas-jinx-4324181",
+      "source": "dailystar",
+      "publishedAt": "2026-11-15T04:06:44.000Z"
+    },
     {
       "id": "espn-https://www.cricinfo.com/ci/content/story/1562662.html",
       "title": "Shanto: 'Very important for the whole batting unit to perform'",
@@ -20,46 +103,6 @@
       "publishedAt": "2026-11-14T16:15:41.000Z"
     },
     {
-      "id": "dailystar-https://www.thedailystar.net/sports/cricket/news/shanto-urges-batting-unit-step-against-proteas-amid-praise-pace-attack-4323686",
-      "title": "Shanto urges batting unit to step up against Proteas amid praise for pace attack",
-      "summary": "Shanto made it clear during his pre-match press conference on Saturday that the entire batting unit needs to step up if the visitors are to challenge hosts South Africa in the opening Test of the two-match series, which begins on Sunday at the Wanderers Stadium in Johannesburg.",
-      "url": "https://www.thedailystar.net/sports/cricket/news/shanto-urges-batting-unit-step-against-proteas-amid-praise-pace-attack-4323686",
-      "source": "dailystar",
-      "publishedAt": "2026-11-14T13:56:20.000Z"
-    },
-    {
-      "id": "dailystar-https://www.thedailystar.net/sports/cricket/news/mosaddek-ends-eight-year-wait-first-class-ton-4323621",
-      "title": "Mosaddek ends eight-year wait for first-class ton",
-      "summary": "Mosaddek's previous first-class hundred came in 2018, when he scored 104 for Central Zone against North Zone in a Bangladesh Cricket League (BCL) match.",
-      "url": "https://www.thedailystar.net/sports/cricket/news/mosaddek-ends-eight-year-wait-first-class-ton-4323621",
-      "source": "dailystar",
-      "publishedAt": "2026-11-14T12:20:48.000Z"
-    },
-    {
-      "id": "dailystar-https://www.thedailystar.net/sports/cricket/news/proteas-opt-four-pronged-pace-attack-against-tigers-johannesburg-test-4323551",
-      "title": "Proteas opt for four-pronged pace attack against Tigers in Johannesburg Test",
-      "summary": "Alongside their pace spearhead Kagiso Rabada and Dane Paterson, the Proteas have included pace-bowling all-rounders Wiaan Mulder and Marco Jansen, indicating their intention to exploit the conditions at the Wanderers. Harmer is the lone specialist spinner in the attack.",
-      "url": "https://www.thedailystar.net/sports/cricket/news/proteas-opt-four-pronged-pace-attack-against-tigers-johannesburg-test-4323551",
-      "source": "dailystar",
-      "publishedAt": "2026-11-14T10:21:29.000Z"
-    },
-    {
-      "id": "dailystar-https://www.thedailystar.net/sports/cricket/news/can-tigers-repeat-darwin-against-bavumas-formidable-proteas-4323446",
-      "title": "Can Tigers repeat Darwin against Bavuma's formidable Proteas?",
-      "summary": "With 13 victories in his first 15 Tests in charge, Bavuma has matched a record achieved only by Australia's Lindsay Hassett at the same stage of his captaincy. Both registered 13 wins, one draw and one defeat in their first 15 matches, making the South African the most successful Test captain at this stage of his tenure alongside the Australian.",
-      "url": "https://www.thedailystar.net/sports/cricket/news/can-tigers-repeat-darwin-against-bavumas-formidable-proteas-4323446",
-      "source": "dailystar",
-      "publishedAt": "2026-11-14T06:39:40.000Z"
-    },
-    {
-      "id": "dailystar-https://www.thedailystar.net/sports/cricket/news/tigresses-bounce-back-zimbabwe-victory-nahida-ruled-out-4323041",
-      "title": "Tigresses bounce back with Zimbabwe victory; Nahida ruled out",
-      "summary": "Bangladesh will not bring in a replacement for Nahida, as they travelled to the UAE with an extra member, although tournament regulations require teams to have 14 players.",
-      "url": "https://www.thedailystar.net/sports/cricket/news/tigresses-bounce-back-zimbabwe-victory-nahida-ruled-out-4323041",
-      "source": "dailystar",
-      "publishedAt": "2026-11-13T16:51:44.000Z"
-    },
-    {
       "id": "espn-https://www.cricinfo.com/ci/content/story/1562543.html",
       "title": "Rabada 'chuffed at engagement from fans' after series win against Australia",
       "summary": "Series against Bangladesh begins on Sunday, and Rabada hopes \"some exciting cricket\" shows \"how healthy cricket is\" in SA",
@@ -76,33 +119,6 @@
       "imageUrl": "https://p.imgci.com/db/PICTURES/CMS/412700/412772.5.jpg",
       "source": "espncricinfo",
       "publishedAt": "2026-11-12T12:43:21.000Z"
-    },
-    {
-      "id": "espn-https://www.cricinfo.com/ci/content/story/1562052.html",
-      "title": "Shanto: Bangladesh failed to make use of home conditions",
-      "summary": "\"Looking at the Test match as a whole, neither our batters nor our bowlers performed well; the responsibility lies with us\"",
-      "url": "https://www.cricinfo.com/story/ban-vs-wi-2nd-test-2026-shanto-bangladesh-failed-to-make-use-of-home-conditions-1562052",
-      "imageUrl": "https://p.imgci.com/db/PICTURES/CMS/425000/425011.6.jpg",
-      "source": "espncricinfo",
-      "publishedAt": "2026-11-10T05:32:10.000Z"
-    },
-    {
-      "id": "espn-https://www.cricinfo.com/ci/content/story/1562056.html",
-      "title": "Laurie Evans: 'My world was turned upside-down' during four-year fight against doping ban",
-      "summary": "Batter experienced 'suicidal thoughts' after testing positive for ostarine during routine test in 2022",
-      "url": "https://www.cricinfo.com/story/laurie-evans-my-world-was-turned-upside-down-during-four-year-fight-against-doping-ban-1562056",
-      "imageUrl": "https://p.imgci.com/db/PICTURES/CMS/334200/334262.5.jpg",
-      "source": "espncricinfo",
-      "publishedAt": "2026-11-09T18:56:11.000Z"
-    },
-    {
-      "id": "espn-https://www.cricinfo.com/ci/content/story/1562055.html",
-      "title": "Dale Benkenstein appointed Bangladesh's batting specialist ahead of SA tour",
-      "summary": "Bangladesh are scheduled to tour South Africa in November and December 2026 to play two Tests, three ODIs and three T20Is",
-      "url": "https://www.cricinfo.com/story/ban-vs-sa-dale-benkenstein-appointed-bangladesh-batting-specialist-ahead-of-sa-tour-1562055",
-      "imageUrl": "https://p.imgci.com/db/PICTURES/CMS/401200/401245.5.jpg",
-      "source": "espncricinfo",
-      "publishedAt": "2026-11-09T17:46:49.000Z"
     }
   ]
 }
