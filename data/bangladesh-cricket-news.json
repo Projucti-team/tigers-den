@@ -1,21 +1,95 @@
 {
-  "fetchedAt": "2026-11-16T01:23:12.191Z",
+  "fetchedAt": "2026-11-17T04:10:44.929Z",
   "items": [
     {
-      "id": "dailystar-https://www.thedailystar.net/sports/cricket/news/we-threw-everything-him-rabada-hails-hridoy-masterclass-4324941",
-      "title": "'We threw everything at him': Rabada hails Hridoy masterclass",
-      "summary": "Hridoy became just the second Bangladeshi batter, after Mahmudul Hasan Joy, to score a century against the Proteas in South Africa.",
-      "url": "https://www.thedailystar.net/sports/cricket/news/we-threw-everything-him-rabada-hails-hridoy-masterclass-4324941",
+      "id": "dailystar-https://www.thedailystar.net/sports/cricket/news/his-stillness-litton-finds-time-4325981",
+      "title": "In his stillness, Litton finds time",
+      "summary": "At the Wanderers Stadium, the importance of the runs, coupled with the consummate ease with which he scored them, put pressure back on one of the best bowling units in the world.",
+      "url": "https://www.thedailystar.net/sports/cricket/news/his-stillness-litton-finds-time-4325981",
       "source": "dailystar",
-      "publishedAt": "2026-11-15T18:53:06.000Z"
+      "publishedAt": "2026-11-17T02:49:24.000Z"
     },
     {
-      "id": "dailystar-https://www.thedailystar.net/sports/cricket/news/he-wanted-take-the-strike-tanzid-reveals-why-robin-took-first-strike-4324931",
-      "title": "'He wanted to take the strike': Tanzid reveals why Robin took first strike",
-      "summary": "Facing Kagiso Rabada with the new ball at The Wanderers is a daunting prospect for any seasoned opener, let alone a debutant.",
-      "url": "https://www.thedailystar.net/sports/cricket/news/he-wanted-take-the-strike-tanzid-reveals-why-robin-took-first-strike-4324931",
+      "id": "dailystar-https://www.thedailystar.net/sports/cricket/news/sylhet-crowned-womens-ncl-champions-4325901",
+      "title": "Sylhet crowned Women's NCL champions",
+      "summary": "Sylhet Division were crowned champions of the 15th Women's National Cricket League after beating Rajshahi Division by five wickets in their seventh and final-round match at the Cox's Bazar Academy Ground on Monday.",
+      "url": "https://www.thedailystar.net/sports/cricket/news/sylhet-crowned-womens-ncl-champions-4325901",
       "source": "dailystar",
-      "publishedAt": "2026-11-15T18:26:25.000Z"
+      "publishedAt": "2026-11-16T19:06:44.000Z"
+    },
+    {
+      "id": "dailystar-https://www.thedailystar.net/sports/cricket/news/whenever-bangladesh-are-trouble-i-want-handle-it-litton-4325891",
+      "title": "'Whenever Bangladesh are in trouble, I want to handle it': Litton",
+      "summary": "Bangladesh wicketkeeper-batter Litton Das has developed a habit of firing when his team is in dire straits. Following his famous rescue acts in Rawalpindi in 2024 and Sylhet last year against Pakistan, Litton produced another immaculate century on Day 2 of the first Test against South Africa at the Wanderers Stadium on Monday.",
+      "url": "https://www.thedailystar.net/sports/cricket/news/whenever-bangladesh-are-trouble-i-want-handle-it-litton-4325891",
+      "source": "dailystar",
+      "publishedAt": "2026-11-16T18:27:07.000Z"
+    },
+    {
+      "id": "espn-https://www.cricinfo.com/ci/content/story/1562885.html",
+      "title": "Litton: 'I always see crisis situations as opportunities'",
+      "summary": "Walking in at 121 for 5, the batter made his eighth Test hundred and dedicated it to his daughter",
+      "url": "https://www.cricinfo.com/story/sa-vs-ban-1st-test-litton-das-i-always-see-crisis-situations-as-opportunities-1562885",
+      "imageUrl": "https://p.imgci.com/db/PICTURES/CMS/425300/425318.5.jpg",
+      "source": "espncricinfo",
+      "publishedAt": "2026-11-16T18:05:00.000Z"
+    },
+    {
+      "id": "dailystar-https://www.thedailystar.net/sports/cricket/news/abu-jayeds-maiden-10-puts-sylhet-the-mix-ncl-title-4325626",
+      "title": "Abu Jayed's maiden 10-for puts Sylhet in the mix for NCL title",
+      "summary": "Pacer Abu Jayed completed a second five-wicket haul in the match to claim his maiden 10-wicket haul in first-class cricket and help Sylhet Division secure an innings-and-38-run victory over Barishal Division inside three days in their final-round National Cricket League match in Khulna on Monday.",
+      "url": "https://www.thedailystar.net/sports/cricket/news/abu-jayeds-maiden-10-puts-sylhet-the-mix-ncl-title-4325626",
+      "source": "dailystar",
+      "publishedAt": "2026-11-16T16:32:02.000Z"
+    },
+    {
+      "id": "dailystar-https://www.thedailystar.net/sports/cricket/news/wanderers-test-will-bangladesh-follow-history-or-south-africa-rewrite-it-4325586",
+      "title": "Wanderers Test: Will Bangladesh follow history or South Africa rewrite it?",
+      "summary": "At the end of the second day of the first Test today, the tourists had every reason to feel proud of their batting achievement, but South Africa's strong response had made the contest far more intriguing.",
+      "url": "https://www.thedailystar.net/sports/cricket/news/wanderers-test-will-bangladesh-follow-history-or-south-africa-rewrite-it-4325586",
+      "source": "dailystar",
+      "publishedAt": "2026-11-16T15:49:24.000Z"
+    },
+    {
+      "id": "dailystar-https://www.thedailystar.net/sports/cricket/news/tigresses-leave-super-six-fate-hanging-after-defeat-against-netherlands-4325441",
+      "title": "Tigresses leave Super Six fate hanging after defeat against Netherlands",
+      "summary": "Bangladesh suffered their second defeat in the ongoing ICC Women's Emerging Nations Trophy 2026, going down by five wickets to the Netherlands in their third Group B match in Ajman on Monday.",
+      "url": "https://www.thedailystar.net/sports/cricket/news/tigresses-leave-super-six-fate-hanging-after-defeat-against-netherlands-4325441",
+      "source": "dailystar",
+      "publishedAt": "2026-11-16T13:11:55.000Z"
+    },
+    {
+      "id": "dailystar-https://www.thedailystar.net/sports/cricket/news/hridoy-points-self-belief-and-process-keys-wanderers-success-4325291",
+      "title": "Hridoy points to self-belief and process as keys to Wanderers success",
+      "summary": "With a magnificent 137 at the Wanderers in Johannesburg, the Bangladesh batter once again demonstrated his ability to adjust to challenging conditions without losing sight of his strengths. For Hridoy, the key lies in trusting his ability and sticking to his process.",
+      "url": "https://www.thedailystar.net/sports/cricket/news/hridoy-points-self-belief-and-process-keys-wanderers-success-4325291",
+      "source": "dailystar",
+      "publishedAt": "2026-11-16T09:16:23.000Z"
+    },
+    {
+      "id": "dailystar-https://www.thedailystar.net/sports/cricket/news/happy-birthday-my-princess-100-you-4325271",
+      "title": "‘Happy birthday my princess, this 100 for you’",
+      "summary": "The Bangladesh wicketkeeper-batter pulled out a piece of paper bearing a heartfelt message: “Happy Birthday my Princess, This 100 for you.” The gesture drew applause from the Bangladesh dugout as Litton celebrated his first Test century on South African soil.",
+      "url": "https://www.thedailystar.net/sports/cricket/news/happy-birthday-my-princess-100-you-4325271",
+      "source": "dailystar",
+      "publishedAt": "2026-11-16T08:36:16.000Z"
+    },
+    {
+      "id": "dailystar-https://www.thedailystar.net/sports/cricket/news/hasans-early-strike-quickly-forgotten-south-africa-dominate-post-lunch-4325256",
+      "title": "Hasan drags Tigers back into the contest after Ackerman's onslaught",
+      "summary": "Bangladesh wicketkeeper Litton Das put down a late chance on Day 2, denying pacer Hasan Mahmud a fourth wicket as the Tigers clawed their way back into the contest after a gruelling day in the field in the first Test against South Africa at the Wanderers Stadium on Monday.",
+      "url": "https://www.thedailystar.net/sports/cricket/news/hasans-early-strike-quickly-forgotten-south-africa-dominate-post-lunch-4325256",
+      "source": "dailystar",
+      "publishedAt": "2026-11-16T08:17:17.000Z"
+    },
+    {
+      "id": "espn-https://www.cricinfo.com/ci/content/story/1562805.html",
+      "title": "Rabada goes from 'not short and wide' to five in no time",
+      "summary": "He took the first five Bangladesh wickets to fall in Johannesburg but South Africa let the advantage slip",
+      "url": "https://www.cricinfo.com/story/sa-vs-ban-1st-test-kagiso-rabada-goes-from-not-short-and-wide-to-five-in-no-time-1562805",
+      "imageUrl": "https://p.imgci.com/db/PICTURES/CMS/425300/425307.5.jpg",
+      "source": "espncricinfo",
+      "publishedAt": "2026-11-16T07:47:06.000Z"
     },
     {
       "id": "espn-https://www.cricinfo.com/ci/content/story/1562785.html",
@@ -27,14 +101,6 @@
       "publishedAt": "2026-11-15T17:10:22.000Z"
     },
     {
-      "id": "dailystar-https://www.thedailystar.net/sports/cricket/news/hridoys-discipline-ensures-dream-day-wanderers-4324676",
-      "title": "Hridoy’s discipline ensures dream day at Wanderers",
-      "summary": "Towhid Hridoy hardly put a foot wrong after his two dismissals in the Mirpur Test, and on Sunday he demonstrated his growing mental strength by pacing his innings masterfully to score his second Test century. He became only the second Bangladesh batter after Mahmudul Hasan Joy to score a hundred in South Africa.",
-      "url": "https://www.thedailystar.net/sports/cricket/news/hridoys-discipline-ensures-dream-day-wanderers-4324676",
-      "source": "dailystar",
-      "publishedAt": "2026-11-15T16:25:43.000Z"
-    },
-    {
       "id": "espn-https://www.cricinfo.com/ci/content/story/1562759.html",
       "title": "Hridoy and Litton's 206-run stand powers Bangladesh after Rabada's five-for",
       "summary": "Despite being reduced to 121 for 5, Bangladesh finished the day on 327 for 6",
@@ -44,14 +110,6 @@
       "publishedAt": "2026-11-15T16:24:26.000Z"
     },
     {
-      "id": "dailystar-https://www.thedailystar.net/sports/cricket/news/10-years-the-making-mosaddek-breaks-bangladeshs-double-ton-record-4324631",
-      "title": "10 years in the making, Mosaddek breaks Bangladesh's double-ton record",
-      "summary": "Ten years is a long time but all-rounder Mosaddek Hossain clearly hasn’t forgotten the recipe for a double century.",
-      "url": "https://www.thedailystar.net/sports/cricket/news/10-years-the-making-mosaddek-breaks-bangladeshs-double-ton-record-4324631",
-      "source": "dailystar",
-      "publishedAt": "2026-11-15T14:40:07.000Z"
-    },
-    {
       "id": "espn-https://www.cricinfo.com/ci/content/story/1562729.html",
       "title": "Bangladesh opt to bat first in series opener at the Wanderers",
       "summary": "Twenty-two-year-old Mahfijul Islam makes his debut for Bangladesh, while South Africa picked Zubayr Hamza at No. 3 and Dane Paterson as the fourth seamer",
@@ -59,30 +117,6 @@
       "imageUrl": "https://p.imgci.com/db/PICTURES/CMS/409000/409091.5.jpg",
       "source": "espncricinfo",
       "publishedAt": "2026-11-15T07:59:37.000Z"
-    },
-    {
-      "id": "dailystar-https://www.thedailystar.net/sports/cricket/news/robin-handed-test-debut-bangladesh-opt-bat-johannesburg-4324291",
-      "title": "Hridoy’s marathon ton ends in last-ball heartbreak as Tigers reach 327-6",
-      "summary": "A heroic rescue mission by Towhid Hridoy came to a heartbreaking end on the final delivery of the opening day as Bangladesh reached 327 for 6 against South Africa in the first Test at the Wanderers Stadium on Sunday.",
-      "url": "https://www.thedailystar.net/sports/cricket/news/robin-handed-test-debut-bangladesh-opt-bat-johannesburg-4324291",
-      "source": "dailystar",
-      "publishedAt": "2026-11-15T07:49:24.000Z"
-    },
-    {
-      "id": "dailystar-https://www.thedailystar.net/sports/cricket/news/saif-captain-bangladesh-rising-stars-asia-cup-4324276",
-      "title": "Saif to captain Bangladesh in Rising Stars Asia Cup",
-      "summary": "With Mohammad Naim currently in South Africa with the national Test squad, Bangladesh have named Saif Hassan as his replacement in the squad for the Rising Stars Asia Cup, which begins in Qatar on November 19.",
-      "url": "https://www.thedailystar.net/sports/cricket/news/saif-captain-bangladesh-rising-stars-asia-cup-4324276",
-      "source": "dailystar",
-      "publishedAt": "2026-11-15T07:09:34.000Z"
-    },
-    {
-      "id": "dailystar-https://www.thedailystar.net/sports/cricket/news/batting-key-ending-proteas-jinx-4324181",
-      "title": "Batting key to ending Proteas jinx",
-      "summary": "Bangladesh’s batting will be under the microscope when the visitors face South Africa in the opening Test of the two-match series at Johannesburg’s Wanderers Stadium today.",
-      "url": "https://www.thedailystar.net/sports/cricket/news/batting-key-ending-proteas-jinx-4324181",
-      "source": "dailystar",
-      "publishedAt": "2026-11-15T04:06:44.000Z"
     },
     {
       "id": "espn-https://www.cricinfo.com/ci/content/story/1562662.html",
