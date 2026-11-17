@@ -1,5 +1,5 @@
 {
-  "fetchedAt": "2026-11-16T01:04:51.822Z",
+  "fetchedAt": "2026-11-17T03:56:41.122Z",
   "source": "espn-cricinfo-core",
   "cycleLabel": "2025–2027",
   "standings": [
@@ -18,19 +18,6 @@
     },
     {
       "rank": 2,
-      "team": "South Africa",
-      "abbreviation": "SA",
-      "played": 7,
-      "won": 5,
-      "lost": 2,
-      "drawn": 0,
-      "tied": 0,
-      "noResult": 0,
-      "points": 60,
-      "pct": 71.43
-    },
-    {
-      "rank": 3,
       "team": "Australia",
       "abbreviation": "AUS",
       "played": 13,
@@ -43,7 +30,7 @@
       "pct": 69.23
     },
     {
-      "rank": 4,
+      "rank": 3,
       "team": "India",
       "abbreviation": "IND",
       "played": 11,
@@ -56,7 +43,7 @@
       "pct": 51.52
     },
     {
-      "rank": 5,
+      "rank": 4,
       "team": "Bangladesh",
       "abbreviation": "BAN",
       "played": 8,
@@ -69,7 +56,7 @@
       "pct": 45.83
     },
     {
-      "rank": 6,
+      "rank": 5,
       "team": "England",
       "abbreviation": "ENG",
       "played": 16,
@@ -82,7 +69,7 @@
       "pct": 38.54
     },
     {
-      "rank": 7,
+      "rank": 6,
       "team": "Sri Lanka",
       "abbreviation": "SL",
       "played": 7,
@@ -93,32 +80,6 @@
       "noResult": 0,
       "points": 28,
       "pct": 33.33
-    },
-    {
-      "rank": 8,
-      "team": "West Indies",
-      "abbreviation": "WI",
-      "played": 14,
-      "won": 3,
-      "lost": 8,
-      "drawn": 3,
-      "tied": 0,
-      "noResult": 0,
-      "points": 46,
-      "pct": 27.38
-    },
-    {
-      "rank": 9,
-      "team": "Pakistan",
-      "abbreviation": "PAK",
-      "played": 10,
-      "won": 2,
-      "lost": 7,
-      "drawn": 1,
-      "tied": 0,
-      "noResult": 0,
-      "points": 9,
-      "pct": 7.5
     }
   ]
 }
