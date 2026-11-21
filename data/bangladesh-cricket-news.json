@@ -1,29 +1,72 @@
 {
-  "fetchedAt": "2026-11-20T02:35:48.166Z",
+  "fetchedAt": "2026-11-21T02:49:56.170Z",
   "items": [
     {
-      "id": "dailystar-https://www.thedailystar.net/sports/cricket/news/saif-yasir-fifties-fire-bangladesh-commanding-win-over-hong-kong-4328326",
-      "title": "Saif, Yasir fifties fire Bangladesh A to commanding win over Hong Kong",
-      "summary": "Unbeaten half-centuries from skipper Saif Hassan and Yasir Ali powered Bangladesh A to a convincing eight-wicket victory over Hong Kong, China in their ACC Asia Cup Rising Stars opener at the University of Doha for Science and Technology in Qatar on Thursday.",
-      "url": "https://www.thedailystar.net/sports/cricket/news/saif-yasir-fifties-fire-bangladesh-commanding-win-over-hong-kong-4328326",
+      "id": "dailystar-https://www.thedailystar.net/sports/cricket/news/speechless-see-only-three-seamers-4329016",
+      "title": "‘Speechless to see only three seamers’",
+      "summary": "The former Bangladesh pace-bowling coach, who served in the role for one and a half years between 2022 and 2023, was encouraged by the Tigers' progress with the bat but concerned by their decision to field only three seamers at the Wanderers and the workload on their fast bowlers.",
+      "url": "https://www.thedailystar.net/sports/cricket/news/speechless-see-only-three-seamers-4329016",
       "source": "dailystar",
-      "publishedAt": "2026-11-19T14:37:38.000Z"
+      "publishedAt": "2026-11-21T02:00:00.000Z"
     },
     {
-      "id": "dailystar-https://www.thedailystar.net/sports/cricket/news/very-happy-batting-shanto-4328281",
-      "title": "‘Very happy with batting’, says Bangladesh skipper Shanto despite heavy defeat in first South Africa Test",
-      "summary": "Minutes after watching his side fold for a paltry 168 to hand South Africa a nine-wicket victory in the opening Test in Johannesburg on Thursday, Bangladesh captain Najmul Hossain Shanto offered a rather curious assessment; he was pleased with his team’s batting.",
-      "url": "https://www.thedailystar.net/sports/cricket/news/very-happy-batting-shanto-4328281",
-      "source": "dailystar",
-      "publishedAt": "2026-11-19T13:30:19.000Z"
+      "id": "espn-https://www.cricinfo.com/ci/content/story/1563369.html",
+      "title": "Injured Hasan Mahmud ruled out of South Africa tour",
+      "summary": "Bangladesh have not named a replacement yet and could bring left-arm quick Shoriful Islam into the XI for the second Test against South Africa",
+      "url": "https://www.cricinfo.com/story/sa-vs-ban-bangladesh-fast-bowler-hasan-mahmud-ruled-out-of-south-africa-tour-1563369",
+      "imageUrl": "https://p.imgci.com/db/PICTURES/CMS/425300/425362.5.jpg",
+      "source": "espncricinfo",
+      "publishedAt": "2026-11-20T14:03:18.000Z"
     },
     {
-      "id": "dailystar-https://www.thedailystar.net/sports/cricket/news/bangladesh-make-historic-lords-t20i-debut-against-nepal-4328271",
-      "title": "Bangladesh to make historic Lord’s T20I debut against Nepal",
-      "summary": "Marylebone Cricket Club (MCC) announced on Thursday that Lord’s will host the historic encounter as part of Nepal’s tour of England, with the fixture set to be the first men’s international and domestic double-header at the ground.",
-      "url": "https://www.thedailystar.net/sports/cricket/news/bangladesh-make-historic-lords-t20i-debut-against-nepal-4328271",
+      "id": "dailystar-https://www.thedailystar.net/sports/cricket/news/hasan-mahmud-ruled-out-remainder-south-africa-tour-elbow-injury-4328941",
+      "title": "Hasan Mahmud ruled out of remainder of South Africa tour with elbow injury",
+      "summary": "Bangladesh pacer Hasan Mahmud has been ruled out of the remainder of the South Africa tour due to a right elbow injury, the Bangladesh Cricket Board (BCB) confirmed on Friday.",
+      "url": "https://www.thedailystar.net/sports/cricket/news/hasan-mahmud-ruled-out-remainder-south-africa-tour-elbow-injury-4328941",
       "source": "dailystar",
-      "publishedAt": "2026-11-19T13:16:14.000Z"
+      "publishedAt": "2026-11-20T13:32:19.000Z"
+    },
+    {
+      "id": "espn-https://www.cricinfo.com/ci/content/story/1563324.html",
+      "title": "Ngidi back from injury for Bangladesh ODIs; Maharaj to lead SA",
+      "summary": "Anrich Nortje, who has not played an ODI since before the 2023 ODI World Cup, is also back and is also expected to be fit for the second Test",
+      "url": "https://www.cricinfo.com/story/sa-vs-ban-lungi-ngidi-back-from-injury-for-bangladesh-odis-maharaj-to-lead-south-africa-1563324",
+      "imageUrl": "https://p.imgci.com/db/PICTURES/CMS/371200/371230.5.jpg",
+      "source": "espncricinfo",
+      "publishedAt": "2026-11-20T12:38:00.000Z"
+    },
+    {
+      "id": "espn-https://www.cricinfo.com/ci/content/story/1563348.html",
+      "title": "Hridoy fined 40% of match fee, handed two demerit points for dissent",
+      "summary": "The Bangladesh batter was heard criticising the umpires in a manner described as \"aggressive and unbecoming\"",
+      "url": "https://www.cricinfo.com/story/sa-vs-ban-towhid-hridoy-fined-40-of-match-fee-handed-two-demerit-points-for-dissent-1563348",
+      "imageUrl": "https://p.imgci.com/db/PICTURES/CMS/425300/425314.5.jpg",
+      "source": "espncricinfo",
+      "publishedAt": "2026-11-20T11:14:09.000Z"
+    },
+    {
+      "id": "dailystar-https://www.thedailystar.net/sports/cricket/news/hasan-mahmud-likely-miss-rest-sa-tour-4328871",
+      "title": "Hasan Mahmud likely to miss rest of SA tour",
+      "summary": "Bangladesh pacer Hasan Mahmud is likely to miss the remainder of the South Africa tour due to a recurring tennis elbow injury,",
+      "url": "https://www.thedailystar.net/sports/cricket/news/hasan-mahmud-likely-miss-rest-sa-tour-4328871",
+      "source": "dailystar",
+      "publishedAt": "2026-11-20T10:10:37.000Z"
+    },
+    {
+      "id": "dailystar-https://www.thedailystar.net/sports/cricket/news/south-africa-rest-several-top-stars-bangladesh-white-ball-series-4328856",
+      "title": "South Africa rest several top stars for Bangladesh white-ball series",
+      "summary": "South Africa have announced their squads for the upcoming ODI and T20I series against Bangladesh, resting regular captain Temba Bavuma and several leading players.",
+      "url": "https://www.thedailystar.net/sports/cricket/news/south-africa-rest-several-top-stars-bangladesh-white-ball-series-4328856",
+      "source": "dailystar",
+      "publishedAt": "2026-11-20T09:47:21.000Z"
+    },
+    {
+      "id": "dailystar-https://www.thedailystar.net/sports/cricket/news/hridoy-fined-criticising-umpires-decision-4328841",
+      "title": "Hridoy fined for criticising umpires' decision",
+      "summary": "Bangladesh batter Tawhid Hridoy has been fined 40% of his match fee after he was found guilty of breaching Level 1 of the ICC Code of Conduct during the first Test against South Africa in Johannesburg on Wednesday.",
+      "url": "https://www.thedailystar.net/sports/cricket/news/hridoy-fined-criticising-umpires-decision-4328841",
+      "source": "dailystar",
+      "publishedAt": "2026-11-20T08:47:17.000Z"
     },
     {
       "id": "espn-https://www.cricinfo.com/ci/content/story/1563241.html",
@@ -60,22 +103,6 @@
       "imageUrl": "https://p.imgci.com/db/PICTURES/CMS/383000/383023.5.jpg",
       "source": "espncricinfo",
       "publishedAt": "2026-11-19T11:12:37.000Z"
-    },
-    {
-      "id": "dailystar-https://www.thedailystar.net/sports/cricket/news/litton-departs-after-brisk-39-4328081",
-      "title": "Bangladesh suffer 9-wicket defeat in Jo'Burg",
-      "summary": "The wicketkeeper-batter had already made a commanding 120 in the first innings and set a world record in Test wicketkeeping, adding another significant contribution to an eventful match.",
-      "url": "https://www.thedailystar.net/sports/cricket/news/litton-departs-after-brisk-39-4328081",
-      "source": "dailystar",
-      "publishedAt": "2026-11-19T08:56:02.000Z"
-    },
-    {
-      "id": "dailystar-https://www.thedailystar.net/sports/cricket/news/the-game-the-back-foot-4327921",
-      "title": "From in the game to on the back foot",
-      "summary": "Now wobbling at 100 for five in their second innings, the Tigers were left with the faintest of margins for error.",
-      "url": "https://www.thedailystar.net/sports/cricket/news/the-game-the-back-foot-4327921",
-      "source": "dailystar",
-      "publishedAt": "2026-11-19T05:08:34.000Z"
     },
     {
       "id": "espn-https://www.cricinfo.com/ci/content/story/1563090.html",
@@ -157,33 +184,6 @@
       "imageUrl": "https://p.imgci.com/db/PICTURES/CMS/425300/425311.5.jpg",
       "source": "espncricinfo",
       "publishedAt": "2026-11-15T16:24:26.000Z"
-    },
-    {
-      "id": "espn-https://www.cricinfo.com/ci/content/story/1562729.html",
-      "title": "Bangladesh opt to bat first in series opener at the Wanderers",
-      "summary": "Twenty-two-year-old Mahfijul Islam makes his debut for Bangladesh, while South Africa picked Zubayr Hamza at No. 3 and Dane Paterson as the fourth seamer",
-      "url": "https://www.cricinfo.com/story/sa-vs-ban-1st-test-bangladesh-opt-to-bat-first-in-series-opener-at-the-wanderers-1562729",
-      "imageUrl": "https://p.imgci.com/db/PICTURES/CMS/409000/409091.5.jpg",
-      "source": "espncricinfo",
-      "publishedAt": "2026-11-15T07:59:37.000Z"
-    },
-    {
-      "id": "espn-https://www.cricinfo.com/ci/content/story/1562662.html",
-      "title": "Shanto: 'Very important for the whole batting unit to perform'",
-      "summary": "The Bangladesh captain said their bowling attack can \"compete\" if the batters post a big total in the first innings",
-      "url": "https://www.cricinfo.com/story/sa-vs-ban-najmul-hossain-shanto-very-important-for-the-whole-batting-unit-to-perform-1562662",
-      "imageUrl": "https://p.imgci.com/db/PICTURES/CMS/421100/421125.5.jpg",
-      "source": "espncricinfo",
-      "publishedAt": "2026-11-14T16:38:42.000Z"
-    },
-    {
-      "id": "espn-https://www.cricinfo.com/ci/content/story/1562635.html",
-      "title": "On-song South Africa host Bangladesh with an eye on another WTC final",
-      "summary": "Hamza and Paterson return to South Africa's XI in what is Johannesburg's first Test since March 2023",
-      "url": "https://www.cricinfo.com/story/sa-vs-ban-sa-keen-on-retaining-wtc-ascendancy-against-out-of-form-bangladesh-1562635",
-      "imageUrl": "https://p.imgci.com/db/PICTURES/CMS/425200/425246.5.jpg",
-      "source": "espncricinfo",
-      "publishedAt": "2026-11-14T16:15:41.000Z"
     }
   ]
 }
