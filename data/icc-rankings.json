@@ -1,5 +1,5 @@
 {
-  "fetchedAt": "2026-11-21T02:20:07.739Z",
+  "fetchedAt": "2026-11-22T01:22:24.913Z",
   "source": "icc-sportz.io",
   "sourceUrl": "https://www.icc-cricket.com/rankings",
   "men": {
@@ -254,9 +254,9 @@
           "rank": 1,
           "name": "England",
           "abbreviation": "ENG",
-          "rating": 269,
-          "points": 11021,
-          "matches": 41
+          "rating": 267,
+          "points": 11231,
+          "matches": 42
         },
         {
           "rank": 2,
@@ -270,9 +270,9 @@
           "rank": 3,
           "name": "Australia",
           "abbreviation": "AUS",
-          "rating": 260,
-          "points": 9868,
-          "matches": 38
+          "rating": 261,
+          "points": 10187,
+          "matches": 39
         },
         {
           "rank": 4,
@@ -10410,7 +10410,7 @@
         "allrounder": "2026-11-17"
       },
       "t20": {
-        "team": "2026-11-19",
+        "team": "2026-11-21",
         "bat": "2026-11-17",
         "bowl": "2026-11-17",
         "allrounder": "2026-11-17"
@@ -10725,8 +10725,8 @@
           "name": "Indonesia",
           "abbreviation": "INA-W",
           "rating": 90,
-          "points": 4039,
-          "matches": 45
+          "points": 4139,
+          "matches": 46
         },
         {
           "rank": 23,
@@ -10837,8 +10837,8 @@
           "name": "China",
           "abbreviation": "CHN-W",
           "rating": 50,
-          "points": 1842,
-          "matches": 37
+          "points": 1882,
+          "matches": 38
         },
         {
           "rank": 37,
@@ -17440,7 +17440,7 @@
         "allrounder": "2026-11-02"
       },
       "t20": {
-        "team": "2026-11-20",
+        "team": "2026-11-21",
         "bat": "2026-11-16",
         "bowl": "2026-11-16",
         "allrounder": "2026-11-16"
