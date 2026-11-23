@@ -1,5 +1,5 @@
 {
-  "fetchedAt": "2026-11-22T01:22:24.913Z",
+  "fetchedAt": "2026-11-23T01:47:23.122Z",
   "source": "icc-sportz.io",
   "sourceUrl": "https://www.icc-cricket.com/rankings",
   "men": {
@@ -220,17 +220,17 @@
           "rank": 17,
           "name": "Nepal",
           "abbreviation": "NEP",
-          "rating": 30,
-          "points": 1108,
-          "matches": 37
+          "rating": 31,
+          "points": 1178,
+          "matches": 38
         },
         {
           "rank": 18,
           "name": "United Arab Emirates",
           "abbreviation": "UAE",
-          "rating": 20,
-          "points": 663,
-          "matches": 34
+          "rating": 18,
+          "points": 643,
+          "matches": 35
         },
         {
           "rank": 19,
@@ -10404,7 +10404,7 @@
         "allrounder": "2026-11-17"
       },
       "odi": {
-        "team": "2026-11-18",
+        "team": "2026-11-22",
         "bat": "2026-11-17",
         "bowl": "2026-11-17",
         "allrounder": "2026-11-17"
@@ -10597,8 +10597,8 @@
           "name": "Sri Lanka",
           "abbreviation": "SL-W",
           "rating": 239,
-          "points": 11949,
-          "matches": 50
+          "points": 12198,
+          "matches": 51
         },
         {
           "rank": 7,
@@ -10613,16 +10613,16 @@
           "name": "Pakistan",
           "abbreviation": "PAK-W",
           "rating": 210,
-          "points": 9637,
-          "matches": 46
+          "points": 9857,
+          "matches": 47
         },
         {
           "rank": 9,
           "name": "Ireland",
           "abbreviation": "IRE-W",
-          "rating": 202,
-          "points": 9514,
-          "matches": 47
+          "rating": 203,
+          "points": 9726,
+          "matches": 48
         },
         {
           "rank": 10,
@@ -10637,8 +10637,8 @@
           "name": "Scotland",
           "abbreviation": "SCO-W",
           "rating": 169,
-          "points": 7256,
-          "matches": 43
+          "points": 7415,
+          "matches": 44
         },
         {
           "rank": 12,
@@ -10653,8 +10653,8 @@
           "name": "Netherlands",
           "abbreviation": "NED-W",
           "rating": 145,
-          "points": 7814,
-          "matches": 54
+          "points": 7949,
+          "matches": 55
         },
         {
           "rank": 14,
@@ -10677,8 +10677,8 @@
           "name": "Zimbabwe",
           "abbreviation": "ZIM-W",
           "rating": 122,
-          "points": 6238,
-          "matches": 51
+          "points": 6350,
+          "matches": 52
         },
         {
           "rank": 17,
@@ -10772,9 +10772,9 @@
           "rank": 28,
           "name": "Malaysia",
           "abbreviation": "MAS-W",
-          "rating": 66,
-          "points": 3641,
-          "matches": 55
+          "rating": 67,
+          "points": 3741,
+          "matches": 56
         },
         {
           "rank": 29,
@@ -10834,19 +10834,19 @@
         },
         {
           "rank": 36,
-          "name": "China",
-          "abbreviation": "CHN-W",
-          "rating": 50,
-          "points": 1882,
-          "matches": 38
-        },
-        {
-          "rank": 37,
           "name": "Cyprus",
           "abbreviation": "CYP-W",
           "rating": 49,
           "points": 1080,
           "matches": 22
+        },
+        {
+          "rank": 37,
+          "name": "China",
+          "abbreviation": "CHN-W",
+          "rating": 49,
+          "points": 1898,
+          "matches": 39
         },
         {
           "rank": 38,
@@ -17440,7 +17440,7 @@
         "allrounder": "2026-11-02"
       },
       "t20": {
-        "team": "2026-11-21",
+        "team": "2026-11-22",
         "bat": "2026-11-16",
         "bowl": "2026-11-16",
         "allrounder": "2026-11-16"
