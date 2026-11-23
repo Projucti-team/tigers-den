@@ -1,6 +1,63 @@
 {
-  "fetchedAt": "2026-11-22T01:34:41.480Z",
+  "fetchedAt": "2026-11-23T01:58:46.948Z",
   "items": [
+    {
+      "id": "dailystar-https://www.thedailystar.net/sports/cricket/news/2031-world-cup-semis-simmons-future-tamim-speaks-key-bcb-issues-4330526",
+      "title": "From 2031 World Cup semis to Simmons' future: Tamim speaks on key BCB issues",
+      "summary": "Bangladesh Cricket Board (BCB) president Tamim Iqbal is optimistic about Bangladesh hosting one of the two semifinals of the 2031 ICC World Cup, which the country will co-host with India.",
+      "url": "https://www.thedailystar.net/sports/cricket/news/2031-world-cup-semis-simmons-future-tamim-speaks-key-bcb-issues-4330526",
+      "source": "dailystar",
+      "publishedAt": "2026-11-22T15:28:22.000Z"
+    },
+    {
+      "id": "dailystar-https://www.thedailystar.net/sports/cricket/news/you-have-back-players-little-longer-4330496",
+      "title": "'You have to back players for a little longer'",
+      "summary": "Mominul's place in the XI has come under scrutiny following Bangladesh's nine-wicket defeat at the Wanderers, where the former captain registered a first-innings duck. The country's second-highest Test centurion with 13 hundreds has now gone 10 innings without a fifty, averaging 19.5 during that period, while his record in South Africa remains particularly poor, with an average of 10.6 across 10 innings.",
+      "url": "https://www.thedailystar.net/sports/cricket/news/you-have-back-players-little-longer-4330496",
+      "source": "dailystar",
+      "publishedAt": "2026-11-22T14:44:10.000Z"
+    },
+    {
+      "id": "dailystar-https://www.thedailystar.net/sports/cricket/news/the-bowlers-are-quite-fired-markram-warns-bangladesh-ahead-second-test-4330396",
+      "title": "'The bowlers are quite fired up': Markram warns Bangladesh ahead of second Test",
+      "summary": "Fast bowler Anrich Nortje will add an extra element of pace to what stand-in South African captain Aiden Markram said was a \"fired up\" bowling attack for the second Test against Bangladesh starting at SuperSport Park on Monday.",
+      "url": "https://www.thedailystar.net/sports/cricket/news/the-bowlers-are-quite-fired-markram-warns-bangladesh-ahead-second-test-4330396",
+      "source": "dailystar",
+      "publishedAt": "2026-11-22T13:02:30.000Z"
+    },
+    {
+      "id": "espn-https://www.cricinfo.com/ci/content/story/1563618.html",
+      "title": "Injury-hit Bangladesh face uphill task against Bavuma-less South Africa",
+      "summary": "Without Mushfiqur and Mahmud, Bangladesh will need a lot to go their way to challenge WTC title-holders South Africa",
+      "url": "https://www.cricinfo.com/story/injury-hit-bangladesh-face-uphill-task-against-bavuma-less-south-africa-1563618",
+      "imageUrl": "https://p.imgci.com/db/PICTURES/CMS/425400/425478.5.jpg",
+      "source": "espncricinfo",
+      "publishedAt": "2026-11-22T12:37:42.000Z"
+    },
+    {
+      "id": "dailystar-https://www.thedailystar.net/sports/cricket/news/nortje-de-zorzi-included-south-africas-playing-xi-4330356",
+      "title": "Nortje, De Zorzi included in South Africa's playing XI",
+      "summary": "Anrich Nortje and Toni de Zorzi were named in the South Africa playing XI for the second and final Test match against Bangladesh, starting at Centurion on Monday.",
+      "url": "https://www.thedailystar.net/sports/cricket/news/nortje-de-zorzi-included-south-africas-playing-xi-4330356",
+      "source": "dailystar",
+      "publishedAt": "2026-11-22T11:57:34.000Z"
+    },
+    {
+      "id": "dailystar-https://www.thedailystar.net/sports/cricket/news/720-runs-mountain-records-india-4330161",
+      "title": "720 runs, a mountain of records for India",
+      "summary": "The visitors' innings was the highest in Test cricket in New Zealand, surpassing the hosts' 715 for six against Bangladesh in Hamilton in 2019. India also became the first team to score 700 or more against New Zealand, eclipsing West Indies' 660 for five in Wellington in 1995.",
+      "url": "https://www.thedailystar.net/sports/cricket/news/720-runs-mountain-records-india-4330161",
+      "source": "dailystar",
+      "publishedAt": "2026-11-22T06:24:55.000Z"
+    },
+    {
+      "id": "dailystar-https://www.thedailystar.net/sports/cricket/news/no-pace-bowling-all-rounder-no-easy-way-out-tigers-sa-4330151",
+      "title": "No pace-bowling all-rounder, no easy way out for Tigers in SA",
+      "summary": "Despite feeling the shortage of a bowler, the Bangladesh team management believes it has no viable alternative in South Africa. The reason is a familiar one: concern over the length of the tail.",
+      "url": "https://www.thedailystar.net/sports/cricket/news/no-pace-bowling-all-rounder-no-easy-way-out-tigers-sa-4330151",
+      "source": "dailystar",
+      "publishedAt": "2026-11-22T06:06:04.000Z"
+    },
     {
       "id": "dailystar-https://www.thedailystar.net/sports/cricket/news/iqbal-emon-turns-hero-bangladesh-reach-semis-one-wicket-win-4329766",
       "title": "Iqbal Emon turns hero as Bangladesh A reach semis with one-wicket win",
@@ -17,14 +74,6 @@
       "imageUrl": "https://p.imgci.com/db/PICTURES/CMS/417100/417173.5.jpg",
       "source": "espncricinfo",
       "publishedAt": "2026-11-21T12:25:50.000Z"
-    },
-    {
-      "id": "dailystar-https://www.thedailystar.net/sports/cricket/news/injury-hit-bangladesh-lose-mushfiqur-ahead-second-test-4329506",
-      "title": "Injury-hit Bangladesh lose Mushfiqur ahead of second Test",
-      "summary": "Mushfiqur's injury adds to Bangladesh's growing concerns ahead of the second Test, following the earlier loss of pace bowler Hasan Mahmud.",
-      "url": "https://www.thedailystar.net/sports/cricket/news/injury-hit-bangladesh-lose-mushfiqur-ahead-second-test-4329506",
-      "source": "dailystar",
-      "publishedAt": "2026-11-21T11:43:16.000Z"
     },
     {
       "id": "espn-https://www.cricinfo.com/ci/content/story/1563369.html",
@@ -142,15 +191,6 @@
       "imageUrl": "https://p.imgci.com/db/PICTURES/CMS/425300/425318.5.jpg",
       "source": "espncricinfo",
       "publishedAt": "2026-11-16T18:05:00.000Z"
-    },
-    {
-      "id": "espn-https://www.cricinfo.com/ci/content/story/1562805.html",
-      "title": "Rabada goes from 'not short and wide' to five in no time",
-      "summary": "He took the first five Bangladesh wickets to fall in Johannesburg but South Africa let the advantage slip",
-      "url": "https://www.cricinfo.com/story/sa-vs-ban-1st-test-kagiso-rabada-goes-from-not-short-and-wide-to-five-in-no-time-1562805",
-      "imageUrl": "https://p.imgci.com/db/PICTURES/CMS/425300/425307.5.jpg",
-      "source": "espncricinfo",
-      "publishedAt": "2026-11-16T07:47:06.000Z"
     }
   ]
 }
