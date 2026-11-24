@@ -1,5 +1,5 @@
 {
-  "fetchedAt": "2026-11-23T01:47:23.122Z",
+  "fetchedAt": "2026-11-24T05:21:34.977Z",
   "source": "icc-sportz.io",
   "sourceUrl": "https://www.icc-cricket.com/rankings",
   "men": {
@@ -10596,9 +10596,9 @@
           "rank": 6,
           "name": "Sri Lanka",
           "abbreviation": "SL-W",
-          "rating": 239,
-          "points": 12198,
-          "matches": 51
+          "rating": 240,
+          "points": 12458,
+          "matches": 52
         },
         {
           "rank": 7,
@@ -10612,17 +10612,17 @@
           "rank": 8,
           "name": "Pakistan",
           "abbreviation": "PAK-W",
-          "rating": 210,
-          "points": 9857,
-          "matches": 47
+          "rating": 209,
+          "points": 10046,
+          "matches": 48
         },
         {
           "rank": 9,
           "name": "Ireland",
           "abbreviation": "IRE-W",
           "rating": 203,
-          "points": 9726,
-          "matches": 48
+          "points": 9939,
+          "matches": 49
         },
         {
           "rank": 10,
@@ -10637,8 +10637,8 @@
           "name": "Scotland",
           "abbreviation": "SCO-W",
           "rating": 169,
-          "points": 7415,
-          "matches": 44
+          "points": 7594,
+          "matches": 45
         },
         {
           "rank": 12,
@@ -10652,9 +10652,9 @@
           "rank": 13,
           "name": "Netherlands",
           "abbreviation": "NED-W",
-          "rating": 145,
-          "points": 7949,
-          "matches": 55
+          "rating": 144,
+          "points": 8084,
+          "matches": 56
         },
         {
           "rank": 14,
@@ -10677,8 +10677,8 @@
           "name": "Zimbabwe",
           "abbreviation": "ZIM-W",
           "rating": 122,
-          "points": 6350,
-          "matches": 52
+          "points": 6462,
+          "matches": 53
         },
         {
           "rank": 17,
@@ -10724,9 +10724,9 @@
           "rank": 22,
           "name": "Indonesia",
           "abbreviation": "INA-W",
-          "rating": 90,
-          "points": 4139,
-          "matches": 46
+          "rating": 91,
+          "points": 4256,
+          "matches": 47
         },
         {
           "rank": 23,
@@ -10772,9 +10772,9 @@
           "rank": 28,
           "name": "Malaysia",
           "abbreviation": "MAS-W",
-          "rating": 67,
-          "points": 3741,
-          "matches": 56
+          "rating": 66,
+          "points": 3781,
+          "matches": 57
         },
         {
           "rank": 29,
@@ -17440,7 +17440,7 @@
         "allrounder": "2026-11-02"
       },
       "t20": {
-        "team": "2026-11-22",
+        "team": "2026-11-23",
         "bat": "2026-11-16",
         "bowl": "2026-11-16",
         "allrounder": "2026-11-16"
