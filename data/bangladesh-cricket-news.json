@@ -1,21 +1,64 @@
 {
-  "fetchedAt": "2026-11-24T05:31:24.736Z",
+  "fetchedAt": "2026-11-25T04:34:43.269Z",
   "items": [
     {
-      "id": "dailystar-https://www.thedailystar.net/sports/cricket/news/keep-it-simple-nortje-reveals-secret-behind-bangladeshs-dismissal-91-4331781",
-      "title": "‘Keep it simple’: Nortje reveals secret behind Bangladesh’s dismissal for 91",
-      "summary": "The Proteas overcame a delayed start due to rain to rip through Bangladesh's batting line-up, with Nortje collecting 2-10 from six overs in his return to the side from injury as the visitors were dismissed for just 91 at SuperSport Park.",
-      "url": "https://www.thedailystar.net/sports/cricket/news/keep-it-simple-nortje-reveals-secret-behind-bangladeshs-dismissal-91-4331781",
+      "id": "dailystar-https://www.thedailystar.net/sports/cricket/news/litton-under-observation-after-groin-injury-4332691",
+      "title": "Litton under observation after groin injury",
+      "summary": "South Africa piled up more than 400 runs on the second day, finishing at 494 for seven with a commanding 403-run lead. It remained unclear whether Litton would be fit enough to bat in the second innings.",
+      "url": "https://www.thedailystar.net/sports/cricket/news/litton-under-observation-after-groin-injury-4332691",
       "source": "dailystar",
-      "publishedAt": "2026-11-24T02:23:31.000Z"
+      "publishedAt": "2026-11-24T19:09:05.000Z"
     },
     {
-      "id": "dailystar-https://www.thedailystar.net/sports/cricket/news/he-was-still-processing-his-batting-maketa-hridoys-dropped-catch-4331656",
-      "title": "'He was still processing his batting': Maketa on Hridoy’s dropped catch",
-      "summary": "Bangladesh’s in-form batter Tawhid Hridoy found himself back in the limelight on the opening day of the second Test against South Africa in Centurion, only this time, for all the wrong reasons.",
-      "url": "https://www.thedailystar.net/sports/cricket/news/he-was-still-processing-his-batting-maketa-hridoys-dropped-catch-4331656",
+      "id": "dailystar-https://www.thedailystar.net/sports/cricket/news/no-shakib-mustafizur-12-bangladeshis-register-ipl-2027-auction-4332686",
+      "title": "No Shakib, Mustafizur as 12 Bangladeshis register for IPL 2027 auction",
+      "summary": "The Bangladesh players on the list are Hasan Mahmud, Parvez Hossain Emon, Ripon Mondol, Rishad Hossain, Saif Hassan, Mahedi Hasan, Shamim Hossain, Shoriful Islam, Tanzim Hasan Sakib, Tawhid Hridoy, Md Rubel and Taskin Ahmed.",
+      "url": "https://www.thedailystar.net/sports/cricket/news/no-shakib-mustafizur-12-bangladeshis-register-ipl-2027-auction-4332686",
       "source": "dailystar",
-      "publishedAt": "2026-11-23T18:10:30.000Z"
+      "publishedAt": "2026-11-24T18:46:08.000Z"
+    },
+    {
+      "id": "espn-https://www.cricinfo.com/ci/content/story/1563809.html",
+      "title": "Ackerman, Mulder tons grind down Bangladesh as SA batters make hay",
+      "summary": "Tony de Zorzi and Marco Jansen also hit fifties as South Africa added 406 runs on the second day",
+      "url": "https://www.cricinfo.com/story/sa-vs-ban-2nd-test-marques-ackerman-wiaan-mulder-tons-grind-down-bangladesh-1563809",
+      "imageUrl": "https://p.imgci.com/db/PICTURES/CMS/425700/425724.5.jpg",
+      "source": "espncricinfo",
+      "publishedAt": "2026-11-24T18:39:11.000Z"
+    },
+    {
+      "id": "espn-https://www.cricinfo.com/ci/content/story/1563856.html",
+      "title": "Shoriful admits Bangladesh's pace attack 'lacked discipline'",
+      "summary": "\"We didn't bowl well enough. I think we bowled boundary balls at the start and end of overs\"",
+      "url": "https://www.cricinfo.com/story/sa-vs-ban-2nd-test-shoriful-admits-bangladeshs-pace-attack-lacked-discipline-1563856",
+      "imageUrl": "https://p.imgci.com/db/PICTURES/CMS/425600/425678.5.jpg",
+      "source": "espncricinfo",
+      "publishedAt": "2026-11-24T18:27:28.000Z"
+    },
+    {
+      "id": "espn-https://www.cricinfo.com/ci/content/story/1563845.html",
+      "title": "Pakistan A defend 168 to survive Nepal scare",
+      "summary": "Pakistan bundled out Nepal for 72 in 17.3 overs to set a semi-final against Bangladesh A on Friday",
+      "url": "https://www.cricinfo.com/story/asia-cup-rising-stars-pakistan-a-defend-168-to-survive-nepal-scare-1563845",
+      "imageUrl": "https://p.imgci.com/db/PICTURES/CMS/272600/272686.5.jpg",
+      "source": "espncricinfo",
+      "publishedAt": "2026-11-24T16:55:46.000Z"
+    },
+    {
+      "id": "dailystar-https://www.thedailystar.net/sports/cricket/news/proteas-pile-runs-stretch-lead-403-4332016",
+      "title": "Proteas pile on runs, stretch lead to 403",
+      "summary": "South Africa opener Marques Ackerman scored his second century in two Test matches, putting the Bangladesh pacers to the sword at the Centurion on Tuesday.",
+      "url": "https://www.thedailystar.net/sports/cricket/news/proteas-pile-runs-stretch-lead-403-4332016",
+      "source": "dailystar",
+      "publishedAt": "2026-11-24T10:06:23.000Z"
+    },
+    {
+      "id": "dailystar-https://www.thedailystar.net/sports/cricket/news/saliva-ban-stay-despite-gills-call-relax-4331866",
+      "title": "Saliva ban to stay despite Gill's call to relax",
+      "summary": "The International Cricket Council has no plans to reverse the ban on applying saliva to shine the ball, despite India skipper Shubman Gill's call to allow the practice again.",
+      "url": "https://www.thedailystar.net/sports/cricket/news/saliva-ban-stay-despite-gills-call-relax-4331866",
+      "source": "dailystar",
+      "publishedAt": "2026-11-24T05:19:14.000Z"
     },
     {
       "id": "espn-https://www.cricinfo.com/ci/content/story/1563706.html",
@@ -36,14 +79,6 @@
       "publishedAt": "2026-11-23T15:55:28.000Z"
     },
     {
-      "id": "dailystar-https://www.thedailystar.net/sports/cricket/news/91-all-out-the-4-unwanted-milestones-tigers-ticked-centurion-4331386",
-      "title": "91 all out: The 4 unwanted milestones Tigers ticked off in Centurion",
-      "summary": "One step forward, two steps back seems to be Bangladesh cricket team's default setting.",
-      "url": "https://www.thedailystar.net/sports/cricket/news/91-all-out-the-4-unwanted-milestones-tigers-ticked-centurion-4331386",
-      "source": "dailystar",
-      "publishedAt": "2026-11-23T15:14:40.000Z"
-    },
-    {
       "id": "espn-https://www.cricinfo.com/ci/content/story/1563702.html",
       "title": "Bangladesh bring back Yasir Ali and Khaled Ahmed for SA ODIs",
       "summary": "Among the others returning are Mohammad Naim and Jaker Ali, while Litton Das also comes back after missing the ODI tri-series in UAE in October",
@@ -62,14 +97,6 @@
       "publishedAt": "2026-11-23T11:37:00.000Z"
     },
     {
-      "id": "dailystar-https://www.thedailystar.net/sports/cricket/news/bangladesh-go-four-pacers-centurion-asked-bat-first-4331206",
-      "title": "Tigers all out for 91; Proteas close at 88-1",
-      "summary": "Bangladesh were asked to bat first in cloudy and overcast conditions in Centurion in the second Test by South Africa on Monday.",
-      "url": "https://www.thedailystar.net/sports/cricket/news/bangladesh-go-four-pacers-centurion-asked-bat-first-4331206",
-      "source": "dailystar",
-      "publishedAt": "2026-11-23T11:26:17.000Z"
-    },
-    {
       "id": "espn-https://www.cricinfo.com/ci/content/story/1563667.html",
       "title": "'We are way past Covid times' - Gill wants saliva ban to be reversed",
       "summary": "The India captain was not pleased with the quality of the balls after his bowlers could not take eight wickets on the fifth day in Wellington",
@@ -79,22 +106,6 @@
       "publishedAt": "2026-11-23T08:43:52.000Z"
     },
     {
-      "id": "dailystar-https://www.thedailystar.net/sports/cricket/news/gill-calls-cricket-relax-saliva-ban-4331076",
-      "title": "Gill calls for cricket to relax saliva ban",
-      "summary": "Only 24 wickets were taken across five full days of play while 1,327 runs were scored, including a record 720-9 by India, the highest innings in Tests in New Zealand.",
-      "url": "https://www.thedailystar.net/sports/cricket/news/gill-calls-cricket-relax-saliva-ban-4331076",
-      "source": "dailystar",
-      "publishedAt": "2026-11-23T08:05:58.000Z"
-    },
-    {
-      "id": "dailystar-https://www.thedailystar.net/sports/cricket/news/rain-plays-hide-and-seek-early-lunch-called-centurion-4331056",
-      "title": "Rain plays hide-and-seek as early lunch called in Centurion",
-      "summary": "With Centurion expected to offer another pace-friendly surface, Bangladesh could consider playing four specialist pacers, although Hasan Mahmud's injury has left them with only four available quicks in the squad.",
-      "url": "https://www.thedailystar.net/sports/cricket/news/rain-plays-hide-and-seek-early-lunch-called-centurion-4331056",
-      "source": "dailystar",
-      "publishedAt": "2026-11-23T07:46:48.000Z"
-    },
-    {
       "id": "espn-https://www.cricinfo.com/ci/content/story/1563618.html",
       "title": "Injury-hit Bangladesh face uphill task against Bavuma-less South Africa",
       "summary": "Without Mushfiqur and Mahmud, Bangladesh will need a lot to go their way to challenge WTC title-holders South Africa",
@@ -102,14 +113,6 @@
       "imageUrl": "https://p.imgci.com/db/PICTURES/CMS/425400/425478.5.jpg",
       "source": "espncricinfo",
       "publishedAt": "2026-11-23T07:08:45.000Z"
-    },
-    {
-      "id": "dailystar-https://www.thedailystar.net/sports/cricket/news/wtc-shake-australia-benefit-wellington-draw-south-africa-eye-bangladesh-win-4330996",
-      "title": "WTC shake-up: Australia benefit from Wellington draw as South Africa eye Bangladesh win",
-      "summary": "With South Africa looking to tighten their grip on the top spot and Australia benefiting from India's stalemate against New Zealand, the battle for the remaining places in the final is beginning to take shape.",
-      "url": "https://www.thedailystar.net/sports/cricket/news/wtc-shake-australia-benefit-wellington-draw-south-africa-eye-bangladesh-win-4330996",
-      "source": "dailystar",
-      "publishedAt": "2026-11-23T06:00:38.000Z"
     },
     {
       "id": "espn-https://www.cricinfo.com/ci/content/story/1563495.html",
@@ -200,33 +203,6 @@
       "imageUrl": "https://p.imgci.com/db/PICTURES/CMS/425400/425439.5.jpg",
       "source": "espncricinfo",
       "publishedAt": "2026-11-18T16:00:29.000Z"
-    },
-    {
-      "id": "espn-https://www.cricinfo.com/ci/content/story/1562948.html",
-      "title": "Bangladesh eye parity after new-ball burst on day slashed by erratic weather",
-      "summary": "South Africa left with 14-run deficit after Bavuma retired hurt, and lightning, rain and hail took over",
-      "url": "https://www.cricinfo.com/story/sa-vs-ban-1st-test-bangladesh-eye-parity-after-new-ball-burst-on-day-slashed-by-erratic-weather-1562948",
-      "imageUrl": "https://p.imgci.com/db/PICTURES/CMS/425300/425374.5.jpg",
-      "source": "espncricinfo",
-      "publishedAt": "2026-11-18T01:06:47.000Z"
-    },
-    {
-      "id": "espn-https://www.cricinfo.com/ci/content/story/1563004.html",
-      "title": "Rickelton lays out South Africa's plan: 'Bat long, get a lead, put ball in their court'",
-      "summary": "Taskin Ahmed, on the other hand, reckons that Bangladesh are \"still in the game\", particularly if they limit South Africa's lead",
-      "url": "https://www.cricinfo.com/story/sa-vs-ban-ryan-rickelton-lays-out-south-africas-plan-bat-long-get-a-lead-put-ball-in-their-court-1563004",
-      "imageUrl": "https://p.imgci.com/db/PICTURES/CMS/425300/425379.5.jpg",
-      "source": "espncricinfo",
-      "publishedAt": "2026-11-17T17:37:34.000Z"
-    },
-    {
-      "id": "espn-https://www.cricinfo.com/ci/content/story/1562964.html",
-      "title": "Khulna Division win National Cricket League title for record eighth time",
-      "summary": "Khulna Division has gone past Dhaka Division's seven titles to become the most successful team in Bangladesh's premier first-class competition",
-      "url": "https://www.cricinfo.com/story/bangladesh-news-khulna-division-win-national-cricket-league-title-for-the-eighth-time-1562964",
-      "imageUrl": "https://p.imgci.com/db/PICTURES/CMS/425300/425376.6.jpg",
-      "source": "espncricinfo",
-      "publishedAt": "2026-11-17T14:13:17.000Z"
     }
   ]
 }
