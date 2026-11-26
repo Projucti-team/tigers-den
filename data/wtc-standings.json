@@ -1,10 +1,23 @@
 {
-  "fetchedAt": "2026-11-25T04:15:16.312Z",
+  "fetchedAt": "2026-11-26T03:36:52.097Z",
   "source": "espn-cricinfo-core",
   "cycleLabel": "2025–2027",
   "standings": [
     {
       "rank": 1,
+      "team": "South Africa",
+      "abbreviation": "SA",
+      "played": 9,
+      "won": 7,
+      "lost": 2,
+      "drawn": 0,
+      "tied": 0,
+      "noResult": 0,
+      "points": 84,
+      "pct": 77.78
+    },
+    {
+      "rank": 2,
       "team": "Australia",
       "abbreviation": "AUS",
       "played": 13,
@@ -17,7 +30,7 @@
       "pct": 69.23
     },
     {
-      "rank": 2,
+      "rank": 3,
       "team": "New Zealand",
       "abbreviation": "NZ",
       "played": 7,
@@ -30,17 +43,82 @@
       "pct": 66.67
     },
     {
-      "rank": 3,
+      "rank": 4,
+      "team": "India",
+      "abbreviation": "IND",
+      "played": 12,
+      "won": 5,
+      "lost": 4,
+      "drawn": 3,
+      "tied": 0,
+      "noResult": 0,
+      "points": 72,
+      "pct": 50
+    },
+    {
+      "rank": 5,
+      "team": "England",
+      "abbreviation": "ENG",
+      "played": 16,
+      "won": 7,
+      "lost": 8,
+      "drawn": 1,
+      "tied": 0,
+      "noResult": 0,
+      "points": 74,
+      "pct": 38.54
+    },
+    {
+      "rank": 6,
       "team": "Bangladesh",
       "abbreviation": "BAN",
-      "played": 9,
+      "played": 10,
       "won": 3,
-      "lost": 4,
+      "lost": 5,
       "drawn": 2,
       "tied": 0,
       "noResult": 0,
       "points": 44,
-      "pct": 40.74
+      "pct": 36.67
+    },
+    {
+      "rank": 7,
+      "team": "West Indies",
+      "abbreviation": "WI",
+      "played": 14,
+      "won": 3,
+      "lost": 8,
+      "drawn": 3,
+      "tied": 0,
+      "noResult": 0,
+      "points": 46,
+      "pct": 27.38
+    },
+    {
+      "rank": 8,
+      "team": "Sri Lanka",
+      "abbreviation": "SL",
+      "played": 8,
+      "won": 1,
+      "lost": 3,
+      "drawn": 4,
+      "tied": 0,
+      "noResult": 0,
+      "points": 13,
+      "pct": 13.54
+    },
+    {
+      "rank": 9,
+      "team": "Pakistan",
+      "abbreviation": "PAK",
+      "played": 11,
+      "won": 3,
+      "lost": 7,
+      "drawn": 1,
+      "tied": 0,
+      "noResult": 0,
+      "points": 16,
+      "pct": 12.12
     }
   ]
 }
