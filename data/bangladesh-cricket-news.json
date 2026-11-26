@@ -1,21 +1,55 @@
 {
-  "fetchedAt": "2026-11-25T04:34:43.269Z",
+  "fetchedAt": "2026-11-26T03:46:25.504Z",
   "items": [
     {
-      "id": "dailystar-https://www.thedailystar.net/sports/cricket/news/litton-under-observation-after-groin-injury-4332691",
-      "title": "Litton under observation after groin injury",
-      "summary": "South Africa piled up more than 400 runs on the second day, finishing at 494 for seven with a commanding 403-run lead. It remained unclear whether Litton would be fit enough to bat in the second innings.",
-      "url": "https://www.thedailystar.net/sports/cricket/news/litton-under-observation-after-groin-injury-4332691",
-      "source": "dailystar",
-      "publishedAt": "2026-11-24T19:09:05.000Z"
+      "id": "espn-https://www.cricinfo.com/ci/content/story/1564153.html",
+      "title": "Shanto: 'We have to do consistently well to go to the next level'",
+      "summary": "\"There is certainly a lack of capability,\" Shanto said after Bangladesh lost the second Test by an innings and 219 runs",
+      "url": "https://www.cricinfo.com/story/sa-vs-ban-2nd-test-najmul-hossain-shanto-we-have-to-do-consistently-well-to-go-to-the-next-level-1564153",
+      "imageUrl": "https://p.imgci.com/db/PICTURES/CMS/425200/425296.5.jpg",
+      "source": "espncricinfo",
+      "publishedAt": "2026-11-25T17:02:58.000Z"
     },
     {
-      "id": "dailystar-https://www.thedailystar.net/sports/cricket/news/no-shakib-mustafizur-12-bangladeshis-register-ipl-2027-auction-4332686",
-      "title": "No Shakib, Mustafizur as 12 Bangladeshis register for IPL 2027 auction",
-      "summary": "The Bangladesh players on the list are Hasan Mahmud, Parvez Hossain Emon, Ripon Mondol, Rishad Hossain, Saif Hassan, Mahedi Hasan, Shamim Hossain, Shoriful Islam, Tanzim Hasan Sakib, Tawhid Hridoy, Md Rubel and Taskin Ahmed.",
-      "url": "https://www.thedailystar.net/sports/cricket/news/no-shakib-mustafizur-12-bangladeshis-register-ipl-2027-auction-4332686",
+      "id": "dailystar-https://www.thedailystar.net/sports/cricket/news/hridoy-the-best-thing-come-out-the-series-tigers-hit-familiar-south-africa-low-4333136",
+      "title": "Hridoy 'the best thing to come out of the series' as Tigers hit familiar South Africa low",
+      "summary": "Bangladesh’s two-Test tour of South Africa ended in familiar, painful fashion on Wednesday, with the Tigers crashing to an innings-and-219-run defeat on Day 3 of the second Test in Centurion.",
+      "url": "https://www.thedailystar.net/sports/cricket/news/hridoy-the-best-thing-come-out-the-series-tigers-hit-familiar-south-africa-low-4333136",
       "source": "dailystar",
-      "publishedAt": "2026-11-24T18:46:08.000Z"
+      "publishedAt": "2026-11-25T14:35:05.000Z"
+    },
+    {
+      "id": "dailystar-https://www.thedailystar.net/sports/cricket/news/centurion-test-numbers-tigers-misery-mulders-masterclass-4333131",
+      "title": "Centurion Test in numbers: Tigers' misery, Mulder's masterclass",
+      "summary": "After folding for just 91 in the first innings, the visitors managed only 184 in reply, failing to produce a single half-century across the match. Their bowlers, meanwhile, had no answer to South Africa's imposing 494 for seven.",
+      "url": "https://www.thedailystar.net/sports/cricket/news/centurion-test-numbers-tigers-misery-mulders-masterclass-4333131",
+      "source": "dailystar",
+      "publishedAt": "2026-11-25T14:29:17.000Z"
+    },
+    {
+      "id": "dailystar-https://www.thedailystar.net/sports/cricket/news/tigers-tale-another-heavy-defeat-same-old-hunt-positives-4333126",
+      "title": "Tigers' tale: Another heavy defeat, same old hunt for positives",
+      "summary": "And, as has become something of a recurring habit, Bangladesh were left looking for individual positives from a series in which the team collectively had very little to celebrate.",
+      "url": "https://www.thedailystar.net/sports/cricket/news/tigers-tale-another-heavy-defeat-same-old-hunt-positives-4333126",
+      "source": "dailystar",
+      "publishedAt": "2026-11-25T14:23:36.000Z"
+    },
+    {
+      "id": "espn-https://www.cricinfo.com/ci/content/story/1563890.html",
+      "title": "Seven-star Mulder leads South Africa to 2-0 whitewash",
+      "summary": "The allrounder's century and seven-wicket haul helped South Africa inflict an innings defeat on Bangladesh",
+      "url": "https://www.cricinfo.com/story/sa-vs-ban-2nd-test-seven-star-wiaan-mulder-leads-south-africa-to-2-0-whitewash-1563890",
+      "imageUrl": "https://p.imgci.com/db/PICTURES/CMS/425700/425764.5.jpg",
+      "source": "espncricinfo",
+      "publishedAt": "2026-11-25T13:02:03.000Z"
+    },
+    {
+      "id": "dailystar-https://www.thedailystar.net/sports/cricket/news/robin-tamim-survive-first-hour-4332936",
+      "title": "Bangladesh battered as Proteas complete 2-0 series sweep",
+      "summary": "The defeat also pushed Bangladesh down to sixth in the World Test Championship standings, with their points percentage dropping to 36.67.",
+      "url": "https://www.thedailystar.net/sports/cricket/news/robin-tamim-survive-first-hour-4332936",
+      "source": "dailystar",
+      "publishedAt": "2026-11-25T08:56:41.000Z"
     },
     {
       "id": "espn-https://www.cricinfo.com/ci/content/story/1563809.html",
@@ -24,7 +58,7 @@
       "url": "https://www.cricinfo.com/story/sa-vs-ban-2nd-test-marques-ackerman-wiaan-mulder-tons-grind-down-bangladesh-1563809",
       "imageUrl": "https://p.imgci.com/db/PICTURES/CMS/425700/425724.5.jpg",
       "source": "espncricinfo",
-      "publishedAt": "2026-11-24T18:39:11.000Z"
+      "publishedAt": "2026-11-25T07:38:02.000Z"
     },
     {
       "id": "espn-https://www.cricinfo.com/ci/content/story/1563856.html",
@@ -43,22 +77,6 @@
       "imageUrl": "https://p.imgci.com/db/PICTURES/CMS/272600/272686.5.jpg",
       "source": "espncricinfo",
       "publishedAt": "2026-11-24T16:55:46.000Z"
-    },
-    {
-      "id": "dailystar-https://www.thedailystar.net/sports/cricket/news/proteas-pile-runs-stretch-lead-403-4332016",
-      "title": "Proteas pile on runs, stretch lead to 403",
-      "summary": "South Africa opener Marques Ackerman scored his second century in two Test matches, putting the Bangladesh pacers to the sword at the Centurion on Tuesday.",
-      "url": "https://www.thedailystar.net/sports/cricket/news/proteas-pile-runs-stretch-lead-403-4332016",
-      "source": "dailystar",
-      "publishedAt": "2026-11-24T10:06:23.000Z"
-    },
-    {
-      "id": "dailystar-https://www.thedailystar.net/sports/cricket/news/saliva-ban-stay-despite-gills-call-relax-4331866",
-      "title": "Saliva ban to stay despite Gill's call to relax",
-      "summary": "The International Cricket Council has no plans to reverse the ban on applying saliva to shine the ball, despite India skipper Shubman Gill's call to allow the practice again.",
-      "url": "https://www.thedailystar.net/sports/cricket/news/saliva-ban-stay-despite-gills-call-relax-4331866",
-      "source": "dailystar",
-      "publishedAt": "2026-11-24T05:19:14.000Z"
     },
     {
       "id": "espn-https://www.cricinfo.com/ci/content/story/1563706.html",
@@ -176,33 +194,6 @@
       "imageUrl": "https://p.imgci.com/db/PICTURES/CMS/425300/425369.5.jpg",
       "source": "espncricinfo",
       "publishedAt": "2026-11-19T12:20:08.000Z"
-    },
-    {
-      "id": "espn-https://www.cricinfo.com/ci/content/story/1563227.html",
-      "title": "Lord's to host one-off T20I between Nepal and Bangladesh in June 2027",
-      "summary": "It will be part of Nepal's tour of England, which also includes two ODIs and three T20Is against Scotland and Ireland",
-      "url": "https://www.cricinfo.com/story/lords-to-host-one-off-t20i-between-nepal-and-bangladesh-in-june-2027-1563227",
-      "imageUrl": "https://p.imgci.com/db/PICTURES/CMS/383000/383023.5.jpg",
-      "source": "espncricinfo",
-      "publishedAt": "2026-11-19T11:12:37.000Z"
-    },
-    {
-      "id": "espn-https://www.cricinfo.com/ci/content/story/1563090.html",
-      "title": "Litton sets new world record with eight dismissals in a Test innings",
-      "summary": "With a century in Bangladesh's first innings, Litton Das is now in a club - a century and eight dismissals in a Test innings - of his own",
-      "url": "https://www.cricinfo.com/story/sa-vs-ban-1st-test-litton-das-sets-new-world-record-with-eight-dismissals-in-a-test-innings-1563090",
-      "imageUrl": "https://p.imgci.com/db/PICTURES/CMS/425400/425432.6.jpg",
-      "source": "espncricinfo",
-      "publishedAt": "2026-11-18T16:27:05.000Z"
-    },
-    {
-      "id": "espn-https://www.cricinfo.com/ci/content/story/1563091.html",
-      "title": "Bad light stops play early with Bangladesh under the pump",
-      "summary": "Bangladesh still trail by 57 runs with only five wickets in hand, as South Africa look to wrap up the win on the final day",
-      "url": "https://www.cricinfo.com/story/sa-vs-ban-1st-test-bad-light-stops-play-early-with-bangladesh-under-the-pump-1563091",
-      "imageUrl": "https://p.imgci.com/db/PICTURES/CMS/425400/425439.5.jpg",
-      "source": "espncricinfo",
-      "publishedAt": "2026-11-18T16:00:29.000Z"
     }
   ]
 }
