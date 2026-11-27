@@ -1,6 +1,39 @@
 {
-  "fetchedAt": "2026-11-26T03:46:25.504Z",
+  "fetchedAt": "2026-11-27T03:47:41.189Z",
   "items": [
+    {
+      "id": "dailystar-https://www.thedailystar.net/sports/cricket/news/bangladeshs-2026-test-campaign-bright-sparks-bleak-results-4334056",
+      "title": "Bangladesh’s 2026 Test campaign: Bright sparks, bleak results",
+      "summary": "In simple terms, Bangladesh’s Test journey in 2026 could be summed up this way: individual performances cannot always make up for a lack of consistency as a team, or shortcomings in planning and management.",
+      "url": "https://www.thedailystar.net/sports/cricket/news/bangladeshs-2026-test-campaign-bright-sparks-bleak-results-4334056",
+      "source": "dailystar",
+      "publishedAt": "2026-11-27T02:00:00.000Z"
+    },
+    {
+      "id": "dailystar-https://www.thedailystar.net/sports/cricket/news/tigers-great-test-mirage-4333926",
+      "title": "Tigers' great Test mirage",
+      "summary": "Historic wins offer a glimpse of what Bangladesh are capable of. They cannot, however, conceal the absence of sustained progress. Until the team learns to build on its breakthroughs rather than live off them, every landmark victory risks becoming another false dawn.",
+      "url": "https://www.thedailystar.net/sports/cricket/news/tigers-great-test-mirage-4333926",
+      "source": "dailystar",
+      "publishedAt": "2026-11-26T12:36:10.000Z"
+    },
+    {
+      "id": "dailystar-https://www.thedailystar.net/sports/cricket/news/coetzee-maphaka-ruled-out-bangladesh-white-ball-series-4333816",
+      "title": "Coetzee, Maphaka ruled out of Bangladesh white-ball series",
+      "summary": "Pacer Tiaan van Vuuren has earned his maiden call-up to the ODI squad, all-rounder Eathan Bosch and uncapped seamer JJ Basson have been added to the T20I squad.",
+      "url": "https://www.thedailystar.net/sports/cricket/news/coetzee-maphaka-ruled-out-bangladesh-white-ball-series-4333816",
+      "source": "dailystar",
+      "publishedAt": "2026-11-26T09:57:21.000Z"
+    },
+    {
+      "id": "espn-https://www.cricinfo.com/ci/content/story/1564291.html",
+      "title": "Injured Coetzee, Maphaka out of SA's white-ball series against Bangladesh",
+      "summary": "The uncapped van Vuuren has been called up to the ODI squad, while Eathan Bosch and uncapped Basson have come into the T20I squad",
+      "url": "https://www.cricinfo.com/story/sa-vs-ban-gerald-coetzee-kwena-maphaka-out-of-white-ball-series-against-bangladesh-1564291",
+      "imageUrl": "https://p.imgci.com/db/PICTURES/CMS/369800/369837.5.jpg",
+      "source": "espncricinfo",
+      "publishedAt": "2026-11-26T09:09:41.000Z"
+    },
     {
       "id": "espn-https://www.cricinfo.com/ci/content/story/1564153.html",
       "title": "Shanto: 'We have to do consistently well to go to the next level'",
@@ -11,30 +44,6 @@
       "publishedAt": "2026-11-25T17:02:58.000Z"
     },
     {
-      "id": "dailystar-https://www.thedailystar.net/sports/cricket/news/hridoy-the-best-thing-come-out-the-series-tigers-hit-familiar-south-africa-low-4333136",
-      "title": "Hridoy 'the best thing to come out of the series' as Tigers hit familiar South Africa low",
-      "summary": "Bangladesh’s two-Test tour of South Africa ended in familiar, painful fashion on Wednesday, with the Tigers crashing to an innings-and-219-run defeat on Day 3 of the second Test in Centurion.",
-      "url": "https://www.thedailystar.net/sports/cricket/news/hridoy-the-best-thing-come-out-the-series-tigers-hit-familiar-south-africa-low-4333136",
-      "source": "dailystar",
-      "publishedAt": "2026-11-25T14:35:05.000Z"
-    },
-    {
-      "id": "dailystar-https://www.thedailystar.net/sports/cricket/news/centurion-test-numbers-tigers-misery-mulders-masterclass-4333131",
-      "title": "Centurion Test in numbers: Tigers' misery, Mulder's masterclass",
-      "summary": "After folding for just 91 in the first innings, the visitors managed only 184 in reply, failing to produce a single half-century across the match. Their bowlers, meanwhile, had no answer to South Africa's imposing 494 for seven.",
-      "url": "https://www.thedailystar.net/sports/cricket/news/centurion-test-numbers-tigers-misery-mulders-masterclass-4333131",
-      "source": "dailystar",
-      "publishedAt": "2026-11-25T14:29:17.000Z"
-    },
-    {
-      "id": "dailystar-https://www.thedailystar.net/sports/cricket/news/tigers-tale-another-heavy-defeat-same-old-hunt-positives-4333126",
-      "title": "Tigers' tale: Another heavy defeat, same old hunt for positives",
-      "summary": "And, as has become something of a recurring habit, Bangladesh were left looking for individual positives from a series in which the team collectively had very little to celebrate.",
-      "url": "https://www.thedailystar.net/sports/cricket/news/tigers-tale-another-heavy-defeat-same-old-hunt-positives-4333126",
-      "source": "dailystar",
-      "publishedAt": "2026-11-25T14:23:36.000Z"
-    },
-    {
       "id": "espn-https://www.cricinfo.com/ci/content/story/1563890.html",
       "title": "Seven-star Mulder leads South Africa to 2-0 whitewash",
       "summary": "The allrounder's century and seven-wicket haul helped South Africa inflict an innings defeat on Bangladesh",
@@ -42,14 +51,6 @@
       "imageUrl": "https://p.imgci.com/db/PICTURES/CMS/425700/425764.5.jpg",
       "source": "espncricinfo",
       "publishedAt": "2026-11-25T13:02:03.000Z"
-    },
-    {
-      "id": "dailystar-https://www.thedailystar.net/sports/cricket/news/robin-tamim-survive-first-hour-4332936",
-      "title": "Bangladesh battered as Proteas complete 2-0 series sweep",
-      "summary": "The defeat also pushed Bangladesh down to sixth in the World Test Championship standings, with their points percentage dropping to 36.67.",
-      "url": "https://www.thedailystar.net/sports/cricket/news/robin-tamim-survive-first-hour-4332936",
-      "source": "dailystar",
-      "publishedAt": "2026-11-25T08:56:41.000Z"
     },
     {
       "id": "espn-https://www.cricinfo.com/ci/content/story/1563809.html",
@@ -149,51 +150,6 @@
       "imageUrl": "https://p.imgci.com/db/PICTURES/CMS/425300/425362.5.jpg",
       "source": "espncricinfo",
       "publishedAt": "2026-11-20T14:03:18.000Z"
-    },
-    {
-      "id": "espn-https://www.cricinfo.com/ci/content/story/1563324.html",
-      "title": "Ngidi back from injury for Bangladesh ODIs; Maharaj to lead SA",
-      "summary": "Anrich Nortje, who has not played an ODI since before the 2023 ODI World Cup, is also back and is also expected to be fit for the second Test",
-      "url": "https://www.cricinfo.com/story/sa-vs-ban-lungi-ngidi-back-from-injury-for-bangladesh-odis-maharaj-to-lead-south-africa-1563324",
-      "imageUrl": "https://p.imgci.com/db/PICTURES/CMS/371200/371230.5.jpg",
-      "source": "espncricinfo",
-      "publishedAt": "2026-11-20T12:38:00.000Z"
-    },
-    {
-      "id": "espn-https://www.cricinfo.com/ci/content/story/1563348.html",
-      "title": "Hridoy fined 40% of match fee, handed two demerit points for dissent",
-      "summary": "The Bangladesh batter was heard criticising the umpires in a manner described as \"aggressive and unbecoming\"",
-      "url": "https://www.cricinfo.com/story/sa-vs-ban-towhid-hridoy-fined-40-of-match-fee-handed-two-demerit-points-for-dissent-1563348",
-      "imageUrl": "https://p.imgci.com/db/PICTURES/CMS/425300/425314.5.jpg",
-      "source": "espncricinfo",
-      "publishedAt": "2026-11-20T11:14:09.000Z"
-    },
-    {
-      "id": "espn-https://www.cricinfo.com/ci/content/story/1563241.html",
-      "title": "'We could have seen a different result' - Shanto rues no-balls and dropped catches",
-      "summary": "But Bangladesh captain sees \"big plus\" in his side \"coming overseas and scoring big runs\"",
-      "url": "https://www.cricinfo.com/story/sa-vs-ban-najmul-hossain-shanto-rues-no-balls-and-dropped-catches-we-could-have-seen-a-different-result-1563241",
-      "imageUrl": "https://p.imgci.com/db/PICTURES/CMS/425400/425478.5.jpg",
-      "source": "espncricinfo",
-      "publishedAt": "2026-11-19T13:12:49.000Z"
-    },
-    {
-      "id": "espn-https://www.cricinfo.com/ci/content/story/1563218.html",
-      "title": "Harmer, Rabada help South Africa thump Bangladesh to go 1-0 up",
-      "summary": "Simon Harmer picked up a six-for for the second consecutive match, while Kagiso Rabada finished the game with eight wickets",
-      "url": "https://www.cricinfo.com/story/sa-vs-ban-1st-test-simon-harmer-kagiso-rabada-help-south-africa-thump-bangladesh-to-go-1-0-up-1563218",
-      "imageUrl": "https://p.imgci.com/db/PICTURES/CMS/425400/425480.5.jpg",
-      "source": "espncricinfo",
-      "publishedAt": "2026-11-19T12:40:55.000Z"
-    },
-    {
-      "id": "espn-https://www.cricinfo.com/ci/content/story/1563231.html",
-      "title": "Bavuma ruled out of second Test against Bangladesh",
-      "summary": "Bavuma suffered a calf strain while batting in the first Test in Johannesburg",
-      "url": "https://www.cricinfo.com/story/sa-vs-ban-temba-bavuma-ruled-out-of-second-test-against-bangladesh-1563231",
-      "imageUrl": "https://p.imgci.com/db/PICTURES/CMS/425300/425369.5.jpg",
-      "source": "espncricinfo",
-      "publishedAt": "2026-11-19T12:20:08.000Z"
     }
   ]
 }
