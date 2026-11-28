@@ -1,5 +1,5 @@
 {
-  "fetchedAt": "2026-11-27T03:39:26.254Z",
+  "fetchedAt": "2026-11-28T03:21:01.113Z",
   "source": "icc-sportz.io",
   "sourceUrl": "https://www.icc-cricket.com/rankings",
   "men": {
@@ -254,9 +254,9 @@
           "rank": 1,
           "name": "England",
           "abbreviation": "ENG",
-          "rating": 268,
-          "points": 11542,
-          "matches": 43
+          "rating": 269,
+          "points": 11852,
+          "matches": 44
         },
         {
           "rank": 2,
@@ -270,9 +270,9 @@
           "rank": 3,
           "name": "Australia",
           "abbreviation": "AUS",
-          "rating": 260,
-          "points": 10404,
-          "matches": 40
+          "rating": 259,
+          "points": 10622,
+          "matches": 41
         },
         {
           "rank": 4,
@@ -10402,7 +10402,7 @@
         "allrounder": "2026-11-24"
       },
       "t20": {
-        "team": "2026-11-24",
+        "team": "2026-11-27",
         "bat": "2026-11-24",
         "bowl": "2026-11-24",
         "allrounder": "2026-11-24"
@@ -10589,8 +10589,8 @@
           "name": "Sri Lanka",
           "abbreviation": "SL-W",
           "rating": 240,
-          "points": 12458,
-          "matches": 52
+          "points": 12711,
+          "matches": 53
         },
         {
           "rank": 7,
@@ -10613,8 +10613,8 @@
           "name": "Ireland",
           "abbreviation": "IRE-W",
           "rating": 203,
-          "points": 9939,
-          "matches": 49
+          "points": 10129,
+          "matches": 50
         },
         {
           "rank": 10,
@@ -10717,8 +10717,8 @@
           "name": "Indonesia",
           "abbreviation": "INA-W",
           "rating": 91,
-          "points": 4357,
-          "matches": 48
+          "points": 4474,
+          "matches": 49
         },
         {
           "rank": 23,
@@ -10764,9 +10764,9 @@
           "rank": 28,
           "name": "Malaysia",
           "abbreviation": "MAS-W",
-          "rating": 67,
-          "points": 3879,
-          "matches": 58
+          "rating": 66,
+          "points": 3920,
+          "matches": 59
         },
         {
           "rank": 29,
@@ -17441,7 +17441,7 @@
         "allrounder": "2026-11-02"
       },
       "t20": {
-        "team": "2026-11-25",
+        "team": "2026-11-27",
         "bat": "2026-11-23",
         "bowl": "2026-11-23",
         "allrounder": "2026-11-23"
