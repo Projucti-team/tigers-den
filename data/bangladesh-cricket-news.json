@@ -1,6 +1,39 @@
 {
-  "fetchedAt": "2026-11-27T03:47:41.189Z",
+  "fetchedAt": "2026-11-28T03:31:13.549Z",
   "items": [
+    {
+      "id": "dailystar-https://www.thedailystar.net/sports/cricket/news/can-mustafizur-turn-the-tide-4334621",
+      "title": "Can Mustafizur turn the tide?",
+      "summary": "Mustafizur Rahman produced a searing yorker to disturb Andre Russell's stumps -- albeit in a free-hit -- last Sunday in an ILT20 match for Dubai Capitals, bringing back memories of his dismissal of the same batter in the 2016 IPL, when the Bangladesh pacer was dominating pace-bowling conversations in world cricket.",
+      "url": "https://www.thedailystar.net/sports/cricket/news/can-mustafizur-turn-the-tide-4334621",
+      "source": "dailystar",
+      "publishedAt": "2026-11-28T02:00:00.000Z"
+    },
+    {
+      "id": "espn-https://www.cricinfo.com/ci/content/story/1564479.html",
+      "title": "Nawaz's all-round show, Moqim's three-for lead Pakistan A to final",
+      "summary": "Shahadat's 103* pushed Bangladesh A to 232, before Pakistan A's middle order bailed them out from 21 for 2",
+      "url": "https://www.cricinfo.com/story/asia-cup-rising-stars-ban-a-vs-pak-a-hasan-nawaz-sufyan-moqim-lead-pakistan-a-to-final-1564479",
+      "imageUrl": "https://p.imgci.com/db/PICTURES/CMS/425800/425834.5.jpg",
+      "source": "espncricinfo",
+      "publishedAt": "2026-11-27T18:18:26.000Z"
+    },
+    {
+      "id": "dailystar-https://www.thedailystar.net/sports/cricket/news/dipu-ton-goes-vain-pakistan-storm-final-4334701",
+      "title": "Dipu ton goes in vain as Pakistan A storm into final",
+      "summary": "Shahadat Hossain Dipu’s unbeaten century was not enough as Bangladesh A’s familiar batting frailties resurfaced, handing Pakistan A a routine six-wicket victory in the second semifinal of the ACC Men’s Asia Cup Rising Stars 2026 at the West End Park International Cricket Stadium in Doha on Friday.",
+      "url": "https://www.thedailystar.net/sports/cricket/news/dipu-ton-goes-vain-pakistan-storm-final-4334701",
+      "source": "dailystar",
+      "publishedAt": "2026-11-27T18:07:14.000Z"
+    },
+    {
+      "id": "dailystar-https://www.thedailystar.net/sports/cricket/news/shahadats-unbeaten-ton-lifts-bangladesh-232-against-pakistan-4334611",
+      "title": "Shahadat's unbeaten ton lifts Bangladesh A to 232 against Pakistan A",
+      "summary": "The winners will face Sri Lanka, who defeated India in the first semifinal, in Sunday's final.",
+      "url": "https://www.thedailystar.net/sports/cricket/news/shahadats-unbeaten-ton-lifts-bangladesh-232-against-pakistan-4334611",
+      "source": "dailystar",
+      "publishedAt": "2026-11-27T14:17:23.000Z"
+    },
     {
       "id": "dailystar-https://www.thedailystar.net/sports/cricket/news/bangladeshs-2026-test-campaign-bright-sparks-bleak-results-4334056",
       "title": "Bangladesh’s 2026 Test campaign: Bright sparks, bleak results",
@@ -8,22 +41,6 @@
       "url": "https://www.thedailystar.net/sports/cricket/news/bangladeshs-2026-test-campaign-bright-sparks-bleak-results-4334056",
       "source": "dailystar",
       "publishedAt": "2026-11-27T02:00:00.000Z"
-    },
-    {
-      "id": "dailystar-https://www.thedailystar.net/sports/cricket/news/tigers-great-test-mirage-4333926",
-      "title": "Tigers' great Test mirage",
-      "summary": "Historic wins offer a glimpse of what Bangladesh are capable of. They cannot, however, conceal the absence of sustained progress. Until the team learns to build on its breakthroughs rather than live off them, every landmark victory risks becoming another false dawn.",
-      "url": "https://www.thedailystar.net/sports/cricket/news/tigers-great-test-mirage-4333926",
-      "source": "dailystar",
-      "publishedAt": "2026-11-26T12:36:10.000Z"
-    },
-    {
-      "id": "dailystar-https://www.thedailystar.net/sports/cricket/news/coetzee-maphaka-ruled-out-bangladesh-white-ball-series-4333816",
-      "title": "Coetzee, Maphaka ruled out of Bangladesh white-ball series",
-      "summary": "Pacer Tiaan van Vuuren has earned his maiden call-up to the ODI squad, all-rounder Eathan Bosch and uncapped seamer JJ Basson have been added to the T20I squad.",
-      "url": "https://www.thedailystar.net/sports/cricket/news/coetzee-maphaka-ruled-out-bangladesh-white-ball-series-4333816",
-      "source": "dailystar",
-      "publishedAt": "2026-11-26T09:57:21.000Z"
     },
     {
       "id": "espn-https://www.cricinfo.com/ci/content/story/1564291.html",
@@ -141,15 +158,6 @@
       "imageUrl": "https://p.imgci.com/db/PICTURES/CMS/417100/417173.5.jpg",
       "source": "espncricinfo",
       "publishedAt": "2026-11-21T12:25:50.000Z"
-    },
-    {
-      "id": "espn-https://www.cricinfo.com/ci/content/story/1563369.html",
-      "title": "Injured Hasan Mahmud ruled out of South Africa tour",
-      "summary": "Bangladesh have not named a replacement yet and could bring left-arm quick Shoriful Islam into the XI for the second Test against South Africa",
-      "url": "https://www.cricinfo.com/story/sa-vs-ban-bangladesh-fast-bowler-hasan-mahmud-ruled-out-of-south-africa-tour-1563369",
-      "imageUrl": "https://p.imgci.com/db/PICTURES/CMS/425300/425362.5.jpg",
-      "source": "espncricinfo",
-      "publishedAt": "2026-11-20T14:03:18.000Z"
     }
   ]
 }
